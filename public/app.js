@@ -3,7 +3,7 @@ const STORAGE_LAST_ID_KEY = "ax_literacy_last_lets_id";
 const STORAGE_COURSE_CODE_KEY = "ax_literacy_course_code";
 const STORAGE_SIDEBAR_COLLAPSED_KEY = "ax_literacy_sidebar_collapsed";
 const AX_TASK_BOARD_URL =
-  "https://miro.com/welcomeonboard/L0kvb0JlVFVoUzBMbEoxQ2Qwb1pPMm5lczhOc0tpcGFOcGlBLy9sa3ZFYlczR2k3ekg4VDdLVGVKUVdTUTdmQUUvYUQwRzdlZFAraTRYYkxPRCsvU1RCditNWlFPbGdYZzQvYjh5RkN2UVYvMEhLY05PV2FQL0lGV3hnRHlUa3hhWWluRVAxeXRuUUgwWDl3Mk1qRGVRPT0hdjE=?share_link_id=111023574955";
+  "https://share-board-sidk.onrender.com/";
 const STATIC_CONFIG = window.__AX_STATIC_CONFIG__ || null;
 const STATIC_MODE = Boolean(STATIC_CONFIG && STATIC_CONFIG.mode === "static");
 const STATIC_BASE_PATH = normalizeBasePathValue(STATIC_CONFIG?.basePath || "");
@@ -399,8 +399,8 @@ const CLIENT_CATALOG_BLUEPRINTS = [
     clips: [
       { clipKey: "ch02-clip01", title: "Gemini 소개 및 접속 방법", type: "플랫폼" },
       { clipKey: "ch02-clip02", title: "프롬프팅 기초", type: "실습" },
-      { clipKey: "ch02-clip04", title: "AI 비서 만들기: 비즈니스 프롬프팅", type: "실습" },
-      { clipKey: "ch02-clip03", title: "Gems 소개: 프롬프트 구조화하기", type: "실습" },
+      { clipKey: "ch02-clip03", title: "비지니스 프롬프팅: AI 회의록", type: "실습" },
+      { clipKey: "ch02-clip04", title: "Gems 소개: AI 비서 만들기", type: "실습" },
       { clipKey: "ch02-clip05", title: "ChatGPT 및 GPTs 소개", type: "플랫폼" }
     ]
   },
@@ -626,10 +626,10 @@ function needsClientCatalogPatch(rawChapters) {
     (title) => title === "프롬프팅 기초"
   );
   const ch02BusinessIndex = ch02ClipTitles.findIndex(
-    (title) => title === "AI 비서 만들기: 비즈니스 프롬프팅"
+    (title) => title === "Gems 소개: AI 비서 만들기"
   );
   const ch02StructuredIndex = ch02ClipTitles.findIndex(
-    (title) => title === "Gems 소개: 프롬프트 구조화하기"
+    (title) => title === "비지니스 프롬프팅: AI 회의록"
   );
 
   return Boolean(
@@ -647,9 +647,9 @@ function needsClientCatalogPatch(rawChapters) {
       normalizeWs(ch04?.title) !== "Google AI Studio" ||
       !ch03ClipTitles.includes("문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑") ||
       !ch04ClipTitles.includes("바이브 코딩으로 웹앱 제작하기") ||
-      !ch02ClipTitles.includes("Gems 소개: 프롬프트 구조화하기") ||
-      ch02BusinessIndex !== ch02PromptingIndex + 1 ||
-      ch02StructuredIndex !== ch02BusinessIndex + 1
+      !ch02ClipTitles.includes("비지니스 프롬프팅: AI 회의록") ||
+      ch02StructuredIndex !== ch02PromptingIndex + 1 ||
+      ch02BusinessIndex !== ch02StructuredIndex + 1
   );
 }
 
@@ -2231,15 +2231,15 @@ function miroButtonMarkup({ compact = false } = {}) {
         <path d="M27 8h5.4l2.6 7-4.8 15h-5l3.7-15L27 8Z" fill="currentColor"></path>
       </svg>
     </span>
-    <span class="miro-btn-label">Miro</span>
+    <span class="miro-btn-label">공유</span>
   `;
 }
 
 function renderMiroLaunchButton() {
   if (!el.toggleTaskBtn) return;
   el.toggleTaskBtn.classList.add("miro-launch-btn");
-  el.toggleTaskBtn.setAttribute("aria-label", "Miro 보드 열기");
-  el.toggleTaskBtn.setAttribute("title", "Miro 보드 열기");
+  el.toggleTaskBtn.setAttribute("aria-label", "공유 보드 열기");
+  el.toggleTaskBtn.setAttribute("title", "공유 보드 열기");
   el.toggleTaskBtn.innerHTML = miroButtonMarkup();
 }
 
@@ -2250,7 +2250,7 @@ function decorateMiroDemoButtons(root = el.clipBody) {
     if (!/^Miro(?:\.공유하기)?$/i.test(label) && label !== "Miro.공유하기") return;
     const compact = button.classList.contains("lms-demo-btn-inline");
     button.classList.add("miro-demo-btn");
-    button.setAttribute("aria-label", "Miro");
+    button.setAttribute("aria-label", "공유");
     button.innerHTML = miroButtonMarkup({ compact });
   });
 }

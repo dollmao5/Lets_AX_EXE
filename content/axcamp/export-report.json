@@ -82,7 +82,7 @@
         },
         {
           "route": "#ch01-clip05",
-          "title": "Gems 소개: 프롬프트 구조화하기",
+          "title": "비지니스 프롬프팅: AI 회의록",
           "type": "참고",
           "folder": "chapters/CH01/ch01-clip05",
           "linkCount": 2,
@@ -559,7 +559,7 @@
     {
       "chapterId": "ch01",
       "route": "#ch01-clip05",
-      "title": "Gems 소개: 프롬프트 구조화하기",
+      "title": "비지니스 프롬프팅: AI 회의록",
       "folder": "chapters/CH01/ch01-clip05",
       "textLength": 824,
       "htmlLength": 3354,

@@ -1,36 +1,32 @@
 {
-  "route": "#ch01-clip01",
-  "url": "https://lg.cmdspace.work/axcamp#ch01-clip01",
+  "route": "#ch00-clip02",
+  "url": "https://lg.cmdspace.work/axcamp#ch00-clip02",
   "pageTitle": "AX Camp for Leaders | LG",
   "clipTitle": "자사 생성형 AI 서비스 현황",
   "overview": "사내 on-premise LLM 서비스 오픈 배경과 활용 가능성, 그리고 현업에서 기대되는 업무 혁신 포인트를 빠르게 공유합니다.",
   "badges": [
-    "CH 01",
-    "참고"
+    "~10분",
+    "CH 00",
+    "개요"
   ],
-  "html": "<div class=\"clip-header\">\n  <div class=\"clip-badges\">\n    <span class=\"clip-badge time\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" data-lucide=\"timer\" aria-hidden=\"true\" style=\"width:13px;height:13px;vertical-align:-2px;\" class=\"lucide lucide-timer\"><line x1=\"10\" x2=\"14\" y1=\"2\" y2=\"2\"></line><line x1=\"12\" x2=\"15\" y1=\"14\" y2=\"11\"></line><circle cx=\"12\" cy=\"14\" r=\"8\"></circle></svg> ~10분</span>\n    <span class=\"clip-badge chapter\">CH 00</span>\n    <span class=\"clip-badge type-overview\">개요</span>\n  </div>\n  <h1 class=\"clip-title\">자사 생성형 AI 서비스 현황</h1>\n</div>\n\n<div class=\"clip-overview\">사내 on-premise LLM 서비스 오픈 배경과 활용 가능성, 그리고 현업에서 기대되는 업무 혁신 포인트를 빠르게 공유합니다.</div>\n\n<div class=\"clip-section\">\n  <div class=\"clip-section-title\">발표 개요</div>\n  <div class=\"clip-section-content\">\n    <p style=\"font-size:0.9rem;line-height:1.8;color:var(--text-body);margin:0\">\n      이 세션은 <strong>Agentic AI 팀 한성원 팀장</strong>이 진행합니다. 2026년 3월 31일부터 전사 오픈된 사내 생성형 AI 서비스의 현재 상태와, 실무자들이 바로 활용할 수 있는 방향을 짧게 소개합니다.\n    </p>\n  </div>\n</div>\n\n<div class=\"clip-section\">\n  <div class=\"clip-section-title\">무엇이 구축되었나</div>\n  <div class=\"clip-section-content\">\n    <ul style=\"margin:0;padding-left:1.1rem;line-height:1.8;color:var(--text-body)\">\n      <li>바이브 코딩과 업무 자동화를 지원하는 <strong>사내 on-premise LLM 서비스용 클라우드 환경</strong>이 구축되었습니다.</li>\n      <li>구성원들은 외부 공개형 서비스에만 의존하지 않고, 사내 환경 안에서 생성형 AI를 활용할 수 있게 되었습니다.</li>\n      <li>전사 서비스는 <strong>3월 31일</strong>부터 공식 오픈되어 실사용 기반을 만들기 시작했습니다.</li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"clip-section\">\n  <div class=\"clip-section-title\">어떻게 활용할 수 있나</div>\n  <div class=\"clip-section-content\">\n    <table class=\"comparison-table\">\n      <thead>\n        <tr><th>활용 영역</th><th>대표 시나리오</th><th>실무 기대효과</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>App 개발</td>\n          <td>사내 업무 도구, 대시보드, 자동화 UI를 빠르게 제작</td>\n          <td>개발 초기 기획과 MVP 제작 속도 향상</td>\n        </tr>\n        <tr>\n          <td>Agent 구축</td>\n          <td>업무 흐름을 따라 계획·실행·검증을 반복하는 에이전트 구성</td>\n          <td>워크플로 지능화와 반복업무 자동화</td>\n        </tr>\n        <tr>\n          <td>AI 시스템 개발</td>\n          <td>문서요약, 생성, 데이터분석, 코딩 지원, 문제 해결용 솔루션 개발</td>\n          <td>현업 문제 해결과 부서별 솔루션 내재화</td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n\n<div class=\"clip-section\">\n  <div class=\"clip-section-title\">핵심 기술 포인트</div>\n  <div class=\"clip-section-content\">\n    <div class=\"info-block\">\n      <div class=\"info-block-title\">멀티모달 기반 확장성</div>\n      <div class=\"info-block-content\">\n        Qwen 모델과 비전 기능을 포함한 <strong>고수준 멀티모달 기능</strong>을 지원함으로써, 텍스트 처리에 그치지 않고 이미지 기반 검사 자동화, 문서 이해, 생성, 분석까지 연결할 수 있습니다.\n      </div>\n    </div>\n    <ul style=\"margin:16px 0 0;padding-left:1.1rem;line-height:1.8;color:var(--text-body)\">\n      <li>검사 자동화와 이미지 기반 판독 지원</li>\n      <li>문서 요약, 생성, 회의 정리, 일정 관리 자동화</li>\n      <li>데이터 분석과 코딩 지원을 통한 실무 생산성 강화</li>\n      <li>부서별 특화형 AI 앱과 Agent를 직접 만드는 기반 제공</li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"tip-block\">\n  <div class=\"tip-block-title\">이 세션의 핵심 메시지</div>\n  <div class=\"tip-block-content\">\n    생성형 AI는 더 이상 개인 도구 체험에 머무르지 않고, <strong>사내 클라우드 환경 위에서 App 개발, Agent 구축, 업무 자동화로 확장되는 단계</strong>에 들어섰습니다. 오늘 실습은 이 전사 서비스가 실제 업무에 어떻게 연결될 수 있는지 체감하는 출발점입니다.\n  </div>\n</div>\n\n<div class=\"clip-nav-footer\"><a class=\"clip-nav-btn\" href=\"#ch00-clip01\">← 오늘의 시간표</a><a class=\"clip-nav-btn\" href=\"#ch01-clip01\">AI 트렌드 →</a></div>\n",
-  "text": "~10분\n CH 00\n 개요\n\n 자사 생성형 AI 서비스 현황\n\n 사내 on-premise LLM 서비스 오픈 배경과 활용 가능성, 그리고 현업에서 기대되는 업무 혁신 포인트를 빠르게 공유합니다.\n\n 발표 개요\n\n 이 세션은 Agentic AI 팀 한성원 팀장 이 진행합니다. 2026년 3월 31일부터 전사 오픈된 사내 생성형 AI 서비스의 현재 상태와, 실무자들이 바로 활용할 수 있는 방향을 짧게 소개합니다.\n\n 무엇이 구축되었나\n\n 바이브 코딩과 업무 자동화를 지원하는 사내 on-premise LLM 서비스용 클라우드 환경 이 구축되었습니다.\n\n 구성원들은 외부 공개형 서비스에만 의존하지 않고, 사내 환경 안에서 생성형 AI를 활용할 수 있게 되었습니다.\n\n 전사 서비스는 3월 31일 부터 공식 오픈되어 실사용 기반을 만들기 시작했습니다.\n\n 어떻게 활용할 수 있나\n\n 활용 영역 대표 시나리오 실무 기대효과\n\n App 개발\n 사내 업무 도구, 대시보드, 자동화 UI를 빠르게 제작\n 개발 초기 기획과 MVP 제작 속도 향상\n\n Agent 구축\n 업무 흐름을 따라 계획·실행·검증을 반복하는 에이전트 구성\n 워크플로 지능화와 반복업무 자동화\n\n AI 시스템 개발\n 문서요약, 생성, 데이터분석, 코딩 지원, 문제 해결용 솔루션 개발\n 현업 문제 해결과 부서별 솔루션 내재화\n\n 핵심 기술 포인트\n\n 멀티모달 기반 확장성\n\n Qwen 모델과 비전 기능을 포함한 고수준 멀티모달 기능 을 지원함으로써, 텍스트 처리에 그치지 않고 이미지 기반 검사 자동화, 문서 이해, 생성, 분석까지 연결할 수 있습니다.\n\n 검사 자동화와 이미지 기반 판독 지원\n\n 문서 요약, 생성, 회의 정리, 일정 관리 자동화\n\n 데이터 분석과 코딩 지원을 통한 실무 생산성 강화\n\n 부서별 특화형 AI 앱과 Agent를 직접 만드는 기반 제공\n\n 이 세션의 핵심 메시지\n\n 생성형 AI는 더 이상 개인 도구 체험에 머무르지 않고, 사내 클라우드 환경 위에서 App 개발, Agent 구축, 업무 자동화로 확장되는 단계 에 들어섰습니다. 오늘 실습은 이 전사 서비스가 실제 업무에 어떻게 연결될 수 있는지 체감하는 출발점입니다.\n\n ← 오늘의 시간표 AI 트렌드 →",
+  "html": "<div class=\"clip-header\">\n  <div class=\"clip-badges\">\n    <span class=\"clip-badge time\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" data-lucide=\"timer\" aria-hidden=\"true\" style=\"width:13px;height:13px;vertical-align:-2px;\" class=\"lucide lucide-timer\"><line x1=\"10\" x2=\"14\" y1=\"2\" y2=\"2\"></line><line x1=\"12\" x2=\"15\" y1=\"14\" y2=\"11\"></line><circle cx=\"12\" cy=\"14\" r=\"8\"></circle></svg> ~10분</span>\n    <span class=\"clip-badge chapter\">CH 00</span>\n    <span class=\"clip-badge type-overview\">개요</span>\n  </div>\n  <h1 class=\"clip-title\">자사 생성형 AI 서비스 현황</h1>\n</div>\n\n<div class=\"clip-overview\">사내 on-premise LLM 서비스 오픈 배경과 활용 가능성, 그리고 현업에서 기대되는 업무 혁신 포인트를 빠르게 공유합니다.</div>\n\n<div class=\"clip-section\">\n  <div class=\"clip-section-title\">무엇이 구축되었나</div>\n  <div class=\"clip-section-content\">\n    <ul style=\"margin:0;padding-left:1.1rem;line-height:1.8;color:var(--text-body)\">\n      <li>바이브 코딩과 업무 자동화를 지원하는 <strong>사내 on-premise LLM 서비스용 클라우드 환경</strong>이 구축되었습니다.</li>\n      <li>구성원들은 외부 공개형 서비스에만 의존하지 않고, 사내 환경 안에서 생성형 AI를 활용할 수 있게 되었습니다.</li>\n      <li>전사 서비스는 <strong>3월 31일</strong>부터 공식 오픈되어 실사용 기반을 만들기 시작했습니다.</li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"clip-section\">\n  <div class=\"clip-section-title\">어떻게 활용할 수 있나</div>\n  <div class=\"clip-section-content\">\n    <table class=\"comparison-table\">\n      <thead>\n        <tr><th>활용 영역</th><th>대표 시나리오</th><th>실무 기대효과</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>App 개발</td>\n          <td>사내 업무 도구, 대시보드, 자동화 UI를 빠르게 제작</td>\n          <td>개발 초기 기획과 MVP 제작 속도 향상</td>\n        </tr>\n        <tr>\n          <td>Agent 구축</td>\n          <td>업무 흐름을 따라 계획·실행·검증을 반복하는 에이전트 구성</td>\n          <td>워크플로 지능화와 반복업무 자동화</td>\n        </tr>\n        <tr>\n          <td>AI 시스템 개발</td>\n          <td>문서요약, 생성, 데이터분석, 코딩 지원, 문제 해결용 솔루션 개발</td>\n          <td>현업 문제 해결과 부서별 솔루션 내재화</td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n\n<div class=\"clip-section\">\n  <div class=\"clip-section-title\">핵심 기술 포인트</div>\n  <div class=\"clip-section-content\">\n    <div class=\"info-block\">\n      <div class=\"info-block-title\">멀티모달 기반 확장성</div>\n      <div class=\"info-block-content\">\n        Qwen 모델과 비전 기능을 포함한 <strong>고수준 멀티모달 기능</strong>을 지원함으로써, 텍스트 처리에 그치지 않고 이미지 기반 검사 자동화, 문서 이해, 생성, 분석까지 연결할 수 있습니다.\n      </div>\n    </div>\n    <ul style=\"margin:16px 0 0;padding-left:1.1rem;line-height:1.8;color:var(--text-body)\">\n      <li>검사 자동화와 이미지 기반 판독 지원</li>\n      <li>문서 요약, 생성, 회의 정리, 일정 관리 자동화</li>\n      <li>데이터 분석과 코딩 지원을 통한 실무 생산성 강화</li>\n      <li>부서별 특화형 AI 앱과 Agent를 직접 만드는 기반 제공</li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"tip-block\">\n  <div class=\"tip-block-title\">이 세션의 핵심 메시지</div>\n  <div class=\"tip-block-content\">\n    생성형 AI는 더 이상 개인 도구 체험에 머무르지 않고, <strong>사내 클라우드 환경 위에서 App 개발, Agent 구축, 업무 자동화로 확장되는 단계</strong>에 들어섰습니다. 오늘 실습은 이 전사 서비스가 실제 업무에 어떻게 연결될 수 있는지 체감하는 출발점입니다.\n  </div>\n</div>\n\n<div class=\"clip-nav-footer\"><a class=\"clip-nav-btn\" href=\"#ch00-clip01\">← 오늘의 시간표</a><a class=\"clip-nav-btn\" href=\"#ch01-clip01\">AI 트렌드 →</a></div>\n",
+  "text": "~10분\nCH 00\n개요\n\n자사 생성형 AI 서비스 현황\n\n사내 on-premise LLM 서비스 오픈 배경과 활용 가능성, 그리고 현업에서 기대되는 업무 혁신 포인트를 빠르게 공유합니다.\n\n무엇이 구축되었나\n\n- 바이브 코딩과 업무 자동화를 지원하는 사내 on-premise LLM 서비스용 클라우드 환경이 구축되었습니다.\n\n- 구성원들은 외부 공개형 서비스에만 의존하지 않고, 사내 환경 안에서 생성형 AI를 활용할 수 있게 되었습니다.\n\n- 전사 서비스는 3월 31일부터 공식 오픈되어 실사용 기반을 만들기 시작했습니다.\n\n어떻게 활용할 수 있나\n\n활용 영역\t대표 시나리오\t실무 기대효과\n\nApp 개발\n사내 업무 도구, 대시보드, 자동화 UI를 빠르게 제작\n개발 초기 기획과 MVP 제작 속도 향상\n\nAgent 구축\n업무 흐름을 따라 계획·실행·검증을 반복하는 에이전트 구성\n워크플로 지능화와 반복업무 자동화\n\nAI 시스템 개발\n문서요약, 생성, 데이터분석, 코딩 지원, 문제 해결용 솔루션 개발\n현업 문제 해결과 부서별 솔루션 내재화\n\n핵심 기술 포인트\n\n멀티모달 기반 확장성\n\nQwen 모델과 비전 기능을 포함한 고수준 멀티모달 기능을 지원함으로써, 텍스트 처리에 그치지 않고 이미지 기반 검사 자동화, 문서 이해, 생성, 분석까지 연결할 수 있습니다.\n\n- 검사 자동화와 이미지 기반 판독 지원\n\n- 문서 요약, 생성, 회의 정리, 일정 관리 자동화\n\n- 데이터 분석과 코딩 지원을 통한 실무 생산성 강화\n\n- 부서별 특화형 AI 앱과 Agent를 직접 만드는 기반 제공\n\n이 세션의 핵심 메시지\n\n생성형 AI는 더 이상 개인 도구 체험에 머무르지 않고, 사내 클라우드 환경 위에서 App 개발, Agent 구축, 업무 자동화로 확장되는 단계에 들어섰습니다. 오늘 실습은 이 전사 서비스가 실제 업무에 어떻게 연결될 수 있는지 체감하는 출발점입니다.",
   "sections": [
     {
       "index": 1,
-      "title": "먼저 보는 영상",
-      "text": "이 영상은 Physical AI라는 키워드로 시작하지만, 실제로는 AI가 화면 안 답변기에서 벗어나 현실 세계의 장비·공정·업무 흐름까지 다루기 시작하는 변화를 직관적으로 보여줍니다.\n\n3분 1초 · NVIDIA\n\nYouTube에서 열기",
-      "html": "<p style=\"font-size:0.9rem;line-height:1.8;color:var(--text-body);margin:0 0 14px\">\n      이 영상은 <strong>Physical AI</strong>라는 키워드로 시작하지만, 실제로는 AI가 화면 안 답변기에서 벗어나 <strong>현실 세계의 장비·공정·업무 흐름까지 다루기 시작하는 변화</strong>를 직관적으로 보여줍니다.\n    </p>\n    <iframe src=\"https://www.youtube-nocookie.com/embed/uhLDHA9skFk\" title=\"The Next Wave of AI: Physical AI\" loading=\"lazy\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\" style=\"width:100%;min-height:420px;border:0;border-radius:18px;background:#000;\"></iframe>\n    <div style=\"display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px\">\n      <div style=\"font-size:0.82rem;color:var(--text-secondary)\">3분 1초 · NVIDIA</div>\n      <a href=\"https://www.youtube.com/watch?v=uhLDHA9skFk\" target=\"_blank\" rel=\"noopener\" class=\"slide-briefing-link\">YouTube에서 열기</a>\n    </div>",
+      "title": "무엇이 구축되었나",
+      "text": "- 바이브 코딩과 업무 자동화를 지원하는 사내 on-premise LLM 서비스용 클라우드 환경이 구축되었습니다.\n\n- 구성원들은 외부 공개형 서비스에만 의존하지 않고, 사내 환경 안에서 생성형 AI를 활용할 수 있게 되었습니다.\n\n- 전사 서비스는 3월 31일부터 공식 오픈되어 실사용 기반을 만들기 시작했습니다.",
+      "html": "<ul style=\"margin:0;padding-left:1.1rem;line-height:1.8;color:var(--text-body)\">\n      <li>바이브 코딩과 업무 자동화를 지원하는 <strong>사내 on-premise LLM 서비스용 클라우드 환경</strong>이 구축되었습니다.</li>\n      <li>구성원들은 외부 공개형 서비스에만 의존하지 않고, 사내 환경 안에서 생성형 AI를 활용할 수 있게 되었습니다.</li>\n      <li>전사 서비스는 <strong>3월 31일</strong>부터 공식 오픈되어 실사용 기반을 만들기 시작했습니다.</li>\n    </ul>",
       "images": [],
-      "iframes": [
-        {
-          "tag": "iframe",
-          "src": "https://www.youtube-nocookie.com/embed/uhLDHA9skFk"
-        }
-      ],
+      "iframes": [],
       "audios": [],
       "videos": []
     },
     {
       "index": 2,
-      "title": "이 장면에서 느껴볼 것",
-      "text": "업무 보조를 넘어 실행으로\n\nAgentic AI는 질문에 답하는 수준을 넘어 계획을 세우고, 도구를 고르고, 결과를 확인하는 방향으로 움직이기 시작합니다.\n\n화면 밖으로 확장되는 AI\n\nPhysical AI는 소프트웨어 안의 추론을 넘어 센서, 장비, 로봇, 공정 같은 현실 환경과 연결되는 흐름을 보여줍니다.\n\n결국 남는 것은 데이터와 운영 구조\n\n자율성이 커질수록 모델 자체보다 좋은 데이터, 맥락, 검증 체계가 조직의 성과 차이를 만들게 됩니다.",
-      "html": "<div style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px\">\n      <div style=\"padding:16px 18px;border:1px solid var(--border);border-radius:18px;background:var(--bg-white)\">\n        <div style=\"font-weight:700;color:var(--text-primary);margin-bottom:8px\">업무 보조를 넘어 실행으로</div>\n        <div style=\"font-size:0.86rem;line-height:1.75;color:var(--text-body)\">\n          Agentic AI는 질문에 답하는 수준을 넘어 계획을 세우고, 도구를 고르고, 결과를 확인하는 방향으로 움직이기 시작합니다.\n        </div>\n      </div>\n      <div style=\"padding:16px 18px;border:1px solid var(--border);border-radius:18px;background:var(--bg-white)\">\n        <div style=\"font-weight:700;color:var(--text-primary);margin-bottom:8px\">화면 밖으로 확장되는 AI</div>\n        <div style=\"font-size:0.86rem;line-height:1.75;color:var(--text-body)\">\n          Physical AI는 소프트웨어 안의 추론을 넘어 센서, 장비, 로봇, 공정 같은 현실 환경과 연결되는 흐름을 보여줍니다.\n        </div>\n      </div>\n      <div style=\"padding:16px 18px;border:1px solid var(--border);border-radius:18px;background:var(--bg-white)\">\n        <div style=\"font-weight:700;color:var(--text-primary);margin-bottom:8px\">결국 남는 것은 데이터와 운영 구조</div>\n        <div style=\"font-size:0.86rem;line-height:1.75;color:var(--text-body)\">\n          자율성이 커질수록 모델 자체보다 <strong>좋은 데이터, 맥락, 검증 체계</strong>가 조직의 성과 차이를 만들게 됩니다.\n        </div>\n      </div>\n    </div>",
+      "title": "어떻게 활용할 수 있나",
+      "text": "활용 영역\t대표 시나리오\t실무 기대효과\n\nApp 개발\n사내 업무 도구, 대시보드, 자동화 UI를 빠르게 제작\n개발 초기 기획과 MVP 제작 속도 향상\n\nAgent 구축\n업무 흐름을 따라 계획·실행·검증을 반복하는 에이전트 구성\n워크플로 지능화와 반복업무 자동화\n\nAI 시스템 개발\n문서요약, 생성, 데이터분석, 코딩 지원, 문제 해결용 솔루션 개발\n현업 문제 해결과 부서별 솔루션 내재화",
+      "html": "<table class=\"comparison-table\">\n      <thead>\n        <tr><th>활용 영역</th><th>대표 시나리오</th><th>실무 기대효과</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>App 개발</td>\n          <td>사내 업무 도구, 대시보드, 자동화 UI를 빠르게 제작</td>\n          <td>개발 초기 기획과 MVP 제작 속도 향상</td>\n        </tr>\n        <tr>\n          <td>Agent 구축</td>\n          <td>업무 흐름을 따라 계획·실행·검증을 반복하는 에이전트 구성</td>\n          <td>워크플로 지능화와 반복업무 자동화</td>\n        </tr>\n        <tr>\n          <td>AI 시스템 개발</td>\n          <td>문서요약, 생성, 데이터분석, 코딩 지원, 문제 해결용 솔루션 개발</td>\n          <td>현업 문제 해결과 부서별 솔루션 내재화</td>\n        </tr>\n      </tbody>\n    </table>",
       "images": [],
       "iframes": [],
       "audios": [],
@@ -38,9 +34,9 @@
     },
     {
       "index": 3,
-      "title": "추가 참고자료",
-      "text": "- GitHub Agentic Workflows PDF · AI가 개발과 실행 흐름을 어떻게 바꾸는지 보여주는 공식 자료\n\n- OpenClaw · AI가 업무 보조를 넘어 자율 실행형 동료로 이동하는 감각을 보여주는 사례\n\n- Harness Engineering · 에이전트를 운영 가능한 시스템으로 다루는 관점\n\n- Decisions You Can Trust · 데이터, 거버넌스, 설명 가능성이 왜 핵심인지 정리한 자료",
-      "html": "<p style=\"font-size:0.86rem;line-height:1.7;color:var(--text-secondary);margin:0 0 14px\"></p>\n    <ul style=\"margin:0;padding-left:1.1rem;line-height:1.9;color:var(--text-body)\">\n      <li><a href=\"https://github.github.com/gh-aw/slides/github-agentic-workflows.pdf\" target=\"_blank\" rel=\"noopener\">GitHub Agentic Workflows PDF</a> · AI가 개발과 실행 흐름을 어떻게 바꾸는지 보여주는 공식 자료</li>\n      <li><a href=\"https://openclaw.ai/\" target=\"_blank\" rel=\"noopener\">OpenClaw</a> · AI가 업무 보조를 넘어 자율 실행형 동료로 이동하는 감각을 보여주는 사례</li>\n      <li><a href=\"https://harness-engineering.ai/\" target=\"_blank\" rel=\"noopener\">Harness Engineering</a> · 에이전트를 운영 가능한 시스템으로 다루는 관점</li>\n      <li><a href=\"https://www.sas.com/content/dam/sasdam/documents/20250124/turn-agentic-ai-into-decisions-you-can-trust.pdf\" target=\"_blank\" rel=\"noopener\">Decisions You Can Trust</a> · 데이터, 거버넌스, 설명 가능성이 왜 핵심인지 정리한 자료</li>\n    </ul>",
+      "title": "핵심 기술 포인트",
+      "text": "멀티모달 기반 확장성\n\nQwen 모델과 비전 기능을 포함한 고수준 멀티모달 기능을 지원함으로써, 텍스트 처리에 그치지 않고 이미지 기반 검사 자동화, 문서 이해, 생성, 분석까지 연결할 수 있습니다.\n\n- 검사 자동화와 이미지 기반 판독 지원\n\n- 문서 요약, 생성, 회의 정리, 일정 관리 자동화\n\n- 데이터 분석과 코딩 지원을 통한 실무 생산성 강화\n\n- 부서별 특화형 AI 앱과 Agent를 직접 만드는 기반 제공",
+      "html": "<div class=\"info-block\">\n      <div class=\"info-block-title\">멀티모달 기반 확장성</div>\n      <div class=\"info-block-content\">\n        Qwen 모델과 비전 기능을 포함한 <strong>고수준 멀티모달 기능</strong>을 지원함으로써, 텍스트 처리에 그치지 않고 이미지 기반 검사 자동화, 문서 이해, 생성, 분석까지 연결할 수 있습니다.\n      </div>\n    </div>\n    <ul style=\"margin:16px 0 0;padding-left:1.1rem;line-height:1.8;color:var(--text-body)\">\n      <li>검사 자동화와 이미지 기반 판독 지원</li>\n      <li>문서 요약, 생성, 회의 정리, 일정 관리 자동화</li>\n      <li>데이터 분석과 코딩 지원을 통한 실무 생산성 강화</li>\n      <li>부서별 특화형 AI 앱과 Agent를 직접 만드는 기반 제공</li>\n    </ul>",
       "images": [],
       "iframes": [],
       "audios": [],
@@ -48,25 +44,9 @@
     }
   ],
   "prompts": [],
-  "links": [
-    {
-      "href": "#ch00-clip01",
-      "absolute": "https://lg.cmdspace.work/axcamp#ch00-clip01",
-      "text": "← 오늘의 시간표"
-    },
-    {
-      "href": "#ch01-clip01",
-      "absolute": "https://lg.cmdspace.work/axcamp#ch01-clip01",
-      "text": "AI 트렌드 →"
-    }
-  ],
+  "links": [],
   "images": [],
-  "iframes": [
-    {
-      "tag": "iframe",
-      "src": "https://www.youtube-nocookie.com/embed/uhLDHA9skFk"
-    }
-  ],
+  "iframes": [],
   "audios": [],
   "videos": [],
   "navTitle": "자사 생성형 AI 서비스 현황"
