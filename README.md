@@ -95,7 +95,7 @@ workflow 파일:
 
 배포 URL:
 
-- `https://infant83.github.io/Lets_AX_EXE/`
+- `https://dollmao5.github.io/Lets_AX_EXE/`
 
 ## 폴더 구조
 
