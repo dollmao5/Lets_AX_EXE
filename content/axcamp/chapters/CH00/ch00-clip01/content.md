@@ -17,9 +17,9 @@ CH 00
 
 오늘 세션은 2명의 강사와 2명의 실습 지원 인력이 함께 운영합니다. 강사 소개와 참여자 자기소개는 Gemini 소개와 프롬프트 기초를 다루는 수업 시간에 함께 진행됩니다.
 
-- • 강사: 김현중 (AI Governance 팀), 최남석 (Agentic AI 팀)
+- • 강사: AI/빅데이터담당 및 CHO 산하 팀장
 
-- • 실습 지원: AI Governance 팀
+- • 실습 지원: AI Governance 팀 & 리더십개발팀
 
 ## 오늘의 시간표
 
@@ -47,7 +47,7 @@ Agentic AI, Physical AI, 글로벌 동향 |
 
 |
 09:30-12:00 |
-[CH02: Gemini & ChatGPT](#ch02-clip01) |
+[CH02: Gemini & ChatGPT](#ch03-clip01) |
 
 - Gemini & ChatGPT
 
