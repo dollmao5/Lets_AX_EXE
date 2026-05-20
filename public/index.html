@@ -1,642 +1,547 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AX Camp for Leaders</title>
-    <link rel="stylesheet" href="/styles.css?v=20260417-ch02names1" />
-  </head>
-  <body>
-    <section id="loginView" class="login-view">
-      <div class="login-card">
-        <p class="eyebrow">AXCAMP</p>
-        <h1>AX Camp for Leaders</h1>
-        <p class="muted">회원가입 후 로그인하면 개인 진도, 과제, 노트가 계정별로 저장됩니다.</p>
 
-        <div class="auth-tabs">
-          <button id="showLoginModeBtn" type="button" class="ghost active">로그인</button>
-          <button id="showSignupModeBtn" type="button" class="ghost">회원가입</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>성과향상 with AI</title>
+  <link rel="stylesheet" href="/styles.css?v=20260417-ch02names1" />
+</head>
+
+<body>
+  <section id="loginView" class="login-view">
+    <div class="login-card">
+      <p class="eyebrow">AXCAMP</p>
+      <h1>성과향상 with AI</h1>
+      <p class="muted">회원가입 후 로그인하면 개인 진도, 과제, 노트가 계정별로 저장됩니다.</p>
+
+      <div class="auth-tabs">
+        <button id="showLoginModeBtn" type="button" class="ghost active">로그인</button>
+        <button id="showSignupModeBtn" type="button" class="ghost">회원가입</button>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label>
+          교육과정 코드
+          <input id="loginCourseCode" name="loginCourseCode" list="courseCodeList" placeholder="예: AXCAMP"
+            maxlength="24" />
+        </label>
+        <label>
+          계정아이디 (Let's ID)
+          <input id="loginAccountId" name="loginAccountId" placeholder="예: leader01" minlength="2" maxlength="32"
+            required />
+        </label>
+        <label>
+          비밀번호
+          <input id="loginPassword" name="loginPassword" type="password" placeholder="비밀번호" minlength="2" maxlength="64"
+            required />
+        </label>
+        <div class="auth-actions-row">
+          <button type="submit">로그인</button>
+          <button id="showPasswordHelpBtn" type="button" class="ghost">비밀번호 찾기</button>
         </div>
+        <p id="loginError" class="error"></p>
+      </form>
 
-        <form id="loginForm" class="login-form">
+      <form id="signupForm" class="login-form hidden">
+        <label>
+          교육과정 코드
+          <input id="signupCourseCode" name="signupCourseCode" list="courseCodeList" placeholder="예: AXCAMP"
+            maxlength="24" />
+        </label>
+        <label>
+          계정아이디 (Let's ID)
+          <input id="signupAccountId" name="signupAccountId" placeholder="예: leader01" minlength="2" maxlength="32"
+            required />
+        </label>
+        <label>
+          비밀번호 (PW)
+          <input id="signupPassword" name="signupPassword" type="password" placeholder="임의의 비밀번호" minlength="2"
+            maxlength="64" required />
+        </label>
+        <label>
+          소속 팀명
+          <input id="signupTeamName" name="signupTeamName" placeholder="예: AX추진팀" maxlength="64" required />
+        </label>
+        <label>
+          표시이름
+          <input id="signupDisplayName" name="signupDisplayName" placeholder="예: 홍길동" maxlength="64" required />
+        </label>
+        <button type="submit">회원가입</button>
+        <p id="signupError" class="error"></p>
+      </form>
+
+      <section id="passwordHelpPanel" class="password-help hidden">
+        <h3>비밀번호 찾기</h3>
+        <p class="muted">1) Let's ID 입력 후 힌트(앞 2글자)를 확인하세요.</p>
+        <div class="password-help-grid">
           <label>
-            교육과정 코드
-            <input
-              id="loginCourseCode"
-              name="loginCourseCode"
-              list="courseCodeList"
-              placeholder="예: AXCAMP"
-              maxlength="24"
-            />
+            Let's ID
+            <input id="helpAccountId" name="helpAccountId" placeholder="예: leader01" maxlength="32" />
           </label>
+          <button id="passwordHintBtn" type="button" class="ghost">힌트 보기</button>
+        </div>
+        <p id="passwordHintResult" class="muted"></p>
+        <p class="muted">2) 그래도 모르겠으면 소속 팀명으로 확인하세요.</p>
+        <div class="password-help-grid">
           <label>
-            계정아이디 (Let's ID)
-            <input
-              id="loginAccountId"
-              name="loginAccountId"
-              placeholder="예: leader01"
-              minlength="2"
-              maxlength="32"
-              required
-            />
+            소속 팀명
+            <input id="helpTeamName" name="helpTeamName" placeholder="가입 시 입력한 팀명" maxlength="64" />
           </label>
-          <label>
-            비밀번호
-            <input
-              id="loginPassword"
-              name="loginPassword"
-              type="password"
-              placeholder="비밀번호"
-              minlength="2"
-              maxlength="64"
-              required
-            />
-          </label>
-          <div class="auth-actions-row">
-            <button type="submit">로그인</button>
-            <button id="showPasswordHelpBtn" type="button" class="ghost">비밀번호 찾기</button>
+          <button id="passwordRecoverBtn" type="button" class="ghost">팀명으로 확인</button>
+        </div>
+        <p id="passwordRecoverResult" class="muted"></p>
+        <button id="closePasswordHelpBtn" type="button" class="ghost">닫기</button>
+      </section>
+
+      <datalist id="courseCodeList"></datalist>
+    </div>
+  </section>
+
+  <section id="appView" class="app-view hidden">
+    <header class="topbar">
+      <div class="topbar-brand">
+        <button id="sidebarToggleBtn" class="sidebar-toggle" type="button" aria-controls="chapterSidebar"
+          aria-expanded="true" aria-label="목차 접기" title="목차 접기">
+          <span class="sidebar-toggle-bars" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <div>
+          <p class="eyebrow">AXCAMP</p>
+          <h2>성과향상 with AI</h2>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-status-row">
+          <div id="progressBadge" class="progress-badge">진도 0%</div>
+          <div class="user-box">
+            <strong id="currentUser">-</strong>
+            <button id="accountSettingsBtn" class="ghost">계정정보</button>
+            <button id="logoutBtn" class="ghost">로그아웃</button>
           </div>
-          <p id="loginError" class="error"></p>
+        </div>
+        <div class="content-actions topbar-actions">
+          <button id="markCompleteBtn">학습 완료</button>
+          <button id="toggleTaskBtn" class="ghost miro-launch-btn" aria-label="공유 보드 열기" title="공유 보드 열기">
+            <span class="miro-logo-badge" aria-hidden="true">
+              <svg viewBox="0 0 38 38" focusable="false" aria-hidden="true">
+                <path d="M7 8h5l3.8 7-4.3 15H7.4l3.2-15L7 8Z" fill="currentColor"></path>
+                <path d="M17 8h5.2l3.6 7-4 15H17.6l3.1-15L17 8Z" fill="currentColor"></path>
+                <path d="M27 8h5.4l2.6 7-4.8 15h-5l3.7-15L27 8Z" fill="currentColor"></path>
+              </svg>
+            </span>
+            <span class="miro-btn-label">공유</span>
+          </button>
+          <button id="toggleNoteBtn" class="ghost">메모 펼치기</button>
+          <button id="toggleEditModeBtn" class="ghost hidden" onclick="window.toggleContentEditMode?.()">본문 수정</button>
+          <button id="saveContentEditorTopBtn" class="hidden" onclick="window.saveContentEditor?.()">저장</button>
+          <button id="toggleSidebarModeBtn" class="ghost hidden" onclick="window.toggleSidebarEditMode?.()">사이드바
+            수정</button>
+          <button id="togglePublishModeBtn" class="ghost hidden" onclick="window.togglePublishMode?.()">Pages
+            배포</button>
+        </div>
+      </div>
+    </header>
+
+    <div id="appLayout" class="layout">
+      <aside id="chapterSidebar" class="sidebar">
+        <div class="sidebar-title">강의 목차</div>
+        <div id="chapterList" class="chapter-list"></div>
+      </aside>
+
+      <main class="content-area">
+        <article id="clipBody" class="clip-body"></article>
+
+        <section id="contentEditorPanel" class="content-editor-panel hidden">
+          <div class="content-editor-head">
+            <div>
+              <p class="eyebrow">Root Editor</p>
+              <h3>현재 클립 편집</h3>
+            </div>
+            <div class="content-editor-actions">
+              <button id="reloadEditorBtn" type="button" class="ghost" onclick="window.reloadContentEditor?.()">원본 다시
+                불러오기</button>
+              <button id="saveEditorBtn" type="button" onclick="window.saveContentEditor?.()">저장</button>
+              <button id="closeEditorBtn" type="button" class="ghost"
+                onclick="window.toggleContentEditMode?.()">닫기</button>
+            </div>
+          </div>
+          <p class="muted">
+            root 전용 편집기입니다. 저장하면 현재 클립의 <code>content.html</code>,
+            <code>content.md</code>, <code>metadata.json</code>, <code>content.txt</code>가 함께
+            동기화됩니다. 저장 전 원본은 자동 백업되며, 아래에서 현재 클립용 자산도 바로 업로드할 수
+            있습니다.
+          </p>
+          <p id="contentEditorPath" class="content-editor-path">-</p>
+          <section class="content-asset-panel">
+            <div class="content-editor-head">
+              <div>
+                <p class="eyebrow">Clip Assets</p>
+                <h3>이미지 · PDF · 오디오 · 동영상 자산</h3>
+              </div>
+              <div class="content-editor-actions">
+                <button id="reloadContentAssetsBtn" type="button" class="ghost">목록 새로고침</button>
+                <button id="uploadContentAssetsBtn" type="button">업로드</button>
+              </div>
+            </div>
+            <p class="muted">
+              업로드한 파일은 현재 클립 폴더의 <code>assets/</code> 아래 저장됩니다. 경로 복사, HTML
+              삽입, 미리보기를 바로 사용할 수 있습니다.
+            </p>
+            <div class="content-asset-upload-row">
+              <div class="content-asset-picker-row">
+                <button id="chooseContentAssetsBtn" type="button" class="ghost">파일 선택</button>
+                <span id="contentAssetSelectionSummary" class="content-asset-selection-summary">선택된 파일 없음</span>
+              </div>
+              <input id="contentAssetInput" type="file" multiple
+                accept=".png,.jpg,.jpeg,.webp,.svg,.gif,.pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.txt,.md,.mp3,.wav,.m4a,.mp4"
+                class="content-asset-input-hidden" />
+              <span id="contentAssetUploadHint" class="content-editor-path">-</span>
+            </div>
+            <div id="contentAssetList" class="content-asset-list">
+              <p class="muted">업로드된 자산을 불러오면 여기에 표시됩니다.</p>
+            </div>
+            <section id="contentAssetPreviewPanel" class="asset-preview-panel hidden">
+              <div class="asset-preview-head">
+                <div>
+                  <p class="asset-preview-kicker">Asset Preview</p>
+                  <strong id="contentAssetPreviewTitle" class="asset-preview-title">자산 미리보기</strong>
+                </div>
+                <div class="asset-preview-actions">
+                  <button id="copyContentAssetPathBtn" type="button" class="practice-mini-btn ghost"
+                    data-default-label="경로 복사">
+                    경로 복사
+                  </button>
+                  <button id="insertContentAssetLinkBtn" type="button" class="practice-mini-btn ghost"
+                    data-default-label="링크 삽입">
+                    링크 삽입
+                  </button>
+                  <button id="insertContentAssetMediaBtn" type="button" class="practice-mini-btn ghost"
+                    data-default-label="미디어 삽입">
+                    미디어 삽입
+                  </button>
+                </div>
+              </div>
+              <p id="contentAssetPreviewMeta" class="muted">-</p>
+              <div id="contentAssetPreviewBody" class="asset-preview-body"></div>
+              <pre id="contentAssetSnippet" class="content-asset-snippet"></pre>
+            </section>
+            <p id="contentAssetStatus" class="muted"></p>
+          </section>
+          <section class="content-asset-panel content-embed-panel">
+            <div class="content-editor-head">
+              <div>
+                <p class="eyebrow">External Media</p>
+                <h3>YouTube · 외부 PDF · 영상 링크 임베드</h3>
+              </div>
+              <div class="content-editor-actions">
+                <button id="previewContentEmbedBtn" type="button">미리보기</button>
+                <button id="insertContentEmbedBtn" type="button" class="ghost" disabled>HTML 삽입</button>
+                <button id="clearContentEmbedBtn" type="button" class="ghost">지우기</button>
+              </div>
+            </div>
+            <p class="muted">
+              YouTube 주소나 직접 열리는 PDF, 이미지, 오디오, 동영상 URL을 넣으면 렌더 결과를 보고
+              현재 편집기에 바로 삽입할 수 있습니다. 스트리밍 링크는 우선 링크 또는 iframe 중심으로
+              넣고, HLS/DASH 플레이어 연동은 나중에 별도 확장할 수 있습니다.
+            </p>
+            <div class="content-embed-grid">
+              <label class="content-embed-field">
+                <span>외부 URL</span>
+                <input id="contentEmbedUrlInput" type="url"
+                  placeholder="https://youtu.be/... 또는 https://example.com/file.pdf" spellcheck="false" />
+              </label>
+              <label class="content-embed-field">
+                <span>제목 또는 캡션</span>
+                <input id="contentEmbedTitleInput" type="text" placeholder="선택 입력" spellcheck="false" />
+              </label>
+            </div>
+            <section id="contentEmbedPreviewPanel" class="asset-preview-panel hidden">
+              <div class="asset-preview-head">
+                <div>
+                  <p class="asset-preview-kicker">External Embed Preview</p>
+                  <strong id="contentEmbedPreviewTitle" class="asset-preview-title">외부 임베드 미리보기</strong>
+                </div>
+              </div>
+              <p id="contentEmbedPreviewMeta" class="muted">-</p>
+              <div id="contentEmbedPreviewBody" class="asset-preview-body"></div>
+              <pre id="contentEmbedSnippet" class="content-asset-snippet"></pre>
+            </section>
+            <p id="contentEmbedStatus" class="muted"></p>
+          </section>
+          <div class="content-editor-layout">
+            <section class="content-editor-pane">
+              <div class="content-editor-label-row">
+                <p class="content-editor-label">HTML 소스</p>
+                <span class="content-editor-hint">클릭: 소스 이동 · 더블클릭: 평문 텍스트 빠른 수정 · 본문에서도 동일</span>
+              </div>
+              <div class="content-code-editor-shell">
+                <pre id="contentEditorHighlight" class="content-editor-highlight" aria-hidden="true"></pre>
+                <textarea id="contentEditorInput" rows="18" spellcheck="false"
+                  placeholder="현재 클립의 content.html 원문을 수정하세요."></textarea>
+              </div>
+            </section>
+            <section class="content-editor-preview-pane">
+              <p class="content-editor-label">렌더 미리보기</p>
+              <div id="contentEditorPreview" class="content-editor-preview"></div>
+            </section>
+          </div>
+          <p id="contentEditorStatus" class="muted"></p>
+        </section>
+
+        <section id="sidebarEditorPanel" class="content-editor-panel hidden">
+          <div class="content-editor-head">
+            <div>
+              <p class="eyebrow">Root Sidebar Editor</p>
+              <h3>사이드바 메타 편집</h3>
+            </div>
+            <div class="content-editor-actions">
+              <button id="reloadSidebarEditorBtn" type="button" class="ghost"
+                onclick="window.reloadSidebarEditor?.()">원본 다시 불러오기</button>
+              <button id="saveSidebarEditorBtn" type="button" onclick="window.saveSidebarEditor?.()">저장</button>
+              <button id="closeSidebarEditorBtn" type="button" class="ghost"
+                onclick="window.toggleSidebarEditMode?.()">닫기</button>
+            </div>
+          </div>
+          <p class="muted">
+            root 전용 사이드바 편집기입니다. 저장하면 현재 클립의 챕터 제목/시간, 클립 제목/유형이
+            카탈로그에 반영됩니다.
+          </p>
+          <p id="sidebarEditorPath" class="content-editor-path">-</p>
+          <div class="sidebar-editor-grid">
+            <label class="sidebar-editor-field">
+              <span>챕터 제목</span>
+              <input id="sidebarChapterTitleInput" maxlength="120" />
+            </label>
+            <label class="sidebar-editor-field">
+              <span>챕터 시간</span>
+              <input id="sidebarChapterTimeInput" maxlength="40" placeholder="예: 10:00" />
+            </label>
+            <label class="sidebar-editor-field">
+              <span>클립 제목</span>
+              <input id="sidebarClipTitleInput" maxlength="160" />
+            </label>
+            <label class="sidebar-editor-field">
+              <span>클립 유형</span>
+              <select id="sidebarClipTypeInput">
+                <option value="개요">개요</option>
+                <option value="개념">개념</option>
+                <option value="실습">실습</option>
+                <option value="플랫폼">플랫폼</option>
+                <option value="설정">설정</option>
+                <option value="참고">참고</option>
+              </select>
+            </label>
+          </div>
+          <div class="sidebar-editor-preview-card">
+            <p class="content-editor-label">사이드바 미리보기</p>
+            <div class="sidebar-editor-preview-shell">
+              <div class="sidebar-editor-preview-head">
+                <span id="sidebarPreviewChapterNum" class="chapter-code">CH00</span>
+                <strong id="sidebarPreviewChapterTitle">챕터 제목</strong>
+                <span id="sidebarPreviewChapterTime" class="chapter-time">10:00</span>
+              </div>
+              <div class="sidebar-editor-preview-clip">
+                <span id="sidebarPreviewClipTitle">클립 제목</span>
+                <span id="sidebarPreviewClipType" class="clip-pill">개념</span>
+              </div>
+            </div>
+          </div>
+          <p id="sidebarEditorStatus" class="muted"></p>
+        </section>
+
+        <section id="publishPanel" class="content-editor-panel hidden">
+          <div class="content-editor-head">
+            <div>
+              <p class="eyebrow">Root Publish</p>
+              <h3>GitHub Pages 배포 상태</h3>
+            </div>
+            <div class="content-editor-actions">
+              <button id="reloadPublishStatusBtn" type="button" class="ghost"
+                onclick="window.reloadPublishStatus?.()">상태 새로고침</button>
+              <button id="runPublishBtn" type="button" onclick="window.publishRootChanges?.()">커밋 후 Push</button>
+              <button id="closePublishPanelBtn" type="button" class="ghost"
+                onclick="window.togglePublishMode?.()">닫기</button>
+            </div>
+          </div>
+          <p class="muted">
+            root 저장은 로컬 파일만 갱신합니다. GitHub Pages는 마지막으로 <code>commit + push</code> 된
+            상태만 배포하므로, 여기서 현재 변경 상태를 확인하고 바로 반영할 수 있습니다.
+          </p>
+          <div class="publish-status-grid">
+            <div class="publish-status-card">
+              <p class="content-editor-label">현재 브랜치</p>
+              <strong id="publishBranchSummary">-</strong>
+              <p id="publishHeadSummary" class="muted">-</p>
+            </div>
+            <div class="publish-status-card">
+              <p class="content-editor-label">원격과의 차이</p>
+              <strong id="publishDivergenceSummary">-</strong>
+              <p id="publishPendingSummary" class="muted">-</p>
+            </div>
+          </div>
+          <label class="sidebar-editor-field publish-message-field">
+            <span>커밋 메시지</span>
+            <input id="publishCommitMessageInput" maxlength="120" placeholder="예: Publish root editor updates" />
+          </label>
+          <div class="publish-file-grid">
+            <section class="publish-file-card">
+              <p class="content-editor-label">배포 대상 변경 파일</p>
+              <div id="publishTrackedFiles" class="publish-file-list">
+                <p class="muted">변경 사항을 불러오면 여기에 표시됩니다.</p>
+              </div>
+            </section>
+            <section class="publish-file-card">
+              <p class="content-editor-label">제외된 파일</p>
+              <div id="publishIgnoredFiles" class="publish-file-list">
+                <p class="muted">제외된 항목이 있으면 여기에 표시됩니다.</p>
+              </div>
+            </section>
+          </div>
+          <p id="publishPanelStatus" class="muted"></p>
+        </section>
+      </main>
+
+      <aside id="taskPanel" class="task-panel">
+        <h3>AX 과제</h3>
+        <p id="taskChapterContext" class="task-chapter-context">현재 챕터를 선택해 주세요.</p>
+        <p class="muted">
+          오늘 AI 실습 중 발견한 인사이트를 기반으로 조직 AX 과제를 작성하세요.
+        </p>
+        <form id="taskForm" class="task-form">
+          <label>
+            과제명
+            <input id="taskTitle" maxlength="200" required />
+          </label>
+          <label>
+            선정 이유
+            <textarea id="taskReason" rows="4" maxlength="1000" required></textarea>
+          </label>
+          <label>
+            기대효과
+            <textarea id="taskEffect" rows="4" maxlength="1000" required></textarea>
+          </label>
+          <button type="submit">저장</button>
+          <p id="taskStatus" class="muted"></p>
         </form>
 
-        <form id="signupForm" class="login-form hidden">
-          <label>
-            교육과정 코드
-            <input
-              id="signupCourseCode"
-              name="signupCourseCode"
-              list="courseCodeList"
-              placeholder="예: AXCAMP"
-              maxlength="24"
-            />
-          </label>
+        <section id="adminSection" class="admin-section hidden">
+          <div class="admin-head">
+            <h3>관리자 (root)</h3>
+            <button id="refreshUsersBtn" type="button" class="ghost">새로고침</button>
+          </div>
+          <p class="muted">등록 사용자 정보를 확인할 수 있습니다.</p>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Let's ID</th>
+                  <th>표시이름</th>
+                  <th>팀명</th>
+                  <th>PW</th>
+                  <th>진도</th>
+                  <th>과제</th>
+                  <th>노트</th>
+                </tr>
+              </thead>
+              <tbody id="adminUsersTbody"></tbody>
+            </table>
+          </div>
+          <p id="adminStatus" class="muted"></p>
+        </section>
+      </aside>
+
+      <aside id="notePanel" class="task-panel collapsed">
+        <div class="note-panel-head-row">
+          <h3>메모</h3>
+          <div class="note-head-actions">
+            <button id="saveNoteBtn" type="button">노트 저장</button>
+            <button id="copyNoteBtn" type="button" class="ghost">MD 복사</button>
+          </div>
+        </div>
+        <p id="noteClipContext" class="task-chapter-context">현재 클립</p>
+        <p class="muted">현재 섹션에 대한 개인 노트를 작성하고 저장하세요.</p>
+
+        <div class="note-md-layout">
+          <section class="note-editor-pane">
+            <p class="note-pane-label">Markdown</p>
+            <textarea id="noteText" rows="12" maxlength="20000"
+              placeholder="이 섹션의 핵심 내용, 프롬프트, 액션 아이디어를 Markdown으로 정리하세요."></textarea>
+          </section>
+          <section class="note-preview-pane">
+            <p class="note-pane-label">미리보기</p>
+            <div id="notePreview" class="note-preview"></div>
+          </section>
+        </div>
+
+        <p id="noteStatus" class="muted"></p>
+      </aside>
+    </div>
+
+    <section id="accountModal" class="account-modal hidden">
+      <div class="account-modal-card">
+        <div class="account-modal-head">
+          <h3>계정 정보 변경</h3>
+          <button id="closeAccountModalBtn" type="button" class="ghost">닫기</button>
+        </div>
+        <form id="accountForm" class="login-form">
           <label>
             계정아이디 (Let's ID)
-            <input
-              id="signupAccountId"
-              name="signupAccountId"
-              placeholder="예: leader01"
-              minlength="2"
-              maxlength="32"
-              required
-            />
-          </label>
-          <label>
-            비밀번호 (PW)
-            <input
-              id="signupPassword"
-              name="signupPassword"
-              type="password"
-              placeholder="임의의 비밀번호"
-              minlength="2"
-              maxlength="64"
-              required
-            />
+            <input id="accountEditId" maxlength="32" required />
           </label>
           <label>
             소속 팀명
-            <input
-              id="signupTeamName"
-              name="signupTeamName"
-              placeholder="예: AX추진팀"
-              maxlength="64"
-              required
-            />
+            <input id="accountEditTeamName" maxlength="64" required />
           </label>
           <label>
             표시이름
-            <input
-              id="signupDisplayName"
-              name="signupDisplayName"
-              placeholder="예: 홍길동"
-              maxlength="64"
-              required
-            />
+            <input id="accountEditDisplayName" maxlength="64" required />
           </label>
-          <button type="submit">회원가입</button>
-          <p id="signupError" class="error"></p>
+          <label>
+            현재 비밀번호
+            <input id="accountCurrentPassword" type="password" maxlength="64" required />
+          </label>
+          <label>
+            새 비밀번호 (선택)
+            <input id="accountNewPassword" type="password" maxlength="64" />
+          </label>
+          <div class="auth-actions-row">
+            <button type="submit">변경 저장</button>
+          </div>
+          <p id="accountStatus" class="error"></p>
         </form>
-
-        <section id="passwordHelpPanel" class="password-help hidden">
-          <h3>비밀번호 찾기</h3>
-          <p class="muted">1) Let's ID 입력 후 힌트(앞 2글자)를 확인하세요.</p>
-          <div class="password-help-grid">
-            <label>
-              Let's ID
-              <input
-                id="helpAccountId"
-                name="helpAccountId"
-                placeholder="예: leader01"
-                maxlength="32"
-              />
-            </label>
-            <button id="passwordHintBtn" type="button" class="ghost">힌트 보기</button>
-          </div>
-          <p id="passwordHintResult" class="muted"></p>
-          <p class="muted">2) 그래도 모르겠으면 소속 팀명으로 확인하세요.</p>
-          <div class="password-help-grid">
-            <label>
-              소속 팀명
-              <input
-                id="helpTeamName"
-                name="helpTeamName"
-                placeholder="가입 시 입력한 팀명"
-                maxlength="64"
-              />
-            </label>
-            <button id="passwordRecoverBtn" type="button" class="ghost">팀명으로 확인</button>
-          </div>
-          <p id="passwordRecoverResult" class="muted"></p>
-          <button id="closePasswordHelpBtn" type="button" class="ghost">닫기</button>
-        </section>
-
-        <datalist id="courseCodeList"></datalist>
       </div>
     </section>
 
-    <section id="appView" class="app-view hidden">
-      <header class="topbar">
-        <div class="topbar-brand">
-          <button
-            id="sidebarToggleBtn"
-            class="sidebar-toggle"
-            type="button"
-            aria-controls="chapterSidebar"
-            aria-expanded="true"
-            aria-label="목차 접기"
-            title="목차 접기"
-          >
-            <span class="sidebar-toggle-bars" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
+    <section id="slideDeckModal" class="slides-modal hidden" aria-hidden="true">
+      <div class="slides-modal-card" role="dialog" aria-modal="true" aria-labelledby="slideDeckTitle">
+        <div class="slides-modal-head">
           <div>
-            <p class="eyebrow">AXCAMP</p>
-            <h2>AX Camp for Leaders</h2>
+            <p id="slideDeckKicker" class="eyebrow">NotebookLM 브리핑</p>
+            <h3 id="slideDeckTitle">슬라이드</h3>
+          </div>
+          <div class="slides-modal-head-actions">
+            <a id="downloadSlideDeckBtn" class="ghost-link hidden" href="#" download>다운로드</a>
+            <span id="slideDeckCounter" class="slides-counter">1 / 1</span>
+            <button id="closeSlideDeckBtn" type="button" class="ghost">닫기</button>
           </div>
         </div>
-        <div class="topbar-right">
-          <div class="topbar-status-row">
-            <div id="progressBadge" class="progress-badge">진도 0%</div>
-            <div class="user-box">
-              <strong id="currentUser">-</strong>
-              <button id="accountSettingsBtn" class="ghost">계정정보</button>
-              <button id="logoutBtn" class="ghost">로그아웃</button>
-            </div>
-          </div>
-          <div class="content-actions topbar-actions">
-            <button id="markCompleteBtn">학습 완료</button>
-            <button id="toggleTaskBtn" class="ghost miro-launch-btn" aria-label="공유 보드 열기" title="공유 보드 열기">
-              <span class="miro-logo-badge" aria-hidden="true">
-                <svg viewBox="0 0 38 38" focusable="false" aria-hidden="true">
-                  <path d="M7 8h5l3.8 7-4.3 15H7.4l3.2-15L7 8Z" fill="currentColor"></path>
-                  <path d="M17 8h5.2l3.6 7-4 15H17.6l3.1-15L17 8Z" fill="currentColor"></path>
-                  <path d="M27 8h5.4l2.6 7-4.8 15h-5l3.7-15L27 8Z" fill="currentColor"></path>
-                </svg>
-              </span>
-              <span class="miro-btn-label">공유</span>
-            </button>
-            <button id="toggleNoteBtn" class="ghost">메모 펼치기</button>
-            <button id="toggleEditModeBtn" class="ghost hidden" onclick="window.toggleContentEditMode?.()">본문 수정</button>
-            <button id="saveContentEditorTopBtn" class="hidden" onclick="window.saveContentEditor?.()">저장</button>
-            <button id="toggleSidebarModeBtn" class="ghost hidden" onclick="window.toggleSidebarEditMode?.()">사이드바 수정</button>
-            <button id="togglePublishModeBtn" class="ghost hidden" onclick="window.togglePublishMode?.()">Pages 배포</button>
-          </div>
+        <div id="slideDeckStage" class="slides-modal-stage"></div>
+        <div class="slides-modal-foot">
+          <button id="slidePrevBtn" type="button" class="ghost">← 이전</button>
+          <div id="slideDeckDots" class="slides-progress-dots"></div>
+          <button id="slideNextBtn" type="button" class="ghost">다음 →</button>
         </div>
-      </header>
-
-      <div id="appLayout" class="layout">
-        <aside id="chapterSidebar" class="sidebar">
-          <div class="sidebar-title">강의 목차</div>
-          <div id="chapterList" class="chapter-list"></div>
-        </aside>
-
-        <main class="content-area">
-          <article id="clipBody" class="clip-body"></article>
-
-          <section id="contentEditorPanel" class="content-editor-panel hidden">
-            <div class="content-editor-head">
-              <div>
-                <p class="eyebrow">Root Editor</p>
-                <h3>현재 클립 편집</h3>
-              </div>
-              <div class="content-editor-actions">
-                <button id="reloadEditorBtn" type="button" class="ghost" onclick="window.reloadContentEditor?.()">원본 다시 불러오기</button>
-                <button id="saveEditorBtn" type="button" onclick="window.saveContentEditor?.()">저장</button>
-                <button id="closeEditorBtn" type="button" class="ghost" onclick="window.toggleContentEditMode?.()">닫기</button>
-              </div>
-            </div>
-            <p class="muted">
-              root 전용 편집기입니다. 저장하면 현재 클립의 <code>content.html</code>,
-              <code>content.md</code>, <code>metadata.json</code>, <code>content.txt</code>가 함께
-              동기화됩니다. 저장 전 원본은 자동 백업되며, 아래에서 현재 클립용 자산도 바로 업로드할 수
-              있습니다.
-            </p>
-            <p id="contentEditorPath" class="content-editor-path">-</p>
-            <section class="content-asset-panel">
-              <div class="content-editor-head">
-                <div>
-                  <p class="eyebrow">Clip Assets</p>
-                  <h3>이미지 · PDF · 오디오 · 동영상 자산</h3>
-                </div>
-                <div class="content-editor-actions">
-                  <button id="reloadContentAssetsBtn" type="button" class="ghost">목록 새로고침</button>
-                  <button id="uploadContentAssetsBtn" type="button">업로드</button>
-                </div>
-              </div>
-              <p class="muted">
-                업로드한 파일은 현재 클립 폴더의 <code>assets/</code> 아래 저장됩니다. 경로 복사, HTML
-                삽입, 미리보기를 바로 사용할 수 있습니다.
-              </p>
-              <div class="content-asset-upload-row">
-                <div class="content-asset-picker-row">
-                  <button id="chooseContentAssetsBtn" type="button" class="ghost">파일 선택</button>
-                  <span id="contentAssetSelectionSummary" class="content-asset-selection-summary">선택된 파일 없음</span>
-                </div>
-                <input
-                  id="contentAssetInput"
-                  type="file"
-                  multiple
-                  accept=".png,.jpg,.jpeg,.webp,.svg,.gif,.pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.txt,.md,.mp3,.wav,.m4a,.mp4"
-                  class="content-asset-input-hidden"
-                />
-                <span id="contentAssetUploadHint" class="content-editor-path">-</span>
-              </div>
-              <div id="contentAssetList" class="content-asset-list">
-                <p class="muted">업로드된 자산을 불러오면 여기에 표시됩니다.</p>
-              </div>
-              <section id="contentAssetPreviewPanel" class="asset-preview-panel hidden">
-                <div class="asset-preview-head">
-                  <div>
-                    <p class="asset-preview-kicker">Asset Preview</p>
-                    <strong id="contentAssetPreviewTitle" class="asset-preview-title">자산 미리보기</strong>
-                  </div>
-                  <div class="asset-preview-actions">
-                    <button
-                      id="copyContentAssetPathBtn"
-                      type="button"
-                      class="practice-mini-btn ghost"
-                      data-default-label="경로 복사"
-                    >
-                      경로 복사
-                    </button>
-                    <button
-                      id="insertContentAssetLinkBtn"
-                      type="button"
-                      class="practice-mini-btn ghost"
-                      data-default-label="링크 삽입"
-                    >
-                      링크 삽입
-                    </button>
-                    <button
-                      id="insertContentAssetMediaBtn"
-                      type="button"
-                      class="practice-mini-btn ghost"
-                      data-default-label="미디어 삽입"
-                    >
-                      미디어 삽입
-                    </button>
-                  </div>
-                </div>
-                <p id="contentAssetPreviewMeta" class="muted">-</p>
-                <div id="contentAssetPreviewBody" class="asset-preview-body"></div>
-                <pre id="contentAssetSnippet" class="content-asset-snippet"></pre>
-              </section>
-              <p id="contentAssetStatus" class="muted"></p>
-            </section>
-            <section class="content-asset-panel content-embed-panel">
-              <div class="content-editor-head">
-                <div>
-                  <p class="eyebrow">External Media</p>
-                  <h3>YouTube · 외부 PDF · 영상 링크 임베드</h3>
-                </div>
-                <div class="content-editor-actions">
-                  <button id="previewContentEmbedBtn" type="button">미리보기</button>
-                  <button id="insertContentEmbedBtn" type="button" class="ghost" disabled>HTML 삽입</button>
-                  <button id="clearContentEmbedBtn" type="button" class="ghost">지우기</button>
-                </div>
-              </div>
-              <p class="muted">
-                YouTube 주소나 직접 열리는 PDF, 이미지, 오디오, 동영상 URL을 넣으면 렌더 결과를 보고
-                현재 편집기에 바로 삽입할 수 있습니다. 스트리밍 링크는 우선 링크 또는 iframe 중심으로
-                넣고, HLS/DASH 플레이어 연동은 나중에 별도 확장할 수 있습니다.
-              </p>
-              <div class="content-embed-grid">
-                <label class="content-embed-field">
-                  <span>외부 URL</span>
-                  <input
-                    id="contentEmbedUrlInput"
-                    type="url"
-                    placeholder="https://youtu.be/... 또는 https://example.com/file.pdf"
-                    spellcheck="false"
-                  />
-                </label>
-                <label class="content-embed-field">
-                  <span>제목 또는 캡션</span>
-                  <input
-                    id="contentEmbedTitleInput"
-                    type="text"
-                    placeholder="선택 입력"
-                    spellcheck="false"
-                  />
-                </label>
-              </div>
-              <section id="contentEmbedPreviewPanel" class="asset-preview-panel hidden">
-                <div class="asset-preview-head">
-                  <div>
-                    <p class="asset-preview-kicker">External Embed Preview</p>
-                    <strong id="contentEmbedPreviewTitle" class="asset-preview-title">외부 임베드 미리보기</strong>
-                  </div>
-                </div>
-                <p id="contentEmbedPreviewMeta" class="muted">-</p>
-                <div id="contentEmbedPreviewBody" class="asset-preview-body"></div>
-                <pre id="contentEmbedSnippet" class="content-asset-snippet"></pre>
-              </section>
-              <p id="contentEmbedStatus" class="muted"></p>
-            </section>
-            <div class="content-editor-layout">
-              <section class="content-editor-pane">
-                <div class="content-editor-label-row">
-                  <p class="content-editor-label">HTML 소스</p>
-                  <span class="content-editor-hint">클릭: 소스 이동 · 더블클릭: 평문 텍스트 빠른 수정 · 본문에서도 동일</span>
-                </div>
-                <div class="content-code-editor-shell">
-                  <pre
-                    id="contentEditorHighlight"
-                    class="content-editor-highlight"
-                    aria-hidden="true"
-                  ></pre>
-                  <textarea
-                    id="contentEditorInput"
-                    rows="18"
-                    spellcheck="false"
-                    placeholder="현재 클립의 content.html 원문을 수정하세요."
-                  ></textarea>
-                </div>
-              </section>
-              <section class="content-editor-preview-pane">
-                <p class="content-editor-label">렌더 미리보기</p>
-                <div id="contentEditorPreview" class="content-editor-preview"></div>
-              </section>
-            </div>
-            <p id="contentEditorStatus" class="muted"></p>
-          </section>
-
-          <section id="sidebarEditorPanel" class="content-editor-panel hidden">
-            <div class="content-editor-head">
-              <div>
-                <p class="eyebrow">Root Sidebar Editor</p>
-                <h3>사이드바 메타 편집</h3>
-              </div>
-              <div class="content-editor-actions">
-                <button id="reloadSidebarEditorBtn" type="button" class="ghost" onclick="window.reloadSidebarEditor?.()">원본 다시 불러오기</button>
-                <button id="saveSidebarEditorBtn" type="button" onclick="window.saveSidebarEditor?.()">저장</button>
-                <button id="closeSidebarEditorBtn" type="button" class="ghost" onclick="window.toggleSidebarEditMode?.()">닫기</button>
-              </div>
-            </div>
-            <p class="muted">
-              root 전용 사이드바 편집기입니다. 저장하면 현재 클립의 챕터 제목/시간, 클립 제목/유형이
-              카탈로그에 반영됩니다.
-            </p>
-            <p id="sidebarEditorPath" class="content-editor-path">-</p>
-            <div class="sidebar-editor-grid">
-              <label class="sidebar-editor-field">
-                <span>챕터 제목</span>
-                <input id="sidebarChapterTitleInput" maxlength="120" />
-              </label>
-              <label class="sidebar-editor-field">
-                <span>챕터 시간</span>
-                <input id="sidebarChapterTimeInput" maxlength="40" placeholder="예: 10:00" />
-              </label>
-              <label class="sidebar-editor-field">
-                <span>클립 제목</span>
-                <input id="sidebarClipTitleInput" maxlength="160" />
-              </label>
-              <label class="sidebar-editor-field">
-                <span>클립 유형</span>
-                <select id="sidebarClipTypeInput">
-                  <option value="개요">개요</option>
-                  <option value="개념">개념</option>
-                  <option value="실습">실습</option>
-                  <option value="플랫폼">플랫폼</option>
-                  <option value="설정">설정</option>
-                  <option value="참고">참고</option>
-                </select>
-              </label>
-            </div>
-            <div class="sidebar-editor-preview-card">
-              <p class="content-editor-label">사이드바 미리보기</p>
-              <div class="sidebar-editor-preview-shell">
-                <div class="sidebar-editor-preview-head">
-                  <span id="sidebarPreviewChapterNum" class="chapter-code">CH00</span>
-                  <strong id="sidebarPreviewChapterTitle">챕터 제목</strong>
-                  <span id="sidebarPreviewChapterTime" class="chapter-time">10:00</span>
-                </div>
-                <div class="sidebar-editor-preview-clip">
-                  <span id="sidebarPreviewClipTitle">클립 제목</span>
-                  <span id="sidebarPreviewClipType" class="clip-pill">개념</span>
-                </div>
-              </div>
-            </div>
-            <p id="sidebarEditorStatus" class="muted"></p>
-          </section>
-
-          <section id="publishPanel" class="content-editor-panel hidden">
-            <div class="content-editor-head">
-              <div>
-                <p class="eyebrow">Root Publish</p>
-                <h3>GitHub Pages 배포 상태</h3>
-              </div>
-              <div class="content-editor-actions">
-                <button id="reloadPublishStatusBtn" type="button" class="ghost" onclick="window.reloadPublishStatus?.()">상태 새로고침</button>
-                <button id="runPublishBtn" type="button" onclick="window.publishRootChanges?.()">커밋 후 Push</button>
-                <button id="closePublishPanelBtn" type="button" class="ghost" onclick="window.togglePublishMode?.()">닫기</button>
-              </div>
-            </div>
-            <p class="muted">
-              root 저장은 로컬 파일만 갱신합니다. GitHub Pages는 마지막으로 <code>commit + push</code> 된
-              상태만 배포하므로, 여기서 현재 변경 상태를 확인하고 바로 반영할 수 있습니다.
-            </p>
-            <div class="publish-status-grid">
-              <div class="publish-status-card">
-                <p class="content-editor-label">현재 브랜치</p>
-                <strong id="publishBranchSummary">-</strong>
-                <p id="publishHeadSummary" class="muted">-</p>
-              </div>
-              <div class="publish-status-card">
-                <p class="content-editor-label">원격과의 차이</p>
-                <strong id="publishDivergenceSummary">-</strong>
-                <p id="publishPendingSummary" class="muted">-</p>
-              </div>
-            </div>
-            <label class="sidebar-editor-field publish-message-field">
-              <span>커밋 메시지</span>
-              <input
-                id="publishCommitMessageInput"
-                maxlength="120"
-                placeholder="예: Publish root editor updates"
-              />
-            </label>
-            <div class="publish-file-grid">
-              <section class="publish-file-card">
-                <p class="content-editor-label">배포 대상 변경 파일</p>
-                <div id="publishTrackedFiles" class="publish-file-list">
-                  <p class="muted">변경 사항을 불러오면 여기에 표시됩니다.</p>
-                </div>
-              </section>
-              <section class="publish-file-card">
-                <p class="content-editor-label">제외된 파일</p>
-                <div id="publishIgnoredFiles" class="publish-file-list">
-                  <p class="muted">제외된 항목이 있으면 여기에 표시됩니다.</p>
-                </div>
-              </section>
-            </div>
-            <p id="publishPanelStatus" class="muted"></p>
-          </section>
-        </main>
-
-        <aside id="taskPanel" class="task-panel">
-          <h3>AX 과제</h3>
-          <p id="taskChapterContext" class="task-chapter-context">현재 챕터를 선택해 주세요.</p>
-          <p class="muted">
-            오늘 AI 실습 중 발견한 인사이트를 기반으로 조직 AX 과제를 작성하세요.
-          </p>
-          <form id="taskForm" class="task-form">
-            <label>
-              과제명
-              <input id="taskTitle" maxlength="200" required />
-            </label>
-            <label>
-              선정 이유
-              <textarea id="taskReason" rows="4" maxlength="1000" required></textarea>
-            </label>
-            <label>
-              기대효과
-              <textarea id="taskEffect" rows="4" maxlength="1000" required></textarea>
-            </label>
-            <button type="submit">저장</button>
-            <p id="taskStatus" class="muted"></p>
-          </form>
-
-          <section id="adminSection" class="admin-section hidden">
-            <div class="admin-head">
-              <h3>관리자 (root)</h3>
-              <button id="refreshUsersBtn" type="button" class="ghost">새로고침</button>
-            </div>
-            <p class="muted">등록 사용자 정보를 확인할 수 있습니다.</p>
-            <div class="admin-table-wrap">
-              <table class="admin-table">
-                <thead>
-                  <tr>
-                    <th>Let's ID</th>
-                    <th>표시이름</th>
-                    <th>팀명</th>
-                    <th>PW</th>
-                    <th>진도</th>
-                    <th>과제</th>
-                    <th>노트</th>
-                  </tr>
-                </thead>
-                <tbody id="adminUsersTbody"></tbody>
-              </table>
-            </div>
-            <p id="adminStatus" class="muted"></p>
-          </section>
-        </aside>
-
-        <aside id="notePanel" class="task-panel collapsed">
-          <div class="note-panel-head-row">
-            <h3>메모</h3>
-            <div class="note-head-actions">
-              <button id="saveNoteBtn" type="button">노트 저장</button>
-              <button id="copyNoteBtn" type="button" class="ghost">MD 복사</button>
-            </div>
-          </div>
-          <p id="noteClipContext" class="task-chapter-context">현재 클립</p>
-          <p class="muted">현재 섹션에 대한 개인 노트를 작성하고 저장하세요.</p>
-
-          <div class="note-md-layout">
-            <section class="note-editor-pane">
-              <p class="note-pane-label">Markdown</p>
-              <textarea
-                id="noteText"
-                rows="12"
-                maxlength="20000"
-                placeholder="이 섹션의 핵심 내용, 프롬프트, 액션 아이디어를 Markdown으로 정리하세요."
-              ></textarea>
-            </section>
-            <section class="note-preview-pane">
-              <p class="note-pane-label">미리보기</p>
-              <div id="notePreview" class="note-preview"></div>
-            </section>
-          </div>
-
-          <p id="noteStatus" class="muted"></p>
-        </aside>
       </div>
-
-      <section id="accountModal" class="account-modal hidden">
-        <div class="account-modal-card">
-          <div class="account-modal-head">
-            <h3>계정 정보 변경</h3>
-            <button id="closeAccountModalBtn" type="button" class="ghost">닫기</button>
-          </div>
-          <form id="accountForm" class="login-form">
-            <label>
-              계정아이디 (Let's ID)
-              <input id="accountEditId" maxlength="32" required />
-            </label>
-            <label>
-              소속 팀명
-              <input id="accountEditTeamName" maxlength="64" required />
-            </label>
-            <label>
-              표시이름
-              <input id="accountEditDisplayName" maxlength="64" required />
-            </label>
-            <label>
-              현재 비밀번호
-              <input id="accountCurrentPassword" type="password" maxlength="64" required />
-            </label>
-            <label>
-              새 비밀번호 (선택)
-              <input id="accountNewPassword" type="password" maxlength="64" />
-            </label>
-            <div class="auth-actions-row">
-              <button type="submit">변경 저장</button>
-            </div>
-            <p id="accountStatus" class="error"></p>
-          </form>
-        </div>
-      </section>
-
-      <section id="slideDeckModal" class="slides-modal hidden" aria-hidden="true">
-        <div class="slides-modal-card" role="dialog" aria-modal="true" aria-labelledby="slideDeckTitle">
-          <div class="slides-modal-head">
-            <div>
-              <p id="slideDeckKicker" class="eyebrow">NotebookLM 브리핑</p>
-              <h3 id="slideDeckTitle">슬라이드</h3>
-            </div>
-            <div class="slides-modal-head-actions">
-              <a id="downloadSlideDeckBtn" class="ghost-link hidden" href="#" download>다운로드</a>
-              <span id="slideDeckCounter" class="slides-counter">1 / 1</span>
-              <button id="closeSlideDeckBtn" type="button" class="ghost">닫기</button>
-            </div>
-          </div>
-          <div id="slideDeckStage" class="slides-modal-stage"></div>
-          <div class="slides-modal-foot">
-            <button id="slidePrevBtn" type="button" class="ghost">← 이전</button>
-            <div id="slideDeckDots" class="slides-progress-dots"></div>
-            <button id="slideNextBtn" type="button" class="ghost">다음 →</button>
-          </div>
-        </div>
-      </section>
     </section>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-    <script src="/app.js?v=20260417-ch02names1"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="/app.js?v=20260417-ch02names1"></script>
+</body>
+
 </html>

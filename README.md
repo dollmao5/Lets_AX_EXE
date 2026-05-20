@@ -1,4 +1,4 @@
-# AX Camp for Leaders
+# 성과향상 with AI
 
 AXCAMP 학습 포털 웹앱이다.
 
@@ -114,7 +114,7 @@ AX_CAMP/
 │     ├─ export-report.json
 │     ├─ visible-catalog-overrides.json
 │     ├─ chapters/
-│     ├─ [공유용] LG AX Camp For Leaders 실습자료/
+│     ├─ [공유용] LG 성과향상 with AI 실습자료/
 │     ├─ practice_zips/
 │     └─ survey/
 └─ README.md

@@ -1,7 +1,7 @@
 {
   "route": "#ch04-clip04",
   "url": "https://lg.cmdspace.work/axcamp#ch04-clip04",
-  "pageTitle": "AX Camp for Leaders | LG",
+  "pageTitle": "성과향상 with AI | LG",
   "clipTitle": "경쟁사 리서치 대시보드",
   "overview": "Gems로 앱 프롬프트 초안을 만들고, AI Studio Build에서 경쟁사 리서치 기능이 있는 React 대시보드를 생성한 뒤, refinement와 LG 스타일 적용, 외부 API 확장까지 이어가는 실습입니다.",
   "badges": [

@@ -31,7 +31,7 @@ content/axcamp/
 │  ├─ CH05/
 │  ├─ CH06/
 │  └─ CH07/
-├─ [공유용] LG AX Camp For Leaders 실습자료/
+├─ [공유용] LG 성과향상 with AI 실습자료/
 ├─ practice_zips/
 └─ survey/
 ```

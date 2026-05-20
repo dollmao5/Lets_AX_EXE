@@ -1,7 +1,7 @@
 {
   "route": "#ch04-clip01",
   "url": "https://lg.cmdspace.work/axcamp#ch04-clip01",
-  "pageTitle": "AX Camp for Leaders | LG",
+  "pageTitle": "성과향상 with AI | LG",
   "clipTitle": "Google AI Studio 소개 및 접속 방법",
   "overview": "Gemini와 ChatGPT가 대화형 도구였다면, Google AI Studio는 프롬프트 실험, 앱 제작, 공유와 실행까지 이어지는 작업대입니다. 여기서는 접속 경로와 핵심 화면을 먼저 익히고, 나중에 내가 만든 앱을 실제로 가져가 실행하려면 왜 API key와 실행 환경을 함께 이해해야 하는지까지 자연스럽게 연결합니다.",
   "badges": [

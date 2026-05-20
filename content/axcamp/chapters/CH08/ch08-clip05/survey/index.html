@@ -1,1883 +1,3305 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AX Camp for Leaders | AI Readiness 사전설문 종합분석</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성과향상 with AI | AI Readiness 사전설문 종합분석</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ===== PASSWORD GATE ===== */
+    #auth-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: #1B1A1E;
+      font-family: 'Noto Sans KR', sans-serif
+    }
 
+    #auth-gate.hidden {
+      display: none
+    }
 
+    .auth-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3)
+    }
 
-/* ===== PASSWORD GATE ===== */
-#auth-gate{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:#1B1A1E;font-family:'Noto Sans KR',sans-serif}
-#auth-gate.hidden{display:none}
-.auth-card{background:#fff;border-radius:16px;padding:48px 40px;width:100%;max-width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
-.auth-logo{width:56px;height:56px;margin:0 auto 16px}
-.auth-title{font-size:1.1rem;font-weight:700;color:#262626;margin-bottom:4px;letter-spacing:-0.02em}
-.auth-sub{font-size:0.78rem;color:#7E7C77;margin-bottom:28px}
-.auth-input{width:100%;padding:14px 16px;border:1.5px solid #CBC8C2;border-radius:10px;font-size:0.95rem;font-family:'Noto Sans KR',sans-serif;outline:none;transition:border 0.2s;box-sizing:border-box;text-align:center;letter-spacing:0.1em}
-.auth-input:focus{border-color:#A50034}
-.auth-input.error{border-color:#EF4444;animation:shake 0.4s}
-.auth-btn{width:100%;padding:14px;margin-top:14px;border:none;border-radius:10px;background:#A50034;color:#fff;font-size:0.9rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:background 0.2s}
-.auth-btn:hover{background:#8A002B}
-.auth-error-msg{font-size:0.75rem;color:#EF4444;margin-top:10px;min-height:1.2em}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-4px)}}
+    .auth-logo {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px
+    }
 
-/* ===== CSS VARIABLES ===== */
-:root {
-  --brand: #A50034;
-  --brand-light: #FFF0F3;
-  --brand-hover: #8A002B;
-  --bg-warm: #F0ECE4;
-  --bg-offwhite: #F6F3EB;
-  --bg-white: #FFFFFF;
-  --bg-dark: #1B1A1E;
-  --text-heading: #262626;
-  --text-body: #333333;
-  --text-secondary: #646464;
-  --text-muted: #7E7C77;
-  --border: #CBC8C2;
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 14px rgba(0,0,0,0.07);
-  --shadow-lg: 0 10px 30px rgba(0,0,0,0.10);
-  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  --sidebar-w: 260px;
-  --green: #059669;
-  --green-bg: #ECFDF5;
-  --red: #DC2626;
-  --red-bg: #FEF2F2;
-  --blue: #2563EB;
-  --amber: #D97706;
-  --grade-adv: #A50034;
-  --grade-upper: #D97706;
-  --grade-inter: #3B82F6;
-  --grade-basic: #059669;
-  --grade-entry: #6B7280;
-}
+    .auth-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #262626;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em
+    }
 
-/* ===== RESET ===== */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:15px}
-body{font-family:'Noto Sans KR',sans-serif;color:var(--text-body);background:var(--bg-warm);line-height:1.7;word-break:keep-all}
+    .auth-sub {
+      font-size: 0.78rem;
+      color: #7E7C77;
+      margin-bottom: 28px
+    }
 
-/* ===== SCROLL PROGRESS ===== */
-#scroll-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:var(--brand);z-index:9999;transition:width 0.1s linear}
+    .auth-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #CBC8C2;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      outline: none;
+      transition: border 0.2s;
+      box-sizing: border-box;
+      text-align: center;
+      letter-spacing: 0.1em
+    }
 
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.main{animation:fadeInUp 0.5s ease-out}
+    .auth-input:focus {
+      border-color: #A50034
+    }
 
-/* ===== SIDEBAR ===== */
-.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--bg-dark);color:#fff;overflow-y:auto;z-index:1000;display:flex;flex-direction:column;transition:transform var(--transition)}
-.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.sidebar-logo{font-size:0.7rem;font-weight:700;color:var(--brand);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px}
-.sidebar-title{font-size:0.95rem;font-weight:600;line-height:1.3;color:#fff}
-.sidebar-nav{flex:1;padding:12px 0;overflow-y:auto}
-.sidebar-nav::-webkit-scrollbar{width:4px}
-.sidebar-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px}
-.nav-part-label{font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;padding:16px 20px 6px}
-.nav-link{display:flex;align-items:center;gap:8px;padding:8px 20px;font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:all var(--transition);border-left:3px solid transparent;line-height:1.4}
-.nav-link:hover{color:#fff;background:rgba(255,255,255,0.05)}
-.nav-link.active{color:#fff;border-left-color:var(--brand);background:rgba(165,0,52,0.15)}
-.nav-link .nav-score{font-size:0.65rem;margin-left:auto;opacity:0.5;font-weight:500}
-.nav-divider{height:1px;background:rgba(255,255,255,0.06);margin:4px 20px}
+    .auth-input.error {
+      border-color: #EF4444;
+      animation: shake 0.4s
+    }
 
-/* ===== MOBILE MENU ===== */
-.mobile-menu-btn{display:none;position:fixed;bottom:20px;right:20px;z-index:1001;width:48px;height:48px;border-radius:50%;background:var(--brand);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow-lg)}
+    .auth-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #A50034;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s
+    }
 
-/* ===== MAIN CONTENT ===== */
-.main{margin-left:var(--sidebar-w);min-height:100vh}
-.content-area{max-width:920px;margin:0 auto;padding:32px 32px 80px}
+    .auth-btn:hover {
+      background: #8A002B
+    }
 
-/* ===== PART HEADERS ===== */
-.part-header{padding:48px 0 24px;text-align:center}
-.part-label{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);background:var(--brand-light);padding:4px 14px;border-radius:20px;margin-bottom:12px}
-.part-title{font-size:1.6rem;font-weight:700;color:var(--text-heading);line-height:1.3}
-.part-subtitle{font-size:0.88rem;color:var(--text-muted);margin-top:4px}
-.part-divider{width:48px;height:3px;background:var(--brand);margin:20px auto 0;border-radius:2px}
+    .auth-error-msg {
+      font-size: 0.75rem;
+      color: #EF4444;
+      margin-top: 10px;
+      min-height: 1.2em
+    }
 
-/* ===== SECTION ===== */
-.section{margin-bottom:36px}
-.section-card{background:var(--bg-white);border-radius:var(--radius);padding:28px 28px 24px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,0.04)}
-.section-num{font-size:0.65rem;font-weight:700;color:var(--brand);letter-spacing:0.08em;margin-bottom:4px}
-.section-title{font-size:1.15rem;font-weight:700;color:var(--text-heading);margin-bottom:16px;line-height:1.3}
-.section-subtitle{font-size:0.82rem;color:var(--text-muted);margin-top:-12px;margin-bottom:16px}
+    @keyframes shake {
 
-/* ===== METRIC CARDS ===== */
-.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.metric-card{background:var(--bg-offwhite);border-radius:var(--radius-sm);padding:18px 16px;text-align:center;border:1px solid rgba(0,0,0,0.03)}
-.metric-value{font-size:1.6rem;font-weight:700;color:var(--text-heading);line-height:1.2}
-.metric-label{font-size:0.7rem;color:var(--text-muted);margin-top:4px}
-.metric-card.accent{background:var(--brand-light);border-color:rgba(165,0,52,0.1)}
-.metric-card.accent .metric-value{color:var(--brand)}
+      0%,
+      100% {
+        transform: translateX(0)
+      }
 
-/* ===== GRADE BAR ===== */
-.grade-bar-container{margin:16px 0}
-.grade-bar{display:flex;height:32px;border-radius:6px;overflow:hidden;font-size:0.68rem;font-weight:600;color:#fff}
-.grade-bar div{display:flex;align-items:center;justify-content:center;transition:width 0.6s ease}
-.grade-legend{display:flex;gap:14px;margin-top:8px;flex-wrap:wrap}
-.grade-legend-item{display:flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--text-muted)}
-.grade-legend-dot{width:8px;height:8px;border-radius:2px}
+      25% {
+        transform: translateX(-8px)
+      }
 
-/* ===== TABLE ===== */
-.data-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin:12px 0}
-.data-table th{background:var(--bg-offwhite);font-weight:600;color:var(--text-heading);padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);font-size:0.75rem}
-.data-table td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,0.05);vertical-align:middle}
-.data-table tr:hover td{background:rgba(0,0,0,0.01)}
-.data-table .rank-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:0.7rem;font-weight:700;color:#fff}
-.rank-1{background:var(--brand)}
-.rank-2{background:var(--amber)}
-.rank-3{background:var(--blue)}
-.rank-other{background:var(--text-muted)}
+      50% {
+        transform: translateX(8px)
+      }
 
-/* ===== CHART CONTAINERS ===== */
-.chart-container{margin:16px 0}
-.bar-group{margin:8px 0}
-.bar-label{font-size:0.75rem;color:var(--text-secondary);margin-bottom:4px;display:flex;justify-content:space-between}
-.bar-track{background:#E8E5DF;border-radius:4px;height:22px;position:relative;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:0.68rem;font-weight:600;color:#fff;transition:width 0.6s ease;min-width:2px}
-.bar-fill.brand{background:var(--brand)}
-.bar-fill.gray{background:#9CA3AF}
-.bar-fill.green{background:var(--green)}
-.bar-fill.blue{background:var(--blue)}
-.bar-fill.amber{background:var(--amber)}
+      75% {
+        transform: translateX(-4px)
+      }
+    }
 
-/* ===== DUAL BAR (Company vs Group) ===== */
-.dual-bar-row{display:grid;grid-template-columns:110px 1fr;gap:8px;align-items:center;margin:6px 0;font-size:0.75rem}
-.dual-bar-label{color:var(--text-secondary);text-align:right;font-size:0.72rem}
-.dual-bar-pair{display:flex;flex-direction:column;gap:3px}
-.dual-bar-track{height:16px;background:#E8E5DF;border-radius:3px;position:relative;overflow:hidden}
-.dual-bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:0.62rem;font-weight:600;color:#fff;transition:width 0.6s ease;min-width:2px}
-.dual-bar-fill.company{background:var(--brand)}
-.dual-bar-fill.group{background:#B0ACA6}
-.dual-bar-legend{display:flex;gap:16px;margin:8px 0 4px;font-size:0.7rem}
-.dual-bar-legend span{display:flex;align-items:center;gap:4px}
-.dual-bar-legend .dot{width:10px;height:10px;border-radius:2px}
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --brand: #A50034;
+      --brand-light: #FFF0F3;
+      --brand-hover: #8A002B;
+      --bg-warm: #F0ECE4;
+      --bg-offwhite: #F6F3EB;
+      --bg-white: #FFFFFF;
+      --bg-dark: #1B1A1E;
+      --text-heading: #262626;
+      --text-body: #333333;
+      --text-secondary: #646464;
+      --text-muted: #7E7C77;
+      --border: #CBC8C2;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.10);
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --sidebar-w: 260px;
+      --green: #059669;
+      --green-bg: #ECFDF5;
+      --red: #DC2626;
+      --red-bg: #FEF2F2;
+      --blue: #2563EB;
+      --amber: #D97706;
+      --grade-adv: #A50034;
+      --grade-upper: #D97706;
+      --grade-inter: #3B82F6;
+      --grade-basic: #059669;
+      --grade-entry: #6B7280;
+    }
 
-/* ===== DIFF INDICATOR ===== */
-.diff-chip{display:inline-flex;align-items:center;gap:3px;font-size:0.72rem;font-weight:600;padding:2px 8px;border-radius:10px}
-.diff-chip.positive{color:var(--green);background:var(--green-bg)}
-.diff-chip.negative{color:var(--red);background:var(--red-bg)}
-.diff-chip.neutral{color:var(--text-muted);background:var(--bg-offwhite)}
+    /* ===== RESET ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ===== ITEM COMPARISON CHART ===== */
-.item-compare-grid{display:grid;gap:10px;margin:12px 0}
-.item-compare-row{display:grid;grid-template-columns:100px 1fr 60px;gap:8px;align-items:center}
-.item-compare-label{font-size:0.72rem;color:var(--text-secondary);text-align:right}
-.item-compare-bars{position:relative;height:28px;background:#E8E5DF;border-radius:4px;overflow:hidden}
-.item-compare-bars .bar-co{position:absolute;top:0;left:0;height:14px;border-radius:4px 4px 0 0;transition:width 0.6s ease}
-.item-compare-bars .bar-gr{position:absolute;bottom:0;left:0;height:14px;border-radius:0 0 4px 4px;background:#D1CFC9;transition:width 0.6s ease}
-.item-compare-diff{font-size:0.7rem;font-weight:600;text-align:center}
-.item-compare-diff.pos{color:var(--green)}
-.item-compare-diff.neg{color:var(--red)}
+    html {
+      scroll-behavior: smooth;
+      font-size: 15px
+    }
 
-/* ===== HEATMAP ===== */
-.heatmap-wrap{overflow-x:auto;margin:12px 0}
-.heatmap-table{width:100%;border-collapse:collapse;font-size:0.72rem}
-.heatmap-table th{padding:8px 6px;font-weight:600;color:var(--text-heading);background:var(--bg-offwhite);border-bottom:2px solid var(--border);white-space:nowrap;font-size:0.68rem}
-.heatmap-table td{padding:6px;text-align:center;font-weight:500;border-bottom:1px solid rgba(0,0,0,0.04);min-width:64px}
-.heatmap-table td.company-name{text-align:left;font-weight:600;color:var(--text-heading);white-space:nowrap;padding-left:10px}
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text-body);
+      background: var(--bg-warm);
+      line-height: 1.7;
+      word-break: keep-all
+    }
 
-/* ===== TIP / COMMENTARY BLOCK ===== */
-.tip-block{background:var(--bg-offwhite);border-left:4px solid var(--brand);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 20px;margin:16px 0;font-size:0.82rem;line-height:1.7;color:var(--text-body)}
-.tip-block strong{color:var(--text-heading)}
+    /* ===== SCROLL PROGRESS ===== */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--brand);
+      z-index: 9999;
+      transition: width 0.1s linear
+    }
 
-/* ===== INSIGHT BOX ===== */
-.insight-box{background:var(--brand-light);border-radius:var(--radius-sm);padding:16px 20px;margin:16px 0;font-size:0.82rem;line-height:1.7}
-.insight-box::before{content:'';display:inline-block;width:16px;height:16px;margin-right:6px;vertical-align:-2px;background:var(--brand);mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z'/%3E%3C/svg%3E") center/contain no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z'/%3E%3C/svg%3E") center/contain no-repeat}
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
 
-/* ===== COLLAPSIBLE ===== */
-.collapsible{margin:12px 0}
-.collapsible-toggle{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--text-secondary);background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;cursor:pointer;transition:all var(--transition);width:100%;text-align:left}
-.collapsible-toggle:hover{background:var(--bg-offwhite)}
-.collapsible-toggle::after{content:'';width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--text-muted);margin-left:auto;transition:transform var(--transition)}
-.collapsible-toggle.open::after{transform:rotate(180deg)}
-.collapsible-body{display:none;padding:16px 0 4px}
-.collapsible-body.open{display:block}
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 
-/* ===== COMPANY SELECTOR ===== */
-.company-selector{margin:20px 0}
-.company-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.company-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 12px;border:2px solid var(--border);border-radius:var(--radius);background:var(--bg-white);cursor:pointer;transition:all var(--transition);text-align:center}
-.company-btn:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.company-btn.selected{border-color:var(--brand);background:var(--brand);color:#fff}
-.company-btn.selected .company-btn-score{color:rgba(255,255,255,0.8)}
-.company-btn-name{font-size:0.82rem;font-weight:600}
-.company-btn-score{font-size:0.7rem;color:var(--text-muted);font-weight:500}
+    .main {
+      animation: fadeInUp 0.5s ease-out
+    }
 
-/* ===== COMPANY PAGE ===== */
-.company-page{display:none;animation:fadeInUp 0.4s ease-out}
-.company-page.visible{display:block}
-.company-hero{background:linear-gradient(135deg,var(--bg-dark) 0%,#2D2A32 100%);color:#fff;border-radius:var(--radius);padding:32px;margin-bottom:20px;position:relative;overflow:hidden}
-.company-hero::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:var(--brand);opacity:0.08;border-radius:50%}
-.company-hero-rank{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;font-size:0.8rem;font-weight:700;margin-bottom:10px}
-.company-hero-rank.r1{background:var(--brand);color:#fff}
-.company-hero-rank.r2{background:var(--amber);color:#fff}
-.company-hero-rank.r3{background:var(--blue);color:#fff}
-.company-hero-rank.rn{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7)}
-.company-hero-name{font-size:1.5rem;font-weight:700;margin-bottom:4px}
-.company-hero-sub{font-size:0.82rem;color:rgba(255,255,255,0.5)}
-.company-hero-score{position:absolute;right:32px;top:50%;transform:translateY(-50%);text-align:right}
-.company-hero-score-val{font-size:2.6rem;font-weight:700;line-height:1}
-.company-hero-score-diff{margin-top:4px;font-size:0.82rem;font-weight:600}
-.company-hero-score-diff.pos{color:#34D399}
-.company-hero-score-diff.neg{color:#FB7185}
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--bg-dark);
+      color: #fff;
+      overflow-y: auto;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition)
+    }
 
-.company-section{background:var(--bg-white);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,0.04);margin-bottom:16px}
-.company-section-title{font-size:0.92rem;font-weight:700;color:var(--text-heading);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.company-section-title .icon{font-size:1rem}
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+    }
 
-/* ===== FACTOR MINI CHART ===== */
-.factor-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
-.factor-box{background:var(--bg-offwhite);border-radius:var(--radius-sm);padding:16px;text-align:center}
-.factor-box-label{font-size:0.72rem;color:var(--text-muted);margin-bottom:6px}
-.factor-box-value{font-size:1.4rem;font-weight:700;color:var(--text-heading)}
-.factor-box-group{font-size:0.7rem;color:var(--text-muted);margin-top:2px}
+    .sidebar-logo {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px
+    }
 
-/* ===== Q13 MINI CHART ===== */
-.q13-bars{display:flex;flex-direction:column;gap:8px;margin:12px 0}
-.q13-row{display:grid;grid-template-columns:110px 1fr 44px;gap:8px;align-items:center;font-size:0.75rem}
-.q13-label{text-align:right;color:var(--text-secondary)}
-.q13-val{text-align:right;font-weight:600;color:var(--text-heading);font-size:0.72rem}
+    .sidebar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #fff
+    }
 
-/* ===== Q14 THEMES ===== */
-.theme-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-.theme-chip{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;font-size:0.75rem;font-weight:500;background:var(--bg-offwhite);color:var(--text-body);border:1px solid rgba(0,0,0,0.04)}
-.theme-chip .chip-count{font-weight:700;color:var(--brand)}
+    .sidebar-nav {
+      flex: 1;
+      padding: 12px 0;
+      overflow-y: auto
+    }
 
-/* ===== SCHEDULE TABLE ===== */
-.schedule-table{width:100%;border-collapse:collapse;font-size:0.78rem;margin:12px 0}
-.schedule-table th{background:var(--brand);color:#fff;padding:10px 12px;text-align:center;font-weight:600;font-size:0.72rem}
-.schedule-table td{padding:10px 12px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.05)}
-.schedule-table tr:nth-child(even) td{background:var(--bg-offwhite)}
+    .sidebar-nav::-webkit-scrollbar {
+      width: 4px
+    }
 
-/* ===== SCATTER PLOT (CSS) ===== */
-.scatter-container{position:relative;width:100%;height:320px;background:var(--bg-offwhite);border-radius:var(--radius-sm);margin:12px 0;border:1px solid rgba(0,0,0,0.04)}
-.scatter-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--brand);transform:translate(-50%,-50%);cursor:default;transition:all 0.3s}
-.scatter-dot:hover{transform:translate(-50%,-50%) scale(1.6);z-index:10}
-.scatter-dot .scatter-label{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:0.62rem;font-weight:600;color:var(--text-heading);opacity:0;transition:opacity 0.2s;pointer-events:none}
-.scatter-dot:hover .scatter-label{opacity:1}
-.scatter-axis-label{position:absolute;font-size:0.68rem;color:var(--text-muted);font-weight:500}
-.scatter-mean-line{position:absolute;border:1px dashed rgba(0,0,0,0.12)}
+    .sidebar-nav::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px
+    }
 
-/* ===== RECOMMENDATIONS ===== */
-.rec-grid{display:grid;gap:12px;margin:12px 0}
-.rec-item{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:14px;background:var(--bg-offwhite);border-radius:var(--radius-sm);align-items:start}
-.rec-num{width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0}
-.rec-text{font-size:0.82rem;line-height:1.6}
-.rec-text strong{color:var(--text-heading)}
+    .nav-part-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 16px 20px 6px
+    }
 
-/* ===== MOBILE DROPDOWN ===== */
-.mobile-company-select{display:none;margin:16px 0}
-.mobile-company-select select{width:100%;padding:12px;border:2px solid var(--border);border-radius:var(--radius-sm);font-family:'Noto Sans KR',sans-serif;font-size:0.88rem;background:var(--bg-white);cursor:pointer}
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: all var(--transition);
+      border-left: 3px solid transparent;
+      line-height: 1.4
+    }
 
-/* ===== STACKED GRADE BAR (Company) ===== */
-.stacked-row{display:grid;grid-template-columns:100px 1fr 48px;gap:8px;align-items:center;font-size:0.75rem}
-.stacked-row-label{text-align:right;font-weight:600;color:var(--text-heading);font-size:0.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.stacked-bar-wrap{display:flex;height:24px;border-radius:4px;overflow:hidden}
-.stacked-bar-wrap div{display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:600;color:#fff;white-space:nowrap;min-width:0;transition:width 0.6s ease}
-.stacked-row-mean{text-align:right;font-size:0.72rem;font-weight:600;color:var(--text-secondary)}
-.stacked-row.is-group .stacked-row-label{color:var(--brand)}
-.stacked-row.is-group .stacked-row-mean{color:var(--brand)}
-.stacked-row.is-group .stacked-bar-wrap{border:2px solid var(--brand);border-radius:4px}
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05)
+    }
 
-/* ===== COMPANY SCHEDULE INFO BOX ===== */
-.schedule-info-box{display:inline-flex;align-items:center;gap:16px;background:var(--bg-offwhite);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 16px;font-size:0.78rem;color:var(--text-body);margin-bottom:16px}
-.schedule-info-box span{display:flex;align-items:center;gap:4px}
+    .nav-link.active {
+      color: #fff;
+      border-left-color: var(--brand);
+      background: rgba(165, 0, 52, 0.15)
+    }
 
-/* ===== PRINT ===== */
-@media print{
-  .sidebar,.mobile-menu-btn,#scroll-progress,#auth-gate{display:none!important}
-  .main{margin-left:0!important}
-  .company-page{display:block!important;page-break-before:always}
-  .section-card,.company-section,.company-hero{break-inside:avoid}
-  body{font-size:12px;background:#fff}
-}
+    .nav-link .nav-score {
+      font-size: 0.65rem;
+      margin-left: auto;
+      opacity: 0.5;
+      font-weight: 500
+    }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  .sidebar{transform:translateX(-100%)}
-  .sidebar.open{transform:translateX(0)}
-  .mobile-menu-btn{display:flex;align-items:center;justify-content:center}
-  .main{margin-left:0}
-  .content-area{padding:20px 16px 80px}
-  .metrics-grid{grid-template-columns:repeat(2,1fr)}
-  .company-grid{grid-template-columns:repeat(2,1fr)}
-  .mobile-company-select{display:block}
-  .company-hero-score{position:static;transform:none;text-align:left;margin-top:16px}
-  .company-hero-score-val{font-size:1.8rem}
-  .factor-compare{grid-template-columns:1fr}
-  .item-compare-row{grid-template-columns:80px 1fr 50px}
-  .dual-bar-row{grid-template-columns:90px 1fr}
-  .stacked-row{grid-template-columns:80px 1fr 42px}
-  .stacked-row-label{font-size:0.65rem}
-  .schedule-info-box{flex-direction:column;gap:6px;align-items:flex-start}
-  .part-title{font-size:1.3rem}
-}
+    .nav-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 4px 20px
+    }
 
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu-btn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg)
+    }
 
+    /* ===== MAIN CONTENT ===== */
+    .main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh
+    }
 
-</style>
+    .content-area {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 32px 80px
+    }
+
+    /* ===== PART HEADERS ===== */
+    .part-header {
+      padding: 48px 0 24px;
+      text-align: center
+    }
+
+    .part-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      background: var(--brand-light);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px
+    }
+
+    .part-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.3
+    }
+
+    .part-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 4px
+    }
+
+    .part-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--brand);
+      margin: 20px auto 0;
+      border-radius: 2px
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      margin-bottom: 36px
+    }
+
+    .section-card {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0, 0, 0, 0.04)
+    }
+
+    .section-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 16px;
+      line-height: 1.3
+    }
+
+    .section-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: -12px;
+      margin-bottom: 16px
+    }
+
+    /* ===== METRIC CARDS ===== */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 20px
+    }
+
+    .metric-card {
+      background: var(--bg-offwhite);
+      border-radius: var(--radius-sm);
+      padding: 18px 16px;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.03)
+    }
+
+    .metric-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.2
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px
+    }
+
+    .metric-card.accent {
+      background: var(--brand-light);
+      border-color: rgba(165, 0, 52, 0.1)
+    }
+
+    .metric-card.accent .metric-value {
+      color: var(--brand)
+    }
+
+    /* ===== GRADE BAR ===== */
+    .grade-bar-container {
+      margin: 16px 0
+    }
+
+    .grade-bar {
+      display: flex;
+      height: 32px;
+      border-radius: 6px;
+      overflow: hidden;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #fff
+    }
+
+    .grade-bar div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.6s ease
+    }
+
+    .grade-legend {
+      display: flex;
+      gap: 14px;
+      margin-top: 8px;
+      flex-wrap: wrap
+    }
+
+    .grade-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      color: var(--text-muted)
+    }
+
+    .grade-legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px
+    }
+
+    /* ===== TABLE ===== */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin: 12px 0
+    }
+
+    .data-table th {
+      background: var(--bg-offwhite);
+      font-weight: 600;
+      color: var(--text-heading);
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+      font-size: 0.75rem
+    }
+
+    .data-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      vertical-align: middle
+    }
+
+    .data-table tr:hover td {
+      background: rgba(0, 0, 0, 0.01)
+    }
+
+    .data-table .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff
+    }
+
+    .rank-1 {
+      background: var(--brand)
+    }
+
+    .rank-2 {
+      background: var(--amber)
+    }
+
+    .rank-3 {
+      background: var(--blue)
+    }
+
+    .rank-other {
+      background: var(--text-muted)
+    }
+
+    /* ===== CHART CONTAINERS ===== */
+    .chart-container {
+      margin: 16px 0
+    }
+
+    .bar-group {
+      margin: 8px 0
+    }
+
+    .bar-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between
+    }
+
+    .bar-track {
+      background: #E8E5DF;
+      border-radius: 4px;
+      height: 22px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #fff;
+      transition: width 0.6s ease;
+      min-width: 2px
+    }
+
+    .bar-fill.brand {
+      background: var(--brand)
+    }
+
+    .bar-fill.gray {
+      background: #9CA3AF
+    }
+
+    .bar-fill.green {
+      background: var(--green)
+    }
+
+    .bar-fill.blue {
+      background: var(--blue)
+    }
+
+    .bar-fill.amber {
+      background: var(--amber)
+    }
+
+    /* ===== DUAL BAR (Company vs Group) ===== */
+    .dual-bar-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 8px;
+      align-items: center;
+      margin: 6px 0;
+      font-size: 0.75rem
+    }
+
+    .dual-bar-label {
+      color: var(--text-secondary);
+      text-align: right;
+      font-size: 0.72rem
+    }
+
+    .dual-bar-pair {
+      display: flex;
+      flex-direction: column;
+      gap: 3px
+    }
+
+    .dual-bar-track {
+      height: 16px;
+      background: #E8E5DF;
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .dual-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 6px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #fff;
+      transition: width 0.6s ease;
+      min-width: 2px
+    }
+
+    .dual-bar-fill.company {
+      background: var(--brand)
+    }
+
+    .dual-bar-fill.group {
+      background: #B0ACA6
+    }
+
+    .dual-bar-legend {
+      display: flex;
+      gap: 16px;
+      margin: 8px 0 4px;
+      font-size: 0.7rem
+    }
+
+    .dual-bar-legend span {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .dual-bar-legend .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px
+    }
+
+    /* ===== DIFF INDICATOR ===== */
+    .diff-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 10px
+    }
+
+    .diff-chip.positive {
+      color: var(--green);
+      background: var(--green-bg)
+    }
+
+    .diff-chip.negative {
+      color: var(--red);
+      background: var(--red-bg)
+    }
+
+    .diff-chip.neutral {
+      color: var(--text-muted);
+      background: var(--bg-offwhite)
+    }
+
+    /* ===== ITEM COMPARISON CHART ===== */
+    .item-compare-grid {
+      display: grid;
+      gap: 10px;
+      margin: 12px 0
+    }
+
+    .item-compare-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 60px;
+      gap: 8px;
+      align-items: center
+    }
+
+    .item-compare-label {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      text-align: right
+    }
+
+    .item-compare-bars {
+      position: relative;
+      height: 28px;
+      background: #E8E5DF;
+      border-radius: 4px;
+      overflow: hidden
+    }
+
+    .item-compare-bars .bar-co {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 14px;
+      border-radius: 4px 4px 0 0;
+      transition: width 0.6s ease
+    }
+
+    .item-compare-bars .bar-gr {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 14px;
+      border-radius: 0 0 4px 4px;
+      background: #D1CFC9;
+      transition: width 0.6s ease
+    }
+
+    .item-compare-diff {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-align: center
+    }
+
+    .item-compare-diff.pos {
+      color: var(--green)
+    }
+
+    .item-compare-diff.neg {
+      color: var(--red)
+    }
+
+    /* ===== HEATMAP ===== */
+    .heatmap-wrap {
+      overflow-x: auto;
+      margin: 12px 0
+    }
+
+    .heatmap-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.72rem
+    }
+
+    .heatmap-table th {
+      padding: 8px 6px;
+      font-weight: 600;
+      color: var(--text-heading);
+      background: var(--bg-offwhite);
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+      font-size: 0.68rem
+    }
+
+    .heatmap-table td {
+      padding: 6px;
+      text-align: center;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      min-width: 64px
+    }
+
+    .heatmap-table td.company-name {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-heading);
+      white-space: nowrap;
+      padding-left: 10px
+    }
+
+    /* ===== TIP / COMMENTARY BLOCK ===== */
+    .tip-block {
+      background: var(--bg-offwhite);
+      border-left: 4px solid var(--brand);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--text-body)
+    }
+
+    .tip-block strong {
+      color: var(--text-heading)
+    }
+
+    /* ===== INSIGHT BOX ===== */
+    .insight-box {
+      background: var(--brand-light);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.82rem;
+      line-height: 1.7
+    }
+
+    .insight-box::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: -2px;
+      background: var(--brand);
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z'/%3E%3C/svg%3E") center/contain no-repeat;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z'/%3E%3C/svg%3E") center/contain no-repeat
+    }
+
+    /* ===== COLLAPSIBLE ===== */
+    .collapsible {
+      margin: 12px 0
+    }
+
+    .collapsible-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: all var(--transition);
+      width: 100%;
+      text-align: left
+    }
+
+    .collapsible-toggle:hover {
+      background: var(--bg-offwhite)
+    }
+
+    .collapsible-toggle::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid var(--text-muted);
+      margin-left: auto;
+      transition: transform var(--transition)
+    }
+
+    .collapsible-toggle.open::after {
+      transform: rotate(180deg)
+    }
+
+    .collapsible-body {
+      display: none;
+      padding: 16px 0 4px
+    }
+
+    .collapsible-body.open {
+      display: block
+    }
+
+    /* ===== COMPANY SELECTOR ===== */
+    .company-selector {
+      margin: 20px 0
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px
+    }
+
+    .company-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 16px 12px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-white);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-align: center
+    }
+
+    .company-btn:hover {
+      border-color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md)
+    }
+
+    .company-btn.selected {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff
+    }
+
+    .company-btn.selected .company-btn-score {
+      color: rgba(255, 255, 255, 0.8)
+    }
+
+    .company-btn-name {
+      font-size: 0.82rem;
+      font-weight: 600
+    }
+
+    .company-btn-score {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 500
+    }
+
+    /* ===== COMPANY PAGE ===== */
+    .company-page {
+      display: none;
+      animation: fadeInUp 0.4s ease-out
+    }
+
+    .company-page.visible {
+      display: block
+    }
+
+    .company-hero {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #2D2A32 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .company-hero::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
+      background: var(--brand);
+      opacity: 0.08;
+      border-radius: 50%
+    }
+
+    .company-hero-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px
+    }
+
+    .company-hero-rank.r1 {
+      background: var(--brand);
+      color: #fff
+    }
+
+    .company-hero-rank.r2 {
+      background: var(--amber);
+      color: #fff
+    }
+
+    .company-hero-rank.r3 {
+      background: var(--blue);
+      color: #fff
+    }
+
+    .company-hero-rank.rn {
+      background: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.7)
+    }
+
+    .company-hero-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 4px
+    }
+
+    .company-hero-sub {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.5)
+    }
+
+    .company-hero-score {
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: right
+    }
+
+    .company-hero-score-val {
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1
+    }
+
+    .company-hero-score-diff {
+      margin-top: 4px;
+      font-size: 0.82rem;
+      font-weight: 600
+    }
+
+    .company-hero-score-diff.pos {
+      color: #34D399
+    }
+
+    .company-hero-score-diff.neg {
+      color: #FB7185
+    }
+
+    .company-section {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      margin-bottom: 16px
+    }
+
+    .company-section-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .company-section-title .icon {
+      font-size: 1rem
+    }
+
+    /* ===== FACTOR MINI CHART ===== */
+    .factor-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0
+    }
+
+    .factor-box {
+      background: var(--bg-offwhite);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center
+    }
+
+    .factor-box-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 6px
+    }
+
+    .factor-box-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-heading)
+    }
+
+    .factor-box-group {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 2px
+    }
+
+    /* ===== Q13 MINI CHART ===== */
+    .q13-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 12px 0
+    }
+
+    .q13-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 44px;
+      gap: 8px;
+      align-items: center;
+      font-size: 0.75rem
+    }
+
+    .q13-label {
+      text-align: right;
+      color: var(--text-secondary)
+    }
+
+    .q13-val {
+      text-align: right;
+      font-weight: 600;
+      color: var(--text-heading);
+      font-size: 0.72rem
+    }
+
+    /* ===== Q14 THEMES ===== */
+    .theme-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0
+    }
+
+    .theme-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: var(--bg-offwhite);
+      color: var(--text-body);
+      border: 1px solid rgba(0, 0, 0, 0.04)
+    }
+
+    .theme-chip .chip-count {
+      font-weight: 700;
+      color: var(--brand)
+    }
+
+    /* ===== SCHEDULE TABLE ===== */
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      margin: 12px 0
+    }
+
+    .schedule-table th {
+      background: var(--brand);
+      color: #fff;
+      padding: 10px 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.72rem
+    }
+
+    .schedule-table td {
+      padding: 10px 12px;
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05)
+    }
+
+    .schedule-table tr:nth-child(even) td {
+      background: var(--bg-offwhite)
+    }
+
+    /* ===== SCATTER PLOT (CSS) ===== */
+    .scatter-container {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background: var(--bg-offwhite);
+      border-radius: var(--radius-sm);
+      margin: 12px 0;
+      border: 1px solid rgba(0, 0, 0, 0.04)
+    }
+
+    .scatter-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--brand);
+      transform: translate(-50%, -50%);
+      cursor: default;
+      transition: all 0.3s
+    }
+
+    .scatter-dot:hover {
+      transform: translate(-50%, -50%) scale(1.6);
+      z-index: 10
+    }
+
+    .scatter-dot .scatter-label {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none
+    }
+
+    .scatter-dot:hover .scatter-label {
+      opacity: 1
+    }
+
+    .scatter-axis-label {
+      position: absolute;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 500
+    }
+
+    .scatter-mean-line {
+      position: absolute;
+      border: 1px dashed rgba(0, 0, 0, 0.12)
+    }
+
+    /* ===== RECOMMENDATIONS ===== */
+    .rec-grid {
+      display: grid;
+      gap: 12px;
+      margin: 12px 0
+    }
+
+    .rec-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      padding: 14px;
+      background: var(--bg-offwhite);
+      border-radius: var(--radius-sm);
+      align-items: start
+    }
+
+    .rec-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0
+    }
+
+    .rec-text {
+      font-size: 0.82rem;
+      line-height: 1.6
+    }
+
+    .rec-text strong {
+      color: var(--text-heading)
+    }
+
+    /* ===== MOBILE DROPDOWN ===== */
+    .mobile-company-select {
+      display: none;
+      margin: 16px 0
+    }
+
+    .mobile-company-select select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.88rem;
+      background: var(--bg-white);
+      cursor: pointer
+    }
+
+    /* ===== STACKED GRADE BAR (Company) ===== */
+    .stacked-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 48px;
+      gap: 8px;
+      align-items: center;
+      font-size: 0.75rem
+    }
+
+    .stacked-row-label {
+      text-align: right;
+      font-weight: 600;
+      color: var(--text-heading);
+      font-size: 0.72rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .stacked-bar-wrap {
+      display: flex;
+      height: 24px;
+      border-radius: 4px;
+      overflow: hidden
+    }
+
+    .stacked-bar-wrap div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      min-width: 0;
+      transition: width 0.6s ease
+    }
+
+    .stacked-row-mean {
+      text-align: right;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-secondary)
+    }
+
+    .stacked-row.is-group .stacked-row-label {
+      color: var(--brand)
+    }
+
+    .stacked-row.is-group .stacked-row-mean {
+      color: var(--brand)
+    }
+
+    .stacked-row.is-group .stacked-bar-wrap {
+      border: 2px solid var(--brand);
+      border-radius: 4px
+    }
+
+    /* ===== COMPANY SCHEDULE INFO BOX ===== */
+    .schedule-info-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-offwhite);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      color: var(--text-body);
+      margin-bottom: 16px
+    }
+
+    .schedule-info-box span {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+
+      .sidebar,
+      .mobile-menu-btn,
+      #scroll-progress,
+      #auth-gate {
+        display: none !important
+      }
+
+      .main {
+        margin-left: 0 !important
+      }
+
+      .company-page {
+        display: block !important;
+        page-break-before: always
+      }
+
+      .section-card,
+      .company-section,
+      .company-hero {
+        break-inside: avoid
+      }
+
+      body {
+        font-size: 12px;
+        background: #fff
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px) {
+      .sidebar {
+        transform: translateX(-100%)
+      }
+
+      .sidebar.open {
+        transform: translateX(0)
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+
+      .main {
+        margin-left: 0
+      }
+
+      .content-area {
+        padding: 20px 16px 80px
+      }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .company-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .mobile-company-select {
+        display: block
+      }
+
+      .company-hero-score {
+        position: static;
+        transform: none;
+        text-align: left;
+        margin-top: 16px
+      }
+
+      .company-hero-score-val {
+        font-size: 1.8rem
+      }
+
+      .factor-compare {
+        grid-template-columns: 1fr
+      }
+
+      .item-compare-row {
+        grid-template-columns: 80px 1fr 50px
+      }
+
+      .dual-bar-row {
+        grid-template-columns: 90px 1fr
+      }
+
+      .stacked-row {
+        grid-template-columns: 80px 1fr 42px
+      }
+
+      .stacked-row-label {
+        font-size: 0.65rem
+      }
+
+      .schedule-info-box {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start
+      }
+
+      .part-title {
+        font-size: 1.3rem
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ===== PASSWORD GATE ===== -->
-<div id="auth-gate">
-  <div class="auth-card">
-    <svg class="auth-logo" viewBox="0 0 56 56"><rect width="56" height="56" rx="14" fill="#A50034"/><text x="28" y="34" text-anchor="middle" fill="#fff" font-family="'Noto Sans KR',sans-serif" font-weight="700" font-size="16">AX</text></svg>
-    <div class="auth-title">AX Camp for Leaders</div>
-    <div class="auth-sub">사전설문 분석 보고서 열람을 위해 비밀번호를 입력하세요</div>
-    <form id="auth-form" onsubmit="return handleAuth(event)">
-      <input type="password" class="auth-input" id="auth-pw" placeholder="비밀번호" autocomplete="off">
-      <button type="submit" class="auth-btn">열람하기</button>
-    </form>
-    <div class="auth-error-msg" id="auth-err"></div>
-  </div>
-</div>
-
-<!-- ===== SCROLL PROGRESS ===== -->
-<div id="scroll-progress"></div>
-
-<!-- ===== SIDEBAR ===== -->
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <div class="sidebar-logo">LG Group</div>
-    <div class="sidebar-title">AX Camp for Leaders<br>AI Readiness 분석</div>
-  </div>
-  <div class="sidebar-nav" id="sidebar-nav">
-    <div class="nav-part-label">Part 1 &mdash; 전체 개요</div>
-    <a href="#sec-summary" class="nav-link" data-target="sec-summary">Executive Summary</a>
-    <a href="#sec-program" class="nav-link" data-target="sec-program">교육 프로그램 소개</a>
-
-    <div class="nav-divider"></div>
-    <div class="nav-part-label">Part 2 &mdash; 상세 분석</div>
-    <a href="#sec-diagnosis" class="nav-link" data-target="sec-diagnosis">AI 역량 진단</a>
-    <a href="#sec-grade" class="nav-link" data-target="sec-grade">AI Readiness 등급</a>
-    <a href="#sec-validation" class="nav-link" data-target="sec-validation">측정도구 검증</a>
-    <a href="#sec-comparison" class="nav-link" data-target="sec-comparison">그룹사별 비교</a>
-    <a href="#sec-qualitative" class="nav-link" data-target="sec-qualitative">정성분석 요약</a>
-    <a href="#sec-recommendations" class="nav-link" data-target="sec-recommendations">교육 설계 제언</a>
-
-    <div class="nav-divider"></div>
-    <div class="nav-part-label">Part 3 &mdash; 내 계열사 분석</div>
-    <a href="#company-lgcns" class="nav-link" data-target="company-lgcns" onclick="selectCompany('lgcns')">LG CNS <span class="nav-score">2.54</span></a>
-    <a href="#company-lguplus" class="nav-link" data-target="company-lguplus" onclick="selectCompany('lguplus')">LG유플러스 <span class="nav-score">2.36</span></a>
-    <a href="#company-lginnotek" class="nav-link" data-target="company-lginnotek" onclick="selectCompany('lginnotek')">LG이노텍 <span class="nav-score">2.29</span></a>
-    <a href="#company-lge" class="nav-link" data-target="company-lge" onclick="selectCompany('lge')">LG전자 <span class="nav-score">2.21</span></a>
-    <a href="#company-lges" class="nav-link" data-target="company-lges" onclick="selectCompany('lges')">LG에너지솔루션 <span class="nav-score">2.16</span></a>
-    <a href="#company-julg" class="nav-link" data-target="company-julg" onclick="selectCompany('julg')">(주)LG <span class="nav-score">2.01</span></a>
-    <a href="#company-lghnh" class="nav-link" data-target="company-lghnh" onclick="selectCompany('lghnh')">LG생활건강 <span class="nav-score">1.90</span></a>
-    <a href="#company-lgd" class="nav-link" data-target="company-lgd" onclick="selectCompany('lgd')">LG디스플레이 <span class="nav-score">1.86</span></a>
-  </div>
-</nav>
-
-<!-- ===== MOBILE MENU BUTTON ===== -->
-<button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleSidebar()">&#9776;</button>
-
-<!-- ===== MAIN CONTENT ===== -->
-<div class="main" id="main-content">
-<div class="content-area">
-
-<!-- ============================================================ -->
-<!-- PART 1: 전체 개요 (Overview) -->
-<!-- ============================================================ -->
-<div class="part-header" id="part1">
-  <span class="part-label">Part 1</span>
-  <div class="part-title">전체 개요</div>
-  <div class="part-subtitle">Executive Overview</div>
-  <div class="part-divider"></div>
-</div>
-
-<!-- Section 1: Executive Summary -->
-<div class="section" id="sec-summary">
-<div class="section-card">
-  <div class="section-num">SECTION 01</div>
-  <div class="section-title">Executive Summary</div>
-
-  <div class="metrics-grid">
-    <div class="metric-card">
-      <div class="metric-value">663</div>
-      <div class="metric-label">참여 임원 수</div>
-    </div>
-    <div class="metric-card accent">
-      <div class="metric-value">2.19</div>
-      <div class="metric-label">AI Readiness 평균<br>(4점 만점)</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-value">8</div>
-      <div class="metric-label">참여 계열사<br>(10명 이상)</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-value">.827</div>
-      <div class="metric-label">Cronbach's &alpha;</div>
+  <!-- ===== PASSWORD GATE ===== -->
+  <div id="auth-gate">
+    <div class="auth-card">
+      <svg class="auth-logo" viewBox="0 0 56 56">
+        <rect width="56" height="56" rx="14" fill="#A50034" /><text x="28" y="34" text-anchor="middle" fill="#fff"
+          font-family="'Noto Sans KR',sans-serif" font-weight="700" font-size="16">AX</text>
+      </svg>
+      <div class="auth-title">성과향상 with AI</div>
+      <div class="auth-sub">사전설문 분석 보고서 열람을 위해 비밀번호를 입력하세요</div>
+      <form id="auth-form" onsubmit="return handleAuth(event)">
+        <input type="password" class="auth-input" id="auth-pw" placeholder="비밀번호" autocomplete="off">
+        <button type="submit" class="auth-btn">열람하기</button>
+      </form>
+      <div class="auth-error-msg" id="auth-err"></div>
     </div>
   </div>
 
-  <div class="grade-bar-container">
-    <div style="font-size:0.75rem;font-weight:600;color:var(--text-heading);margin-bottom:6px">전체 등급 분포</div>
-    <div class="grade-bar">
-      <div style="width:20.2%;background:var(--grade-entry)" title="입문 20.2%">20%</div>
-      <div style="width:34.1%;background:var(--grade-basic)" title="초급 34.1%">34%</div>
-      <div style="width:26.8%;background:var(--grade-inter)" title="중급 26.8%">27%</div>
-      <div style="width:16.0%;background:var(--grade-upper)" title="중상급 16.0%">16%</div>
-      <div style="width:2.9%;background:var(--grade-adv)" title="고급 2.9%">3%</div>
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div id="scroll-progress"></div>
+
+  <!-- ===== SIDEBAR ===== -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">LG Group</div>
+      <div class="sidebar-title">성과향상 with AI<br>AI Readiness 분석</div>
     </div>
-    <div class="grade-legend">
-      <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-entry)"></div>입문(E) 20.2%</div>
-      <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-basic)"></div>초급(D) 34.1%</div>
-      <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-inter)"></div>중급(C) 26.8%</div>
-      <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-upper)"></div>중상급(B) 16.0%</div>
-      <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-adv)"></div>고급(A) 2.9%</div>
+    <div class="sidebar-nav" id="sidebar-nav">
+      <div class="nav-part-label">Part 1 &mdash; 전체 개요</div>
+      <a href="#sec-summary" class="nav-link" data-target="sec-summary">Executive Summary</a>
+      <a href="#sec-program" class="nav-link" data-target="sec-program">교육 프로그램 소개</a>
+
+      <div class="nav-divider"></div>
+      <div class="nav-part-label">Part 2 &mdash; 상세 분석</div>
+      <a href="#sec-diagnosis" class="nav-link" data-target="sec-diagnosis">AI 역량 진단</a>
+      <a href="#sec-grade" class="nav-link" data-target="sec-grade">AI Readiness 등급</a>
+      <a href="#sec-validation" class="nav-link" data-target="sec-validation">측정도구 검증</a>
+      <a href="#sec-comparison" class="nav-link" data-target="sec-comparison">그룹사별 비교</a>
+      <a href="#sec-qualitative" class="nav-link" data-target="sec-qualitative">정성분석 요약</a>
+      <a href="#sec-recommendations" class="nav-link" data-target="sec-recommendations">교육 설계 제언</a>
+
+      <div class="nav-divider"></div>
+      <div class="nav-part-label">Part 3 &mdash; 내 계열사 분석</div>
+      <a href="#company-lgcns" class="nav-link" data-target="company-lgcns" onclick="selectCompany('lgcns')">LG CNS
+        <span class="nav-score">2.54</span></a>
+      <a href="#company-lguplus" class="nav-link" data-target="company-lguplus"
+        onclick="selectCompany('lguplus')">LG유플러스 <span class="nav-score">2.36</span></a>
+      <a href="#company-lginnotek" class="nav-link" data-target="company-lginnotek"
+        onclick="selectCompany('lginnotek')">LG이노텍 <span class="nav-score">2.29</span></a>
+      <a href="#company-lge" class="nav-link" data-target="company-lge" onclick="selectCompany('lge')">LG전자 <span
+          class="nav-score">2.21</span></a>
+      <a href="#company-lges" class="nav-link" data-target="company-lges" onclick="selectCompany('lges')">LG에너지솔루션 <span
+          class="nav-score">2.16</span></a>
+      <a href="#company-julg" class="nav-link" data-target="company-julg" onclick="selectCompany('julg')">(주)LG <span
+          class="nav-score">2.01</span></a>
+      <a href="#company-lghnh" class="nav-link" data-target="company-lghnh" onclick="selectCompany('lghnh')">LG생활건강
+        <span class="nav-score">1.90</span></a>
+      <a href="#company-lgd" class="nav-link" data-target="company-lgd" onclick="selectCompany('lgd')">LG디스플레이 <span
+          class="nav-score">1.86</span></a>
     </div>
-  </div>
+  </nav>
 
-  <div class="insight-box">
-    LG그룹 8개 계열사(10명 이상) 임원 663명의 AI Readiness 평균은 4점 만점에 2.19점(초급~중급 경계)으로, AI를 업무에 활용하고 있으나 고급 기능(코딩, 멀티모달, 커스텀 AI)에 대한 역량 격차가 존재합니다. 계열사 간 평균 최대 0.68점 차이(LG CNS 2.54 vs LG디스플레이 1.86)가 확인되어, 수준별 맞춤 교육이 핵심 과제입니다.
-  </div>
-</div>
-</div>
+  <!-- ===== MOBILE MENU BUTTON ===== -->
+  <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleSidebar()">&#9776;</button>
 
-<!-- Section 2: 교육 프로그램 소개 -->
-<div class="section" id="sec-program">
-<div class="section-card">
-  <div class="section-num">SECTION 02</div>
-  <div class="section-title">교육 프로그램 소개</div>
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main" id="main-content">
+    <div class="content-area">
 
-  <div class="tip-block">
-    <strong>AX Camp for Leaders</strong>는 LG그룹 임원을 대상으로 한 AI 역량 강화 집중 교육 프로그램입니다. AI 도구의 실무 활용법을 체험하고, 각 계열사 비즈니스에 적용할 수 있는 구체적 아이디어를 발굴하는 것을 목표로 합니다.
-  </div>
-
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">교육 일정 (6개 차수)</div>
-  <table class="schedule-table">
-    <thead><tr><th>차수</th><th>일자</th><th>대상</th><th>장소</th></tr></thead>
-    <tbody>
-      <tr><td>1차</td><td>2026년 2월 27일 (금)</td><td>LG전자</td><td>전자 러닝센터</td></tr>
-      <tr><td>2차</td><td>2026년 2월 28일 (토)</td><td>디스플레이/이노텍/CNS</td><td>인화원</td></tr>
-      <tr><td>3차</td><td>2026년 3월 1일 (일)</td><td>유플러스, D&amp;O 외 10개사</td><td>인화원</td></tr>
-      <tr><td>4차</td><td>2026년 3월 6일 (금)</td><td>LG전자</td><td>전자 러닝센터</td></tr>
-      <tr><td>5차</td><td>2026년 3월 7일 (토)</td><td>엔솔/생건/팜한농</td><td>인화원</td></tr>
-      <tr><td>6차</td><td>2026년 3월 8일 (일)</td><td>LG화학</td><td>LG화학 교육장(오산)</td></tr>
-    </tbody>
-  </table>
-
-  <div class="tip-block" style="border-left-color:var(--blue)">
-    <strong>참고:</strong> 본 사전설문은 1~5차수에 배정된 임원을 대상으로 실시되었습니다(6차 LG화학 데이터 미수신). 전체 705명 중 663명이 응답을 완료하였으며(응답률 94.0%), 차수별 응답자는 1차 142명, 2차 142명, 3차 87명, 4차 154명, 5차 138명입니다.
-  </div>
-
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">학습 목표</div>
-  <ul style="font-size:0.82rem;padding-left:20px;color:var(--text-body);line-height:2">
-    <li>AI 도구(ChatGPT, Claude, Gemini 등)의 실무 활용 역량 체득</li>
-    <li>프롬프트 엔지니어링을 통한 업무 생산성 극대화 방법론 습득</li>
-    <li>각 계열사 비즈니스에 AI를 적용한 혁신 기회 발굴</li>
-    <li>임원으로서 AI 전환(AX)을 리드하기 위한 관점과 전략 수립</li>
-  </ul>
-</div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PART 2: 상세 분석 (Deep Analysis) -->
-<!-- ============================================================ -->
-<div class="part-header" id="part2">
-  <span class="part-label">Part 2</span>
-  <div class="part-title">상세 분석</div>
-  <div class="part-subtitle">Group-level Deep Analysis</div>
-  <div class="part-divider"></div>
-</div>
-
-<!-- Section 3: AI 역량 진단 -->
-<div class="section" id="sec-diagnosis">
-<div class="section-card">
-  <div class="section-num">SECTION 03</div>
-  <div class="section-title">AI 역량 진단: 8개 문항 분석</div>
-  <div class="section-subtitle">Q5~Q12 항목별 전체 응답 평균 (4점 척도)</div>
-
-  <!-- Detailed Statistics Table -->
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">문항별 기술통계</div>
-  <div style="overflow-x:auto">
-  <table class="data-table" style="font-size:0.73rem">
-    <thead>
-      <tr>
-        <th style="text-align:center;min-width:40px">문항</th>
-        <th style="min-width:130px">문항 내용</th>
-        <th style="text-align:center">N</th>
-        <th style="text-align:center">M</th>
-        <th style="text-align:center">SD</th>
-        <th style="text-align:center">Mdn</th>
-        <th style="text-align:center">Min</th>
-        <th style="text-align:center">Max</th>
-        <th style="text-align:center">Skew</th>
-        <th style="text-align:center">Kurt</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q5</td>
-        <td>AI 도구 사용 빈도</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">3.10</td>
-        <td style="text-align:center">0.85</td>
-        <td style="text-align:center">3.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">-0.57</td>
-        <td style="text-align:center">-0.50</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q6</td>
-        <td>유료 AI 구독 여부</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">2.19</td>
-        <td style="text-align:center">1.06</td>
-        <td style="text-align:center">2.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">0.26</td>
-        <td style="text-align:center">-1.25</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q7</td>
-        <td>프롬프트 작성 수준</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">2.13</td>
-        <td style="text-align:center">0.71</td>
-        <td style="text-align:center">2.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">0.33</td>
-        <td style="text-align:center">0.08</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q8</td>
-        <td>AI 업무 활용 수준</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">2.25</td>
-        <td style="text-align:center">0.73</td>
-        <td style="text-align:center">2.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">0.16</td>
-        <td style="text-align:center">-0.23</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q9</td>
-        <td>멀티모달 콘텐츠 활용</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">1.70</td>
-        <td style="text-align:center">0.81</td>
-        <td style="text-align:center">2.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">1.14</td>
-        <td style="text-align:center">0.89</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q10</td>
-        <td>GPTs/Gems 활용 경험</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">1.99</td>
-        <td style="text-align:center">0.69</td>
-        <td style="text-align:center">2.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">0.90</td>
-        <td style="text-align:center">1.77</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q11</td>
-        <td>프로그래밍/코딩 경험</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">1.96</td>
-        <td style="text-align:center">1.02</td>
-        <td style="text-align:center">2.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">0.79</td>
-        <td style="text-align:center">-0.52</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;font-weight:600">Q12</td>
-        <td>터미널/CMD 경험</td>
-        <td style="text-align:center">663</td>
-        <td style="text-align:center;font-weight:700">2.23</td>
-        <td style="text-align:center">1.05</td>
-        <td style="text-align:center">2.0</td>
-        <td style="text-align:center">1</td>
-        <td style="text-align:center">4</td>
-        <td style="text-align:center">0.36</td>
-        <td style="text-align:center">-1.07</td>
-      </tr>
-      <tr style="background:var(--brand-light);font-weight:700">
-        <td style="text-align:center;color:var(--brand)">전체</td>
-        <td style="color:var(--brand)">AI Readiness (8문항 평균)</td>
-        <td style="text-align:center;color:var(--brand)">663</td>
-        <td style="text-align:center;color:var(--brand)">2.19</td>
-        <td style="text-align:center;color:var(--brand)">0.59</td>
-        <td style="text-align:center;color:var(--brand)">2.12</td>
-        <td style="text-align:center;color:var(--brand)">1.0</td>
-        <td style="text-align:center;color:var(--brand)">4.0</td>
-        <td style="text-align:center;color:var(--brand)">0.63</td>
-        <td style="text-align:center;color:var(--brand)">0.16</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-  <!-- Frequency Distribution (collapsible) -->
-  <details style="margin:16px 0">
-    <summary style="display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--text-secondary);background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;cursor:pointer;transition:all var(--transition);list-style:none">
-      <span style="font-size:0.7rem;color:var(--text-muted);transition:transform 0.2s;display:inline-block">&#9660;</span> 응답 분포 (문항별 빈도)
-    </summary>
-    <div style="padding:14px 0 4px;font-size:0.75rem;line-height:2.2;color:var(--text-body)">
-      <div style="display:grid;grid-template-columns:80px 1fr;gap:4px 12px;align-items:baseline">
-        <span style="font-weight:600;color:var(--text-heading)">Q5</span>
-        <span>1점 26명(3.9%) | 2점 132명(19.9%) | 3점 257명(38.8%) | 4점 248명(37.4%)</span>
-        <span style="font-weight:600;color:var(--text-heading)">Q6</span>
-        <span>1점 237명(35.7%) | 2점 147명(22.2%) | 3점 194명(29.3%) | 4점 85명(12.8%)</span>
-        <span style="font-weight:600;color:var(--text-heading)">Q7</span>
-        <span>1점 111명(16.7%) | 2점 378명(57.0%) | 3점 153명(23.1%) | 4점 21명(3.2%)</span>
-        <span style="font-weight:600;color:var(--text-heading)">Q8</span>
-        <span>1점 88명(13.3%) | 2점 344명(51.9%) | 3점 206명(31.1%) | 4점 25명(3.8%)</span>
-        <span style="font-weight:600;color:var(--text-heading)">Q9</span>
-        <span>1점 316명(47.7%) | 2점 261명(39.4%) | 3점 54명(8.1%) | 4점 32명(4.8%)</span>
-        <span style="font-weight:600;color:var(--text-heading)">Q10</span>
-        <span>1점 130명(19.6%) | 2점 444명(67.0%) | 3점 57명(8.6%) | 4점 32명(4.8%)</span>
-        <span style="font-weight:600;color:var(--text-heading)">Q11</span>
-        <span>1점 275명(41.5%) | 2점 222명(33.5%) | 3점 84명(12.7%) | 4점 82명(12.4%)</span>
-        <span style="font-weight:600;color:var(--text-heading)">Q12</span>
-        <span>1점 198명(29.9%) | 2점 219명(33.0%) | 3점 139명(21.0%) | 4점 107명(16.1%)</span>
+      <!-- ============================================================ -->
+      <!-- PART 1: 전체 개요 (Overview) -->
+      <!-- ============================================================ -->
+      <div class="part-header" id="part1">
+        <span class="part-label">Part 1</span>
+        <div class="part-title">전체 개요</div>
+        <div class="part-subtitle">Executive Overview</div>
+        <div class="part-divider"></div>
       </div>
-    </div>
-  </details>
 
-  <!-- Bar Chart -->
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:20px 0 8px">문항별 평균 (Q5&rarr;Q12 순서)</div>
-  <div class="chart-container">
-    <div class="bar-group">
-      <div class="bar-label"><span>Q5 사용빈도</span><span style="font-weight:600;color:var(--text-heading)">3.10</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:77.4%">3.10</div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>Q6 유료구독</span><span style="font-weight:600;color:var(--text-heading)">2.19</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:54.8%">2.19</div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>Q7 프롬프트</span><span style="font-weight:600;color:var(--text-heading)">2.13</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:53.2%">2.13</div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>Q8 업무적용</span><span style="font-weight:600;color:var(--text-heading)">2.25</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:56.3%">2.25</div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>Q9 멀티모달</span><span style="font-weight:600;color:var(--text-heading)">1.70</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:42.5%">1.70</div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>Q10 맞춤형AI</span><span style="font-weight:600;color:var(--text-heading)">1.99</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:49.7%">1.99</div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>Q11 코딩활용</span><span style="font-weight:600;color:var(--text-heading)">1.96</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:49.0%">1.96</div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>Q12 터미널/CLI</span><span style="font-weight:600;color:var(--text-heading)">2.23</span></div>
-      <div class="bar-track"><div class="bar-fill brand" style="width:55.8%">2.23</div></div>
-    </div>
-  </div>
+      <!-- Section 1: Executive Summary -->
+      <div class="section" id="sec-summary">
+        <div class="section-card">
+          <div class="section-num">SECTION 01</div>
+          <div class="section-title">Executive Summary</div>
 
-  <div class="tip-block">
-    <strong>가장 높은 역량:</strong> Q5 AI 사용 빈도(M=3.10) &mdash; 76.2%가 주 1회 이상 사용<br>
-    <strong>가장 낮은 역량:</strong> Q9 멀티모달 활용(M=1.70) &mdash; 47.7%가 '멀티모달 AI가 무엇인지 모름'<br>
-    <strong>최대 격차:</strong> Q5(3.10)와 Q9(1.70) 사이 1.40점 차이 &mdash; AI를 쓰고는 있지만 텍스트 이외 모달리티 활용은 매우 제한적<br>
-    <strong>분산이 가장 큰 문항:</strong> Q6 유료 AI 구독 여부(SD=1.06), Q12 터미널/CMD 경험(SD=1.05) &mdash; 개인차가 매우 크며, 수준 분류의 핵심 변별 요인
-  </div>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-value">663</div>
+              <div class="metric-label">참여 임원 수</div>
+            </div>
+            <div class="metric-card accent">
+              <div class="metric-value">2.19</div>
+              <div class="metric-label">AI Readiness 평균<br>(4점 만점)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">8</div>
+              <div class="metric-label">참여 계열사<br>(10명 이상)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">.827</div>
+              <div class="metric-label">Cronbach's &alpha;</div>
+            </div>
+          </div>
 
-  <div class="tip-block" style="border-left-color:var(--blue)">
-    <strong>빈도-깊이 격차(Frequency-Depth Gap)</strong>가 뚜렷합니다. AI 사용빈도(Q5=3.10)는 높으나, 멀티모달 활용(Q9=1.70), 코딩 연계(Q11=1.96), 맞춤형 AI 구축(Q10=1.99) 등 고급 활용은 2점 미만으로 낮습니다. 이는 "AI를 쓰고 있지만 깊이 있게 활용하지는 못하는" 상태를 시사하며, 교육의 핵심 기회 영역입니다.
-  </div>
-</div>
-</div>
+          <div class="grade-bar-container">
+            <div style="font-size:0.75rem;font-weight:600;color:var(--text-heading);margin-bottom:6px">전체 등급 분포</div>
+            <div class="grade-bar">
+              <div style="width:20.2%;background:var(--grade-entry)" title="입문 20.2%">20%</div>
+              <div style="width:34.1%;background:var(--grade-basic)" title="초급 34.1%">34%</div>
+              <div style="width:26.8%;background:var(--grade-inter)" title="중급 26.8%">27%</div>
+              <div style="width:16.0%;background:var(--grade-upper)" title="중상급 16.0%">16%</div>
+              <div style="width:2.9%;background:var(--grade-adv)" title="고급 2.9%">3%</div>
+            </div>
+            <div class="grade-legend">
+              <div class="grade-legend-item">
+                <div class="grade-legend-dot" style="background:var(--grade-entry)"></div>입문(E) 20.2%
+              </div>
+              <div class="grade-legend-item">
+                <div class="grade-legend-dot" style="background:var(--grade-basic)"></div>초급(D) 34.1%
+              </div>
+              <div class="grade-legend-item">
+                <div class="grade-legend-dot" style="background:var(--grade-inter)"></div>중급(C) 26.8%
+              </div>
+              <div class="grade-legend-item">
+                <div class="grade-legend-dot" style="background:var(--grade-upper)"></div>중상급(B) 16.0%
+              </div>
+              <div class="grade-legend-item">
+                <div class="grade-legend-dot" style="background:var(--grade-adv)"></div>고급(A) 2.9%
+              </div>
+            </div>
+          </div>
 
-<!-- Section 4: AI Readiness 등급 -->
-<div class="section" id="sec-grade">
-<div class="section-card">
-  <div class="section-num">SECTION 04</div>
-  <div class="section-title">AI Readiness 등급 분포</div>
-
-  <div class="chart-container">
-    <div class="bar-group">
-      <div class="bar-label"><span>E 입문 (~1.75점)</span><span style="font-weight:600;color:var(--grade-entry)">20.2% (134명)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:20.2%;background:var(--grade-entry)"></div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>D 초급 (1.75~2.25점)</span><span style="font-weight:600;color:var(--grade-basic)">34.1% (226명)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:34.1%;background:var(--grade-basic)"></div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>C 중급 (2.25~2.75점)</span><span style="font-weight:600;color:var(--grade-inter)">26.8% (178명)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:26.8%;background:var(--grade-inter)"></div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>B 중상급 (2.75~3.50점)</span><span style="font-weight:600;color:var(--grade-upper)">16.0% (106명)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:16.0%;background:var(--grade-upper)"></div></div>
-    </div>
-    <div class="bar-group">
-      <div class="bar-label"><span>A 고급 (3.50점~)</span><span style="font-weight:600;color:var(--grade-adv)">2.9% (19명)</span></div>
-      <div class="bar-track"><div class="bar-fill" style="width:2.9%;background:var(--grade-adv)"></div></div>
-    </div>
-  </div>
-
-  <div class="insight-box">
-    전체 응답자의 60.9%가 초급~중급(D~C등급, 1.75~2.75점)에 밀집되어 있어, 교육 프로그램의 중심 타겟이 됩니다. 한편 고급 A등급(2.9%)과 입문 E등급(20.2%) 양극단 그룹도 존재하므로, 수준별 트랙 운영이 학습 효과 극대화의 핵심입니다.
-  </div>
-
-  <!-- Company Grade Distribution: Stacked Horizontal Bars -->
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:28px 0 12px">계열사별 등급 분포</div>
-  <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:10px">평균 점수 순 (높은 순) | 막대 안 숫자는 해당 등급 비율(%)</div>
-
-  <div id="company-grade-stacked" style="display:flex;flex-direction:column;gap:10px;margin:8px 0">
-    <!-- Rendered by JS in initReport -->
-  </div>
-
-  <!-- Grade legend for stacked bars -->
-  <div class="grade-legend" style="margin-top:12px;margin-bottom:4px">
-    <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-adv)"></div>고급(A)</div>
-    <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-upper)"></div>중상급(B)</div>
-    <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-inter)"></div>중급(C)</div>
-    <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-basic)"></div>초급(D)</div>
-    <div class="grade-legend-item"><div class="grade-legend-dot" style="background:var(--grade-entry)"></div>입문(E)</div>
-  </div>
-
-  <div class="tip-block" style="margin-top:16px">
-    계열사별 등급 분포를 보면, <strong>LG CNS</strong>은(는) 고급+중상급이 30.0%인 반면 <strong>LG디스플레이</strong>은(는) 초급+입문이 80.0%로, 같은 그룹 내에서도 AI 역량 격차가 상당합니다. 교육 차수별로 계열사가 나뉘어 있으므로, 각 차수의 평균 수준에 맞춘 난이도 조절이 중요합니다.
-  </div>
-</div>
-</div>
-
-<!-- Section 5: 측정도구 검증 -->
-<div class="section" id="sec-validation">
-<div class="section-card">
-  <div class="section-num">SECTION 05</div>
-  <div class="section-title">측정도구 검증</div>
-
-  <div class="metrics-grid" style="grid-template-columns:repeat(3,1fr)">
-    <div class="metric-card">
-      <div class="metric-value" style="font-size:1.3rem">&alpha; = .827</div>
-      <div class="metric-label">Cronbach's Alpha<br>(신뢰도 양호)</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-value" style="font-size:1.3rem">2-Factor</div>
-      <div class="metric-label">요인분석 결과<br>(실무+기술)</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-value" style="font-size:1.3rem">5-Grade</div>
-      <div class="metric-label">등급 체계<br>(A~E)</div>
-    </div>
-  </div>
-
-  <div class="collapsible">
-    <button class="collapsible-toggle" onclick="toggleCollapsible(this)">상세 통계 결과 보기</button>
-    <div class="collapsible-body">
-      <div style="font-size:0.8rem;line-height:1.8;color:var(--text-body)">
-        <p><strong>내적 일관성:</strong> Cronbach's &alpha; = .827 (8개 문항의 신뢰도 양호 수준)</p>
-        <p style="margin-top:8px"><strong>등급 체계:</strong> AI Readiness Score(8문항 평균)를 기준으로 5단계로 구분</p>
-        <ul style="padding-left:20px;margin-top:4px">
-          <li><strong>A등급 (Expert):</strong> 3.50점 이상 &mdash; AI 활용의 전문가 수준</li>
-          <li><strong>B등급 (Advanced):</strong> 2.75~3.49점 &mdash; 고급 기능까지 활용 가능</li>
-          <li><strong>C등급 (Intermediate):</strong> 2.25~2.74점 &mdash; 기본 활용에 익숙</li>
-          <li><strong>D등급 (Beginner):</strong> 1.75~2.24점 &mdash; 초보 수준의 활용</li>
-          <li><strong>E등급 (Novice):</strong> 1.75점 미만 &mdash; AI 도구 경험이 매우 제한적</li>
-        </ul>
-        <p style="margin-top:8px"><strong>탐색적 요인분석 (EFA):</strong></p>
-        <ul style="padding-left:20px;margin-top:4px">
-          <li><strong>Factor 1 (실무 활용):</strong> Q5 사용빈도, Q6 유료구독, Q7 프롬프트, Q8 업무적용, Q9 멀티모달, Q10 맞춤형AI</li>
-          <li><strong>Factor 2 (기술 역량):</strong> Q11 코딩활용, Q12 터미널/CLI</li>
-        </ul>
-        <p style="margin-top:8px"><strong>해석:</strong> 8개 문항은 '실무 AI 활용' 역량과 '기술적 AI 확장' 역량이라는 두 차원으로 구조화됩니다. 이는 교육 설계에서 실무 트랙과 기술 트랙의 분리 근거가 됩니다.</p>
+          <div class="insight-box">
+            LG그룹 8개 계열사(10명 이상) 임원 663명의 AI Readiness 평균은 4점 만점에 2.19점(초급~중급 경계)으로, AI를 업무에 활용하고 있으나 고급 기능(코딩, 멀티모달, 커스텀
+            AI)에 대한 역량 격차가 존재합니다. 계열사 간 평균 최대 0.68점 차이(LG CNS 2.54 vs LG디스플레이 1.86)가 확인되어, 수준별 맞춤 교육이 핵심 과제입니다.
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
 
-<!-- Section 6: 그룹사별 비교 분석 -->
-<div class="section" id="sec-comparison">
-<div class="section-card">
-  <div class="section-num">SECTION 06</div>
-  <div class="section-title">그룹사별 비교 분석</div>
+      <!-- Section 2: 교육 프로그램 소개 -->
+      <div class="section" id="sec-program">
+        <div class="section-card">
+          <div class="section-num">SECTION 02</div>
+          <div class="section-title">교육 프로그램 소개</div>
 
-  <!-- Ranking Table -->
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin-bottom:8px">AI Readiness 순위표</div>
-  <table class="data-table">
-    <thead><tr><th>순위</th><th>계열사</th><th>N</th><th>평균</th><th>SD</th><th>그룹 대비</th></tr></thead>
-    <tbody>
-      <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight:600">LG CNS</td><td>40</td><td style="font-weight:700">2.54</td><td>0.564</td><td><span class="diff-chip positive">+0.34</span></td></tr>
-      <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight:600">LG유플러스</td><td>47</td><td style="font-weight:700">2.36</td><td>0.588</td><td><span class="diff-chip positive">+0.17</span></td></tr>
-      <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight:600">LG이노텍</td><td>38</td><td style="font-weight:700">2.29</td><td>0.683</td><td><span class="diff-chip positive">+0.10</span></td></tr>
-      <tr><td><span class="rank-badge rank-other">4</span></td><td style="font-weight:600">LG전자</td><td>287</td><td style="font-weight:700">2.21</td><td>0.616</td><td><span class="diff-chip positive">+0.02</span></td></tr>
-      <tr><td><span class="rank-badge rank-other">5</span></td><td style="font-weight:600">LG에너지솔루션</td><td>83</td><td style="font-weight:700">2.16</td><td>0.496</td><td><span class="diff-chip negative">-0.03</span></td></tr>
-      <tr><td><span class="rank-badge rank-other">6</span></td><td style="font-weight:600">(주)LG</td><td>19</td><td style="font-weight:700">2.01</td><td>0.439</td><td><span class="diff-chip negative">-0.18</span></td></tr>
-      <tr><td><span class="rank-badge rank-other">7</span></td><td style="font-weight:600">LG생활건강</td><td>30</td><td style="font-weight:700">1.90</td><td>0.414</td><td><span class="diff-chip negative">-0.29</span></td></tr>
-      <tr><td><span class="rank-badge rank-other">8</span></td><td style="font-weight:600">LG디스플레이</td><td>70</td><td style="font-weight:700">1.86</td><td>0.445</td><td><span class="diff-chip negative">-0.33</span></td></tr>
-    </tbody>
-  </table>
+          <div class="tip-block">
+            <strong>성과향상 with AI</strong>는 LG그룹 임원을 대상으로 한 AI 역량 강화 집중 교육 프로그램입니다. AI 도구의 실무 활용법을 체험하고, 각 계열사 비즈니스에 적용할
+            수 있는 구체적 아이디어를 발굴하는 것을 목표로 합니다.
+          </div>
 
-  <!-- Heatmap -->
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:24px 0 8px">항목별 히트맵 (계열사 x 문항)</div>
-  <div class="heatmap-wrap">
-    <table class="heatmap-table" id="heatmap-table">
-      <thead>
-        <tr>
-          <th style="text-align:left">계열사</th>
-          <th>Q5<br>사용빈도</th>
-          <th>Q6<br>유료구독</th>
-          <th>Q7<br>프롬프트</th>
-          <th>Q8<br>업무적용</th>
-          <th>Q9<br>멀티모달</th>
-          <th>Q10<br>맞춤형AI</th>
-          <th>Q11<br>코딩</th>
-          <th>Q12<br>터미널</th>
-        </tr>
-      </thead>
-      <tbody id="heatmap-body"></tbody>
-    </table>
-  </div>
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">교육 일정 (6개 차수)</div>
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>차수</th>
+                <th>일자</th>
+                <th>대상</th>
+                <th>장소</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1차</td>
+                <td>2026년 2월 27일 (금)</td>
+                <td>LG전자</td>
+                <td>전자 러닝센터</td>
+              </tr>
+              <tr>
+                <td>2차</td>
+                <td>2026년 2월 28일 (토)</td>
+                <td>디스플레이/이노텍/CNS</td>
+                <td>인화원</td>
+              </tr>
+              <tr>
+                <td>3차</td>
+                <td>2026년 3월 1일 (일)</td>
+                <td>유플러스, D&amp;O 외 10개사</td>
+                <td>인화원</td>
+              </tr>
+              <tr>
+                <td>4차</td>
+                <td>2026년 3월 6일 (금)</td>
+                <td>LG전자</td>
+                <td>전자 러닝센터</td>
+              </tr>
+              <tr>
+                <td>5차</td>
+                <td>2026년 3월 7일 (토)</td>
+                <td>엔솔/생건/팜한농</td>
+                <td>인화원</td>
+              </tr>
+              <tr>
+                <td>6차</td>
+                <td>2026년 3월 8일 (일)</td>
+                <td>LG화학</td>
+                <td>LG화학 교육장(오산)</td>
+              </tr>
+            </tbody>
+          </table>
 
-  <!-- Factor Scatter Plot -->
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:24px 0 8px">요인 좌표 산점도 (실무 활용 x 기술 역량)</div>
-  <div class="scatter-container" id="scatter-plot">
-    <div class="scatter-axis-label" style="bottom:4px;left:50%;transform:translateX(-50%)">Factor 1: 실무 활용 &rarr;</div>
-    <div class="scatter-axis-label" style="left:4px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:center">Factor 2: 기술 역량 &rarr;</div>
-  </div>
+          <div class="tip-block" style="border-left-color:var(--blue)">
+            <strong>참고:</strong> 본 사전설문은 1~5차수에 배정된 임원을 대상으로 실시되었습니다(6차 LG화학 데이터 미수신). 전체 705명 중 663명이 응답을 완료하였으며(응답률
+            94.0%), 차수별 응답자는 1차 142명, 2차 142명, 3차 87명, 4차 154명, 5차 138명입니다.
+          </div>
 
-  <!-- ANOVA -->
-  <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:24px 0 8px">통계 검정 결과</div>
-  <div style="font-size:0.8rem;line-height:1.8">
-    <p><strong>일원배치 분산분석(ANOVA):</strong> F(7, 606) = 7.688, p < .001</p>
-    <p>계열사 간 AI Readiness 평균 차이는 통계적으로 유의미합니다.</p>
-  </div>
-
-  <div class="collapsible" style="margin-top:12px">
-    <button class="collapsible-toggle" onclick="toggleCollapsible(this)">사후검정(Pairwise t-test) 결과 보기</button>
-    <div class="collapsible-body">
-      <table class="data-table" style="font-size:0.75rem">
-        <thead><tr><th>비교 쌍</th><th>평균 차이</th><th>p-value</th></tr></thead>
-        <tbody>
-          <tr><td>LG CNS - LG디스플레이</td><td>+0.677</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG CNS - LG생활건강</td><td>+0.638</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG CNS - (주)LG</td><td>+0.524</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG유플러스 - LG디스플레이</td><td>+0.498</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG유플러스 - LG생활건강</td><td>+0.459</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG이노텍 - LG디스플레이</td><td>+0.432</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG이노텍 - LG생활건강</td><td>+0.393</td><td>0.007 **</td></tr>
-          <tr><td>LG CNS - LG에너지솔루션</td><td>+0.375</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG전자 - LG디스플레이</td><td>+0.351</td><td>&lt;.001 ***</td></tr>
-          <tr><td>LG유플러스 - (주)LG</td><td>+0.346</td><td>0.024 *</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="tip-block" style="margin-top:16px">
-    8개 계열사의 AI Readiness는 통계적으로 유의미한 차이를 보이며(F=7.69, p&lt;.001), 이는 산업 특성과 디지털 전환 경험의 차이를 반영합니다. IT 서비스 중심의 계열사가 상위에, 제조 중심 계열사가 하위에 위치하는 패턴은 그룹 전체의 AI 역량 지형을 보여줍니다. 중요한 것은 순위가 아니라, 각 계열사의 현 위치에서 최적의 교육을 설계하는 것입니다.
-  </div>
-</div>
-</div>
-
-<!-- Section 7: 정성분석 요약 -->
-<div class="section" id="sec-qualitative">
-<div class="section-card">
-  <div class="section-num">SECTION 07</div>
-  <div class="section-title">정성분석 요약</div>
-
-  <div style="font-size:0.82rem;font-weight:600;color:var(--text-heading);margin-bottom:10px">Q14: AI를 활용하고 싶은 업무 과제 (전체)</div>
-  <div class="theme-chips">
-    <span class="theme-chip"><span class="chip-count">1</span> 업무효율화 (32.0%)</span>
-    <span class="theme-chip"><span class="chip-count">2</span> 코딩/자동화 (21.6%)</span>
-    <span class="theme-chip"><span class="chip-count">3</span> 데이터분석 (21.5%)</span>
-    <span class="theme-chip"><span class="chip-count">4</span> 문서작성 (15.2%)</span>
-    <span class="theme-chip"><span class="chip-count">5</span> 연구개발 (10.7%)</span>
-    <span class="theme-chip"><span class="chip-count">6</span> 생산/품질 (9.4%)</span>
-    <span class="theme-chip"><span class="chip-count">7</span> 마케팅/영업 (8.2%)</span>
-    <span class="theme-chip"><span class="chip-count">8</span> 경영전략 (6.2%)</span>
-  </div>
-
-  <div style="font-size:0.82rem;font-weight:600;color:var(--text-heading);margin:20px 0 10px">Q13: 학습 선호 주제 (전체)</div>
-  <div class="q13-bars">
-    <div class="q13-row">
-      <div class="q13-label">실무 활용법</div>
-      <div class="bar-track" style="height:18px"><div class="bar-fill brand" style="width:49.8%">49.8%</div></div>
-      <div class="q13-val">49.8%</div>
-    </div>
-    <div class="q13-row">
-      <div class="q13-label">비즈니스 기회 발굴</div>
-      <div class="bar-track" style="height:18px"><div class="bar-fill" style="width:28.1%;background:var(--amber)">28.1%</div></div>
-      <div class="q13-val">28.1%</div>
-    </div>
-    <div class="q13-row">
-      <div class="q13-label">AI 트렌드 이해</div>
-      <div class="bar-track" style="height:18px"><div class="bar-fill" style="width:22.2%;background:var(--blue)">22.2%</div></div>
-      <div class="q13-val">22.2%</div>
-    </div>
-  </div>
-
-  <div style="font-size:0.82rem;font-weight:600;color:var(--text-heading);margin:20px 0 10px">Q15: 교육에 대한 기대 (주요 키워드)</div>
-  <div class="tip-block">
-    참여 임원들은 <strong>"실제 업무에 바로 적용 가능한"</strong> 교육을 가장 많이 기대하고 있습니다. "이론보다 실습", "우리 업무에 맞는 사례", "당장 내일 쓸 수 있는 도구" 등의 표현이 반복적으로 등장하며, AI에 대한 관심은 높으나 실제 활용의 첫걸음을 내딛기 위한 구체적 가이드를 원하는 니즈가 강합니다.
-  </div>
-</div>
-</div>
-
-<!-- Section 8: 교육 설계 제언 -->
-<div class="section" id="sec-recommendations">
-<div class="section-card">
-  <div class="section-num">SECTION 08</div>
-  <div class="section-title">교육 설계 제언</div>
-  <div class="section-subtitle">사전설문 분석 결과에 기반한 7가지 권고사항</div>
-
-  <div class="rec-grid">
-    <div class="rec-item">
-      <div class="rec-num">1</div>
-      <div class="rec-text"><strong>수준별 트랙 설계:</strong> 초급~중급(D~C등급, 60.9%)을 중심 타겟으로 하되, 고급(A등급, 2.9%) 학습자를 위한 심화 트랙을 병행 운영합니다. 동일 콘텐츠의 '기초 / 심화' 분기가 효율적입니다.</div>
-    </div>
-    <div class="rec-item">
-      <div class="rec-num">2</div>
-      <div class="rec-text"><strong>빈도-깊이 격차 공략:</strong> AI를 이미 사용하는 학습자(Q5=3.10)에게 멀티모달(Q9=1.70), 코딩 연계(Q11=1.96) 등 고급 기능으로의 확장 경로를 제시합니다.</div>
-    </div>
-    <div class="rec-item">
-      <div class="rec-num">3</div>
-      <div class="rec-text"><strong>실무 적용 중심 설계:</strong> 학습 선호도 1위인 '실무 활용법'(49.8%)에 맞춰, 각 계열사 비즈니스 시나리오 기반의 hands-on 실습 중심으로 구성합니다.</div>
-    </div>
-    <div class="rec-item">
-      <div class="rec-num">4</div>
-      <div class="rec-text"><strong>계열사별 맞춤 사례:</strong> 8개 계열사의 산업 특성을 반영한 실습 시나리오를 준비합니다. 제조(공정 최적화), IT(코드 자동화), 소비재(마케팅 분석) 등 산업별 유즈케이스가 학습 몰입도를 높입니다.</div>
-    </div>
-    <div class="rec-item">
-      <div class="rec-num">5</div>
-      <div class="rec-text"><strong>프롬프트 엔지니어링 강화:</strong> Q7 프롬프트(2.13)가 중간 수준인 점을 고려하여, 체계적 프롬프트 작성법과 Chain-of-Thought, Few-shot 등 고급 기법을 단계적으로 교육합니다.</div>
-    </div>
-    <div class="rec-item">
-      <div class="rec-num">6</div>
-      <div class="rec-text"><strong>AX 리더십 모듈:</strong> 임원 대상 교육인 만큼, 개인 활용을 넘어 조직 차원의 AI 전환(AX) 전략을 수립하는 리더십 세션을 포함합니다. 비즈니스 기회 발굴(28.1%)에 대한 높은 관심을 활용합니다.</div>
-    </div>
-    <div class="rec-item">
-      <div class="rec-num">7</div>
-      <div class="rec-text"><strong>사후 학습 연계:</strong> 1일 교육 이후에도 역량 개발이 지속될 수 있도록, AI 도구 활용 가이드, 프롬프트 라이브러리, 계열사별 CoP(실천 공동체) 등 사후 지원 체계를 설계합니다.</div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PART 3: 내 계열사 분석 (My Company) -->
-<!-- ============================================================ -->
-<div class="part-header" id="part3">
-  <span class="part-label">Part 3</span>
-  <div class="part-title">내 계열사 분석</div>
-  <div class="part-subtitle">My Company Analysis</div>
-  <div class="part-divider"></div>
-</div>
-
-<div class="section" id="sec-company-selector">
-<div class="section-card">
-  <div class="section-title" style="text-align:center">내 계열사를 선택하세요</div>
-  <div class="section-subtitle" style="text-align:center;margin-top:-8px">계열사를 선택하면 그룹 전체 대비 상세 분석 결과를 확인할 수 있습니다</div>
-
-  <!-- Mobile dropdown -->
-  <div class="mobile-company-select">
-    <select id="mobile-company-dropdown" onchange="selectCompanyFromDropdown(this.value)">
-      <option value="">-- 계열사 선택 --</option>
-      <option value="lgcns">LG CNS (2.54)</option>
-      <option value="lguplus">LG유플러스 (2.36)</option>
-      <option value="lginnotek">LG이노텍 (2.29)</option>
-      <option value="lge">LG전자 (2.21)</option>
-      <option value="lges">LG에너지솔루션 (2.16)</option>
-      <option value="julg">(주)LG (2.01)</option>
-      <option value="lghnh">LG생활건강 (1.90)</option>
-      <option value="lgd">LG디스플레이 (1.86)</option>
-    </select>
-  </div>
-
-  <!-- Desktop grid -->
-  <div class="company-selector">
-    <div class="company-grid">
-      <div class="company-btn" onclick="selectCompany('lgcns')" id="btn-lgcns">
-        <div class="company-btn-name">LG CNS</div>
-        <div class="company-btn-score">2.54점 | 1위</div>
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">학습 목표</div>
+          <ul style="font-size:0.82rem;padding-left:20px;color:var(--text-body);line-height:2">
+            <li>AI 도구(ChatGPT, Claude, Gemini 등)의 실무 활용 역량 체득</li>
+            <li>프롬프트 엔지니어링을 통한 업무 생산성 극대화 방법론 습득</li>
+            <li>각 계열사 비즈니스에 AI를 적용한 혁신 기회 발굴</li>
+            <li>임원으로서 AI 전환(AX)을 리드하기 위한 관점과 전략 수립</li>
+          </ul>
+        </div>
       </div>
-      <div class="company-btn" onclick="selectCompany('lguplus')" id="btn-lguplus">
-        <div class="company-btn-name">LG유플러스</div>
-        <div class="company-btn-score">2.36점 | 2위</div>
+
+      <!-- ============================================================ -->
+      <!-- PART 2: 상세 분석 (Deep Analysis) -->
+      <!-- ============================================================ -->
+      <div class="part-header" id="part2">
+        <span class="part-label">Part 2</span>
+        <div class="part-title">상세 분석</div>
+        <div class="part-subtitle">Group-level Deep Analysis</div>
+        <div class="part-divider"></div>
       </div>
-      <div class="company-btn" onclick="selectCompany('lginnotek')" id="btn-lginnotek">
-        <div class="company-btn-name">LG이노텍</div>
-        <div class="company-btn-score">2.29점 | 3위</div>
+
+      <!-- Section 3: AI 역량 진단 -->
+      <div class="section" id="sec-diagnosis">
+        <div class="section-card">
+          <div class="section-num">SECTION 03</div>
+          <div class="section-title">AI 역량 진단: 8개 문항 분석</div>
+          <div class="section-subtitle">Q5~Q12 항목별 전체 응답 평균 (4점 척도)</div>
+
+          <!-- Detailed Statistics Table -->
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">문항별 기술통계</div>
+          <div style="overflow-x:auto">
+            <table class="data-table" style="font-size:0.73rem">
+              <thead>
+                <tr>
+                  <th style="text-align:center;min-width:40px">문항</th>
+                  <th style="min-width:130px">문항 내용</th>
+                  <th style="text-align:center">N</th>
+                  <th style="text-align:center">M</th>
+                  <th style="text-align:center">SD</th>
+                  <th style="text-align:center">Mdn</th>
+                  <th style="text-align:center">Min</th>
+                  <th style="text-align:center">Max</th>
+                  <th style="text-align:center">Skew</th>
+                  <th style="text-align:center">Kurt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q5</td>
+                  <td>AI 도구 사용 빈도</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">3.10</td>
+                  <td style="text-align:center">0.85</td>
+                  <td style="text-align:center">3.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">-0.57</td>
+                  <td style="text-align:center">-0.50</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q6</td>
+                  <td>유료 AI 구독 여부</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">2.19</td>
+                  <td style="text-align:center">1.06</td>
+                  <td style="text-align:center">2.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">0.26</td>
+                  <td style="text-align:center">-1.25</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q7</td>
+                  <td>프롬프트 작성 수준</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">2.13</td>
+                  <td style="text-align:center">0.71</td>
+                  <td style="text-align:center">2.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">0.33</td>
+                  <td style="text-align:center">0.08</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q8</td>
+                  <td>AI 업무 활용 수준</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">2.25</td>
+                  <td style="text-align:center">0.73</td>
+                  <td style="text-align:center">2.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">0.16</td>
+                  <td style="text-align:center">-0.23</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q9</td>
+                  <td>멀티모달 콘텐츠 활용</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">1.70</td>
+                  <td style="text-align:center">0.81</td>
+                  <td style="text-align:center">2.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">1.14</td>
+                  <td style="text-align:center">0.89</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q10</td>
+                  <td>GPTs/Gems 활용 경험</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">1.99</td>
+                  <td style="text-align:center">0.69</td>
+                  <td style="text-align:center">2.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">0.90</td>
+                  <td style="text-align:center">1.77</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q11</td>
+                  <td>프로그래밍/코딩 경험</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">1.96</td>
+                  <td style="text-align:center">1.02</td>
+                  <td style="text-align:center">2.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">0.79</td>
+                  <td style="text-align:center">-0.52</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;font-weight:600">Q12</td>
+                  <td>터미널/CMD 경험</td>
+                  <td style="text-align:center">663</td>
+                  <td style="text-align:center;font-weight:700">2.23</td>
+                  <td style="text-align:center">1.05</td>
+                  <td style="text-align:center">2.0</td>
+                  <td style="text-align:center">1</td>
+                  <td style="text-align:center">4</td>
+                  <td style="text-align:center">0.36</td>
+                  <td style="text-align:center">-1.07</td>
+                </tr>
+                <tr style="background:var(--brand-light);font-weight:700">
+                  <td style="text-align:center;color:var(--brand)">전체</td>
+                  <td style="color:var(--brand)">AI Readiness (8문항 평균)</td>
+                  <td style="text-align:center;color:var(--brand)">663</td>
+                  <td style="text-align:center;color:var(--brand)">2.19</td>
+                  <td style="text-align:center;color:var(--brand)">0.59</td>
+                  <td style="text-align:center;color:var(--brand)">2.12</td>
+                  <td style="text-align:center;color:var(--brand)">1.0</td>
+                  <td style="text-align:center;color:var(--brand)">4.0</td>
+                  <td style="text-align:center;color:var(--brand)">0.63</td>
+                  <td style="text-align:center;color:var(--brand)">0.16</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Frequency Distribution (collapsible) -->
+          <details style="margin:16px 0">
+            <summary
+              style="display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--text-secondary);background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;cursor:pointer;transition:all var(--transition);list-style:none">
+              <span
+                style="font-size:0.7rem;color:var(--text-muted);transition:transform 0.2s;display:inline-block">&#9660;</span>
+              응답 분포 (문항별 빈도)
+            </summary>
+            <div style="padding:14px 0 4px;font-size:0.75rem;line-height:2.2;color:var(--text-body)">
+              <div style="display:grid;grid-template-columns:80px 1fr;gap:4px 12px;align-items:baseline">
+                <span style="font-weight:600;color:var(--text-heading)">Q5</span>
+                <span>1점 26명(3.9%) | 2점 132명(19.9%) | 3점 257명(38.8%) | 4점 248명(37.4%)</span>
+                <span style="font-weight:600;color:var(--text-heading)">Q6</span>
+                <span>1점 237명(35.7%) | 2점 147명(22.2%) | 3점 194명(29.3%) | 4점 85명(12.8%)</span>
+                <span style="font-weight:600;color:var(--text-heading)">Q7</span>
+                <span>1점 111명(16.7%) | 2점 378명(57.0%) | 3점 153명(23.1%) | 4점 21명(3.2%)</span>
+                <span style="font-weight:600;color:var(--text-heading)">Q8</span>
+                <span>1점 88명(13.3%) | 2점 344명(51.9%) | 3점 206명(31.1%) | 4점 25명(3.8%)</span>
+                <span style="font-weight:600;color:var(--text-heading)">Q9</span>
+                <span>1점 316명(47.7%) | 2점 261명(39.4%) | 3점 54명(8.1%) | 4점 32명(4.8%)</span>
+                <span style="font-weight:600;color:var(--text-heading)">Q10</span>
+                <span>1점 130명(19.6%) | 2점 444명(67.0%) | 3점 57명(8.6%) | 4점 32명(4.8%)</span>
+                <span style="font-weight:600;color:var(--text-heading)">Q11</span>
+                <span>1점 275명(41.5%) | 2점 222명(33.5%) | 3점 84명(12.7%) | 4점 82명(12.4%)</span>
+                <span style="font-weight:600;color:var(--text-heading)">Q12</span>
+                <span>1점 198명(29.9%) | 2점 219명(33.0%) | 3점 139명(21.0%) | 4점 107명(16.1%)</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Bar Chart -->
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:20px 0 8px">문항별 평균 (Q5&rarr;Q12
+            순서)</div>
+          <div class="chart-container">
+            <div class="bar-group">
+              <div class="bar-label"><span>Q5 사용빈도</span><span
+                  style="font-weight:600;color:var(--text-heading)">3.10</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:77.4%">3.10</div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>Q6 유료구독</span><span
+                  style="font-weight:600;color:var(--text-heading)">2.19</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:54.8%">2.19</div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>Q7 프롬프트</span><span
+                  style="font-weight:600;color:var(--text-heading)">2.13</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:53.2%">2.13</div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>Q8 업무적용</span><span
+                  style="font-weight:600;color:var(--text-heading)">2.25</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:56.3%">2.25</div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>Q9 멀티모달</span><span
+                  style="font-weight:600;color:var(--text-heading)">1.70</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:42.5%">1.70</div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>Q10 맞춤형AI</span><span
+                  style="font-weight:600;color:var(--text-heading)">1.99</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:49.7%">1.99</div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>Q11 코딩활용</span><span
+                  style="font-weight:600;color:var(--text-heading)">1.96</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:49.0%">1.96</div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>Q12 터미널/CLI</span><span
+                  style="font-weight:600;color:var(--text-heading)">2.23</span></div>
+              <div class="bar-track">
+                <div class="bar-fill brand" style="width:55.8%">2.23</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-block">
+            <strong>가장 높은 역량:</strong> Q5 AI 사용 빈도(M=3.10) &mdash; 76.2%가 주 1회 이상 사용<br>
+            <strong>가장 낮은 역량:</strong> Q9 멀티모달 활용(M=1.70) &mdash; 47.7%가 '멀티모달 AI가 무엇인지 모름'<br>
+            <strong>최대 격차:</strong> Q5(3.10)와 Q9(1.70) 사이 1.40점 차이 &mdash; AI를 쓰고는 있지만 텍스트 이외 모달리티 활용은 매우 제한적<br>
+            <strong>분산이 가장 큰 문항:</strong> Q6 유료 AI 구독 여부(SD=1.06), Q12 터미널/CMD 경험(SD=1.05) &mdash; 개인차가 매우 크며, 수준 분류의 핵심
+            변별 요인
+          </div>
+
+          <div class="tip-block" style="border-left-color:var(--blue)">
+            <strong>빈도-깊이 격차(Frequency-Depth Gap)</strong>가 뚜렷합니다. AI 사용빈도(Q5=3.10)는 높으나, 멀티모달 활용(Q9=1.70), 코딩
+            연계(Q11=1.96), 맞춤형 AI 구축(Q10=1.99) 등 고급 활용은 2점 미만으로 낮습니다. 이는 "AI를 쓰고 있지만 깊이 있게 활용하지는 못하는" 상태를 시사하며, 교육의 핵심 기회
+            영역입니다.
+          </div>
+        </div>
       </div>
-      <div class="company-btn" onclick="selectCompany('lge')" id="btn-lge">
-        <div class="company-btn-name">LG전자</div>
-        <div class="company-btn-score">2.21점 | 4위</div>
+
+      <!-- Section 4: AI Readiness 등급 -->
+      <div class="section" id="sec-grade">
+        <div class="section-card">
+          <div class="section-num">SECTION 04</div>
+          <div class="section-title">AI Readiness 등급 분포</div>
+
+          <div class="chart-container">
+            <div class="bar-group">
+              <div class="bar-label"><span>E 입문 (~1.75점)</span><span
+                  style="font-weight:600;color:var(--grade-entry)">20.2% (134명)</span></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:20.2%;background:var(--grade-entry)"></div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>D 초급 (1.75~2.25점)</span><span
+                  style="font-weight:600;color:var(--grade-basic)">34.1% (226명)</span></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:34.1%;background:var(--grade-basic)"></div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>C 중급 (2.25~2.75점)</span><span
+                  style="font-weight:600;color:var(--grade-inter)">26.8% (178명)</span></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:26.8%;background:var(--grade-inter)"></div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>B 중상급 (2.75~3.50점)</span><span
+                  style="font-weight:600;color:var(--grade-upper)">16.0% (106명)</span></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:16.0%;background:var(--grade-upper)"></div>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label"><span>A 고급 (3.50점~)</span><span style="font-weight:600;color:var(--grade-adv)">2.9%
+                  (19명)</span></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:2.9%;background:var(--grade-adv)"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="insight-box">
+            전체 응답자의 60.9%가 초급~중급(D~C등급, 1.75~2.75점)에 밀집되어 있어, 교육 프로그램의 중심 타겟이 됩니다. 한편 고급 A등급(2.9%)과 입문 E등급(20.2%) 양극단
+            그룹도 존재하므로, 수준별 트랙 운영이 학습 효과 극대화의 핵심입니다.
+          </div>
+
+          <!-- Company Grade Distribution: Stacked Horizontal Bars -->
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:28px 0 12px">계열사별 등급 분포</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:10px">평균 점수 순 (높은 순) | 막대 안 숫자는 해당 등급 비율(%)
+          </div>
+
+          <div id="company-grade-stacked" style="display:flex;flex-direction:column;gap:10px;margin:8px 0">
+            <!-- Rendered by JS in initReport -->
+          </div>
+
+          <!-- Grade legend for stacked bars -->
+          <div class="grade-legend" style="margin-top:12px;margin-bottom:4px">
+            <div class="grade-legend-item">
+              <div class="grade-legend-dot" style="background:var(--grade-adv)"></div>고급(A)
+            </div>
+            <div class="grade-legend-item">
+              <div class="grade-legend-dot" style="background:var(--grade-upper)"></div>중상급(B)
+            </div>
+            <div class="grade-legend-item">
+              <div class="grade-legend-dot" style="background:var(--grade-inter)"></div>중급(C)
+            </div>
+            <div class="grade-legend-item">
+              <div class="grade-legend-dot" style="background:var(--grade-basic)"></div>초급(D)
+            </div>
+            <div class="grade-legend-item">
+              <div class="grade-legend-dot" style="background:var(--grade-entry)"></div>입문(E)
+            </div>
+          </div>
+
+          <div class="tip-block" style="margin-top:16px">
+            계열사별 등급 분포를 보면, <strong>LG CNS</strong>은(는) 고급+중상급이 30.0%인 반면 <strong>LG디스플레이</strong>은(는) 초급+입문이 80.0%로, 같은
+            그룹 내에서도 AI 역량 격차가 상당합니다. 교육 차수별로 계열사가 나뉘어 있으므로, 각 차수의 평균 수준에 맞춘 난이도 조절이 중요합니다.
+          </div>
+        </div>
       </div>
-      <div class="company-btn" onclick="selectCompany('lges')" id="btn-lges">
-        <div class="company-btn-name">LG에너지솔루션</div>
-        <div class="company-btn-score">2.16점 | 5위</div>
+
+      <!-- Section 5: 측정도구 검증 -->
+      <div class="section" id="sec-validation">
+        <div class="section-card">
+          <div class="section-num">SECTION 05</div>
+          <div class="section-title">측정도구 검증</div>
+
+          <div class="metrics-grid" style="grid-template-columns:repeat(3,1fr)">
+            <div class="metric-card">
+              <div class="metric-value" style="font-size:1.3rem">&alpha; = .827</div>
+              <div class="metric-label">Cronbach's Alpha<br>(신뢰도 양호)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" style="font-size:1.3rem">2-Factor</div>
+              <div class="metric-label">요인분석 결과<br>(실무+기술)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" style="font-size:1.3rem">5-Grade</div>
+              <div class="metric-label">등급 체계<br>(A~E)</div>
+            </div>
+          </div>
+
+          <div class="collapsible">
+            <button class="collapsible-toggle" onclick="toggleCollapsible(this)">상세 통계 결과 보기</button>
+            <div class="collapsible-body">
+              <div style="font-size:0.8rem;line-height:1.8;color:var(--text-body)">
+                <p><strong>내적 일관성:</strong> Cronbach's &alpha; = .827 (8개 문항의 신뢰도 양호 수준)</p>
+                <p style="margin-top:8px"><strong>등급 체계:</strong> AI Readiness Score(8문항 평균)를 기준으로 5단계로 구분</p>
+                <ul style="padding-left:20px;margin-top:4px">
+                  <li><strong>A등급 (Expert):</strong> 3.50점 이상 &mdash; AI 활용의 전문가 수준</li>
+                  <li><strong>B등급 (Advanced):</strong> 2.75~3.49점 &mdash; 고급 기능까지 활용 가능</li>
+                  <li><strong>C등급 (Intermediate):</strong> 2.25~2.74점 &mdash; 기본 활용에 익숙</li>
+                  <li><strong>D등급 (Beginner):</strong> 1.75~2.24점 &mdash; 초보 수준의 활용</li>
+                  <li><strong>E등급 (Novice):</strong> 1.75점 미만 &mdash; AI 도구 경험이 매우 제한적</li>
+                </ul>
+                <p style="margin-top:8px"><strong>탐색적 요인분석 (EFA):</strong></p>
+                <ul style="padding-left:20px;margin-top:4px">
+                  <li><strong>Factor 1 (실무 활용):</strong> Q5 사용빈도, Q6 유료구독, Q7 프롬프트, Q8 업무적용, Q9 멀티모달, Q10 맞춤형AI</li>
+                  <li><strong>Factor 2 (기술 역량):</strong> Q11 코딩활용, Q12 터미널/CLI</li>
+                </ul>
+                <p style="margin-top:8px"><strong>해석:</strong> 8개 문항은 '실무 AI 활용' 역량과 '기술적 AI 확장' 역량이라는 두 차원으로 구조화됩니다. 이는
+                  교육 설계에서 실무 트랙과 기술 트랙의 분리 근거가 됩니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="company-btn" onclick="selectCompany('julg')" id="btn-julg">
-        <div class="company-btn-name">(주)LG</div>
-        <div class="company-btn-score">2.01점 | 6위</div>
+
+      <!-- Section 6: 그룹사별 비교 분석 -->
+      <div class="section" id="sec-comparison">
+        <div class="section-card">
+          <div class="section-num">SECTION 06</div>
+          <div class="section-title">그룹사별 비교 분석</div>
+
+          <!-- Ranking Table -->
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin-bottom:8px">AI Readiness 순위표
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>순위</th>
+                <th>계열사</th>
+                <th>N</th>
+                <th>평균</th>
+                <th>SD</th>
+                <th>그룹 대비</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rank-badge rank-1">1</span></td>
+                <td style="font-weight:600">LG CNS</td>
+                <td>40</td>
+                <td style="font-weight:700">2.54</td>
+                <td>0.564</td>
+                <td><span class="diff-chip positive">+0.34</span></td>
+              </tr>
+              <tr>
+                <td><span class="rank-badge rank-2">2</span></td>
+                <td style="font-weight:600">LG유플러스</td>
+                <td>47</td>
+                <td style="font-weight:700">2.36</td>
+                <td>0.588</td>
+                <td><span class="diff-chip positive">+0.17</span></td>
+              </tr>
+              <tr>
+                <td><span class="rank-badge rank-3">3</span></td>
+                <td style="font-weight:600">LG이노텍</td>
+                <td>38</td>
+                <td style="font-weight:700">2.29</td>
+                <td>0.683</td>
+                <td><span class="diff-chip positive">+0.10</span></td>
+              </tr>
+              <tr>
+                <td><span class="rank-badge rank-other">4</span></td>
+                <td style="font-weight:600">LG전자</td>
+                <td>287</td>
+                <td style="font-weight:700">2.21</td>
+                <td>0.616</td>
+                <td><span class="diff-chip positive">+0.02</span></td>
+              </tr>
+              <tr>
+                <td><span class="rank-badge rank-other">5</span></td>
+                <td style="font-weight:600">LG에너지솔루션</td>
+                <td>83</td>
+                <td style="font-weight:700">2.16</td>
+                <td>0.496</td>
+                <td><span class="diff-chip negative">-0.03</span></td>
+              </tr>
+              <tr>
+                <td><span class="rank-badge rank-other">6</span></td>
+                <td style="font-weight:600">(주)LG</td>
+                <td>19</td>
+                <td style="font-weight:700">2.01</td>
+                <td>0.439</td>
+                <td><span class="diff-chip negative">-0.18</span></td>
+              </tr>
+              <tr>
+                <td><span class="rank-badge rank-other">7</span></td>
+                <td style="font-weight:600">LG생활건강</td>
+                <td>30</td>
+                <td style="font-weight:700">1.90</td>
+                <td>0.414</td>
+                <td><span class="diff-chip negative">-0.29</span></td>
+              </tr>
+              <tr>
+                <td><span class="rank-badge rank-other">8</span></td>
+                <td style="font-weight:600">LG디스플레이</td>
+                <td>70</td>
+                <td style="font-weight:700">1.86</td>
+                <td>0.445</td>
+                <td><span class="diff-chip negative">-0.33</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Heatmap -->
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:24px 0 8px">항목별 히트맵 (계열사 x 문항)
+          </div>
+          <div class="heatmap-wrap">
+            <table class="heatmap-table" id="heatmap-table">
+              <thead>
+                <tr>
+                  <th style="text-align:left">계열사</th>
+                  <th>Q5<br>사용빈도</th>
+                  <th>Q6<br>유료구독</th>
+                  <th>Q7<br>프롬프트</th>
+                  <th>Q8<br>업무적용</th>
+                  <th>Q9<br>멀티모달</th>
+                  <th>Q10<br>맞춤형AI</th>
+                  <th>Q11<br>코딩</th>
+                  <th>Q12<br>터미널</th>
+                </tr>
+              </thead>
+              <tbody id="heatmap-body"></tbody>
+            </table>
+          </div>
+
+          <!-- Factor Scatter Plot -->
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:24px 0 8px">요인 좌표 산점도 (실무 활용 x
+            기술 역량)</div>
+          <div class="scatter-container" id="scatter-plot">
+            <div class="scatter-axis-label" style="bottom:4px;left:50%;transform:translateX(-50%)">Factor 1: 실무 활용
+              &rarr;</div>
+            <div class="scatter-axis-label"
+              style="left:4px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:center">Factor 2: 기술 역량
+              &rarr;</div>
+          </div>
+
+          <!-- ANOVA -->
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:24px 0 8px">통계 검정 결과</div>
+          <div style="font-size:0.8rem;line-height:1.8">
+            <p><strong>일원배치 분산분석(ANOVA):</strong> F(7, 606) = 7.688, p < .001</p>
+                <p>계열사 간 AI Readiness 평균 차이는 통계적으로 유의미합니다.</p>
+          </div>
+
+          <div class="collapsible" style="margin-top:12px">
+            <button class="collapsible-toggle" onclick="toggleCollapsible(this)">사후검정(Pairwise t-test) 결과 보기</button>
+            <div class="collapsible-body">
+              <table class="data-table" style="font-size:0.75rem">
+                <thead>
+                  <tr>
+                    <th>비교 쌍</th>
+                    <th>평균 차이</th>
+                    <th>p-value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>LG CNS - LG디스플레이</td>
+                    <td>+0.677</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG CNS - LG생활건강</td>
+                    <td>+0.638</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG CNS - (주)LG</td>
+                    <td>+0.524</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG유플러스 - LG디스플레이</td>
+                    <td>+0.498</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG유플러스 - LG생활건강</td>
+                    <td>+0.459</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG이노텍 - LG디스플레이</td>
+                    <td>+0.432</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG이노텍 - LG생활건강</td>
+                    <td>+0.393</td>
+                    <td>0.007 **</td>
+                  </tr>
+                  <tr>
+                    <td>LG CNS - LG에너지솔루션</td>
+                    <td>+0.375</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG전자 - LG디스플레이</td>
+                    <td>+0.351</td>
+                    <td>&lt;.001 ***</td>
+                  </tr>
+                  <tr>
+                    <td>LG유플러스 - (주)LG</td>
+                    <td>+0.346</td>
+                    <td>0.024 *</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tip-block" style="margin-top:16px">
+            8개 계열사의 AI Readiness는 통계적으로 유의미한 차이를 보이며(F=7.69, p&lt;.001), 이는 산업 특성과 디지털 전환 경험의 차이를 반영합니다. IT 서비스 중심의 계열사가
+            상위에, 제조 중심 계열사가 하위에 위치하는 패턴은 그룹 전체의 AI 역량 지형을 보여줍니다. 중요한 것은 순위가 아니라, 각 계열사의 현 위치에서 최적의 교육을 설계하는 것입니다.
+          </div>
+        </div>
       </div>
-      <div class="company-btn" onclick="selectCompany('lghnh')" id="btn-lghnh">
-        <div class="company-btn-name">LG생활건강</div>
-        <div class="company-btn-score">1.90점 | 7위</div>
+
+      <!-- Section 7: 정성분석 요약 -->
+      <div class="section" id="sec-qualitative">
+        <div class="section-card">
+          <div class="section-num">SECTION 07</div>
+          <div class="section-title">정성분석 요약</div>
+
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-heading);margin-bottom:10px">Q14: AI를 활용하고 싶은
+            업무 과제 (전체)</div>
+          <div class="theme-chips">
+            <span class="theme-chip"><span class="chip-count">1</span> 업무효율화 (32.0%)</span>
+            <span class="theme-chip"><span class="chip-count">2</span> 코딩/자동화 (21.6%)</span>
+            <span class="theme-chip"><span class="chip-count">3</span> 데이터분석 (21.5%)</span>
+            <span class="theme-chip"><span class="chip-count">4</span> 문서작성 (15.2%)</span>
+            <span class="theme-chip"><span class="chip-count">5</span> 연구개발 (10.7%)</span>
+            <span class="theme-chip"><span class="chip-count">6</span> 생산/품질 (9.4%)</span>
+            <span class="theme-chip"><span class="chip-count">7</span> 마케팅/영업 (8.2%)</span>
+            <span class="theme-chip"><span class="chip-count">8</span> 경영전략 (6.2%)</span>
+          </div>
+
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-heading);margin:20px 0 10px">Q13: 학습 선호 주제 (전체)
+          </div>
+          <div class="q13-bars">
+            <div class="q13-row">
+              <div class="q13-label">실무 활용법</div>
+              <div class="bar-track" style="height:18px">
+                <div class="bar-fill brand" style="width:49.8%">49.8%</div>
+              </div>
+              <div class="q13-val">49.8%</div>
+            </div>
+            <div class="q13-row">
+              <div class="q13-label">비즈니스 기회 발굴</div>
+              <div class="bar-track" style="height:18px">
+                <div class="bar-fill" style="width:28.1%;background:var(--amber)">28.1%</div>
+              </div>
+              <div class="q13-val">28.1%</div>
+            </div>
+            <div class="q13-row">
+              <div class="q13-label">AI 트렌드 이해</div>
+              <div class="bar-track" style="height:18px">
+                <div class="bar-fill" style="width:22.2%;background:var(--blue)">22.2%</div>
+              </div>
+              <div class="q13-val">22.2%</div>
+            </div>
+          </div>
+
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-heading);margin:20px 0 10px">Q15: 교육에 대한 기대 (주요
+            키워드)</div>
+          <div class="tip-block">
+            참여 임원들은 <strong>"실제 업무에 바로 적용 가능한"</strong> 교육을 가장 많이 기대하고 있습니다. "이론보다 실습", "우리 업무에 맞는 사례", "당장 내일 쓸 수 있는
+            도구" 등의 표현이 반복적으로 등장하며, AI에 대한 관심은 높으나 실제 활용의 첫걸음을 내딛기 위한 구체적 가이드를 원하는 니즈가 강합니다.
+          </div>
+        </div>
       </div>
-      <div class="company-btn" onclick="selectCompany('lgd')" id="btn-lgd">
-        <div class="company-btn-name">LG디스플레이</div>
-        <div class="company-btn-score">1.86점 | 8위</div>
+
+      <!-- Section 8: 교육 설계 제언 -->
+      <div class="section" id="sec-recommendations">
+        <div class="section-card">
+          <div class="section-num">SECTION 08</div>
+          <div class="section-title">교육 설계 제언</div>
+          <div class="section-subtitle">사전설문 분석 결과에 기반한 7가지 권고사항</div>
+
+          <div class="rec-grid">
+            <div class="rec-item">
+              <div class="rec-num">1</div>
+              <div class="rec-text"><strong>수준별 트랙 설계:</strong> 초급~중급(D~C등급, 60.9%)을 중심 타겟으로 하되, 고급(A등급, 2.9%) 학습자를 위한
+                심화 트랙을 병행 운영합니다. 동일 콘텐츠의 '기초 / 심화' 분기가 효율적입니다.</div>
+            </div>
+            <div class="rec-item">
+              <div class="rec-num">2</div>
+              <div class="rec-text"><strong>빈도-깊이 격차 공략:</strong> AI를 이미 사용하는 학습자(Q5=3.10)에게 멀티모달(Q9=1.70), 코딩
+                연계(Q11=1.96) 등 고급 기능으로의 확장 경로를 제시합니다.</div>
+            </div>
+            <div class="rec-item">
+              <div class="rec-num">3</div>
+              <div class="rec-text"><strong>실무 적용 중심 설계:</strong> 학습 선호도 1위인 '실무 활용법'(49.8%)에 맞춰, 각 계열사 비즈니스 시나리오 기반의
+                hands-on 실습 중심으로 구성합니다.</div>
+            </div>
+            <div class="rec-item">
+              <div class="rec-num">4</div>
+              <div class="rec-text"><strong>계열사별 맞춤 사례:</strong> 8개 계열사의 산업 특성을 반영한 실습 시나리오를 준비합니다. 제조(공정 최적화), IT(코드
+                자동화), 소비재(마케팅 분석) 등 산업별 유즈케이스가 학습 몰입도를 높입니다.</div>
+            </div>
+            <div class="rec-item">
+              <div class="rec-num">5</div>
+              <div class="rec-text"><strong>프롬프트 엔지니어링 강화:</strong> Q7 프롬프트(2.13)가 중간 수준인 점을 고려하여, 체계적 프롬프트 작성법과
+                Chain-of-Thought, Few-shot 등 고급 기법을 단계적으로 교육합니다.</div>
+            </div>
+            <div class="rec-item">
+              <div class="rec-num">6</div>
+              <div class="rec-text"><strong>AX 리더십 모듈:</strong> 임원 대상 교육인 만큼, 개인 활용을 넘어 조직 차원의 AI 전환(AX) 전략을 수립하는 리더십
+                세션을 포함합니다. 비즈니스 기회 발굴(28.1%)에 대한 높은 관심을 활용합니다.</div>
+            </div>
+            <div class="rec-item">
+              <div class="rec-num">7</div>
+              <div class="rec-text"><strong>사후 학습 연계:</strong> 1일 교육 이후에도 역량 개발이 지속될 수 있도록, AI 도구 활용 가이드, 프롬프트 라이브러리,
+                계열사별 CoP(실천 공동체) 등 사후 지원 체계를 설계합니다.</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
 
-<!-- ===== COMPANY PAGES (generated by JS) ===== -->
-<div id="company-pages-container"></div>
+      <!-- ============================================================ -->
+      <!-- PART 3: 내 계열사 분석 (My Company) -->
+      <!-- ============================================================ -->
+      <div class="part-header" id="part3">
+        <span class="part-label">Part 3</span>
+        <div class="part-title">내 계열사 분석</div>
+        <div class="part-subtitle">My Company Analysis</div>
+        <div class="part-divider"></div>
+      </div>
 
-</div><!-- /content-area -->
-</div><!-- /main -->
+      <div class="section" id="sec-company-selector">
+        <div class="section-card">
+          <div class="section-title" style="text-align:center">내 계열사를 선택하세요</div>
+          <div class="section-subtitle" style="text-align:center;margin-top:-8px">계열사를 선택하면 그룹 전체 대비 상세 분석 결과를 확인할 수
+            있습니다</div>
 
-<script>
-// ===== PASSWORD AUTH =====
-function handleAuth(e) {
-  if (e) e.preventDefault();
-  document.getElementById('auth-gate').classList.add('hidden');
-  initReport();
-  return false;
-}
+          <!-- Mobile dropdown -->
+          <div class="mobile-company-select">
+            <select id="mobile-company-dropdown" onchange="selectCompanyFromDropdown(this.value)">
+              <option value="">-- 계열사 선택 --</option>
+              <option value="lgcns">LG CNS (2.54)</option>
+              <option value="lguplus">LG유플러스 (2.36)</option>
+              <option value="lginnotek">LG이노텍 (2.29)</option>
+              <option value="lge">LG전자 (2.21)</option>
+              <option value="lges">LG에너지솔루션 (2.16)</option>
+              <option value="julg">(주)LG (2.01)</option>
+              <option value="lghnh">LG생활건강 (1.90)</option>
+              <option value="lgd">LG디스플레이 (1.86)</option>
+            </select>
+          </div>
 
-// ===== COMPANY DATA =====
-var GROUP_AVG = {"mean": 2.194, "sd": 0.591, "items": {"q5": 3.097, "q6": 2.192, "q7": 2.127, "q8": 2.253, "q9": 1.701, "q10": 1.986, "q11": 1.959, "q12": 2.234}, "factor1": 2.226, "factor2": 2.097, "grades": {"E": 20.2, "D": 34.1, "C": 26.8, "B": 16.0, "A": 2.9}, "q13": {"trend": 22.2, "practical": 49.8, "biz": 28.1}};
+          <!-- Desktop grid -->
+          <div class="company-selector">
+            <div class="company-grid">
+              <div class="company-btn" onclick="selectCompany('lgcns')" id="btn-lgcns">
+                <div class="company-btn-name">LG CNS</div>
+                <div class="company-btn-score">2.54점 | 1위</div>
+              </div>
+              <div class="company-btn" onclick="selectCompany('lguplus')" id="btn-lguplus">
+                <div class="company-btn-name">LG유플러스</div>
+                <div class="company-btn-score">2.36점 | 2위</div>
+              </div>
+              <div class="company-btn" onclick="selectCompany('lginnotek')" id="btn-lginnotek">
+                <div class="company-btn-name">LG이노텍</div>
+                <div class="company-btn-score">2.29점 | 3위</div>
+              </div>
+              <div class="company-btn" onclick="selectCompany('lge')" id="btn-lge">
+                <div class="company-btn-name">LG전자</div>
+                <div class="company-btn-score">2.21점 | 4위</div>
+              </div>
+              <div class="company-btn" onclick="selectCompany('lges')" id="btn-lges">
+                <div class="company-btn-name">LG에너지솔루션</div>
+                <div class="company-btn-score">2.16점 | 5위</div>
+              </div>
+              <div class="company-btn" onclick="selectCompany('julg')" id="btn-julg">
+                <div class="company-btn-name">(주)LG</div>
+                <div class="company-btn-score">2.01점 | 6위</div>
+              </div>
+              <div class="company-btn" onclick="selectCompany('lghnh')" id="btn-lghnh">
+                <div class="company-btn-name">LG생활건강</div>
+                <div class="company-btn-score">1.90점 | 7위</div>
+              </div>
+              <div class="company-btn" onclick="selectCompany('lgd')" id="btn-lgd">
+                <div class="company-btn-name">LG디스플레이</div>
+                <div class="company-btn-score">1.86점 | 8위</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-var ITEM_LABELS = {
-  q5: 'Q5 사용빈도', q6: 'Q6 유료구독', q7: 'Q7 프롬프트', q8: 'Q8 업무적용',
-  q9: 'Q9 멀티모달', q10: 'Q10 맞춤형AI', q11: 'Q11 코딩활용', q12: 'Q12 터미널/CLI'
-};
+      <!-- ===== COMPANY PAGES (generated by JS) ===== -->
+      <div id="company-pages-container"></div>
 
-var COMPANIES = [
-  {
-    "id": "lgcns",
-    "name": "LG CNS",
-    "rank": 1,
-    "n": 40,
-    "mean": 2.538,
-    "sd": 0.564,
-    "items": {
-      "q5": 3.5,
-      "q6": 2.65,
-      "q7": 2.475,
-      "q8": 2.475,
-      "q9": 1.85,
-      "q10": 2.05,
-      "q11": 2.525,
-      "q12": 2.775
-    },
-    "grades": {
-      "E": 7.5,
-      "D": 12.5,
-      "C": 50.0,
-      "B": 22.5,
-      "A": 7.5
-    },
-    "factor1": 2.5,
-    "factor2": 2.65,
-    "q13": {
-      "AI 트렌드 이해": 5.0,
-      "실무 활용법": 42.5,
-      "비즈니스 기회 발굴": 52.5
-    },
-    "q14": [
-      {
-        "theme": "코딩/자동화",
-        "pct": 37.5
-      },
-      {
-        "theme": "업무효율화",
-        "pct": 35.0
-      },
-      {
-        "theme": "문서작성",
-        "pct": 32.5
-      },
-      {
-        "theme": "데이터분석",
-        "pct": 22.5
-      },
-      {
-        "theme": "마케팅/영업",
-        "pct": 22.5
-      }
-    ],
-    "commentary": "LG CNS은(는) 그룹 전체 평균을 크게 상회하는 높은 AI 역량을 보유입니다. 프로그래밍/코딩 경험(Q11)이(가) 상대적 강점이며, GPTs/Gems 활용 경험(Q10)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '코딩/자동화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q11 프로그래밍/코딩 경험(2.52)이(가) 그룹 평균(1.96)보다 +0.57점으로 상대적 강점입니다. 반면 Q10 GPTs/Gems 활용 경험(2.05)은(는) 그룹 평균(1.99)보다 +0.06점으로 개선이 필요한 영역입니다."
-  },
-  {
-    "id": "lguplus",
-    "name": "LG유플러스",
-    "rank": 2,
-    "n": 47,
-    "mean": 2.359,
-    "sd": 0.588,
-    "items": {
-      "q5": 3.255,
-      "q6": 2.596,
-      "q7": 2.191,
-      "q8": 2.404,
-      "q9": 1.936,
-      "q10": 2.043,
-      "q11": 2.043,
-      "q12": 2.404
-    },
-    "grades": {
-      "E": 10.6,
-      "D": 34.0,
-      "C": 27.7,
-      "B": 25.5,
-      "A": 2.1
-    },
-    "factor1": 2.404,
-    "factor2": 2.223,
-    "q13": {
-      "AI 트렌드 이해": 12.8,
-      "실무 활용법": 51.1,
-      "비즈니스 기회 발굴": 36.2
-    },
-    "q14": [
-      {
-        "theme": "업무효율화",
-        "pct": 34.0
-      },
-      {
-        "theme": "코딩/자동화",
-        "pct": 29.8
-      },
-      {
-        "theme": "데이터분석",
-        "pct": 19.1
-      },
-      {
-        "theme": "마케팅/영업",
-        "pct": 10.6
-      }
-    ],
-    "commentary": "LG유플러스은(는) 그룹 전체 평균과 유사하거나 약간 높은 수준의 AI 역량을 보유입니다. 유료 AI 구독 여부(Q6)이(가) 상대적 강점이며, GPTs/Gems 활용 경험(Q10)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q6 유료 AI 구독 여부(2.60)이(가) 그룹 평균(2.19)보다 +0.40점으로 상대적 강점입니다. 반면 Q10 GPTs/Gems 활용 경험(2.04)은(는) 그룹 평균(1.99)보다 +0.06점으로 개선이 필요한 영역입니다."
-  },
-  {
-    "id": "lginnotek",
-    "name": "LG이노텍",
-    "rank": 3,
-    "n": 38,
-    "mean": 2.293,
-    "sd": 0.683,
-    "items": {
-      "q5": 3.211,
-      "q6": 2.289,
-      "q7": 2.342,
-      "q8": 2.316,
-      "q9": 1.711,
-      "q10": 2.079,
-      "q11": 2.184,
-      "q12": 2.211
-    },
-    "grades": {
-      "E": 13.2,
-      "D": 36.8,
-      "C": 26.3,
-      "B": 15.8,
-      "A": 7.9
-    },
-    "factor1": 2.325,
-    "factor2": 2.197,
-    "q13": {
-      "AI 트렌드 이해": 21.1,
-      "실무 활용법": 55.3,
-      "비즈니스 기회 발굴": 23.7
-    },
-    "q14": [
-      {
-        "theme": "업무효율화",
-        "pct": 31.6
-      },
-      {
-        "theme": "문서작성",
-        "pct": 18.4
-      },
-      {
-        "theme": "데이터분석",
-        "pct": 15.8
-      },
-      {
-        "theme": "생산/품질",
-        "pct": 15.8
-      }
-    ],
-    "commentary": "LG이노텍은(는) 그룹 전체 평균과 유사하거나 약간 높은 수준의 AI 역량을 보유입니다. 프로그래밍/코딩 경험(Q11)이(가) 상대적 강점이며, 터미널/CMD 경험(Q12)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q11 프로그래밍/코딩 경험(2.18)이(가) 그룹 평균(1.96)보다 +0.22점으로 상대적 강점입니다. 반면 Q12 터미널/CMD 경험(2.21)은(는) 그룹 평균(2.23)보다 -0.02점으로 개선이 필요한 영역입니다."
-  },
-  {
-    "id": "lge",
-    "name": "LG전자",
-    "rank": 4,
-    "n": 287,
-    "mean": 2.212,
-    "sd": 0.616,
-    "items": {
-      "q5": 3.021,
-      "q6": 2.125,
-      "q7": 2.087,
-      "q8": 2.265,
-      "q9": 1.805,
-      "q10": 2.059,
-      "q11": 2.031,
-      "q12": 2.303
-    },
-    "grades": {
-      "E": 20.9,
-      "D": 32.1,
-      "C": 26.8,
-      "B": 17.1,
-      "A": 3.1
-    },
-    "factor1": 2.227,
-    "factor2": 2.167,
-    "q13": {
-      "AI 트렌드 이해": 20.6,
-      "실무 활용법": 47.4,
-      "비즈니스 기회 발굴": 32.1
-    },
-    "q14": [
-      {
-        "theme": "업무효율화",
-        "pct": 33.8
-      },
-      {
-        "theme": "코딩/자동화",
-        "pct": 22.6
-      },
-      {
-        "theme": "데이터분석",
-        "pct": 19.2
-      },
-      {
-        "theme": "문서작성",
-        "pct": 15.0
-      }
-    ],
-    "commentary": "LG전자은(는) 그룹 전체 평균과 유사하거나 약간 높은 수준의 AI 역량을 보유입니다. 멀티모달 콘텐츠 활용(Q9)이(가) 상대적 강점이며, AI 도구 사용 빈도(Q5)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q9 멀티모달 콘텐츠 활용(1.80)이(가) 그룹 평균(1.70)보다 +0.10점으로 상대적 강점입니다. 반면 Q5 AI 도구 사용 빈도(3.02)은(는) 그룹 평균(3.10)보다 -0.08점으로 개선이 필요한 영역입니다."
-  },
-  {
-    "id": "lges",
-    "name": "LG에너지솔루션",
-    "rank": 5,
-    "n": 83,
-    "mean": 2.163,
-    "sd": 0.496,
-    "items": {
-      "q5": 3.289,
-      "q6": 2.313,
-      "q7": 2.096,
-      "q8": 2.241,
-      "q9": 1.518,
-      "q10": 1.867,
-      "q11": 1.831,
-      "q12": 2.145
-    },
-    "grades": {
-      "E": 18.1,
-      "D": 41.0,
-      "C": 26.5,
-      "B": 13.3,
-      "A": 1.2
-    },
-    "factor1": 2.221,
-    "factor2": 1.988,
-    "q13": {
-      "AI 트렌드 이해": 28.9,
-      "실무 활용법": 53.0,
-      "비즈니스 기회 발굴": 18.1
-    },
-    "q14": [
-      {
-        "theme": "업무효율화",
-        "pct": 36.1
-      },
-      {
-        "theme": "데이터분석",
-        "pct": 31.3
-      },
-      {
-        "theme": "코딩/자동화",
-        "pct": 25.3
-      },
-      {
-        "theme": "연구개발",
-        "pct": 16.9
-      }
-    ],
-    "commentary": "LG에너지솔루션은(는) 그룹 전체 평균보다 약간 낮은 수준이나, 성장 잠재력이 높은 상태입니다. AI 도구 사용 빈도(Q5)이(가) 상대적 강점이며, 멀티모달 콘텐츠 활용(Q9)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q5 AI 도구 사용 빈도(3.29)이(가) 그룹 평균(3.10)보다 +0.19점으로 상대적 강점입니다. 반면 Q9 멀티모달 콘텐츠 활용(1.52)은(는) 그룹 평균(1.70)보다 -0.18점으로 개선이 필요한 영역입니다."
-  },
-  {
-    "id": "julg",
-    "name": "(주)LG",
-    "rank": 6,
-    "n": 19,
-    "mean": 2.013,
-    "sd": 0.439,
-    "items": {
-      "q5": 3.316,
-      "q6": 1.789,
-      "q7": 2.105,
-      "q8": 2.158,
-      "q9": 1.632,
-      "q10": 1.684,
-      "q11": 1.737,
-      "q12": 1.684
-    },
-    "grades": {
-      "E": 21.1,
-      "D": 47.4,
-      "C": 21.1,
-      "B": 10.5,
-      "A": 0.0
-    },
-    "factor1": 2.114,
-    "factor2": 1.711,
-    "q13": {
-      "AI 트렌드 이해": 26.3,
-      "실무 활용법": 57.9,
-      "비즈니스 기회 발굴": 15.8
-    },
-    "q14": [
-      {
-        "theme": "경영전략",
-        "pct": 21.1
-      },
-      {
-        "theme": "업무효율화",
-        "pct": 21.1
-      },
-      {
-        "theme": "데이터분석",
-        "pct": 21.1
-      },
-      {
-        "theme": "문서작성",
-        "pct": 15.8
-      }
-    ],
-    "commentary": "(주)LG은(는) 그룹 전체 평균보다 약간 낮은 수준이나, 성장 잠재력이 높은 상태입니다. AI 도구 사용 빈도(Q5)이(가) 상대적 강점이며, 터미널/CMD 경험(Q12)이(가) 개선 기회 영역입니다. 초급+입문 비율이 68%로 기초 중심의 단계적 접근이 효과적입니다. AI 활용 관심 분야로 '경영전략'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q5 AI 도구 사용 빈도(3.32)이(가) 그룹 평균(3.10)보다 +0.22점으로 상대적 강점입니다. 반면 Q12 터미널/CMD 경험(1.68)은(는) 그룹 평균(2.23)보다 -0.55점으로 개선이 필요한 영역입니다."
-  },
-  {
-    "id": "lghnh",
-    "name": "LG생활건강",
-    "rank": 7,
-    "n": 30,
-    "mean": 1.9,
-    "sd": 0.414,
-    "items": {
-      "q5": 2.767,
-      "q6": 2.267,
-      "q7": 2.0,
-      "q8": 2.067,
-      "q9": 1.333,
-      "q10": 1.667,
-      "q11": 1.5,
-      "q12": 1.6
-    },
-    "grades": {
-      "E": 26.7,
-      "D": 46.7,
-      "C": 26.7,
-      "B": 0.0,
-      "A": 0.0
-    },
-    "factor1": 2.017,
-    "factor2": 1.55,
-    "q13": {
-      "AI 트렌드 이해": 36.7,
-      "실무 활용법": 53.3,
-      "비즈니스 기회 발굴": 10.0
-    },
-    "q14": [
-      {
-        "theme": "데이터분석",
-        "pct": 40.0
-      },
-      {
-        "theme": "업무효율화",
-        "pct": 16.7
-      },
-      {
-        "theme": "코딩/자동화",
-        "pct": 10.0
-      },
-      {
-        "theme": "연구개발",
-        "pct": 10.0
-      }
-    ],
-    "commentary": "LG생활건강은(는) 그룹 전체 평균보다 낮은 수준으로, 기초부터 체계적 역량 강화가 필요한 상태입니다. 유료 AI 구독 여부(Q6)이(가) 상대적 강점이며, 터미널/CMD 경험(Q12)이(가) 개선 기회 영역입니다. 초급+입문 비율이 73%로 기초 중심의 단계적 접근이 효과적입니다. AI 활용 관심 분야로 '데이터분석'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q6 유료 AI 구독 여부(2.27)이(가) 그룹 평균(2.19)보다 +0.08점으로 상대적 강점입니다. 반면 Q12 터미널/CMD 경험(1.60)은(는) 그룹 평균(2.23)보다 -0.63점으로 개선이 필요한 영역입니다."
-  },
-  {
-    "id": "lgd",
-    "name": "LG디스플레이",
-    "rank": 8,
-    "n": 70,
-    "mean": 1.861,
-    "sd": 0.445,
-    "items": {
-      "q5": 2.714,
-      "q6": 1.7,
-      "q7": 1.857,
-      "q8": 1.9,
-      "q9": 1.329,
-      "q10": 1.771,
-      "q11": 1.586,
-      "q12": 2.029
-    },
-    "grades": {
-      "E": 38.6,
-      "D": 41.4,
-      "C": 11.4,
-      "B": 8.6,
-      "A": 0.0
-    },
-    "factor1": 1.879,
-    "factor2": 1.807,
-    "q13": {
-      "AI 트렌드 이해": 35.7,
-      "실무 활용법": 50.0,
-      "비즈니스 기회 발굴": 14.3
-    },
-    "q14": [
-      {
-        "theme": "업무효율화",
-        "pct": 24.3
-      },
-      {
-        "theme": "생산/품질",
-        "pct": 18.6
-      },
-      {
-        "theme": "데이터분석",
-        "pct": 15.7
-      },
-      {
-        "theme": "연구개발",
-        "pct": 12.9
-      }
-    ],
-    "commentary": "LG디스플레이은(는) 그룹 전체 평균보다 낮은 수준으로, 기초부터 체계적 역량 강화가 필요한 상태입니다. 터미널/CMD 경험(Q12)이(가) 상대적 강점이며, 유료 AI 구독 여부(Q6)이(가) 개선 기회 영역입니다. 초급+입문 비율이 80%로 기초 중심의 단계적 접근이 효과적입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
-    "itemInsight": "Q12 터미널/CMD 경험(2.03)이(가) 그룹 평균(2.23)보다 -0.21점으로 상대적 강점입니다. 반면 Q6 유료 AI 구독 여부(1.70)은(는) 그룹 평균(2.19)보다 -0.49점으로 개선이 필요한 영역입니다."
-  }
-];
+    </div><!-- /content-area -->
+  </div><!-- /main -->
 
-
-// ===== BUILD COMPANY GRADE STACKED BARS =====
-function buildCompanyGradeStacked() {
-  var container = document.getElementById('company-grade-stacked');
-  if (!container) return;
-  var gradeColors = ['var(--grade-adv)', 'var(--grade-upper)', 'var(--grade-inter)', 'var(--grade-basic)', 'var(--grade-entry)'];
-  var gradeKeys = ['A', 'B', 'C', 'D', 'E'];
-  // Company order by mean (highest first) - already sorted
-  COMPANIES.forEach(function(c) {
-    var row = document.createElement('div');
-    row.className = 'stacked-row';
-    row.innerHTML = '<div class="stacked-row-label">' + c.name + '</div>';
-    var bar = document.createElement('div');
-    bar.className = 'stacked-bar-wrap';
-    gradeKeys.forEach(function(k, i) {
-      var pct = c.grades[k];
-      if (pct > 0) {
-        var seg = document.createElement('div');
-        seg.style.width = pct + '%';
-        seg.style.background = gradeColors[i];
-        seg.textContent = pct >= 8 ? Math.round(pct) + '%' : '';
-        seg.title = ['고급(A)','중상급(B)','중급(C)','초급(D)','입문(E)'][i] + ' ' + pct.toFixed(1) + '%';
-        bar.appendChild(seg);
-      }
-    });
-    row.appendChild(bar);
-    var meanSpan = document.createElement('div');
-    meanSpan.className = 'stacked-row-mean';
-    meanSpan.textContent = 'M=' + c.mean.toFixed(2);
-    row.appendChild(meanSpan);
-    container.appendChild(row);
-  });
-
-  // Group average reference bar
-  var gRow = document.createElement('div');
-  gRow.className = 'stacked-row is-group';
-  gRow.innerHTML = '<div class="stacked-row-label">그룹 전체</div>';
-  var gBar = document.createElement('div');
-  gBar.className = 'stacked-bar-wrap';
-  gradeKeys.forEach(function(k, i) {
-    var pct = GROUP_AVG.grades[k];
-    if (pct > 0) {
-      var seg = document.createElement('div');
-      seg.style.width = pct + '%';
-      seg.style.background = gradeColors[i];
-      seg.textContent = pct >= 8 ? Math.round(pct) + '%' : '';
-      gBar.appendChild(seg);
+  <script>
+    // ===== PASSWORD AUTH =====
+    function handleAuth(e) {
+      if (e) e.preventDefault();
+      document.getElementById('auth-gate').classList.add('hidden');
+      initReport();
+      return false;
     }
-  });
-  gRow.appendChild(gBar);
-  var gMean = document.createElement('div');
-  gMean.className = 'stacked-row-mean';
-  gMean.textContent = 'M=' + GROUP_AVG.mean.toFixed(2);
-  gRow.appendChild(gMean);
-  container.appendChild(gRow);
-}
 
-// ===== INIT =====
-function initReport() {
-  buildHeatmap();
-  buildScatterPlot();
-  buildCompanyGradeStacked();
-  buildCompanyPages();
-  initScrollSpy();
-  initScrollProgress();
-  // Check URL hash
-  var hash = window.location.hash.replace('#company-','');
-  if (hash && document.getElementById('company-' + hash)) {
-    setTimeout(function(){ selectCompany(hash); }, 300);
-  }
-}
+    // ===== COMPANY DATA =====
+    var GROUP_AVG = { "mean": 2.194, "sd": 0.591, "items": { "q5": 3.097, "q6": 2.192, "q7": 2.127, "q8": 2.253, "q9": 1.701, "q10": 1.986, "q11": 1.959, "q12": 2.234 }, "factor1": 2.226, "factor2": 2.097, "grades": { "E": 20.2, "D": 34.1, "C": 26.8, "B": 16.0, "A": 2.9 }, "q13": { "trend": 22.2, "practical": 49.8, "biz": 28.1 } };
 
-// ===== HEATMAP =====
-function buildHeatmap() {
-  var tbody = document.getElementById('heatmap-body');
-  var items = ['q5','q6','q7','q8','q9','q10','q11','q12'];
-  var allVals = [];
-  COMPANIES.forEach(function(c){ items.forEach(function(k){ allVals.push(c.items[k]); }); });
-  var minV = Math.min.apply(null, allVals);
-  var maxV = Math.max.apply(null, allVals);
+    var ITEM_LABELS = {
+      q5: 'Q5 사용빈도', q6: 'Q6 유료구독', q7: 'Q7 프롬프트', q8: 'Q8 업무적용',
+      q9: 'Q9 멀티모달', q10: 'Q10 맞춤형AI', q11: 'Q11 코딩활용', q12: 'Q12 터미널/CLI'
+    };
 
-  COMPANIES.forEach(function(c) {
-    var tr = document.createElement('tr');
-    var tdName = document.createElement('td');
-    tdName.className = 'company-name';
-    tdName.textContent = c.name;
-    tr.appendChild(tdName);
-    items.forEach(function(k) {
-      var td = document.createElement('td');
-      var val = c.items[k];
-      var ratio = (val - minV) / (maxV - minV);
-      td.style.background = 'rgba(' + (ratio > 0.7 ? '165,0,52,' + (0.15 + ratio*0.4) : '59,130,246,' + (0.05 + ratio*0.25)) + ')';
-      td.style.fontWeight = ratio > 0.6 ? '700' : '500';
-      td.style.color = ratio > 0.7 ? 'var(--brand)' : 'var(--text-body)';
-      td.textContent = val.toFixed(2);
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
-  });
-  // Group average row
-  var trAvg = document.createElement('tr');
-  trAvg.style.background = 'var(--bg-offwhite)';
-  trAvg.style.fontWeight = '600';
-  var tdAvgName = document.createElement('td');
-  tdAvgName.className = 'company-name';
-  tdAvgName.textContent = '그룹 전체';
-  tdAvgName.style.color = 'var(--brand)';
-  trAvg.appendChild(tdAvgName);
-  var gItems = ['q5','q6','q7','q8','q9','q10','q11','q12'];
-  gItems.forEach(function(k) {
-    var td = document.createElement('td');
-    td.textContent = GROUP_AVG.items[k].toFixed(2);
-    td.style.color = 'var(--brand)';
-    td.style.fontWeight = '700';
-    trAvg.appendChild(td);
-  });
-  tbody.appendChild(trAvg);
-}
-
-// ===== SCATTER PLOT =====
-function buildScatterPlot() {
-  var container = document.getElementById('scatter-plot');
-  var padding = 50;
-  var w = container.offsetWidth || 800;
-  var h = 320;
-  // Find range
-  var f1vals = COMPANIES.map(function(c){ return c.factor1; });
-  var f2vals = COMPANIES.map(function(c){ return c.factor2; });
-  var f1min = Math.min.apply(null, f1vals) - 0.1;
-  var f1max = Math.max.apply(null, f1vals) + 0.1;
-  var f2min = Math.min.apply(null, f2vals) - 0.1;
-  var f2max = Math.max.apply(null, f2vals) + 0.1;
-  // Mean lines
-  var meanX = ((GROUP_AVG.factor1 - f1min) / (f1max - f1min)) * (w - padding*2) + padding;
-  var meanY = h - (((GROUP_AVG.factor2 - f2min) / (f2max - f2min)) * (h - padding*2) + padding);
-  var lineH = document.createElement('div');
-  lineH.className = 'scatter-mean-line';
-  lineH.style.cssText = 'left:'+padding+'px;right:'+padding+'px;top:'+meanY+'px;height:0';
-  container.appendChild(lineH);
-  var lineV = document.createElement('div');
-  lineV.className = 'scatter-mean-line';
-  lineV.style.cssText = 'top:'+padding+'px;bottom:'+padding+'px;left:'+meanX+'px;width:0';
-  container.appendChild(lineV);
-
-  COMPANIES.forEach(function(c) {
-    var x = ((c.factor1 - f1min) / (f1max - f1min)) * (w - padding*2) + padding;
-    var y = h - (((c.factor2 - f2min) / (f2max - f2min)) * (h - padding*2) + padding);
-    var dot = document.createElement('div');
-    dot.className = 'scatter-dot';
-    var size = Math.max(8, Math.min(18, c.n / 6));
-    dot.style.cssText = 'left:'+x+'px;top:'+y+'px;width:'+size+'px;height:'+size+'px';
-    var label = document.createElement('div');
-    label.className = 'scatter-label';
-    label.textContent = c.name + ' (' + c.mean.toFixed(2) + ')';
-    dot.appendChild(label);
-    // Always show labels for top/bottom
-    if (c.rank <= 2 || c.rank >= COMPANIES.length - 1) label.style.opacity = '1';
-    container.appendChild(dot);
-  });
-}
-
-// ===== BUILD COMPANY PAGES =====
-function buildCompanyPages() {
-  var container = document.getElementById('company-pages-container');
-  var totalCompanies = COMPANIES.length;
-
-  COMPANIES.forEach(function(c) {
-    var diff = c.mean - GROUP_AVG.mean;
-    var diffSign = diff >= 0 ? '+' : '';
-    var diffClass = diff >= 0 ? 'pos' : 'neg';
-    var rankClass = c.rank === 1 ? 'r1' : c.rank === 2 ? 'r2' : c.rank === 3 ? 'r3' : 'rn';
-
-    var html = '<div class="company-page" id="company-' + c.id + '">';
-
-    // Hero
-    html += '<div class="company-hero">';
-    html += '<div class="company-hero-rank ' + rankClass + '">' + c.rank + '</div>';
-    html += '<div class="company-hero-name">' + c.name + '</div>';
-    html += '<div class="company-hero-sub">응답자 ' + c.n + '명 | ' + totalCompanies + '개 계열사 중 ' + c.rank + '위</div>';
-    html += '<div class="company-hero-score">';
-    html += '<div class="company-hero-score-val">' + c.mean.toFixed(2) + '</div>';
-    html += '<div class="company-hero-score-diff ' + diffClass + '">' + diffSign + diff.toFixed(2) + ' (그룹 대비)</div>';
-    html += '</div></div>';
-
-    // 1. Score card
-    html += '<div class="company-section">';
-    html += '<div class="company-section-title">AI Readiness 점수</div>';
-    html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">';
-    html += '<div class="metric-card' + (diff >= 0 ? ' accent' : '') + '"><div class="metric-value">' + c.mean.toFixed(2) + '</div><div class="metric-label">우리 회사</div></div>';
-    html += '<div class="metric-card"><div class="metric-value">' + GROUP_AVG.mean.toFixed(2) + '</div><div class="metric-label">그룹 전체</div></div>';
-    html += '<div class="metric-card"><div class="metric-value"><span class="diff-chip ' + (diff >= 0 ? 'positive' : 'negative') + '">' + diffSign + diff.toFixed(2) + '</span></div><div class="metric-label">차이</div></div>';
-    html += '</div></div>';
-
-    // 2. Grade distribution comparison
-    html += '<div class="company-section">';
-    html += '<div class="company-section-title">등급 분포 비교</div>';
-    html += '<div class="dual-bar-legend"><span><span class="dot" style="background:var(--brand)"></span> ' + c.name + '</span><span><span class="dot" style="background:#B0ACA6"></span> 그룹 전체</span></div>';
-    var gradeNames = ['입문(E)', '초급(D)', '중급(C)', '중상급(B)', '고급(A)'];
-    var gradeKeys = ['E', 'D', 'C', 'B', 'A'];
-    var gradeColors = ['var(--grade-entry)', 'var(--grade-basic)', 'var(--grade-inter)', 'var(--grade-upper)', 'var(--grade-adv)'];
-    gradeKeys.forEach(function(k, i) {
-      var cv = c.grades[k];
-      var gv = GROUP_AVG.grades[k];
-      html += '<div class="dual-bar-row">';
-      html += '<div class="dual-bar-label">' + gradeNames[i] + '</div>';
-      html += '<div class="dual-bar-pair">';
-      html += '<div class="dual-bar-track"><div class="dual-bar-fill company" style="width:' + Math.max(1, cv) + '%;background:' + gradeColors[i] + '">' + (cv >= 5 ? cv.toFixed(1) + '%' : '') + '</div></div>';
-      html += '<div class="dual-bar-track"><div class="dual-bar-fill group" style="width:' + Math.max(1, gv) + '%">' + (gv >= 5 ? gv.toFixed(1) + '%' : '') + '</div></div>';
-      html += '</div></div>';
-    });
-    html += '</div>';
-
-    // 3. 8-item comparison
-    html += '<div class="company-section">';
-    html += '<div class="company-section-title">8문항 비교 차트</div>';
-    html += '<div class="dual-bar-legend"><span><span class="dot" style="background:var(--brand)"></span> ' + c.name + '</span><span><span class="dot" style="background:#B0ACA6"></span> 그룹 전체</span></div>';
-    html += '<div class="item-compare-grid">';
-    var itemKeys = ['q5','q6','q7','q8','q9','q10','q11','q12'];
-    itemKeys.forEach(function(k) {
-      var cv = c.items[k];
-      var gv = GROUP_AVG.items[k];
-      var d = cv - gv;
-      var dSign = d >= 0 ? '+' : '';
-      var dClass = d >= 0 ? 'pos' : 'neg';
-      var maxBar = 4;
-      html += '<div class="item-compare-row">';
-      html += '<div class="item-compare-label">' + ITEM_LABELS[k] + '</div>';
-      html += '<div style="display:flex;flex-direction:column;gap:2px">';
-      html += '<div class="bar-track" style="height:14px"><div class="bar-fill" style="width:' + (cv/maxBar*100) + '%;height:100%;background:' + (d >= 0 ? 'var(--brand)' : '#E8856C') + ';font-size:0.62rem">' + (cv >= 1.5 ? cv.toFixed(2) : '') + '</div></div>';
-      html += '<div class="bar-track" style="height:14px"><div class="bar-fill gray" style="width:' + (gv/maxBar*100) + '%;height:100%;font-size:0.62rem">' + (gv >= 1.5 ? gv.toFixed(2) : '') + '</div></div>';
-      html += '</div>';
-      html += '<div class="item-compare-diff ' + dClass + '">' + dSign + d.toFixed(2) + '</div>';
-      html += '</div>';
-    });
-    html += '</div>';
-    // Item-level insight
-    if (c.itemInsight) {
-      html += '<div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">문항별 상세 해석</div>';
-      html += '<div class="tip-block">' + c.itemInsight + '</div>';
-    }
-    html += '</div>';
-
-    // 4. Factor comparison
-    html += '<div class="company-section">';
-    html += '<div class="company-section-title">요인 비교</div>';
-    html += '<div class="factor-compare">';
-    html += '<div class="factor-box"><div class="factor-box-label">Factor 1: 실무 활용</div>';
-    html += '<div class="factor-box-value">' + c.factor1.toFixed(3) + '</div>';
-    var f1d = c.factor1 - GROUP_AVG.factor1;
-    html += '<div class="factor-box-group">그룹 ' + GROUP_AVG.factor1.toFixed(3) + ' | <span style="color:' + (f1d >= 0 ? 'var(--green)' : 'var(--red)') + ';font-weight:600">' + (f1d >= 0 ? '+' : '') + f1d.toFixed(3) + '</span></div></div>';
-    html += '<div class="factor-box"><div class="factor-box-label">Factor 2: 기술 역량</div>';
-    html += '<div class="factor-box-value">' + c.factor2.toFixed(3) + '</div>';
-    var f2d = c.factor2 - GROUP_AVG.factor2;
-    html += '<div class="factor-box-group">그룹 ' + GROUP_AVG.factor2.toFixed(3) + ' | <span style="color:' + (f2d >= 0 ? 'var(--green)' : 'var(--red)') + ';font-weight:600">' + (f2d >= 0 ? '+' : '') + f2d.toFixed(3) + '</span></div></div>';
-    html += '</div></div>';
-
-    // 5. Q13 Learning preference
-    html += '<div class="company-section">';
-    html += '<div class="company-section-title">학습 선호도 (Q13)</div>';
-    html += '<div class="dual-bar-legend"><span><span class="dot" style="background:var(--brand)"></span> ' + c.name + '</span><span><span class="dot" style="background:#B0ACA6"></span> 그룹 전체</span></div>';
-    var q13Items = [
-      { label: '실무 활용법', ck: 'practical' },
-      { label: '비즈니스 기회 발굴', ck: 'biz' },
-      { label: 'AI 트렌드 이해', ck: 'trend' }
+    var COMPANIES = [
+      {
+        "id": "lgcns",
+        "name": "LG CNS",
+        "rank": 1,
+        "n": 40,
+        "mean": 2.538,
+        "sd": 0.564,
+        "items": {
+          "q5": 3.5,
+          "q6": 2.65,
+          "q7": 2.475,
+          "q8": 2.475,
+          "q9": 1.85,
+          "q10": 2.05,
+          "q11": 2.525,
+          "q12": 2.775
+        },
+        "grades": {
+          "E": 7.5,
+          "D": 12.5,
+          "C": 50.0,
+          "B": 22.5,
+          "A": 7.5
+        },
+        "factor1": 2.5,
+        "factor2": 2.65,
+        "q13": {
+          "AI 트렌드 이해": 5.0,
+          "실무 활용법": 42.5,
+          "비즈니스 기회 발굴": 52.5
+        },
+        "q14": [
+          {
+            "theme": "코딩/자동화",
+            "pct": 37.5
+          },
+          {
+            "theme": "업무효율화",
+            "pct": 35.0
+          },
+          {
+            "theme": "문서작성",
+            "pct": 32.5
+          },
+          {
+            "theme": "데이터분석",
+            "pct": 22.5
+          },
+          {
+            "theme": "마케팅/영업",
+            "pct": 22.5
+          }
+        ],
+        "commentary": "LG CNS은(는) 그룹 전체 평균을 크게 상회하는 높은 AI 역량을 보유입니다. 프로그래밍/코딩 경험(Q11)이(가) 상대적 강점이며, GPTs/Gems 활용 경험(Q10)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '코딩/자동화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q11 프로그래밍/코딩 경험(2.52)이(가) 그룹 평균(1.96)보다 +0.57점으로 상대적 강점입니다. 반면 Q10 GPTs/Gems 활용 경험(2.05)은(는) 그룹 평균(1.99)보다 +0.06점으로 개선이 필요한 영역입니다."
+      },
+      {
+        "id": "lguplus",
+        "name": "LG유플러스",
+        "rank": 2,
+        "n": 47,
+        "mean": 2.359,
+        "sd": 0.588,
+        "items": {
+          "q5": 3.255,
+          "q6": 2.596,
+          "q7": 2.191,
+          "q8": 2.404,
+          "q9": 1.936,
+          "q10": 2.043,
+          "q11": 2.043,
+          "q12": 2.404
+        },
+        "grades": {
+          "E": 10.6,
+          "D": 34.0,
+          "C": 27.7,
+          "B": 25.5,
+          "A": 2.1
+        },
+        "factor1": 2.404,
+        "factor2": 2.223,
+        "q13": {
+          "AI 트렌드 이해": 12.8,
+          "실무 활용법": 51.1,
+          "비즈니스 기회 발굴": 36.2
+        },
+        "q14": [
+          {
+            "theme": "업무효율화",
+            "pct": 34.0
+          },
+          {
+            "theme": "코딩/자동화",
+            "pct": 29.8
+          },
+          {
+            "theme": "데이터분석",
+            "pct": 19.1
+          },
+          {
+            "theme": "마케팅/영업",
+            "pct": 10.6
+          }
+        ],
+        "commentary": "LG유플러스은(는) 그룹 전체 평균과 유사하거나 약간 높은 수준의 AI 역량을 보유입니다. 유료 AI 구독 여부(Q6)이(가) 상대적 강점이며, GPTs/Gems 활용 경험(Q10)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q6 유료 AI 구독 여부(2.60)이(가) 그룹 평균(2.19)보다 +0.40점으로 상대적 강점입니다. 반면 Q10 GPTs/Gems 활용 경험(2.04)은(는) 그룹 평균(1.99)보다 +0.06점으로 개선이 필요한 영역입니다."
+      },
+      {
+        "id": "lginnotek",
+        "name": "LG이노텍",
+        "rank": 3,
+        "n": 38,
+        "mean": 2.293,
+        "sd": 0.683,
+        "items": {
+          "q5": 3.211,
+          "q6": 2.289,
+          "q7": 2.342,
+          "q8": 2.316,
+          "q9": 1.711,
+          "q10": 2.079,
+          "q11": 2.184,
+          "q12": 2.211
+        },
+        "grades": {
+          "E": 13.2,
+          "D": 36.8,
+          "C": 26.3,
+          "B": 15.8,
+          "A": 7.9
+        },
+        "factor1": 2.325,
+        "factor2": 2.197,
+        "q13": {
+          "AI 트렌드 이해": 21.1,
+          "실무 활용법": 55.3,
+          "비즈니스 기회 발굴": 23.7
+        },
+        "q14": [
+          {
+            "theme": "업무효율화",
+            "pct": 31.6
+          },
+          {
+            "theme": "문서작성",
+            "pct": 18.4
+          },
+          {
+            "theme": "데이터분석",
+            "pct": 15.8
+          },
+          {
+            "theme": "생산/품질",
+            "pct": 15.8
+          }
+        ],
+        "commentary": "LG이노텍은(는) 그룹 전체 평균과 유사하거나 약간 높은 수준의 AI 역량을 보유입니다. 프로그래밍/코딩 경험(Q11)이(가) 상대적 강점이며, 터미널/CMD 경험(Q12)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q11 프로그래밍/코딩 경험(2.18)이(가) 그룹 평균(1.96)보다 +0.22점으로 상대적 강점입니다. 반면 Q12 터미널/CMD 경험(2.21)은(는) 그룹 평균(2.23)보다 -0.02점으로 개선이 필요한 영역입니다."
+      },
+      {
+        "id": "lge",
+        "name": "LG전자",
+        "rank": 4,
+        "n": 287,
+        "mean": 2.212,
+        "sd": 0.616,
+        "items": {
+          "q5": 3.021,
+          "q6": 2.125,
+          "q7": 2.087,
+          "q8": 2.265,
+          "q9": 1.805,
+          "q10": 2.059,
+          "q11": 2.031,
+          "q12": 2.303
+        },
+        "grades": {
+          "E": 20.9,
+          "D": 32.1,
+          "C": 26.8,
+          "B": 17.1,
+          "A": 3.1
+        },
+        "factor1": 2.227,
+        "factor2": 2.167,
+        "q13": {
+          "AI 트렌드 이해": 20.6,
+          "실무 활용법": 47.4,
+          "비즈니스 기회 발굴": 32.1
+        },
+        "q14": [
+          {
+            "theme": "업무효율화",
+            "pct": 33.8
+          },
+          {
+            "theme": "코딩/자동화",
+            "pct": 22.6
+          },
+          {
+            "theme": "데이터분석",
+            "pct": 19.2
+          },
+          {
+            "theme": "문서작성",
+            "pct": 15.0
+          }
+        ],
+        "commentary": "LG전자은(는) 그룹 전체 평균과 유사하거나 약간 높은 수준의 AI 역량을 보유입니다. 멀티모달 콘텐츠 활용(Q9)이(가) 상대적 강점이며, AI 도구 사용 빈도(Q5)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q9 멀티모달 콘텐츠 활용(1.80)이(가) 그룹 평균(1.70)보다 +0.10점으로 상대적 강점입니다. 반면 Q5 AI 도구 사용 빈도(3.02)은(는) 그룹 평균(3.10)보다 -0.08점으로 개선이 필요한 영역입니다."
+      },
+      {
+        "id": "lges",
+        "name": "LG에너지솔루션",
+        "rank": 5,
+        "n": 83,
+        "mean": 2.163,
+        "sd": 0.496,
+        "items": {
+          "q5": 3.289,
+          "q6": 2.313,
+          "q7": 2.096,
+          "q8": 2.241,
+          "q9": 1.518,
+          "q10": 1.867,
+          "q11": 1.831,
+          "q12": 2.145
+        },
+        "grades": {
+          "E": 18.1,
+          "D": 41.0,
+          "C": 26.5,
+          "B": 13.3,
+          "A": 1.2
+        },
+        "factor1": 2.221,
+        "factor2": 1.988,
+        "q13": {
+          "AI 트렌드 이해": 28.9,
+          "실무 활용법": 53.0,
+          "비즈니스 기회 발굴": 18.1
+        },
+        "q14": [
+          {
+            "theme": "업무효율화",
+            "pct": 36.1
+          },
+          {
+            "theme": "데이터분석",
+            "pct": 31.3
+          },
+          {
+            "theme": "코딩/자동화",
+            "pct": 25.3
+          },
+          {
+            "theme": "연구개발",
+            "pct": 16.9
+          }
+        ],
+        "commentary": "LG에너지솔루션은(는) 그룹 전체 평균보다 약간 낮은 수준이나, 성장 잠재력이 높은 상태입니다. AI 도구 사용 빈도(Q5)이(가) 상대적 강점이며, 멀티모달 콘텐츠 활용(Q9)이(가) 개선 기회 영역입니다. 다양한 수준의 학습자가 혼재하여, 수준별 분반 구성이 학습 효과를 높입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q5 AI 도구 사용 빈도(3.29)이(가) 그룹 평균(3.10)보다 +0.19점으로 상대적 강점입니다. 반면 Q9 멀티모달 콘텐츠 활용(1.52)은(는) 그룹 평균(1.70)보다 -0.18점으로 개선이 필요한 영역입니다."
+      },
+      {
+        "id": "julg",
+        "name": "(주)LG",
+        "rank": 6,
+        "n": 19,
+        "mean": 2.013,
+        "sd": 0.439,
+        "items": {
+          "q5": 3.316,
+          "q6": 1.789,
+          "q7": 2.105,
+          "q8": 2.158,
+          "q9": 1.632,
+          "q10": 1.684,
+          "q11": 1.737,
+          "q12": 1.684
+        },
+        "grades": {
+          "E": 21.1,
+          "D": 47.4,
+          "C": 21.1,
+          "B": 10.5,
+          "A": 0.0
+        },
+        "factor1": 2.114,
+        "factor2": 1.711,
+        "q13": {
+          "AI 트렌드 이해": 26.3,
+          "실무 활용법": 57.9,
+          "비즈니스 기회 발굴": 15.8
+        },
+        "q14": [
+          {
+            "theme": "경영전략",
+            "pct": 21.1
+          },
+          {
+            "theme": "업무효율화",
+            "pct": 21.1
+          },
+          {
+            "theme": "데이터분석",
+            "pct": 21.1
+          },
+          {
+            "theme": "문서작성",
+            "pct": 15.8
+          }
+        ],
+        "commentary": "(주)LG은(는) 그룹 전체 평균보다 약간 낮은 수준이나, 성장 잠재력이 높은 상태입니다. AI 도구 사용 빈도(Q5)이(가) 상대적 강점이며, 터미널/CMD 경험(Q12)이(가) 개선 기회 영역입니다. 초급+입문 비율이 68%로 기초 중심의 단계적 접근이 효과적입니다. AI 활용 관심 분야로 '경영전략'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q5 AI 도구 사용 빈도(3.32)이(가) 그룹 평균(3.10)보다 +0.22점으로 상대적 강점입니다. 반면 Q12 터미널/CMD 경험(1.68)은(는) 그룹 평균(2.23)보다 -0.55점으로 개선이 필요한 영역입니다."
+      },
+      {
+        "id": "lghnh",
+        "name": "LG생활건강",
+        "rank": 7,
+        "n": 30,
+        "mean": 1.9,
+        "sd": 0.414,
+        "items": {
+          "q5": 2.767,
+          "q6": 2.267,
+          "q7": 2.0,
+          "q8": 2.067,
+          "q9": 1.333,
+          "q10": 1.667,
+          "q11": 1.5,
+          "q12": 1.6
+        },
+        "grades": {
+          "E": 26.7,
+          "D": 46.7,
+          "C": 26.7,
+          "B": 0.0,
+          "A": 0.0
+        },
+        "factor1": 2.017,
+        "factor2": 1.55,
+        "q13": {
+          "AI 트렌드 이해": 36.7,
+          "실무 활용법": 53.3,
+          "비즈니스 기회 발굴": 10.0
+        },
+        "q14": [
+          {
+            "theme": "데이터분석",
+            "pct": 40.0
+          },
+          {
+            "theme": "업무효율화",
+            "pct": 16.7
+          },
+          {
+            "theme": "코딩/자동화",
+            "pct": 10.0
+          },
+          {
+            "theme": "연구개발",
+            "pct": 10.0
+          }
+        ],
+        "commentary": "LG생활건강은(는) 그룹 전체 평균보다 낮은 수준으로, 기초부터 체계적 역량 강화가 필요한 상태입니다. 유료 AI 구독 여부(Q6)이(가) 상대적 강점이며, 터미널/CMD 경험(Q12)이(가) 개선 기회 영역입니다. 초급+입문 비율이 73%로 기초 중심의 단계적 접근이 효과적입니다. AI 활용 관심 분야로 '데이터분석'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q6 유료 AI 구독 여부(2.27)이(가) 그룹 평균(2.19)보다 +0.08점으로 상대적 강점입니다. 반면 Q12 터미널/CMD 경험(1.60)은(는) 그룹 평균(2.23)보다 -0.63점으로 개선이 필요한 영역입니다."
+      },
+      {
+        "id": "lgd",
+        "name": "LG디스플레이",
+        "rank": 8,
+        "n": 70,
+        "mean": 1.861,
+        "sd": 0.445,
+        "items": {
+          "q5": 2.714,
+          "q6": 1.7,
+          "q7": 1.857,
+          "q8": 1.9,
+          "q9": 1.329,
+          "q10": 1.771,
+          "q11": 1.586,
+          "q12": 2.029
+        },
+        "grades": {
+          "E": 38.6,
+          "D": 41.4,
+          "C": 11.4,
+          "B": 8.6,
+          "A": 0.0
+        },
+        "factor1": 1.879,
+        "factor2": 1.807,
+        "q13": {
+          "AI 트렌드 이해": 35.7,
+          "실무 활용법": 50.0,
+          "비즈니스 기회 발굴": 14.3
+        },
+        "q14": [
+          {
+            "theme": "업무효율화",
+            "pct": 24.3
+          },
+          {
+            "theme": "생산/품질",
+            "pct": 18.6
+          },
+          {
+            "theme": "데이터분석",
+            "pct": 15.7
+          },
+          {
+            "theme": "연구개발",
+            "pct": 12.9
+          }
+        ],
+        "commentary": "LG디스플레이은(는) 그룹 전체 평균보다 낮은 수준으로, 기초부터 체계적 역량 강화가 필요한 상태입니다. 터미널/CMD 경험(Q12)이(가) 상대적 강점이며, 유료 AI 구독 여부(Q6)이(가) 개선 기회 영역입니다. 초급+입문 비율이 80%로 기초 중심의 단계적 접근이 효과적입니다. AI 활용 관심 분야로 '업무효율화'이(가) 가장 높아, 관련 실무 사례 중심의 교육이 효과적입니다.",
+        "itemInsight": "Q12 터미널/CMD 경험(2.03)이(가) 그룹 평균(2.23)보다 -0.21점으로 상대적 강점입니다. 반면 Q6 유료 AI 구독 여부(1.70)은(는) 그룹 평균(2.19)보다 -0.49점으로 개선이 필요한 영역입니다."
+      }
     ];
-    q13Items.forEach(function(item) {
-      var cv = c.q13[item.label] || 0;
-      var gv = GROUP_AVG.q13[item.ck];
-      html += '<div class="dual-bar-row" style="margin:8px 0">';
-      html += '<div class="dual-bar-label">' + item.label + '</div>';
-      html += '<div class="dual-bar-pair">';
-      html += '<div class="dual-bar-track"><div class="dual-bar-fill company" style="width:' + Math.max(2, cv) + '%">' + (cv >= 8 ? cv.toFixed(1) + '%' : '') + '</div></div>';
-      html += '<div class="dual-bar-track"><div class="dual-bar-fill group" style="width:' + Math.max(2, gv) + '%">' + (gv >= 8 ? gv.toFixed(1) + '%' : '') + '</div></div>';
-      html += '</div></div>';
-    });
-    html += '</div>';
 
-    // 6. Q14 themes
-    html += '<div class="company-section">';
-    html += '<div class="company-section-title">AI 활용 업무 과제 (Q14)</div>';
-    html += '<div class="theme-chips">';
-    if (c.q14) {
-      c.q14.forEach(function(t, i) {
-        html += '<span class="theme-chip"><span class="chip-count">' + (i+1) + '</span> ' + t.theme + ' (' + t.pct.toFixed(1) + '%)</span>';
+
+    // ===== BUILD COMPANY GRADE STACKED BARS =====
+    function buildCompanyGradeStacked() {
+      var container = document.getElementById('company-grade-stacked');
+      if (!container) return;
+      var gradeColors = ['var(--grade-adv)', 'var(--grade-upper)', 'var(--grade-inter)', 'var(--grade-basic)', 'var(--grade-entry)'];
+      var gradeKeys = ['A', 'B', 'C', 'D', 'E'];
+      // Company order by mean (highest first) - already sorted
+      COMPANIES.forEach(function (c) {
+        var row = document.createElement('div');
+        row.className = 'stacked-row';
+        row.innerHTML = '<div class="stacked-row-label">' + c.name + '</div>';
+        var bar = document.createElement('div');
+        bar.className = 'stacked-bar-wrap';
+        gradeKeys.forEach(function (k, i) {
+          var pct = c.grades[k];
+          if (pct > 0) {
+            var seg = document.createElement('div');
+            seg.style.width = pct + '%';
+            seg.style.background = gradeColors[i];
+            seg.textContent = pct >= 8 ? Math.round(pct) + '%' : '';
+            seg.title = ['고급(A)', '중상급(B)', '중급(C)', '초급(D)', '입문(E)'][i] + ' ' + pct.toFixed(1) + '%';
+            bar.appendChild(seg);
+          }
+        });
+        row.appendChild(bar);
+        var meanSpan = document.createElement('div');
+        meanSpan.className = 'stacked-row-mean';
+        meanSpan.textContent = 'M=' + c.mean.toFixed(2);
+        row.appendChild(meanSpan);
+        container.appendChild(row);
+      });
+
+      // Group average reference bar
+      var gRow = document.createElement('div');
+      gRow.className = 'stacked-row is-group';
+      gRow.innerHTML = '<div class="stacked-row-label">그룹 전체</div>';
+      var gBar = document.createElement('div');
+      gBar.className = 'stacked-bar-wrap';
+      gradeKeys.forEach(function (k, i) {
+        var pct = GROUP_AVG.grades[k];
+        if (pct > 0) {
+          var seg = document.createElement('div');
+          seg.style.width = pct + '%';
+          seg.style.background = gradeColors[i];
+          seg.textContent = pct >= 8 ? Math.round(pct) + '%' : '';
+          gBar.appendChild(seg);
+        }
+      });
+      gRow.appendChild(gBar);
+      var gMean = document.createElement('div');
+      gMean.className = 'stacked-row-mean';
+      gMean.textContent = 'M=' + GROUP_AVG.mean.toFixed(2);
+      gRow.appendChild(gMean);
+      container.appendChild(gRow);
+    }
+
+    // ===== INIT =====
+    function initReport() {
+      buildHeatmap();
+      buildScatterPlot();
+      buildCompanyGradeStacked();
+      buildCompanyPages();
+      initScrollSpy();
+      initScrollProgress();
+      // Check URL hash
+      var hash = window.location.hash.replace('#company-', '');
+      if (hash && document.getElementById('company-' + hash)) {
+        setTimeout(function () { selectCompany(hash); }, 300);
+      }
+    }
+
+    // ===== HEATMAP =====
+    function buildHeatmap() {
+      var tbody = document.getElementById('heatmap-body');
+      var items = ['q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12'];
+      var allVals = [];
+      COMPANIES.forEach(function (c) { items.forEach(function (k) { allVals.push(c.items[k]); }); });
+      var minV = Math.min.apply(null, allVals);
+      var maxV = Math.max.apply(null, allVals);
+
+      COMPANIES.forEach(function (c) {
+        var tr = document.createElement('tr');
+        var tdName = document.createElement('td');
+        tdName.className = 'company-name';
+        tdName.textContent = c.name;
+        tr.appendChild(tdName);
+        items.forEach(function (k) {
+          var td = document.createElement('td');
+          var val = c.items[k];
+          var ratio = (val - minV) / (maxV - minV);
+          td.style.background = 'rgba(' + (ratio > 0.7 ? '165,0,52,' + (0.15 + ratio * 0.4) : '59,130,246,' + (0.05 + ratio * 0.25)) + ')';
+          td.style.fontWeight = ratio > 0.6 ? '700' : '500';
+          td.style.color = ratio > 0.7 ? 'var(--brand)' : 'var(--text-body)';
+          td.textContent = val.toFixed(2);
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      // Group average row
+      var trAvg = document.createElement('tr');
+      trAvg.style.background = 'var(--bg-offwhite)';
+      trAvg.style.fontWeight = '600';
+      var tdAvgName = document.createElement('td');
+      tdAvgName.className = 'company-name';
+      tdAvgName.textContent = '그룹 전체';
+      tdAvgName.style.color = 'var(--brand)';
+      trAvg.appendChild(tdAvgName);
+      var gItems = ['q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12'];
+      gItems.forEach(function (k) {
+        var td = document.createElement('td');
+        td.textContent = GROUP_AVG.items[k].toFixed(2);
+        td.style.color = 'var(--brand)';
+        td.style.fontWeight = '700';
+        trAvg.appendChild(td);
+      });
+      tbody.appendChild(trAvg);
+    }
+
+    // ===== SCATTER PLOT =====
+    function buildScatterPlot() {
+      var container = document.getElementById('scatter-plot');
+      var padding = 50;
+      var w = container.offsetWidth || 800;
+      var h = 320;
+      // Find range
+      var f1vals = COMPANIES.map(function (c) { return c.factor1; });
+      var f2vals = COMPANIES.map(function (c) { return c.factor2; });
+      var f1min = Math.min.apply(null, f1vals) - 0.1;
+      var f1max = Math.max.apply(null, f1vals) + 0.1;
+      var f2min = Math.min.apply(null, f2vals) - 0.1;
+      var f2max = Math.max.apply(null, f2vals) + 0.1;
+      // Mean lines
+      var meanX = ((GROUP_AVG.factor1 - f1min) / (f1max - f1min)) * (w - padding * 2) + padding;
+      var meanY = h - (((GROUP_AVG.factor2 - f2min) / (f2max - f2min)) * (h - padding * 2) + padding);
+      var lineH = document.createElement('div');
+      lineH.className = 'scatter-mean-line';
+      lineH.style.cssText = 'left:' + padding + 'px;right:' + padding + 'px;top:' + meanY + 'px;height:0';
+      container.appendChild(lineH);
+      var lineV = document.createElement('div');
+      lineV.className = 'scatter-mean-line';
+      lineV.style.cssText = 'top:' + padding + 'px;bottom:' + padding + 'px;left:' + meanX + 'px;width:0';
+      container.appendChild(lineV);
+
+      COMPANIES.forEach(function (c) {
+        var x = ((c.factor1 - f1min) / (f1max - f1min)) * (w - padding * 2) + padding;
+        var y = h - (((c.factor2 - f2min) / (f2max - f2min)) * (h - padding * 2) + padding);
+        var dot = document.createElement('div');
+        dot.className = 'scatter-dot';
+        var size = Math.max(8, Math.min(18, c.n / 6));
+        dot.style.cssText = 'left:' + x + 'px;top:' + y + 'px;width:' + size + 'px;height:' + size + 'px';
+        var label = document.createElement('div');
+        label.className = 'scatter-label';
+        label.textContent = c.name + ' (' + c.mean.toFixed(2) + ')';
+        dot.appendChild(label);
+        // Always show labels for top/bottom
+        if (c.rank <= 2 || c.rank >= COMPANIES.length - 1) label.style.opacity = '1';
+        container.appendChild(dot);
       });
     }
-    html += '</div></div>';
 
-    // 7. Commentary
-    html += '<div class="company-section">';
-    html += '<div class="company-section-title">교육 코멘터리</div>';
-    html += '<div class="tip-block">' + c.commentary + '</div>';
-    html += '</div>';
+    // ===== BUILD COMPANY PAGES =====
+    function buildCompanyPages() {
+      var container = document.getElementById('company-pages-container');
+      var totalCompanies = COMPANIES.length;
 
-    html += '</div>'; // /company-page
-    container.insertAdjacentHTML('beforeend', html);
-  });
-}
+      COMPANIES.forEach(function (c) {
+        var diff = c.mean - GROUP_AVG.mean;
+        var diffSign = diff >= 0 ? '+' : '';
+        var diffClass = diff >= 0 ? 'pos' : 'neg';
+        var rankClass = c.rank === 1 ? 'r1' : c.rank === 2 ? 'r2' : c.rank === 3 ? 'r3' : 'rn';
 
-// ===== COMPANY SELECTION =====
-var currentCompany = null;
-function selectCompany(id) {
-  currentCompany = id;
-  // Update buttons
-  document.querySelectorAll('.company-btn').forEach(function(btn) {
-    btn.classList.remove('selected');
-  });
-  var btn = document.getElementById('btn-' + id);
-  if (btn) btn.classList.add('selected');
-  // Update dropdown
-  var dd = document.getElementById('mobile-company-dropdown');
-  if (dd) dd.value = id;
-  // Show/hide pages
-  document.querySelectorAll('.company-page').forEach(function(page) {
-    page.classList.remove('visible');
-  });
-  var target = document.getElementById('company-' + id);
-  if (target) {
-    target.classList.add('visible');
-    setTimeout(function() {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  }
-  // Update URL hash
-  history.replaceState(null, null, '#company-' + id);
-  // Update sidebar active
-  document.querySelectorAll('.nav-link').forEach(function(link) {
-    link.classList.remove('active');
-    if (link.getAttribute('data-target') === 'company-' + id) link.classList.add('active');
-  });
-  // Close mobile sidebar
-  document.getElementById('sidebar').classList.remove('open');
-}
+        var html = '<div class="company-page" id="company-' + c.id + '">';
 
-function selectCompanyFromDropdown(val) {
-  if (val) selectCompany(val);
-}
+        // Hero
+        html += '<div class="company-hero">';
+        html += '<div class="company-hero-rank ' + rankClass + '">' + c.rank + '</div>';
+        html += '<div class="company-hero-name">' + c.name + '</div>';
+        html += '<div class="company-hero-sub">응답자 ' + c.n + '명 | ' + totalCompanies + '개 계열사 중 ' + c.rank + '위</div>';
+        html += '<div class="company-hero-score">';
+        html += '<div class="company-hero-score-val">' + c.mean.toFixed(2) + '</div>';
+        html += '<div class="company-hero-score-diff ' + diffClass + '">' + diffSign + diff.toFixed(2) + ' (그룹 대비)</div>';
+        html += '</div></div>';
 
-// ===== SCROLL SPY =====
-function initScrollSpy() {
-  var sections = document.querySelectorAll('[id^="sec-"], [id^="part"]');
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var id = entry.target.id;
-        document.querySelectorAll('.nav-link').forEach(function(link) {
-          link.classList.remove('active');
-          if (link.getAttribute('data-target') === id) link.classList.add('active');
+        // 1. Score card
+        html += '<div class="company-section">';
+        html += '<div class="company-section-title">AI Readiness 점수</div>';
+        html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">';
+        html += '<div class="metric-card' + (diff >= 0 ? ' accent' : '') + '"><div class="metric-value">' + c.mean.toFixed(2) + '</div><div class="metric-label">우리 회사</div></div>';
+        html += '<div class="metric-card"><div class="metric-value">' + GROUP_AVG.mean.toFixed(2) + '</div><div class="metric-label">그룹 전체</div></div>';
+        html += '<div class="metric-card"><div class="metric-value"><span class="diff-chip ' + (diff >= 0 ? 'positive' : 'negative') + '">' + diffSign + diff.toFixed(2) + '</span></div><div class="metric-label">차이</div></div>';
+        html += '</div></div>';
+
+        // 2. Grade distribution comparison
+        html += '<div class="company-section">';
+        html += '<div class="company-section-title">등급 분포 비교</div>';
+        html += '<div class="dual-bar-legend"><span><span class="dot" style="background:var(--brand)"></span> ' + c.name + '</span><span><span class="dot" style="background:#B0ACA6"></span> 그룹 전체</span></div>';
+        var gradeNames = ['입문(E)', '초급(D)', '중급(C)', '중상급(B)', '고급(A)'];
+        var gradeKeys = ['E', 'D', 'C', 'B', 'A'];
+        var gradeColors = ['var(--grade-entry)', 'var(--grade-basic)', 'var(--grade-inter)', 'var(--grade-upper)', 'var(--grade-adv)'];
+        gradeKeys.forEach(function (k, i) {
+          var cv = c.grades[k];
+          var gv = GROUP_AVG.grades[k];
+          html += '<div class="dual-bar-row">';
+          html += '<div class="dual-bar-label">' + gradeNames[i] + '</div>';
+          html += '<div class="dual-bar-pair">';
+          html += '<div class="dual-bar-track"><div class="dual-bar-fill company" style="width:' + Math.max(1, cv) + '%;background:' + gradeColors[i] + '">' + (cv >= 5 ? cv.toFixed(1) + '%' : '') + '</div></div>';
+          html += '<div class="dual-bar-track"><div class="dual-bar-fill group" style="width:' + Math.max(1, gv) + '%">' + (gv >= 5 ? gv.toFixed(1) + '%' : '') + '</div></div>';
+          html += '</div></div>';
         });
+        html += '</div>';
+
+        // 3. 8-item comparison
+        html += '<div class="company-section">';
+        html += '<div class="company-section-title">8문항 비교 차트</div>';
+        html += '<div class="dual-bar-legend"><span><span class="dot" style="background:var(--brand)"></span> ' + c.name + '</span><span><span class="dot" style="background:#B0ACA6"></span> 그룹 전체</span></div>';
+        html += '<div class="item-compare-grid">';
+        var itemKeys = ['q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12'];
+        itemKeys.forEach(function (k) {
+          var cv = c.items[k];
+          var gv = GROUP_AVG.items[k];
+          var d = cv - gv;
+          var dSign = d >= 0 ? '+' : '';
+          var dClass = d >= 0 ? 'pos' : 'neg';
+          var maxBar = 4;
+          html += '<div class="item-compare-row">';
+          html += '<div class="item-compare-label">' + ITEM_LABELS[k] + '</div>';
+          html += '<div style="display:flex;flex-direction:column;gap:2px">';
+          html += '<div class="bar-track" style="height:14px"><div class="bar-fill" style="width:' + (cv / maxBar * 100) + '%;height:100%;background:' + (d >= 0 ? 'var(--brand)' : '#E8856C') + ';font-size:0.62rem">' + (cv >= 1.5 ? cv.toFixed(2) : '') + '</div></div>';
+          html += '<div class="bar-track" style="height:14px"><div class="bar-fill gray" style="width:' + (gv / maxBar * 100) + '%;height:100%;font-size:0.62rem">' + (gv >= 1.5 ? gv.toFixed(2) : '') + '</div></div>';
+          html += '</div>';
+          html += '<div class="item-compare-diff ' + dClass + '">' + dSign + d.toFixed(2) + '</div>';
+          html += '</div>';
+        });
+        html += '</div>';
+        // Item-level insight
+        if (c.itemInsight) {
+          html += '<div style="font-size:0.78rem;font-weight:600;color:var(--text-heading);margin:16px 0 8px">문항별 상세 해석</div>';
+          html += '<div class="tip-block">' + c.itemInsight + '</div>';
+        }
+        html += '</div>';
+
+        // 4. Factor comparison
+        html += '<div class="company-section">';
+        html += '<div class="company-section-title">요인 비교</div>';
+        html += '<div class="factor-compare">';
+        html += '<div class="factor-box"><div class="factor-box-label">Factor 1: 실무 활용</div>';
+        html += '<div class="factor-box-value">' + c.factor1.toFixed(3) + '</div>';
+        var f1d = c.factor1 - GROUP_AVG.factor1;
+        html += '<div class="factor-box-group">그룹 ' + GROUP_AVG.factor1.toFixed(3) + ' | <span style="color:' + (f1d >= 0 ? 'var(--green)' : 'var(--red)') + ';font-weight:600">' + (f1d >= 0 ? '+' : '') + f1d.toFixed(3) + '</span></div></div>';
+        html += '<div class="factor-box"><div class="factor-box-label">Factor 2: 기술 역량</div>';
+        html += '<div class="factor-box-value">' + c.factor2.toFixed(3) + '</div>';
+        var f2d = c.factor2 - GROUP_AVG.factor2;
+        html += '<div class="factor-box-group">그룹 ' + GROUP_AVG.factor2.toFixed(3) + ' | <span style="color:' + (f2d >= 0 ? 'var(--green)' : 'var(--red)') + ';font-weight:600">' + (f2d >= 0 ? '+' : '') + f2d.toFixed(3) + '</span></div></div>';
+        html += '</div></div>';
+
+        // 5. Q13 Learning preference
+        html += '<div class="company-section">';
+        html += '<div class="company-section-title">학습 선호도 (Q13)</div>';
+        html += '<div class="dual-bar-legend"><span><span class="dot" style="background:var(--brand)"></span> ' + c.name + '</span><span><span class="dot" style="background:#B0ACA6"></span> 그룹 전체</span></div>';
+        var q13Items = [
+          { label: '실무 활용법', ck: 'practical' },
+          { label: '비즈니스 기회 발굴', ck: 'biz' },
+          { label: 'AI 트렌드 이해', ck: 'trend' }
+        ];
+        q13Items.forEach(function (item) {
+          var cv = c.q13[item.label] || 0;
+          var gv = GROUP_AVG.q13[item.ck];
+          html += '<div class="dual-bar-row" style="margin:8px 0">';
+          html += '<div class="dual-bar-label">' + item.label + '</div>';
+          html += '<div class="dual-bar-pair">';
+          html += '<div class="dual-bar-track"><div class="dual-bar-fill company" style="width:' + Math.max(2, cv) + '%">' + (cv >= 8 ? cv.toFixed(1) + '%' : '') + '</div></div>';
+          html += '<div class="dual-bar-track"><div class="dual-bar-fill group" style="width:' + Math.max(2, gv) + '%">' + (gv >= 8 ? gv.toFixed(1) + '%' : '') + '</div></div>';
+          html += '</div></div>';
+        });
+        html += '</div>';
+
+        // 6. Q14 themes
+        html += '<div class="company-section">';
+        html += '<div class="company-section-title">AI 활용 업무 과제 (Q14)</div>';
+        html += '<div class="theme-chips">';
+        if (c.q14) {
+          c.q14.forEach(function (t, i) {
+            html += '<span class="theme-chip"><span class="chip-count">' + (i + 1) + '</span> ' + t.theme + ' (' + t.pct.toFixed(1) + '%)</span>';
+          });
+        }
+        html += '</div></div>';
+
+        // 7. Commentary
+        html += '<div class="company-section">';
+        html += '<div class="company-section-title">교육 코멘터리</div>';
+        html += '<div class="tip-block">' + c.commentary + '</div>';
+        html += '</div>';
+
+        html += '</div>'; // /company-page
+        container.insertAdjacentHTML('beforeend', html);
+      });
+    }
+
+    // ===== COMPANY SELECTION =====
+    var currentCompany = null;
+    function selectCompany(id) {
+      currentCompany = id;
+      // Update buttons
+      document.querySelectorAll('.company-btn').forEach(function (btn) {
+        btn.classList.remove('selected');
+      });
+      var btn = document.getElementById('btn-' + id);
+      if (btn) btn.classList.add('selected');
+      // Update dropdown
+      var dd = document.getElementById('mobile-company-dropdown');
+      if (dd) dd.value = id;
+      // Show/hide pages
+      document.querySelectorAll('.company-page').forEach(function (page) {
+        page.classList.remove('visible');
+      });
+      var target = document.getElementById('company-' + id);
+      if (target) {
+        target.classList.add('visible');
+        setTimeout(function () {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
       }
-    });
-  }, { rootMargin: '-20% 0px -60% 0px' });
-  sections.forEach(function(sec) { observer.observe(sec); });
-}
-
-// ===== SCROLL PROGRESS =====
-function initScrollProgress() {
-  window.addEventListener('scroll', function() {
-    var scrollTop = window.scrollY;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    document.getElementById('scroll-progress').style.width = progress + '%';
-  });
-}
-
-// ===== COLLAPSIBLE =====
-function toggleCollapsible(btn) {
-  btn.classList.toggle('open');
-  var body = btn.nextElementSibling;
-  body.classList.toggle('open');
-}
-
-// ===== MOBILE SIDEBAR =====
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-}
-
-// Close sidebar on link click (mobile)
-document.querySelectorAll('.nav-link').forEach(function(link) {
-  link.addEventListener('click', function() {
-    if (window.innerWidth <= 768) {
+      // Update URL hash
+      history.replaceState(null, null, '#company-' + id);
+      // Update sidebar active
+      document.querySelectorAll('.nav-link').forEach(function (link) {
+        link.classList.remove('active');
+        if (link.getAttribute('data-target') === 'company-' + id) link.classList.add('active');
+      });
+      // Close mobile sidebar
       document.getElementById('sidebar').classList.remove('open');
     }
-  });
-});
 
-// Auto-init without password gate
-document.getElementById('auth-gate').classList.add('hidden');
-initReport();
-</script>
+    function selectCompanyFromDropdown(val) {
+      if (val) selectCompany(val);
+    }
+
+    // ===== SCROLL SPY =====
+    function initScrollSpy() {
+      var sections = document.querySelectorAll('[id^="sec-"], [id^="part"]');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            document.querySelectorAll('.nav-link').forEach(function (link) {
+              link.classList.remove('active');
+              if (link.getAttribute('data-target') === id) link.classList.add('active');
+            });
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+      sections.forEach(function (sec) { observer.observe(sec); });
+    }
+
+    // ===== SCROLL PROGRESS =====
+    function initScrollProgress() {
+      window.addEventListener('scroll', function () {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        document.getElementById('scroll-progress').style.width = progress + '%';
+      });
+    }
+
+    // ===== COLLAPSIBLE =====
+    function toggleCollapsible(btn) {
+      btn.classList.toggle('open');
+      var body = btn.nextElementSibling;
+      body.classList.toggle('open');
+    }
+
+    // ===== MOBILE SIDEBAR =====
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Close sidebar on link click (mobile)
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          document.getElementById('sidebar').classList.remove('open');
+        }
+      });
+    });
+
+    // Auto-init without password gate
+    document.getElementById('auth-gate').classList.add('hidden');
+    initReport();
+  </script>
 </body>
+
 </html>

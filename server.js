@@ -28,7 +28,7 @@ const GENERATED_COURSE_CATALOG_FILE = path.join(GENERATED_COURSES_DIR, "catalog.
 const DEFAULT_COURSE_CODE = "AXCAMP";
 const DEFAULT_COURSE_SLUG = "axcamp";
 const VISIBLE_CATALOG_OVERRIDES_FILE = "visible-catalog-overrides.json";
-const PRACTICE_ROOT_REL = "[공유용] LG AX Camp For Leaders 실습자료";
+const PRACTICE_ROOT_REL = "[공유용] LG 성과향상 with AI 실습자료";
 const PRACTICE_FILE_MAP = {
   "all-zip": "practice_zips/LG_AX_Camp_For_Leaders_practice_all.zip",
   "ch04-zip": "practice_zips/CH04_NotebookLM_practice.zip",
@@ -694,8 +694,8 @@ function createProjectFromTemplate(template, customName = "") {
         (normalizedTemplate === "workshop"
           ? "워크숍형 교육 과정"
           : normalizedTemplate === "blank"
-          ? "빈 템플릿 과정"
-          : "AX Literacy 신규 과정"),
+            ? "빈 템플릿 과정"
+            : "AX Literacy 신규 과정"),
       subtitle: "",
       audience: "",
       template: normalizedTemplate,
@@ -1854,7 +1854,7 @@ function buildMetadataFromHtml(clip, existingMetadata, rawHtml) {
     ...existingMetadata,
     route,
     url: `https://lg.cmdspace.work/axcamp${route}`,
-    pageTitle: existingMetadata?.pageTitle || "AX Camp for Leaders | LG",
+    pageTitle: existingMetadata?.pageTitle || "성과향상 with AI | LG",
     clipTitle,
     overview,
     badges: badges.length
@@ -2759,11 +2759,11 @@ async function resolveClipPayload(clipKey, course) {
 
   const htmlContent = htmlRaw
     ? rewriteVisibleReferences(
-        rewritePracticeDriveUrls(
-          rewriteRelativeUrls(htmlRaw, activeCourse.courseCode, clip.clipKey)
-        ),
-        catalog
-      )
+      rewritePracticeDriveUrls(
+        rewriteRelativeUrls(htmlRaw, activeCourse.courseCode, clip.clipKey)
+      ),
+      catalog
+    )
     : `<pre>${escapeHtml(mdRaw || txtRaw || "콘텐츠가 없습니다.")}</pre>`;
   const renderedMetadata = buildMetadataFromHtml(clip, metadata, htmlContent);
   const baseBadges =
@@ -2932,9 +2932,9 @@ async function handleAxTask(req, res, urlObj) {
       chapterId: visibleChapterId,
       axTask: task
         ? {
-            ...task,
-            chapterId: visibleChapterId
-          }
+          ...task,
+          chapterId: visibleChapterId
+        }
         : null
     });
   }
@@ -3262,13 +3262,13 @@ async function handleAdminSidebarSource(req, res, urlObj) {
   );
   const reportFlatClip = Array.isArray(report.clips)
     ? report.clips.find(
-        (item) => normalizeWs(item.route).toLowerCase() === canonicalRoute.toLowerCase()
-      )
+      (item) => normalizeWs(item.route).toLowerCase() === canonicalRoute.toLowerCase()
+    )
     : null;
   const chapterClip = Array.isArray(chapterJson?.clips)
     ? chapterJson.clips.find(
-        (item) => normalizeWs(item.route).toLowerCase() === canonicalRoute.toLowerCase()
-      )
+      (item) => normalizeWs(item.route).toLowerCase() === canonicalRoute.toLowerCase()
+    )
     : null;
   const chapterOverride = overrides.chapters?.[clip.chapterId] || {};
   const clipOverride = overrides.clips?.[clip.clipKey] || {};
@@ -3285,32 +3285,32 @@ async function handleAdminSidebarSource(req, res, urlObj) {
       sidebar: {
         chapterTitle: normalizeWs(
           chapterOverride.title ||
-            visibleChapter.title ||
-            reportChapter?.title ||
-            chapterJson?.title ||
-            clip.chapterTitle
+          visibleChapter.title ||
+          reportChapter?.title ||
+          chapterJson?.title ||
+          clip.chapterTitle
         ),
         chapterTime: normalizeWs(
           chapterOverride.time ||
-            visibleChapter.time ||
-            reportChapter?.time ||
-            chapterJson?.time ||
-            ""
+          visibleChapter.time ||
+          reportChapter?.time ||
+          chapterJson?.time ||
+          ""
         ),
         clipTitle: normalizeWs(
           clipOverride.title ||
-            metadata?.navTitle ||
-            reportClip?.title ||
-            chapterClip?.title ||
-            visibleClip.title ||
-            clip.title
+          metadata?.navTitle ||
+          reportClip?.title ||
+          chapterClip?.title ||
+          visibleClip.title ||
+          clip.title
         ),
         clipType: normalizeSidebarClipType(
           clipOverride.type ||
-            reportClip?.type ||
-            chapterClip?.type ||
-            visibleClip.type ||
-            clip.type,
+          reportClip?.type ||
+          chapterClip?.type ||
+          visibleClip.type ||
+          clip.type,
           clip.type
         )
       },

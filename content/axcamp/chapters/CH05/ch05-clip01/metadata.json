@@ -1,7 +1,7 @@
 {
   "route": "#ch05-clip01",
   "url": "https://lg.cmdspace.work/axcamp#ch05-clip01",
-  "pageTitle": "AX Camp for Leaders | LG",
+  "pageTitle": "성과향상 with AI | LG",
   "clipTitle": "LLM 앱과 API의 동작 원리",
   "overview": "AI Studio Build로 만든 앱을 로컬에서 실행해도 실제 추론은 원격 Gemini API에서 일어납니다. 이 섹션은 API 방식, key, quota, billing이 왜 필요한지를 한 번에 이해하시도록 정리한 개념 오리엔테이션입니다.",
   "badges": [

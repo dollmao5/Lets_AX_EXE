@@ -35,7 +35,7 @@
 - `chapters/CHxx/...`: canonical clip-by-clip exports
 - `export-report.json`: canonical chapter catalog
 - `visible-catalog-overrides.json`: runtime visible chapter / clip 제목 보정
-- `[공유용] LG AX Camp For Leaders 실습자료/`: source practice files
+- `[공유용] LG 성과향상 with AI 실습자료/`: source practice files
 - `practice_zips/`: bundled practice archives
 - `generated/`: source tree 안에서 합쳐 쓰는 보조 생성 클립
 - `survey/`: linked survey assets

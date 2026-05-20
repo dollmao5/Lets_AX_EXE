@@ -3943,7 +3943,7 @@ CH 08 참고
 
 # AI Readiness 분석
 
-AX Camp for Leaders 참가자 대상 사전 설문을 기반으로 AI 활용 현황과 준비도를 분석한 결과입니다.
+성과향상 with AI 참가자 대상 사전 설문을 기반으로 AI 활용 현황과 준비도를 분석한 결과입니다.
 
 AI Readiness 분석 리포트
 
