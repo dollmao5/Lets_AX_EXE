@@ -373,8 +373,9 @@ const CLIENT_CATALOG_BLUEPRINTS = [
     title: "과정 안내",
     time: "08:30",
     clips: [
-      { clipKey: "ch00-clip01", title: "오늘의 시간표", type: "개요" },
-      { clipKey: "ch00-clip02", title: "자사 생성형 AI 서비스 현황", type: "개요" }
+      { clipKey: "ch00-clip01", title: "오늘의 시간표", type: "개요" }
+      // [HIDDEN] 자사 생성형 AI 서비스 현황 복구 시 아래 줄의 주석을 해제하세요:
+      // { clipKey: "ch00-clip02", title: "자사 생성형 AI 서비스 현황", type: "개요" }
     ]
   },
   {
@@ -633,13 +634,12 @@ function needsClientCatalogPatch(rawChapters) {
   );
 
   return Boolean(
-    (Array.isArray(ch00?.clips) && ch00.clips.length !== 2) ||
+    (Array.isArray(ch00?.clips) && ch00.clips.length !== 1) || // [HIDDEN] ch00-clip02 제외로 1개
       (Array.isArray(ch01?.clips) && ch01.clips.length > 4) ||
       (Array.isArray(ch02?.clips) && ch02.clips.length < 5) ||
       (Array.isArray(ch03?.clips) && ch03.clips.length !== 3) ||
       (Array.isArray(ch04?.clips) && ch04.clips.length !== 3) ||
       normalizeWs(ch01?.clips?.[0]?.title) !== "AI 트렌드" ||
-      normalizeWs(ch00?.clips?.[1]?.title) !== "자사 생성형 AI 서비스 현황" ||
       ch02ClipTitles.includes("프롬프트 엔지니어링 4가지 원칙") ||
       ch04ClipTitles.includes("경쟁사 리서치 대시보드") ||
       ch01ClipTitles.includes("프롬프트 구조화 하기") ||
@@ -717,6 +717,16 @@ function rewriteClientClipHtml(clipKey, contentHtml) {
   rewriteClipNavFooter(doc, normalized);
 
   if (needsTimetableFix) {
+    // [HIDDEN] 자사 생성형 AI 서비스 현황(ch00-clip02) 행을 시간표에서 숨깁니다.
+    // 복구 시 아래 3줄을 제거하세요.
+    const timetableRows = Array.from(doc.querySelectorAll(".comparison-table tbody tr"));
+    timetableRows.forEach((row) => {
+      const cellText = row.textContent.replace(/\s+/g, " ").trim();
+      if (cellText.includes("자사 생성형 AI 서비스 현황") || cellText.includes("CH00: 자사 생성형 AI")) {
+        row.remove();
+      }
+    });
+
     const timetableAnchors = Array.from(doc.querySelectorAll(".comparison-table tbody a"));
     timetableAnchors.forEach((anchor) => {
       const text = String(anchor.textContent || "").replace(/\s+/g, " ").trim();
@@ -2281,8 +2291,12 @@ function getAllClips() {
   return state.chapters.flatMap((chapter) => chapter.clips);
 }
 
+// [HIDDEN] ch00-clip02 제외로 인해 카운트에서 해당 세션을 제거합니다.
+// 복구 시 HIDDEN_CLIP_KEYS_FROM_PROGRESS 배열에서 "ch00-clip02" 를 삭제하세요.
+const HIDDEN_CLIP_KEYS_FROM_PROGRESS = new Set(["ch00-clip02"]);
+
 function updateProgressBadge() {
-  const all = getAllClips();
+  const all = getAllClips().filter((clip) => !HIDDEN_CLIP_KEYS_FROM_PROGRESS.has(clip.clipKey));
   const total = all.length;
   const done = all.filter((clip) => state.completedSet.has(clip.clipKey)).length;
   const pct = total ? Math.round((done / total) * 100) : 0;

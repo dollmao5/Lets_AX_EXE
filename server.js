@@ -59,7 +59,9 @@ const EXCLUDED_CLIP_KEYS = new Set([
   "ch02-clip01",
   "ch02-clip02",
   "ch02-clip03",
-  "ch02-clip04"
+  "ch02-clip04",
+  // [HIDDEN] 자사 생성형 AI 서비스 현황 — 복구 시 아래 줄만 삭제하세요
+  "ch00-clip02"
 ]);
 const ROOT_ACCOUNT_ID = "root";
 const ROOT_DEFAULT_PASSWORD = process.env.AX_ROOT_PASSWORD || "root";
@@ -2031,7 +2033,9 @@ async function buildCatalog(sourceRoot) {
       title: "과정 안내",
       time: "08:30",
       sourceChapterIds: ["ch00"],
-      clipKeys: ["ch00-clip01", "ch00-clip02"]
+      // [HIDDEN] 자사 생성형 AI 서비스 현황(ch00-clip02) 제외 중.
+      // 복구 시: clipKeys 배열에 "ch00-clip02" 를 다시 추가하세요.
+      clipKeys: ["ch00-clip01"]
     },
     {
       visibleChapterId: "ch01",
