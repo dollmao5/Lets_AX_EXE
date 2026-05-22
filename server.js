@@ -66,7 +66,7 @@ const EXCLUDED_CLIP_KEYS = new Set([
 
 // [HIDDEN_CHAPTERS] CH04(Google AI Studio & Vibe Coding), CH05(Hi-D Code) 숨김 처리 중
 // 복구 방법: server.js의 visibleBlueprints 배열에서 아래 주석 처리된 블록을 되살리세요.
-// 이 Set은 숨겨진 챕터의 canonical 클립 키 목록으로, 해시 직접 접근 시 안전 처리에 사용됩니다.
+// 이 Set은 숨겨진 챕터/클립의 canonical 키 목록으로, 해시 직접 접근 시 안전 처리에 사용됩니다.
 const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
   // ch04 (Google AI Studio & Vibe Coding) 소속 클립들
   "ch05-clip01",
@@ -77,7 +77,12 @@ const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
   "ch06-clip04",
   "ch06-clip05",
   // ch05 (Hi-D Code) 소속 합성 클립들
-  "ch05-clip01-hidcode"
+  "ch05-clip01-hidcode",
+  // [HIDDEN] NotebookLM 3번째 세션: 기업 분석 코스
+  // canonical 키(export-report.json 기준) + visible 키(렌더링 시 재맵핑 결과)를 모두 등록
+  // 복구 시: 아래 두 줄을 삭제하고, visibleBlueprints ch03 clipKeys에 "ch04-clip03"을 다시 추가하세요.
+  "ch04-clip03",  // canonical key (원본 챕터 폴더 기준)
+  "ch03-clip03"   // visible key (렌더링 후 재맵핑된 클립 키)
 ]);
 const ROOT_ACCOUNT_ID = "root";
 const ROOT_DEFAULT_PASSWORD = process.env.AX_ROOT_PASSWORD || "root";
@@ -2079,7 +2084,9 @@ async function buildCatalog(sourceRoot) {
       title: "NotebookLM",
       time: "13:00",
       sourceChapterIds: ["ch04"],
-      clipKeys: ["ch04-clip01", "ch04-clip02", "ch04-clip03"]
+      // [HIDDEN] ch04-clip03 = 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석 — 노출 제외 중
+      // 복구 시: 아래 배열에 "ch04-clip03" 을 다시 추가하고, HIDDEN_CHAPTER_CLIP_KEYS에서 두 항목을 제거하세요.
+      clipKeys: ["ch04-clip01", "ch04-clip02"]
     },
     // ============================================================
     // [HIDDEN] CH04: Google AI Studio & Vibe Coding — 현재 노출 제외 중
