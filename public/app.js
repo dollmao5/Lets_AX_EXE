@@ -416,19 +416,22 @@ const CLIENT_CATALOG_BLUEPRINTS = [
       { clipKey: "ch03-clip02", title: "문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑", type: "실습" },
       { clipKey: "ch03-clip03", title: "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석", type: "실습" }
     ]
-  },
-  {
-    chapterId: "ch04",
-    chapterCode: "CH04",
-    chapterNum: "CH 04",
-    title: "Google AI Studio",
-    time: "14:10",
-    clips: [
-      { clipKey: "ch04-clip01", title: "Google AI Studio 소개 및 접속 방법", type: "설정" },
-      { clipKey: "ch04-clip02", title: "바이브 코딩이란", type: "개념" },
-      { clipKey: "ch04-clip03", title: "바이브 코딩으로 웹앱 제작하기", type: "실습" }
-    ]
   }
+  // ============================================================
+  // [HIDDEN] CH04: Google AI Studio — 현재 노출 제외 중 (복구 시 아래 주석 해제)
+  // {
+  //   chapterId: "ch04",
+  //   chapterCode: "CH04",
+  //   chapterNum: "CH 04",
+  //   title: "Google AI Studio",
+  //   time: "14:10",
+  //   clips: [
+  //     { clipKey: "ch04-clip01", title: "Google AI Studio 소개 및 접속 방법", type: "설정" },
+  //     { clipKey: "ch04-clip02", title: "바이브 코딩이란", type: "개념" },
+  //     { clipKey: "ch04-clip03", title: "바이브 코딩으로 웹앱 제작하기", type: "실습" }
+  //   ]
+  // }
+  // ============================================================
 ];
 
 const CLIENT_RUNTIME_CLIP_OVERRIDE_URLS = {
@@ -633,20 +636,24 @@ function needsClientCatalogPatch(rawChapters) {
     (title) => title === "비지니스 프롬프팅: AI 회의록"
   );
 
+  const ch04Exists = Boolean(ch04);
+
   return Boolean(
     (Array.isArray(ch00?.clips) && ch00.clips.length !== 1) || // [HIDDEN] ch00-clip02 제외로 1개
       (Array.isArray(ch01?.clips) && ch01.clips.length > 4) ||
       (Array.isArray(ch02?.clips) && ch02.clips.length < 5) ||
       (Array.isArray(ch03?.clips) && ch03.clips.length !== 3) ||
-      (Array.isArray(ch04?.clips) && ch04.clips.length !== 3) ||
+      (ch04Exists && (
+        (Array.isArray(ch04?.clips) && ch04.clips.length !== 3) ||
+        ch04ClipTitles.includes("경쟁사 리서치 대시보드") ||
+        normalizeWs(ch04?.title) !== "Google AI Studio" ||
+        !ch04ClipTitles.includes("바이브 코딩으로 웹앱 제작하기")
+      )) ||
       normalizeWs(ch01?.clips?.[0]?.title) !== "AI 트렌드" ||
       ch02ClipTitles.includes("프롬프트 엔지니어링 4가지 원칙") ||
-      ch04ClipTitles.includes("경쟁사 리서치 대시보드") ||
       ch01ClipTitles.includes("프롬프트 구조화 하기") ||
       normalizeWs(ch03?.title) !== "NotebookLM" ||
-      normalizeWs(ch04?.title) !== "Google AI Studio" ||
       !ch03ClipTitles.includes("문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑") ||
-      !ch04ClipTitles.includes("바이브 코딩으로 웹앱 제작하기") ||
       !ch02ClipTitles.includes("비지니스 프롬프팅: AI 회의록") ||
       ch02StructuredIndex !== ch02PromptingIndex + 1 ||
       ch02BusinessIndex !== ch02StructuredIndex + 1
@@ -724,6 +731,19 @@ function rewriteClientClipHtml(clipKey, contentHtml) {
       const cellText = row.textContent.replace(/\s+/g, " ").trim();
       if (cellText.includes("자사 생성형 AI 서비스 현황") || cellText.includes("CH00: 자사 생성형 AI")) {
         row.remove();
+        return;
+      }
+      // [HIDDEN] CH04 Google AI Studio 및 CH05 Hi-D Code 관련 행들도 시간표에서 숨깁니다.
+      if (
+        cellText.includes("Google AI Studio") || 
+        cellText.includes("Vibe Coding") || 
+        cellText.includes("Hi-D Code") ||
+        cellText.includes("CH04:") || 
+        cellText.includes("CH05:")
+      ) {
+        if (!cellText.includes("Key Takeaways") && !cellText.includes("Q/A")) {
+          row.remove();
+        }
       }
     });
 
@@ -735,24 +755,20 @@ function rewriteClientClipHtml(clipKey, contentHtml) {
         anchor.textContent = "CH03: NotebookLM";
         return;
       }
-      if (text === "CH03: Google AI Studio" || text === "CH04: Google AI Studio") {
-        anchor.setAttribute("href", "#ch04-clip01");
-        anchor.textContent = "CH04: Google AI Studio";
-        return;
-      }
-      if (text === "CH04: Hi-D Code" || text === "CH05: Hi-D Code") {
-        anchor.setAttribute("href", "#ch05-clip01");
-        anchor.textContent = "CH05: Hi-D Code";
-        return;
+      if (text.includes("Google AI Studio") || text.includes("Hi-D Code") || text.includes("CH04: ") || text.includes("CH05: ")) {
+        if (!text.includes("Key Takeaways") && !text.includes("Q/A")) {
+          anchor.closest("tr")?.remove();
+          return;
+        }
       }
       if (text === "CH04: Key Takeaways & Q/A" || text === "CH06: Key Takeaways & Q/A") {
         anchor.setAttribute("href", "#ch06-clip01");
-        anchor.textContent = "CH06: Key Takeaways & Q/A";
+        anchor.textContent = "CH04: Key Takeaways & Q/A";
         return;
       }
       if (text === "CH07: 참고자료 라이브러리" || text === "CH08: 참고자료 라이브러리") {
-        anchor.setAttribute("href", "#ch07-clip09");
-        anchor.textContent = "CH07: 참고자료 라이브러리";
+        anchor.setAttribute("href", "#ch07-clip01");
+        anchor.textContent = "CH05: 참고자료 라이브러리";
       }
     });
   }

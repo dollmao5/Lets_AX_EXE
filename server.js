@@ -63,6 +63,22 @@ const EXCLUDED_CLIP_KEYS = new Set([
   // [HIDDEN] 자사 생성형 AI 서비스 현황 — 복구 시 아래 줄만 삭제하세요
   "ch00-clip02"
 ]);
+
+// [HIDDEN_CHAPTERS] CH04(Google AI Studio & Vibe Coding), CH05(Hi-D Code) 숨김 처리 중
+// 복구 방법: server.js의 visibleBlueprints 배열에서 아래 주석 처리된 블록을 되살리세요.
+// 이 Set은 숨겨진 챕터의 canonical 클립 키 목록으로, 해시 직접 접근 시 안전 처리에 사용됩니다.
+const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
+  // ch04 (Google AI Studio & Vibe Coding) 소속 클립들
+  "ch05-clip01",
+  "ch05-clip02",
+  "ch06-clip01",
+  "ch06-clip02",
+  "ch06-clip03",
+  "ch06-clip04",
+  "ch06-clip05",
+  // ch05 (Hi-D Code) 소속 합성 클립들
+  "ch05-clip01-hidcode"
+]);
 const ROOT_ACCOUNT_ID = "root";
 const ROOT_DEFAULT_PASSWORD = process.env.AX_ROOT_PASSWORD || "root";
 
@@ -2065,36 +2081,43 @@ async function buildCatalog(sourceRoot) {
       sourceChapterIds: ["ch04"],
       clipKeys: ["ch04-clip01", "ch04-clip02", "ch04-clip03"]
     },
-    {
-      visibleChapterId: "ch04",
-      title: "Google AI Studio & Vibe Coding",
-      time: "14:10",
-      sourceChapterIds: ["ch05", "ch06"],
-      clipKeys: [
-        "ch05-clip02",
-        "ch06-clip01",
-        "ch06-clip02"
-      ],
-      clipTitles: {
-        "ch05-clip02": "Google AI Studio 소개 및 접속 방법",
-        "ch06-clip01": "바이브 코딩이란",
-        "ch06-clip02": "바이브 코딩으로 웹앱 제작하기"
-      }
-    },
-    {
-      visibleChapterId: "ch05",
-      title: "Hi-D Code",
-      time: "16:10",
-      sourceChapterIds: [],
-      syntheticClips: [
-        {
-          clipKey: "ch05-clip01",
-          folderRelative: "generated/hid-code/ch05-clip01",
-          title: "Hi-D Code 소개 및 시연 (최남석, Agentic AI 팀)",
-          type: "개요"
-        }
-      ]
-    },
+    // ============================================================
+    // [HIDDEN] CH04: Google AI Studio & Vibe Coding — 현재 노출 제외 중
+    // 복구 시: 아래 주석 블록의 '//' 를 제거하고, 바로 아래 ch05(Hi-D Code)도 함께 복구하세요.
+    // {
+    //   visibleChapterId: "ch04",
+    //   title: "Google AI Studio & Vibe Coding",
+    //   time: "14:10",
+    //   sourceChapterIds: ["ch05", "ch06"],
+    //   clipKeys: [
+    //     "ch05-clip02",
+    //     "ch06-clip01",
+    //     "ch06-clip02"
+    //   ],
+    //   clipTitles: {
+    //     "ch05-clip02": "Google AI Studio 소개 및 접속 방법",
+    //     "ch06-clip01": "바이브 코딩이란",
+    //     "ch06-clip02": "바이브 코딩으로 웹앱 제작하기"
+    //   }
+    // },
+    // ============================================================
+    // [HIDDEN] CH05: Hi-D Code — 현재 노출 제외 중
+    // 복구 시: 위의 CH04 블록과 함께 아래 주석을 함께 해제하세요.
+    // {
+    //   visibleChapterId: "ch05",
+    //   title: "Hi-D Code",
+    //   time: "16:10",
+    //   sourceChapterIds: [],
+    //   syntheticClips: [
+    //     {
+    //       clipKey: "ch05-clip01",
+    //       folderRelative: "generated/hid-code/ch05-clip01",
+    //       title: "Hi-D Code 소개 및 시연 (최남석, Agentic AI 팀)",
+    //       type: "개요"
+    //     }
+    //   ]
+    // },
+    // ============================================================
     {
       visibleChapterId: "ch06",
       title: "Key Takeaways & Q/A",
@@ -2806,10 +2829,26 @@ async function resolveClipPayload(clipKey, course) {
 
 async function handleGetClip(req, res, urlObj) {
   const pathnameParts = urlObj.pathname.split("/").filter(Boolean);
-  const clipKey = pathnameParts[pathnameParts.length - 1];
+  let clipKey = pathnameParts[pathnameParts.length - 1];
   const user = await resolveUserFromRequest(req, urlObj);
   const course = await resolveActiveCourse(user, urlObj);
-  const payload = await resolveClipPayload(clipKey, course);
+  let payload = await resolveClipPayload(clipKey, course);
+
+  if (!payload) {
+    const normalizedKey = normalizeWs(clipKey).toLowerCase();
+    const isHiddenKey = normalizedKey.startsWith("ch04-") || 
+                        normalizedKey.startsWith("ch05-") || 
+                        HIDDEN_CHAPTER_CLIP_KEYS.has(normalizedKey);
+    if (isHiddenKey) {
+      const catalog = await getCatalog(course);
+      const firstChapter = catalog.chapters?.[0];
+      const firstClip = firstChapter?.clips?.[0];
+      if (firstClip) {
+        clipKey = firstClip.clipKey;
+        payload = await resolveClipPayload(clipKey, course);
+      }
+    }
+  }
 
   if (!payload) {
     return sendJson(res, 404, { ok: false, error: "클립을 찾을 수 없습니다." });
