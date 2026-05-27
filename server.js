@@ -2072,8 +2072,8 @@ async function buildCatalog(sourceRoot) {
       sourceChapterIds: ["ch03"],
       clipKeys: ["ch03-clip01", "ch03-clip02", "ch03-clip03", "ch01-clip05", "ch03-clip04"],
       clipTitles: {
-        "ch03-clip01": "Gemini 소개 및 접속 방법",
-        "ch03-clip02": "프롬프팅 기초",
+        "ch03-clip01": "Gemini 소개 및 접속 방법_test",
+        "ch03-clip02": "프롬프팅 기초_test",
         "ch03-clip03": "비지니스 프롬프팅: AI 회의록",
         "ch01-clip05": "Gems 소개: AI 비서 만들기_test",
         "ch03-clip04": "ChatGPT 및 GPTs 소개"
