@@ -2075,7 +2075,7 @@ async function buildCatalog(sourceRoot) {
         "ch03-clip01": "Gemini 소개 및 접속 방법",
         "ch03-clip02": "프롬프팅 기초",
         "ch03-clip03": "비지니스 프롬프팅: AI 회의록",
-        "ch01-clip05": "Gems 소개: AI 비서 만들기",
+        "ch01-clip05": "Gems 소개: AI 비서 만들기_test",
         "ch03-clip04": "ChatGPT 및 GPTs 소개"
       }
     },
@@ -2843,9 +2843,9 @@ async function handleGetClip(req, res, urlObj) {
 
   if (!payload) {
     const normalizedKey = normalizeWs(clipKey).toLowerCase();
-    const isHiddenKey = normalizedKey.startsWith("ch04-") || 
-                        normalizedKey.startsWith("ch05-") || 
-                        HIDDEN_CHAPTER_CLIP_KEYS.has(normalizedKey);
+    const isHiddenKey = normalizedKey.startsWith("ch04-") ||
+      normalizedKey.startsWith("ch05-") ||
+      HIDDEN_CHAPTER_CLIP_KEYS.has(normalizedKey);
     if (isHiddenKey) {
       const catalog = await getCatalog(course);
       const firstChapter = catalog.chapters?.[0];
