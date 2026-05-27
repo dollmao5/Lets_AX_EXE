@@ -1474,7 +1474,19 @@ function onContentEditorPreviewDoubleClick(event) {
   openInlineQuickEditor(target, offset, lineNumber);
 }
 
-function onClipBodyDirectEditDoubleClick(event) {
+async function onClipBodyDirectEditDoubleClick(event) {
+  if (!state.isAdmin) return;
+
+  // 본문 수정 모드가 꺼져 있다면 더블클릭 시 자동으로 본문 수정 에디터를 활성화합니다.
+  if (!state.editModeOpen) {
+    try {
+      await onToggleEditMode();
+    } catch (error) {
+      setEditorStatus(error.message, true);
+      return;
+    }
+  }
+
   if (!isLiveContentDirectEditEnabled()) return;
   const target = event.target.closest("[data-editor-source-index]");
   if (!target || !el.clipBody.contains(target)) return;
