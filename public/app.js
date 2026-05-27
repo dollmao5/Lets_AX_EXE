@@ -399,7 +399,7 @@ const CLIENT_CATALOG_BLUEPRINTS = [
     time: "09:30",
     clips: [
       { clipKey: "ch02-clip01", title: "Gemini 소개 및 접속 방법", type: "플랫폼" },
-      { clipKey: "ch02-clip02", title: "프롬프팅 기초", type: "실습" },
+      { clipKey: "ch02-clip02", title: "프롬프팅 기초: 리더의 역할", type: "실습" },
       { clipKey: "ch02-clip03", title: "비지니스 프롬프팅: AI 회의록", type: "실습" },
       { clipKey: "ch02-clip04", title: "Gems 소개: AI 비서 만들기", type: "실습" },
       { clipKey: "ch02-clip05", title: "ChatGPT 및 GPTs 소개", type: "플랫폼" }
