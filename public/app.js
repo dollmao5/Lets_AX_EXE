@@ -399,8 +399,9 @@ const CLIENT_CATALOG_BLUEPRINTS = [
     time: "09:30",
     clips: [
       { clipKey: "ch02-clip01", title: "Gemini 소개 및 접속 방법", type: "플랫폼" },
-      { clipKey: "ch02-clip02", title: "프롬프팅 기초: 리더의 역할", type: "실습" },
-      { clipKey: "ch02-clip03", title: "프롬프팅 활용: 핵심 역량&스킬", type: "실습" }
+      { clipKey: "ch02-clip02", title: "ice breaking: Ai-Friendly 리더십", type: "참고" },
+      { clipKey: "ch02-clip03", title: "프롬프팅 기초: 리더의 역할", type: "실습" },
+      { clipKey: "ch02-clip04", title: "프롬프팅 활용: 핵심 역량&스킬", type: "실습" }
     ]
   },
   {

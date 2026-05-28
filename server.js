@@ -2072,9 +2072,10 @@ async function buildCatalog(sourceRoot) {
       title: "Gemini 활용",
       time: "09:30",
       sourceChapterIds: ["ch03"],
-      clipKeys: ["ch03-clip01", "ch03-clip02", "ch03-clip03"],
+      clipKeys: ["ch03-clip01", "ch03-clip08", "ch03-clip02", "ch03-clip03"],
       clipTitles: {
         "ch03-clip01": "Gemini 소개 및 접속 방법",
+        "ch03-clip08": "ice breaking: Ai-Friendly 리더십",
         "ch03-clip02": "프롬프팅 기초: 리더의 역할",
         "ch03-clip03": "프롬프팅 활용: 핵심 역량&스킬"
       }

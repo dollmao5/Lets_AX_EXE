@@ -157,6 +157,16 @@
           "promptCount": 0
         },
         {
+          "route": "#ch03-clip08",
+          "title": "ice breaking: Ai-Friendly 리더십",
+          "type": "참고",
+          "folder": "chapters/CH03/ch03-clip08",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 1,
+          "promptCount": 0
+        },
+        {
           "route": "#ch03-clip02",
           "title": "프롬프팅 기초 및 비즈니스 프롬프트 연습",
           "type": "실습",
@@ -629,6 +639,19 @@
       "linkCount": 3,
       "imageCount": 3,
       "type": "플랫폼"
+    },
+    {
+      "chapterId": "ch03",
+      "route": "#ch03-clip08",
+      "title": "ice breaking: Ai-Friendly 리더십",
+      "folder": "chapters/CH03/ch03-clip08",
+      "textLength": 100,
+      "htmlLength": 500,
+      "sectionCount": 1,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "참고"
     },
     {
       "chapterId": "ch03",
