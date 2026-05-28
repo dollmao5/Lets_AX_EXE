@@ -395,14 +395,12 @@ const CLIENT_CATALOG_BLUEPRINTS = [
     chapterId: "ch02",
     chapterCode: "CH02",
     chapterNum: "CH 02",
-    title: "Gemini & ChatGPT",
+    title: "Gemini 활용",
     time: "09:30",
     clips: [
       { clipKey: "ch02-clip01", title: "Gemini 소개 및 접속 방법", type: "플랫폼" },
       { clipKey: "ch02-clip02", title: "프롬프팅 기초: 리더의 역할", type: "실습" },
-      { clipKey: "ch02-clip03", title: "비지니스 프롬프팅: AI 회의록", type: "실습" },
-      { clipKey: "ch02-clip04", title: "Gems 소개: AI 비서 만들기", type: "실습" },
-      { clipKey: "ch02-clip05", title: "ChatGPT 및 GPTs 소개", type: "플랫폼" }
+      { clipKey: "ch02-clip03", title: "프롬프팅 활용: 핵심 역량&스킬", type: "실습" }
     ]
   },
   {
@@ -413,10 +411,12 @@ const CLIENT_CATALOG_BLUEPRINTS = [
     time: "13:00",
     clips: [
       { clipKey: "ch03-clip01", title: "NotebookLM 소개 및 문서 기반 AI 연구 도우미", type: "플랫폼" },
-      { clipKey: "ch03-clip02", title: "문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑", type: "실습" }
-      // [HIDDEN] ch03-clip03 = 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석 — 노출 제외 중
+      { clipKey: "ch03-clip02", title: "문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑", type: "실습" },
+      { clipKey: "ch03-clip03", title: "Gems 소개: AI 비서 만들기", type: "참고" },
+      { clipKey: "ch03-clip04", title: "ChatGPT 및 GPTs 소개", type: "플랫폼" }
+      // [HIDDEN] ch03-clip05 = 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석 — 노출 제외 중
       // 복구 시: 아래 주석을 해제하고 server.js의 ch04-clip03도 함께 복구하세요.
-      // { clipKey: "ch03-clip03", title: "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석", type: "실습" }
+      // { clipKey: "ch03-clip05", title: "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석", type: "실습" }
     ]
   }
   // ============================================================
@@ -439,8 +439,8 @@ const CLIENT_CATALOG_BLUEPRINTS = [
 // [HIDDEN] 화면에서 제외된 클립 키 목록 (해시 직접 접근 시 안전 리다이렉트에 사용)
 // 복구 시: 해당 clipKey 항목을 이 Set에서 삭제하고, CLIENT_CATALOG_BLUEPRINTS에 다시 추가하세요.
 const HIDDEN_CLIP_KEYS_REDIRECT_SET = new Set([
-  // [HIDDEN] ch03-clip03: 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석
-  "ch03-clip03",
+  // [HIDDEN] ch03-clip05: 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석
+  "ch03-clip05",
   // [HIDDEN] ch04-clip01~03: Google AI Studio & Vibe Coding (canonical 포함)
   "ch04-clip01", "ch04-clip02", "ch04-clip03",
   "ch05-clip01", "ch05-clip02", "ch05-clip03",
@@ -622,60 +622,8 @@ function buildClientVisibleCatalog(rawChapters) {
 }
 
 function needsClientCatalogPatch(rawChapters) {
-  const chapters = Array.isArray(rawChapters) ? rawChapters : [];
-  const chapterMap = new Map(
-    chapters.map((chapter) => [normalizeWs(chapter.chapterId).toLowerCase(), chapter])
-  );
-  const ch00 = chapterMap.get("ch00");
-  const ch01 = chapterMap.get("ch01");
-  const ch02 = chapterMap.get("ch02");
-  const ch03 = chapterMap.get("ch03");
-  const ch04 = chapterMap.get("ch04");
-  const ch01ClipTitles = Array.isArray(ch01?.clips)
-    ? ch01.clips.map((clip) => normalizeWs(clip.title))
-    : [];
-  const ch02ClipTitles = Array.isArray(ch02?.clips)
-    ? ch02.clips.map((clip) => normalizeWs(clip.title))
-    : [];
-  const ch03ClipTitles = Array.isArray(ch03?.clips)
-    ? ch03.clips.map((clip) => normalizeWs(clip.title))
-    : [];
-  const ch04ClipTitles = Array.isArray(ch04?.clips)
-    ? ch04.clips.map((clip) => normalizeWs(clip.title))
-    : [];
-  const ch02PromptingIndex = ch02ClipTitles.findIndex(
-    (title) => title === "프롬프팅 기초"
-  );
-  const ch02BusinessIndex = ch02ClipTitles.findIndex(
-    (title) => title === "Gems 소개: AI 비서 만들기"
-  );
-  const ch02StructuredIndex = ch02ClipTitles.findIndex(
-    (title) => title === "비지니스 프롬프팅: AI 회의록"
-  );
-
-  const ch04Exists = Boolean(ch04);
-
-  return Boolean(
-    (Array.isArray(ch00?.clips) && ch00.clips.length !== 1) || // [HIDDEN] ch00-clip02 제외로 1개
-    (Array.isArray(ch01?.clips) && ch01.clips.length > 4) ||
-    (Array.isArray(ch02?.clips) && ch02.clips.length < 5) ||
-    // [HIDDEN] ch03-clip03 제외로 NotebookLM은 2개만 노출 — 기준값 3 → 2 변경
-    (Array.isArray(ch03?.clips) && ch03.clips.length !== 2) ||
-    (ch04Exists && (
-      (Array.isArray(ch04?.clips) && ch04.clips.length !== 3) ||
-      ch04ClipTitles.includes("경쟁사 리서치 대시보드") ||
-      normalizeWs(ch04?.title) !== "Google AI Studio" ||
-      !ch04ClipTitles.includes("바이브 코딩으로 웹앱 제작하기")
-    )) ||
-    normalizeWs(ch01?.clips?.[0]?.title) !== "AI 트렌드" ||
-    ch02ClipTitles.includes("프롬프트 엔지니어링 4가지 원칙") ||
-    ch01ClipTitles.includes("프롬프트 구조화 하기") ||
-    normalizeWs(ch03?.title) !== "NotebookLM" ||
-    !ch03ClipTitles.includes("문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑") ||
-    !ch02ClipTitles.includes("비지니스 프롬프팅: AI 회의록") ||
-    ch02StructuredIndex !== ch02PromptingIndex + 1 ||
-    ch02BusinessIndex !== ch02StructuredIndex + 1
-  );
+  // 서버가 이미 완성된 완벽한 목차 카탈로그를 내려주므로, 클라이언트 오버라이드를 비활성화하고 서버의 원천 데이터를 100% 신뢰합니다.
+  return false;
 }
 
 function applyClientClipDisplay(clip, sidebarClip) {
@@ -2358,8 +2306,8 @@ function getAllClips() {
 // [HIDDEN] 진도율 계산에서 숨겨진 세션들을 제외합니다.
 // 복구 시: 해당 clipKey를 아래 배열에서 삭제하세요.
 // - "ch00-clip02": 자사 생성형 AI 서비스 현황
-// - "ch03-clip03": 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석
-const HIDDEN_CLIP_KEYS_FROM_PROGRESS = new Set(["ch00-clip02", "ch03-clip03"]);
+// - "ch03-clip05": 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석
+const HIDDEN_CLIP_KEYS_FROM_PROGRESS = new Set(["ch00-clip02", "ch03-clip05"]);
 
 function updateProgressBadge() {
   const all = getAllClips().filter((clip) => !HIDDEN_CLIP_KEYS_FROM_PROGRESS.has(clip.clipKey));

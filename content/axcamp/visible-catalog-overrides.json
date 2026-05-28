@@ -1,7 +1,7 @@
 {
   "chapters": {
     "ch02": {
-      "title": "Gemini & ChatGPT",
+      "title": "Gemini 활용",
       "time": "09:30"
     },
     "ch00": {
@@ -35,14 +35,14 @@
       "type": "실습"
     },
     "ch02-clip03": {
-      "title": "비지니스 프롬프팅: AI 회의록",
+      "title": "프롬프팅 활용: 핵심 역량&스킬",
       "type": "실습"
     },
-    "ch02-clip04": {
+    "ch03-clip03": {
       "title": "Gems 소개: AI 비서 만들기",
-      "type": "실습"
+      "type": "참고"
     },
-    "ch02-clip05": {
+    "ch03-clip04": {
       "title": "ChatGPT 및 GPTs 소개",
       "type": "플랫폼"
     },

@@ -82,7 +82,7 @@ const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
   // canonical 키(export-report.json 기준) + visible 키(렌더링 시 재맵핑 결과)를 모두 등록
   // 복구 시: 아래 두 줄을 삭제하고, visibleBlueprints ch03 clipKeys에 "ch04-clip03"을 다시 추가하세요.
   "ch04-clip03",  // canonical key (원본 챕터 폴더 기준)
-  "ch03-clip03"   // visible key (렌더링 후 재맵핑된 클립 키)
+  "ch03-clip05"   // visible key (렌더링 후 재맵핑된 클립 키)
 ]);
 const ROOT_ACCOUNT_ID = "root";
 const ROOT_DEFAULT_PASSWORD = process.env.AX_ROOT_PASSWORD || "root";
@@ -1953,6 +1953,36 @@ async function resolveCourseContext(primary, secondary = "") {
   return dir.byCode.get(DEFAULT_COURSE_CODE) || defaultCourseContext();
 }
 
+async function buildSyntheticClip(sourceRootDir, spec, chapterId, chapterTitle, chapterNum) {
+  const folderAbsolute = path.resolve(sourceRootDir, spec.folderRelative || "");
+  const metadataPath = path.join(folderAbsolute, "metadata.json");
+  const metadata = await readJsonFileSafe(metadataPath, null);
+
+  const clipKey = normalizeWs(spec.clipKey).toLowerCase();
+  const cleanTitle = deriveClipTitle(metadata, spec.title || metadata?.clipTitle || clipKey);
+  const cleanType = normalizeWs(spec.type || metadata?.type || "");
+
+  return {
+    clipKey,
+    canonicalClipKey: clipKey,
+    route: `#${clipKey}`,
+    canonicalRoute: `#${clipKey}`,
+    title: cleanTitle,
+    type: cleanType,
+    chapterId,
+    canonicalChapterId: chapterId,
+    chapterCode: chapterCodeFromId(chapterId),
+    chapterNum,
+    chapterTitle,
+    overview: normalizeWs(metadata?.overview || ""),
+    badges: Array.isArray(metadata?.badges) ? metadata.badges : [],
+    folderRelative: spec.folderRelative || "",
+    folderAbsolute,
+    metadataPath,
+    screenshotPath: path.join(folderAbsolute, "screenshot.png")
+  };
+}
+
 async function buildCatalog(sourceRoot) {
   const reportFile = path.join(sourceRoot, "export-report.json");
   const report = await readJsonFileSafe(reportFile, null);
@@ -1964,6 +1994,7 @@ async function buildCatalog(sourceRoot) {
   const canonicalChaptersById = new Map();
   const canonicalClipsByKey = new Map();
 
+  // 1. Canonical 챕터 및 클립 메타데이터 로드
   for (const chapter of report.chapters) {
     const canonicalChapterId = normalizeWs(chapter.chapterId).toLowerCase();
     const chapterObj = {
@@ -1979,8 +2010,8 @@ async function buildCatalog(sourceRoot) {
 
     for (const clip of chapter.clips || []) {
       const clipKey = clipKeyFromRoute(clip.route);
-      if (!clipKey) continue;
-      if (EXCLUDED_CLIP_KEYS.has(clipKey)) continue;
+      if (!clipKey || EXCLUDED_CLIP_KEYS.has(clipKey)) continue;
+
       const absoluteClipDir = path.resolve(sourceRoot, clip.folder || "");
       const metadataPath = path.join(absoluteClipDir, "metadata.json");
       const metadata = await readJsonFileSafe(metadataPath, null);
@@ -2018,36 +2049,7 @@ async function buildCatalog(sourceRoot) {
     }
   }
 
-  async function buildSyntheticClip(sourceRootDir, spec, chapterId, chapterTitle, chapterNum) {
-    const folderAbsolute = path.resolve(sourceRootDir, spec.folderRelative || "");
-    const metadataPath = path.join(folderAbsolute, "metadata.json");
-    const metadata = await readJsonFileSafe(metadataPath, null);
-
-    const clipKey = normalizeWs(spec.clipKey).toLowerCase();
-    const cleanTitle = deriveClipTitle(metadata, spec.title || metadata?.clipTitle || clipKey);
-    const cleanType = normalizeWs(spec.type || metadata?.type || "");
-
-    return {
-      clipKey,
-      canonicalClipKey: clipKey,
-      route: `#${clipKey}`,
-      canonicalRoute: `#${clipKey}`,
-      title: cleanTitle,
-      type: cleanType,
-      chapterId,
-      canonicalChapterId: chapterId,
-      chapterCode: chapterCodeFromId(chapterId),
-      chapterNum,
-      chapterTitle,
-      overview: normalizeWs(metadata?.overview || ""),
-      badges: Array.isArray(metadata?.badges) ? metadata.badges : [],
-      folderRelative: spec.folderRelative || "",
-      folderAbsolute,
-      metadataPath,
-      screenshotPath: path.join(folderAbsolute, "screenshot.png")
-    };
-  }
-
+  // 2. 가시적 챕터 노출용 블루프린트 설정 정의
   const visibleBlueprints = [
     {
       visibleChapterId: "ch00",
@@ -2067,16 +2069,14 @@ async function buildCatalog(sourceRoot) {
     },
     {
       visibleChapterId: "ch02",
-      title: "Gemini & ChatGPT",
+      title: "Gemini 활용",
       time: "09:30",
       sourceChapterIds: ["ch03"],
-      clipKeys: ["ch03-clip01", "ch03-clip02", "ch03-clip03", "ch01-clip05", "ch03-clip04"],
+      clipKeys: ["ch03-clip01", "ch03-clip02", "ch03-clip03"],
       clipTitles: {
         "ch03-clip01": "Gemini 소개 및 접속 방법",
         "ch03-clip02": "프롬프팅 기초: 리더의 역할",
-        "ch03-clip03": "비지니스 프롬프팅: AI 회의록",
-        "ch01-clip05": "Gems 소개: AI 비서 만들기",
-        "ch03-clip04": "ChatGPT 및 GPTs 소개"
+        "ch03-clip03": "프롬프팅 활용: 핵심 역량&스킬"
       }
     },
     {
@@ -2086,7 +2086,11 @@ async function buildCatalog(sourceRoot) {
       sourceChapterIds: ["ch04"],
       // [HIDDEN] ch04-clip03 = 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석 — 노출 제외 중
       // 복구 시: 아래 배열에 "ch04-clip03" 을 다시 추가하고, HIDDEN_CHAPTER_CLIP_KEYS에서 두 항목을 제거하세요.
-      clipKeys: ["ch04-clip01", "ch04-clip02"]
+      clipKeys: ["ch04-clip01", "ch04-clip02", "ch03-clip03", "ch03-clip04"],
+      clipTitles: {
+        "ch03-clip03": "Gems 소개: AI 비서 만들기",
+        "ch03-clip04": "ChatGPT 및 GPTs 소개"
+      }
     },
     // ============================================================
     // [HIDDEN] CH04: Google AI Studio & Vibe Coding — 현재 노출 제외 중
@@ -2153,6 +2157,7 @@ async function buildCatalog(sourceRoot) {
     }
   ];
 
+  // 3. 반환용 자료 구조 및 맵 레지스트리 준비
   const chapters = [];
   const clipsByKey = new Map();
   const visibleClipsByKey = new Map();
@@ -2161,6 +2166,8 @@ async function buildCatalog(sourceRoot) {
   const canonicalChapterIdByVisibleId = new Map();
   const visibleClipKeyByCanonicalKey = new Map();
   const sourceChapterIdsByVisibleId = new Map();
+
+  // 클립 메타데이터를 통합 레지스트리 Map들에 일괄 등록하는 헬퍼 함수
   const registerClipObject = (clipObj) => {
     if (!clipObj?.clipKey) return;
 
@@ -2180,12 +2187,14 @@ async function buildCatalog(sourceRoot) {
     }
   };
 
+  // 4. 블루프린트를 순회하며 최종 챕터 및 클립 리바인딩 수행
   for (const [chapterIndex, blueprint] of visibleBlueprints.entries()) {
     const visibleChapterId = blueprint.visibleChapterId;
     const primarySourceChapterId = normalizeWs(blueprint.sourceChapterIds?.[0] || visibleChapterId).toLowerCase();
     const visibleChapterNum = formatChapterNum(chapterIndex);
     const visibleChapterCode = chapterCodeFromId(visibleChapterId);
     const chapterOverride = overrides.chapters?.[visibleChapterId] || {};
+
     const chapterObj = {
       chapterId: visibleChapterId,
       canonicalChapterId: primarySourceChapterId,
@@ -2205,6 +2214,7 @@ async function buildCatalog(sourceRoot) {
       visibleChapterIdByCanonicalId.set(normalizeWs(sourceChapterId).toLowerCase(), visibleChapterId);
     }
 
+    // 블루프린트에 등록된 클립 목록을 단일 명세(Specs) 리스트로 통합
     const clipSpecs = [];
     for (const clipKey of blueprint.clipKeys || []) {
       clipSpecs.push({ clipKey, synthetic: false });
@@ -2213,30 +2223,45 @@ async function buildCatalog(sourceRoot) {
       clipSpecs.push({ ...syntheticClip, synthetic: true });
     }
 
+    // 각 클립 명세를 순회하여 visible 기준 클립 오브젝트 빌드
     for (const [clipIndex, clipSpec] of clipSpecs.entries()) {
+      const clipSuffix = String(clipIndex + 1).padStart(2, "0");
+      const visibleClipKey = `${visibleChapterId}-clip${clipSuffix}`;
       let clipObj = null;
 
       if (clipSpec.synthetic) {
-        clipObj = await buildSyntheticClip(
+        // 합성 클립 빌드 및 키 오버라이드
+        const rawSynthetic = await buildSyntheticClip(
           sourceRoot,
           clipSpec,
           visibleChapterId,
           chapterObj.title,
           visibleChapterNum
         );
+        clipObj = {
+          ...rawSynthetic,
+          clipKey: visibleClipKey,
+          route: `#${visibleClipKey}`,
+          canonicalClipKey: visibleClipKey,
+          canonicalRoute: `#${visibleClipKey}`
+        };
       } else {
-        const sourceClip = canonicalClipsByKey.get(normalizeWs(clipSpec.clipKey).toLowerCase());
+        // 기존(Canonical) 클립 리바인딩
+        const sourceClipKey = normalizeWs(clipSpec.clipKey).toLowerCase();
+        const sourceClip = canonicalClipsByKey.get(sourceClipKey);
         if (!sourceClip) continue;
+
+        const overrideTitle = blueprint.clipTitles?.[clipSpec.clipKey] || clipSpec.title || sourceClip.title;
         clipObj = {
           ...sourceClip,
-          clipKey: `${visibleChapterId}-clip${String(clipIndex + 1).padStart(2, "0")}`,
-          route: `#${visibleChapterId}-clip${String(clipIndex + 1).padStart(2, "0")}`,
+          clipKey: visibleClipKey,
+          route: `#${visibleClipKey}`,
           chapterId: visibleChapterId,
           canonicalChapterId: sourceClip.canonicalChapterId,
           chapterCode: visibleChapterCode,
           chapterNum: visibleChapterNum,
           chapterTitle: chapterObj.title,
-          title: normalizeWs(blueprint.clipTitles?.[clipSpec.clipKey] || clipSpec.title || sourceClip.title),
+          title: normalizeWs(overrideTitle),
           canonicalClipKey: sourceClip.canonicalClipKey,
           canonicalRoute: sourceClip.canonicalRoute
         };
@@ -2244,18 +2269,7 @@ async function buildCatalog(sourceRoot) {
 
       if (!clipObj) continue;
 
-      if (clipSpec.synthetic) {
-        clipObj.chapterId = visibleChapterId;
-        clipObj.canonicalChapterId = visibleChapterId;
-        clipObj.chapterCode = visibleChapterCode;
-        clipObj.chapterNum = visibleChapterNum;
-        clipObj.chapterTitle = chapterObj.title;
-        clipObj.clipKey = `${visibleChapterId}-clip${String(clipIndex + 1).padStart(2, "0")}`;
-        clipObj.route = `#${clipObj.clipKey}`;
-        clipObj.canonicalClipKey = clipObj.clipKey;
-        clipObj.canonicalRoute = clipObj.route;
-      }
-
+      // JSON 오버라이드 설정에 따른 메타데이터 덮어쓰기 적용
       const clipOverride = overrides.clips?.[clipObj.clipKey] || {};
       if (clipOverride.title) {
         clipObj.title = clipOverride.title;
@@ -2264,10 +2278,12 @@ async function buildCatalog(sourceRoot) {
         clipObj.type = clipOverride.type;
       }
 
+      // 최종 클립 객체 레지스트리 등록 및 챕터 추가
       registerClipObject(clipObj);
       chapterObj.clipObjects.push(clipObj);
     }
 
+    // 유효한 클립이 포함된 챕터만 최종 챕터 리스트에 취합
     if (chapterObj.clipObjects.length) {
       chapterObj.clips = chapterObj.clipObjects.map((clipObj) => ({
         clipKey: clipObj.clipKey,
