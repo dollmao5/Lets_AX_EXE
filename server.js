@@ -84,6 +84,23 @@ const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
   "ch04-clip03",  // canonical key (원본 챕터 폴더 기준)
   "ch03-clip05"   // visible key (렌더링 후 재맵핑된 클립 키)
 ]);
+const SKIP_TITLE_KEYWORDS = new Set(["개념", "실습", "참고", "개요", "플랫폼", "심화"]);
+const ALLOWED_SECTION_TYPES = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요"]);
+const ALLOWED_BLOCK_KINDS = new Set([
+  "overview",
+  "markdown",
+  "prompt",
+  "checklist",
+  "resource",
+  "quiz",
+  "note",
+  "table"
+]);
+
+const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".svg", ".gif"]);
+const DOCUMENT_EXTENSIONS = new Set([".ppt", ".pptx", ".doc", ".docx", ".xls", ".xlsx", ".csv", ".txt", ".md"]);
+const AUDIO_EXTENSIONS = new Set([".mp3", ".wav", ".m4a"]);
+
 const ROOT_ACCOUNT_ID = "root";
 const ROOT_DEFAULT_PASSWORD = process.env.AX_ROOT_PASSWORD || "root";
 
@@ -229,12 +246,10 @@ function extractClipTitleFromText(text, fallback = "") {
     .map((line) => normalizeWs(line))
     .filter(Boolean);
 
-  const skipSet = new Set(["개념", "실습", "참고", "개요", "플랫폼", "심화"]);
-
   for (const line of rawLines) {
     if (/^~?\d+\s*분$/.test(line)) continue;
     if (/^CH\s*\d+/i.test(line)) continue;
-    if (skipSet.has(line)) continue;
+    if (SKIP_TITLE_KEYWORDS.has(line)) continue;
     if (line.length < 2) continue;
     return line;
   }
@@ -463,30 +478,18 @@ function makeBuilderId(prefix) {
 
 function normalizeSectionType(type) {
   const value = normalizeWs(type);
-  const allowed = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요"]);
-  return allowed.has(value) ? value : "개념";
+  return ALLOWED_SECTION_TYPES.has(value) ? value : "개념";
 }
 
 function normalizeSidebarClipType(type, fallback = "개념") {
   const value = normalizeWs(type);
-  const allowed = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요"]);
-  if (allowed.has(value)) return value;
+  if (ALLOWED_SECTION_TYPES.has(value)) return value;
   return normalizeWs(fallback) || "개념";
 }
 
 function normalizeBlockKind(kind) {
   const value = normalizeWs(kind).toLowerCase();
-  const allowed = new Set([
-    "overview",
-    "markdown",
-    "prompt",
-    "checklist",
-    "resource",
-    "quiz",
-    "note",
-    "table"
-  ]);
-  return allowed.has(value) ? value : "markdown";
+  return ALLOWED_BLOCK_KINDS.has(value) ? value : "markdown";
 }
 
 function defaultBlockTitle(kind) {
@@ -1133,15 +1136,15 @@ function sanitizeAssetFileName(input) {
 
 function classifyAssetKind(ext) {
   const normalized = String(ext || "").toLowerCase();
-  if ([".png", ".jpg", ".jpeg", ".webp", ".svg", ".gif"].includes(normalized)) {
+  if (IMAGE_EXTENSIONS.has(normalized)) {
     return "image";
   }
   if (normalized === ".pdf") return "pdf";
-  if ([".ppt", ".pptx", ".doc", ".docx", ".xls", ".xlsx", ".csv", ".txt", ".md"].includes(normalized)) {
+  if (DOCUMENT_EXTENSIONS.has(normalized)) {
     return "document";
   }
-  if ([".mp3", ".wav", ".m4a"].includes(normalized)) return "audio";
-  if ([".mp4"].includes(normalized)) return "video";
+  if (AUDIO_EXTENSIONS.has(normalized)) return "audio";
+  if (normalized === ".mp4") return "video";
   return "file";
 }
 
