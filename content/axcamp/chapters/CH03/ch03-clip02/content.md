@@ -1,16 +1,16 @@
 ---
-route: "#ch02-clip02"
+route: "#ch02-clip03"
 chapter: "ch02"
-title: "프롬프팅 기초: 리더의 역할"
-source_url: "https://lg.cmdspace.work/axcamp#ch02-clip02"
+title: "프롬프팅 기초: AI 시대, 변화된 팀 리더의 역할 정의하기"
+source_url: "https://lg.cmdspace.work/axcamp#ch02-clip03"
 exported_at: "2026-02-28T01:53:52.740Z"
 ---
 
-~35분
+~60분
 CH 02
 실습
 
-# 프롬프팅 기초: 리더의 역할
+# 프롬프팅 기초: AI 시대, 변화된 팀 리더의 역할 정의하기
 
 처음부터 무거운 업무 프롬프트로 들어가기보다, Gemini와 자연스럽게 대화하며 **페르소나 설정**, **맥락 누적**, **구조화된 정리**를 몸으로 익히는 클립입니다.
 
