@@ -1334,7 +1334,7 @@ function rewritePracticeDriveUrls(html) {
   return source.replace(fileLikeRe, swap).replace(openRe, swap);
 }
 
-function rewriteVisibleReferences(input, catalog) {
+function rewriteVisibleReferences(input, catalog, currentClip = null) {
   let output = String(input || "");
   if (!output || !catalog) return output;
 
@@ -1342,6 +1342,28 @@ function rewriteVisibleReferences(input, catalog) {
     const mapped = toVisibleClipKey(catalog, rawKey);
     return mapped ? `#${mapped}` : `#${rawKey}`;
   });
+
+  if (currentClip && currentClip.canonicalChapterId && currentClip.chapterId) {
+    const canonicalId = normalizeWs(currentClip.canonicalChapterId).toLowerCase();
+    const visibleId = normalizeWs(currentClip.chapterId).toLowerCase();
+    if (canonicalId !== visibleId) {
+      const canonicalIndex = chapterIndexFromId(canonicalId);
+      const visibleIndex = chapterIndexFromId(visibleId);
+      if (canonicalIndex != null && visibleIndex != null) {
+        const canonicalPadded = String(canonicalIndex).padStart(2, "0");
+        const visiblePadded = String(visibleIndex).padStart(2, "0");
+
+        output = output.replace(
+          new RegExp(`\\bCH\\s+${canonicalPadded}\\b`, "g"),
+          `CH ${visiblePadded}`
+        );
+        output = output.replace(
+          new RegExp(`\\bCH${canonicalPadded}\\b`, "g"),
+          `CH${visiblePadded}`
+        );
+      }
+    }
+  }
 
   for (const [canonicalChapterId, visibleChapterId] of catalog.visibleChapterIdByCanonicalId || []) {
     if (!canonicalChapterId || !visibleChapterId || canonicalChapterId === visibleChapterId) {
@@ -2823,7 +2845,8 @@ async function resolveClipPayload(clipKey, course) {
       rewritePracticeDriveUrls(
         rewriteRelativeUrls(htmlRaw, activeCourse.courseCode, clip.clipKey)
       ),
-      catalog
+      catalog,
+      clip
     )
     : `<pre>${escapeHtml(mdRaw || txtRaw || "콘텐츠가 없습니다.")}</pre>`;
   const renderedMetadata = buildMetadataFromHtml(clip, metadata, htmlContent);
@@ -2835,7 +2858,7 @@ async function resolveClipPayload(clipKey, course) {
         : Array.isArray(metadata?.badges)
           ? metadata.badges
           : [];
-  const badges = baseBadges.map((badge) => rewriteVisibleReferences(badge, catalog));
+  const badges = baseBadges.map((badge) => rewriteVisibleReferences(badge, catalog, clip));
 
   const screenshotRelative = (await pathExists(clip.screenshotPath))
     ? `/course-files/${encodeURIComponent(activeCourse.courseCode)}/${encodeURIComponent(clip.clipKey)}/screenshot.png`
