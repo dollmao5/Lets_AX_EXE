@@ -1,0 +1,299 @@
+<div class="clip-header">
+  <div class="clip-badges">
+    <span class="clip-badge chapter">CH 02</span>
+    <span class="clip-badge type-reference">참고_test</span>
+  </div>
+  <h1 class="clip-title">ice breaking: Ai-Friendly 리더십</h1>
+</div>
+
+<div class="clip-overview">
+  본 세션은 Ai-Friendly 리더십 교육 과정의 아이스 브레이킹을 위한 공간입니다.
+  상세 학습 내용과 활동 양식은 향후 제공될 예정입니다.
+</div>
+
+<div class="clip-section">
+  <div class="clip-section-title">실습 가이드</div>
+  <div class="clip-section-content">
+    <p style="margin-bottom: 16px; font-weight: 500; line-height: 1.7; color: var(--text-body);">
+      이번 시간에는 "AI 시대, 리더의 고민과 역할"에 대해 회의를 해보는 시간입니다. 회의를 진행할 때 녹음을 해주세요. 녹음은 Tiro를 이용할 것이며 이에 대한 내용은 아래 이미지를 참고하시기 바랍니다.
+      녹음 후에는 음성 파일을 다운로드하고 여기에 업로드해주세요.
+    </p>
+    <p>아래 이미지 가이드를 참고하여 진행해 주시기 바랍니다.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 16px;">
+      <div>
+        <h4 style="margin-bottom: 8px;">1. 앱 다운로드</h4>
+        <img src="01_app_download.png" alt="앱 다운로드"
+          style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border);" />
+      </div>
+      <div>
+        <h4 style="margin-bottom: 8px;">2. 가입 단계</h4>
+        <img src="02_sign_up.png" alt="가입 단계"
+          style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border);" />
+      </div>
+      <div>
+        <h4 style="margin-bottom: 8px;">3. 가입 상세</h4>
+        <img src="03_sign_up_detail.png" alt="가입 상세"
+          style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border);" />
+      </div>
+      <div>
+        <h4 style="margin-bottom: 8px;">4. 사전 설정 1</h4>
+        <img src="04_pre_settings.png" alt="사전 설정 1"
+          style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border);" />
+      </div>
+      <div>
+        <h4 style="margin-bottom: 8px;">5. 사전 설정 2</h4>
+        <img src="05_pre_settings_detail.png" alt="사전 설정 2"
+          style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border);" />
+      </div>
+      <div>
+        <h4 style="margin-bottom: 8px;">6. 파일 저장</h4>
+        <img src="06_save_file.png" alt="파일 저장"
+          style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border);" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clip-section" id="shared-audio-section">
+  <div class="clip-section-title">조원 오디오 자료 공유방</div>
+  <div class="clip-section-content">
+    <p style="margin-bottom: 12px; color: var(--text-secondary); font-size: 0.85rem;">
+      팀 리더십 토론 녹음 오디오 파일을 업로드하여 조원들과 공유하세요. 업로드된 파일은 목록에서 바로 다운로드할 수 있습니다. (지원 형식: MP3, WAV, M4A 등, 최대 32MB)
+    </p>
+
+    <!-- 파일 선택 및 업로드 영역 -->
+    <div
+      style="background: var(--bg-offwhite); border: 1px dashed var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <input type="file" id="sharedAudioFileInput" accept="audio/*" style="display: none;" />
+        <button type="button" class="slide-briefing-link" id="selectSharedAudioBtn"
+          style="margin: 0; font-size: 0.85rem;">파일 선택</button>
+        <span id="sharedAudioFileLabel"
+          style="font-size: 0.85rem; color: var(--text-secondary); word-break: break-all;">선택된 파일 없음</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span id="sharedAudioStatus" style="font-size: 0.8rem; color: var(--text-secondary);"></span>
+        <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn"
+          style="margin: 0; font-size: 0.85rem; background: var(--brand); color: white; border: none; opacity: 0.6;"
+          disabled>업로드 하기</button>
+      </div>
+    </div>
+
+    <!-- 공유된 파일 리스트 영역 -->
+    <div style="margin-top: 16px;">
+      <h5 style="margin-bottom: 8px; font-size: 0.9rem;">업로드된 오디오 목록</h5>
+      <div id="sharedAudioList"
+        style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: var(--bg-white);">
+        <p class="muted" style="font-size: 0.85rem; margin: 0; text-align: center; padding: 12px;">불러오는 중...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IIFE Script Hack -->
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+  const fileInput = document.getElementById('sharedAudioFileInput');
+  const fileLabel = document.getElementById('sharedAudioFileLabel');
+  const selectBtn = document.getElementById('selectSharedAudioBtn');
+  const uploadBtn = document.getElementById('uploadSharedAudioBtn');
+  const statusEl = document.getElementById('sharedAudioStatus');
+  const listEl = document.getElementById('sharedAudioList');
+
+  if (!fileInput || !selectBtn || !uploadBtn || !listEl) return;
+
+  const clipKey = 'ch02-clip02';
+
+  selectBtn.onclick = function() {
+    fileInput.click();
+  };
+
+  fileInput.onchange = function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      fileLabel.textContent = file.name + ' (' + formatSize(file.size) + ')';
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
+    } else {
+      fileLabel.textContent = '선택된 파일 없음';
+      uploadBtn.disabled = true;
+      uploadBtn.style.opacity = '0.6';
+    }
+  };
+
+  function formatSize(bytes) {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  async function loadAudioList() {
+    try {
+      const headers = {
+        'x-session-token': localStorage.getItem('ax_literacy_session_token') || '',
+        'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
+      };
+
+      const res = await fetch('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+        headers: headers
+      });
+      const data = await res.json();
+      
+      if (!data.ok) {
+        listEl.innerHTML = '<p class=&quot;muted&quot; style=&quot;font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);&quot;>' + (data.error || '목록을 불러오지 못했습니다.') + '</p>';
+        return;
+      }
+
+      if (!data.audios || data.audios.length === 0) {
+        listEl.innerHTML = '<p class=&quot;muted&quot; style=&quot;font-size: 0.85rem; text-align: center; margin: 0; padding: 12px;&quot;>공유된 오디오 파일이 없습니다.</p>';
+        return;
+      }
+
+      listEl.innerHTML = '';
+      data.audios.forEach(function(audio) {
+        const row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.justifyContent = 'space-between';
+        row.style.alignItems = 'center';
+        row.style.padding = '8px 12px';
+        row.style.borderBottom = '1px solid var(--border-subtle)';
+        row.style.fontSize = '0.85rem';
+
+        const info = document.createElement('div');
+        info.style.display = 'flex';
+        info.style.flexDirection = 'column';
+        info.style.gap = '2px';
+
+        const name = document.createElement('strong');
+        name.style.wordBreak = 'break-all';
+        name.textContent = audio.fileName;
+        info.appendChild(name);
+
+        const meta = document.createElement('span');
+        meta.style.fontSize = '0.75rem';
+        meta.style.color = 'var(--text-secondary)';
+        meta.textContent = audio.sizeLabel + ' · ' + audio.uploadedBy + ' · ' + formatDate(audio.uploadedAt);
+        info.appendChild(meta);
+
+        row.appendChild(info);
+
+        const actions = document.createElement('div');
+        actions.style.display = 'flex';
+        actions.style.gap = '8px';
+
+        const downloadLink = document.createElement('a');
+        downloadLink.href = audio.url;
+        downloadLink.download = audio.fileName;
+        downloadLink.className = 'slide-briefing-link';
+        downloadLink.style.margin = '0';
+        downloadLink.style.padding = '4px 8px';
+        downloadLink.style.fontSize = '0.75rem';
+        downloadLink.textContent = '다운로드';
+        actions.appendChild(downloadLink);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'slide-briefing-link';
+        deleteBtn.style.margin = '0';
+        deleteBtn.style.padding = '4px 8px';
+        deleteBtn.style.fontSize = '0.75rem';
+        deleteBtn.style.color = 'var(--danger)';
+        deleteBtn.style.borderColor = 'var(--danger)';
+        deleteBtn.textContent = '삭제';
+        deleteBtn.onclick = async function() {
+          if (!confirm('이 오디오 파일을 삭제하시겠습니까?')) return;
+          try {
+            const delRes = await fetch('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+              method: 'DELETE',
+              headers: Object.assign({}, headers, { 'Content-Type': 'application/json' }),
+              body: JSON.stringify({ fileName: audio.fileName })
+            });
+            const delData = await delRes.json();
+            if (delData.ok) {
+              loadAudioList();
+            } else {
+              alert(delData.error || '삭제 실패');
+            }
+          } catch (err) {
+            alert('삭제 에러: ' + err.message);
+          }
+        };
+        actions.appendChild(deleteBtn);
+
+        row.appendChild(actions);
+        listEl.appendChild(row);
+      });
+    } catch (error) {
+      console.error(error);
+      listEl.innerHTML = '<p class=&quot;muted&quot; style=&quot;font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);&quot;>서버 연결 에러</p>';
+    }
+  }
+
+  function formatDate(isoStr) {
+    const d = new Date(isoStr);
+    return (d.getMonth()+1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+
+  uploadBtn.onclick = async function() {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    uploadBtn.disabled = true;
+    uploadBtn.style.opacity = '0.6';
+    statusEl.textContent = '파일 읽는 중...';
+    statusEl.style.color = 'var(--text-secondary)';
+
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+      const base64 = e.target.result.split(',')[1];
+      statusEl.textContent = '업로드 중...';
+      
+      try {
+        const headers = {
+          'Content-Type': 'application/json',
+          'x-session-token': localStorage.getItem('ax_literacy_session_token') || '',
+          'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
+        };
+
+        const res = await fetch('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify({
+            fileName: file.name,
+            contentBase64: base64
+          })
+        });
+
+        const data = await res.json();
+        if (data.ok) {
+          statusEl.textContent = '업로드 성공!';
+          statusEl.style.color = 'var(--brand)';
+          fileInput.value = '';
+          fileLabel.textContent = '선택된 파일 없음';
+          loadAudioList();
+        } else {
+          statusEl.textContent = data.error || '업로드 실패';
+          statusEl.style.color = 'var(--danger)';
+          uploadBtn.disabled = false;
+          uploadBtn.style.opacity = '1';
+        }
+      } catch (err) {
+        statusEl.textContent = '에러: ' + err.message;
+        statusEl.style.color = 'var(--danger)';
+        uploadBtn.disabled = false;
+        uploadBtn.style.opacity = '1';
+      }
+    };
+    reader.onerror = function() {
+      statusEl.textContent = '파일 읽기 오류';
+      statusEl.style.color = 'var(--danger)';
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
+    };
+    reader.readAsDataURL(file);
+  };
+
+  loadAudioList();
+})()" style="display:none;" />

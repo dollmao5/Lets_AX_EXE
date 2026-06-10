@@ -82,7 +82,7 @@ const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
   // canonical 키(export-report.json 기준) + visible 키(렌더링 시 재맵핑 결과)를 모두 등록
   // 복구 시: 아래 두 줄을 삭제하고, visibleBlueprints ch03 clipKeys에 "ch04-clip03"을 다시 추가하세요.
   "ch04-clip03",  // canonical key (원본 챕터 폴더 기준)
-  "ch04-clip05"   // visible key (렌더링 후 재맵핑된 클립 키)
+  "ch03-clip05"   // visible key (렌더링 후 재맵핑된 클립 키)
 ]);
 const ROOT_ACCOUNT_ID = "root";
 const ROOT_DEFAULT_PASSWORD = process.env.AX_ROOT_PASSWORD || "root";
@@ -2091,7 +2091,7 @@ async function buildCatalog(sourceRoot) {
     },
     {
       visibleChapterId: "ch02",
-      title: "Gemini 활용 (1)",
+      title: "Gemini 활용",
       time: "09:30",
       sourceChapterIds: ["ch03"],
       clipKeys: ["ch03-clip01", "ch03-clip08", "ch03-clip02", "ch03-clip03"],
@@ -2104,16 +2104,6 @@ async function buildCatalog(sourceRoot) {
     },
     {
       visibleChapterId: "ch03",
-      title: "Gemini 활용 (2) - AI 시대, 성과 창출을 위한 조직(팀) 역량 점검",
-      time: "13:30",
-      sourceChapterIds: ["ch03"],
-      clipKeys: ["ch03-clip09"],
-      clipTitles: {
-        "ch03-clip09": "[실습] 조직 역량 점검 및 Workflow 재설계 (4단계)"
-      }
-    },
-    {
-      visibleChapterId: "ch04",
       title: "NotebookLM",
       time: "13:00",
       sourceChapterIds: ["ch04"],
@@ -2126,10 +2116,10 @@ async function buildCatalog(sourceRoot) {
       }
     },
     // ============================================================
-    // [HIDDEN] CH05: Google AI Studio & Vibe Coding — 현재 노출 제외 중
-    // 복구 시: 아래 주석 블록의 '//' 를 제거하고, 바로 아래 ch06(Hi-D Code)도 함께 복구하세요.
+    // [HIDDEN] CH04: Google AI Studio & Vibe Coding — 현재 노출 제외 중
+    // 복구 시: 아래 주석 블록의 '//' 를 제거하고, 바로 아래 ch05(Hi-D Code)도 함께 복구하세요.
     // {
-    //   visibleChapterId: "ch05",
+    //   visibleChapterId: "ch04",
     //   title: "Google AI Studio & Vibe Coding",
     //   time: "14:10",
     //   sourceChapterIds: ["ch05", "ch06"],
@@ -2145,17 +2135,17 @@ async function buildCatalog(sourceRoot) {
     //   }
     // },
     // ============================================================
-    // [HIDDEN] CH06: Hi-D Code — 현재 노출 제외 중
-    // 복구 시: 위의 CH05 블록과 함께 아래 주석을 함께 해제하세요.
+    // [HIDDEN] CH05: Hi-D Code — 현재 노출 제외 중
+    // 복구 시: 위의 CH04 블록과 함께 아래 주석을 함께 해제하세요.
     // {
-    //   visibleChapterId: "ch06",
+    //   visibleChapterId: "ch05",
     //   title: "Hi-D Code",
     //   time: "16:10",
     //   sourceChapterIds: [],
     //   syntheticClips: [
     //     {
-    //       clipKey: "ch06-clip01",
-    //       folderRelative: "generated/hid-code/ch06-clip01",
+    //       clipKey: "ch05-clip01",
+    //       folderRelative: "generated/hid-code/ch05-clip01",
     //       title: "Hi-D Code 소개 및 시연 (최남석, Agentic AI 팀)",
     //       type: "개요"
     //     }
@@ -2163,14 +2153,14 @@ async function buildCatalog(sourceRoot) {
     // },
     // ============================================================
     {
-      visibleChapterId: "ch07",
+      visibleChapterId: "ch06",
       title: "Key Takeaways & Q/A",
       time: "17:10",
       sourceChapterIds: ["ch09"],
       clipKeys: ["ch09-clip01", "ch09-clip02"]
     },
     {
-      visibleChapterId: "ch08",
+      visibleChapterId: "ch07",
       title: "참고자료 라이브러리",
       time: "17:20",
       sourceChapterIds: ["ch07", "ch08"],
@@ -3093,6 +3083,148 @@ async function handleAxTask(req, res, urlObj) {
   });
 }
 
+async function handleSharedAudio(req, res, urlObj) {
+  const user = await resolveUserFromRequest(req, urlObj);
+  if (!user) {
+    return sendJson(res, 401, { ok: false, error: "로그인이 필요합니다." });
+  }
+
+  const course = await resolveActiveCourse(user, urlObj);
+  const catalog = await getCatalog(course);
+  const clipKey = normalizeWs(urlObj.searchParams.get("clipKey")).toLowerCase();
+  
+  if (!clipKey) {
+    return sendJson(res, 400, { ok: false, error: "clipKey가 필요합니다." });
+  }
+
+  const clip = resolveCatalogClip(catalog, clipKey);
+  if (!clip) {
+    return sendJson(res, 404, { ok: false, error: "클립을 찾을 수 없습니다." });
+  }
+
+  const sharedDir = path.join(clip.folderAbsolute, "shared-audios");
+
+  if (req.method === "GET") {
+    try {
+      if (!(await pathExists(sharedDir))) {
+        return sendJson(res, 200, { ok: true, audios: [] });
+      }
+      const files = await fs.readdir(sharedDir);
+      const audios = [];
+      for (const file of files) {
+        const filePath = path.join(sharedDir, file);
+        const stat = await fs.stat(filePath);
+        if (stat.isFile()) {
+          audios.push({
+            fileName: file,
+            size: stat.size,
+            sizeLabel: formatByteSize(stat.size),
+            url: `/course-files/${encodeURIComponent(course.courseCode)}/${encodeURIComponent(clip.clipKey)}/shared-audios/${encodeURIComponent(file)}`,
+            uploadedAt: stat.mtime.toISOString(),
+            uploadedBy: user.accountId
+          });
+        }
+      }
+      audios.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+      return sendJson(res, 200, { ok: true, audios });
+    } catch (error) {
+      console.error("Failed to list shared audios:", error);
+      return sendJson(res, 500, { ok: false, error: "오디오 목록을 가져오지 못했습니다." });
+    }
+  }
+
+  if (req.method === "POST") {
+    try {
+      const payload = await readRequestJson(req);
+      const originalName = sanitizeAssetFileName(payload.fileName || "");
+      const ext = path.extname(originalName).toLowerCase();
+      const base64 = String(payload.contentBase64 || "").trim();
+
+      const ALLOWED_AUDIO_EXTENSIONS = new Set([".mp3", ".wav", ".m4a", ".ogg", ".aac"]);
+
+      if (!originalName || !ext) {
+        return sendJson(res, 400, { ok: false, error: "파일 이름이 올바르지 않습니다." });
+      }
+
+      if (!ALLOWED_AUDIO_EXTENSIONS.has(ext)) {
+        return sendJson(res, 400, {
+          ok: false,
+          error: `지원하지 않는 파일 형식입니다. 오디오 파일만 업로드할 수 있습니다. (${ext})`
+        });
+      }
+
+      if (!base64) {
+        return sendJson(res, 400, { ok: false, error: "업로드할 파일 내용이 비어 있습니다." });
+      }
+
+      const content = Buffer.from(base64, "base64");
+      if (!content.length) {
+        return sendJson(res, 400, { ok: false, error: "업로드할 파일 내용이 비어 있습니다." });
+      }
+
+      if (content.length > MAX_ADMIN_ASSET_BYTES) {
+        return sendJson(res, 400, {
+          ok: false,
+          error: `파일 용량은 ${formatByteSize(MAX_ADMIN_ASSET_BYTES)} 이하로 업로드해 주세요.`
+        });
+      }
+
+      await fs.mkdir(sharedDir, { recursive: true });
+
+      const stem = path.basename(originalName, ext) || "audio";
+      let candidateName = `${stem}${ext}`;
+      let targetPath = path.join(sharedDir, candidateName);
+      let suffix = 2;
+
+      while (await pathExists(targetPath)) {
+        candidateName = `${stem}_${suffix}${ext}`;
+        targetPath = path.join(sharedDir, candidateName);
+        suffix++;
+      }
+
+      await fs.writeFile(targetPath, content);
+
+      return sendJson(res, 200, {
+        ok: true,
+        audio: {
+          fileName: candidateName,
+          size: content.length,
+          sizeLabel: formatByteSize(content.length),
+          url: `/course-files/${encodeURIComponent(course.courseCode)}/${encodeURIComponent(clip.clipKey)}/shared-audios/${encodeURIComponent(candidateName)}`,
+          uploadedAt: new Date().toISOString(),
+          uploadedBy: user.accountId
+        }
+      });
+    } catch (error) {
+      console.error("Failed to upload shared audio:", error);
+      return sendJson(res, 500, { ok: false, error: "오디오 업로드에 실패했습니다." });
+    }
+  }
+
+  if (req.method === "DELETE") {
+    try {
+      const payload = await readRequestJson(req);
+      const fileName = sanitizeAssetFileName(payload.fileName || "");
+      if (!fileName) {
+        return sendJson(res, 400, { ok: false, error: "삭제할 파일명이 필요합니다." });
+      }
+
+      const targetPath = path.join(sharedDir, fileName);
+      if (!(await pathExists(targetPath))) {
+        return sendJson(res, 404, { ok: false, error: "삭제할 파일이 존재하지 않습니다." });
+      }
+
+      await fs.unlink(targetPath);
+      return sendJson(res, 200, { ok: true, message: "성공적으로 삭제되었습니다." });
+    } catch (error) {
+      console.error("Failed to delete shared audio:", error);
+      return sendJson(res, 500, { ok: false, error: "파일 삭제에 실패했습니다." });
+    }
+  }
+
+  return sendText(res, 405, "text/plain; charset=utf-8", "Method not allowed");
+}
+
 async function handleNotes(req, res, urlObj) {
   const user = await resolveUserFromRequest(req, urlObj);
   if (!user) {
@@ -3853,10 +3985,10 @@ async function handleCourseFile(req, res, urlObj) {
   if (parts.length >= 4 && directory.byCode.has(maybeCourseCode)) {
     course = directory.byCode.get(maybeCourseCode);
     clipKey = decodeURIComponent(parts[2] || "");
-    requested = parts.slice(3).join("/");
+    requested = decodeURIComponent(parts.slice(3).join("/"));
   } else {
     clipKey = decodeURIComponent(parts[1] || "");
-    requested = parts.slice(2).join("/");
+    requested = decodeURIComponent(parts.slice(2).join("/"));
   }
 
   const catalog = await getCatalog(course);
@@ -4001,6 +4133,13 @@ async function route(req, res) {
 
   if (req.method === "GET" && urlObj.pathname.startsWith("/api/clips/")) {
     return handleGetClip(req, res, urlObj);
+  }
+  
+  if (
+    (req.method === "GET" || req.method === "POST" || req.method === "DELETE") &&
+    urlObj.pathname === "/api/shared-audio"
+  ) {
+    return handleSharedAudio(req, res, urlObj);
   }
 
   if (
