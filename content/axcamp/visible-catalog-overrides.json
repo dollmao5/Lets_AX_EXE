@@ -16,17 +16,17 @@
       "title": "Gemini 활용 (2)",
       "time": "13:30"
     },
+    "ch04": {
+      "title": "NotebookLM",
+      "time": "13:00"
+    },
     "ch05": {
-      "title": "Google AI Studio",
-      "time": "14:10"
+      "title": "Key Takeaways & Q/A",
+      "time": "17:10"
     },
     "ch06": {
-      "title": "Hi-D Code",
-      "time": "16:10"
-    },
-    "ch08": {
       "title": "참고자료 라이브러리",
-      "time": ""
+      "time": "17:20"
     }
   },
   "clips": {
@@ -66,6 +66,14 @@
       "title": "조직 역량 점검 및 Workflow 재설계",
       "type": "실습"
     },
+    "ch04-clip01": {
+      "title": "NotebookLM 소개 및 문서 기반 AI 연구",
+      "type": "플랫폼"
+    },
+    "ch04-clip02": {
+      "title": "문서 기반 AI 리서치: CIQO와 LG 스타일 브",
+      "type": "실습"
+    },
     "ch04-clip03": {
       "title": "Gems 소개: AI 비서 만들기",
       "type": "참고"
@@ -73,18 +81,6 @@
     "ch04-clip04": {
       "title": "ChatGPT 및 GPTs 소개",
       "type": "플랫폼"
-    },
-    "ch05-clip01": {
-      "title": "Google AI Studio API 키 발급",
-      "type": "설정"
-    },
-    "ch06-clip01": {
-      "title": "Hi-D Code 소개 및 시연",
-      "type": "개요"
-    },
-    "ch08-clip01": {
-      "title": "에이전틱 AI란",
-      "type": "개념"
     }
   }
 }

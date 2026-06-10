@@ -2091,76 +2091,49 @@ async function buildCatalog(sourceRoot) {
     },
     {
       visibleChapterId: "ch02",
-      title: "Gemini 활용",
+      title: "Gemini 활용 (1)",
       time: "09:30",
       sourceChapterIds: ["ch03"],
       clipKeys: ["ch03-clip01", "ch03-clip08", "ch03-clip02", "ch03-clip03"],
       clipTitles: {
         "ch03-clip01": "Gemini 소개 및 접속 방법",
-        "ch03-clip08": "ice breaking: Ai-Friendly 리더십",
-        "ch03-clip02": "프롬프팅 기초: 리더의 역할",
-        "ch03-clip03": "비지니스 프롬프팅: 핵심 역량&스킬"
+        "ch03-clip08": "ice breaking: Ai-Friendly 리저십",
+        "ch03-clip02": "프롬프팅 기초: AI 시대, 리더의 역할",
+        "ch03-clip03": "프롬프팅 활용: 리더의 핵심 역량 및 스킬"
       }
     },
     {
       visibleChapterId: "ch03",
+      title: "Gemini 활용 (2)",
+      time: "13:30",
+      sourceChapterIds: ["ch03"],
+      clipKeys: ["ch03-clip09"],
+      clipTitles: {
+        "ch03-clip09": "조직 역량 점검 및 Workflow 재설계"
+      }
+    },
+    {
+      visibleChapterId: "ch04",
       title: "NotebookLM",
       time: "13:00",
       sourceChapterIds: ["ch04"],
-      // [HIDDEN] ch04-clip03 = 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석 — 노출 제외 중
-      // 복구 시: 아래 배열에 "ch04-clip03" 을 다시 추가하고, HIDDEN_CHAPTER_CLIP_KEYS에서 두 항목을 제거하세요.
       clipKeys: ["ch04-clip01", "ch04-clip02", "ch03-clip03", "ch03-clip04"],
       clipTitles: {
+        "ch04-clip01": "NotebookLM 소개 및 문서 기반 AI 연구",
+        "ch04-clip02": "문서 기반 AI 리서치: CIQO와 LG 스타일 브",
         "ch03-clip03": "Gems 소개: AI 비서 만들기",
         "ch03-clip04": "ChatGPT 및 GPTs 소개"
       }
     },
-    // ============================================================
-    // [HIDDEN] CH04: Google AI Studio & Vibe Coding — 현재 노출 제외 중
-    // 복구 시: 아래 주석 블록의 '//' 를 제거하고, 바로 아래 ch05(Hi-D Code)도 함께 복구하세요.
-    // {
-    //   visibleChapterId: "ch04",
-    //   title: "Google AI Studio & Vibe Coding",
-    //   time: "14:10",
-    //   sourceChapterIds: ["ch05", "ch06"],
-    //   clipKeys: [
-    //     "ch05-clip02",
-    //     "ch06-clip01",
-    //     "ch06-clip02"
-    //   ],
-    //   clipTitles: {
-    //     "ch05-clip02": "Google AI Studio 소개 및 접속 방법",
-    //     "ch06-clip01": "바이브 코딩이란",
-    //     "ch06-clip02": "바이브 코딩으로 웹앱 제작하기"
-    //   }
-    // },
-    // ============================================================
-    // [HIDDEN] CH05: Hi-D Code — 현재 노출 제외 중
-    // 복구 시: 위의 CH04 블록과 함께 아래 주석을 함께 해제하세요.
-    // {
-    //   visibleChapterId: "ch05",
-    //   title: "Hi-D Code",
-    //   time: "16:10",
-    //   sourceChapterIds: [],
-    //   syntheticClips: [
-    //     {
-    //       clipKey: "ch05-clip01",
-    //       folderRelative: "generated/hid-code/ch05-clip01",
-    //       title: "Hi-D Code 소개 및 시연 (최남석, Agentic AI 팀)",
-    //       type: "개요"
-    //     }
-    //   ]
-    // },
-    // ============================================================
     {
-      visibleChapterId: "ch06",
+      visibleChapterId: "ch05",
       title: "Key Takeaways & Q/A",
       time: "17:10",
       sourceChapterIds: ["ch09"],
       clipKeys: ["ch09-clip01", "ch09-clip02"]
     },
     {
-      visibleChapterId: "ch07",
+      visibleChapterId: "ch06",
       title: "참고자료 라이브러리",
       time: "17:20",
       sourceChapterIds: ["ch07", "ch08"],
