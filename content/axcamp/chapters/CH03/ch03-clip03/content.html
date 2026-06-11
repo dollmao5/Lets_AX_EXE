@@ -4,7 +4,7 @@
     <span class="clip-badge chapter">CH 03</span>
     <span class="clip-badge type-practice">실습</span>
   </div>
-  <h1 class="clip-title" data-keep-title>프롬프팅 활용: 리더에게 필요한 핵심 역량 및 스킬</h1>
+  <h1 class="clip-title" data-keep-title="">프롬프팅 활용: 리더에게 필요한 핵심 역량 및 스킬</h1>
 </div>
 
 <div class="clip-overview">앞에서 익힌 <strong>페르소나 설정</strong>, <strong>맥락 누적</strong>, <strong>구조화된 출력</strong>을 이제 실제 리더의
@@ -61,14 +61,11 @@
     <p style="margin:0 0 10px;font-size:0.82rem;color:var(--text-secondary)">버튼을 누르면 실습용 구글 드라이브 링크가 클립보드에 복사됩니다. 같은
       대화창에 순서대로 붙여서 실습하세요.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button type="button" class="slide-briefing-link"
-        onclick="copyResourceLink(this,'https://drive.google.com/file/d/1XgLbVT6DGNbWsrGsL2Po8iI0v6Oa-cX3/view?usp=sharing')">회의/토론
+      <button type="button" class="slide-briefing-link" onclick="copyResourceLink(this,'https://drive.google.com/file/d/1XgLbVT6DGNbWsrGsL2Po8iI0v6Oa-cX3/view?usp=sharing')">회의/토론
         오디오</button>
-      <button type="button" class="slide-briefing-link"
-        onclick="copyResourceLink(this,'https://drive.google.com/file/d/11Nm5kKmZk16Fj57ZJgYDRUc7gw3fBKdX/view?usp=drive_link')">회의/토론
+      <button type="button" class="slide-briefing-link" onclick="copyResourceLink(this,'https://drive.google.com/file/d/11Nm5kKmZk16Fj57ZJgYDRUc7gw3fBKdX/view?usp=drive_link')">회의/토론
         대화문</button>
-      <button type="button" class="slide-briefing-link"
-        onclick="copyResourceLink(this,'https://docs.google.com/document/d/1Xf-OarZruVAIUxdUIq3AwUvB-Hab_D6B6JT4gShaMc0/edit?usp=drive_link')">맥락
+      <button type="button" class="slide-briefing-link" onclick="copyResourceLink(this,'https://docs.google.com/document/d/1Xf-OarZruVAIUxdUIq3AwUvB-Hab_D6B6JT4gShaMc0/edit?usp=drive_link')">맥락
         문서(팀장 기대행동)</button>
     </div>
   </div>
@@ -77,12 +74,9 @@
 <div class="clip-section">
   <div class="clip-section-title">회의/토론 오디오로 실습하는 4단계</div>
   <div class="clip-section-content">
-    <div
-      style="border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg-white);margin-bottom:16px">
-      <img src="/assets/gemini/ch02/gemini-upload-menu.png" alt="Gemini 파일 업로드 메뉴" style="width:100%;display:block"
-        loading="lazy">
-      <div
-        style="padding:12px 14px;background:var(--bg-offwhite);font-size:0.8rem;line-height:1.6;color:var(--text-secondary)">
+    <div style="border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg-white);margin-bottom:16px">
+      <img src="/assets/gemini/ch02/gemini-upload-menu.png" alt="Gemini 파일 업로드 메뉴" style="width:100%;display:block" loading="lazy">
+      <div style="padding:12px 14px;background:var(--bg-offwhite);font-size:0.8rem;line-height:1.6;color:var(--text-secondary)">
         회의 녹음과 맥락 자료는 모두 입력창 왼쪽의 파일 업로드 메뉴에서 붙입니다. 핵심은 <strong>같은 대화창을 유지하면서 단계별로 깊이를 더하는 것</strong>입니다.</div>
     </div>
     <table class="comparison-table">
@@ -135,8 +129,7 @@
   <div class="clip-section-title">바로 써보는 프롬프트 5개</div>
   <div class="clip-section-content">
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">1. 음성 기반 AI 리더십 토론 회의록 작성</span><button class="copy-btn"
-          onclick="copyPrompt(this,'ch02-gp1')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">1. 음성 기반 AI 리더십 토론 회의록 작성</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gp1')">복사</button></div>
       <div class="prompt-content" id="ch02-gp1">첨부한 음성 파일은 내가 참여한 조별 토론 녹음입니다.
         토론 주제는 “초인공 AI 시대, 리더의 고민과 역할”입니다.
 
@@ -167,8 +160,7 @@
     </div>
 
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">2. 회의록 기반 핵심 이슈 추출</span><button class="copy-btn"
-          onclick="copyPrompt(this,'ch02-gp2')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">2. 회의록 기반 핵심 이슈 추출</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gp2')">복사</button></div>
       <div class="prompt-content" id="ch02-gp2">방금 작성한 회의록을 바탕으로, 성과관리 전문가 관점에서
         내가 팀장으로서 내 팀의 성과향상을 위해 점검해야 할 핵심 이슈를 정리해 주세요.
 
@@ -193,8 +185,7 @@
     </div>
 
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">3. 참고자료 첨부 + 멀티턴 분석</span><button class="copy-btn"
-          onclick="copyPrompt(this,'ch02-gp3')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">3. 참고자료 첨부 + 멀티턴 분석</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gp3')">복사</button></div>
       <div class="prompt-content" id="ch02-gp3">방금 첨부한 문서는 “팀장의 기대행동/역할” 문서입니다.
 
         앞서 정리한 조별 토론 내용과 기대행동 문서를 교차검하여 비교해 주세요.
@@ -220,8 +211,7 @@
     </div>
 
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">4. 팀 성과향상 실행 브리프 작성</span><button class="copy-btn"
-          onclick="copyPrompt(this,'ch02-gp4')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">4. 팀 성과향상 실행 브리프 작성</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gp4')">복사</button></div>
       <div class="prompt-content" id="ch02-gp4">지금까지의 결과를 분석(회의록, 핵심 이슈, 참고자료 교차분석 등)을 종합하여
         내 팀의 성과향상을 돕는 성과관리 전문가/보좌관 역할로 최종 실행 브리프를 작성해 주세요.
 
@@ -260,8 +250,7 @@
     </div>
 
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">5. Deep Research와 Gem 저장으로 확장하기</span><button
-          class="copy-btn" onclick="copyPrompt(this,'ch02-gp5')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">5. Deep Research와 Gem 저장으로 확장하기</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gp5')">복사</button></div>
       <div class="prompt-content" id="ch02-gp5">앞선 분석에서 내 팀 성과향상을 위해 가장 중요한 이슈 하나를 골라,
         다음 두 가지를 작성해 주세요.
 
@@ -318,8 +307,7 @@
       </tbody>
     </table>
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">팀 성과관리 분석 자동화 Gem 인스트럭션</span><button class="copy-btn"
-          onclick="copyPrompt(this,'ch02-gem-system')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">팀 성과관리 분석 자동화 Gem 인스트럭션</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gem-system')">복사</button></div>
       <div class="prompt-content" id="ch02-gem-system">당신은 팀장의 성과관리를 돕는 AI 보좌관 Gem입니다.
 
         사용자가 1:1 면담/대화 내용, 팀 회의록, 팀원 정보, 상황/이슈, 기대행동(맥락) 문서를 넣으면 아래 순서로 동작하세요.
@@ -348,8 +336,7 @@
         - 다음 면담에서 팀원에게 확인할 질문 3개</div>
     </div>
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">리더십 심층 리서치 보조 Gem 인스트럭션</span><button class="copy-btn"
-          onclick="copyPrompt(this,'ch02-gem-deepresearch')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">리더십 심층 리서치 보조 Gem 인스트럭션</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gem-deepresearch')">복사</button></div>
       <div class="prompt-content" id="ch02-gem-deepresearch">당신은 팀장의 리더십 강화 및 성과향상을 돕는 심층 리서치 보조 Gem입니다.
 
         사용자가 팀 내 고민(이슈), 의사결정 목적, 현재 가진 맥락(면담 분석결과 등)을 주면 아래를 순서대로 만듭니다.
@@ -391,8 +378,7 @@
   <div class="clip-section-title">실습 뒤에 바로 해보는 테스트 질문</div>
   <div class="clip-section-content">
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">테스트 1: [실전 적용] 다음 주 팀원 1:1 면담 준비하기</span><button
-          class="copy-btn" onclick="copyPrompt(this,'ch02-gem-test1')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">테스트 1: [실전 적용] 다음 주 팀원 1:1 면담 준비하기</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gem-test1')">복사</button></div>
       <div class="prompt-content" id="ch02-gem-test1">방금 도출된 나의 리더십 프로필과 'Speak-up 약속'을 바탕으로 1:1 면담 가이드라인을 짜려고 합니다.
 
         내가 면담할 [팀원 유형]을 확정할 수 있도록, 먼저 "어떤 팀원과 면담을 진행하시겠습니까?"라고 나에게 질문해 주세요. 내가 유형을 선택해 답변하면, 그때 아래 [조건]과 [출력 형식]에 맞춰
@@ -416,8 +402,7 @@
         - 리더가 이 유형의 팀원을 대할 때 절대 하지 말아야 할 행동/말(Warning Card) 2가지</div>
     </div>
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">테스트 2: [리더십 메시지 확산] 팀 주간 회의 오프닝 스피치 작성</span><button
-          class="copy-btn" onclick="copyPrompt(this,'ch02-gem-test2')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">테스트 2: [리더십 메시지 확산] 팀 주간 회의 오프닝 스피치 작성</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gem-test2')">복사</button></div>
       <div class="prompt-content" id="ch02-gem-test2">방금 실습 6에서 정의한 '우리 팀 운영 원칙 5가지'를 바탕으로, 다음 주 주간 회의 때 팀원들에게 '우리가 AI를
         도구로 삼아 일하는 방식을 바꾸는 방향'에 대해 이야기하려고 합니다.
 
@@ -436,8 +421,7 @@
         - 팀원들이 AI 기반으로 일하는 방식을 바꿀 때 리더가 먼저 보여주어야 할 행동 팁 2가지</div>
     </div>
     <div class="prompt-block">
-      <div class="prompt-header"><span class="prompt-label">테스트 3: [ㅎ 심화] Deep Research로 연결하기</span><button
-          class="copy-btn" onclick="copyPrompt(this,'ch02-gem-test3')">복사</button></div>
+      <div class="prompt-header"><span class="prompt-label">테스트 3: [심화] Deep Research로 연결하기</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-gem-test3')">복사</button></div>
       <div class="prompt-content" id="ch02-gem-test3">지금까지 대화한 성과관리 이슈를 바탕으로, 우리 팀에 가장 시급한 '피드백 및 저성과자 코칭 역량 강화'를 위한
         Deep Research(심층 조사)를 준비하려고 합니다.
 
@@ -468,5 +452,4 @@
   </div>
 </div>
 
-<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch03-clip02">← 프롬프팅 기초: 리더의 역할</a><a class="clip-nav-btn"
-    href="#ch04-clip01">NotebookLM 소개 및 문서 기반 AI 연구 도우미 →</a></div>
+<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch03-clip02">← 프롬프팅 기초: AI 시대, 리더의 역할</a><a class="clip-nav-btn" href="#ch03-clip09">조직 역량 점검 및 Workflow 재설계 →</a></div>
