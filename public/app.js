@@ -667,7 +667,7 @@ function rewriteClientClipHtml(clipKey, contentHtml) {
     }
 
     const titleNode = doc.querySelector(".clip-header .clip-title");
-    if (titleNode && sidebarClip.title) {
+    if (titleNode && sidebarClip.title && !titleNode.hasAttribute("data-keep-title")) {
       titleNode.textContent = sidebarClip.title;
     }
 

@@ -1,14 +1,14 @@
 ---
 route: "#ch03-clip01"
 chapter: "ch03"
-title: "Gemini 나홀로 해보기 - 우리 조직(팀) 워크플로우 재설계"
+title: "Gemini 나홀로 해보기 - 조직 역량 점검 및 Workflow 재설계"
 source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01"
 ---
 
 CH 03
 실습
 
-# Gemini 나홀로 해보기 - 우리 조직(팀) 워크플로우 재설계
+# Gemini 나홀로 해보기 - 조직 역량 점검 및 Workflow 재설계
 
 본 모듈은 리더가 이끄는 **'우리 팀의 워크플로우'를 스스로 재설계해보는 단독 실습 과정**입니다.
 
