@@ -1,19 +1,19 @@
 ---
-route: "#ch03-clip01"
-chapter: "ch03"
-title: "NotebookLM 소개 및 문서 기반 AI 연구 도우미"
-source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01"
+route: "#ch04-clip01"
+chapter: "ch04"
+title: "NotebookLM 소개 및 접속 방법"
+source_url: "https://lg.cmdspace.work/axcamp#ch04-clip01"
 exported_at: "2026-02-28T01:53:59.545Z"
 ---
 
-CH 05
+CH 04
 플랫폼
 
-# NotebookLM 소개 및 문서 기반 AI 연구 도우미
+# NotebookLM 소개 및 접속 방법
 
-NotebookLM은 내가 넣은 자료를 중심으로 답하고 모든 응답에 출처를 다는 grounded research 도구다. CH02에서 만든 **회의록·Deep Research 메모·구조화된 리서치 결과**를 여기에 넣으면, 내부 자료와 외부 자료를 함께 비교하며 더 신뢰도 높은 분석으로 확장할 수 있다.
+NotebookLM은 내가 넣은 자료를 중심으로 답하고 모든 응답에 출처를 다는 grounded research 도구다. CH03에서 만든 **회의록·Deep Research 메모·구조화된 리서치 결과**를 여기에 넣으면, 내부 자료와 외부 자료를 함께 비교하며 더 신뢰도 높은 분석으로 확장할 수 있다.
 
-## CH02에서 가져오는 입력
+## CH03에서 가져오는 입력
 
 | 앞 단계에서 만든 것 | NotebookLM에 넣으면 좋은 이유 | NotebookLM에서 기대하는 역할 |
 | --- | --- | --- |
@@ -22,7 +22,7 @@ NotebookLM은 내가 넣은 자료를 중심으로 답하고 모든 응답에 �
 | **구조화된 Markdown 메모** | 제목·불릿이 분명해서 NotebookLM이 다루기 쉽다 | 스튜디오 산출물과 후속 질문의 바탕 자료가 됨 |
 ### 연결 포인트
 
-CH02에서 만든 결과는 끝이 아니라, NotebookLM에 넣을 수 있는 **추가 소스**입니다. 여기서부터는 “잘 쓴 프롬프트”보다 “좋은 소스를 함께 묶는 것”이 더 중요해집니다.
+CH03에서 만든 결과는 끝이 아니라, NotebookLM에 넣을 수 있는 **추가 소스**입니다. 여기서부터는 “잘 쓴 프롬프트”보다 “좋은 소스를 함께 묶는 것”이 더 중요해집니다.
 
 ## 언제 NotebookLM을 써야 하나
 
