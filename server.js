@@ -2122,7 +2122,7 @@ async function buildCatalog(sourceRoot) {
       sourceChapterIds: ["ch04"],
       clipKeys: ["ch04-clip01", "ch04-clip02", "ch03-clip03", "ch03-clip04"],
       clipTitles: {
-        "ch04-clip01": "NotebookLM 소개 및 문서 기반 AI 연구",
+        "ch04-clip01": "NotebookLM 소개 및 접속 방법",
         "ch04-clip02": "문서 기반 AI 리서치: CIQO와 LG 스타일 브",
         "ch03-clip03": "Gems 소개: AI 비서 만들기",
         "ch03-clip04": "ChatGPT 및 GPTs 소개"
