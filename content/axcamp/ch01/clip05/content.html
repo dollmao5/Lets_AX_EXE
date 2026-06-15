@@ -87,7 +87,8 @@
       <div class="info-block-title">QuizN 진행</div>
       <div style="font-size:0.85rem;line-height:1.7;color:var(--text-body)">
         아래 퀴즈는 QuizN에서 별도로 진행합니다. 임시 URL은 아래와 같습니다.<br>
-        <strong><a href="https://quizn.show/ai-friendly-leadership-demo" target="_blank" rel="noopener noreferrer">https://quizn.show/ai-friendly-leadership-demo</a></strong>
+        <strong><a href="https://quizn.show/ai-friendly-leadership-demo" target="_blank" rel="noopener noreferrer">https://quizn.show/ai-friendly-leadership-demo</a></strong><br>
+        팀장들의 응답은 QuizN에서 별도로 받습니다. 화면에는 <strong>5개 문항만 먼저 제시</strong>하고, 강사가 <strong>정답보기</strong> 버튼을 누르면 정답과 핵심 해설이 공개됩니다.
       </div>
     </div>
 
@@ -96,43 +97,82 @@
         <tr>
           <th>No</th>
           <th>문항</th>
-          <th>정답</th>
-          <th>핵심 해설</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>1</td>
           <td>AI를 잘 쓰는 팀이 되려면, 팀장이 먼저 모든 AI 기능을 전문가 수준으로 알아야 한다.</td>
-          <td><strong>X</strong></td>
-          <td>팀장의 핵심은 모든 기능 숙지가 아니라 사용 기준, 책임 경계, 검증 방식입니다.</td>
         </tr>
         <tr>
           <td>2</td>
           <td>AI가 회의록, 보고서 초안, 피드백 문장을 만들어주면 리더의 판단 부담은 줄어든다.</td>
-          <td><strong>X</strong></td>
-          <td>초안 부담은 줄지만 최종 판단, 맥락 해석, 책임은 더 중요해집니다.</td>
         </tr>
         <tr>
           <td>3</td>
           <td>팀원이 AI를 쓰는 방식은 개인의 자유이므로, 팀장이 개입하지 않는 것이 좋다.</td>
-          <td><strong>X</strong></td>
-          <td>보안, 품질, 책임 기준이 없으면 팀 단위 성과와 리스크 관리가 어려워집니다.</td>
         </tr>
         <tr>
           <td>4</td>
           <td>AI는 구성원의 성장을 대체하는 도구가 아니라, 리더의 코칭과 피드백을 보조하는 도구다.</td>
-          <td><strong>O</strong></td>
-          <td>AI는 질문 생성, 피드백 문장 개선, 면담 준비를 도울 수 있지만 관계와 판단은 리더 책임입니다.</td>
         </tr>
         <tr>
           <td>5</td>
           <td>AI 도입의 성과는 도구 사용량보다 업무 흐름과 검증 기준이 바뀌었는지로 확인해야 한다.</td>
-          <td><strong>O</strong></td>
-          <td>CH03·CH04에서 다룰 핵심입니다. AI 활용은 Workflow Re-design과 Action Plan으로 연결되어야 합니다.</td>
         </tr>
       </tbody>
     </table>
+
+    <div style="display:flex;justify-content:flex-end;margin:14px 0 12px">
+      <button type="button" aria-controls="leadership-myth-answer-panel" aria-expanded="false" onclick="document.getElementById('leadership-myth-answer-panel').style.display='block';this.setAttribute('aria-expanded','true');this.textContent='정답 공개 완료';this.disabled=true;this.style.opacity='0.72';this.style.cursor='default';" style="background:var(--brand);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-size:0.86rem;font-weight:800;cursor:pointer">
+        정답보기
+      </button>
+    </div>
+
+    <div id="leadership-myth-answer-panel" style="display:none;margin-top:16px">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>문항</th>
+            <th>정답</th>
+            <th>핵심 해설</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>AI를 잘 쓰는 팀이 되려면, 팀장이 먼저 모든 AI 기능을 전문가 수준으로 알아야 한다.</td>
+            <td><strong>X</strong></td>
+            <td>팀장의 핵심은 모든 기능 숙지가 아니라 사용 기준, 책임 경계, 검증 방식입니다.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>AI가 회의록, 보고서 초안, 피드백 문장을 만들어주면 리더의 판단 부담은 줄어든다.</td>
+            <td><strong>X</strong></td>
+            <td>초안 부담은 줄지만 최종 판단, 맥락 해석, 책임은 더 중요해집니다.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>팀원이 AI를 쓰는 방식은 개인의 자유이므로, 팀장이 개입하지 않는 것이 좋다.</td>
+            <td><strong>X</strong></td>
+            <td>보안, 품질, 책임 기준이 없으면 팀 단위 성과와 리스크 관리가 어려워집니다.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>AI는 구성원의 성장을 대체하는 도구가 아니라, 리더의 코칭과 피드백을 보조하는 도구다.</td>
+            <td><strong>O</strong></td>
+            <td>AI는 질문 생성, 피드백 문장 개선, 면담 준비를 도울 수 있지만 관계와 판단은 리더 책임입니다.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>AI 도입의 성과는 도구 사용량보다 업무 흐름과 검증 기준이 바뀌었는지로 확인해야 한다.</td>
+            <td><strong>O</strong></td>
+            <td>CH03·CH04에서 다룰 핵심입니다. AI 활용은 Workflow Re-design과 Action Plan으로 연결되어야 합니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
