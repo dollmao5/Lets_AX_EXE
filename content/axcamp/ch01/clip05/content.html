@@ -88,7 +88,7 @@
       <div style="font-size:0.85rem;line-height:1.7;color:var(--text-body)">
         아래 퀴즈는 QuizN에서 별도로 진행합니다. 임시 URL은 아래와 같습니다.<br>
         <strong><a href="https://quizn.show/ai-friendly-leadership-demo" target="_blank" rel="noopener noreferrer">https://quizn.show/ai-friendly-leadership-demo</a></strong><br>
-        팀장들의 응답은 QuizN에서 별도로 받습니다. 화면에는 <strong>5개 문항만 먼저 제시</strong>하고, 강사가 <strong>정답보기</strong> 버튼을 누르면 정답과 핵심 해설이 공개됩니다.
+        팀장들의 응답은 QuizN에서 별도로 받습니다. 화면에는 <strong>5개 문항만 먼저 제시</strong>하고, 강사가 <strong>정답보기</strong> 버튼 클릭 후 패스워드를 입력하면 정답과 핵심 해설이 공개됩니다.
       </div>
     </div>
 
@@ -124,7 +124,7 @@
     </table>
 
     <div style="display:flex;justify-content:flex-end;margin:14px 0 12px">
-      <button type="button" aria-controls="leadership-myth-answer-panel" aria-expanded="false" onclick="document.getElementById('leadership-myth-answer-panel').style.display='block';this.setAttribute('aria-expanded','true');this.textContent='정답 공개 완료';this.disabled=true;this.style.opacity='0.72';this.style.cursor='default';" style="background:var(--brand);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-size:0.86rem;font-weight:800;cursor:pointer">
+      <button type="button" aria-controls="leadership-myth-answer-panel" aria-expanded="false" onclick="(function(btn){var password=window.prompt('정답 공개 패스워드를 입력하세요.');if(password===null){return;}if(password.trim()==='ai'){document.getElementById('leadership-myth-answer-panel').style.display='block';btn.setAttribute('aria-expanded','true');btn.textContent='정답 공개 완료';btn.disabled=true;btn.style.opacity='0.72';btn.style.cursor='default';}else{window.alert('패스워드가 일치하지 않습니다.');}})(this);" style="background:var(--brand);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-size:0.86rem;font-weight:800;cursor:pointer">
         정답보기
       </button>
     </div>
