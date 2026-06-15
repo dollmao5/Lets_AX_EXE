@@ -82,6 +82,16 @@
         },
         {
           "route": "#ch01-clip05",
+          "title": "AI 리터러시 및 퀴즈",
+          "type": "퀴즈",
+          "folder": "ch01/clip05",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 1,
+          "promptCount": 0
+        },
+        {
+          "route": "#ch01-clip06",
           "title": "비지니스 프롬프팅: AI 회의록",
           "type": "참고",
           "folder": "chapters/CH01/ch01-clip05",
@@ -579,6 +589,19 @@
     {
       "chapterId": "ch01",
       "route": "#ch01-clip05",
+      "title": "AI 리터러시 및 퀴즈",
+      "folder": "ch01/clip05",
+      "textLength": 0,
+      "htmlLength": 0,
+      "sectionCount": 1,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "퀴즈"
+    },
+    {
+      "chapterId": "ch01",
+      "route": "#ch01-clip06",
       "title": "비지니스 프롬프팅: AI 회의록",
       "folder": "chapters/CH01/ch01-clip05",
       "textLength": 824,

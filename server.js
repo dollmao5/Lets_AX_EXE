@@ -2090,7 +2090,7 @@ async function buildCatalog(sourceRoot) {
       title: "AI 핵심 개념",
       time: "08:50",
       sourceChapterIds: ["ch01"],
-      clipKeys: ["ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip04"]
+      clipKeys: ["ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip04", "ch01-clip05"]
     },
     {
       visibleChapterId: "ch02",
