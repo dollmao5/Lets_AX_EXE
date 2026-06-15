@@ -85,7 +85,7 @@ const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
   "ch03-clip05"   // visible key (렌더링 후 재맵핑된 클립 키)
 ]);
 const SKIP_TITLE_KEYWORDS = new Set(["개념", "실습", "참고", "개요", "플랫폼", "심화"]);
-const ALLOWED_SECTION_TYPES = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요"]);
+const ALLOWED_SECTION_TYPES = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요", "토론", "퀴즈"]);
 const ALLOWED_BLOCK_KINDS = new Set([
   "overview",
   "markdown",
@@ -2100,7 +2100,7 @@ async function buildCatalog(sourceRoot) {
       clipKeys: ["ch03-clip01", "ch03-clip08", "ch03-clip02", "ch03-clip03"],
       clipTitles: {
         "ch03-clip01": "Gemini 소개 및 접속 방법",
-        "ch03-clip08": "ice breaking: Ai-Friendly 리저십",
+        "ch03-clip08": "팀 토론: AI 시대, 리더의 고민과 역할",
         "ch03-clip02": "프롬프팅 기초: AI 시대, 리더의 역할",
         "ch03-clip03": "프롬프팅 활용: 리더의 핵심 역량 및 스킬"
       }

@@ -168,8 +168,8 @@
         },
         {
           "route": "#ch03-clip08",
-          "title": "ice breaking: Ai-Friendly 리더십",
-          "type": "참고",
+          "title": "팀 토론: AI 시대, 리더의 고민과 역할",
+          "type": "토론",
           "folder": "chapters/CH03/ch03-clip08",
           "linkCount": 0,
           "imageCount": 0,
@@ -676,7 +676,7 @@
     {
       "chapterId": "ch03",
       "route": "#ch03-clip08",
-      "title": "ice breaking: Ai-Friendly 리더십",
+      "title": "팀 토론: AI 시대, 리더의 고민과 역할",
       "folder": "chapters/CH03/ch03-clip08",
       "textLength": 100,
       "htmlLength": 500,
@@ -684,7 +684,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "참고"
+      "type": "토론"
     },
     {
       "chapterId": "ch03",
