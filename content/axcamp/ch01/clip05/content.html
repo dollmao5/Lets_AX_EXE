@@ -234,12 +234,20 @@
   </div>
 </div>
 
-<div class="clip-section">
+<div class="clip-section" id="ai-style-diagnosis">
   <div class="clip-section-title">Step 4. AI-Friendly 리더십 스타일 자가 진단</div>
   <div class="clip-section-content">
     <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
-      각 문항은 1~5점으로 체크합니다. 가장 점수가 높은 영역이 현재 나의 AI-Friendly 리더십 스타일입니다.
+      각 문항은 1~5점으로 직접 입력합니다. 선택 즉시 유형별 합계점수가 자동 계산됩니다. 각 유형은 3문항, 최대 15점입니다.
     </p>
+
+    <div class="info-block" style="margin-bottom:14px">
+      <div class="info-block-title">입력 방식</div>
+      <div style="font-size:0.85rem;line-height:1.7;color:var(--text-body)">
+        팀장들은 각 문항을 읽고 현재 자신의 리더십 행동에 가장 가까운 점수를 입력합니다.<br>
+        1점은 거의 해당하지 않음, 3점은 보통, 5점은 매우 해당함으로 판단합니다.
+      </div>
+    </div>
 
     <table class="comparison-table">
       <thead>
@@ -247,29 +255,120 @@
           <th>유형</th>
           <th>No</th>
           <th>문항</th>
-          <th>점수</th>
+          <th>내 점수 입력</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>A. 기준 설계형</strong></td><td>1</td><td>나는 AI 활용 전에 목표, 품질 기준, 검증 기준을 먼저 정해야 한다고 생각한다.</td><td>1~5</td></tr>
-        <tr><td>A. 기준 설계형</td><td>2</td><td>나는 팀원이 AI를 쓸 때 보안·개인정보·책임 범위를 명확히 안내하려고 한다.</td><td>1~5</td></tr>
-        <tr><td>A. 기준 설계형</td><td>3</td><td>나는 AI 산출물을 그대로 쓰기보다 근거와 누락 여부를 점검한다.</td><td>1~5</td></tr>
-        <tr><td><strong>B. 학습 코치형</strong></td><td>4</td><td>나는 팀원이 AI를 어려워하면 사용법보다 심리적 부담부터 확인한다.</td><td>1~5</td></tr>
-        <tr><td>B. 학습 코치형</td><td>5</td><td>나는 AI를 통해 팀원의 성장 질문, 피드백 문장, 면담 준비를 개선하고 싶다.</td><td>1~5</td></tr>
-        <tr><td>B. 학습 코치형</td><td>6</td><td>나는 팀원이 실수하더라도 새로운 방식의 실험을 학습 기회로 다루려고 한다.</td><td>1~5</td></tr>
-        <tr><td><strong>C. 업무 재설계형</strong></td><td>7</td><td>나는 AI를 기존 업무에 덧붙이는 것보다 업무 흐름 자체를 바꾸는 데 관심이 있다.</td><td>1~5</td></tr>
-        <tr><td>C. 업무 재설계형</td><td>8</td><td>나는 반복 업무를 Task 단위로 나누고, AI가 도울 수 있는 부분을 찾는 편이다.</td><td>1~5</td></tr>
-        <tr><td>C. 업무 재설계형</td><td>9</td><td>나는 AI 도입 효과를 시간 절감, 품질 개선, 병목 해소 관점에서 확인하고 싶다.</td><td>1~5</td></tr>
-        <tr><td><strong>D. 의미 부여형</strong></td><td>10</td><td>나는 AI 도입이 팀원에게 불안으로 느껴지지 않도록 방향과 의미를 설명하려고 한다.</td><td>1~5</td></tr>
-        <tr><td>D. 의미 부여형</td><td>11</td><td>나는 팀원이 우려나 반대 의견을 말할 수 있는 분위기를 중요하게 생각한다.</td><td>1~5</td></tr>
-        <tr><td>D. 의미 부여형</td><td>12</td><td>나는 AI 시대에도 인간 리더가 책임져야 할 판단, 관계, 신뢰가 중요하다고 생각한다.</td><td>1~5</td></tr>
+        <tr>
+          <td><strong>A. 기준 설계형</strong></td>
+          <td>1</td>
+          <td>나는 AI 활용 전에 목표, 품질 기준, 검증 기준을 먼저 정해야 한다고 생각한다.</td>
+          <td><select data-style-type="A" aria-label="1번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>A. 기준 설계형</td>
+          <td>2</td>
+          <td>나는 팀원이 AI를 쓸 때 보안·개인정보·책임 범위를 명확히 안내하려고 한다.</td>
+          <td><select data-style-type="A" aria-label="2번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>A. 기준 설계형</td>
+          <td>3</td>
+          <td>나는 AI 산출물을 그대로 쓰기보다 근거와 누락 여부를 점검한다.</td>
+          <td><select data-style-type="A" aria-label="3번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td><strong>B. 학습 코치형</strong></td>
+          <td>4</td>
+          <td>나는 팀원이 AI를 어려워하면 사용법보다 심리적 부담부터 확인한다.</td>
+          <td><select data-style-type="B" aria-label="4번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>B. 학습 코치형</td>
+          <td>5</td>
+          <td>나는 AI를 통해 팀원의 성장 질문, 피드백 문장, 면담 준비를 개선하고 싶다.</td>
+          <td><select data-style-type="B" aria-label="5번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>B. 학습 코치형</td>
+          <td>6</td>
+          <td>나는 팀원이 실수하더라도 새로운 방식의 실험을 학습 기회로 다루려고 한다.</td>
+          <td><select data-style-type="B" aria-label="6번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td><strong>C. 업무 재설계형</strong></td>
+          <td>7</td>
+          <td>나는 AI를 기존 업무에 덧붙이는 것보다 업무 흐름 자체를 바꾸는 데 관심이 있다.</td>
+          <td><select data-style-type="C" aria-label="7번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>C. 업무 재설계형</td>
+          <td>8</td>
+          <td>나는 반복 업무를 Task 단위로 나누고, AI가 도울 수 있는 부분을 찾는 편이다.</td>
+          <td><select data-style-type="C" aria-label="8번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>C. 업무 재설계형</td>
+          <td>9</td>
+          <td>나는 AI 도입 효과를 시간 절감, 품질 개선, 병목 해소 관점에서 확인하고 싶다.</td>
+          <td><select data-style-type="C" aria-label="9번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td><strong>D. 의미 부여형</strong></td>
+          <td>10</td>
+          <td>나는 AI 도입이 팀원에게 불안으로 느껴지지 않도록 방향과 의미를 설명하려고 한다.</td>
+          <td><select data-style-type="D" aria-label="10번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>D. 의미 부여형</td>
+          <td>11</td>
+          <td>나는 팀원이 우려나 반대 의견을 말할 수 있는 분위기를 중요하게 생각한다.</td>
+          <td><select data-style-type="D" aria-label="11번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
+        <tr>
+          <td>D. 의미 부여형</td>
+          <td>12</td>
+          <td>나는 AI 시대에도 인간 리더가 책임져야 할 판단, 관계, 신뢰가 중요하다고 생각한다.</td>
+          <td><select data-style-type="D" aria-label="12번 문항 점수" style="width:86px;padding:7px 8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text-body);font-weight:700"><option value="">선택</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></td>
+        </tr>
       </tbody>
     </table>
+
+    <div style="margin-top:16px;padding:16px;border:1px solid var(--border);border-radius:16px;background:var(--bg-offwhite)">
+      <div style="font-size:0.9rem;font-weight:800;color:var(--text-heading);margin-bottom:12px">유형별 합계점수</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px">
+        <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px">
+          <div style="font-size:0.78rem;font-weight:800;color:var(--brand);margin-bottom:6px">A. 기준 설계형</div>
+          <div data-style-total="A" style="font-size:1.15rem;font-weight:900;color:var(--text-heading)">0 / 15</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px">
+          <div style="font-size:0.78rem;font-weight:800;color:var(--brand);margin-bottom:6px">B. 학습 코치형</div>
+          <div data-style-total="B" style="font-size:1.15rem;font-weight:900;color:var(--text-heading)">0 / 15</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px">
+          <div style="font-size:0.78rem;font-weight:800;color:var(--brand);margin-bottom:6px">C. 업무 재설계형</div>
+          <div data-style-total="C" style="font-size:1.15rem;font-weight:900;color:var(--text-heading)">0 / 15</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px">
+          <div style="font-size:0.78rem;font-weight:800;color:var(--brand);margin-bottom:6px">D. 의미 부여형</div>
+          <div data-style-total="D" style="font-size:1.15rem;font-weight:900;color:var(--text-heading)">0 / 15</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:14px">
+        <div style="font-size:0.85rem;line-height:1.7;color:var(--text-body)">
+          입력 완료: <strong data-style-answered-count="">0 / 12</strong><br>
+          현재 주 유형: <strong data-style-result="">점수를 입력하면 자동 표시됩니다.</strong>
+        </div>
+        <button type="button" data-style-reset="" style="background:#fff;color:var(--brand);border:1px solid var(--border);border-radius:999px;padding:9px 15px;font-size:0.82rem;font-weight:800;cursor:pointer">
+          점수 초기화
+        </button>
+      </div>
+    </div>
 
     <table class="comparison-table" style="margin-top:16px">
       <thead>
         <tr>
-          <th>가장 높은 점수</th>
+          <th>합계 점수</th>
           <th>리더십 스타일</th>
           <th>강점</th>
           <th>보완점</th>
@@ -302,6 +401,92 @@
         </tr>
       </tbody>
     </table>
+
+    <script>
+      (function(){
+        var root = document.getElementById('ai-style-diagnosis');
+        if (!root) { return; }
+
+        var styleNames = {
+          A: '기준 설계형 리더',
+          B: '학습 코치형 리더',
+          C: '업무 재설계형 리더',
+          D: '의미 부여형 리더'
+        };
+        var types = ['A', 'B', 'C', 'D'];
+        var inputs = root.querySelectorAll('select[data-style-type]');
+        var answeredEl = root.querySelector('[data-style-answered-count]');
+        var resultEl = root.querySelector('[data-style-result]');
+        var resetBtn = root.querySelector('[data-style-reset]');
+
+        function updateTotals(){
+          var totals = { A: 0, B: 0, C: 0, D: 0 };
+          var answeredCount = 0;
+
+          for (var i = 0; i < inputs.length; i += 1) {
+            var input = inputs[i];
+            var type = input.getAttribute('data-style-type');
+            var value = Number(input.value || 0);
+            if (value > 0) {
+              totals[type] += value;
+              answeredCount += 1;
+            }
+          }
+
+          for (var j = 0; j < types.length; j += 1) {
+            var t = types[j];
+            var totalEl = root.querySelector('[data-style-total="' + t + '"]');
+            if (totalEl) { totalEl.textContent = totals[t] + ' / 15'; }
+          }
+
+          if (answeredEl) { answeredEl.textContent = answeredCount + ' / ' + inputs.length; }
+
+          if (resultEl) {
+            if (answeredCount === 0) {
+              resultEl.textContent = '점수를 입력하면 자동 표시됩니다.';
+              return;
+            }
+            if (answeredCount < inputs.length) {
+              resultEl.textContent = answeredCount + '/' + inputs.length + '문항 입력됨 · 모든 문항 입력 후 최종 주 유형을 확인합니다.';
+              return;
+            }
+
+            var maxScore = Math.max(totals.A, totals.B, totals.C, totals.D);
+            var winners = [];
+            for (var k = 0; k < types.length; k += 1) {
+              var key = types[k];
+              if (totals[key] === maxScore) { winners.push(key); }
+            }
+
+            if (winners.length === 1) {
+              resultEl.textContent = winners[0] + '. ' + styleNames[winners[0]] + ' · ' + maxScore + '점';
+            } else {
+              var winnerLabels = [];
+              for (var m = 0; m < winners.length; m += 1) {
+                winnerLabels.push(winners[m] + '. ' + styleNames[winners[m]]);
+              }
+              resultEl.textContent = winnerLabels.join(' + ') + ' 복합형 · ' + maxScore + '점 동점';
+            }
+          }
+        }
+
+        for (var n = 0; n < inputs.length; n += 1) {
+          inputs[n].addEventListener('change', updateTotals);
+          inputs[n].addEventListener('input', updateTotals);
+        }
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function(){
+            for (var r = 0; r < inputs.length; r += 1) {
+              inputs[r].value = '';
+            }
+            updateTotals();
+          });
+        }
+
+        updateTotals();
+      })();
+    </script>
   </div>
 </div>
 
