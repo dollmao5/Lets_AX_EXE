@@ -3088,16 +3088,26 @@ async function handleSharedAudio(req, res, urlObj) {
       const files = await fs.readdir(sharedDir);
       const audios = [];
       for (const file of files) {
+        if (file.endsWith(".json")) continue;
         const filePath = path.join(sharedDir, file);
+        const metaPath = path.join(sharedDir, `${file}.meta.json`);
         const stat = await fs.stat(filePath);
+        
+        let meta = {};
+        if (await pathExists(metaPath)) {
+          meta = await readJsonFileSafe(metaPath, {});
+        }
+
         if (stat.isFile()) {
           audios.push({
             fileName: file,
             size: stat.size,
             sizeLabel: formatByteSize(stat.size),
             url: `/course-files/${encodeURIComponent(course.courseCode)}/${encodeURIComponent(clip.clipKey)}/shared-audios/${encodeURIComponent(file)}`,
-            uploadedAt: stat.mtime.toISOString(),
-            uploadedBy: user.accountId
+            uploadedAt: meta.uploadedAt || stat.mtime.toISOString(),
+            uploadedBy: meta.uploadedBy || "",
+            uploadedByDisplay: meta.uploadedByDisplay || meta.uploadedBy || "",
+            teamName: meta.teamName || ""
           });
         }
       }
@@ -3158,7 +3168,17 @@ async function handleSharedAudio(req, res, urlObj) {
         suffix++;
       }
 
+      const uploadedAt = new Date().toISOString();
       await fs.writeFile(targetPath, content);
+
+      // 업로더 정보를 메타데이터 파일에 저장하여 이후 목록 조회 시 정확한 업로더 표시
+      const metaPath = path.join(sharedDir, `${candidateName}.meta.json`);
+      await fs.writeFile(metaPath, JSON.stringify({
+        uploadedBy: user.accountId,
+        uploadedByDisplay: user.displayName || user.accountId,
+        teamName: user.teamName || "",
+        uploadedAt
+      }, null, 2), "utf8");
 
       return sendJson(res, 200, {
         ok: true,
@@ -3167,7 +3187,7 @@ async function handleSharedAudio(req, res, urlObj) {
           size: content.length,
           sizeLabel: formatByteSize(content.length),
           url: `/course-files/${encodeURIComponent(course.courseCode)}/${encodeURIComponent(clip.clipKey)}/shared-audios/${encodeURIComponent(candidateName)}`,
-          uploadedAt: new Date().toISOString(),
+          uploadedAt,
           uploadedBy: user.accountId
         }
       });
@@ -3191,6 +3211,13 @@ async function handleSharedAudio(req, res, urlObj) {
       }
 
       await fs.unlink(targetPath);
+
+      // 메타데이터 파일도 함께 삭제 (없어도 에러 무시)
+      const metaPath = path.join(sharedDir, `${fileName}.meta.json`);
+      if (await pathExists(metaPath)) {
+        await fs.unlink(metaPath);
+      }
+
       return sendJson(res, 200, { ok: true, message: "성공적으로 삭제되었습니다." });
     } catch (error) {
       console.error("Failed to delete shared audio:", error);

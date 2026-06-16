@@ -120,8 +120,8 @@
   </div>
 </div>
 
-<!-- IIFE Script Hack -->
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+<script>
+(function() {
   const fileInput = document.getElementById('sharedAudioFileInput');
   const fileLabel = document.getElementById('sharedAudioFileLabel');
   const selectBtn = document.getElementById('selectSharedAudioBtn');
@@ -171,12 +171,29 @@
       const data = await res.json();
       
       if (!data.ok) {
-        listEl.innerHTML = `<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);">${data.error || '목록을 불러오지 못했습니다.'}</p>`;
+        listEl.innerHTML = '';
+        var p = document.createElement('p');
+        p.className = 'muted';
+        p.style.fontSize = '0.85rem';
+        p.style.textAlign = 'center';
+        p.style.margin = '0';
+        p.style.padding = '12px';
+        p.style.color = 'var(--danger)';
+        p.textContent = data.error || '목록을 불러오지 못했습니다.';
+        listEl.appendChild(p);
         return;
       }
 
       if (!data.audios || data.audios.length === 0) {
-        listEl.innerHTML = `<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px;">공유된 오디오 파일이 없습니다.</p>`;
+        listEl.innerHTML = '';
+        var p = document.createElement('p');
+        p.className = 'muted';
+        p.style.fontSize = '0.85rem';
+        p.style.textAlign = 'center';
+        p.style.margin = '0';
+        p.style.padding = '12px';
+        p.textContent = '공유된 오디오 파일이 없습니다.';
+        listEl.appendChild(p);
         return;
       }
 
@@ -203,7 +220,10 @@
         const meta = document.createElement('span');
         meta.style.fontSize = '0.75rem';
         meta.style.color = 'var(--text-secondary)';
-        meta.textContent = audio.sizeLabel + ' · ' + audio.uploadedBy + ' · ' + formatDate(audio.uploadedAt);
+        var uploaderLabel = audio.teamName
+          ? audio.teamName + (audio.uploadedBy ? ' (' + audio.uploadedBy + ')' : '')
+          : (audio.uploadedByDisplay || audio.uploadedBy || '');
+        meta.textContent = audio.sizeLabel + (uploaderLabel ? ' · ' + uploaderLabel : '') + ' · ' + formatDate(audio.uploadedAt);
         info.appendChild(meta);
 
         row.appendChild(info);
@@ -256,7 +276,16 @@
       });
     } catch (error) {
       console.error(error);
-      listEl.innerHTML = `<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);">서버 연결 에러</p>`;
+      listEl.innerHTML = '';
+      var p = document.createElement('p');
+      p.className = 'muted';
+      p.style.fontSize = '0.85rem';
+      p.style.textAlign = 'center';
+      p.style.margin = '0';
+      p.style.padding = '12px';
+      p.style.color = 'var(--danger)';
+      p.textContent = '서버 연결 에러';
+      listEl.appendChild(p);
     }
   }
 
@@ -325,7 +354,8 @@
   };
 
   loadAudioList();
-})()" style="display:none;">
+})();
+</script>
 
 <div class="clip-section">
   <div class="clip-section-title">Tiro 설치 및 녹음 파일 저장 방법</div>

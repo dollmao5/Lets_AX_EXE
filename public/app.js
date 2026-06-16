@@ -1307,6 +1307,17 @@ function renderClipBodyContent(contentHtml, options = {}) {
 
   closeInlineQuickEditor();
   el.clipBody.innerHTML = html || "<p>콘텐츠가 없습니다.</p>";
+  
+  // 동적으로 주입된 script 태그 강제 실행
+  el.clipBody.querySelectorAll("script").forEach((oldScript) => {
+    const newScript = document.createElement("script");
+    Array.from(oldScript.attributes).forEach((attr) => {
+      newScript.setAttribute(attr.name, attr.value);
+    });
+    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  });
+
   el.clipBody.classList.toggle("direct-edit-enabled", liveEditEnabled);
   if (liveEditEnabled) {
     annotateLiveEditorNodes(el.clipBody, html);
