@@ -171,12 +171,12 @@
       const data = await res.json();
       
       if (!data.ok) {
-        listEl.innerHTML = '<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);">' + (data.error || '목록을 불러오지 못했습니다.') + '</p>';
+        listEl.innerHTML = `<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);">${data.error || '목록을 불러오지 못했습니다.'}</p>`;
         return;
       }
 
       if (!data.audios || data.audios.length === 0) {
-        listEl.innerHTML = '<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px;">공유된 오디오 파일이 없습니다.</p>';
+        listEl.innerHTML = `<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px;">공유된 오디오 파일이 없습니다.</p>`;
         return;
       }
 
@@ -256,7 +256,7 @@
       });
     } catch (error) {
       console.error(error);
-      listEl.innerHTML = '<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);">서버 연결 에러</p>';
+      listEl.innerHTML = `<p class="muted" style="font-size: 0.85rem; text-align: center; margin: 0; padding: 12px; color: var(--danger);">서버 연결 에러</p>`;
     }
   }
 
