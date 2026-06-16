@@ -781,6 +781,7 @@ function showApp() {
 }
 
 async function api(path, options = {}) {
+  window.api = api;
   if (STATIC_MODE) {
     return apiStatic(path, options);
   }

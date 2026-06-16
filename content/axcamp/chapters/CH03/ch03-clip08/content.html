@@ -165,10 +165,9 @@
         'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
       };
 
-      const res = await fetch('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+      const data = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
         headers: headers
       });
-      const data = await res.json();
       
       if (!data.ok) {
         listEl.innerHTML = '';
@@ -254,12 +253,11 @@
         deleteBtn.onclick = async function() {
           if (!confirm('이 오디오 파일을 삭제하시겠습니까?')) return;
           try {
-            const delRes = await fetch('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+            const delData = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
               method: 'DELETE',
-              headers: Object.assign({}, headers, { 'Content-Type': 'application/json' }),
-              body: JSON.stringify({ fileName: audio.fileName })
+              headers: headers,
+              body: { fileName: audio.fileName }
             });
-            const delData = await delRes.json();
             if (delData.ok) {
               loadAudioList();
             } else {
@@ -310,21 +308,18 @@
       
       try {
         const headers = {
-          'Content-Type': 'application/json',
           'x-session-token': localStorage.getItem('ax_literacy_session_token') || '',
           'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
         };
 
-        const res = await fetch('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+        const data = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
           method: 'POST',
           headers: headers,
-          body: JSON.stringify({
+          body: {
             fileName: file.name,
             contentBase64: base64
-          })
+          }
         });
-
-        const data = await res.json();
         if (data.ok) {
           statusEl.textContent = '업로드 성공!';
           statusEl.style.color = 'var(--brand)';
