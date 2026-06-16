@@ -928,6 +928,83 @@ async function apiStatic(path, options = {}) {
     }
   }
 
+  if (normalizedPath.startsWith("/api/shared-audio")) {
+    const query = normalizedPath.includes("?") ? new URLSearchParams(normalizedPath.split("?")[1]) : new URLSearchParams();
+    const clipKey = normalizeClipKey(query.get("clipKey") || "");
+    const storageKey = `ax_static_shared_audios_${clipKey}`;
+    
+    let audios = [];
+    try {
+      audios = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    } catch {
+      audios = [];
+    }
+
+    if (method === "GET") {
+      return {
+        ok: true,
+        audios: audios
+      };
+    }
+
+    if (method === "POST") {
+      const fileName = options.body?.fileName || "unnamed.mp3";
+      const contentBase64 = options.body?.contentBase64 || "";
+      
+      let fileUrl = "";
+      try {
+        const byteCharacters = atob(contentBase64);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: "audio/mpeg" });
+        fileUrl = URL.createObjectURL(blob);
+      } catch (err) {
+        fileUrl = "#";
+      }
+
+      const accountId = localStorage.getItem("ax_literacy_last_lets_id") || "lets_user";
+      
+      let sizeLabel = "0 B";
+      try {
+        const bytes = Math.round((contentBase64.length * 3) / 4);
+        const k = 1024;
+        const sizes = ['B', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        sizeLabel = parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      } catch {}
+
+      const newAudio = {
+        fileName: fileName,
+        url: fileUrl,
+        uploadedBy: accountId,
+        uploadedByDisplay: accountId,
+        teamName: "1팀",
+        uploadedAt: new Date().toISOString(),
+        sizeLabel: sizeLabel
+      };
+
+      audios.push(newAudio);
+      localStorage.setItem(storageKey, JSON.stringify(audios));
+
+      return {
+        ok: true,
+        audio: newAudio
+      };
+    }
+
+    if (method === "DELETE") {
+      const fileName = options.body?.fileName;
+      audios = audios.filter(audio => audio.fileName !== fileName);
+      localStorage.setItem(storageKey, JSON.stringify(audios));
+      return {
+        ok: true
+      };
+    }
+  }
+
   if (normalizedPath === "/api/logout" && method === "POST") {
     return { ok: true };
   }
