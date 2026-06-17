@@ -1,105 +1,279 @@
-<div class="clip-header">
-  <div class="clip-badges">
-    <span class="clip-badge time">~60분</span>
-    <span class="clip-badge chapter">CH 03</span>
-    <span class="clip-badge type-practice">실습</span>
+<style>
+  .ch02-clip03-revised,
+  #ch03-clip02 {
+    font-size: 20px;
+    line-height: 1.72;
+  }
+
+  .ch02-clip03-revised .clip-title,
+  #ch03-clip02 .clip-title {
+    font-size: clamp(2rem, 3vw, 2.7rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em;
+  }
+
+  .ch02-clip03-revised .clip-overview,
+  #ch03-clip02 .clip-overview {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+  }
+
+  .ch02-clip03-revised .clip-section-title,
+  #ch03-clip02 .clip-section-title {
+    font-size: 1.38rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.01em;
+  }
+
+  .ch02-clip03-revised .clip-section-content,
+  .ch02-clip03-revised .tip-block-content,
+  .ch02-clip03-revised .info-block,
+  .ch02-clip03-revised .info-block div,
+  .ch02-clip03-revised p,
+  .ch02-clip03-revised li,
+  #ch03-clip02 .clip-section-content,
+  #ch03-clip02 .tip-block-content,
+  #ch03-clip02 .info-block,
+  #ch03-clip02 .info-block div,
+  #ch03-clip02 p,
+  #ch03-clip02 li {
+    font-size: 1.08rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .ch02-clip03-revised .comparison-table th,
+  .ch02-clip03-revised .comparison-table td,
+  #ch03-clip02 .comparison-table th,
+  #ch03-clip02 .comparison-table td {
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
+    padding: 7px 12px !important;
+    vertical-align: middle !important;
+  }
+
+  .ch02-clip03-revised .prompt-label,
+  #ch03-clip02 .prompt-label {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .ch02-clip03-revised .prompt-content,
+  #ch03-clip02 .prompt-content {
+    font-size: 1.02rem !important;
+    line-height: 1.62 !important;
+    white-space: pre-wrap !important;
+  }
+
+  .ch02-clip03-revised .copy-btn,
+  .ch02-clip03-revised .clip-nav-btn,
+  #ch03-clip02 .copy-btn,
+  #ch03-clip02 .clip-nav-btn {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .ch02-clip03-revised .flow-grid,
+  #ch03-clip02 .flow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 10px 0 18px;
+  }
+
+  .ch02-clip03-revised .flow-card,
+  #ch03-clip02 .flow-card {
+    background: var(--bg-offwhite);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 16px;
+  }
+
+  .ch02-clip03-revised .flow-card-title,
+  #ch03-clip02 .flow-card-title {
+    font-size: 1rem !important;
+    font-weight: 800;
+    color: var(--brand);
+    margin-bottom: 6px;
+  }
+
+  .ch02-clip03-revised .flow-card-body,
+  #ch03-clip02 .flow-card-body {
+    font-size: 1.04rem !important;
+    line-height: 1.58 !important;
+    color: var(--text-body);
+  }
+
+  .ch02-clip03-revised .output-grid,
+  #ch03-clip02 .output-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .ch02-clip03-revised .output-card,
+  #ch03-clip02 .output-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+
+  .ch02-clip03-revised .output-card strong,
+  #ch03-clip02 .output-card strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--brand);
+    font-size: 1.04rem !important;
+  }
+
+  .ch02-clip03-revised .output-card p,
+  #ch03-clip02 .output-card p {
+    margin: 0;
+    font-size: 1.03rem !important;
+    line-height: 1.58 !important;
+  }
+
+  .ch02-clip03-revised .optional-details,
+  #ch03-clip02 .optional-details {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--bg-offwhite);
+    padding: 12px 16px;
+  }
+
+  .ch02-clip03-revised .optional-details summary,
+  #ch03-clip02 .optional-details summary {
+    cursor: pointer;
+    font-size: 1.05rem !important;
+    font-weight: 800;
+    color: var(--brand);
+  }
+
+  .ch02-clip03-revised .optional-details[open] summary,
+  #ch03-clip02 .optional-details[open] summary {
+    margin-bottom: 12px;
+  }
+
+  .ch02-clip03-revised .table-wrap,
+  #ch03-clip02 .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+</style>
+
+<div class="ch02-clip03-revised">
+  <div class="clip-header">
+    <div class="clip-badges">
+      <span class="clip-badge time">~60분</span>
+      <span class="clip-badge chapter">CH 03</span>
+      <span class="clip-badge type-practice">실습</span>
+    </div>
+    <h1 class="clip-title" data-keep-title="">
+      프롬프팅 기초: 초인공 AI 시대, 변화된 팀 리더의 역할 정의하기
+    </h1>
   </div>
-  <h1 class="clip-title" data-keep-title="">
-    프롬프팅 기초: 초인공 AI 시대, 변화된 팀 리더의 역할 정의하기
-  </h1>
-</div>
 
-<div class="clip-overview">
-  이 클립은 Gemini와 자연스럽게 대화하며
-  <strong>AI 시대 팀 리더로서의 역할, 책임, 판단 기준</strong>을 정리하는 실습입니다.<br>
-  처음부터 정교한 업무 프롬프트를 작성하는 것이 아니라,
-  팀 상황과 리더의 고민을 편하게 이야기하고,
-  Gemini가 <strong>AI 리더십 코치이자 인터뷰어</strong>로 질문을 이어가며
-  리더 역할 프로필을 완성합니다.<br><br>
-  이번 클립의 핵심 질문은 다음입니다.<br>
-  <strong>“AI가 많은 일을 도와주는 시대에도, 팀장인 내가 직접 책임져야 할 일은 무엇인가?”</strong>
-</div>
+  <div class="clip-overview">
+    이 클립은 Gemini와 자연스럽게 대화하며
+    <strong>AI 시대 팀 리더로서의 역할, 책임, 판단 기준</strong>을 정리하는 실습입니다.<br>
+    처음부터 정교한 업무 프롬프트를 작성하는 것이 아니라,
+    팀 상황과 리더의 고민을 편하게 이야기하고,
+    Gemini가 <strong>AI 리더십 코치이자 인터뷰어</strong>로 질문을 이어가며
+    리더 역할 프로필을 완성합니다.<br><br>
+    이번 클립의 핵심 질문은 다음입니다.<br>
+    <strong>“AI가 많은 일을 도와주는 시대에도, 팀장인 내가 직접 책임져야 할 일은 무엇인가?”</strong>
+  </div>
 
-<div class="clip-section">
-  <div class="clip-section-title">이번 클립의 도착점</div>
-  <div class="clip-section-content">
-    <div class="tip-block">
-      <div class="tip-block-title">최종 Output</div>
-      <div class="tip-block-content">
-        이 실습이 끝나면 참가자는 <strong>AI 시대 팀 리더 역할 정의문,
-        AI와 리더 역할 분담표, 리더 역할 프로필, CH03-4·CH03·CH04 입력용 Markdown 저장본</strong>을 확보하게 됩니다.
-        웹페이지형 리더십 카드는 선택 활동으로 진행합니다.
+  <div class="clip-section">
+    <div class="clip-section-title">이번 클립의 도착점</div>
+    <div class="clip-section-content">
+      <div class="tip-block">
+        <div class="tip-block-title">필수 Output</div>
+        <div class="tip-block-content">
+          이 실습의 필수 산출물은 <strong>AI와 리더 역할 분담표</strong>와
+          <strong>리더 역할 프로필 Markdown 저장본</strong>입니다.<br>
+          리더 역할 정의문은 Markdown 저장본 안에 포함합니다.
+          이 자료는 <strong>CH03-4의 핵심 역량·스킬 도출</strong>,
+          <strong>CH03의 조직/팀 진단 및 Workflow 재설계</strong>,
+          <strong>CH04의 Action Plan 수립</strong>에 필요한 기준 자료로 활용합니다.<br>
+          리더십 카드는 시간 여유가 있을 때 진행하는 선택 활동입니다.
+        </div>
+      </div>
+
+      <div class="output-grid" aria-label="CH03-clip03 필수 산출물 요약">
+        <div class="output-card">
+          <strong>필수 1. AI와 리더 역할 분담표</strong>
+          <p>성과관리 장면별로 AI가 지원할 일과 리더가 직접 책임질 일을 구분합니다.</p>
+        </div>
+        <div class="output-card">
+          <strong>필수 2. 리더 역할 프로필 Markdown</strong>
+          <p>리더 역할 정의, 책임 기준, Speak-up 습관, 리더 행동 후보를 재사용 가능한 구조로 저장합니다.</p>
+        </div>
+        <div class="output-card">
+          <strong>선택. 리더십 카드</strong>
+          <p>동료 또는 팀원에게 공유할 수 있는 한 페이지 자료입니다. 시간 여유가 있을 때만 진행합니다.</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">이번 실습의 흐름</div>
-  <div class="clip-section-content">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:8px 0 18px">
-      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-        <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">
-          Step 1. 대화 시작
+  <div class="clip-section">
+    <div class="clip-section-title">이번 실습의 흐름</div>
+    <div class="clip-section-content">
+      <div class="flow-grid">
+        <div class="flow-card">
+          <div class="flow-card-title">Step 1. 대화 시작</div>
+          <div class="flow-card-body">
+            Gemini를 AI 리더십 코치로 설정하고, 현재 팀 상황과 리더로서의 고민을 자연스럽게 말합니다.
+          </div>
         </div>
-        <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-          Gemini를 AI 리더십 코치로 설정하고, 현재 팀 상황과 리더로서의 고민을 자연스럽게 말합니다.
-        </div>
-      </div>
 
-      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-        <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">
-          Step 2. 리더 역할 심화
+        <div class="flow-card">
+          <div class="flow-card-title">Step 2. 리더 역할 심화</div>
+          <div class="flow-card-body">
+            성과 압박, AI 활용, 구성원 성장, Speak-up, 리더의 판단 책임을 질문으로 구체화합니다.
+          </div>
         </div>
-        <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-          성과 압박, AI 활용, 구성원 성장, Speak-up, 리더의 판단 책임을 질문으로 구체화합니다.
-        </div>
-      </div>
 
-      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-        <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">
-          Step 3. 책임 경계 정리
+        <div class="flow-card">
+          <div class="flow-card-title">Step 3. 책임 경계 정리</div>
+          <div class="flow-card-body">
+            AI에게 맡길 일과 리더가 직접 책임져야 할 일을 성과관리 장면별로 구분합니다.
+          </div>
         </div>
-        <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-          AI에게 맡길 일과 리더가 직접 책임질 일을 성과관리 장면별로 구분합니다.
-        </div>
-      </div>
 
-      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-        <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">
-          Step 4. 프로필 저장
+        <div class="flow-card">
+          <div class="flow-card-title">Step 4. 프로필 저장</div>
+          <div class="flow-card-body">
+            리더 역할 프로필을 Markdown으로 저장해 CH03-4, CH03, CH04의 기준 자료로 활용합니다.
+          </div>
         </div>
-        <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-          리더 역할 정의문과 상세 프로필을 Markdown으로 저장해 다음 실습의 입력자료로 활용합니다.
-        </div>
-      </div>
 
-      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-        <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">
-          Step 5. 선택 확장
-        </div>
-        <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-          동료 공유용 리더십 카드 또는 웹페이지 초안으로 전환합니다.
+        <div class="flow-card">
+          <div class="flow-card-title">선택. 리더십 카드</div>
+          <div class="flow-card-body">
+            시간 여유가 있을 때 동료 공유용 리더십 카드로 전환합니다.
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">Step 1. 대화 시작</div>
-  <div class="clip-section-content">
-    <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
-      처음부터 정답을 쓰려고 하면 대화가 딱딱해집니다.
-      본인의 팀 상황, 리더로서의 고민, AI에 대한 기대와 우려를 자연스럽게 말하는 것이 좋습니다.
-    </p>
+  <div class="clip-section">
+    <div class="clip-section-title">Step 1. 대화 시작</div>
+    <div class="clip-section-content">
+      <p>
+        처음부터 정답을 쓰려고 하면 대화가 딱딱해집니다.
+        본인의 팀 상황, 리더로서의 고민, AI에 대한 기대와 우려를 자연스럽게 말하는 것이 좋습니다.
+      </p>
 
-    <div class="prompt-block">
-      <div class="prompt-header">
-        <span class="prompt-label">실습 1-1. 리더 역할 대화 시작 템플릿</span>
-        <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step1-1')">복사</button>
-      </div>
-      <div class="prompt-content" id="ch02-3-step1-1">당신은 실/팀장 리더십 향상 과정에서 나의 AI 리더십 코치이자 인터뷰어입니다.
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">실습 1-1. 리더 역할 대화 시작 템플릿</span>
+          <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step1-1')">복사</button>
+        </div>
+        <div class="prompt-content" id="ch02-3-step1-1">당신은 실/팀장 리더십 향상 과정에서 나의 AI 리더십 코치이자 인터뷰어입니다.
 
 나는 지금 “초인공 AI 시대, 팀 리더의 역할”을 정리하려고 합니다.
 내가 현재 팀 상황과 리더로서의 고민을 편하게 이야기하면, 내가 어떤 리더 역할을 해야 하는지 더 잘 드러날 수 있도록 질문을 이어가 주세요.
@@ -128,24 +302,24 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 아직 최종 프로필을 쓰지 말고, 먼저 나에게 질문을 이어가 주세요.
 
 먼저 내가 현재 팀 상황과 리더로서의 고민을 편하게 이야기해보겠습니다.</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">Step 2. 리더 역할 심화</div>
-  <div class="clip-section-content">
-    <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
-      한 번 답하고 끝내지 말고, Gemini가 리더십 맥락을 충분히 이해하도록 질문을 이어가게 합니다.
-      성과 압박, AI 활용, 구성원 성장, Speak-up, 리더의 판단 기준을 구체화합니다.
-    </p>
+  <div class="clip-section">
+    <div class="clip-section-title">Step 2. 리더 역할 심화</div>
+    <div class="clip-section-content">
+      <p>
+        한 번 답하고 끝내지 말고, Gemini가 리더십 맥락을 충분히 이해하도록 질문을 이어가게 합니다.
+        성과 압박, AI 활용, 구성원 성장, Speak-up, 리더의 판단 기준을 구체화합니다.
+      </p>
 
-    <div class="prompt-block">
-      <div class="prompt-header">
-        <span class="prompt-label">실습 2-1. 리더 역할 심화 질문 요청</span>
-        <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step2-1')">복사</button>
-      </div>
-      <div class="prompt-content" id="ch02-3-step2-1">지금까지 들은 내용을 바탕으로, 내가 “초인공 AI 시대에 어떤 팀 리더가 되어야 하는지” 더 입체적으로 정리할 수 있도록 질문을 이어가 주세요.
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">실습 2-1. 리더 역할 심화 질문 요청</span>
+          <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step2-1')">복사</button>
+        </div>
+        <div class="prompt-content" id="ch02-3-step2-1">지금까지 들은 내용을 바탕으로, 내가 “초인공 AI 시대에 어떤 팀 리더가 되어야 하는지” 더 입체적으로 정리할 수 있도록 질문을 이어가 주세요.
 
 특히 아래 영역이 균형 있게 드러나도록 해 주세요.
 - 현재 팀의 주요 성과 목표와 압박 요인
@@ -156,7 +330,7 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 팀원들이 반대 의견이나 우려를 말하기 어려운 상황
 - 내가 줄이고 싶은 강압적 리더십 습관
 - 내가 강화하고 싶은 기준 기반의 단호함
-- 이번 교육 이후 30일 안에 실천할 수 있는 리더 행동
+- CH04 최종 Action Plan으로 넘길 리더 개인 행동 후보
 
 조건:
 - 한 번에 1~2개씩만 질문해 주세요.
@@ -164,14 +338,14 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 내 답변을 반영해서 다음 질문을 조정해 주세요.
 - 답변이 추상적이면 실제 회의, 1:1, 업무지시, 피드백 장면으로 바꿔 질문해 주세요.
 - 중간중간 “현재까지 정리된 나의 리더 관점”을 3줄로 업데이트해 주세요.</div>
-    </div>
-
-    <div class="prompt-block">
-      <div class="prompt-header">
-        <span class="prompt-label">실습 2-2. 약한 부분 보강 요청</span>
-        <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step2-2')">복사</button>
       </div>
-      <div class="prompt-content" id="ch02-3-step2-2">지금까지 내용을 기준으로, 나의 “초인공 AI 시대 팀 리더 역할”에서 아직 약하게 보이는 부분만 골라서 보강해 주세요.
+
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">실습 2-2. 약한 부분 보강 요청</span>
+          <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step2-2')">복사</button>
+        </div>
+        <div class="prompt-content" id="ch02-3-step2-2">지금까지 내용을 기준으로, 나의 “초인공 AI 시대 팀 리더 역할”에서 아직 약하게 보이는 부분만 골라서 보강해 주세요.
 
 아래 관점으로 부족한 정보를 짚어주고, 필요한 것만 추가 질문해 주세요.
 - 내가 팀을 어떤 방향으로 이끌고 싶은지
@@ -190,24 +364,24 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 부족한 부분만 3~5개로 정리해 주세요.
 - 각 항목마다 “왜 보강이 필요한지”를 한 줄로 설명해 주세요.
 - 그다음 나에게 필요한 질문만 해 주세요.</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">Step 3. 책임 경계 정리</div>
-  <div class="clip-section-content">
-    <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
-      AI 시대 리더 역할 정의에서 가장 중요한 것은 책임 경계입니다.
-      AI에게 맡길 수 있는 일과 리더가 직접 책임져야 할 일을 성과관리 장면별로 구분합니다.
-    </p>
+  <div class="clip-section">
+    <div class="clip-section-title">Step 3. 책임 경계 정리</div>
+    <div class="clip-section-content">
+      <p>
+        AI 시대 리더 역할 정의에서 가장 중요한 것은 책임 경계입니다.
+        AI에게 맡길 수 있는 일과 리더가 직접 책임져야 할 일을 성과관리 장면별로 구분합니다.
+      </p>
 
-    <div class="prompt-block">
-      <div class="prompt-header">
-        <span class="prompt-label">실습 3-1. AI와 리더 역할 분담 요청</span>
-        <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step3-1')">복사</button>
-      </div>
-      <div class="prompt-content" id="ch02-3-step3-1">지금까지의 대화를 바탕으로, AI에게 맡길 수 있는 일과 리더가 직접 책임져야 할 일을 구분해 주세요.
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">실습 3-1. AI와 리더 역할 분담 요청</span>
+          <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step3-1')">복사</button>
+        </div>
+        <div class="prompt-content" id="ch02-3-step3-1">지금까지의 대화를 바탕으로, AI에게 맡길 수 있는 일과 리더가 직접 책임져야 할 일을 구분해 주세요.
 
 출력 형식:
 ## AI와 리더의 역할 분담
@@ -229,24 +403,24 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 리더는 목표 기준 설정, 최종 판단, 피드백 전달, 공정성 확보, 민감한 의사결정에 책임지는 사람으로 표현해 주세요.
 - 평가, 보상, 징계, 개인정보 관련 내용은 반드시 리더의 최종 책임과 조직 기준 확인이 필요하다고 표시해 주세요.
 - CH03에서 팀 업무와 Workflow를 진단할 때 활용할 수 있도록 구체적으로 작성해 주세요.</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">Step 4. 리더 역할 프로필 저장</div>
-  <div class="clip-section-content">
-    <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
-      대화로 쌓은 내용을 CH03-4, CH03, CH04에서 다시 사용할 수 있도록 저장합니다.
-      핵심은 예쁜 문장이 아니라 재사용 가능한 구조입니다.
-    </p>
+  <div class="clip-section">
+    <div class="clip-section-title">Step 4. 리더 역할 프로필 저장</div>
+    <div class="clip-section-content">
+      <p>
+        대화로 쌓은 내용을 CH03-4, CH03, CH04에서 다시 사용할 수 있도록 저장합니다.
+        핵심은 예쁜 문장이 아니라 재사용 가능한 구조입니다.
+      </p>
 
-    <div class="prompt-block">
-      <div class="prompt-header">
-        <span class="prompt-label">실습 4-1. 리더 역할 브리프 요청</span>
-        <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step4-1')">복사</button>
-      </div>
-      <div class="prompt-content" id="ch02-3-step4-1">지금까지 대화를 바탕으로, 나의 “초인공 AI 시대 팀 리더 역할”을 아래 형식으로 정리해 주세요.
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">실습 4-1. 리더 역할 브리프 요청</span>
+          <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step4-1')">복사</button>
+        </div>
+        <div class="prompt-content" id="ch02-3-step4-1">지금까지 대화를 바탕으로, 나의 “초인공 AI 시대 팀 리더 역할”을 아래 형식으로 정리해 주세요.
 
 ## 1. 한 줄 리더 역할 정의
 - 
@@ -277,7 +451,7 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 | 기존 말버릇 | 바꿀 표현 |
 |---|---|
 
-## 10. 앞으로 30일 안에 실천할 리더 행동 3가지
+## 10. CH04 최종 Action Plan으로 넘길 30일 리더 행동 후보 3가지
 1. 
 2. 
 3. 
@@ -291,15 +465,17 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 추상적인 문장은 줄이고, 실제 회의/업무지시/피드백 장면에서 쓸 수 있는 표현으로 정리해 주세요.
 - AI가 리더를 대체한다는 식의 표현은 피하고, AI는 판단과 대화를 보조하는 도구로 표현해 주세요.
 - 평가, 보상, 징계, 개인정보 관련 내용은 반드시 리더의 최종 책임과 검토가 필요하다는 점을 반영해 주세요.
-- CH03-4와 CH03에서 다시 입력자료로 쓸 수 있도록 구조화해 주세요.</div>
-    </div>
-
-    <div class="prompt-block">
-      <div class="prompt-header">
-        <span class="prompt-label">실습 4-2. Markdown 코드블록 저장 요청</span>
-        <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step4-2')">복사</button>
+- CH03-4와 CH03에서 다시 입력자료로 쓸 수 있도록 구조화해 주세요.
+- 30일 항목은 CH04의 최종 30일 Action Plan이 아니라, 리더 개인 행동 후보로만 정리해 주세요.
+- 팀 단위 실행계획, 주차별 실행계획, 점검 지표는 CH04에서 최종 확정합니다.</div>
       </div>
-      <div class="prompt-content" id="ch02-3-step4-2">방금 정리한 “초인공 AI 시대, 나의 팀 리더 역할 프로필”을 다시 한 번 정돈해서 출력해 주세요.
+
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">실습 4-2. Markdown 코드블록 저장 요청</span>
+          <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step4-2')">복사</button>
+        </div>
+        <div class="prompt-content" id="ch02-3-step4-2">방금 정리한 “초인공 AI 시대, 나의 팀 리더 역할 프로필”을 다시 한 번 정돈해서 출력해 주세요.
 
 조건:
 - 전체 내용을 `markdown 코드블록` 안에 넣어 주세요.
@@ -307,26 +483,30 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 발표 전에 내가 다시 읽기 쉽도록 너무 길지 않게 정리해 주세요.
 - 나중에 CH03-4, CH03, CH04에서 바로 붙여넣을 수 있게 깔끔하게 정리해 주세요.
 - AI에게 맡길 일과 리더가 직접 책임질 일을 반드시 구분해 주세요.
+- 30일 항목은 CH04 최종 Action Plan으로 넘길 리더 개인 행동 후보로 표시해 주세요.
 - 마지막에는 “CH03으로 가져갈 질문” 3개를 포함해 주세요.</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">Step 5. 선택 확장</div>
-  <div class="clip-section-content">
-    <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
-      이 단계는 필수 실습이 아니라 선택 활동입니다.
-      프로필을 동료 리더나 팀원에게 보여줄 수 있는 카드 형태로 바꿔보며,
-      AI가 정보를 공유물로 재구성하는 방식을 체감합니다.
-    </p>
+  <div class="clip-section">
+    <div class="clip-section-title">선택 활동: 리더십 카드 만들기</div>
+    <div class="clip-section-content">
+      <details class="optional-details">
+        <summary>시간 여유가 있을 때 펼쳐서 진행합니다</summary>
 
-    <div class="prompt-block">
-      <div class="prompt-header">
-        <span class="prompt-label">선택 실습. 리더 역할 기반 카드 생성 요청</span>
-        <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step5-1')">복사</button>
-      </div>
-      <div class="prompt-content" id="ch02-3-step5-1">방금 정리한 “초인공 AI 시대, 나의 팀 리더 역할 프로필”을 바탕으로,
+        <p>
+          이 단계는 필수 실습이 아니라 선택 활동입니다.
+          프로필을 동료 리더나 팀원에게 보여줄 수 있는 카드 형태로 바꿔보며,
+          AI가 정보를 공유물로 재구성하는 방식을 체감합니다.
+        </p>
+
+        <div class="prompt-block">
+          <div class="prompt-header">
+            <span class="prompt-label">선택 실습. 리더 역할 기반 카드 생성 요청</span>
+            <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step5-1')">복사</button>
+          </div>
+          <div class="prompt-content" id="ch02-3-step5-1">방금 정리한 “초인공 AI 시대, 나의 팀 리더 역할 프로필”을 바탕으로,
 동료 리더나 팀원에게 공유할 수 있는 한 페이지짜리 리더십 카드를 만들어 주세요.
 
 조건:
@@ -337,7 +517,7 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
   - AI에게 맡길 일 / 리더가 직접 책임질 일
   - 우리 팀 운영 원칙 5가지
   - Speak-up을 위한 나의 약속
-  - 30일 실천 약속
+  - CH04 최종 Action Plan으로 넘길 30일 리더 행동 후보
 
 스타일 가이드:
 - 깔끔하고 전문적인 스타일
@@ -347,63 +527,97 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
 - 선언문처럼 과장하지 말고 실제 행동 약속처럼 표현
 
 먼저 전체 구성안을 보여주고, 이어서 실제 카드 초안을 제안해 주세요.</div>
+        </div>
+      </details>
     </div>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">최종 산출물 확인 체크리스트</div>
-  <div class="clip-section-content">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>산출물</th>
-          <th>확인 기준</th>
-          <th>다음 단계 활용</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>AI 시대 팀 리더 역할 정의문</td>
-          <td>팀장이 어떤 역할을 해야 하는지 한 줄로 정리되었는가</td>
-          <td>CH03-4 역량 도출 기준</td>
-        </tr>
-        <tr>
-          <td>AI와 리더 역할 분담표</td>
-          <td>AI 지원 영역과 리더 책임 영역이 구분되었는가</td>
-          <td>CH03 Workflow Re-design 판단 기준</td>
-        </tr>
-        <tr>
-          <td>리더 역할 프로필</td>
-          <td>팀 상황, 리더 책임, AI 활용 태도, Speak-up 습관이 정리되었는가</td>
-          <td>CH04 Action Plan의 리더 행동 기준</td>
-        </tr>
-        <tr>
-          <td>Markdown 저장본</td>
-          <td>다음 실습에 재입력 가능한 구조인가</td>
-          <td>CH03-4·CH03·CH04 입력자료</td>
-        </tr>
-        <tr>
-          <td>선택: 리더십 카드</td>
-          <td>동료나 팀원에게 공유 가능한 형태인가</td>
-          <td>동료 공유 및 팀원 커뮤니케이션</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="clip-section">
+    <div class="clip-section-title">최종 산출물 확인 체크리스트</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>산출물</th>
+              <th>확인 기준</th>
+              <th>다음 단계 활용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>AI와 리더 역할 분담표</strong></td>
+              <td>성과관리 장면별로 AI 지원 영역과 리더 책임 영역이 구분되었는가</td>
+              <td>CH03-4 역량·스킬 도출, CH03 Workflow Re-design 판단 기준</td>
+            </tr>
+            <tr>
+              <td><strong>리더 역할 프로필 Markdown 저장본</strong></td>
+              <td>팀 상황, 리더 책임, AI 활용 태도, Speak-up 습관, 리더 행동 후보가 구조화되었는가</td>
+              <td>CH03-4·CH03·CH04 입력자료</td>
+            </tr>
+            <tr>
+              <td>선택: 리더십 카드</td>
+              <td>동료나 팀원에게 공유 가능한 한 페이지 자료인가</td>
+              <td>선택 공유자료</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="info-block" style="margin-top:18px">
-  <div class="info-block-title">핵심 메시지</div>
-  <div style="font-size:0.85rem;line-height:1.7;color:var(--text-body)">
-    AI 시대의 팀 리더는 AI를 잘 쓰는 사람이 아니라,
-    <strong>AI와 사람이 각각 맡아야 할 일을 구분하고, 성과와 성장을 위한 판단 기준을 세우는 사람</strong>입니다.
-    이 클립에서 만든 리더 역할 프로필은 CH03-4의 역량 도출, CH03의 조직/팀 진단,
-    CH04의 Action Plan 수립으로 이어지는 기준 자료가 됩니다.
+  <div class="clip-section">
+    <div class="clip-section-title">마무리 전 확인</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>확인 항목</th>
+              <th>통과 기준</th>
+              <th>내 상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>책임 경계</strong></td>
+              <td>AI가 지원할 일과 리더가 직접 책임질 일이 성과관리 장면별로 구분되었다.</td>
+              <td>□ 완료 □ 보완 필요</td>
+            </tr>
+            <tr>
+              <td><strong>실제 장면 반영</strong></td>
+              <td>회의, 1:1, 업무지시, 피드백 중 최소 2개 장면이 포함되었다.</td>
+              <td>□ 완료 □ 보완 필요</td>
+            </tr>
+            <tr>
+              <td><strong>민감정보 원칙</strong></td>
+              <td>평가·보상·징계·개인정보는 AI 판단이 아니라 리더 최종 검토 영역으로 분리되었다.</td>
+              <td>□ 완료 □ 보완 필요</td>
+            </tr>
+            <tr>
+              <td><strong>재사용 가능성</strong></td>
+              <td>Markdown 형태로 저장되어 CH03-4, CH03, CH04에 다시 입력할 수 있다.</td>
+              <td>□ 완료 □ 보완 필요</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="clip-nav-footer">
-  <a class="clip-nav-btn" href="#ch03-clip08">← Ice Breaking: AI-Friendly 리더십</a>
-  <a class="clip-nav-btn" href="#ch03-clip03">프롬프팅 활용: 리더에게 필요한 핵심 역량 및 스킬 →</a>
+  <div class="info-block" style="margin-top:18px">
+    <div class="info-block-title">핵심 메시지</div>
+    <div>
+      AI 시대의 팀 리더는 AI를 잘 쓰는 사람이 아니라,
+      <strong>AI와 사람이 각각 맡아야 할 일을 구분하고, 성과와 성장을 위한 판단 기준을 세우는 사람</strong>입니다.
+      이 클립에서 만든 리더 역할 프로필은 <strong>CH03-4의 역량·스킬 도출</strong>,
+      <strong>CH03의 조직/팀 진단</strong>,
+      <strong>CH04의 Action Plan 수립</strong>으로 이어지는 기준 자료가 됩니다.
+    </div>
+  </div>
+
+  <div class="clip-nav-footer">
+    <a class="clip-nav-btn" href="#ch03-clip08">← 팀 토론: AI 시대, 리더의 고민과 역할</a>
+    <a class="clip-nav-btn" href="#ch03-clip03">프롬프팅 활용: 리더의 핵심 역량 및 스킬 →</a>
+  </div>
 </div>
