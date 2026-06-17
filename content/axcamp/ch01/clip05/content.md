@@ -1,7 +1,7 @@
 ---
 route: "#ch01-clip05"
 chapter: "ch01"
-title: "AI 리터러시 & AI-Friendly 리더십"
+title: "AI 리터러시 퀴즈 & AI-Friendly 리더십 진단"
 source_url: "https://lg.cmdspace.work/axcamp#ch01-clip05"
 ---
 
@@ -10,7 +10,7 @@ CH 01
 퀴즈
 자가진단
 
-# AI 리터러시 & AI-Friendly 리더십
+# AI 리터러시 퀴즈 & AI-Friendly 리더십 진단
 
 본격적인 AI 활용 실습에 들어가기 전에,
 팀장으로서 **AI 변화를 어떻게 받아들이고 있는지**와

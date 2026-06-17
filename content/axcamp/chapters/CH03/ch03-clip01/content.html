@@ -1,252 +1,462 @@
-<div class="clip-header">
-  <div class="clip-badges">
-    <span class="clip-badge time">~15분</span>
-    <span class="clip-badge chapter">CH 03</span>
-    <span class="clip-badge type-platform">플랫폼</span>
-  </div>
-  <h1 class="clip-title" data-keep-title="">Gemini Overview: 실습 환경 세팅과 핵심 기능 이해</h1>
-</div>
+<style>
+  .ch02-clip01-revised,
+  #ch03-clip01 {
+    font-size: 20px;
+    line-height: 1.75;
+  }
 
-<div class="clip-overview">
-  이번 클립은 Gemini의 모든 기능을 설명하는 시간이 아니라,
-  오늘 과정에서 사용할 <strong>AI 실습 워크벤치</strong>를 빠르게 이해하고 세팅하는 구간입니다.<br>
-  참가자는 Gemini에서 질문을 시작하고, 파일과 회의 맥락 자료를 붙이고, 같은 대화 안에서 분석을 이어가며,
-  반복되는 성과관리 업무는 <strong>Gems</strong>로 저장하는 흐름을 확인합니다.<br><br>
-  이 과정에서 Gemini는 리더를 대신 판단하는 도구가 아니라,
-  <strong>리더의 사고, 분석, 질문 생성, 초안 작성, 반복 업무 수행을 보조하는 AI 파트너</strong>로 활용합니다.
-</div>
+  .ch02-clip01-revised .clip-title,
+  #ch03-clip01 .clip-title {
+    font-size: clamp(2rem, 3vw, 2.7rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em;
+  }
 
-<div class="clip-section">
-  <div class="clip-section-title">이번 클립의 역할</div>
-  <div class="clip-section-content">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>구분</th>
-          <th>이번 클립에서 확인할 것</th>
-          <th>이후 실습 연결</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Gemini 접속</strong></td>
-          <td>접속, 로그인, 입력창, 모델/도구 선택, 파일 업로드 위치를 확인합니다.</td>
-          <td>CH03 전체 실습의 기본 환경</td>
-        </tr>
-        <tr>
-          <td><strong>대화형 사용</strong></td>
-          <td>한 번에 정답을 요구하지 않고, 질문과 답변을 누적하며 맥락을 정리합니다.</td>
-          <td>리더 역할 정의, 역량 도출</td>
-        </tr>
-        <tr>
-          <td><strong>자료 기반 분석</strong></td>
-          <td>오디오, 회의록, 기대행동 문서 등 실습 자료를 같은 대화창에서 분석합니다.</td>
-          <td>성과관리 이슈 추출, 실행 브리프 작성</td>
-        </tr>
-        <tr>
-          <td><strong>반복 업무 저장</strong></td>
-          <td>잘 작동한 프롬프트 흐름을 Gems로 저장해 반복 가능한 AI 비서 구조로 만듭니다.</td>
-          <td>CH04 성과관리 AI 비서 구축</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+  .ch02-clip01-revised .clip-overview,
+  #ch03-clip01 .clip-overview {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+  }
 
-<div class="clip-section">
-  <div class="clip-section-title">오늘 Gemini에서 경험할 것</div>
-  <div class="clip-section-content">
+  .ch02-clip01-revised .clip-section-title,
+  #ch03-clip01 .clip-section-title {
+    font-size: 1.35rem !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.01em;
+  }
 
-```
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:10px 0 18px">
+  .ch02-clip01-revised .clip-section-content,
+  .ch02-clip01-revised .tip-block-content,
+  .ch02-clip01-revised .info-block,
+  .ch02-clip01-revised .info-block div,
+  .ch02-clip01-revised p,
+  .ch02-clip01-revised li,
+  #ch03-clip01 .clip-section-content,
+  #ch03-clip01 .tip-block-content,
+  #ch03-clip01 .info-block,
+  #ch03-clip01 .info-block div,
+  #ch03-clip01 p,
+  #ch03-clip01 li {
+    font-size: 1.05rem !important;
+    line-height: 1.75 !important;
+  }
 
-  <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-    <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">1. Chat Workbench</div>
-    <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-      질문, 요약, 표 정리, 초안 작성, 후속 질문 생성처럼 짧은 왕복이 많은 업무를 Gemini에서 바로 처리합니다.
+  .ch02-clip01-revised .comparison-table,
+  #ch03-clip01 .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .ch02-clip01-revised .comparison-table th,
+  .ch02-clip01-revised .comparison-table td,
+  #ch03-clip01 .comparison-table th,
+  #ch03-clip01 .comparison-table td {
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
+    padding: 7px 12px !important;
+    vertical-align: middle !important;
+  }
+
+  .ch02-clip01-revised .comparison-table th,
+  #ch03-clip01 .comparison-table th {
+    font-weight: 800 !important;
+  }
+
+  .ch02-clip01-revised .table-wrap,
+  #ch03-clip01 .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ch02-clip01-revised .gemini-feature-grid,
+  #ch03-clip01 .gemini-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 10px 0 18px;
+  }
+
+  .ch02-clip01-revised .feature-card,
+  #ch03-clip01 .feature-card {
+    background: var(--bg-offwhite);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .ch02-clip01-revised .feature-card-title,
+  #ch03-clip01 .feature-card-title {
+    font-size: 1rem !important;
+    font-weight: 900 !important;
+    color: var(--brand);
+    margin-bottom: 8px;
+    line-height: 1.35 !important;
+  }
+
+  .ch02-clip01-revised .feature-card-body,
+  #ch03-clip01 .feature-card-body {
+    font-size: 1.05rem !important;
+    line-height: 1.65 !important;
+    color: var(--text-body);
+  }
+
+  .ch02-clip01-revised .compact-list,
+  #ch03-clip01 .compact-list {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--text-body);
+  }
+
+  .ch02-clip01-revised .split-check-grid,
+  #ch03-clip01 .split-check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .ch02-clip01-revised .check-card,
+  #ch03-clip01 .check-card {
+    background: var(--bg-offwhite);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .ch02-clip01-revised .check-card-title,
+  #ch03-clip01 .check-card-title {
+    font-size: 1.02rem !important;
+    font-weight: 900;
+    color: var(--text-heading);
+    margin-bottom: 8px;
+  }
+
+  .ch02-clip01-revised .clip-nav-btn,
+  #ch03-clip01 .clip-nav-btn {
+    font-size: 1rem !important;
+    padding: 11px 18px !important;
+  }
+
+  @media (max-width: 768px) {
+    .ch02-clip01-revised,
+    #ch03-clip01 {
+      font-size: 18px;
+    }
+
+    .ch02-clip01-revised .comparison-table th,
+    .ch02-clip01-revised .comparison-table td,
+    #ch03-clip01 .comparison-table th,
+    #ch03-clip01 .comparison-table td {
+      font-size: 1rem !important;
+      padding: 7px 10px !important;
+      white-space: normal;
+    }
+  }
+</style>
+
+<div class="ch02-clip01-revised">
+  <div class="clip-header">
+    <div class="clip-badges">
+      <span class="clip-badge time">~15분</span>
+      <span class="clip-badge chapter">CH 03</span>
+      <span class="clip-badge type-platform">플랫폼</span>
     </div>
+    <h1 class="clip-title" data-keep-title="">Gemini Overview: 실습 환경 세팅과 핵심 기능 이해</h1>
   </div>
 
-  <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-    <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">2. Context Input</div>
-    <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-      텍스트만 입력하지 않고, 회의 오디오, 문서, 보고서, 참고자료를 붙여 실무 맥락을 함께 제공합니다.
-    </div>
+  <div class="clip-overview">
+    이번 클립은 Gemini의 모든 기능을 설명하는 시간이 아니라,
+    오늘 과정에서 사용할 <strong>AI 실습 워크벤치</strong>를 빠르게 이해하고 세팅하는 구간입니다.<br>
+    참가자는 Gemini에서 질문을 시작하고, 파일과 회의 맥락 자료를 붙이며,
+    같은 대화 안에서 분석을 이어가는 기본 흐름을 확인합니다.
+    반복되는 성과관리 업무를 <strong>Gems</strong>로 저장하는 실습은 후속 클립에서 진행하며,
+    이번 클립에서는 메뉴 위치와 역할만 확인합니다.<br><br>
+    이 과정에서 Gemini는 리더를 대신 판단하는 도구가 아니라,
+    <strong>리더의 사고, 분석, 질문 생성, 초안 작성, 반복 업무 수행을 보조하는 AI 파트너</strong>로 활용합니다.
   </div>
 
-  <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-    <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">3. Multi-turn Analysis</div>
-    <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-      같은 대화에서 회의록 작성 → 핵심 이슈 추출 → 기대행동 비교 → 실행 브리프 작성까지 분석을 심화합니다.
-    </div>
-  </div>
-
-  <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:16px;padding:16px">
-    <div style="font-size:0.74rem;font-weight:700;color:var(--brand);margin-bottom:8px">4. Reusable Assistant</div>
-    <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">
-      반복되는 성과관리 분석, 면담 준비, 회의 브리핑 흐름은 Gems로 저장해 개인 AI 비서처럼 재사용합니다.
-    </div>
-  </div>
-
-</div>
-
-<div class="tip-block">
-  <div class="tip-block-title">오늘 수업 연결</div>
-  <div class="tip-block-content">
-    이 챕터는 <strong>Gemini 접속과 인터페이스 이해 → 대화형 프롬프팅 실습 → 자료 기반 분석 → Gems로 역할 저장</strong> 순서로 이어집니다.
-    먼저 익숙해지고, 그다음 잘 시키고, 마지막에 반복 업무를 고정하는 흐름입니다.
-  </div>
-</div>
-```
-
-  </div>
-</div>
-
-<div class="clip-section">
-  <div class="clip-section-title">접속 후 바로 확인할 4가지</div>
-  <div class="clip-section-content">
-    <ol style="margin:0;padding-left:20px;line-height:1.8;color:var(--text-body);font-size:0.85rem">
-      <li>
-        <strong><a href="https://gemini.google.com/app" target="_blank">gemini.google.com/app</a></strong>에 접속해 Google 계정으로 로그인합니다.
-        회사 또는 학교 계정은 라이선스와 관리자 설정에 따라 사용 가능한 기능이 다를 수 있습니다.
-      </li>
-      <li>
-        하단 입력창 또는 상단 메뉴에서 <strong>모델/도구 선택 영역</strong>을 확인합니다.
-        빠른 초안 작성은 기본 모델로 충분하지만, 긴 문서 분석, 회의 오디오 분석, 심층 조사는 상위 모델 또는 Deep Research 기능이 더 적합합니다.
-      </li>
-      <li>
-        입력창 주변의 <strong>+</strong> 또는 파일 첨부 메뉴를 확인합니다.
-        오늘 실습에서는 회의 오디오, 회의록, 팀장 기대행동 문서, 분석 결과물을 같은 대화 흐름 안에서 활용합니다.
-      </li>
-      <li>
-        실습 자료를 올리기 전에 <strong>개인정보, 평가정보, 보상·징계 관련 민감정보</strong>가 포함되어 있는지 확인합니다.
-        민감한 내용은 익명화하거나 일반화한 뒤 입력합니다.
-      </li>
-    </ol>
-  </div>
-</div>
-
-<div class="clip-section">
-  <div class="clip-section-title">Gemini 화면 간단 소개</div>
-  <div class="clip-section-content">
-    <div class="slide-preview-gallery" data-slide-deck-preview="gemini-screen-quick-tour"></div>
-    <p style="margin:12px 2px 0;font-size:0.8rem;line-height:1.7;color:var(--text-secondary)">
-      세 장 모두 클릭하면 크게 볼 수 있고, 확대 모달에서 홈 화면, 모델/도구 선택, 파일 업로드 메뉴를 순서대로 확인할 수 있습니다.
-      실제 화면 구성과 메뉴명은 계정 유형, 라이선스, Google 업데이트 시점에 따라 일부 달라질 수 있습니다.
-    </p>
-  </div>
-</div>
-
-<div class="clip-section">
-  <div class="clip-section-title">오늘 주로 쓰는 기능</div>
-  <div class="clip-section-content">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>기능</th>
-          <th>어떻게 쓰나</th>
-          <th>오늘 실습 연결</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Chat</strong></td>
-          <td>질문, 요약, 표 정리, 초안 작성, 후속 질문 생성</td>
-          <td>리더 역할 정의, 핵심 역량 도출</td>
-        </tr>
-        <tr>
-          <td><strong>파일 첨부</strong></td>
-          <td>회의 오디오, 회의록, 보고서, 기대행동 문서 등 맥락 자료 추가</td>
-          <td>토론 회의록 작성, 성과관리 핵심 이슈 추출</td>
-        </tr>
-        <tr>
-          <td><strong>멀티턴 대화</strong></td>
-          <td>같은 대화에서 질문과 답변을 이어가며 분석을 단계적으로 심화</td>
-          <td>회의록 → 이슈 추출 → 기대행동 비교 → 실행 브리프</td>
-        </tr>
-        <tr>
-          <td><strong>구조화된 출력</strong></td>
-          <td>표, 체크리스트, Markdown 저장본, 실행 브리프 형식으로 결과 정리</td>
-          <td>CH03·CH04에 다시 입력할 산출물 확보</td>
-        </tr>
-        <tr>
-          <td><strong>Deep Research</strong></td>
-          <td>핵심 병목이나 리더십 이슈에 대해 외부 사례와 근거를 조사</td>
-          <td>성과관리 이슈의 심층 탐색 질문 도출</td>
-        </tr>
-        <tr>
-          <td><strong>Gems</strong></td>
-          <td>반복되는 프롬프트와 역할 지침을 저장해 맞춤형 AI 비서로 재사용</td>
-          <td>성과관리 분석 비서, 1:1 면담 준비 비서, 주간회의 준비 비서 구축</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="clip-section">
-  <div class="clip-section-title">실습 운영 원칙</div>
-  <div class="clip-section-content">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>원칙</th>
-          <th>실습에서의 적용</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>한 대화창에서 맥락 누적</strong></td>
-          <td>새 질문마다 처음부터 다시 설명하지 않고, 같은 대화에서 자료와 답변을 누적합니다.</td>
-        </tr>
-        <tr>
-          <td><strong>프롬프트는 업무 위임서</strong></td>
-          <td>역할, 맥락, 분석 기준, 출력 형식, 제한 조건을 함께 지정합니다.</td>
-        </tr>
-        <tr>
-          <td><strong>AI는 보조, 리더는 판단</strong></td>
-          <td>AI는 초안·요약·비교·질문 생성을 지원하고, 최종 판단과 피드백 책임은 리더가 집니다.</td>
-        </tr>
-        <tr>
-          <td><strong>민감정보 보호</strong></td>
-          <td>평가, 보상, 징계, 개인정보 관련 내용은 익명화·일반화하고 조직 기준 확인이 필요한 항목으로 구분합니다.</td>
-        </tr>
-        <tr>
-          <td><strong>산출물 재사용</strong></td>
-          <td>좋은 결과물은 Markdown, 표, Gem 지침 형태로 저장해 CH03·CH04에서 다시 활용합니다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="clip-section">
-  <div class="clip-section-title">시작 전 체크리스트</div>
-  <div class="clip-section-content">
-    <div class="tip-block">
-      <div class="tip-block-title">실습 준비 확인</div>
-      <div class="tip-block-content">
-        <ul style="margin:0;padding-left:18px;line-height:1.8">
-          <li>Gemini 접속과 로그인 완료</li>
-          <li>모델/도구 선택 위치 확인</li>
-          <li>파일 업로드 메뉴 확인</li>
-          <li>실습용 회의 오디오, 회의록, 기대행동 문서 (별도 안내)</li>
-          <li>개인정보·평가정보·민감정보 익명화 여부 확인</li>
-          <li>Gems 메뉴 또는 Gem 생성 위치 확인</li>
-        </ul>
+  <div class="clip-section">
+    <div class="clip-section-title">이번 클립의 역할</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>이번 클립에서 확인할 것</th>
+              <th>이후 실습 연결</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Gemini 접속</strong></td>
+              <td>접속, 로그인, 입력창, 모델/도구 선택, 파일 업로드 위치를 확인합니다.</td>
+              <td>CH03 전체 실습의 기본 환경</td>
+            </tr>
+            <tr>
+              <td><strong>대화형 사용</strong></td>
+              <td>한 번에 정답을 요구하지 않고, 질문과 답변을 누적하며 맥락을 정리하는 방식을 확인합니다.</td>
+              <td>CH03-3 리더 역할 정의, CH03-4 핵심 역량·스킬 도출</td>
+            </tr>
+            <tr>
+              <td><strong>자료 기반 분석</strong></td>
+              <td>후속 실습에서 오디오, 회의록, 기대행동 문서 등 실습 자료를 같은 대화창에서 분석하게 됩니다.</td>
+              <td>성과관리 이슈 추출, 실행 브리프 작성</td>
+            </tr>
+            <tr>
+              <td><strong>Gems 메뉴 확인</strong></td>
+              <td>Gems가 반복 프롬프트와 역할 지침을 저장하는 기능임을 이해하고, 생성 위치를 확인합니다.</td>
+              <td>CH03-4의 1차 Gem Seed, CH04의 최종 성과관리 AI 비서 구축</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-</div>
 
-<div class="info-block" style="margin-top:18px">
-  <div class="info-block-title">핵심 메시지</div>
-  <div style="font-size:0.85rem;line-height:1.7;color:var(--text-body)">
-    Gemini는 답을 대신 내려주는 도구가 아니라,
-    <strong>리더가 더 정확하게 질문하고, 더 빠르게 분석하고, 더 일관되게 실행하도록 돕는 업무 파트너</strong>입니다.
-    오늘 과정에서는 Gemini를 통해 리더 역할을 정의하고, 팀의 성과 병목을 진단하고,
-    반복되는 성과관리 업무를 Gems로 저장하는 흐름까지 경험합니다.
+  <div class="clip-section">
+    <div class="clip-section-title">오늘 Gemini에서 경험할 것</div>
+    <div class="clip-section-content">
+      <div class="gemini-feature-grid">
+        <div class="feature-card">
+          <div class="feature-card-title">1. Chat Workbench</div>
+          <div class="feature-card-body">
+            질문, 요약, 표 정리, 초안 작성, 후속 질문 생성처럼 짧은 왕복이 많은 업무를 Gemini에서 바로 처리합니다.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-title">2. Context Input</div>
+          <div class="feature-card-body">
+            텍스트만 입력하지 않고, 회의 오디오, 문서, 보고서, 참고자료를 붙여 실무 맥락을 함께 제공합니다.
+            단, 계정·라이선스·관리자 설정에 따라 파일 업로드 가능 범위가 달라질 수 있습니다.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-title">3. Multi-turn Analysis</div>
+          <div class="feature-card-body">
+            같은 대화에서 회의록 작성 → 핵심 이슈 추출 → 기대행동 비교 → 실행 브리프 작성까지 분석을 심화합니다.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-title">4. Reusable Assistant</div>
+          <div class="feature-card-body">
+            반복되는 성과관리 분석, 면담 준비, 회의 브리핑 흐름은 후속 실습에서 Gems로 저장해 재사용합니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-block">
+        <div class="tip-block-title">오늘 수업 연결</div>
+        <div class="tip-block-content">
+          이 챕터는 <strong>Gemini 접속과 인터페이스 이해 → 대화형 프롬프팅 실습 → 자료 기반 분석 → Gems 메뉴 확인</strong> 순서로 이어집니다.
+          먼저 익숙해지고, 그다음 잘 시키고, 마지막에 반복 업무를 저장할 구조를 확인합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">접속 후 바로 확인할 4가지</div>
+    <div class="clip-section-content">
+      <ol class="compact-list">
+        <li>
+          <strong><a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">gemini.google.com/app</a></strong>에 접속해 Google 계정으로 로그인합니다.
+          회사 또는 학교 계정은 라이선스와 관리자 설정에 따라 사용 가능한 기능이 다를 수 있습니다.
+        </li>
+        <li>
+          하단 입력창 또는 상단 메뉴에서 <strong>모델/도구 선택 영역</strong>을 확인합니다.
+          빠른 초안 작성은 기본 모델로 충분하지만, 긴 문서 분석, 회의 오디오 분석, 심층 조사는 상위 모델 또는 Deep Research 기능이 더 적합할 수 있습니다.
+        </li>
+        <li>
+          입력창 주변의 <strong>+</strong> 또는 파일 첨부 메뉴를 확인합니다.
+          오늘은 위치와 사용 가능 여부를 확인하고, 후속 실습에서 회의 오디오, 회의록, 팀장 기대행동 문서 등을 같은 대화 흐름 안에서 활용합니다.
+        </li>
+        <li>
+          실습 자료를 올리기 전에 <strong>개인정보, 평가정보, 보상·징계 관련 민감정보</strong>가 포함되어 있는지 확인합니다.
+          민감한 내용은 익명화하거나 일반화한 뒤 입력합니다.
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">Gemini 화면 간단 소개</div>
+    <div class="clip-section-content">
+      <div class="slide-preview-gallery" data-slide-deck-preview="gemini-screen-quick-tour"></div>
+      <p style="margin:12px 2px 0;color:var(--text-secondary)">
+        세 장 모두 클릭하면 크게 볼 수 있고, 확대 모달에서 홈 화면, 모델/도구 선택, 파일 업로드 메뉴를 순서대로 확인할 수 있습니다.
+        실제 화면 구성과 메뉴명은 계정 유형, 라이선스, Google 업데이트 시점에 따라 일부 달라질 수 있습니다.
+      </p>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">오늘 확인할 주요 기능</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>기능</th>
+              <th>어떻게 쓰나</th>
+              <th>후속 실습 연결</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Chat</strong></td>
+              <td>질문, 요약, 표 정리, 초안 작성, 후속 질문 생성</td>
+              <td>리더 역할 정의, 핵심 역량 도출</td>
+            </tr>
+            <tr>
+              <td><strong>파일 첨부</strong></td>
+              <td>회의 오디오, 회의록, 보고서, 기대행동 문서 등 맥락 자료 추가</td>
+              <td>토론 회의록 작성, 성과관리 핵심 이슈 추출</td>
+            </tr>
+            <tr>
+              <td><strong>멀티턴 대화</strong></td>
+              <td>같은 대화에서 질문과 답변을 이어가며 분석을 단계적으로 심화</td>
+              <td>회의록 → 이슈 추출 → 기대행동 비교 → 실행 브리프</td>
+            </tr>
+            <tr>
+              <td><strong>구조화된 출력</strong></td>
+              <td>표, 체크리스트, Markdown 저장본, 실행 브리프 형식으로 결과 정리</td>
+              <td>후속 실습에서 재입력 가능한 산출물 형식으로 활용</td>
+            </tr>
+            <tr>
+              <td><strong>Deep Research</strong></td>
+              <td>계정·라이선스에서 사용 가능한 경우, 핵심 병목이나 리더십 이슈를 외부 사례와 근거로 심층 조사</td>
+              <td>CH03-4·CH03에서 심층 탐색 질문을 도출할 때 활용</td>
+            </tr>
+            <tr>
+              <td><strong>Gems</strong></td>
+              <td>반복되는 프롬프트와 역할 지침을 저장해 맞춤형 AI 비서로 재사용합니다. 이번 클립에서는 메뉴 위치와 개념만 확인합니다.</td>
+              <td>CH03-4의 1차 Gem Seed, CH04의 최종 성과관리 AI 비서 구축</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">실습 운영 원칙</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>원칙</th>
+              <th>실습에서의 적용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>한 대화창에서 맥락 누적</strong></td>
+              <td>새 질문마다 처음부터 다시 설명하지 않고, 같은 대화에서 자료와 답변을 누적합니다.</td>
+            </tr>
+            <tr>
+              <td><strong>프롬프트는 업무 위임서</strong></td>
+              <td>역할, 맥락, 분석 기준, 출력 형식, 제한 조건을 함께 지정합니다.</td>
+            </tr>
+            <tr>
+              <td><strong>AI는 보조, 리더는 판단</strong></td>
+              <td>AI는 초안·요약·비교·질문 생성을 지원하고, 최종 판단과 피드백 책임은 리더가 집니다.</td>
+            </tr>
+            <tr>
+              <td><strong>민감정보 보호</strong></td>
+              <td>평가, 보상, 징계, 개인정보 관련 내용은 익명화·일반화하고 조직 기준 확인이 필요한 항목으로 구분합니다.</td>
+            </tr>
+            <tr>
+              <td><strong>산출물 재사용</strong></td>
+              <td>후속 실습에서 좋은 결과물은 Markdown, 표, Gem 지침 형태로 저장해 다시 활용합니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">시작 전 체크리스트</div>
+    <div class="clip-section-content">
+      <div class="split-check-grid">
+        <div class="check-card">
+          <div class="check-card-title">지금 완료할 것</div>
+          <ul class="compact-list">
+            <li>Gemini 접속과 로그인 완료</li>
+            <li>모델/도구 선택 위치 확인</li>
+            <li>파일 업로드 메뉴 확인</li>
+            <li>개인정보·평가정보·민감정보 입력 금지 원칙 확인</li>
+            <li>Gems 메뉴 또는 Gem 생성 위치 확인</li>
+          </ul>
+        </div>
+        <div class="check-card">
+          <div class="check-card-title">후속 실습에서 사용할 것</div>
+          <ul class="compact-list">
+            <li>팀 토론 오디오 또는 회의 오디오</li>
+            <li>회의록 또는 토론 대화문</li>
+            <li>팀장 기대행동 문서</li>
+            <li>후속 실습에서 만든 Markdown 저장본</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">이번 클립의 완료 기준</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>확인 항목</th>
+              <th>완료 기준</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Gemini 접속</strong></td>
+              <td>Gemini에 로그인하고 기본 입력창을 확인했다.</td>
+            </tr>
+            <tr>
+              <td><strong>모델/도구 선택 위치</strong></td>
+              <td>모델 또는 도구 선택 메뉴의 위치를 확인했다.</td>
+            </tr>
+            <tr>
+              <td><strong>파일 업로드 메뉴</strong></td>
+              <td>파일 첨부 위치와 계정별 사용 가능 여부를 확인했다.</td>
+            </tr>
+            <tr>
+              <td><strong>민감정보 원칙</strong></td>
+              <td>개인정보, 평가정보, 보상·징계 관련 정보는 익명화하거나 입력하지 않는 원칙을 확인했다.</td>
+            </tr>
+            <tr>
+              <td><strong>Gems 메뉴</strong></td>
+              <td>Gems가 반복 프롬프트와 역할 지침을 저장하는 기능임을 이해하고, 메뉴 위치를 확인했다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-block" style="margin-top:18px">
+    <div class="info-block-title">핵심 메시지</div>
+    <div>
+      Gemini는 답을 대신 내려주는 도구가 아니라,
+      <strong>리더가 더 정확하게 질문하고, 더 빠르게 분석하고, 더 일관되게 실행하도록 돕는 업무 파트너</strong>입니다.
+      이번 클립의 목적은 산출물을 만드는 것이 아니라,
+      이후 실습에서 안정적으로 사용할 Gemini 워크벤치를 확인하는 것입니다.
+    </div>
+  </div>
+
+  <div class="clip-nav-footer">
+    <a class="clip-nav-btn" href="#ch01-clip05">← AI 리터러시 및 퀴즈</a>
+    <a class="clip-nav-btn" href="#ch03-clip08">팀 토론: AI 시대 리더의 고민과 역할 →</a>
   </div>
 </div>
-
-<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip04">← 개념 다지기</a><a class="clip-nav-btn" href="#ch03-clip08">ice breaking: Ai-Friendly 리더십 →</a></div>
