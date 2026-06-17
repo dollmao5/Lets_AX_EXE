@@ -1,137 +1,438 @@
-<div class="clip-header">
-  <div class="clip-badges">
-    <span class="clip-badge chapter">CH 03</span>
-    <span class="clip-badge type-reference">토론</span>
+<style>
+  .ch02-clip02-revised,
+  #ch03-clip08 {
+    font-size: 20px;
+    line-height: 1.72;
+  }
+
+  .ch02-clip02-revised .clip-title,
+  #ch03-clip08 .clip-title {
+    font-size: clamp(2rem, 3vw, 2.7rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em;
+  }
+
+  .ch02-clip02-revised .clip-overview,
+  #ch03-clip08 .clip-overview {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+  }
+
+  .ch02-clip02-revised .clip-section-title,
+  #ch03-clip08 .clip-section-title {
+    font-size: 1.35rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.01em;
+  }
+
+  .ch02-clip02-revised .clip-section-content,
+  .ch02-clip02-revised .tip-block-content,
+  .ch02-clip02-revised .info-block,
+  .ch02-clip02-revised .info-block div,
+  .ch02-clip02-revised p,
+  .ch02-clip02-revised li,
+  #ch03-clip08 .clip-section-content,
+  #ch03-clip08 .tip-block-content,
+  #ch03-clip08 .info-block,
+  #ch03-clip08 .info-block div,
+  #ch03-clip08 p,
+  #ch03-clip08 li {
+    font-size: 1.05rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .ch02-clip02-revised .comparison-table,
+  #ch03-clip08 .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .ch02-clip02-revised .comparison-table th,
+  .ch02-clip02-revised .comparison-table td,
+  #ch03-clip08 .comparison-table th,
+  #ch03-clip08 .comparison-table td {
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
+    padding: 7px 12px !important;
+    vertical-align: middle !important;
+  }
+
+  .ch02-clip02-revised .comparison-table th,
+  #ch03-clip08 .comparison-table th {
+    font-weight: 800 !important;
+  }
+
+  .ch02-clip02-revised .table-wrap,
+  #ch03-clip08 .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ch02-clip02-revised button,
+  .ch02-clip02-revised .slide-briefing-link,
+  .ch02-clip02-revised input,
+  #ch03-clip08 button,
+  #ch03-clip08 .slide-briefing-link,
+  #ch03-clip08 input {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .ch02-clip02-revised .activity-flow-grid,
+  #ch03-clip08 .activity-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 14px 0 18px;
+  }
+
+  .ch02-clip02-revised .activity-card,
+  #ch03-clip08 .activity-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    background: var(--bg-white);
+  }
+
+  .ch02-clip02-revised .activity-card strong,
+  #ch03-clip08 .activity-card strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1.05rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .ch02-clip02-revised .activity-card p,
+  #ch03-clip08 .activity-card p {
+    margin: 0;
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+    color: var(--text-secondary);
+  }
+
+  .ch02-clip02-revised .output-box,
+  #ch03-clip08 .output-box {
+    background: var(--bg-offwhite);
+    border-left: 4px solid var(--brand);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .ch02-clip02-revised .recording-notice,
+  #ch03-clip08 .recording-notice {
+    margin: 14px 0 18px;
+  }
+
+  .ch02-clip02-revised .shared-audio-dropzone,
+  #ch03-clip08 .shared-audio-dropzone {
+    background: var(--bg-offwhite);
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ch02-clip02-revised .shared-audio-controls,
+  #ch03-clip08 .shared-audio-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .ch02-clip02-revised #sharedAudioFileLabel,
+  .ch02-clip02-revised #sharedAudioStatus,
+  #ch03-clip08 #sharedAudioFileLabel,
+  #ch03-clip08 #sharedAudioStatus {
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+    color: var(--text-secondary);
+    word-break: break-all;
+  }
+
+  .ch02-clip02-revised #sharedAudioList,
+  #ch03-clip08 #sharedAudioList {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 260px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+    background: var(--bg-white);
+  }
+
+  .ch02-clip02-revised .shared-audio-row,
+  #ch03-clip08 .shared-audio-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 1rem !important;
+  }
+
+  .ch02-clip02-revised .shared-audio-info,
+  #ch03-clip08 .shared-audio-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .ch02-clip02-revised .shared-audio-name,
+  #ch03-clip08 .shared-audio-name {
+    word-break: break-all;
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .ch02-clip02-revised .shared-audio-meta,
+  #ch03-clip08 .shared-audio-meta {
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+    color: var(--text-secondary);
+  }
+
+  .ch02-clip02-revised .shared-audio-actions,
+  #ch03-clip08 .shared-audio-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .ch02-clip02-revised .shared-audio-btn,
+  #ch03-clip08 .shared-audio-btn {
+    margin: 0 !important;
+    padding: 5px 9px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .ch02-clip02-revised .shared-audio-delete,
+  #ch03-clip08 .shared-audio-delete {
+    color: var(--danger) !important;
+    border-color: var(--danger) !important;
+  }
+
+  .ch02-clip02-revised .tiro-guide-details,
+  #ch03-clip08 .tiro-guide-details {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--bg-white);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .ch02-clip02-revised .tiro-guide-details summary,
+  #ch03-clip08 .tiro-guide-details summary {
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 1.08rem !important;
+    font-weight: 800;
+    background: var(--bg-offwhite);
+    color: var(--text-heading);
+  }
+
+  .ch02-clip02-revised .tiro-guide-grid,
+  #ch03-clip08 .tiro-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    padding: 14px 16px 18px;
+  }
+
+  .ch02-clip02-revised .tiro-guide-card,
+  #ch03-clip08 .tiro-guide-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    background: var(--bg-white);
+  }
+
+  .ch02-clip02-revised .tiro-guide-card h4,
+  #ch03-clip08 .tiro-guide-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .ch02-clip02-revised .tiro-guide-card p,
+  #ch03-clip08 .tiro-guide-card p {
+    margin: 0 0 10px 0;
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+    color: var(--text-secondary);
+  }
+
+  .ch02-clip02-revised .tiro-guide-card img,
+  #ch03-clip08 .tiro-guide-card img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    margin: 10px auto 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  @media (max-width: 720px) {
+    .ch02-clip02-revised,
+    #ch03-clip08 {
+      font-size: 18px;
+    }
+    .ch02-clip02-revised .shared-audio-row,
+    #ch03-clip08 .shared-audio-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .ch02-clip02-revised .shared-audio-actions,
+    #ch03-clip08 .shared-audio-actions {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+</style>
+
+<div class="ch02-clip02-revised">
+  <div class="clip-header">
+    <div class="clip-badges">
+      <span class="clip-badge time">25분</span>
+      <span class="clip-badge chapter">CH 03</span>
+      <span class="clip-badge type-practice">토론</span>
+    </div>
+    <h1 class="clip-title" data-keep-title="">팀 토론: AI 시대, 리더의 고민과 역할</h1>
   </div>
-  <h1 class="clip-title" data-keep-title="">
-    팀 토론: AI 시대, 리더의 고민과 역할
-  </h1>
-</div>
 
-<div class="clip-overview">
-  본 세션은 Gemini 실습에 앞서, “AI 시대, 리더의 고민과 역할”을 주제로 팀별 토론을 진행하고
-  그 내용을 음성 파일로 기록하는 아이스 브레이킹 활동입니다.
-  <br><br>
-  참가자들은 AI가 팀 업무에 도입될 때 리더의 역할이 어떻게 달라지는지 논의하고,
-  AI에게 맡길 수 있는 업무와 리더가 직접 판단하고 책임져야 할 영역을 구분합니다.
-  녹음된 토론 음성 파일은 이후 Gemini를 활용한 회의록 작성, 핵심 이슈 정리,
-  리더 역할 분석 실습의 입력 자료로 사용됩니다.
-</div>
+  <div class="clip-overview">
+    본 세션은 Gemini 실습에 앞서, <strong>“AI 시대, 리더의 고민과 역할”</strong>을 주제로
+    학습팀별 토론을 진행하고 그 내용을 오디오 파일로 기록하는 활동입니다.<br><br>
+    참가자들은 AI가 현업 팀 업무에 도입될 때 리더의 역할이 어떻게 달라지는지 논의하고,
+    AI에게 맡길 수 있는 업무와 리더가 직접 판단하고 책임져야 할 영역을 구분합니다.
+    녹음된 토론 오디오 파일은 이후 Gemini를 활용한 회의록 작성, 핵심 이슈 정리,
+    리더 역할 분석 실습의 <strong>최소 입력자료</strong>로 사용합니다.
+  </div>
 
-<div class="clip-section">
-  <div class="clip-section-title">활동 안내: AI 시대, 리더의 고민과 역할</div>
-  <div class="clip-section-content">
-    <p style="margin-bottom: 16px; font-weight: 500; line-height: 1.7; color: var(--text-body);">
-      이번 활동은 정답을 찾기 위한 토론이 아닙니다. 각자의 현장 경험과 고민을 바탕으로
-      AI 시대의 리더에게 필요한 판단, 대화, 책임, 실행 방식을 구체적으로 탐색하는 과정입니다.
-    </p>
-    </div>
-
-    <div style="background: var(--bg-offwhite); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 20px;">
-
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <strong style="display: block; margin-bottom: 8px;">1. 팀별 토론 진행</strong>
-        <p style="margin: 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          AI 도입 이후 달라지는 리더의 역할, AI 활용 가능 업무,
-          리더가 직접 책임져야 할 영역을 논의합니다. (아래의 토론 주제 중심)
-        </p>
-      </div>
-
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <strong style="display: block; margin-bottom: 8px;">2. 토론 음성 기록</strong>
-        <p style="margin: 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          Tiro 활용 또는 스마트폰 기본 녹음 기능을 활용해 팀별 토론 내용을 음성 파일로 남깁니다.
-        </p>
-      </div>
-
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <strong style="display: block; margin-bottom: 8px;">3. 오디오 자료 공유</strong>
-        <p style="margin: 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          녹음한 팀 토론 음성 파일을 아래 공유방에 업로드합니다.
-        </p>
-      </div>
-
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <strong style="display: block; margin-bottom: 8px;">4. 후속 Gemini 실습 연결</strong>
-        <p style="margin: 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          업로드한 음성 파일은 이후 Gemini를 활용해 회의록, 핵심 이슈,
-          리더 역할 분석 자료로 전환합니다.
-        </p>
-      </div>
-    </div>
-
-    <div style="margin-bottom: 24px;">
-      <h4 style="margin-bottom: 10px;">핵심 토론 주제 (20분)</h4>
-      <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-body);">
-        <li>AI가 팀 업무에 들어오면 리더의 역할 중 무엇이 가장 크게 바뀌는가?</li>
-        <li>AI에게 맡기면 좋은 일과 리더가 직접 판단하고 책임져야 할 일은 무엇인가?</li>
-        <li>AI 활용으로 생산성 기대와 성과 압박이 높아질 때, 리더는 어떤 기준으로 업무를 요구하고 무엇을 직접 책임져야 하는가?</li>
-        <li>팀원들이 AI 활용을 걱정하거나 저항할 때 리더는 어떻게 대화해야 하는가?</li>
-        <li>우리 팀에서 AI를 활용해 가장 먼저 개선할 수 있는 업무 장면은 무엇인가?</li>
-      </ul>
-    </div>
-
-    <div style="background: var(--bg-offwhite); border-left: 4px solid var(--brand); border-radius: 8px; padding: 16px;">
-      <h4 style="margin: 0 0 8px 0;">최종 산출물</h4>
-      <p style="margin: 0 0 8px 0; line-height: 1.7; color: var(--text-body);">
-        활동이 끝나면 각 팀은 다음 자료를 확보하게 됩니다.
+  <div class="clip-section">
+    <div class="clip-section-title">활동 안내: AI 시대, 리더의 고민과 역할</div>
+    <div class="clip-section-content">
+      <p class="lead-paragraph" style="margin-bottom: 14px; font-weight: 600; color: var(--text-body);">
+        이번 활동은 정답을 찾기 위한 토론이 아닙니다. 각자의 현장 경험과 고민을 바탕으로
+        AI 시대의 리더에게 필요한 판단, 대화, 책임, 실행 방식을 구체적으로 탐색하는 과정입니다.
       </p>
-      <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-body);">
-        <li>팀 토론 음성 파일</li>
-        <li>AI 시대 리더의 고민과 역할에 대한 1차 토론 메모</li>
-        <li>후속 Gemini 분석 실습에 활용할 입력 자료</li>
-      </ul>
+
+      <div class="info-block recording-notice">
+        <div class="info-block-title">녹음 및 개인정보 보호 안내</div>
+        <div>
+          이 활동은 후속 Gemini 실습을 위한 학습 목적의 토론 녹음입니다.
+          녹음 전 학습팀 구성원에게 <strong>녹음 목적, 활용 방식, 공유 범위</strong>를 먼저 안내합니다.
+          실명, 평가, 보상, 징계, 민감한 개인정보, 고객 식별 정보는 말하지 않거나 일반화해서 표현합니다.
+        </div>
+      </div>
+
+      <div class="activity-flow-grid">
+        <div class="activity-card">
+          <strong>1. 학습팀 토론 진행</strong>
+          <p>AI 도입 이후 달라지는 리더의 역할, AI 활용 가능 업무, 리더가 직접 책임져야 할 영역을 논의합니다.</p>
+        </div>
+
+        <div class="activity-card">
+          <strong>2. 토론 음성 기록</strong>
+          <p>Tiro 또는 스마트폰 기본 녹음 기능을 활용해 학습팀 토론 내용을 오디오 파일로 남깁니다.</p>
+        </div>
+
+        <div class="activity-card">
+          <strong>3. 오디오 자료 공유</strong>
+          <p>녹음한 파일을 학습팀별 오디오 자료 공유방에 업로드합니다.</p>
+        </div>
+
+        <div class="activity-card">
+          <strong>4. 후속 Gemini 실습 연결</strong>
+          <p>업로드한 오디오 파일은 회의록 작성, 핵심 이슈 정리, 리더 역할 분석에 활용합니다.</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 18px;">
+        <h4 style="margin: 0 0 8px 0;">핵심 토론 질문 <span style="font-weight:600;color:var(--text-secondary)">(20분)</span></h4>
+        <ul style="margin: 0; padding-left: 20px; color: var(--text-body);">
+          <li>AI가 현업 팀 업무에 들어오면 리더의 역할 중 무엇이 가장 크게 바뀌는가?</li>
+          <li>AI에게 맡기면 좋은 일과 리더가 직접 판단하고 책임져야 할 일은 무엇인가?</li>
+          <li>AI 활용으로 생산성 기대와 성과 압박이 높아질 때, 리더는 어떤 기준으로 업무를 요구하고 무엇을 직접 책임져야 하는가?</li>
+          <li>팀원들이 AI 활용을 걱정하거나 저항할 때 리더는 어떻게 대화해야 하는가?</li>
+          <li>내 현업 팀에서 AI를 활용해 가장 먼저 개선할 수 있는 업무 장면은 무엇인가?</li>
+        </ul>
+      </div>
+
+      <div class="output-box">
+        <h4 style="margin: 0 0 8px 0;">이번 활동의 필수 산출물</h4>
+        <p style="margin: 0 0 6px 0; color: var(--text-body);">
+          활동이 끝나면 각 학습팀은 <strong>토론 오디오 파일 1개</strong>를 확보합니다.
+          이 파일은 후속 Gemini 실습에서 회의록 작성, 핵심 이슈 정리, 리더 역할 분석의 입력자료로 사용합니다.
+        </p>
+        <p style="margin: 0; color: var(--text-secondary);">
+          선택: 토론 중 인상 깊었던 리더 고민이나 AI 활용 장면을 개인 노트에 3줄로 메모합니다.
+        </p>
+      </div>
     </div>
   </div>
 
+  <div class="clip-section" id="shared-audio-section">
+    <div class="clip-section-title">학습팀별 오디오 자료 공유방</div>
+    <div class="clip-section-content">
+      <p style="margin-bottom: 10px; color: var(--text-secondary);">
+        학습팀별 리더십 토론을 녹음한 오디오 파일을 이곳에 업로드하세요.
+        업로드된 파일은 학습팀 구성원이 목록에서 바로 다운로드할 수 있습니다.
+        이후 Gemini 실습에서 회의록 작성, 핵심 이슈 정리, 리더 역할 분석 자료로 활용합니다.
+      </p>
+      <p style="margin-bottom: 14px; color: var(--text-secondary);">
+        권장 형식: MP3, WAV, M4A 등 오디오 파일 / 권장 용량: 최대 32MB.<br>
+        웹페이지는 형식·용량을 자동 차단하지 않습니다. 안내 기준에 맞는 파일인지 업로드 전 직접 확인해 주세요.
+      </p>
 
-<div class="clip-section" id="shared-audio-section">
-  <div class="clip-section-title">팀별 오디오 자료 공유방</div>
-  <div class="clip-section-content">
-    <p style="margin-bottom: 12px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">
-      팀별 리더십 토론을 녹음한 오디오 파일을 이곳에 업로드하세요.
-      업로드된 파일은 팀원들이 목록에서 바로 다운로드할 수 있습니다.<br>
-      이후 Gemini 실습에서 회의록 작성, 핵심 이슈 정리, 리더 역할 분석 자료로 활용합니다.
-    </p>
-    <p style="margin-bottom: 16px; color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6;">
-      지원 형식: MP3, WAV, M4A 등 오디오 파일 / 최대 32MB
-    </p>
-
-    <!-- 파일 선택 및 업로드 영역 -->
-    <div style="background: var(--bg-offwhite); border: 1px dashed var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px;">
-      <div style="display: flex; gap: 8px; align-items: center;">
-        <input type="file" id="sharedAudioFileInput" accept="audio/*" style="display: none;">
-        <button type="button" class="slide-briefing-link" id="selectSharedAudioBtn" style="margin: 0; font-size: 0.85rem;">파일 선택</button>
-        <span id="sharedAudioFileLabel" style="font-size: 0.85rem; color: var(--text-secondary); word-break: break-all;">선택된 파일 없음</span>
+      <div class="shared-audio-dropzone">
+        <div class="shared-audio-controls">
+          <input type="file" id="sharedAudioFileInput" style="display: none;">
+          <button type="button" class="slide-briefing-link" id="selectSharedAudioBtn" style="margin: 0;">파일 선택</button>
+          <span id="sharedAudioFileLabel">선택된 파일 없음</span>
+        </div>
+        <div class="shared-audio-controls" style="justify-content: space-between;">
+          <span id="sharedAudioStatus"></span>
+          <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled>업로드 하기</button>
+        </div>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span id="sharedAudioStatus" style="font-size: 0.8rem; color: var(--text-secondary);"></span>
-        <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; font-size: 0.85rem; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled="">업로드 하기</button>
-      </div>
-    </div>
 
-    <!-- 공유된 파일 리스트 영역 -->
-    <div style="margin-top: 16px;">
-      <h5 style="margin-bottom: 8px; font-size: 0.9rem;">업로드된 오디오 목록</h5>
-      <div id="sharedAudioList" style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: var(--bg-white);">
-        <p class="muted" style="font-size: 0.85rem; margin: 0; text-align: center; padding: 12px;">불러오는 중...</p>
+      <div style="margin-top: 14px;">
+        <h5 style="margin: 0 0 8px 0; font-size: 1.05rem;">업로드된 오디오 목록</h5>
+        <div id="sharedAudioList">
+          <p class="muted" style="font-size: 1rem; margin: 0; text-align: center; padding: 12px;">불러오는 중...</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-(function() {
-  const fileInput = document.getElementById('sharedAudioFileInput');
-  const fileLabel = document.getElementById('sharedAudioFileLabel');
-  const selectBtn = document.getElementById('selectSharedAudioBtn');
-  const uploadBtn = document.getElementById('uploadSharedAudioBtn');
-  const statusEl = document.getElementById('sharedAudioStatus');
-  const listEl = document.getElementById('sharedAudioList');
+  <!-- IIFE Script Hack: 동적 HTML 주입 환경에서도 오디오 공유방 초기화를 보장하기 위한 방식입니다. -->
+  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+  if (window.__ch02Clip02SharedAudioInitialized) return;
+  window.__ch02Clip02SharedAudioInitialized = true;
+
+  const fileInput = document.getElementById(&#x27;sharedAudioFileInput&#x27;);
+  const fileLabel = document.getElementById(&#x27;sharedAudioFileLabel&#x27;);
+  const selectBtn = document.getElementById(&#x27;selectSharedAudioBtn&#x27;);
+  const uploadBtn = document.getElementById(&#x27;uploadSharedAudioBtn&#x27;);
+  const statusEl = document.getElementById(&#x27;sharedAudioStatus&#x27;);
+  const listEl = document.getElementById(&#x27;sharedAudioList&#x27;);
 
   if (!fileInput || !selectBtn || !uploadBtn || !listEl) return;
 
-  const clipKey = 'ch02-clip02';
+  const clipKey = &#x27;ch02-clip02&#x27;;
 
   selectBtn.onclick = function() {
     fileInput.click();
@@ -140,131 +441,138 @@
   fileInput.onchange = function(e) {
     const file = e.target.files[0];
     if (file) {
-      fileLabel.textContent = file.name + ' (' + formatSize(file.size) + ')';
+      fileLabel.textContent = file.name + &#x27; (&#x27; + formatSize(file.size) + &#x27;)&#x27;;
+      statusEl.textContent = &#x27;선택 완료. 권장 형식과 용량은 안내 문구를 확인해 주세요.&#x27;;
+      statusEl.style.color = &#x27;var(--text-secondary)&#x27;;
       uploadBtn.disabled = false;
-      uploadBtn.style.opacity = '1';
+      uploadBtn.style.opacity = &#x27;1&#x27;;
     } else {
-      fileLabel.textContent = '선택된 파일 없음';
+      fileLabel.textContent = &#x27;선택된 파일 없음&#x27;;
+      statusEl.textContent = &#x27;&#x27;;
       uploadBtn.disabled = true;
-      uploadBtn.style.opacity = '0.6';
+      uploadBtn.style.opacity = &#x27;0.6&#x27;;
     }
   };
 
   function formatSize(bytes) {
-    if (bytes === 0) return '0 B';
+    if (bytes === 0) return &#x27;0 B&#x27;;
     const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const sizes = [&#x27;B&#x27;, &#x27;KB&#x27;, &#x27;MB&#x27;, &#x27;GB&#x27;];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + &#x27; &#x27; + sizes[i];
+  }
+
+  function formatDate(isoStr) {
+    const d = new Date(isoStr);
+    if (Number.isNaN(d.getTime())) return &#x27;&#x27;;
+    return (d.getMonth()+1) + &#x27;/&#x27; + d.getDate() + &#x27; &#x27; + String(d.getHours()).padStart(2,&#x27;0&#x27;) + &#x27;:&#x27; + String(d.getMinutes()).padStart(2,&#x27;0&#x27;);
+  }
+
+  function getHeaders(json) {
+    const headers = {
+      &#x27;x-session-token&#x27;: localStorage.getItem(&#x27;ax_literacy_session_token&#x27;) || &#x27;&#x27;,
+      &#x27;x-account-id&#x27;: localStorage.getItem(&#x27;ax_literacy_last_lets_id&#x27;) || &#x27;&#x27;
+    };
+    if (json) headers[&#x27;Content-Type&#x27;] = &#x27;application/json&#x27;;
+    return headers;
+  }
+
+  function renderMessage(message, isError) {
+    listEl.innerHTML = &#x27;&#x27;;
+    const p = document.createElement(&#x27;p&#x27;);
+    p.className = &#x27;muted&#x27;;
+    p.style.fontSize = &#x27;1rem&#x27;;
+    p.style.lineHeight = &#x27;1.45&#x27;;
+    p.style.textAlign = &#x27;center&#x27;;
+    p.style.margin = &#x27;0&#x27;;
+    p.style.padding = &#x27;12px&#x27;;
+    if (isError) p.style.color = &#x27;var(--danger)&#x27;;
+    p.textContent = message;
+    listEl.appendChild(p);
+  }
+
+  async function requestJson(url, options) {
+    const res = await fetch(url, options || {});
+    const text = await res.text();
+    try {
+      return JSON.parse(text || &#x27;{}&#x27;);
+    } catch (err) {
+      return { ok: false, error: &#x27;서버 응답을 해석하지 못했습니다.&#x27; };
+    }
   }
 
   async function loadAudioList() {
     try {
-      const headers = {
-        'x-session-token': localStorage.getItem('ax_literacy_session_token') || '',
-        'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
-      };
-
-      const data = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
-        headers: headers
+      const data = await requestJson(&#x27;/api/shared-audio?clipKey=&#x27; + encodeURIComponent(clipKey), {
+        headers: getHeaders(false)
       });
-      
+
       if (!data.ok) {
-        listEl.innerHTML = '';
-        var p = document.createElement('p');
-        p.className = 'muted';
-        p.style.fontSize = '0.85rem';
-        p.style.textAlign = 'center';
-        p.style.margin = '0';
-        p.style.padding = '12px';
-        p.style.color = 'var(--danger)';
-        p.textContent = data.error || '목록을 불러오지 못했습니다.';
-        listEl.appendChild(p);
+        renderMessage(data.error || &#x27;목록을 불러오지 못했습니다.&#x27;, true);
         return;
       }
 
       if (!data.audios || data.audios.length === 0) {
-        listEl.innerHTML = '';
-        var p = document.createElement('p');
-        p.className = 'muted';
-        p.style.fontSize = '0.85rem';
-        p.style.textAlign = 'center';
-        p.style.margin = '0';
-        p.style.padding = '12px';
-        p.textContent = '공유된 오디오 파일이 없습니다.';
-        listEl.appendChild(p);
+        renderMessage(&#x27;공유된 오디오 파일이 없습니다.&#x27;, false);
         return;
       }
 
-      listEl.innerHTML = '';
+      listEl.innerHTML = &#x27;&#x27;;
       data.audios.forEach(function(audio) {
-        const row = document.createElement('div');
-        row.style.display = 'flex';
-        row.style.justifyContent = 'space-between';
-        row.style.alignItems = 'center';
-        row.style.padding = '8px 12px';
-        row.style.borderBottom = '1px solid var(--border-subtle)';
-        row.style.fontSize = '0.85rem';
+        const row = document.createElement(&#x27;div&#x27;);
+        row.className = &#x27;shared-audio-row&#x27;;
 
-        const info = document.createElement('div');
-        info.style.display = 'flex';
-        info.style.flexDirection = 'column';
-        info.style.gap = '2px';
+        const info = document.createElement(&#x27;div&#x27;);
+        info.className = &#x27;shared-audio-info&#x27;;
 
-        const name = document.createElement('strong');
-        name.style.wordBreak = 'break-all';
-        name.textContent = audio.fileName;
+        const name = document.createElement(&#x27;strong&#x27;);
+        name.className = &#x27;shared-audio-name&#x27;;
+        name.textContent = audio.fileName || &#x27;오디오 파일&#x27;;
         info.appendChild(name);
 
-        const meta = document.createElement('span');
-        meta.style.fontSize = '0.75rem';
-        meta.style.color = 'var(--text-secondary)';
-        var uploaderLabel = audio.teamName
-          ? audio.teamName + (audio.uploadedBy ? ' (' + audio.uploadedBy + ')' : '')
-          : (audio.uploadedByDisplay || audio.uploadedBy || '');
-        meta.textContent = audio.sizeLabel + (uploaderLabel ? ' · ' + uploaderLabel : '') + ' · ' + formatDate(audio.uploadedAt);
+        const meta = document.createElement(&#x27;span&#x27;);
+        meta.className = &#x27;shared-audio-meta&#x27;;
+        const uploaderLabel = audio.teamName
+          ? audio.teamName + (audio.uploadedBy ? &#x27; (&#x27; + audio.uploadedBy + &#x27;)&#x27; : &#x27;&#x27;)
+          : (audio.uploadedByDisplay || audio.uploadedBy || &#x27;&#x27;);
+        const metaParts = [];
+        if (audio.sizeLabel) metaParts.push(audio.sizeLabel);
+        if (uploaderLabel) metaParts.push(uploaderLabel);
+        if (audio.uploadedAt) metaParts.push(formatDate(audio.uploadedAt));
+        meta.textContent = metaParts.join(&#x27; · &#x27;);
         info.appendChild(meta);
 
         row.appendChild(info);
 
-        const actions = document.createElement('div');
-        actions.style.display = 'flex';
-        actions.style.gap = '8px';
+        const actions = document.createElement(&#x27;div&#x27;);
+        actions.className = &#x27;shared-audio-actions&#x27;;
 
-        const downloadLink = document.createElement('a');
-        downloadLink.href = audio.url;
-        downloadLink.download = audio.fileName;
-        downloadLink.className = 'slide-briefing-link';
-        downloadLink.style.margin = '0';
-        downloadLink.style.padding = '4px 8px';
-        downloadLink.style.fontSize = '0.75rem';
-        downloadLink.textContent = '다운로드';
+        const downloadLink = document.createElement(&#x27;a&#x27;);
+        downloadLink.href = audio.url || &#x27;#&#x27;;
+        downloadLink.download = audio.fileName || &#x27;&#x27;;
+        downloadLink.className = &#x27;slide-briefing-link shared-audio-btn&#x27;;
+        downloadLink.textContent = &#x27;다운로드&#x27;;
         actions.appendChild(downloadLink);
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.type = 'button';
-        deleteBtn.className = 'slide-briefing-link';
-        deleteBtn.style.margin = '0';
-        deleteBtn.style.padding = '4px 8px';
-        deleteBtn.style.fontSize = '0.75rem';
-        deleteBtn.style.color = 'var(--danger)';
-        deleteBtn.style.borderColor = 'var(--danger)';
-        deleteBtn.textContent = '삭제';
+        const deleteBtn = document.createElement(&#x27;button&#x27;);
+        deleteBtn.type = &#x27;button&#x27;;
+        deleteBtn.className = &#x27;slide-briefing-link shared-audio-btn shared-audio-delete&#x27;;
+        deleteBtn.textContent = &#x27;삭제&#x27;;
         deleteBtn.onclick = async function() {
-          if (!confirm('이 오디오 파일을 삭제하시겠습니까?')) return;
+          if (!confirm(&#x27;이 오디오 파일을 삭제하시겠습니까?&#x27;)) return;
           try {
-            const delData = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
-              method: 'DELETE',
-              headers: headers,
-              body: { fileName: audio.fileName }
+            const delData = await requestJson(&#x27;/api/shared-audio?clipKey=&#x27; + encodeURIComponent(clipKey), {
+              method: &#x27;DELETE&#x27;,
+              headers: getHeaders(true),
+              body: JSON.stringify({ fileName: audio.fileName })
             });
             if (delData.ok) {
               loadAudioList();
             } else {
-              alert(delData.error || '삭제 실패');
+              alert(delData.error || &#x27;삭제 실패&#x27;);
             }
           } catch (err) {
-            alert('삭제 에러: ' + err.message);
+            alert(&#x27;삭제 에러: &#x27; + err.message);
           }
         };
         actions.appendChild(deleteBtn);
@@ -274,22 +582,8 @@
       });
     } catch (error) {
       console.error(error);
-      listEl.innerHTML = '';
-      var p = document.createElement('p');
-      p.className = 'muted';
-      p.style.fontSize = '0.85rem';
-      p.style.textAlign = 'center';
-      p.style.margin = '0';
-      p.style.padding = '12px';
-      p.style.color = 'var(--danger)';
-      p.textContent = '서버 연결 에러';
-      listEl.appendChild(p);
+      renderMessage(&#x27;서버 연결 에러&#x27;, true);
     }
-  }
-
-  function formatDate(isoStr) {
-    const d = new Date(isoStr);
-    return (d.getMonth()+1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
   }
 
   uploadBtn.onclick = async function() {
@@ -297,141 +591,137 @@
     if (!file) return;
 
     uploadBtn.disabled = true;
-    uploadBtn.style.opacity = '0.6';
-    statusEl.textContent = '파일 읽는 중...';
-    statusEl.style.color = 'var(--text-secondary)';
+    uploadBtn.style.opacity = &#x27;0.6&#x27;;
+    statusEl.textContent = &#x27;파일 읽는 중...&#x27;;
+    statusEl.style.color = &#x27;var(--text-secondary)&#x27;;
 
     const reader = new FileReader();
     reader.onload = async function(e) {
-      const base64 = e.target.result.split(',')[1];
-      statusEl.textContent = '업로드 중...';
-      
-      try {
-        const headers = {
-          'x-session-token': localStorage.getItem('ax_literacy_session_token') || '',
-          'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
-        };
+      const base64 = String(e.target.result || &#x27;&#x27;).split(&#x27;,&#x27;)[1] || &#x27;&#x27;;
+      statusEl.textContent = &#x27;업로드 중...&#x27;;
+      statusEl.style.color = &#x27;var(--text-secondary)&#x27;;
 
-        const data = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
-          method: 'POST',
-          headers: headers,
-          body: {
+      try {
+        const data = await requestJson(&#x27;/api/shared-audio?clipKey=&#x27; + encodeURIComponent(clipKey), {
+          method: &#x27;POST&#x27;,
+          headers: getHeaders(true),
+          body: JSON.stringify({
             fileName: file.name,
             contentBase64: base64
-          }
+          })
         });
+
         if (data.ok) {
-          statusEl.textContent = '업로드 성공!';
-          statusEl.style.color = 'var(--brand)';
-          fileInput.value = '';
-          fileLabel.textContent = '선택된 파일 없음';
+          statusEl.textContent = &#x27;업로드 성공!&#x27;;
+          statusEl.style.color = &#x27;var(--brand)&#x27;;
+          fileInput.value = &#x27;&#x27;;
+          fileLabel.textContent = &#x27;선택된 파일 없음&#x27;;
+          uploadBtn.disabled = true;
+          uploadBtn.style.opacity = &#x27;0.6&#x27;;
           loadAudioList();
         } else {
-          statusEl.textContent = data.error || '업로드 실패';
-          statusEl.style.color = 'var(--danger)';
+          statusEl.textContent = data.error || &#x27;업로드 실패&#x27;;
+          statusEl.style.color = &#x27;var(--danger)&#x27;;
           uploadBtn.disabled = false;
-          uploadBtn.style.opacity = '1';
+          uploadBtn.style.opacity = &#x27;1&#x27;;
         }
       } catch (err) {
-        statusEl.textContent = '에러: ' + err.message;
-        statusEl.style.color = 'var(--danger)';
+        statusEl.textContent = &#x27;에러: &#x27; + err.message;
+        statusEl.style.color = &#x27;var(--danger)&#x27;;
         uploadBtn.disabled = false;
-        uploadBtn.style.opacity = '1';
+        uploadBtn.style.opacity = &#x27;1&#x27;;
       }
     };
+
     reader.onerror = function() {
-      statusEl.textContent = '파일 읽기 오류';
-      statusEl.style.color = 'var(--danger)';
+      statusEl.textContent = &#x27;파일 읽기 오류&#x27;;
+      statusEl.style.color = &#x27;var(--danger)&#x27;;
       uploadBtn.disabled = false;
-      uploadBtn.style.opacity = '1';
+      uploadBtn.style.opacity = &#x27;1&#x27;;
     };
+
     reader.readAsDataURL(file);
   };
 
   loadAudioList();
-})();
-</script>
+})();" style="display:none;" alt="">
 
-<div class="clip-section">
-  <div class="clip-section-title">Tiro 설치 및 녹음 파일 저장 방법</div>
-  <div class="clip-section-content">
-    <p style="margin-bottom: 16px; font-weight: 500; line-height: 1.7; color: var(--text-body);">
-      팀별 토론을 녹음하기 위해 Tiro 앱을 사용할 수 있습니다.
-      이미 스마트폰 기본 녹음 앱을 사용할 수 있는 경우에는 해당 기능으로 녹음해도 됩니다.
-      단, 후속 Gemini 실습에서 활용할 수 있도록 반드시 오디오 파일 형태로 저장해 주세요.
-    </p>
+  <div class="clip-section">
+    <div class="clip-section-title">Tiro 설치 및 녹음 파일 저장 방법</div>
+    <div class="clip-section-content">
+      <p style="margin-bottom: 14px; font-weight: 600; color: var(--text-body);">
+        학습팀 토론을 녹음하기 위해 Tiro 앱을 사용할 수 있습니다.
+        이미 스마트폰 기본 녹음 앱을 사용할 수 있는 경우에는 해당 기능으로 녹음해도 됩니다.
+        단, 후속 Gemini 실습에서 활용할 수 있도록 반드시 오디오 파일 형태로 저장해 주세요.
+      </p>
 
-    <div style="background: var(--bg-offwhite); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
-      <h4 style="margin: 0 0 8px 0;">진행 전 확인 사항</h4>
-      <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-body);">
-        <li>녹음 시작 전, 팀원들에게 녹음 목적과 활용 방식을 안내합니다.</li>
-        <li>토론 내용은 후속 Gemini 실습의 입력 자료로 사용됩니다.</li>
-        <li>녹음 파일은 팀별로 1개만 업로드하는 것을 권장합니다.</li>
-        <li>파일명이 구분되도록 팀 이름 또는 팀 번호를 포함해 저장합니다. 예: 1팀_AI리더십토론.mp3</li>
-      </ul>
-    </div>
-
-    <p style="margin-bottom: 16px; color: var(--text-secondary); line-height: 1.7;">
-      아래 이미지 가이드를 참고하여 앱 설치, 가입, 사전 설정, 파일 저장 순서로 진행해 주세요.
-      이미지는 기존 자료를 그대로 사용하되, 화면에서 지나치게 크게 보이지 않도록 크기를 조정했습니다.
-    </p>
-
-    <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 16px;">
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <h4 style="margin: 0 0 8px 0;">1. 앱 다운로드</h4>
-        <p style="margin: 0 0 10px 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          스마트폰 앱스토어에서 Tiro를 검색한 뒤 앱을 다운로드합니다.
-          설치가 완료되면 앱을 실행합니다.
-        </p>
-        <img src="/course-files/AXCAMP/ch02-clip02/01_app_download.png" alt="앱 다운로드" style="display: block; width: auto; max-width: 100%; max-height: 620px; object-fit: contain; margin: 12px auto 0; border-radius: 8px; border: 1px solid var(--border);">
+      <div class="tip-block" style="margin-bottom: 14px;">
+        <div class="tip-block-title">진행 전 확인 사항</div>
+        <div class="tip-block-content">
+          <ul style="margin:0;padding-left:20px;">
+            <li>녹음 시작 전, 학습팀 구성원에게 녹음 목적과 활용 방식을 안내합니다.</li>
+            <li>토론 내용은 후속 Gemini 실습의 입력 자료로 사용됩니다.</li>
+            <li>녹음 파일은 학습팀별로 1개만 업로드하는 것을 권장합니다.</li>
+            <li>파일명이 구분되도록 학습팀 이름 또는 조 번호를 포함해 저장합니다. 예: 1조_AI리더십토론.m4a</li>
+            <li>토론 참여자의 목소리가 잘 녹음될 수 있도록 녹음 중인 스마트폰 또는 외장 마이크를 학습팀 중앙에 놓고 진행합니다.</li>
+          </ul>
+        </div>
       </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <h4 style="margin: 0 0 8px 0;">2. 가입 단계</h4>
-        <p style="margin: 0 0 10px 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          앱 실행 후 회원가입 또는 로그인을 진행합니다.
-          교육 현장에서 바로 사용할 수 있도록 접근 가능한 계정으로 가입해 주세요.
-        </p>
-        <img src="/course-files/AXCAMP/ch02-clip02/02_sign_up.png" alt="가입 단계" style="display: block; width: auto; max-width: 100%; max-height: 620px; object-fit: contain; margin: 12px auto 0; border-radius: 8px; border: 1px solid var(--border);">
-      </div>
+      <details class="tiro-guide-details">
+        <summary>Tiro 설치 및 녹음 파일 저장 방법 펼쳐보기</summary>
+        <div class="tiro-guide-grid">
+          <div class="tiro-guide-card">
+            <h4>1. 앱 다운로드</h4>
+            <p>스마트폰 앱스토어에서 Tiro를 검색한 뒤 앱을 다운로드합니다. 설치가 완료되면 앱을 실행합니다.</p>
+            <img src="/course-files/AXCAMP/ch02-clip02/01_app_download.png" alt="앱 다운로드" loading="lazy">
+          </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <h4 style="margin: 0 0 8px 0;">3. 가입 상세</h4>
-        <p style="margin: 0 0 10px 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          화면 안내에 따라 기본 정보를 입력하고 가입 절차를 완료합니다.
-          마이크 권한 요청이 나타나면 녹음을 위해 허용해 주세요.
-        </p>
-        <img src="/course-files/AXCAMP/ch02-clip02/03_sign_up_detail.png" alt="가입 상세" style="display: block; width: auto; max-width: 100%; max-height: 620px; object-fit: contain; margin: 12px auto 0; border-radius: 8px; border: 1px solid var(--border);">
-      </div>
+          <div class="tiro-guide-card">
+            <h4>2. 가입 단계</h4>
+            <p>앱 실행 후 회원가입 또는 로그인을 진행합니다. 교육 현장에서 바로 사용할 수 있도록 접근 가능한 계정으로 가입해 주세요.</p>
+            <img src="/course-files/AXCAMP/ch02-clip02/02_sign_up.png" alt="가입 단계" loading="lazy">
+          </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <h4 style="margin: 0 0 8px 0;">4. 사전 설정 1</h4>
-        <p style="margin: 0 0 10px 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          녹음 전에 앱의 기본 설정을 확인합니다.
-          토론 참여자의 목소리가 잘 녹음될 수 있도록 블루투스 스피커 or 스마트폰을 팀 중앙에 놓고 진행하는 것을 권장합니다.
-        </p>
-        <img src="/course-files/AXCAMP/ch02-clip02/04_pre_settings.png" alt="사전 설정 1" style="display: block; width: auto; max-width: 100%; max-height: 620px; object-fit: contain; margin: 12px auto 0; border-radius: 8px; border: 1px solid var(--border);">
-      </div>
+          <div class="tiro-guide-card">
+            <h4>3. 가입 상세</h4>
+            <p>화면 안내에 따라 기본 정보를 입력하고 가입 절차를 완료합니다. 마이크 권한 요청이 나타나면 녹음을 위해 허용해 주세요.</p>
+            <img src="/course-files/AXCAMP/ch02-clip02/03_sign_up_detail.png" alt="가입 상세" loading="lazy">
+          </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <h4 style="margin: 0 0 8px 0;">5. 사전 설정 2</h4>
-        <p style="margin: 0 0 10px 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          녹음 품질과 저장 설정을 확인합니다.
-          토론이 시작되면 녹음 버튼을 누르고, 토론이 끝나면 반드시 녹음을 종료해 주세요.
-        </p>
-        <img src="/course-files/AXCAMP/ch02-clip02/05_pre_settings_detail.png" alt="사전 설정 2" style="display: block; width: auto; max-width: 100%; max-height: 620px; object-fit: contain; margin: 12px auto 0; border-radius: 8px; border: 1px solid var(--border);">
-      </div>
+          <div class="tiro-guide-card">
+            <h4>4. 사전 설정 1</h4>
+            <p>녹음 전에 앱의 기본 설정을 확인합니다. 녹음 중인 스마트폰 또는 외장 마이크를 학습팀 중앙에 놓고 진행하는 것을 권장합니다.</p>
+            <img src="/course-files/AXCAMP/ch02-clip02/04_pre_settings.png" alt="사전 설정 1" loading="lazy">
+          </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg-white);">
-        <h4 style="margin: 0 0 8px 0;">6. 파일 저장</h4>
-        <p style="margin: 0 0 10px 0; line-height: 1.6; color: var(--text-secondary); font-size: 0.9rem;">
-          녹음이 완료되면 오디오 파일을 저장하거나 다운로드합니다.
-          저장한 파일은 위의 <strong>팀별 오디오 자료 공유방</strong>에 업로드해 주세요.
-        </p>
-        <img src="/course-files/AXCAMP/ch02-clip02/06_save_file.png" alt="파일 저장" style="display: block; width: auto; max-width: 100%; max-height: 620px; object-fit: contain; margin: 12px auto 0; border-radius: 8px; border: 1px solid var(--border);">
-      </div>
+          <div class="tiro-guide-card">
+            <h4>5. 사전 설정 2</h4>
+            <p>녹음 품질과 저장 설정을 확인합니다. 토론이 시작되면 녹음 버튼을 누르고, 토론이 끝나면 반드시 녹음을 종료해 주세요.</p>
+            <img src="/course-files/AXCAMP/ch02-clip02/05_pre_settings_detail.png" alt="사전 설정 2" loading="lazy">
+          </div>
+
+          <div class="tiro-guide-card">
+            <h4>6. 파일 저장</h4>
+            <p>녹음이 완료되면 오디오 파일을 저장하거나 다운로드합니다. 저장한 파일은 위의 학습팀별 오디오 자료 공유방에 업로드해 주세요.</p>
+            <img src="/course-files/AXCAMP/ch02-clip02/06_save_file.png" alt="파일 저장" loading="lazy">
+          </div>
+        </div>
+      </details>
     </div>
   </div>
-</div>
 
-<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch03-clip01">← Gemini 소개 및 접속 방법</a><a class="clip-nav-btn" href="#ch03-clip02">프롬프팅 기초: AI 시대, 리더의 역할 →</a></div>
+  <div class="info-block" style="margin-top:18px;">
+    <div class="info-block-title">핵심 메시지</div>
+    <div>
+      이 클립의 목적은 토론 자체가 아니라, <strong>후속 Gemini 분석 실습에 사용할 최소 입력자료를 확보하는 것</strong>입니다.
+      학습팀은 AI 시대 리더 역할에 대해 토론하고, 그 대화를 오디오 파일로 남겨
+      회의록 작성, 핵심 이슈 정리, 리더 역할 분석으로 이어갈 준비를 마칩니다.
+    </div>
+  </div>
+
+  <div class="clip-nav-footer">
+    <a class="clip-nav-btn" href="#ch03-clip01">← Gemini Overview: 실습 환경 세팅</a>
+    <a class="clip-nav-btn" href="#ch03-clip02">프롬프팅 기초: AI 시대 리더 역할 정의 →</a>
+  </div>
+</div>
