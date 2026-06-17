@@ -423,7 +423,6 @@ const CLIENT_CATALOG_BLUEPRINTS = [
     clips: [
       { clipKey: "ch04-clip01", title: "NotebookLM 소개 및 문서 기반 AI 연구 도우미", type: "플랫폼" },
       { clipKey: "ch04-clip02", title: "문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑", type: "실습" },
-      { clipKey: "ch04-clip03", title: "Gems 소개: AI 비서 만들기", type: "참고" },
       { clipKey: "ch04-clip04", title: "ChatGPT 및 GPTs 소개", type: "플랫폼" }
       // [HIDDEN] ch04-clip05 = 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석 — 노출 제외 중
       // 복구 시: 아래 주석을 해제하고 server.js의 ch04-clip03도 함께 복구하세요.

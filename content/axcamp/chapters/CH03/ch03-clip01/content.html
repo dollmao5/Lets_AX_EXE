@@ -1,160 +1,197 @@
-<style>
-  .ch02-clip01-revised,
-  #ch03-clip01 {
-    font-size: 20px;
-    line-height: 1.75;
-  }
+<div class="ch02-clip01-revised">
+  <style>
+    /* CH03-clip01 visibility upgrade v2
+       - 카드형 유지: '오늘 Gemini에서 경험할 것', '시작 전 체크리스트'
+       - 그 외 섹션: 기존 표·목록·갤러리 구조 유지
+       - CH01-clip05 기준의 글자 크기, 여백, 표 가독성 적용 */
+    .ch02-clip01-revised {
+      --c2-font-base: 20px;
+      --c2-radius: 18px;
+      --c2-gap: 16px;
+      font-size: var(--c2-font-base);
+      line-height: 1.72;
+      color: var(--text-body);
+      word-break: keep-all;
+    }
 
-  .ch02-clip01-revised .clip-title,
-  #ch03-clip01 .clip-title {
-    font-size: clamp(2rem, 3vw, 2.7rem) !important;
-    line-height: 1.25 !important;
-    letter-spacing: -0.02em;
-  }
+    .ch02-clip01-revised .clip-title {
+      font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
+      line-height: 1.22 !important;
+      letter-spacing: -0.04em;
+      margin-top: 10px;
+    }
 
-  .ch02-clip01-revised .clip-overview,
-  #ch03-clip01 .clip-overview {
-    font-size: 1.1rem !important;
-    line-height: 1.8 !important;
-  }
+    .ch02-clip01-revised .clip-badge {
+      font-size: 0.95rem !important;
+      padding: 8px 12px !important;
+      border-radius: 999px !important;
+    }
 
-  .ch02-clip01-revised .clip-section-title,
-  #ch03-clip01 .clip-section-title {
-    font-size: 1.35rem !important;
-    line-height: 1.4 !important;
-    letter-spacing: -0.01em;
-  }
+    .ch02-clip01-revised .clip-overview {
+      font-size: 1.16rem !important;
+      line-height: 1.78 !important;
+      padding: 24px 26px !important;
+      border-radius: var(--c2-radius) !important;
+    }
 
-  .ch02-clip01-revised .clip-section-content,
-  .ch02-clip01-revised .tip-block-content,
-  .ch02-clip01-revised .info-block,
-  .ch02-clip01-revised .info-block div,
-  .ch02-clip01-revised p,
-  .ch02-clip01-revised li,
-  #ch03-clip01 .clip-section-content,
-  #ch03-clip01 .tip-block-content,
-  #ch03-clip01 .info-block,
-  #ch03-clip01 .info-block div,
-  #ch03-clip01 p,
-  #ch03-clip01 li {
-    font-size: 1.05rem !important;
-    line-height: 1.75 !important;
-  }
+    .ch02-clip01-revised .clip-section-title {
+      font-size: 1.5rem !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px !important;
+    }
 
-  .ch02-clip01-revised .comparison-table,
-  #ch03-clip01 .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+    .ch02-clip01-revised .clip-section-content,
+    .ch02-clip01-revised p,
+    .ch02-clip01-revised li,
+    .ch02-clip01-revised .tip-block-content,
+    .ch02-clip01-revised .info-block,
+    .ch02-clip01-revised .info-block div {
+      font-size: 1.08rem !important;
+      line-height: 1.66 !important;
+    }
 
-  .ch02-clip01-revised .comparison-table th,
-  .ch02-clip01-revised .comparison-table td,
-  #ch03-clip01 .comparison-table th,
-  #ch03-clip01 .comparison-table td {
-    font-size: 1.05rem !important;
-    line-height: 1.5 !important;
-    padding: 7px 12px !important;
-    vertical-align: middle !important;
-  }
+    .ch02-clip01-revised .info-block,
+    .ch02-clip01-revised .tip-block {
+      padding: 18px 20px !important;
+      border-radius: var(--c2-radius) !important;
+    }
 
-  .ch02-clip01-revised .comparison-table th,
-  #ch03-clip01 .comparison-table th {
-    font-weight: 800 !important;
-  }
+    .ch02-clip01-revised .info-block-title,
+    .ch02-clip01-revised .tip-block-title {
+      font-size: 1.08rem !important;
+      line-height: 1.45 !important;
+      font-weight: 900 !important;
+      margin-bottom: 8px !important;
+    }
 
-  .ch02-clip01-revised .table-wrap,
-  #ch03-clip01 .table-wrap {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+    /* 표는 기존 구조를 유지하되 가독성만 강화 */
+    .ch02-clip01-revised .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
 
-  .ch02-clip01-revised .gemini-feature-grid,
-  #ch03-clip01 .gemini-feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-    margin: 10px 0 18px;
-  }
-
-  .ch02-clip01-revised .feature-card,
-  #ch03-clip01 .feature-card {
-    background: var(--bg-offwhite);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 16px;
-  }
-
-  .ch02-clip01-revised .feature-card-title,
-  #ch03-clip01 .feature-card-title {
-    font-size: 1rem !important;
-    font-weight: 900 !important;
-    color: var(--brand);
-    margin-bottom: 8px;
-    line-height: 1.35 !important;
-  }
-
-  .ch02-clip01-revised .feature-card-body,
-  #ch03-clip01 .feature-card-body {
-    font-size: 1.05rem !important;
-    line-height: 1.65 !important;
-    color: var(--text-body);
-  }
-
-  .ch02-clip01-revised .compact-list,
-  #ch03-clip01 .compact-list {
-    margin: 0;
-    padding-left: 22px;
-    color: var(--text-body);
-  }
-
-  .ch02-clip01-revised .split-check-grid,
-  #ch03-clip01 .split-check-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
-  }
-
-  .ch02-clip01-revised .check-card,
-  #ch03-clip01 .check-card {
-    background: var(--bg-offwhite);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 16px;
-  }
-
-  .ch02-clip01-revised .check-card-title,
-  #ch03-clip01 .check-card-title {
-    font-size: 1.02rem !important;
-    font-weight: 900;
-    color: var(--text-heading);
-    margin-bottom: 8px;
-  }
-
-  .ch02-clip01-revised .clip-nav-btn,
-  #ch03-clip01 .clip-nav-btn {
-    font-size: 1rem !important;
-    padding: 11px 18px !important;
-  }
-
-  @media (max-width: 768px) {
-    .ch02-clip01-revised,
-    #ch03-clip01 {
-      font-size: 18px;
+    .ch02-clip01-revised .table-wrap table {
+      min-width: 760px;
+      margin: 0 !important;
+      border: 0 !important;
     }
 
     .ch02-clip01-revised .comparison-table th,
-    .ch02-clip01-revised .comparison-table td,
-    #ch03-clip01 .comparison-table th,
-    #ch03-clip01 .comparison-table td {
-      font-size: 1rem !important;
-      padding: 7px 10px !important;
-      white-space: normal;
+    .ch02-clip01-revised .comparison-table td {
+      font-size: 1.08rem !important;
+      line-height: 1.42 !important;
+      padding: 8px 12px !important;
+      vertical-align: middle !important;
+      word-break: keep-all;
     }
-  }
-</style>
 
-<div class="ch02-clip01-revised">
+    .ch02-clip01-revised .comparison-table th {
+      font-weight: 900 !important;
+      color: var(--text-heading) !important;
+      background: var(--bg-offwhite) !important;
+    }
+
+    .ch02-clip01-revised .compact-list {
+      margin: 0;
+      padding-left: 24px;
+    }
+
+    .ch02-clip01-revised .compact-list li {
+      margin-bottom: 10px;
+    }
+
+    /* 카드형 1: 오늘 Gemini에서 경험할 것 */
+    .ch02-clip01-revised .gemini-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--c2-gap);
+      margin: 10px 0 20px;
+    }
+
+    .ch02-clip01-revised .feature-card {
+      min-height: 150px;
+      padding: 20px;
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+      border: 1px solid var(--border);
+      border-radius: var(--c2-radius);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch02-clip01-revised .feature-card-title {
+      margin-bottom: 10px;
+      color: var(--brand);
+      font-size: 1rem !important;
+      font-weight: 900;
+      line-height: 1.42;
+    }
+
+    .ch02-clip01-revised .feature-card-body {
+      color: var(--text-body);
+      font-size: 1.08rem !important;
+      line-height: 1.62 !important;
+    }
+
+    /* 카드형 2: 시작 전 체크리스트 */
+    .ch02-clip01-revised .split-check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--c2-gap);
+      margin: 10px 0 20px;
+    }
+
+    .ch02-clip01-revised .check-card {
+      padding: 20px;
+      background: var(--bg-offwhite);
+      border: 1px solid var(--border);
+      border-radius: var(--c2-radius);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch02-clip01-revised .check-card-title {
+      margin-bottom: 12px;
+      color: var(--brand);
+      font-size: 1.08rem !important;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .ch02-clip01-revised .slide-preview-gallery {
+      margin-top: 12px;
+    }
+
+    .ch02-clip01-revised .clip-nav-btn {
+      font-size: 1.06rem !important;
+      line-height: 1.3 !important;
+      padding: 10px 18px !important;
+      border-radius: 999px !important;
+      font-weight: 900 !important;
+    }
+
+    @media (max-width: 680px) {
+      .ch02-clip01-revised {
+        font-size: 18px;
+      }
+
+      .ch02-clip01-revised .clip-overview {
+        padding: 20px !important;
+      }
+
+      .ch02-clip01-revised .gemini-feature-grid,
+      .ch02-clip01-revised .split-check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ch02-clip01-revised .feature-card {
+        min-height: 0;
+      }
+    }
+  </style>
+
   <div class="clip-header">
     <div class="clip-badges">
       <span class="clip-badge time">~15분</span>
@@ -329,7 +366,7 @@
             <tr>
               <td><strong>Deep Research</strong></td>
               <td>계정·라이선스에서 사용 가능한 경우, 핵심 병목이나 리더십 이슈를 외부 사례와 근거로 심층 조사</td>
-              <td>CH03-4·CH03에서 심층 탐색 질문을 도출할 때 활용</td>
+              <td>CH03-4 선택 확장 및 CH03 Workflow 병목 심층 탐색에 활용</td>
             </tr>
             <tr>
               <td><strong>Gems</strong></td>
@@ -455,8 +492,5 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#ch01-clip05">← AI 리터러시 및 퀴즈</a>
-    <a class="clip-nav-btn" href="#ch03-clip08">팀 토론: AI 시대 리더의 고민과 역할 →</a>
-  </div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip05">← AI 리터러시 퀴즈 &amp; AI-Friendly 리더십 진단</a><a class="clip-nav-btn" href="#ch03-clip08">팀 토론: AI 시대, 리더의 고민과 역할 →</a></div>
 </div>

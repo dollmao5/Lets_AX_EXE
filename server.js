@@ -78,11 +78,7 @@ const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
   "ch06-clip05",
   // ch05 (Hi-D Code) 소속 합성 클립들
   "ch05-clip01-hidcode",
-  // [HIDDEN] NotebookLM 3번째 세션: 기업 분석 코스
-  // canonical 키(export-report.json 기준) + visible 키(렌더링 시 재맵핑 결과)를 모두 등록
-  // 복구 시: 아래 두 줄을 삭제하고, visibleBlueprints ch03 clipKeys에 "ch04-clip03"을 다시 추가하세요.
-  "ch04-clip03",  // canonical key (원본 챕터 폴더 기준)
-  "ch03-clip05"   // visible key (렌더링 후 재맵핑된 클립 키)
+
 ]);
 const SKIP_TITLE_KEYWORDS = new Set(["개념", "실습", "참고", "개요", "플랫폼", "심화"]);
 const ALLOWED_SECTION_TYPES = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요", "토론", "퀴즈"]);
@@ -2120,11 +2116,10 @@ async function buildCatalog(sourceRoot) {
       title: "NotebookLM",
       time: "13:00",
       sourceChapterIds: ["ch04"],
-      clipKeys: ["ch04-clip01", "ch04-clip02", "ch03-clip03", "ch03-clip04"],
+      clipKeys: ["ch04-clip01", "ch04-clip02", "ch03-clip04"],
       clipTitles: {
         "ch04-clip01": "NotebookLM 소개 및 접속 방법",
         "ch04-clip02": "팀 성과향상 및 피드백 실전",
-        "ch03-clip03": "Gems 소개: AI 비서 만들기",
         "ch03-clip04": "ChatGPT 및 GPTs 소개"
       }
     },
@@ -2859,9 +2854,9 @@ async function handleGetClip(req, res, urlObj) {
 
   if (!payload) {
     const normalizedKey = normalizeWs(clipKey).toLowerCase();
-    const isHiddenKey = normalizedKey.startsWith("ch04-") || 
-                        normalizedKey.startsWith("ch05-") || 
-                        HIDDEN_CHAPTER_CLIP_KEYS.has(normalizedKey);
+    const isHiddenKey = normalizedKey.startsWith("ch04-") ||
+      normalizedKey.startsWith("ch05-") ||
+      HIDDEN_CHAPTER_CLIP_KEYS.has(normalizedKey);
     if (isHiddenKey) {
       const catalog = await getCatalog(course);
       const firstChapter = catalog.chapters?.[0];
@@ -3068,7 +3063,7 @@ async function handleSharedAudio(req, res, urlObj) {
   const course = await resolveActiveCourse(user, urlObj);
   const catalog = await getCatalog(course);
   const clipKey = normalizeWs(urlObj.searchParams.get("clipKey")).toLowerCase();
-  
+
   if (!clipKey) {
     return sendJson(res, 400, { ok: false, error: "clipKey가 필요합니다." });
   }
@@ -3092,7 +3087,7 @@ async function handleSharedAudio(req, res, urlObj) {
         const filePath = path.join(sharedDir, file);
         const metaPath = path.join(sharedDir, `${file}.meta.json`);
         const stat = await fs.stat(filePath);
-        
+
         let meta = {};
         if (await pathExists(metaPath)) {
           meta = await readJsonFileSafe(metaPath, {});
@@ -4137,7 +4132,7 @@ async function route(req, res) {
   if (req.method === "GET" && urlObj.pathname.startsWith("/api/clips/")) {
     return handleGetClip(req, res, urlObj);
   }
-  
+
   if (
     (req.method === "GET" || req.method === "POST" || req.method === "DELETE") &&
     urlObj.pathname === "/api/shared-audio"
