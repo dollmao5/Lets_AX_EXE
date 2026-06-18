@@ -736,18 +736,21 @@
     </div>
   </div>
 
-  <div class="clip-section">
-    <div class="clip-section-title">Step 1. 자료 업로드 및 근거 연결 <span class="flow-time-badge">15분</span></div>
-    <div class="clip-section-content">
-      <div class="tool-lock">
-        <strong>Step 1~3은 반드시 NotebookLM에서 진행합니다</strong>
-        <ol>
-          <li>CH04에서 사용할 <strong>하나의 NotebookLM 노트북</strong>을 엽니다.</li>
-          <li>위 핵심 소스 세 묶음을 추가하고, 질문에 사용할 소스가 선택되어 있는지 확인합니다.</li>
-          <li>아래 프롬프트를 <strong>NotebookLM 채팅창</strong>에 붙여넣습니다. Gemini 일반 채팅에는 붙여넣지 않습니다.</li>
-          <li>답변의 인라인 출처를 클릭해 원문 근거를 확인합니다.</li>
-        </ol>
-      </div>
+<div class="clip-section">
+  <div class="clip-section-title">Step 1. 자료 업로드 및 근거 연결 <span class="flow-time-badge">15분</span></div>
+  <div class="clip-section-content">
+    <div class="tool-lock">
+      <strong>Step 1~3은 반드시 NotebookLM에서 진행합니다</strong>
+      <ol>
+        <li style="white-space: nowrap;">CH04에서 사용할 <strong style="display: inline;">하나의 NotebookLM 노트북</strong>을 엽니다.</li>
+        <li>위 핵심 소스 세 묶음을 추가하고, 질문에 사용할 소스가 선택되어 있는지 확인합니다.</li>
+        <li style="white-space: nowrap;">아래 프롬프트를 <strong style="display: inline;">NotebookLM 채팅창</strong>에 붙여넣습니다. Gemini 일반 채팅에는 붙여넣지 않습니다.</li>
+        <li>답변의 인라인 출처를 클릭해 원문 근거를 확인합니다.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
 
       <p>자료를 올린 직후 바로 Action Plan을 요청하지 않습니다. 먼저 어떤 자료가 어떤 판단 근거를 제공하는지 간단히 연결합니다.</p>
 
@@ -1116,8 +1119,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="sources-ready">
                   <legend class="visually-hidden">핵심 소스 준비 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-done" name="ch04c02-sources" value="done" data-completion-status><label for="ch04c02-sources-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-review" name="ch04c02-sources" value="needs-review" data-completion-status><label for="ch04c02-sources-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-done" name="ch04c02-sources" value="done" data-completion-status=""><label for="ch04c02-sources-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-review" name="ch04c02-sources" value="needs-review" data-completion-status=""><label for="ch04c02-sources-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1127,8 +1130,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="source-map">
                   <legend class="visually-hidden">자료 연결표 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-done" name="ch04c02-map" value="done" data-completion-status><label for="ch04c02-map-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-review" name="ch04c02-map" value="needs-review" data-completion-status><label for="ch04c02-map-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-done" name="ch04c02-map" value="done" data-completion-status=""><label for="ch04c02-map-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-review" name="ch04c02-map" value="needs-review" data-completion-status=""><label for="ch04c02-map-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1138,8 +1141,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="top-agendas">
                   <legend class="visually-hidden">핵심 실행과제 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-done" name="ch04c02-agenda" value="done" data-completion-status><label for="ch04c02-agenda-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-review" name="ch04c02-agenda" value="needs-review" data-completion-status><label for="ch04c02-agenda-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-done" name="ch04c02-agenda" value="done" data-completion-status=""><label for="ch04c02-agenda-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-review" name="ch04c02-agenda" value="needs-review" data-completion-status=""><label for="ch04c02-agenda-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1149,8 +1152,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="action-plan">
                   <legend class="visually-hidden">30일 Action Plan 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-done" name="ch04c02-plan" value="done" data-completion-status><label for="ch04c02-plan-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-review" name="ch04c02-plan" value="needs-review" data-completion-status><label for="ch04c02-plan-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-done" name="ch04c02-plan" value="done" data-completion-status=""><label for="ch04c02-plan-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-review" name="ch04c02-plan" value="needs-review" data-completion-status=""><label for="ch04c02-plan-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1160,8 +1163,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="evidence-safety">
                   <legend class="visually-hidden">근거·보안 점검 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-done" name="ch04c02-safety" value="done" data-completion-status><label for="ch04c02-safety-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-review" name="ch04c02-safety" value="needs-review" data-completion-status><label for="ch04c02-safety-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-done" name="ch04c02-safety" value="done" data-completion-status=""><label for="ch04c02-safety-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-review" name="ch04c02-safety" value="needs-review" data-completion-status=""><label for="ch04c02-safety-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1175,9 +1178,9 @@
           <span>필수 Step 1~3만 완료 기준에 포함합니다. 선택 Step 4·5는 별도 산출물 표에서 확인합니다.</span>
         </div>
         <div class="completion-save-actions">
-          <span class="completion-summary" data-completion-summary>완료 0 / 5 · 보완 필요 0 / 5</span>
-          <span class="completion-save-message" data-completion-message>아직 저장된 상태가 없습니다.</span>
-          <button type="button" class="completion-reset-btn" data-completion-reset>상태 초기화</button>
+          <span class="completion-summary" data-completion-summary="">완료 0 / 5 · 보완 필요 0 / 5</span>
+          <span class="completion-save-message" data-completion-message="">아직 저장된 상태가 없습니다.</span>
+          <button type="button" class="completion-reset-btn" data-completion-reset="">상태 초기화</button>
         </div>
       </div>
 
@@ -1196,7 +1199,7 @@
         function collectItems(){
           var result={};
           var groups=section.querySelectorAll('[data-completion-item]');
-          for(var i=0;i<groups.length;i+=1){
+          for(var i=0;i&lt;groups.length;i+=1){
             var key=groups[i].getAttribute('data-completion-item');
             var selected=groups[i].querySelector('[data-completion-status]:checked');
             if(selected){result[key]=selected.value;}
@@ -1207,7 +1210,7 @@
         function updateSummary(items){
           var keys=Object.keys(items||{});
           var done=0;var review=0;
-          for(var i=0;i<keys.length;i+=1){
+          for(var i=0;i&lt;keys.length;i+=1){
             if(items[keys[i]]==='done'){done+=1;}
             if(items[keys[i]]==='needs-review'){review+=1;}
           }
@@ -1225,12 +1228,12 @@
           try{saved=JSON.parse(localStorage.getItem(storageKey)||'null');}catch(ignore){saved=null;}
           var items=saved&amp;&amp;saved.items?saved.items:{};
           var groups=section.querySelectorAll('[data-completion-item]');
-          for(var i=0;i<groups.length;i+=1){
+          for(var i=0;i&lt;groups.length;i+=1){
             var key=groups[i].getAttribute('data-completion-item');
             var value=items[key];
             if(!value){continue;}
             var inputs=groups[i].querySelectorAll('[data-completion-status]');
-            for(var j=0;j<inputs.length;j+=1){
+            for(var j=0;j&lt;inputs.length;j+=1){
               if(inputs[j].value===value){inputs[j].checked=true;break;}
             }
           }
@@ -1258,7 +1261,7 @@
         if(resetBtn){
           resetBtn.addEventListener('click',function(){
             if(!window.confirm('저장된 완료 기준 상태를 모두 초기화하시겠습니까?')){return;}
-            for(var i=0;i<controls.length;i+=1){controls[i].checked=false;}
+            for(var i=0;i&lt;controls.length;i+=1){controls[i].checked=false;}
             try{localStorage.removeItem(storageKey);}catch(ignore){}
             updateSummary({});
             if(messageEl){messageEl.textContent='저장된 상태를 초기화했습니다.';}
@@ -1280,8 +1283,5 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#ch04-clip01">← NotebookLM 소개 및 접속 방법</a>
-    <a class="clip-nav-btn" href="#ch09-clip01">Wrap-up 및 성찰 →</a>
-  </div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch04-clip01">← NotebookLM 소개 및 접속 방법</a><a class="clip-nav-btn" href="#ch03-clip04">ChatGPT 및 GPTs 소개 →</a></div>
 </div>
