@@ -1337,6 +1337,14 @@ function rewriteVisibleReferences(input, catalog, currentClip = null) {
   let output = String(input || "");
   if (!output || !catalog) return output;
 
+  // ch03-clip09 (조직 역량 점검 및 Workflow 재설계) 클립은 CH 03을 유지해야 하므로 치환을 우회합니다.
+  if (currentClip) {
+    const clipKey = String(currentClip.canonicalClipKey || currentClip.clipKey || "").toLowerCase().trim();
+    if (clipKey === "ch03-clip09") {
+      return output;
+    }
+  }
+
   output = output.replace(/#(ch\d{2}-clip\d{2})/gi, (_match, rawKey) => {
     const mapped = toVisibleClipKey(catalog, rawKey);
     return mapped ? `#${mapped}` : `#${rawKey}`;
@@ -3367,7 +3375,7 @@ async function handleAdminClipSource(req, res, urlObj) {
 
   if (req.method === "GET") {
     const storedContentHtml = await readFileSafe(htmlPath, "");
-    const contentHtml = rewriteVisibleReferences(storedContentHtml, catalog);
+    const contentHtml = rewriteVisibleReferences(storedContentHtml, catalog, clip);
     const metadata = await readJsonFileSafe(metadataPath, {});
     return sendJson(res, 200, {
       ok: true,
