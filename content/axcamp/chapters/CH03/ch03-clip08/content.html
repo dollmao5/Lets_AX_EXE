@@ -1,313 +1,623 @@
-<style>
-  .ch02-clip02-revised,
-  #ch03-clip08 {
-    font-size: 20px;
-    line-height: 1.72;
-  }
-
-  .ch02-clip02-revised .clip-title,
-  #ch03-clip08 .clip-title {
-    font-size: clamp(2rem, 3vw, 2.7rem) !important;
-    line-height: 1.25 !important;
-    letter-spacing: -0.02em;
-  }
-
-  .ch02-clip02-revised .clip-overview,
-  #ch03-clip08 .clip-overview {
-    font-size: 1.1rem !important;
-    line-height: 1.8 !important;
-  }
-
-  .ch02-clip02-revised .clip-section-title,
-  #ch03-clip08 .clip-section-title {
-    font-size: 1.35rem !important;
-    line-height: 1.35 !important;
-    letter-spacing: -0.01em;
-  }
-
-  .ch02-clip02-revised .clip-section-content,
-  .ch02-clip02-revised .tip-block-content,
-  .ch02-clip02-revised .info-block,
-  .ch02-clip02-revised .info-block div,
-  .ch02-clip02-revised p,
-  .ch02-clip02-revised li,
-  #ch03-clip08 .clip-section-content,
-  #ch03-clip08 .tip-block-content,
-  #ch03-clip08 .info-block,
-  #ch03-clip08 .info-block div,
-  #ch03-clip08 p,
-  #ch03-clip08 li {
-    font-size: 1.05rem !important;
-    line-height: 1.68 !important;
-  }
-
-  .ch02-clip02-revised .comparison-table,
-  #ch03-clip08 .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .ch02-clip02-revised .comparison-table th,
-  .ch02-clip02-revised .comparison-table td,
-  #ch03-clip08 .comparison-table th,
-  #ch03-clip08 .comparison-table td {
-    font-size: 1.05rem !important;
-    line-height: 1.5 !important;
-    padding: 7px 12px !important;
-    vertical-align: middle !important;
-  }
-
-  .ch02-clip02-revised .comparison-table th,
-  #ch03-clip08 .comparison-table th {
-    font-weight: 800 !important;
-  }
-
-  .ch02-clip02-revised .table-wrap,
-  #ch03-clip08 .table-wrap {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .ch02-clip02-revised button,
-  .ch02-clip02-revised .slide-briefing-link,
-  .ch02-clip02-revised input,
-  #ch03-clip08 button,
-  #ch03-clip08 .slide-briefing-link,
-  #ch03-clip08 input {
-    font-size: 1rem !important;
-    line-height: 1.35 !important;
-  }
-
-  .ch02-clip02-revised .activity-flow-grid,
-  #ch03-clip08 .activity-flow-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 12px;
-    margin: 14px 0 18px;
-  }
-
-  .ch02-clip02-revised .activity-card,
-  #ch03-clip08 .activity-card {
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 14px 16px;
-    background: var(--bg-white);
-  }
-
-  .ch02-clip02-revised .activity-card strong,
-  #ch03-clip08 .activity-card strong {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 1.05rem !important;
-    line-height: 1.4 !important;
-  }
-
-  .ch02-clip02-revised .activity-card p,
-  #ch03-clip08 .activity-card p {
-    margin: 0;
-    font-size: 1rem !important;
-    line-height: 1.55 !important;
-    color: var(--text-secondary);
-  }
-
-  .ch02-clip02-revised .output-box,
-  #ch03-clip08 .output-box {
-    background: var(--bg-offwhite);
-    border-left: 4px solid var(--brand);
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-top: 14px;
-  }
-
-  .ch02-clip02-revised .recording-notice,
-  #ch03-clip08 .recording-notice {
-    margin: 14px 0 18px;
-  }
-
-  .ch02-clip02-revised .shared-audio-dropzone,
-  #ch03-clip08 .shared-audio-dropzone {
-    background: var(--bg-offwhite);
-    border: 1px dashed var(--border);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .ch02-clip02-revised .shared-audio-controls,
-  #ch03-clip08 .shared-audio-controls {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .ch02-clip02-revised #sharedAudioFileLabel,
-  .ch02-clip02-revised #sharedAudioStatus,
-  #ch03-clip08 #sharedAudioFileLabel,
-  #ch03-clip08 #sharedAudioStatus {
-    font-size: 1rem !important;
-    line-height: 1.45 !important;
-    color: var(--text-secondary);
-    word-break: break-all;
-  }
-
-  .ch02-clip02-revised #sharedAudioList,
-  #ch03-clip08 #sharedAudioList {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-height: 260px;
-    overflow-y: auto;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px;
-    background: var(--bg-white);
-  }
-
-  .ch02-clip02-revised .shared-audio-row,
-  #ch03-clip08 .shared-audio-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border-subtle);
-    font-size: 1rem !important;
-  }
-
-  .ch02-clip02-revised .shared-audio-info,
-  #ch03-clip08 .shared-audio-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
-  }
-
-  .ch02-clip02-revised .shared-audio-name,
-  #ch03-clip08 .shared-audio-name {
-    word-break: break-all;
-    font-size: 1rem !important;
-    line-height: 1.35 !important;
-  }
-
-  .ch02-clip02-revised .shared-audio-meta,
-  #ch03-clip08 .shared-audio-meta {
-    font-size: 0.92rem !important;
-    line-height: 1.4 !important;
-    color: var(--text-secondary);
-  }
-
-  .ch02-clip02-revised .shared-audio-actions,
-  #ch03-clip08 .shared-audio-actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  .ch02-clip02-revised .shared-audio-btn,
-  #ch03-clip08 .shared-audio-btn {
-    margin: 0 !important;
-    padding: 5px 9px !important;
-    font-size: 0.95rem !important;
-  }
-
-  .ch02-clip02-revised .shared-audio-delete,
-  #ch03-clip08 .shared-audio-delete {
-    color: var(--danger) !important;
-    border-color: var(--danger) !important;
-  }
-
-  .ch02-clip02-revised .tiro-guide-details,
-  #ch03-clip08 .tiro-guide-details {
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: var(--bg-white);
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .ch02-clip02-revised .tiro-guide-details summary,
-  #ch03-clip08 .tiro-guide-details summary {
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 1.08rem !important;
-    font-weight: 800;
-    background: var(--bg-offwhite);
-    color: var(--text-heading);
-  }
-
-  .ch02-clip02-revised .tiro-guide-grid,
-  #ch03-clip08 .tiro-guide-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
-    padding: 14px 16px 18px;
-  }
-
-  .ch02-clip02-revised .tiro-guide-card,
-  #ch03-clip08 .tiro-guide-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    background: var(--bg-white);
-  }
-
-  .ch02-clip02-revised .tiro-guide-card h4,
-  #ch03-clip08 .tiro-guide-card h4 {
-    margin: 0 0 8px 0;
-    font-size: 1.05rem !important;
-    line-height: 1.35 !important;
-  }
-
-  .ch02-clip02-revised .tiro-guide-card p,
-  #ch03-clip08 .tiro-guide-card p {
-    margin: 0 0 10px 0;
-    font-size: 1rem !important;
-    line-height: 1.55 !important;
-    color: var(--text-secondary);
-  }
-
-  .ch02-clip02-revised .tiro-guide-card img,
-  #ch03-clip08 .tiro-guide-card img {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    max-height: 420px;
-    object-fit: contain;
-    margin: 10px auto 0;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-  }
-
-  @media (max-width: 720px) {
-    .ch02-clip02-revised,
-    #ch03-clip08 {
-      font-size: 18px;
-    }
-    .ch02-clip02-revised .shared-audio-row,
-    #ch03-clip08 .shared-audio-row {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-    .ch02-clip02-revised .shared-audio-actions,
-    #ch03-clip08 .shared-audio-actions {
-      width: 100%;
-      justify-content: flex-start;
-    }
-  }
-</style>
-
 <div class="ch02-clip02-revised">
+
+  <style>
+    /* CH03-clip02 visibility upgrade
+       - CH03-clip01과 동일한 기본 타이포그래피·여백·표 가독성 적용
+       - 기존 활동 흐름 카드와 오디오 공유 기능 유지
+       - Tiro 접이식 가이드는 유지하되 모바일 스크린샷 크기를 제한
+       - 완료 기준 상태는 클릭 선택 후 계정·브라우저 기준으로 자동 저장 */
+    .ch02-clip02-revised {
+      --c2-font-base: 20px;
+      --c2-radius: 18px;
+      --c2-gap: 16px;
+      font-size: var(--c2-font-base);
+      line-height: 1.72;
+      color: var(--text-body);
+      word-break: keep-all;
+    }
+
+    .ch02-clip02-revised .clip-title {
+      font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
+      line-height: 1.22 !important;
+      letter-spacing: -0.04em;
+      margin-top: 10px;
+    }
+
+    .ch02-clip02-revised .clip-badge {
+      font-size: 0.95rem !important;
+      padding: 8px 12px !important;
+      border-radius: 999px !important;
+    }
+
+    .ch02-clip02-revised .clip-overview {
+      font-size: 1.16rem !important;
+      line-height: 1.78 !important;
+      padding: 24px 26px !important;
+      border-radius: var(--c2-radius) !important;
+    }
+
+    .ch02-clip02-revised .clip-section-title {
+      font-size: 1.5rem !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px !important;
+    }
+
+    .ch02-clip02-revised .clip-section-content,
+    .ch02-clip02-revised p,
+    .ch02-clip02-revised li,
+    .ch02-clip02-revised .tip-block-content,
+    .ch02-clip02-revised .info-block,
+    .ch02-clip02-revised .info-block div,
+    .ch02-clip02-revised .output-box {
+      font-size: 1.08rem !important;
+      line-height: 1.66 !important;
+    }
+
+    .ch02-clip02-revised .info-block,
+    .ch02-clip02-revised .tip-block,
+    .ch02-clip02-revised .output-box,
+    .ch02-clip02-revised .shared-audio-dropzone {
+      padding: 18px 20px !important;
+      border-radius: var(--c2-radius) !important;
+    }
+
+    .ch02-clip02-revised .info-block-title,
+    .ch02-clip02-revised .tip-block-title,
+    .ch02-clip02-revised .output-box h4 {
+      font-size: 1.08rem !important;
+      line-height: 1.45 !important;
+      font-weight: 900 !important;
+      margin-bottom: 8px !important;
+    }
+
+    .ch02-clip02-revised .recording-notice {
+      margin-bottom: 16px;
+      border-left: 5px solid var(--brand);
+    }
+
+    /* 기존 활동 흐름을 CH03-clip01 카드 규격으로 정돈 */
+    .ch02-clip02-revised .activity-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--c2-gap);
+      margin: 10px 0 20px;
+    }
+
+    .ch02-clip02-revised .activity-card {
+      min-height: 160px;
+      padding: 20px;
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+      border: 1px solid var(--border);
+      border-radius: var(--c2-radius);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch02-clip02-revised .activity-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--brand);
+      font-size: 1.03rem !important;
+      font-weight: 900;
+      line-height: 1.42;
+    }
+
+    .ch02-clip02-revised .activity-card p {
+      margin: 0;
+      color: var(--text-body);
+      font-size: 1.08rem !important;
+      line-height: 1.62 !important;
+    }
+
+    .ch02-clip02-revised .discussion-question-box {
+      margin: 0 0 18px;
+      padding: 18px 20px;
+      background: var(--bg-offwhite);
+      border: 1px solid var(--border);
+      border-radius: var(--c2-radius);
+    }
+
+    .ch02-clip02-revised .discussion-question-box h4 {
+      margin: 0 0 10px;
+      color: var(--text-heading);
+      font-size: 1.12rem !important;
+      line-height: 1.4;
+    }
+
+    .ch02-clip02-revised .discussion-question-box li {
+      margin-bottom: 8px;
+    }
+
+    .ch02-clip02-revised .time-note {
+      margin: 12px 0 0 !important;
+      color: var(--text-secondary) !important;
+      font-size: 1rem !important;
+    }
+
+    .ch02-clip02-revised .output-box {
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    /* 오디오 공유 영역 */
+    .ch02-clip02-revised .shared-audio-dropzone {
+      margin-top: 14px;
+      background: var(--bg-offwhite);
+      border: 1px dashed var(--border);
+    }
+
+    .ch02-clip02-revised .shared-audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .ch02-clip02-revised .shared-audio-controls + .shared-audio-controls {
+      margin-top: 12px;
+    }
+
+    .ch02-clip02-revised #sharedAudioFileLabel,
+    .ch02-clip02-revised #sharedAudioStatus,
+    .ch02-clip02-revised .shared-audio-name,
+    .ch02-clip02-revised .shared-audio-meta {
+      font-size: 1rem !important;
+      line-height: 1.45 !important;
+    }
+
+    .ch02-clip02-revised .shared-audio-row {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .ch02-clip02-revised .slide-briefing-link,
+    .ch02-clip02-revised .shared-audio-btn,
+    .ch02-clip02-revised .clip-nav-btn {
+      font-size: 1.06rem !important;
+      line-height: 1.3 !important;
+      padding: 10px 18px !important;
+      border-radius: 999px !important;
+      font-weight: 900 !important;
+    }
+
+    /* 완료 기준 표 */
+    .ch02-clip02-revised .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .ch02-clip02-revised .table-wrap table {
+      min-width: 760px;
+      margin: 0 !important;
+      border: 0 !important;
+    }
+
+    .ch02-clip02-revised .comparison-table th,
+    .ch02-clip02-revised .comparison-table td {
+      font-size: 1.08rem !important;
+      line-height: 1.42 !important;
+      padding: 8px 12px !important;
+      vertical-align: middle !important;
+      word-break: keep-all;
+    }
+
+    .ch02-clip02-revised .comparison-table th {
+      font-weight: 900 !important;
+      color: var(--text-heading) !important;
+      background: var(--bg-offwhite) !important;
+    }
+
+    /* Tiro 접이식 가이드: 펼침/접힘은 유지하고 이미지만 작게 제한 */
+    .ch02-clip02-revised .tiro-guide-details {
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--c2-radius);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .ch02-clip02-revised .tiro-guide-details summary {
+      cursor: pointer;
+      padding: 18px 20px;
+      background: var(--bg-offwhite);
+      color: var(--brand);
+      font-size: 1.08rem !important;
+      font-weight: 900;
+      line-height: 1.45;
+      list-style-position: inside;
+    }
+
+    .ch02-clip02-revised .tiro-guide-details[open] summary {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ch02-clip02-revised .tiro-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: var(--c2-gap);
+      align-items: start;
+      padding: 18px;
+    }
+
+    .ch02-clip02-revised .tiro-guide-card {
+      height: 100%;
+      padding: 16px;
+      background: var(--bg-offwhite);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .ch02-clip02-revised .tiro-guide-card h4 {
+      margin: 0 0 8px;
+      color: var(--text-heading);
+      font-size: 1.08rem !important;
+      line-height: 1.4;
+    }
+
+    .ch02-clip02-revised .tiro-guide-card p {
+      margin: 0;
+      font-size: 1rem !important;
+      line-height: 1.58 !important;
+    }
+
+    .ch02-clip02-revised .tiro-guide-card img {
+      display: block;
+      width: auto !important;
+      max-width: min(100%, 220px) !important;
+      max-height: 360px !important;
+      object-fit: contain;
+      margin: 14px auto 0 !important;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Tiro 가이드 이미지: 축소 썸네일 + 클릭 확대 모달 */
+    .ch02-clip02-revised .tiro-guide-card img {
+      cursor: zoom-in;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .ch02-clip02-revised .tiro-guide-card img:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+    }
+
+    .ch02-clip02-revised .tiro-guide-card img:focus-visible {
+      outline: 4px solid color-mix(in srgb, var(--brand) 28%, transparent);
+      outline-offset: 4px;
+    }
+
+    .ch02-clip02-revised .tiro-image-hint {
+      margin: 16px 18px 0 !important;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--brand) 7%, #fff);
+      color: var(--text-secondary) !important;
+      font-size: 0.98rem !important;
+      line-height: 1.55 !important;
+      text-align: center;
+    }
+
+    .ch02-clip02-revised .tiro-image-modal[hidden] {
+      display: none !important;
+    }
+
+    .ch02-clip02-revised .tiro-image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .ch02-clip02-revised .tiro-image-modal-dialog {
+      position: relative;
+      width: min(94vw, 1040px);
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 54px 20px 18px;
+      overflow: auto;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+    }
+
+    .ch02-clip02-revised .tiro-image-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-heading);
+      font: inherit;
+      font-size: 0.98rem !important;
+      font-weight: 900;
+      line-height: 1.2;
+      cursor: pointer;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.10);
+    }
+
+    .ch02-clip02-revised .tiro-image-modal-close:hover {
+      background: var(--bg-offwhite);
+    }
+
+    .ch02-clip02-revised .tiro-image-modal-close:focus-visible {
+      outline: 4px solid color-mix(in srgb, var(--brand) 28%, transparent);
+      outline-offset: 2px;
+    }
+
+    .ch02-clip02-revised .tiro-image-modal-image {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: 72vh;
+      margin: 0 auto;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .ch02-clip02-revised .tiro-image-modal-caption {
+      margin: 0 !important;
+      color: var(--text-body) !important;
+      font-size: 1rem !important;
+      line-height: 1.55 !important;
+      text-align: center;
+    }
+
+    .ch02-clip02-revised .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+
+
+    /* 완료 기준 상태 선택·자동 저장 */
+    .ch02-clip02-revised .completion-table {
+      min-width: 980px !important;
+    }
+
+    .ch02-clip02-revised .completion-status-cell {
+      min-width: 300px;
+    }
+
+    .ch02-clip02-revised .completion-state-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .ch02-clip02-revised .completion-state-option {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .ch02-clip02-revised .completion-state-option input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .ch02-clip02-revised .completion-state-option label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font-size: 0.98rem !important;
+      font-weight: 850;
+      line-height: 1.25 !important;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+    }
+
+    .ch02-clip02-revised .completion-state-option label::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border: 2px solid #9aa3af;
+      border-radius: 5px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .ch02-clip02-revised .completion-state-option label:hover {
+      border-color: var(--brand);
+      transform: translateY(-1px);
+    }
+
+    .ch02-clip02-revised .completion-state-option input:focus-visible + label {
+      outline: 4px solid rgba(165, 0, 52, 0.18);
+      outline-offset: 2px;
+    }
+
+    .ch02-clip02-revised .completion-state-option input:checked + label {
+      border-color: var(--brand);
+      background: #fff7f9;
+      color: var(--text-heading);
+      box-shadow: 0 3px 10px rgba(165, 0, 52, 0.10);
+    }
+
+    .ch02-clip02-revised .completion-state-option input:checked + label::before {
+      border-color: var(--brand);
+      background: var(--brand);
+      box-shadow: inset 0 0 0 4px #fff;
+    }
+
+    .ch02-clip02-revised .completion-save-panel {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg-offwhite);
+    }
+
+    .ch02-clip02-revised .completion-save-copy {
+      min-width: 240px;
+      flex: 1 1 420px;
+    }
+
+    .ch02-clip02-revised .completion-save-copy strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--text-heading);
+      font-size: 1rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .ch02-clip02-revised .completion-save-copy span,
+    .ch02-clip02-revised .completion-save-message,
+    .ch02-clip02-revised .completion-summary {
+      color: var(--text-secondary);
+      font-size: 0.96rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .ch02-clip02-revised .completion-save-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .ch02-clip02-revised .completion-reset-btn {
+      min-height: 42px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font: inherit;
+      font-size: 0.94rem !important;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .ch02-clip02-revised .completion-reset-btn:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    .ch02-clip02-revised .completion-reset-btn:focus-visible {
+      outline: 4px solid rgba(165, 0, 52, 0.18);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 680px) {
+
+      .ch02-clip02-revised .completion-save-panel,
+      .ch02-clip02-revised .completion-save-actions {
+        align-items: stretch;
+      }
+
+      .ch02-clip02-revised .completion-save-actions,
+      .ch02-clip02-revised .completion-reset-btn {
+        width: 100%;
+      }
+
+      .ch02-clip02-revised {
+        font-size: 18px;
+      }
+
+      .ch02-clip02-revised .clip-overview {
+        padding: 20px !important;
+      }
+
+      .ch02-clip02-revised .activity-flow-grid,
+      .ch02-clip02-revised .tiro-guide-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ch02-clip02-revised .activity-card {
+        min-height: 0;
+      }
+
+      .ch02-clip02-revised .shared-audio-controls,
+      .ch02-clip02-revised .shared-audio-controls + .shared-audio-controls {
+        align-items: stretch;
+      }
+
+      .ch02-clip02-revised .shared-audio-controls > * {
+        width: 100%;
+      }
+
+      .ch02-clip02-revised .tiro-guide-card img {
+        max-width: min(100%, 190px) !important;
+        max-height: 330px !important;
+      }
+
+
+      .ch02-clip02-revised .tiro-image-modal {
+        padding: 12px;
+      }
+
+      .ch02-clip02-revised .tiro-image-modal-dialog {
+        width: 100%;
+        max-height: 94vh;
+        padding: 52px 12px 14px;
+        border-radius: 16px;
+      }
+
+      .ch02-clip02-revised .tiro-image-modal-image {
+        max-height: 74vh;
+      }
+    }
+  </style>
+
   <div class="clip-header">
     <div class="clip-badges">
       <span class="clip-badge time">25분</span>
       <span class="clip-badge chapter">CH 03</span>
-      <span class="clip-badge type-practice">토론</span>
+      <span class="clip-badge type-practice">토론·실습</span>
     </div>
     <h1 class="clip-title" data-keep-title="">팀 토론: AI 시대, 리더의 고민과 역할</h1>
   </div>
@@ -333,8 +643,9 @@
         <div class="info-block-title">녹음 및 개인정보 보호 안내</div>
         <div>
           이 활동은 후속 Gemini 실습을 위한 학습 목적의 토론 녹음입니다.
-          녹음 전 학습팀 구성원에게 <strong>녹음 목적, 활용 방식, 공유 범위</strong>를 먼저 안내합니다.
-          실명, 평가, 보상, 징계, 민감한 개인정보, 고객 식별 정보는 말하지 않거나 일반화해서 표현합니다.
+          녹음 전 학습팀 구성원에게 <strong>녹음 목적, 활용 방식, 공유 범위</strong>를 안내하고 동의를 확인합니다.
+          실명, 평가, 보상, 징계, 민감한 개인정보, 고객 식별 정보는 말하지 않거나 일반화해서 표현합니다.<br>
+          공유방 업로드 전 파일을 다시 확인하고, <strong>보관 기간·삭제 기준·다운로드 권한은 교육 운영자의 안내</strong>를 따릅니다.
         </div>
       </div>
 
@@ -360,8 +671,8 @@
         </div>
       </div>
 
-      <div style="margin-bottom: 18px;">
-        <h4 style="margin: 0 0 8px 0;">핵심 토론 질문 <span style="font-weight:600;color:var(--text-secondary)">(20분)</span></h4>
+      <div class="discussion-question-box">
+        <h4>핵심 토론 질문 <span style="font-weight:600;color:var(--text-secondary)">(토론·녹음 20분)</span></h4>
         <ul style="margin: 0; padding-left: 20px; color: var(--text-body);">
           <li>AI가 현업 팀 업무에 들어오면 리더의 역할 중 무엇이 가장 크게 바뀌는가?</li>
           <li>AI에게 맡기면 좋은 일과 리더가 직접 판단하고 책임져야 할 일은 무엇인가?</li>
@@ -369,13 +680,17 @@
           <li>팀원들이 AI 활용을 걱정하거나 저항할 때 리더는 어떻게 대화해야 하는가?</li>
           <li>내 현업 팀에서 AI를 활용해 가장 먼저 개선할 수 있는 업무 장면은 무엇인가?</li>
         </ul>
+        <p class="time-note">녹음 준비, 파일 저장, 공유방 업로드는 강사 안내에 따라 토론 전후 5분 안에 진행합니다.</p>
       </div>
 
       <div class="output-box">
         <h4 style="margin: 0 0 8px 0;">이번 활동의 필수 산출물</h4>
-        <p style="margin: 0 0 6px 0; color: var(--text-body);">
+        <p style="margin: 0 0 8px 0; color: var(--text-body);">
           활동이 끝나면 각 학습팀은 <strong>토론 오디오 파일 1개</strong>를 확보합니다.
-          이 파일은 후속 Gemini 실습에서 회의록 작성, 핵심 이슈 정리, 리더 역할 분석의 입력자료로 사용합니다.
+          이 파일은 CH03-clip04에서 회의록 작성, 핵심 이슈 정리, 리더 역할 분석의 입력자료로 사용합니다.
+        </p>
+        <p style="margin: 0 0 6px 0; color: var(--text-secondary);">
+          권장 파일명: <strong>1조_AI리더십토론.m4a</strong> / 업로드 전 파일 재생 여부와 민감정보 포함 여부를 확인합니다.
         </p>
         <p style="margin: 0; color: var(--text-secondary);">
           선택: 토론 중 인상 깊었던 리더 고민이나 AI 활용 장면을 개인 노트에 3줄로 메모합니다.
@@ -394,7 +709,7 @@
       </p>
       <p style="margin-bottom: 14px; color: var(--text-secondary);">
         권장 형식: MP3, WAV, M4A 등 오디오 파일 / 권장 용량: 최대 32MB.<br>
-        웹페이지는 형식·용량을 자동 차단하지 않습니다. 안내 기준에 맞는 파일인지 업로드 전 직접 확인해 주세요.
+        웹페이지는 형식·용량을 자동 차단하지 않습니다. 업로드 전 <strong>파일 재생 여부, 파일명, 민감정보 포함 여부</strong>를 직접 확인해 주세요.
       </p>
 
       <div class="shared-audio-dropzone">
@@ -405,7 +720,7 @@
         </div>
         <div class="shared-audio-controls" style="justify-content: space-between;">
           <span id="sharedAudioStatus"></span>
-          <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled>업로드 하기</button>
+          <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled="">업로드 하기</button>
         </div>
       </div>
 
@@ -423,16 +738,16 @@
   if (window.__ch02Clip02SharedAudioInitialized) return;
   window.__ch02Clip02SharedAudioInitialized = true;
 
-  const fileInput = document.getElementById(&#x27;sharedAudioFileInput&#x27;);
-  const fileLabel = document.getElementById(&#x27;sharedAudioFileLabel&#x27;);
-  const selectBtn = document.getElementById(&#x27;selectSharedAudioBtn&#x27;);
-  const uploadBtn = document.getElementById(&#x27;uploadSharedAudioBtn&#x27;);
-  const statusEl = document.getElementById(&#x27;sharedAudioStatus&#x27;);
-  const listEl = document.getElementById(&#x27;sharedAudioList&#x27;);
+  const fileInput = document.getElementById('sharedAudioFileInput');
+  const fileLabel = document.getElementById('sharedAudioFileLabel');
+  const selectBtn = document.getElementById('selectSharedAudioBtn');
+  const uploadBtn = document.getElementById('uploadSharedAudioBtn');
+  const statusEl = document.getElementById('sharedAudioStatus');
+  const listEl = document.getElementById('sharedAudioList');
 
   if (!fileInput || !selectBtn || !uploadBtn || !listEl) return;
 
-  const clipKey = &#x27;ch02-clip02&#x27;;
+  const clipKey = 'ch02-clip02';
 
   selectBtn.onclick = function() {
     fileInput.click();
@@ -441,52 +756,52 @@
   fileInput.onchange = function(e) {
     const file = e.target.files[0];
     if (file) {
-      fileLabel.textContent = file.name + &#x27; (&#x27; + formatSize(file.size) + &#x27;)&#x27;;
-      statusEl.textContent = &#x27;선택 완료. 권장 형식과 용량은 안내 문구를 확인해 주세요.&#x27;;
-      statusEl.style.color = &#x27;var(--text-secondary)&#x27;;
+      fileLabel.textContent = file.name + ' (' + formatSize(file.size) + ')';
+      statusEl.textContent = '선택 완료. 권장 형식과 용량은 안내 문구를 확인해 주세요.';
+      statusEl.style.color = 'var(--text-secondary)';
       uploadBtn.disabled = false;
-      uploadBtn.style.opacity = &#x27;1&#x27;;
+      uploadBtn.style.opacity = '1';
     } else {
-      fileLabel.textContent = &#x27;선택된 파일 없음&#x27;;
-      statusEl.textContent = &#x27;&#x27;;
+      fileLabel.textContent = '선택된 파일 없음';
+      statusEl.textContent = '';
       uploadBtn.disabled = true;
-      uploadBtn.style.opacity = &#x27;0.6&#x27;;
+      uploadBtn.style.opacity = '0.6';
     }
   };
 
   function formatSize(bytes) {
-    if (bytes === 0) return &#x27;0 B&#x27;;
+    if (bytes === 0) return '0 B';
     const k = 1024;
-    const sizes = [&#x27;B&#x27;, &#x27;KB&#x27;, &#x27;MB&#x27;, &#x27;GB&#x27;];
+    const sizes = ['B', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + &#x27; &#x27; + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   }
 
   function formatDate(isoStr) {
     const d = new Date(isoStr);
-    if (Number.isNaN(d.getTime())) return &#x27;&#x27;;
-    return (d.getMonth()+1) + &#x27;/&#x27; + d.getDate() + &#x27; &#x27; + String(d.getHours()).padStart(2,&#x27;0&#x27;) + &#x27;:&#x27; + String(d.getMinutes()).padStart(2,&#x27;0&#x27;);
+    if (Number.isNaN(d.getTime())) return '';
+    return (d.getMonth()+1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
   }
 
   function getHeaders(json) {
     const headers = {
-      &#x27;x-session-token&#x27;: localStorage.getItem(&#x27;ax_literacy_session_token&#x27;) || &#x27;&#x27;,
-      &#x27;x-account-id&#x27;: localStorage.getItem(&#x27;ax_literacy_last_lets_id&#x27;) || &#x27;&#x27;
+      'x-session-token': localStorage.getItem('ax_literacy_session_token') || '',
+      'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
     };
-    if (json) headers[&#x27;Content-Type&#x27;] = &#x27;application/json&#x27;;
+    if (json) headers['Content-Type'] = 'application/json';
     return headers;
   }
 
   function renderMessage(message, isError) {
-    listEl.innerHTML = &#x27;&#x27;;
-    const p = document.createElement(&#x27;p&#x27;);
-    p.className = &#x27;muted&#x27;;
-    p.style.fontSize = &#x27;1rem&#x27;;
-    p.style.lineHeight = &#x27;1.45&#x27;;
-    p.style.textAlign = &#x27;center&#x27;;
-    p.style.margin = &#x27;0&#x27;;
-    p.style.padding = &#x27;12px&#x27;;
-    if (isError) p.style.color = &#x27;var(--danger)&#x27;;
+    listEl.innerHTML = '';
+    const p = document.createElement('p');
+    p.className = 'muted';
+    p.style.fontSize = '1rem';
+    p.style.lineHeight = '1.45';
+    p.style.textAlign = 'center';
+    p.style.margin = '0';
+    p.style.padding = '12px';
+    if (isError) p.style.color = 'var(--danger)';
     p.textContent = message;
     listEl.appendChild(p);
   }
@@ -495,84 +810,84 @@
     const res = await fetch(url, options || {});
     const text = await res.text();
     try {
-      return JSON.parse(text || &#x27;{}&#x27;);
+      return JSON.parse(text || '{}');
     } catch (err) {
-      return { ok: false, error: &#x27;서버 응답을 해석하지 못했습니다.&#x27; };
+      return { ok: false, error: '서버 응답을 해석하지 못했습니다.' };
     }
   }
 
   async function loadAudioList() {
     try {
-      const data = await requestJson(&#x27;/api/shared-audio?clipKey=&#x27; + encodeURIComponent(clipKey), {
+      const data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
         headers: getHeaders(false)
       });
 
       if (!data.ok) {
-        renderMessage(data.error || &#x27;목록을 불러오지 못했습니다.&#x27;, true);
+        renderMessage(data.error || '목록을 불러오지 못했습니다.', true);
         return;
       }
 
       if (!data.audios || data.audios.length === 0) {
-        renderMessage(&#x27;공유된 오디오 파일이 없습니다.&#x27;, false);
+        renderMessage('공유된 오디오 파일이 없습니다.', false);
         return;
       }
 
-      listEl.innerHTML = &#x27;&#x27;;
+      listEl.innerHTML = '';
       data.audios.forEach(function(audio) {
-        const row = document.createElement(&#x27;div&#x27;);
-        row.className = &#x27;shared-audio-row&#x27;;
+        const row = document.createElement('div');
+        row.className = 'shared-audio-row';
 
-        const info = document.createElement(&#x27;div&#x27;);
-        info.className = &#x27;shared-audio-info&#x27;;
+        const info = document.createElement('div');
+        info.className = 'shared-audio-info';
 
-        const name = document.createElement(&#x27;strong&#x27;);
-        name.className = &#x27;shared-audio-name&#x27;;
-        name.textContent = audio.fileName || &#x27;오디오 파일&#x27;;
+        const name = document.createElement('strong');
+        name.className = 'shared-audio-name';
+        name.textContent = audio.fileName || '오디오 파일';
         info.appendChild(name);
 
-        const meta = document.createElement(&#x27;span&#x27;);
-        meta.className = &#x27;shared-audio-meta&#x27;;
+        const meta = document.createElement('span');
+        meta.className = 'shared-audio-meta';
         const uploaderLabel = audio.teamName
-          ? audio.teamName + (audio.uploadedBy ? &#x27; (&#x27; + audio.uploadedBy + &#x27;)&#x27; : &#x27;&#x27;)
-          : (audio.uploadedByDisplay || audio.uploadedBy || &#x27;&#x27;);
+          ? audio.teamName + (audio.uploadedBy ? ' (' + audio.uploadedBy + ')' : '')
+          : (audio.uploadedByDisplay || audio.uploadedBy || '');
         const metaParts = [];
         if (audio.sizeLabel) metaParts.push(audio.sizeLabel);
         if (uploaderLabel) metaParts.push(uploaderLabel);
         if (audio.uploadedAt) metaParts.push(formatDate(audio.uploadedAt));
-        meta.textContent = metaParts.join(&#x27; · &#x27;);
+        meta.textContent = metaParts.join(' · ');
         info.appendChild(meta);
 
         row.appendChild(info);
 
-        const actions = document.createElement(&#x27;div&#x27;);
-        actions.className = &#x27;shared-audio-actions&#x27;;
+        const actions = document.createElement('div');
+        actions.className = 'shared-audio-actions';
 
-        const downloadLink = document.createElement(&#x27;a&#x27;);
-        downloadLink.href = audio.url || &#x27;#&#x27;;
-        downloadLink.download = audio.fileName || &#x27;&#x27;;
-        downloadLink.className = &#x27;slide-briefing-link shared-audio-btn&#x27;;
-        downloadLink.textContent = &#x27;다운로드&#x27;;
+        const downloadLink = document.createElement('a');
+        downloadLink.href = audio.url || '#';
+        downloadLink.download = audio.fileName || '';
+        downloadLink.className = 'slide-briefing-link shared-audio-btn';
+        downloadLink.textContent = '다운로드';
         actions.appendChild(downloadLink);
 
-        const deleteBtn = document.createElement(&#x27;button&#x27;);
-        deleteBtn.type = &#x27;button&#x27;;
-        deleteBtn.className = &#x27;slide-briefing-link shared-audio-btn shared-audio-delete&#x27;;
-        deleteBtn.textContent = &#x27;삭제&#x27;;
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'slide-briefing-link shared-audio-btn shared-audio-delete';
+        deleteBtn.textContent = '삭제';
         deleteBtn.onclick = async function() {
-          if (!confirm(&#x27;이 오디오 파일을 삭제하시겠습니까?&#x27;)) return;
+          if (!confirm('이 오디오 파일을 삭제하시겠습니까?')) return;
           try {
-            const delData = await requestJson(&#x27;/api/shared-audio?clipKey=&#x27; + encodeURIComponent(clipKey), {
-              method: &#x27;DELETE&#x27;,
+            const delData = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+              method: 'DELETE',
               headers: getHeaders(true),
               body: JSON.stringify({ fileName: audio.fileName })
             });
             if (delData.ok) {
               loadAudioList();
             } else {
-              alert(delData.error || &#x27;삭제 실패&#x27;);
+              alert(delData.error || '삭제 실패');
             }
           } catch (err) {
-            alert(&#x27;삭제 에러: &#x27; + err.message);
+            alert('삭제 에러: ' + err.message);
           }
         };
         actions.appendChild(deleteBtn);
@@ -582,7 +897,7 @@
       });
     } catch (error) {
       console.error(error);
-      renderMessage(&#x27;서버 연결 에러&#x27;, true);
+      renderMessage('서버 연결 에러', true);
     }
   }
 
@@ -591,19 +906,19 @@
     if (!file) return;
 
     uploadBtn.disabled = true;
-    uploadBtn.style.opacity = &#x27;0.6&#x27;;
-    statusEl.textContent = &#x27;파일 읽는 중...&#x27;;
-    statusEl.style.color = &#x27;var(--text-secondary)&#x27;;
+    uploadBtn.style.opacity = '0.6';
+    statusEl.textContent = '파일 읽는 중...';
+    statusEl.style.color = 'var(--text-secondary)';
 
     const reader = new FileReader();
     reader.onload = async function(e) {
-      const base64 = String(e.target.result || &#x27;&#x27;).split(&#x27;,&#x27;)[1] || &#x27;&#x27;;
-      statusEl.textContent = &#x27;업로드 중...&#x27;;
-      statusEl.style.color = &#x27;var(--text-secondary)&#x27;;
+      const base64 = String(e.target.result || '').split(',')[1] || '';
+      statusEl.textContent = '업로드 중...';
+      statusEl.style.color = 'var(--text-secondary)';
 
       try {
-        const data = await requestJson(&#x27;/api/shared-audio?clipKey=&#x27; + encodeURIComponent(clipKey), {
-          method: &#x27;POST&#x27;,
+        const data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+          method: 'POST',
           headers: getHeaders(true),
           body: JSON.stringify({
             fileName: file.name,
@@ -612,32 +927,32 @@
         });
 
         if (data.ok) {
-          statusEl.textContent = &#x27;업로드 성공!&#x27;;
-          statusEl.style.color = &#x27;var(--brand)&#x27;;
-          fileInput.value = &#x27;&#x27;;
-          fileLabel.textContent = &#x27;선택된 파일 없음&#x27;;
+          statusEl.textContent = '업로드 성공!';
+          statusEl.style.color = 'var(--brand)';
+          fileInput.value = '';
+          fileLabel.textContent = '선택된 파일 없음';
           uploadBtn.disabled = true;
-          uploadBtn.style.opacity = &#x27;0.6&#x27;;
+          uploadBtn.style.opacity = '0.6';
           loadAudioList();
         } else {
-          statusEl.textContent = data.error || &#x27;업로드 실패&#x27;;
-          statusEl.style.color = &#x27;var(--danger)&#x27;;
+          statusEl.textContent = data.error || '업로드 실패';
+          statusEl.style.color = 'var(--danger)';
           uploadBtn.disabled = false;
-          uploadBtn.style.opacity = &#x27;1&#x27;;
+          uploadBtn.style.opacity = '1';
         }
       } catch (err) {
-        statusEl.textContent = &#x27;에러: &#x27; + err.message;
-        statusEl.style.color = &#x27;var(--danger)&#x27;;
+        statusEl.textContent = '에러: ' + err.message;
+        statusEl.style.color = 'var(--danger)';
         uploadBtn.disabled = false;
-        uploadBtn.style.opacity = &#x27;1&#x27;;
+        uploadBtn.style.opacity = '1';
       }
     };
 
     reader.onerror = function() {
-      statusEl.textContent = &#x27;파일 읽기 오류&#x27;;
-      statusEl.style.color = &#x27;var(--danger)&#x27;;
+      statusEl.textContent = '파일 읽기 오류';
+      statusEl.style.color = 'var(--danger)';
       uploadBtn.disabled = false;
-      uploadBtn.style.opacity = &#x27;1&#x27;;
+      uploadBtn.style.opacity = '1';
     };
 
     reader.readAsDataURL(file);
@@ -652,7 +967,7 @@
       <p style="margin-bottom: 14px; font-weight: 600; color: var(--text-body);">
         학습팀 토론을 녹음하기 위해 Tiro 앱을 사용할 수 있습니다.
         이미 스마트폰 기본 녹음 앱을 사용할 수 있는 경우에는 해당 기능으로 녹음해도 됩니다.
-        단, 후속 Gemini 실습에서 활용할 수 있도록 반드시 오디오 파일 형태로 저장해 주세요.
+        현장에서 앱 설치가 지연되면 기본 녹음 앱을 우선 사용하고, 후속 Gemini 실습에서 활용할 수 있도록 반드시 오디오 파일 형태로 저장해 주세요.
       </p>
 
       <div class="tip-block" style="margin-bottom: 14px;">
@@ -670,46 +985,346 @@
 
       <details class="tiro-guide-details">
         <summary>Tiro 설치 및 녹음 파일 저장 방법 펼쳐보기</summary>
+        <p class="tiro-image-hint">각 이미지를 클릭하거나 키보드 Enter 키를 누르면 팝업에서 크게 볼 수 있습니다.</p>
         <div class="tiro-guide-grid">
           <div class="tiro-guide-card">
             <h4>1. 앱 다운로드</h4>
             <p>스마트폰 앱스토어에서 Tiro를 검색한 뒤 앱을 다운로드합니다. 설치가 완료되면 앱을 실행합니다.</p>
-            <img src="/course-files/AXCAMP/ch02-clip02/01_app_download.png" alt="앱 다운로드" loading="lazy">
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/01_app_download.png" alt="앱 다운로드" loading="lazy">
           </div>
 
           <div class="tiro-guide-card">
             <h4>2. 가입 단계</h4>
             <p>앱 실행 후 회원가입 또는 로그인을 진행합니다. 교육 현장에서 바로 사용할 수 있도록 접근 가능한 계정으로 가입해 주세요.</p>
-            <img src="/course-files/AXCAMP/ch02-clip02/02_sign_up.png" alt="가입 단계" loading="lazy">
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/02_sign_up.png" alt="가입 단계" loading="lazy">
           </div>
 
           <div class="tiro-guide-card">
             <h4>3. 가입 상세</h4>
             <p>화면 안내에 따라 기본 정보를 입력하고 가입 절차를 완료합니다. 마이크 권한 요청이 나타나면 녹음을 위해 허용해 주세요.</p>
-            <img src="/course-files/AXCAMP/ch02-clip02/03_sign_up_detail.png" alt="가입 상세" loading="lazy">
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/03_sign_up_detail.png" alt="가입 상세" loading="lazy">
           </div>
 
           <div class="tiro-guide-card">
             <h4>4. 사전 설정 1</h4>
             <p>녹음 전에 앱의 기본 설정을 확인합니다. 녹음 중인 스마트폰 또는 외장 마이크를 학습팀 중앙에 놓고 진행하는 것을 권장합니다.</p>
-            <img src="/course-files/AXCAMP/ch02-clip02/04_pre_settings.png" alt="사전 설정 1" loading="lazy">
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/04_pre_settings.png" alt="사전 설정 1" loading="lazy">
           </div>
 
           <div class="tiro-guide-card">
             <h4>5. 사전 설정 2</h4>
             <p>녹음 품질과 저장 설정을 확인합니다. 토론이 시작되면 녹음 버튼을 누르고, 토론이 끝나면 반드시 녹음을 종료해 주세요.</p>
-            <img src="/course-files/AXCAMP/ch02-clip02/05_pre_settings_detail.png" alt="사전 설정 2" loading="lazy">
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/05_pre_settings_detail.png" alt="사전 설정 2" loading="lazy">
           </div>
 
           <div class="tiro-guide-card">
             <h4>6. 파일 저장</h4>
             <p>녹음이 완료되면 오디오 파일을 저장하거나 다운로드합니다. 저장한 파일은 위의 학습팀별 오디오 자료 공유방에 업로드해 주세요.</p>
-            <img src="/course-files/AXCAMP/ch02-clip02/06_save_file.png" alt="파일 저장" loading="lazy">
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/06_save_file.png" alt="파일 저장" loading="lazy">
           </div>
         </div>
       </details>
+
+      <div class="tiro-image-modal" id="ch02Clip02TiroImageModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="ch02Clip02TiroModalTitle" hidden>
+        <div class="tiro-image-modal-dialog" role="document">
+          <h2 id="ch02Clip02TiroModalTitle" class="visually-hidden">Tiro 설치 안내 이미지 확대 보기</h2>
+          <button type="button" class="tiro-image-modal-close" aria-label="확대 이미지 닫기">닫기 ×</button>
+          <img class="tiro-image-modal-image" alt="">
+          <p class="tiro-image-modal-caption" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <!-- 동적 HTML 주입 환경에서도 Tiro 이미지 확대 모달을 초기화합니다. -->
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(loader){
+        var root=loader.closest('.ch02-clip02-revised');
+        if(!root||root.getAttribute('data-tiro-modal-ready')==='true'){return;}
+        root.setAttribute('data-tiro-modal-ready','true');
+        var modal=root.querySelector('#ch02Clip02TiroImageModal');
+        var modalImage=modal&&modal.querySelector('.tiro-image-modal-image');
+        var caption=modal&&modal.querySelector('.tiro-image-modal-caption');
+        var closeButton=modal&&modal.querySelector('.tiro-image-modal-close');
+        if(!modal||!modalImage||!caption||!closeButton){return;}
+        var lastTrigger=null;
+        var previousBodyOverflow='';
+
+        function openModal(image){
+          var card=image.closest('.tiro-guide-card');
+          var titleEl=card&&card.querySelector('h4');
+          var descriptionEl=card&&card.querySelector('p');
+          var title=titleEl?titleEl.textContent.trim():(image.alt||'Tiro 안내 이미지');
+          var description=descriptionEl?descriptionEl.textContent.trim():'';
+          lastTrigger=image;
+          modalImage.src=image.currentSrc||image.src;
+          modalImage.alt=image.alt||title;
+          caption.textContent=description?title+' — '+description:title;
+          previousBodyOverflow=document.body.style.overflow;
+          document.body.style.overflow='hidden';
+          modal.hidden=false;
+          modal.setAttribute('aria-hidden','false');
+          window.requestAnimationFrame(function(){closeButton.focus();});
+        }
+
+        function closeModal(){
+          if(modal.hidden){return;}
+          modal.hidden=true;
+          modal.setAttribute('aria-hidden','true');
+          modalImage.removeAttribute('src');
+          document.body.style.overflow=previousBodyOverflow;
+          if(lastTrigger&&document.contains(lastTrigger)){lastTrigger.focus();}
+        }
+
+        root.addEventListener('click',function(event){
+          var image=event.target.closest('.tiro-guide-card .tiro-guide-image');
+          if(image&&root.contains(image)){openModal(image);return;}
+          if(event.target===modal||event.target===closeButton){closeModal();}
+        });
+
+        root.addEventListener('keydown',function(event){
+          var image=event.target.closest&&event.target.closest('.tiro-guide-card .tiro-guide-image');
+          if(image&&(event.key==='Enter'||event.key===' ')){
+            event.preventDefault();
+            openModal(image);
+            return;
+          }
+          if(event.key==='Escape'&&!modal.hidden){
+            event.preventDefault();
+            closeModal();
+          }
+        });
+      })(this);">
     </div>
   </div>
+
+
+  <div class="clip-section" id="ch02Clip02CompletionSection">
+    <div class="clip-section-title">이번 클립의 완료 기준</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table completion-table">
+          <thead>
+            <tr>
+              <th>확인 항목</th>
+              <th>완료 기준</th>
+              <th>내 상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>녹음 동의·안내</strong></td>
+              <td>학습 목적, 활용 범위, 공유 범위를 안내하고 학습팀 동의를 확인했다.</td>
+              <td class="completion-status-cell">
+                <fieldset class="completion-state-group" data-completion-item="recording-consent">
+                  <legend class="visually-hidden">녹음 동의·안내 상태</legend>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-recording-consent-done" name="ch02c02-recording-consent" value="done" data-completion-status>
+                    <label for="ch02c02-recording-consent-done">완료</label>
+                  </span>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-recording-consent-review" name="ch02c02-recording-consent" value="needs-review" data-completion-status>
+                    <label for="ch02c02-recording-consent-review">보완 필요</label>
+                  </span>
+                </fieldset>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>토론 참여</strong></td>
+              <td>AI에게 맡길 일, 리더 책임, 현업 적용 장면을 구체적으로 논의했다.</td>
+              <td class="completion-status-cell">
+                <fieldset class="completion-state-group" data-completion-item="discussion-participation">
+                  <legend class="visually-hidden">토론 참여 상태</legend>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-discussion-participation-done" name="ch02c02-discussion-participation" value="done" data-completion-status>
+                    <label for="ch02c02-discussion-participation-done">완료</label>
+                  </span>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-discussion-participation-review" name="ch02c02-discussion-participation" value="needs-review" data-completion-status>
+                    <label for="ch02c02-discussion-participation-review">보완 필요</label>
+                  </span>
+                </fieldset>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>민감정보 점검</strong></td>
+              <td>실명·평가·보상·징계·고객 식별 정보가 포함되지 않았는지 확인했다.</td>
+              <td class="completion-status-cell">
+                <fieldset class="completion-state-group" data-completion-item="sensitive-data-check">
+                  <legend class="visually-hidden">민감정보 점검 상태</legend>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-sensitive-data-check-done" name="ch02c02-sensitive-data-check" value="done" data-completion-status>
+                    <label for="ch02c02-sensitive-data-check-done">완료</label>
+                  </span>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-sensitive-data-check-review" name="ch02c02-sensitive-data-check" value="needs-review" data-completion-status>
+                    <label for="ch02c02-sensitive-data-check-review">보완 필요</label>
+                  </span>
+                </fieldset>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>오디오 파일 확인</strong></td>
+              <td>파일명, 재생 여부, 권장 형식·용량을 확인했다.</td>
+              <td class="completion-status-cell">
+                <fieldset class="completion-state-group" data-completion-item="audio-file-check">
+                  <legend class="visually-hidden">오디오 파일 확인 상태</legend>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-audio-file-check-done" name="ch02c02-audio-file-check" value="done" data-completion-status>
+                    <label for="ch02c02-audio-file-check-done">완료</label>
+                  </span>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-audio-file-check-review" name="ch02c02-audio-file-check" value="needs-review" data-completion-status>
+                    <label for="ch02c02-audio-file-check-review">보완 필요</label>
+                  </span>
+                </fieldset>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>공유방 업로드</strong></td>
+              <td>학습팀별 오디오 파일 1개를 공유방에 업로드하고 목록에서 확인했다.</td>
+              <td class="completion-status-cell">
+                <fieldset class="completion-state-group" data-completion-item="shared-audio-upload">
+                  <legend class="visually-hidden">공유방 업로드 상태</legend>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-shared-audio-upload-done" name="ch02c02-shared-audio-upload" value="done" data-completion-status>
+                    <label for="ch02c02-shared-audio-upload-done">완료</label>
+                  </span>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-shared-audio-upload-review" name="ch02c02-shared-audio-upload" value="needs-review" data-completion-status>
+                    <label for="ch02c02-shared-audio-upload-review">보완 필요</label>
+                  </span>
+                </fieldset>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="completion-save-panel">
+        <div class="completion-save-copy">
+          <strong>선택 즉시 자동 저장됩니다.</strong>
+          <span>현재 브라우저의 로그인 계정을 기준으로 저장되며, 다시 접속하면 선택 상태를 불러옵니다.</span>
+        </div>
+        <div class="completion-save-actions">
+          <span class="completion-summary" data-completion-summary>완료 0 / 5 · 보완 필요 0 / 5</span>
+          <span class="completion-save-message" data-completion-save-message role="status" aria-live="polite">아직 저장된 상태가 없습니다.</span>
+          <button type="button" class="completion-reset-btn" data-completion-reset>상태 초기화</button>
+        </div>
+      </div>
+
+      <!-- 동적 HTML 주입 환경에서도 완료 기준 상태를 복원하고 자동 저장합니다. -->
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(loader){
+        var root=loader.closest('.ch02-clip02-revised');
+        if(!root||root.getAttribute('data-completion-status-ready')==='true'){return;}
+        root.setAttribute('data-completion-status-ready','true');
+
+        var section=root.querySelector('#ch02Clip02CompletionSection');
+        if(!section){return;}
+        var controls=section.querySelectorAll('[data-completion-status]');
+        var groups=section.querySelectorAll('[data-completion-item]');
+        var messageEl=section.querySelector('[data-completion-save-message]');
+        var summaryEl=section.querySelector('[data-completion-summary]');
+        var resetBtn=section.querySelector('[data-completion-reset]');
+        var courseCode='AXCAMP';
+        var accountId='public';
+        try{
+          courseCode=localStorage.getItem('ax_literacy_course_code')||courseCode;
+          accountId=localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||accountId;
+        }catch(ignore){}
+        var storageKey='ax_literacy_checklist_status:'+encodeURIComponent(courseCode)+':ch02-clip02:'+encodeURIComponent(accountId);
+
+        function formatSavedTime(value){
+          if(!value){return '';}
+          var date=new Date(value);
+          if(Number.isNaN(date.getTime())){return '';}
+          return date.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+        }
+
+        function readState(){
+          try{
+            var raw=localStorage.getItem(storageKey);
+            if(!raw){return null;}
+            var parsed=JSON.parse(raw);
+            return parsed&&typeof parsed==='object'?parsed:null;
+          }catch(error){
+            return null;
+          }
+        }
+
+        function collectItems(){
+          var items={};
+          for(var i=0;i&lt;groups.length;i+=1){
+            var group=groups[i];
+            var key=group.getAttribute('data-completion-item');
+            var checked=group.querySelector('[data-completion-status]:checked');
+            if(key&&checked){items[key]=checked.value;}
+          }
+          return items;
+        }
+
+        function updateSummary(items){
+          var done=0;
+          var review=0;
+          var keys=Object.keys(items||{});
+          for(var i=0;i&lt;keys.length;i+=1){
+            if(items[keys[i]]==='done'){done+=1;}
+            if(items[keys[i]]==='needs-review'){review+=1;}
+          }
+          if(summaryEl){summaryEl.textContent='완료 '+done+' / '+groups.length+' · 보완 필요 '+review+' / '+groups.length;}
+        }
+
+        function restoreState(){
+          var saved=readState();
+          var items=saved&&saved.items?saved.items:{};
+          var keys=Object.keys(items);
+          for(var i=0;i&lt;keys.length;i+=1){
+            var key=keys[i];
+            var value=items[key];
+            var group=section.querySelector('[data-completion-item='+key+']');
+            if(!group){continue;}
+            var input=group.querySelector('[data-completion-status][value='+value+']');
+            if(input){input.checked=true;}
+          }
+          updateSummary(items);
+          if(messageEl){
+            if(saved&&saved.updatedAt){
+              messageEl.textContent='저장된 상태 불러옴 · '+formatSavedTime(saved.updatedAt);
+            }else{
+              messageEl.textContent='아직 저장된 상태가 없습니다.';
+            }
+          }
+        }
+
+        function saveState(){
+          var items=collectItems();
+          var payload={version:1,clipKey:'ch02-clip02',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};
+          try{
+            localStorage.setItem(storageKey,JSON.stringify(payload));
+            updateSummary(items);
+            if(messageEl){messageEl.textContent='자동 저장 완료 · '+formatSavedTime(payload.updatedAt);}
+          }catch(error){
+            updateSummary(items);
+            if(messageEl){messageEl.textContent='상태는 선택되었지만 브라우저 저장에 실패했습니다.';}
+          }
+        }
+
+        section.addEventListener('change',function(event){
+          if(event.target&&event.target.matches('[data-completion-status]')){saveState();}
+        });
+
+        if(resetBtn){
+          resetBtn.addEventListener('click',function(){
+            if(!window.confirm('저장된 완료 기준 상태를 모두 초기화하시겠습니까?')){return;}
+            for(var i=0;i&lt;controls.length;i+=1){controls[i].checked=false;}
+            try{localStorage.removeItem(storageKey);}catch(ignore){}
+            updateSummary({});
+            if(messageEl){messageEl.textContent='저장된 상태를 초기화했습니다.';}
+          });
+        }
+
+        restoreState();
+      })(this);">
+    </div>
+  </div>
+
 
   <div class="info-block" style="margin-top:18px;">
     <div class="info-block-title">핵심 메시지</div>
@@ -720,8 +1335,5 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#ch03-clip01">← Gemini Overview: 실습 환경 세팅</a>
-    <a class="clip-nav-btn" href="#ch03-clip02">프롬프팅 기초: AI 시대 리더 역할 정의 →</a>
-  </div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch03-clip01">← Gemini 소개 및 접속 방법</a><a class="clip-nav-btn" href="#ch03-clip02">프롬프팅 기초: AI 시대, 리더의 역할 →</a></div>
 </div>

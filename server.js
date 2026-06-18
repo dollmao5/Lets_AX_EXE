@@ -61,7 +61,9 @@ const EXCLUDED_CLIP_KEYS = new Set([
   "ch02-clip03",
   "ch02-clip04",
   // [HIDDEN] 자사 생성형 AI 서비스 현황 — 복구 시 아래 줄만 삭제하세요
-  "ch00-clip02"
+  "ch00-clip02",
+  // [HIDDEN] Gems 소개: AI 비서 만들기 — 복구 시 아래 줄만 삭제하세요
+  "ch03-clip03"
 ]);
 
 // [HIDDEN_CHAPTERS] CH04(Google AI Studio & Vibe Coding), CH05(Hi-D Code) 숨김 처리 중
@@ -2093,12 +2095,12 @@ async function buildCatalog(sourceRoot) {
       title: "Gemini 활용 (1)",
       time: "09:30",
       sourceChapterIds: ["ch03"],
-      clipKeys: ["ch03-clip01", "ch03-clip08", "ch03-clip02", "ch03-clip03"],
+      // [HIDDEN] ch03-clip03 (Gems 소개: AI 비서 만들기) 제외됨 — 복구 시 clipKeys에 "ch03-clip03" 추가 및 EXCLUDED_CLIP_KEYS에서 제거
+      clipKeys: ["ch03-clip01", "ch03-clip08", "ch03-clip02"],
       clipTitles: {
         "ch03-clip01": "Gemini 소개 및 접속 방법",
         "ch03-clip08": "팀 토론: AI 시대, 리더의 고민과 역할",
-        "ch03-clip02": "프롬프팅 기초: AI 시대, 리더의 역할",
-        "ch03-clip03": "프롬프팅 활용: 리더의 핵심 역량 및 스킬"
+        "ch03-clip02": "프롬프팅 기초: AI 시대, 리더의 역할"
       }
     },
     {
