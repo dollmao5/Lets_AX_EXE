@@ -87,7 +87,7 @@
           "folder": "chapters/CH01/ch01-clip05",
           "linkCount": 0,
           "imageCount": 0,
-          "sectionCount": 4,
+          "sectionCount": 8,
           "promptCount": 0
         }
       ]
@@ -153,7 +153,7 @@
           "folder": "chapters/CH03/ch03-clip01",
           "linkCount": 0,
           "imageCount": 0,
-          "sectionCount": 0,
+          "sectionCount": 12,
           "promptCount": 0
         },
         {
@@ -593,9 +593,9 @@
       "route": "#ch01-clip05",
       "title": "비지니스 프롬프팅: AI 회의록",
       "folder": "chapters/CH01/ch01-clip05",
-      "textLength": 2760,
-      "htmlLength": 7306,
-      "sectionCount": 4,
+      "textLength": 6612,
+      "htmlLength": 40566,
+      "sectionCount": 8,
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
@@ -658,9 +658,9 @@
       "route": "#ch03-clip01",
       "title": "ch03-clip01",
       "folder": "chapters/CH03/ch03-clip01",
-      "textLength": 0,
-      "htmlLength": 0,
-      "sectionCount": 0,
+      "textLength": 11982,
+      "htmlLength": 29438,
+      "sectionCount": 12,
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
