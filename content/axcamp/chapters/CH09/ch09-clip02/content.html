@@ -386,66 +386,6 @@
       background: #fff;
     }
 
-    .ch05-clip02-revised .safety-share-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--c52-gap);
-      margin: 12px 0 20px;
-    }
-
-    .ch05-clip02-revised .panel-card {
-      padding: 20px;
-      border: 1px solid var(--c52-border);
-      border-radius: var(--c52-radius);
-      background: #fff;
-    }
-
-    .ch05-clip02-revised .panel-card-title {
-      margin-bottom: 10px;
-      color: var(--c52-heading);
-      font-size: 1.08rem !important;
-      line-height: 1.4 !important;
-      font-weight: 950;
-    }
-
-    .ch05-clip02-revised .check-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .ch05-clip02-revised .check-label {
-      display: grid;
-      grid-template-columns: 22px minmax(0, 1fr);
-      gap: 10px;
-      align-items: start;
-      padding: 11px 12px;
-      border: 1px solid var(--c52-border);
-      border-radius: 13px;
-      background: var(--c52-offwhite);
-      cursor: pointer;
-    }
-
-    .ch05-clip02-revised .check-label input {
-      width: 19px;
-      height: 19px;
-      margin: 3px 0 0;
-      accent-color: var(--c52-brand);
-      cursor: pointer;
-    }
-
-    .ch05-clip02-revised .check-label span {
-      font-size: 0.96rem !important;
-      line-height: 1.5 !important;
-    }
-
-    .ch05-clip02-revised .share-fields {
-      display: grid;
-      gap: 12px;
-    }
-
     .ch05-clip02-revised .save-panel {
       display: flex;
       flex-wrap: wrap;
@@ -544,32 +484,6 @@
       color: var(--c52-brand);
     }
 
-    .ch05-clip02-revised .optional-details {
-      margin-top: 14px;
-      overflow: hidden;
-      border: 1px dashed var(--c52-border);
-      border-radius: var(--c52-radius);
-      background: #fff;
-    }
-
-    .ch05-clip02-revised .optional-details summary {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 18px 20px;
-      cursor: pointer;
-      background: var(--c52-offwhite);
-      color: var(--c52-brand);
-      font-size: 1.04rem !important;
-      line-height: 1.45 !important;
-      font-weight: 900;
-    }
-
-    .ch05-clip02-revised .optional-details[open] summary { border-bottom: 1px solid var(--c52-border); }
-    .ch05-clip02-revised .optional-details-body { padding: 18px 20px; }
-
     .ch05-clip02-revised .visually-hidden {
       position: absolute !important;
       width: 1px !important;
@@ -601,8 +515,7 @@
       .ch05-clip02-revised .clip-overview { padding: 20px !important; }
       .ch05-clip02-revised .import-grid,
       .ch05-clip02-revised .ssc-guide-grid,
-      .ch05-clip02-revised .transition-grid,
-      .ch05-clip02-revised .safety-share-grid { grid-template-columns: 1fr; }
+      .ch05-clip02-revised .transition-grid { grid-template-columns: 1fr; }
       .ch05-clip02-revised .ssc-plan-purpose { text-align: left; }
       .ch05-clip02-revised .commitment-shell { grid-template-columns: 1fr; }
       .ch05-clip02-revised .form-topbar,
@@ -630,7 +543,7 @@
     과정의 마지막은 좋은 다짐을 남기는 시간이 아니라, <strong>현업 복귀 후 실제로 관찰할 수 있는 행동 계약</strong>을 만드는 시간입니다.<br>
     CH04의 30일 Action Plan과 앞 클립에서 회수한 현업 적용 초점을 바탕으로,
     새롭게 시작할 행동(Start), 성과를 방해해 중단할 행동(Stop), 계속 강화할 행동(Continue)을 각각 한 가지씩 정합니다.<br><br>
-    작성한 계획은 브라우저에 자동 저장되며, <strong>Markdown 파일과 30일 점검 일정(.ics)</strong>으로 내려받을 수 있습니다.
+    작성한 계획은 브라우저에 자동 저장되며, <strong>Markdown 파일</strong>로 내려받을 수 있습니다.
   </div>
 
   <div class="clip-section">
@@ -797,7 +710,7 @@
           <div class="transition-kicker">DAY 30</div>
           <label class="field-label" for="c502-day30">30일 점검일</label>
           <input class="text-input" id="c502-day30" type="date" data-c502-field="day30Date">
-          <span class="field-help">날짜를 입력하면 아래에서 캘린더 일정(.ics)을 내려받을 수 있습니다.</span>
+          <span class="field-help">날짜를 입력하면 완료 기준과 다운로드 문서에 반영됩니다.</span>
         </article>
       </div>
     </div>
@@ -816,55 +729,16 @@
     </div>
   </div>
 
-  <div class="clip-section">
-    <div class="clip-section-title">현업 복귀 전 마지막 점검</div>
-    <div class="clip-section-content">
-      <div class="safety-share-grid">
-        <article class="panel-card">
-          <div class="panel-card-title">AI 활용·자료 보관 안전 점검</div>
-          <ul class="check-list">
-            <li><label class="check-label"><input type="checkbox" data-c502-check="sourceVerification"><span>중요한 AI 산출물의 근거·누락·오류를 확인하고, 최종 판단은 내가 책임집니다.</span></label></li>
-            <li><label class="check-label"><input type="checkbox" data-c502-check="sensitiveData"><span>평가·보상·징계·개인정보·민감 영업정보는 입력하거나 공유하지 않습니다.</span></label></li>
-            <li><label class="check-label"><input type="checkbox" data-c502-check="approvedStorage"><span>산출물은 조직에서 승인한 저장 위치에 보관하고 필요한 범위에서만 공유합니다.</span></label></li>
-          </ul>
-        </article>
-
-        <article class="panel-card">
-          <div class="panel-card-title">60초 실행 약속 공유 <span style="color:var(--c52-secondary);font-size:0.86rem">선택</span></div>
-          <div class="share-fields">
-            <div><label class="field-label" for="c502-share-target">공유할 동료·팀원</label><input class="text-input" id="c502-share-target" type="text" data-c502-field="shareTarget" placeholder="예: 옆자리 동료 리더 또는 팀원"></div>
-            <div><label class="field-label" for="c502-share-message">공유할 핵심 문장</label><textarea class="text-area" id="c502-share-message" data-c502-field="shareMessage" placeholder="예: 내가 시작·중단·지속할 행동과 30일 후 확인할 증거를 60초로 설명합니다."></textarea></div>
-            <label class="check-label"><input type="checkbox" data-c502-check="commitmentShared"><span>동료에게 실천계획을 공유하고 점검을 요청했습니다.</span></label>
-          </div>
-        </article>
-      </div>
-
-      <details class="optional-details">
-        <summary><span>운영자 선택 영역: HR·기술 Academy 후속 연계 안내</span><span>선택</span></summary>
-        <div class="optional-details-body">
-          <div class="info-block">
-            <div class="info-block-title">실제 조직 정보로 교체해 사용합니다</div>
-            <div>
-              이 영역에는 <strong>후속 교육 일정, 현업 Workflow 데이터 활용 방식, 제출·공유 기준, 문의 채널, 30일 Follow-up 세션</strong>을 안내하는 것이 좋습니다.<br>
-              현재 제공된 개발자료에는 조직별 Academy의 확정 일정과 담당 정보가 없어 임의 내용을 넣지 않았습니다. 운영 시 실제 링크와 담당자를 입력한 뒤 본 영역을 노출합니다.
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <div class="save-panel" aria-live="polite">
-        <div class="save-copy">
-          <strong>입력 내용은 자동 저장됩니다</strong>
-          <div class="save-message">다른 기기에서도 사용하려면 Markdown 파일을 반드시 내려받아 보관합니다.</div>
-        </div>
-        <div class="action-row">
-          <button class="action-btn" type="button" data-c502-save>지금 저장</button>
-          <button class="action-btn" type="button" data-c502-copy>계획 복사</button>
-          <button class="action-btn primary" type="button" data-c502-download>실천계획 다운로드</button>
-          <button class="action-btn" type="button" data-c502-ics>30일 점검 일정</button>
-          <button class="action-btn" type="button" data-c502-reset>입력 초기화</button>
-        </div>
-      </div>
+  <div class="save-panel" aria-live="polite">
+    <div class="save-copy">
+      <strong>입력 내용은 자동 저장됩니다</strong>
+      <div class="save-message">다른 기기에서도 사용하려면 Markdown 파일을 반드시 내려받아 보관합니다.</div>
+    </div>
+    <div class="action-row">
+      <button class="action-btn" type="button" data-c502-save>지금 저장</button>
+      <button class="action-btn" type="button" data-c502-copy>계획 복사</button>
+      <button class="action-btn primary" type="button" data-c502-download>실천계획 다운로드</button>
+      <button class="action-btn" type="button" data-c502-reset>입력 초기화</button>
     </div>
   </div>
 
@@ -895,14 +769,13 @@
     <a class="clip-nav-btn" href="#ch00-clip01">과정 처음으로 ↑</a>
   </div>
 
-  <!-- 동적 HTML 주입 환경에서도 자동 저장·복원·다운로드·캘린더 기능을 초기화합니다. -->
+  <!-- 동적 HTML 주입 환경에서도 자동 저장·복원·다운로드 기능을 초기화합니다. -->
   <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(marker){
     var root=marker.closest('.ch05-clip02-revised');
     if(!root||root.getAttribute('data-c502-ready')==='true'){return;}
     root.setAttribute('data-c502-ready','true');
 
     var fields=root.querySelectorAll('[data-c502-field]');
-    var checks=root.querySelectorAll('[data-c502-check]');
     var imports=root.querySelectorAll('[data-c502-import]');
     var saveMessageEl=root.querySelector('[data-c502-save-message]');
     var progressSummaryEl=root.querySelector('[data-c502-progress-summary]');
@@ -910,7 +783,6 @@
     var saveBtn=root.querySelector('[data-c502-save]');
     var copyBtn=root.querySelector('[data-c502-copy]');
     var downloadBtn=root.querySelector('[data-c502-download]');
-    var icsBtn=root.querySelector('[data-c502-ics]');
     var resetBtn=root.querySelector('[data-c502-reset]');
     var buildCommitmentBtn=root.querySelector('[data-c502-build-commitment]');
     var courseCode='AXCAMP';
@@ -949,9 +821,8 @@
     }
 
     function collect(){
-      var data={version:1,clipKey:'ch05-clip02',courseCode:courseCode,accountId:accountId,fields:{},checks:{},updatedAt:new Date().toISOString()};
+      var data={version:1,clipKey:'ch05-clip02',courseCode:courseCode,accountId:accountId,fields:{},updatedAt:new Date().toISOString()};
       Array.prototype.forEach.call(fields,function(field){data.fields[field.getAttribute('data-c502-field')]=field.value||'';});
-      Array.prototype.forEach.call(checks,function(check){data.checks[check.getAttribute('data-c502-check')]=Boolean(check.checked);});
       return data;
     }
 
@@ -1002,14 +873,9 @@
       var saved=readJson(storageKey);
       if(saved){
         var savedFields=saved.fields||{};
-        var savedChecks=saved.checks||{};
         Array.prototype.forEach.call(fields,function(field){
           var key=field.getAttribute('data-c502-field');
           if(Object.prototype.hasOwnProperty.call(savedFields,key)){field.value=savedFields[key]||'';}
-        });
-        Array.prototype.forEach.call(checks,function(check){
-          var key=check.getAttribute('data-c502-check');
-          check.checked=Boolean(savedChecks[key]);
         });
         if(saveMessageEl){saveMessageEl.textContent=saved.updatedAt?'저장된 내용 불러옴 · '+formatTime(saved.updatedAt):'저장된 내용을 불러왔습니다.';}
       }
@@ -1064,16 +930,6 @@
       lines.push('');
       lines.push('## 6. 한 문장 리더 실천 약속');
       lines.push(getValue('commitment')||'미입력');
-      lines.push('');
-      lines.push('## 7. 현업 복귀 전 안전 점검');
-      Array.prototype.forEach.call(checks,function(check){
-        var label=check.closest('label');
-        lines.push('- ['+(check.checked?'x':' ')+'] '+(label?label.innerText.replace(/\s+/g,' ').trim():check.getAttribute('data-c502-check')));
-      });
-      lines.push('');
-      lines.push('## 8. 60초 실행 약속 공유');
-      lines.push('- 공유 대상: '+(getValue('shareTarget')||'미입력'));
-      lines.push('- 공유 문장: '+(getValue('shareMessage')||'미입력'));
       return lines.join('\n');
     }
 
@@ -1099,51 +955,8 @@
       if(objectUrl&&window.URL&&typeof URL.revokeObjectURL==='function'){window.setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);}
     }
 
-    function nextDateString(dateText){
-      var parts=String(dateText).split('-');
-      if(parts.length!==3){return '';}
-      var date=new Date(Number(parts[0]),Number(parts[1])-1,Number(parts[2]));
-      date.setDate(date.getDate()+1);
-      return String(date.getFullYear())+String(date.getMonth()+1).padStart(2,'0')+String(date.getDate()).padStart(2,'0');
-    }
-
-    function compactDate(dateText){return String(dateText||'').replace(/-/g,'');}
-
-    function escapeIcs(value){
-      return String(value||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
-    }
-
-    function buildIcs(){
-      var dateText=getValue('day30Date');
-      if(!dateText){return '';}
-      var start=compactDate(dateText);
-      var end=nextDateString(dateText);
-      var description=[
-        'START: '+(getValue('startAction')||'미입력'),
-        'STOP: '+(getValue('stopAction')||'미입력'),
-        'CONTINUE: '+(getValue('continueAction')||'미입력'),
-        '확인할 증거: '+(importedFocus.evidence||getValue('startEvidence')||'미입력'),
-        '리더 약속: '+(getValue('commitment')||'미입력')
-      ].join('\n');
-      return [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Performance with AI//CH09//KO',
-        'CALSCALE:GREGORIAN',
-        'BEGIN:VEVENT',
-        'UID:ch05-'+Date.now()+'@performance-with-ai',
-        'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z'),
-        'DTSTART;VALUE=DATE:'+start,
-        'DTEND;VALUE=DATE:'+end,
-        'SUMMARY:'+escapeIcs('성과향상 with AI · 30일 실행점검'),
-        'DESCRIPTION:'+escapeIcs(description),
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\r\n');
-    }
-
     root.addEventListener('input',function(event){if(event.target&&event.target.matches('[data-c502-field]')){save(false);}});
-    root.addEventListener('change',function(event){if(event.target&&(event.target.matches('[data-c502-field]')||event.target.matches('[data-c502-check]'))){save(false);}});
+    root.addEventListener('change',function(event){if(event.target&&event.target.matches('[data-c502-field]')){save(false);}});
 
     if(saveBtn){saveBtn.addEventListener('click',function(){save(true);});}
 
@@ -1166,14 +979,6 @@
       else{window.prompt('아래 내용을 복사하세요.',text);}
     });}
 
-    if(icsBtn){icsBtn.addEventListener('click',function(){
-      var dateField=getField('day30Date');
-      var ics=buildIcs();
-      if(!ics){window.alert('먼저 30일 점검일을 입력해 주세요.');if(dateField){dateField.focus();}return;}
-      var name=safeFileName(getValue('participantName'));
-      downloadText(ics,'CH05_30일_실행점검_'+name+'.ics','text/calendar;charset=utf-8');
-    });}
-
     window.addEventListener('ch05:clip01-updated',function(){restoreImports();});
     window.addEventListener('hashchange',function(){if(window.location.hash==='#ch09-clip02'){restoreImports();}});
     window.addEventListener('storage',function(event){if(event&&event.key===clip01Key){restoreImports();}});
@@ -1181,7 +986,6 @@
     if(resetBtn){resetBtn.addEventListener('click',function(){
       if(!window.confirm('CH09-clip02에 저장된 Start / Stop / Continue 계획을 모두 초기화하시겠습니까?')){return;}
       Array.prototype.forEach.call(fields,function(field){field.value='';});
-      Array.prototype.forEach.call(checks,function(check){check.checked=false;});
       try{localStorage.removeItem(storageKey);}catch(ignore){}
       restoreImports();
       if(saveMessageEl){saveMessageEl.textContent='저장된 내용을 초기화했습니다.';}
