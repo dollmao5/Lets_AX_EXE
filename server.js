@@ -1337,10 +1337,10 @@ function rewriteVisibleReferences(input, catalog, currentClip = null) {
   let output = String(input || "");
   if (!output || !catalog) return output;
 
-  // ch03-clip09 (조직 역량 점검 및 Workflow 재설계) 클립은 CH 03을 유지해야 하므로 치환을 우회합니다.
+  // ch03-clip01 및 ch03-clip09 클립은 CH 03을 유지해야 하므로 치환을 우회합니다.
   if (currentClip) {
     const clipKey = String(currentClip.canonicalClipKey || currentClip.clipKey || "").toLowerCase().trim();
-    if (clipKey === "ch03-clip09") {
+    if (clipKey === "ch03-clip09" || clipKey === "ch03-clip01") {
       return output;
     }
   }
@@ -1397,9 +1397,17 @@ function rewriteVisibleReferences(input, catalog, currentClip = null) {
   return output;
 }
 
-function rewriteCanonicalReferences(input, catalog) {
+function rewriteCanonicalReferences(input, catalog, currentClip = null) {
   let output = String(input || "");
   if (!output || !catalog) return output;
+
+  // ch03-clip01 및 ch03-clip09 클립은 CH 03을 유지해야 하므로 치환을 우회합니다.
+  if (currentClip) {
+    const clipKey = String(currentClip.canonicalClipKey || currentClip.clipKey || "").toLowerCase().trim();
+    if (clipKey === "ch03-clip09" || clipKey === "ch03-clip01") {
+      return output;
+    }
+  }
 
   output = output.replace(/#(ch\d{2}-clip\d{2})/gi, (_match, rawKey) => {
     const mapped = toCanonicalClipKey(catalog, rawKey);
@@ -3408,7 +3416,7 @@ async function handleAdminClipSource(req, res, urlObj) {
   if (!editorContentHtml.trim()) {
     return sendJson(res, 400, { ok: false, error: "contentHtml이 비어 있습니다." });
   }
-  const storedContentHtml = rewriteCanonicalReferences(editorContentHtml, catalog);
+  const storedContentHtml = rewriteCanonicalReferences(editorContentHtml, catalog, clip);
 
   const existingMetadata = await readJsonFileSafe(metadataPath, {});
   const existingMarkdown = await readFileSafe(mdPath, "");
@@ -4228,6 +4236,12 @@ async function start() {
       await route(req, res);
     } catch (error) {
       console.error("[AX_Literacy] request error:", error);
+      try {
+        require("fs").appendFileSync(
+          "D:/26년/20.실팀장 리더십 향상 과정개발/03.Github_AX Camp_260519/Lets_AX_EXE/debug_error.log",
+          `[${new Date().toISOString()}] ${error.stack || error.message}\n`
+        );
+      } catch (err) {}
       if (String(error?.message || "").includes("Request body too large")) {
         sendJson(res, 413, {
           ok: false,
