@@ -272,9 +272,13 @@ async function main() {
 
     for (const routePath of runtimeFileRoutes) {
       log(`copy ${routePath}`);
-      const fileInfo = await downloadRuntimeFile(baseUrl, routePath);
-      if (routePath.startsWith("/practice-files/")) {
-        downloadFilenames[routePath] = fileInfo.fileName;
+      try {
+        const fileInfo = await downloadRuntimeFile(baseUrl, routePath);
+        if (routePath.startsWith("/practice-files/")) {
+          downloadFilenames[routePath] = fileInfo.fileName;
+        }
+      } catch (error) {
+        log(`warning: failed to copy ${routePath} - ${error.message}`);
       }
     }
 
