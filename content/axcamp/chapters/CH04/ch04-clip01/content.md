@@ -1,8 +1,8 @@
 ---
-route: "#CH04-clip01"
-chapter: "CH04"
+route: "#ch04-clip01"
+chapter: "ch04"
 title: "NotebookLM 소개 및 접속 방법"
-source_url: "https://lg.cmdspace.work/axcamp#CH04-clip01"
+source_url: "https://lg.cmdspace.work/axcamp#ch04-clip01"
 exported_at: "2026-02-28T01:53:59.545Z"
 ---
 
@@ -139,7 +139,7 @@ Flashcard·Quiz, Slide Deck, Infographic 등 소스 기반 산출물 위치를 �
 
 ## 실제 NotebookLM 작업 화면으로 보기
 
-![NotebookLM 실제 작업 화면](/assets/notebooklm/CH03-notebooklm/screens/notebooklm-grounded-research-ui.png)
+![NotebookLM 실제 작업 화면](/assets/notebooklm/ch03-notebooklm/screens/notebooklm-grounded-research-ui.png)
 
 왼쪽은 소스 목록, 가운데는 출처가 달린 채팅, 오른쪽은 Studio 패널입니다.
 NotebookLM은 읽기, 질문, 검증, 산출물 생성을 한 화면에서 이어가도록 돕습니다.

@@ -1,10 +1,10 @@
-<div class="CH04-clip01-revised" id="CH04-clip01-final">
+<div class="ch04-clip01-revised" id="ch04-clip01-final">
   <style>
     /* CH04-clip01 visibility upgrade
        - CH02-clip01과 동일한 큰 글자·넓은 행간·모바일 표 대응
        - 카드형 유지: '오늘 NotebookLM에서 경험할 것', '시작 전 체크리스트'
        - 그 외 핵심 정보는 기존 표·목록 구조 유지 */
-    .CH04-clip01-revised {
+    .ch04-clip01-revised {
       --c4-font-base: 20px;
       --c4-radius: 18px;
       --c4-gap: 16px;
@@ -14,52 +14,52 @@
       word-break: keep-all;
     }
 
-    .CH04-clip01-revised .clip-title {
+    .ch04-clip01-revised .clip-title {
       font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
       line-height: 1.22 !important;
       letter-spacing: -0.04em;
       margin-top: 10px;
     }
 
-    .CH04-clip01-revised .clip-badge {
+    .ch04-clip01-revised .clip-badge {
       font-size: 0.95rem !important;
       padding: 8px 12px !important;
       border-radius: 999px !important;
     }
 
-    .CH04-clip01-revised .clip-overview {
+    .ch04-clip01-revised .clip-overview {
       font-size: 1.16rem !important;
       line-height: 1.78 !important;
       padding: 24px 26px !important;
       border-radius: var(--c4-radius) !important;
     }
 
-    .CH04-clip01-revised .clip-section-title {
+    .ch04-clip01-revised .clip-section-title {
       font-size: 1.5rem !important;
       line-height: 1.35 !important;
       letter-spacing: -0.025em;
       margin-bottom: 14px !important;
     }
 
-    .CH04-clip01-revised .clip-section-content,
-    .CH04-clip01-revised p,
-    .CH04-clip01-revised li,
-    .CH04-clip01-revised .tip-block-content,
-    .CH04-clip01-revised .info-block,
-    .CH04-clip01-revised .info-block div,
-    .CH04-clip01-revised .screen-caption {
+    .ch04-clip01-revised .clip-section-content,
+    .ch04-clip01-revised p,
+    .ch04-clip01-revised li,
+    .ch04-clip01-revised .tip-block-content,
+    .ch04-clip01-revised .info-block,
+    .ch04-clip01-revised .info-block div,
+    .ch04-clip01-revised .screen-caption {
       font-size: 1.08rem !important;
       line-height: 1.66 !important;
     }
 
-    .CH04-clip01-revised .info-block,
-    .CH04-clip01-revised .tip-block {
+    .ch04-clip01-revised .info-block,
+    .ch04-clip01-revised .tip-block {
       padding: 18px 20px !important;
       border-radius: var(--c4-radius) !important;
     }
 
-    .CH04-clip01-revised .info-block-title,
-    .CH04-clip01-revised .tip-block-title {
+    .ch04-clip01-revised .info-block-title,
+    .ch04-clip01-revised .tip-block-title {
       font-size: 1.08rem !important;
       line-height: 1.45 !important;
       font-weight: 900 !important;
@@ -67,7 +67,7 @@
     }
 
     /* 기존 표 구조 유지 + 가독성 강화 */
-    .CH04-clip01-revised .table-wrap {
+    .ch04-clip01-revised .table-wrap {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -76,14 +76,14 @@
       border-radius: 16px;
     }
 
-    .CH04-clip01-revised .table-wrap table {
+    .ch04-clip01-revised .table-wrap table {
       min-width: 760px;
       margin: 0 !important;
       border: 0 !important;
     }
 
-    .CH04-clip01-revised .comparison-table th,
-    .CH04-clip01-revised .comparison-table td {
+    .ch04-clip01-revised .comparison-table th,
+    .ch04-clip01-revised .comparison-table td {
       font-size: 1.08rem !important;
       line-height: 1.42 !important;
       padding: 8px 12px !important;
@@ -91,30 +91,30 @@
       word-break: keep-all;
     }
 
-    .CH04-clip01-revised .comparison-table th {
+    .ch04-clip01-revised .comparison-table th {
       font-weight: 900 !important;
       color: var(--text-heading) !important;
       background: var(--bg-offwhite) !important;
     }
 
-    .CH04-clip01-revised .compact-list {
+    .ch04-clip01-revised .compact-list {
       margin: 0;
       padding-left: 24px;
     }
 
-    .CH04-clip01-revised .compact-list li {
+    .ch04-clip01-revised .compact-list li {
       margin-bottom: 10px;
     }
 
     /* 카드형 1: 오늘 NotebookLM에서 경험할 것 */
-    .CH04-clip01-revised .notebook-feature-grid {
+    .ch04-clip01-revised .notebook-feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: var(--c4-gap);
       margin: 10px 0 20px;
     }
 
-    .CH04-clip01-revised .feature-card {
+    .ch04-clip01-revised .feature-card {
       min-height: 150px;
       padding: 20px;
       background: linear-gradient(135deg, #fff, var(--bg-offwhite));
@@ -123,7 +123,7 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .CH04-clip01-revised .feature-card-title {
+    .ch04-clip01-revised .feature-card-title {
       margin-bottom: 10px;
       color: var(--brand);
       font-size: 1rem !important;
@@ -131,21 +131,21 @@
       line-height: 1.42;
     }
 
-    .CH04-clip01-revised .feature-card-body {
+    .ch04-clip01-revised .feature-card-body {
       color: var(--text-body);
       font-size: 1.08rem !important;
       line-height: 1.62 !important;
     }
 
     /* NotebookLM 화면 */
-    .CH04-clip01-revised .screen-grid {
+    .ch04-clip01-revised .screen-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
       gap: var(--c4-gap);
       align-items: stretch;
     }
 
-    .CH04-clip01-revised .screen-panel {
+    .ch04-clip01-revised .screen-panel {
       min-width: 0;
       overflow: hidden;
       background: #fff;
@@ -154,7 +154,7 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .CH04-clip01-revised .screen-zoom-trigger {
+    .ch04-clip01-revised .screen-zoom-trigger {
       display: block;
       width: 100%;
       padding: 0;
@@ -163,12 +163,12 @@
       cursor: zoom-in;
     }
 
-    .CH04-clip01-revised .screen-zoom-trigger:focus-visible {
+    .ch04-clip01-revised .screen-zoom-trigger:focus-visible {
       outline: 4px solid color-mix(in srgb, var(--brand) 34%, transparent);
       outline-offset: -4px;
     }
 
-    .CH04-clip01-revised .screen-zoom-trigger img {
+    .ch04-clip01-revised .screen-zoom-trigger img {
       display: block;
       width: 100%;
       max-height: 470px;
@@ -176,36 +176,36 @@
       background: #fff;
     }
 
-    .CH04-clip01-revised .screen-caption {
+    .ch04-clip01-revised .screen-caption {
       padding: 14px 16px;
       color: var(--text-secondary);
       background: var(--bg-offwhite);
       border-top: 1px solid var(--border);
     }
 
-    .CH04-clip01-revised .screen-caption strong {
+    .ch04-clip01-revised .screen-caption strong {
       color: var(--brand);
     }
 
-    .CH04-clip01-revised .panel-stack {
+    .ch04-clip01-revised .panel-stack {
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
     }
 
-    .CH04-clip01-revised .panel-stack .feature-card {
+    .ch04-clip01-revised .panel-stack .feature-card {
       min-height: 0;
     }
 
     /* 카드형 2: 시작 전 체크리스트 */
-    .CH04-clip01-revised .split-check-grid {
+    .ch04-clip01-revised .split-check-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--c4-gap);
       margin: 10px 0 20px;
     }
 
-    .CH04-clip01-revised .check-card {
+    .ch04-clip01-revised .check-card {
       padding: 20px;
       background: var(--bg-offwhite);
       border: 1px solid var(--border);
@@ -213,7 +213,7 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .CH04-clip01-revised .check-card-title {
+    .ch04-clip01-revised .check-card-title {
       margin-bottom: 12px;
       color: var(--brand);
       font-size: 1.08rem !important;
@@ -221,7 +221,7 @@
       line-height: 1.45;
     }
 
-    .CH04-clip01-revised .clip-nav-btn {
+    .ch04-clip01-revised .clip-nav-btn {
       font-size: 1.06rem !important;
       line-height: 1.3 !important;
       padding: 10px 18px !important;
@@ -230,7 +230,7 @@
     }
 
     /* 이미지 확대 팝업 */
-    .CH04-clip01-revised .image-modal {
+    .ch04-clip01-revised .image-modal {
       position: fixed;
       inset: 0;
       z-index: 10050;
@@ -241,11 +241,11 @@
       background: rgba(15, 23, 42, 0.78);
     }
 
-    .CH04-clip01-revised .image-modal.is-open {
+    .ch04-clip01-revised .image-modal.is-open {
       display: flex;
     }
 
-    .CH04-clip01-revised .image-modal-dialog {
+    .ch04-clip01-revised .image-modal-dialog {
       position: relative;
       width: min(1180px, 96vw);
       max-height: 92vh;
@@ -256,21 +256,21 @@
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.32);
     }
 
-    .CH04-clip01-revised .image-modal-dialog img {
+    .ch04-clip01-revised .image-modal-dialog img {
       display: block;
       width: 100%;
       max-height: 78vh;
       object-fit: contain;
     }
 
-    .CH04-clip01-revised .image-modal-caption {
+    .ch04-clip01-revised .image-modal-caption {
       margin: 12px 46px 0 2px;
       color: var(--text-body);
       font-size: 1rem;
       line-height: 1.55;
     }
 
-    .CH04-clip01-revised .image-modal-close {
+    .ch04-clip01-revised .image-modal-close {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -288,39 +288,39 @@
     }
 
     @media (max-width: 880px) {
-      .CH04-clip01-revised .screen-grid {
+      .ch04-clip01-revised .screen-grid {
         grid-template-columns: 1fr;
       }
 
-      .CH04-clip01-revised .panel-stack {
+      .ch04-clip01-revised .panel-stack {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 680px) {
-      .CH04-clip01-revised {
+      .ch04-clip01-revised {
         font-size: 18px;
       }
 
-      .CH04-clip01-revised .clip-overview {
+      .ch04-clip01-revised .clip-overview {
         padding: 20px !important;
       }
 
-      .CH04-clip01-revised .notebook-feature-grid,
-      .CH04-clip01-revised .split-check-grid,
-      .CH04-clip01-revised .panel-stack {
+      .ch04-clip01-revised .notebook-feature-grid,
+      .ch04-clip01-revised .split-check-grid,
+      .ch04-clip01-revised .panel-stack {
         grid-template-columns: 1fr;
       }
 
-      .CH04-clip01-revised .feature-card {
+      .ch04-clip01-revised .feature-card {
         min-height: 0;
       }
 
-      .CH04-clip01-revised .image-modal {
+      .ch04-clip01-revised .image-modal {
         padding: 10px;
       }
 
-      .CH04-clip01-revised .image-modal-dialog {
+      .ch04-clip01-revised .image-modal-dialog {
         padding: 12px;
       }
     }
@@ -340,7 +340,7 @@
     소스 기반 답변에 출처를 제공하는 <strong>Grounded Research 도구</strong>입니다.<br>
     이번 클립에서는 NotebookLM에 접속해 새 노트북을 만들고,
     <strong>소스 패널, 채팅 패널, Studio 패널</strong>의 역할을 확인합니다.<br><br>
-    <strong>CH03에서 만든 리더 역할·역량 자료</strong>와
+    <strong>CH02에서 만든 리더 역할·역량 자료</strong>와
     <strong>CH03에서 만든 팀 성과 병목 진단·행동역량·Workflow Re-design 자료</strong>는
     다음 클립에서 하나의 NotebookLM 노트북에 업로드해 <strong>CH04 Source Map</strong>과
     <strong>30일 팀 성과향상 Action Plan</strong>을 만드는 입력자료로 활용합니다.<br><br>
@@ -364,7 +364,7 @@
             <tr>
               <td><strong>NotebookLM 접속</strong></td>
               <td>새 노트북 생성 위치와 기본 화면 구조를 확인합니다.</td>
-              <td>CH04-clip02에서 CH03·CH03 산출물을 하나의 노트북에 업로드합니다.</td>
+              <td>CH04-clip02에서 CH02·CH03 산출물을 하나의 노트북에 업로드합니다.</td>
             </tr>
             <tr>
               <td><strong>소스 기반 분석 이해</strong></td>
@@ -389,7 +389,7 @@
         <div class="tip-block-title">이번 클립에서는 여기까지만 합니다</div>
         <div class="tip-block-content">
           이번 클립의 목표는 NotebookLM의 화면 구조와 소스 기반 답변 방식을 이해하는 것입니다.
-          <strong>CH03·CH03 산출물을 실제로 통합하고 Source Map을 만드는 작업은 다음 클립</strong>에서 진행합니다.<br>
+          <strong>CH02·CH03 산출물을 실제로 통합하고 Source Map을 만드는 작업은 다음 클립</strong>에서 진행합니다.<br>
           또한 NotebookLM은 서로 다른 노트북의 정보를 동시에 참고하지 않으므로,
           다음 실습에 사용할 자료는 <strong>하나의 CH04 노트북</strong>에 모읍니다.
         </div>
@@ -412,13 +412,13 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>CH03</strong></td>
+              <td><strong>CH02</strong></td>
               <td>리더 역할 프로필 Markdown</td>
               <td>AI와 리더의 책임 경계 및 리더 행동 기준을 제공합니다.</td>
               <td>Action Plan의 리더 행동 기준</td>
             </tr>
             <tr>
-              <td><strong>CH03</strong></td>
+              <td><strong>CH02</strong></td>
               <td>리더 핵심 역량·성과관리 실행 브리프 Markdown</td>
               <td>코칭, 피드백, 회의 운영에서 리더가 보완할 행동을 확인합니다.</td>
               <td>면담·피드백·회의 루틴 설계 기준</td>
@@ -454,7 +454,7 @@
       <div class="tip-block" style="margin-top:14px">
         <div class="tip-block-title">연결 포인트</div>
         <div class="tip-block-content">
-          CH04에서는 <strong>CH03 리더 산출물</strong>과 <strong>CH03 팀 시스템 산출물</strong>을 함께 묶습니다.
+          CH04에서는 <strong>CH02 리더 산출물</strong>과 <strong>CH03 팀 시스템 산출물</strong>을 함께 묶습니다.
           여기서부터는 “프롬프트를 잘 쓰는 것”만큼
           <strong>소스 이름을 알아보기 쉽게 정리하고, 답변의 출처를 원문과 대조하는 것</strong>이 중요합니다.
         </div>
@@ -485,7 +485,7 @@
         <div class="feature-card">
           <div class="feature-card-title">3. Cross Analysis</div>
           <div class="feature-card-body">
-            CH03의 리더 행동 기준과 CH03의 병목·지표·Workflow를 비교해 공통점, 충돌, 실행 우선순위를 탐색합니다.
+            CH02의 리더 행동 기준과 CH03의 병목·지표·Workflow를 비교해 공통점, 충돌, 실행 우선순위를 탐색합니다.
           </div>
         </div>
 
@@ -514,7 +514,7 @@
       <div class="screen-grid">
         <div class="screen-panel">
           <button type="button" class="screen-zoom-trigger" data-notebook-screen-zoom aria-label="NotebookLM 작업 화면 크게 보기">
-            <img src="/assets/notebooklm/CH03-notebooklm/screens/notebooklm-grounded-research-ui.png" alt="NotebookLM 실제 작업 화면" loading="lazy">
+            <img src="/assets/notebooklm/ch03-notebooklm/screens/notebooklm-grounded-research-ui.png" alt="NotebookLM 실제 작업 화면" loading="lazy">
           </button>
           <div class="screen-caption">
             왼쪽은 소스 목록, 가운데는 출처가 달린 채팅, 오른쪽은 Studio 패널입니다.
@@ -602,7 +602,7 @@
         <li>소스 추가 버튼을 눌러 문서, 웹 URL, 복사한 텍스트, 이미지, 오디오, YouTube 등 계정에 표시되는 소스 유형을 확인합니다.</li>
         <li>민감정보가 없는 간단한 테스트 소스 1개를 넣고, 채팅 답변의 인라인 출처를 열어 원문 위치를 확인합니다.</li>
         <li>Studio 패널에서 계정에 표시되는 산출물 유형을 확인합니다.</li>
-        <li>실제 CH03·CH03 산출물 업로드와 Source Map 작성은 다음 클립에서 진행합니다.</li>
+        <li>실제 CH02·CH03 산출물 업로드와 Source Map 작성은 다음 클립에서 진행합니다.</li>
       </ol>
     </div>
   </div>
@@ -624,8 +624,8 @@
         <div class="check-card">
           <div class="check-card-title">다음 실습에서 사용할 것</div>
           <ul class="compact-list">
-            <li>CH03-3 리더 역할 프로필 Markdown</li>
-            <li>CH03-4 리더 핵심 역량·성과관리 실행 브리프 Markdown</li>
+            <li>CH02-3 리더 역할 프로필 Markdown</li>
+            <li>CH02-4 리더 핵심 역량·성과관리 실행 브리프 Markdown</li>
             <li>CH03 통합 Markdown 또는 개별 산출물</li>
             <li>선택: 사내 성과관리·팀장 기대행동 자료</li>
             <li>선택: Deep Research 결과 또는 외부 리서치 메모</li>
@@ -665,7 +665,7 @@
             </tr>
             <tr>
               <td><strong>후속 자료 준비</strong></td>
-              <td>CH03·CH03 산출물을 하나의 CH04 노트북에 묶어 사용할 이유를 이해했다.</td>
+              <td>CH02·CH03 산출물을 하나의 CH04 노트북에 묶어 사용할 이유를 이해했다.</td>
             </tr>
             <tr>
               <td><strong>민감정보 원칙</strong></td>
@@ -682,15 +682,15 @@
     <div>
       NotebookLM의 강점은 AI가 더 그럴듯하게 답하는 데 있지 않습니다.
       <strong>어떤 소스를 근거로 답했는지 확인하고, 여러 자료를 한곳에 묶어 실행 가능한 판단 자료로 바꾸는 데</strong> 있습니다.<br>
-      CH04에서는 <strong>CH03 리더 산출물</strong>과 <strong>CH03 팀 시스템 산출물</strong>을 하나의 노트북에 통합해
+      CH04에서는 <strong>CH02 리더 산출물</strong>과 <strong>CH03 팀 시스템 산출물</strong>을 하나의 노트북에 통합해
       Source Map과 30일 Action Plan으로 전환합니다.
       최종 판단, 민감정보 처리, 팀원에게 전달할 메시지는 리더가 책임집니다.
     </div>
   </div>
 
   <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#CH03-clip01">← 조직 역량 점검 및 Workflow 재설계</a>
-    <a class="clip-nav-btn" href="#CH04-clip02">팀 성과향상 및 피드백 실전 →</a>
+    <a class="clip-nav-btn" href="#ch03-clip01">← 조직 역량 점검 및 Workflow 재설계</a>
+    <a class="clip-nav-btn" href="#ch04-clip02">팀 성과향상 및 피드백 실전 →</a>
   </div>
 
   <div class="image-modal" data-notebook-modal role="dialog" aria-modal="true" aria-label="NotebookLM 작업 화면 확대" aria-hidden="true">
@@ -703,7 +703,7 @@
 
   <!-- 동적 HTML 주입 환경에서도 이미지 확대 기능을 초기화합니다. -->
   <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(marker){
-    var root=marker.closest('.CH04-clip01-revised');
+    var root=marker.closest('.ch04-clip01-revised');
     if(!root||root.getAttribute('data-image-modal-ready')==='true'){return;}
     root.setAttribute('data-image-modal-ready','true');
     var trigger=root.querySelector('[data-notebook-screen-zoom]');
