@@ -1,193 +1,1502 @@
-<div class="clip-header">
-  <div class="clip-badges">
-    <span class="clip-badge time"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        data-lucide="timer" aria-hidden="true" style="width:13px;height:13px;vertical-align:-2px;"
-        class="lucide lucide-timer">
-        <line x1="10" x2="14" y1="2" y2="2"></line>
-        <line x1="12" x2="15" y1="14" y2="11"></line>
-        <circle cx="12" cy="14" r="8"></circle>
-      </svg> ~10분</span>
-    <span class="clip-badge chapter">CH 00</span>
-    <span class="clip-badge type-overview">개요</span>
+<!--
+  CH00 과정안내 적용 전 교체 항목
+  1) 메인 강사명: [강사명]
+  2) 기본 역할 표기 확인: AI/빅데이터 담당 · CHO 산하 팀장
+  3) 주요 경력 소개: [주요 경력 및 과정과의 연결점]
+  4) 강사 이미지 경로: /course-files/AXCAMP/ch00-clip01/assets/instructor-main.jpg
+  5) 실습 지원 담당자명 2명
+     - AI Governance 팀 담당자
+     - 리더십개발팀 담당자
+
+  권장 운영 시간
+  - 08:30~17:30, 점심 12:30~13:30
+  - 공통 필수 경로 중심으로 편성
+  - CH03·CH03·CH04의 선택 확장은 진도 차에 따른 개별 실습 또는 사후 적용 과제로 운영
+-->
+<section class="ch00-clip01-revised" id="ch00-clip01">
+  <style>
+    /* CH00 과정안내
+       - CH03·CH03·CH04의 20px 기반 타이포그래피와 카드·표·상태 UI를 동일하게 적용
+       - 전역 CSS 변수와 기본 컴포넌트를 재사용하므로 현재 과정 테마에 자동으로 맞춰집니다.
+       - 동적 HTML 주입 환경에서도 준비 체크리스트가 localStorage에 저장됩니다. */
+    .ch00-clip01-revised {
+      --c00-font-base: 20px;
+      --c00-radius: 18px;
+      --c00-gap: 16px;
+      --c00-soft: color-mix(in srgb, var(--brand) 7%, #fff);
+      --c00-soft-strong: color-mix(in srgb, var(--brand) 12%, #fff);
+      font-size: var(--c00-font-base);
+      line-height: 1.72;
+      color: var(--text-body);
+      word-break: keep-all;
+    }
+
+    .ch00-clip01-revised .clip-title {
+      font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
+      line-height: 1.22 !important;
+      letter-spacing: -0.04em;
+      margin-top: 10px;
+    }
+
+    .ch00-clip01-revised .clip-badge {
+      font-size: 0.95rem !important;
+      padding: 8px 12px !important;
+      border-radius: 999px !important;
+    }
+
+    .ch00-clip01-revised .clip-overview {
+      font-size: 1.16rem !important;
+      line-height: 1.78 !important;
+      padding: 24px 26px !important;
+      border-radius: var(--c00-radius) !important;
+      word-break: keep-all;
+    }
+
+    .ch00-clip01-revised .clip-section-title {
+      font-size: 1.5rem !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px !important;
+    }
+
+    .ch00-clip01-revised .clip-section-content,
+    .ch00-clip01-revised p,
+    .ch00-clip01-revised li,
+    .ch00-clip01-revised .tip-block-content,
+    .ch00-clip01-revised .info-block,
+    .ch00-clip01-revised .info-block div {
+      font-size: 1.08rem !important;
+      line-height: 1.66 !important;
+    }
+
+    .ch00-clip01-revised .info-block,
+    .ch00-clip01-revised .tip-block {
+      padding: 18px 20px !important;
+      border-radius: var(--c00-radius) !important;
+    }
+
+    .ch00-clip01-revised .info-block-title,
+    .ch00-clip01-revised .tip-block-title {
+      font-size: 1.08rem !important;
+      line-height: 1.45 !important;
+      font-weight: 900 !important;
+      margin-bottom: 8px !important;
+    }
+
+    .ch00-clip01-revised .section-lead {
+      margin: 0 0 16px;
+      color: var(--text-secondary);
+    }
+
+    .ch00-clip01-revised .mini-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 28px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--brand);
+      font-size: 0.86rem !important;
+      font-weight: 900;
+      line-height: 1.2 !important;
+      white-space: nowrap;
+    }
+
+    .ch00-clip01-revised .mini-label.optional {
+      border-style: dashed;
+      color: var(--text-secondary);
+      background: var(--bg-offwhite);
+    }
+
+    .ch00-clip01-revised .icon-shell {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 14px;
+      background: var(--c00-soft-strong);
+      color: var(--brand);
+    }
+
+    .ch00-clip01-revised .icon-shell svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+
+    /* 과정 기본 정보 */
+    .ch00-clip01-revised .course-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--c00-gap);
+      margin: 14px 0 8px;
+    }
+
+    .ch00-clip01-revised .course-meta-card {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--c00-radius);
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch00-clip01-revised .course-meta-card strong {
+      display: block;
+      margin: 10px 0 6px;
+      color: var(--text-heading);
+      font-size: 1.04rem !important;
+      line-height: 1.38 !important;
+    }
+
+    .ch00-clip01-revised .course-meta-card span:not(.icon-shell) {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.98rem !important;
+      line-height: 1.5 !important;
+    }
+
+    /* 과정 도착점 */
+    .ch00-clip01-revised .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--c00-gap);
+      margin: 12px 0 18px;
+    }
+
+    .ch00-clip01-revised .outcome-card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--c00-radius);
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch00-clip01-revised .outcome-card h3 {
+      margin: 0 0 8px;
+      color: var(--text-heading);
+      font-size: 1.1rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .ch00-clip01-revised .outcome-card p {
+      margin: 0 !important;
+      color: var(--text-body);
+      font-size: 1.02rem !important;
+      line-height: 1.58 !important;
+    }
+
+    /* 학습 여정 */
+    .ch00-clip01-revised .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 14px 0 18px;
+    }
+
+    .ch00-clip01-revised .journey-card {
+      position: relative;
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--c00-radius);
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch00-clip01-revised .journey-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      z-index: 2;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--brand);
+      font-weight: 950;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .ch00-clip01-revised .journey-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .ch00-clip01-revised .journey-code {
+      color: var(--brand);
+      font-size: 0.94rem !important;
+      font-weight: 950;
+      letter-spacing: 0.03em;
+    }
+
+    .ch00-clip01-revised .journey-card h3 {
+      margin: 0 0 8px;
+      color: var(--text-heading);
+      font-size: 1.08rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .ch00-clip01-revised .journey-card p {
+      margin: 0 0 12px !important;
+      color: var(--text-body);
+      font-size: 1rem !important;
+      line-height: 1.56 !important;
+    }
+
+    .ch00-clip01-revised .journey-output {
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      color: var(--text-secondary);
+      font-size: 0.94rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .ch00-clip01-revised .journey-output strong {
+      color: var(--text-heading);
+    }
+
+    .ch00-clip01-revised .journey-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .ch00-clip01-revised .journey-link:hover .journey-card,
+    .ch00-clip01-revised .journey-link:focus-visible .journey-card {
+      border-color: var(--brand);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.10);
+      transform: translateY(-2px);
+    }
+
+    .ch00-clip01-revised .journey-link:focus-visible {
+      outline: none;
+    }
+
+    .ch00-clip01-revised .journey-card {
+      transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    /* 강사 소개 */
+    .ch00-clip01-revised .instructor-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+      gap: var(--c00-gap);
+      margin: 14px 0 18px;
+    }
+
+    .ch00-clip01-revised .instructor-card,
+    .ch00-clip01-revised .support-card {
+      border: 1px solid var(--border);
+      border-radius: var(--c00-radius);
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch00-clip01-revised .instructor-card {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .ch00-clip01-revised .instructor-avatar {
+      position: relative;
+      width: 160px;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(145deg, var(--c00-soft-strong), #fff);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
+    }
+
+    .ch00-clip01-revised .instructor-avatar img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .ch00-clip01-revised .instructor-avatar-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--brand);
+      text-align: center;
+      font-weight: 950;
+    }
+
+    .ch00-clip01-revised .instructor-avatar-fallback svg {
+      width: 52px;
+      height: 52px;
+      stroke: currentColor;
+    }
+
+    .ch00-clip01-revised .instructor-avatar-fallback span {
+      font-size: 0.9rem !important;
+      line-height: 1.25 !important;
+    }
+
+    .ch00-clip01-revised .instructor-card h3 {
+      margin: 10px 0 2px;
+      color: var(--text-heading);
+      font-size: 1.42rem !important;
+      line-height: 1.32 !important;
+    }
+
+    .ch00-clip01-revised .instructor-role {
+      margin: 0 0 12px !important;
+      color: var(--brand);
+      font-size: 1rem !important;
+      font-weight: 850;
+      line-height: 1.45 !important;
+    }
+
+    .ch00-clip01-revised .instructor-copy {
+      margin: 0 0 14px !important;
+      color: var(--text-body);
+      font-size: 1rem !important;
+      line-height: 1.58 !important;
+    }
+
+    .ch00-clip01-revised .expertise-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .ch00-clip01-revised .expertise-chips span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font-size: 0.88rem !important;
+      font-weight: 800;
+      line-height: 1.2 !important;
+    }
+
+    .ch00-clip01-revised .support-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .ch00-clip01-revised .support-card {
+      padding: 18px;
+    }
+
+    .ch00-clip01-revised .support-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .ch00-clip01-revised .support-card h4 {
+      margin: 0;
+      color: var(--text-heading);
+      font-size: 1.04rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .ch00-clip01-revised .support-card p {
+      margin: 0 !important;
+      color: var(--text-secondary);
+      font-size: 0.96rem !important;
+      line-height: 1.5 !important;
+    }
+
+    /* 표 */
+    .ch00-clip01-revised .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .ch00-clip01-revised .table-wrap table {
+      min-width: 920px;
+      margin: 0 !important;
+      border: 0 !important;
+    }
+
+    .ch00-clip01-revised .comparison-table th,
+    .ch00-clip01-revised .comparison-table td {
+      font-size: 1.04rem !important;
+      line-height: 1.46 !important;
+      padding: 10px 12px !important;
+      vertical-align: middle !important;
+      word-break: keep-all;
+    }
+
+    .ch00-clip01-revised .comparison-table th {
+      font-weight: 900 !important;
+      color: var(--text-heading) !important;
+      background: var(--bg-offwhite) !important;
+    }
+
+    .ch00-clip01-revised .schedule-table td:first-child {
+      width: 135px;
+      white-space: nowrap;
+      color: var(--text-heading);
+      font-weight: 900;
+    }
+
+    .ch00-clip01-revised .schedule-table td:nth-child(2) {
+      min-width: 240px;
+    }
+
+    .ch00-clip01-revised .schedule-table td:last-child {
+      width: 112px;
+      text-align: center;
+    }
+
+    .ch00-clip01-revised .schedule-table tr.schedule-break td {
+      background: var(--bg-offwhite) !important;
+      color: var(--text-secondary);
+    }
+
+    .ch00-clip01-revised .schedule-table tr.schedule-lunch td {
+      background: var(--c00-soft) !important;
+      color: var(--text-heading);
+      font-weight: 850;
+    }
+
+    .ch00-clip01-revised .schedule-link {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .ch00-clip01-revised .schedule-link:hover,
+    .ch00-clip01-revised .schedule-link:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .ch00-clip01-revised .mode-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 72px;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font-size: 0.86rem !important;
+      font-weight: 900;
+      line-height: 1.2 !important;
+    }
+
+    .ch00-clip01-revised .mode-badge.practice {
+      border-color: color-mix(in srgb, var(--brand) 35%, var(--border));
+      background: var(--c00-soft);
+      color: var(--brand);
+    }
+
+    .ch00-clip01-revised .mode-badge.break {
+      color: var(--text-secondary);
+      background: var(--bg-offwhite);
+    }
+
+    .ch00-clip01-revised .schedule-note {
+      margin-top: 14px;
+      padding: 16px 18px;
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--text-secondary);
+      font-size: 0.98rem !important;
+      line-height: 1.58 !important;
+    }
+
+    /* 웹 사용법 */
+    .ch00-clip01-revised .web-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--c00-gap);
+      margin: 12px 0 18px;
+    }
+
+    .ch00-clip01-revised .web-guide-card {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--c00-radius);
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch00-clip01-revised .web-guide-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .ch00-clip01-revised .web-guide-card h3 {
+      margin: 0;
+      color: var(--text-heading);
+      font-size: 1.06rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .ch00-clip01-revised .web-guide-card p {
+      margin: 0 0 12px !important;
+      color: var(--text-body);
+      font-size: 0.98rem !important;
+      line-height: 1.56 !important;
+    }
+
+    .ch00-clip01-revised .ui-demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ch00-clip01-revised .ui-demo-chip,
+    .ch00-clip01-revised .ui-demo-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 6px 11px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font-size: 0.84rem !important;
+      font-weight: 850;
+      line-height: 1.2 !important;
+    }
+
+    .ch00-clip01-revised .ui-demo-button.primary {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .ch00-clip01-revised .ui-demo-button.copy {
+      color: var(--brand);
+      background: var(--c00-soft);
+    }
+
+    /* 산출물 파일 */
+    .ch00-clip01-revised .file-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 18px;
+    }
+
+    .ch00-clip01-revised .file-card {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .ch00-clip01-revised .file-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--text-heading);
+      font-size: 1rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .ch00-clip01-revised .file-name {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 10px;
+      background: var(--bg-offwhite);
+      color: var(--text-secondary);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.86rem !important;
+      line-height: 1.45 !important;
+      overflow-wrap: anywhere;
+    }
+
+    /* 준비 체크리스트 */
+    .ch00-clip01-revised .readiness-shell {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--c00-radius);
+      background: #fff;
+    }
+
+    .ch00-clip01-revised .readiness-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ch00-clip01-revised .readiness-item {
+      position: relative;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      min-height: 92px;
+      padding: 18px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .ch00-clip01-revised .readiness-item:nth-child(odd) {
+      border-right: 1px solid var(--border);
+    }
+
+    .ch00-clip01-revised .readiness-item:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+    .ch00-clip01-revised .readiness-item input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .ch00-clip01-revised .readiness-checkmark {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      margin-top: 2px;
+      border: 2px solid #9aa3af;
+      border-radius: 7px;
+      background: #fff;
+      transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .ch00-clip01-revised .readiness-item input:checked + .readiness-checkmark {
+      border-color: var(--brand);
+      background: var(--brand);
+      box-shadow: inset 0 0 0 4px #fff;
+    }
+
+    .ch00-clip01-revised .readiness-item input:focus-visible + .readiness-checkmark {
+      outline: 4px solid color-mix(in srgb, var(--brand) 22%, transparent);
+      outline-offset: 3px;
+    }
+
+    .ch00-clip01-revised .readiness-copy strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text-heading);
+      font-size: 1rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .ch00-clip01-revised .readiness-copy span {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.92rem !important;
+      line-height: 1.48 !important;
+    }
+
+    .ch00-clip01-revised .readiness-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-offwhite);
+    }
+
+    .ch00-clip01-revised .readiness-summary,
+    .ch00-clip01-revised .readiness-message {
+      color: var(--text-secondary);
+      font-size: 0.94rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .ch00-clip01-revised .readiness-summary {
+      color: var(--text-heading);
+      font-weight: 900;
+    }
+
+    .ch00-clip01-revised .readiness-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ch00-clip01-revised .readiness-reset {
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font: inherit;
+      font-size: 0.9rem !important;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .ch00-clip01-revised .readiness-reset:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    .ch00-clip01-revised .readiness-reset:focus-visible {
+      outline: 4px solid color-mix(in srgb, var(--brand) 22%, transparent);
+      outline-offset: 2px;
+    }
+
+    /* 공통 원칙 */
+    .ch00-clip01-revised .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--c00-gap);
+      margin: 12px 0 18px;
+    }
+
+    .ch00-clip01-revised .principle-card {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--c00-radius);
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
+    }
+
+    .ch00-clip01-revised .principle-card h3 {
+      margin: 12px 0 8px;
+      color: var(--text-heading);
+      font-size: 1.06rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .ch00-clip01-revised .principle-card p {
+      margin: 0 !important;
+      color: var(--text-body);
+      font-size: 0.98rem !important;
+      line-height: 1.56 !important;
+    }
+
+    .ch00-clip01-revised .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .ch00-clip01-revised .clip-nav-btn {
+      font-size: 1.04rem !important;
+      line-height: 1.3 !important;
+      padding: 10px 16px !important;
+      border-radius: 999px !important;
+      font-weight: 900 !important;
+    }
+
+    .ch00-clip01-revised .clip-nav-btn.disabled {
+      opacity: 0.55;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    @media (max-width: 980px) {
+      .ch00-clip01-revised .course-meta-grid,
+      .ch00-clip01-revised .journey-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ch00-clip01-revised .journey-card:not(:last-child)::after {
+        display: none;
+      }
+
+      .ch00-clip01-revised .instructor-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ch00-clip01-revised .support-stack {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ch00-clip01-revised .web-guide-grid,
+      .ch00-clip01-revised .principle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .ch00-clip01-revised {
+        font-size: 18px;
+      }
+
+      .ch00-clip01-revised .clip-overview {
+        padding: 20px !important;
+      }
+
+      .ch00-clip01-revised .course-meta-grid,
+      .ch00-clip01-revised .outcome-grid,
+      .ch00-clip01-revised .journey-grid,
+      .ch00-clip01-revised .support-stack,
+      .ch00-clip01-revised .web-guide-grid,
+      .ch00-clip01-revised .file-grid,
+      .ch00-clip01-revised .readiness-list,
+      .ch00-clip01-revised .principle-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ch00-clip01-revised .instructor-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .ch00-clip01-revised .instructor-avatar {
+        width: min(180px, 72vw);
+        margin: 0 auto;
+      }
+
+      .ch00-clip01-revised .expertise-chips {
+        justify-content: center;
+      }
+
+      .ch00-clip01-revised .readiness-item,
+      .ch00-clip01-revised .readiness-item:nth-child(odd),
+      .ch00-clip01-revised .readiness-item:nth-last-child(-n + 2) {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .ch00-clip01-revised .readiness-item:last-child {
+        border-bottom: 0;
+      }
+
+      .ch00-clip01-revised .readiness-footer,
+      .ch00-clip01-revised .readiness-actions {
+        align-items: stretch;
+      }
+
+      .ch00-clip01-revised .readiness-actions,
+      .ch00-clip01-revised .readiness-reset {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <div class="clip-header">
+    <div class="clip-badges">
+      <span class="clip-badge time">~15분</span>
+      <span class="clip-badge chapter">CH 00</span>
+      <span class="clip-badge type-overview">과정 안내</span>
+    </div>
+    <h1 class="clip-title" data-keep-title="">성과향상 with AI: 오늘의 여정과 학습 준비</h1>
   </div>
-  <h1 class="clip-title">오늘의 시간표</h1>
-</div>
 
-<div class="clip-overview">오늘 일정과 실습 흐름을 빠르게 훑어보고, 필요한 세션으로 바로 이동할 수 있습니다.</div>
+  <div class="clip-overview">
+    본 과정은 <strong>초인공 AI 시대, 변화하는 리더의 역할/역량을 이해하고, AI를 활용하여 성과향상을 위한 우리 조직(팀)의 역량 및 Workflow를 점검한 뒤, 30일 안에 실행할 Action Plan을 수립해보는 하루</strong>입니다.<br>
 
-<div class="clip-section">
-  <div class="clip-section-title">강사 소개</div>
-  <div class="clip-section-content">
-    <p style="font-size:0.9rem;line-height:1.8;color:var(--text-body)">오늘 세션은 1명의 메인 강사와 2명의 실습 지원 인력이 함께 운영합니다. 강사 소개와
-      참여자 자기소개는 Gemini 소개와 프롬프트 기초를 다루는 수업 시간에 함께 진행됩니다.</p>
-    <ul style="list-style:none;padding-left:0;margin:0;">
-      <li style="position:relative;padding-left:1rem;">• 강사: 1명 (AI/빅데이터담당 &amp; CHO 산하 팀장)</li>
-      <li style="position:relative;padding-left:1rem;margin-top:6px;">• 실습 지원: 2명 (AI Governance 팀 &amp; 리더십개발팀 담당자)
-      </li>
-    </ul>
   </div>
-</div>
 
-<div class="clip-section">
-  <div class="clip-section-title">오늘의 시간표</div>
-  <div class="clip-section-content">
-    <p style="font-size:0.9rem;line-height:1.8;color:var(--text-body);margin:0 0 12px;">오전에는 AI 공통 언어와 개인 도구 실습을, 오후에는
-      문서 기반 리서치와 바이브 코딩, 마무리 정리를 진행합니다.</p>
-    <table class="comparison-table" style="margin-top:8px">
-      <thead>
-        <tr>
-          <th>시간</th>
-          <th>세션</th>
-          <th>핵심 내용</th>
-          <th>형태</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>08:30-08:40</td>
-          <td>CH00: 과정 안내</td>
-          <td>강사 소개 · 학습 흐름 안내</td>
-          <td>개요</td>
-        </tr>
-        <tr>
-          <td>08:40-08:50</td>
-          <td><a href="#ch00-clip02" style="color:var(--brand);text-decoration:none;font-weight:500">CH00: 자사 생성형 AI 서비스
-              현황</a></td>
-          <td>사내 생성형 AI 서비스 오픈 · 활용 방향 공유</td>
-          <td>공유</td>
-        </tr>
-        <tr>
-          <td>08:50-09:30</td>
-          <td><a href="#ch01-clip01" style="color:var(--brand);text-decoration:none;font-weight:500">CH01: AI 핵심 개념</a>
-          </td>
-          <td>Agentic AI, Physical AI, 글로벌 동향</td>
-          <td>강의</td>
-        </tr>
-        <tr>
-          <td>09:30-12:00</td>
-          <td><a href="#ch05-clip02" style="color:var(--brand);text-decoration:none;font-weight:500">CH03: Gemini &amp;
-              ChatGPT</a></td>
-          <td>
-            <ul style="margin:0;padding-left:1.1rem;line-height:1.7;">
-              <li>Gemini &amp; ChatGPT</li>
-              <li>프롬프트 기본기와 자기 소개하기</li>
-              <li>심층리서치 (Deep Research) &amp; Gems (GPTs)</li>
-            </ul>
-          </td>
-          <td>실습</td>
-        </tr>
-        <tr style="background:var(--bg-offwhite);color:var(--text-muted)">
-          <td>12:00-13:00</td>
-          <td>점심 식사</td>
-          <td></td>
-          <td>식사</td>
-        </tr>
-        <tr>
-          <td>13:00-14:00</td>
-          <td><a href="#ch04-clip01" style="color:var(--brand);text-decoration:none;font-weight:500">CH04:
-              NotebookLM</a></td>
-          <td>
-            <ul style="margin:0;padding-left:1.1rem;line-height:1.7;">
-              <li>NotebookLM</li>
-              <li>문서 기반 리서치와 출처 확인</li>
-              <li>기업분석 실습 &amp; 슬라이드 제작</li>
-            </ul>
-          </td>
-          <td>실습</td>
-        </tr>
-        <tr>
-          <td>14:10-16:00</td>
-          <td><a href="#ch05-clip02" style="color:var(--brand);text-decoration:none;font-weight:500">CH05: Google AI
-              Studio</a></td>
-          <td>
-            <ul style="margin:0;padding-left:1.1rem;line-height:1.7;">
-              <li>Google AI Studio 시작과 기본 개념</li>
-              <li>바이브 코딩으로 웹앱 제작</li>
-
-            </ul>
-          </td>
-          <td>실습</td>
-        </tr>
-        <tr>
-          <td>16:10-17:10</td>
-          <td><a href="#ch05-clip01" style="color:var(--brand);text-decoration:none;font-weight:500">CH05: Hi-D Code</a>
-          </td>
-          <td>Hi-D Code 소개 및 Agentic AI 시연<br>(최남석, Agentic AI 팀)</td>
-          <td>강의</td>
-        </tr>
-        <tr>
-          <td>17:10-17:20</td>
-          <td><a href="#ch09-clip01" style="color:var(--brand);text-decoration:none;font-weight:500">CH09: Key Takeaways
-              &amp; Q/A</a></td>
-          <td>핵심 정리 · 질의응답 · 다음 단계 정리</td>
-          <td>Q&amp;A</td>
-        </tr>
-        <tr>
-          <td>17:20-17:30</td>
-          <td><a href="#ch08-clip01" style="color:var(--brand);text-decoration:none;font-weight:500">CH07: 참고자료
-              라이브러리</a></td>
-          <td>참고 자료 · 실습 템플릿 · 확장 학습 링크</td>
-          <td>참고</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="clip-section">
-  <div class="clip-section-title">LMS 사용 안내</div>
-  <div class="clip-section-content">
-    <div class="info-block">
-      <div class="info-block-title">수업 중 자주 쓰는 3가지</div>
-      <div class="info-block-content">상단 우측 도구 영역에서 이 세 기능만 익혀두면 오늘 실습을 따라가기에 충분합니다.</div>
-      <div class="lms-action-demo-row" aria-hidden="true">
-        <span class="lms-demo-btn lms-demo-btn-primary">학습 완료</span>
-        <span class="lms-demo-btn lms-demo-btn-ghost">Miro</span>
-        <span class="lms-demo-btn lms-demo-btn-ghost">메모 펼치기</span>
+  <div class="clip-section">
+    <div class="clip-section-title">과정 한눈에 보기</div>
+    <div class="clip-section-content">
+      <div class="course-meta-grid">
+        <div class="course-meta-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </span>
+          <strong>학습 대상</strong>
+          <span>실·팀장 및 Task Leader</span>
+        </div>
+        <div class="course-meta-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+          </span>
+          <strong>운영 일정</strong>
+          <span>총 16차수 (파주 14차수, 구미 2차수)<br>
+                1일 8hr · 08:30~17:30<br></span>
+        </div>
+        <div class="course-meta-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 8h10"></path><path d="M7 12h6"></path><path d="M7 16h8"></path></svg>
+          </span>
+          <strong>주요 AI 활용도구</strong>
+          <span>Gemini · NotebookLM </span>
+        </div>
+        <div class="course-meta-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          </span>
+          <strong>최종 도착점</strong>
+          <span>우리 팀의 성과향상 30일 Action Plan</span>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="lms-guide-list">
-      <article class="lms-guide-item">
-        <div class="lms-guide-chip-row">
-          <span class="chapter-code" style="font-size:0.7rem;padding:1px 8px;border-radius:5px">CH00</span>
-          <strong>목차 이동</strong>
-        </div>
-        <p>왼쪽 사이드바에서 챕터와 세션을 눌러 바로 이동할 수 있습니다. 수업 중 앞뒤 맥락을 다시 확인할 때 가장 자주 쓰게 됩니다.</p>
-      </article>
-
-      <article class="lms-guide-item">
-        <div class="lms-guide-chip-row">
-          <span class="lms-demo-btn lms-demo-btn-ghost lms-demo-btn-inline">메모 펼치기</span>
-          <strong>메모 기능</strong>
-        </div>
-        <p>현재 클립 기준으로 메모 패널이 열립니다. 질문, 아이디어, 실습 중 막힌 지점을 바로 기록해 두세요.</p>
-      </article>
-
-      <article class="lms-guide-item">
-        <div class="lms-guide-chip-row">
-          <span class="lms-demo-btn lms-demo-btn-ghost lms-demo-btn-inline">Miro</span>
-          <strong>공유 보드</strong>
-        </div>
-        <p>수업 중 배포되는 프롬프트, 참고 링크, 결과물은 Miro 보드와 함께 보게 됩니다. 필요한 자료를 다시 찾을 때 기준점으로 쓰면 됩니다.</p>
-      </article>
-
-      <article class="lms-guide-item">
-        <div class="lms-guide-chip-row">
-          <span class="lms-demo-btn lms-demo-btn-primary lms-demo-btn-inline">학습 완료</span>
-          <strong>진도 표시</strong>
-        </div>
-        <p>해당 세션을 마쳤을 때 눌러 두면 상단 진도와 좌측 흐름 확인이 함께 업데이트됩니다.</p>
-      </article>
+  <div class="clip-section">
+    <div class="clip-section-title">오늘 과정이 끝나면 할 수 있는 것</div>
+    <div class="clip-section-content">
+      <div class="outcome-grid">
+        <article class="outcome-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="M9 12l2 2 4-4"></path></svg>
+          </span>
+          <div>
+            <h3>1. AI와 리더가 해야 할 책임의 경계를 정합니다</h3>
+            <p>성과관리 장면별로 AI가 지원할 일과 리더가 직접 판단·대화·책임질 일을 구분합니다.</p>
+          </div>
+        </article>
+        <article class="outcome-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 15l4-4 3 3 5-7"></path></svg>
+          </span>
+          <div>
+            <h3>2. 조직(팀)의 성과 이슈을 구조적으로 확인합니다</h3>
+            <p>리더 개인의 문제가 아니라 목표·역할·프로세스·관계·심리적 안전감·실행 신뢰성 관점에서 원인을 찾습니다.</p>
+          </div>
+        </article>
+        <article class="outcome-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 17h7"></path><path d="M17.5 14v7"></path></svg>
+          </span>
+          <div>
+            <h3>3. 팀의 비효율 Workflow를 점검하고 재설계합니다</h3>
+            <p>업무를 Task로 분해하고 AI 적합도, 보안, 검증 포인트, 리더 책임, Fallback을 포함한 협업 구조를 만듭니다.</p>
+          </div>
+        </article>
+        <article class="outcome-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4"></path><path d="M8 3v4"></path><path d="M3 11h18"></path><path d="M8 15h2"></path><path d="M14 15h2"></path></svg>
+          </span>
+          <div>
+            <h3>4. 우리 팀의 30일 Action Plan을 완성합니다</h3>
+            <p>CH03·CH03 산출물을 NotebookLM에서 연결해 실행과제 TOP 3과 주차별 Action Plan으로 전환합니다.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="tip-block">
-  <div class="tip-block-title">오늘의 관점</div>
-  <div class="tip-block-content">“The new programming language is English.” — Andrej Karpathy</div>
-</div>
+  <div class="clip-section">
+    <div class="clip-section-title">오늘의 학습 여정</div>
+    <div class="clip-section-content">
+      <p class="section-lead">각 챕터의 결과물이 다음 챕터의 입력자료가 됩니다. 좋은 답변을 한 번 얻는 것보다 <strong>산출물을 구조화해 저장하고 다시 연결하는 것</strong>이 중요합니다.</p>
 
-<div class="clip-nav-footer"><a class="clip-nav-btn disabled" href="#">← 처음</a><a class="clip-nav-btn"
-    href="#ch00-clip02">자사 생성형 AI 서비스 현황 →</a></div>
+      <div class="journey-grid">
+        <a class="journey-link" href="#ch01-clip01">
+          <article class="journey-card">
+            <div class="journey-card-head"><span class="journey-code">CH01</span><span class="mini-label">이해·진단</span></div>
+            <h3>AI 핵심 개념과 출발점</h3>
+            <p>Assistant–Agent–Agentic AI의 차이를 이해하고 AI 리터러시와 리더십 스타일을 진단합니다.</p>
+            <div class="journey-output"><strong>Output</strong><br>개인 학습 초점과 리더십 출발점</div>
+          </article>
+        </a>
+        <a class="journey-link" href="#ch03-clip01">
+          <article class="journey-card">
+            <div class="journey-card-head"><span class="journey-code">CH03</span><span class="mini-label">Gemini</span></div>
+            <h3>리더 역할·책임·역량</h3>
+            <p>토론과 Gemini 대화를 통해 AI와 리더의 역할 분담, 리더 역할 프로필, 실행 브리프를 만듭니다.</p>
+            <div class="journey-output"><strong>Output</strong><br>리더 역할 프로필 · 핵심 역량·실행 브리프</div>
+          </article>
+        </a>
+        <a class="journey-link" href="#ch03-clip09">
+          <article class="journey-card">
+            <div class="journey-card-head"><span class="journey-code">CH03</span><span class="mini-label">팀 시스템</span></div>
+            <h3>팀 병목·역량·Workflow</h3>
+            <p>팀 성과 병목과 효과성 지표를 진단하고 대표 업무를 AI 협업 구조로 재설계합니다.</p>
+            <div class="journey-output"><strong>Output</strong><br>성과 이슈/병목 진단 · 행동역량 · Workflow Canvas</div>
+          </article>
+        </a>
+        <a class="journey-link" href="#ch04-clip01">
+          <article class="journey-card">
+            <div class="journey-card-head"><span class="journey-code">CH04</span><span class="mini-label">NotebookLM</span></div>
+            <h3>근거 통합과 30일 실행</h3>
+            <p>앞선 결과를 하나의 소스 묶음으로 연결하고 실행과제 TOP 3과 30일 Action Plan을 확정합니다.</p>
+            <div class="journey-output"><strong>Output</strong><br>Source Map · TOP 3 · 30일 Action Plan</div>
+          </article>
+        </a>
+      </div>
+
+      <div class="tip-block">
+        <div class="tip-block-title">CH04를 위해 반드시 기억할 것</div>
+        <div class="tip-block-content">
+          CH03와 CH03에서 완성한 결과는 <strong>Markdown 파일 또는 복사 가능한 구조</strong>로 저장합니다.
+          저장하지 않으면 CH04에서 Source Map과 30일 Action Plan을 만들 때 근거를 다시 구성해야 합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">강사 및 운영진 소개</div>
+    <div class="clip-section-content">
+      <div class="instructor-grid">
+        <article class="instructor-card">
+          <div class="instructor-avatar">
+            <div class="instructor-avatar-fallback" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+              <span>강사 소개</span>
+            </div>
+            <img src="/course-files/AXCAMP/ch00-clip01/assets/instructor-main.jpg" alt="[강사명] 메인 강사 프로필 사진" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div>
+            <span class="mini-label">Main Instructor</span>
+            <h3>[강사명]</h3>
+            <p class="instructor-role">AI/빅데이터 담당 · CHO 산하 팀장</p>
+            <p class="instructor-copy">[‘AI/AX를 활용'하여 '리더십·성과관리'의 두 마리의 토끼를 잡을 수 있게 최선을 다하겠습니다.]</p>
+            <div class="expertise-chips" aria-label="강사 전문 분야">
+              <span>리더십 육성</span>
+              <span>성과관리</span>
+              <span>AX·생성형 AI</span>
+              <span>Workflow Re-design</span>
+              <span>과정개발·퍼실리테이션</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="support-stack">
+          <article class="support-card">
+            <div class="support-card-head">
+              <span class="icon-shell" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6 4 4 6-6"></path><path d="M14 9h6v6"></path></svg>
+              </span>
+              <h4>AI 실습 지원</h4>
+            </div>
+            <p>[담당자] · AI Governance 팀<br>Gemini·NotebookLM 접속, 파일 업로드, 보안 기준과 실습 오류 해결을 지원합니다.</p>
+          </article>
+          <article class="support-card">
+            <div class="support-card-head">
+              <span class="icon-shell" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 11l-3 3-2-2"></path></svg>
+              </span>
+              <h4>HRD·과정 운영 지원</h4>
+            </div>
+            <p>[담당자] · 리더십개발팀 <br>학습팀 운영, 토론 오디오 공유, 과정 안내와 현업 적용 연계를 지원합니다.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-title">강사 메시지</div>
+        <div>
+          오늘의 목표는 AI가 더 많은 일을 하게 만드는 것이 아닙니다.
+          <strong>팀 성과를 높이기 위해 무엇을 AI에 위임하고, 무엇을 리더가 직접 책임질지 기준을 세우는 것</strong>입니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">오늘의 시간표</div>
+    <div class="clip-section-content">
+      <p class="section-lead">원활한 강의 및 실습 진행을 위해 <strong>필수 산출물은 틈틈히 정리하여 저장</strong>해주세요.</p>
+
+      <div class="table-wrap">
+        <table class="comparison-table schedule-table">
+          <thead>
+            <tr>
+              <th>시간</th>
+              <th>세션</th>
+              <th>핵심 내용과 도착점</th>
+              <th>형태</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>08:30~08:45</td>
+              <td><strong>CH00. 과정 안내</strong></td>
+              <td>과정 목표 · 강사 및 운영진 · 웹페이지 사용법 · 실습 준비 점검</td>
+              <td><span class="mode-badge">개요</span></td>
+            </tr>
+            <tr>
+              <td>08:45~09:30</td>
+              <td><a class="schedule-link" href="#ch01-clip01">CH01. AI 핵심 개념 및 진단</a></td>
+              <td>AI 트렌드와 Agentic AI 이해 · 기술 활용 로드맵 · AI 리터러시 및 AI-Friendly 리더십 진단</td>
+              <td><span class="mode-badge">강의·진단</span></td>
+            </tr>
+            <tr class="schedule-break">
+              <td>09:30~09:40</td>
+              <td><strong>휴식</strong></td>
+              <td>Gemini 로그인 및 학습팀 좌석·녹음 준비 최종 확인</td>
+              <td><span class="mode-badge break">휴식</span></td>
+            </tr>
+            <tr>
+              <td>09:40~12:10</td>
+              <td><a class="schedule-link" href="#ch03-clip01">CH03. Gemini 활용: 리더 역할·역량</a></td>
+              <td>Gemini 환경 세팅 · 팀 토론 오디오 · AI와 리더 역할 분담 · 리더 역할 프로필 · 핵심 역량 및 성과관리 실행 브리프</td>
+              <td><span class="mode-badge practice">토론·실습</span></td>
+            </tr>
+            <tr>
+              <td>12:10~12:30</td>
+              <td><strong>오전 산출물 저장·오후 실습 준비</strong></td>
+              <td>CH03 Markdown 저장 · 팀 성과 문제 1개와 재설계할 비효율 업무 1개 확정 · 파일명·민감정보 점검</td>
+              <td><span class="mode-badge">정리</span></td>
+            </tr>
+            <tr class="schedule-lunch">
+              <td>12:30~13:30</td>
+              <td><strong>점심 식사</strong></td>
+              <td>오전 산출물은 브라우저와 로컬 폴더에 저장한 뒤 자리를 비웁니다.</td>
+              <td><span class="mode-badge break">점심</span></td>
+            </tr>
+            <tr>
+              <td>13:30~15:30</td>
+              <td><a class="schedule-link" href="#ch03-clip09">CH03. 조직 역량 점검 및 Workflow 재설계</a></td>
+              <td>팀 성과 병목 진단 · 효과성 지표 · 조직/인재 행동역량 · Divide–Navigate–Arrange · Workflow Re-design Canvas</td>
+              <td><span class="mode-badge practice">실습</span></td>
+            </tr>
+            <tr class="schedule-break">
+              <td>15:30~15:40</td>
+              <td><strong>휴식</strong></td>
+              <td>CH03 산출물 저장 및 NotebookLM 업로드 자료 정리</td>
+              <td><span class="mode-badge break">휴식</span></td>
+            </tr>
+            <tr>
+              <td>15:40~17:00</td>
+              <td><a class="schedule-link" href="#ch04-clip01">CH04. NotebookLM: 팀 성과향상 실행</a></td>
+              <td>CH03·CH03 소스 통합 · Source Map · 핵심 실행과제 TOP 3 · 우리 팀 성과향상 30일 Action Plan</td>
+              <td><span class="mode-badge practice">통합 실습</span></td>
+            </tr>
+            <tr>
+              <td>17:00~17:30</td>
+              <td><strong>Wrap-up 및 현업 전이</strong></td>
+              <td>Start / Stop / Continue · 첫 주 즉시 실행 행동 확정 · 최종 파일 저장</td>
+              <td><span class="mode-badge">성찰</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">웹페이지 주요 사용법</div>
+    <div class="clip-section-content">
+      <p class="section-lead">수업 중에는 아래 여섯 가지 기능만 익히면 됩니다. 각 클립의 안내 순서와 지정 도구를 그대로 따라갑니다.</p>
+
+      <div class="web-guide-grid">
+        <article class="web-guide-card">
+          <div class="web-guide-card-head">
+            <span class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"></path><path d="M3 6h18"></path><path d="M3 18h18"></path></svg>
+            </span>
+            <h3>1. 좌측 목차로 이동</h3>
+          </div>
+          <p>챕터와 클립을 눌러 이동합니다. 실습 중 이전 산출물이나 프롬프트를 다시 확인할 때 사용합니다.</p>
+          <div class="ui-demo-row"><span class="ui-demo-chip">CH03</span><span class="ui-demo-chip">CH03</span><span class="ui-demo-chip">CH04</span></div>
+        </article>
+
+        <article class="web-guide-card">
+          <div class="web-guide-card-head">
+            <span class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </span>
+            <h3>2. 프롬프트 복사</h3>
+          </div>
+          <p><strong>복사</strong> 버튼을 누른 뒤, 카드에 표시된 Gemini 또는 NotebookLM의 지정 입력창에 붙여넣습니다.</p>
+          <div class="ui-demo-row"><span class="ui-demo-button copy">복사</span><span class="ui-demo-chip">Gemini</span><span class="ui-demo-chip">NotebookLM</span></div>
+        </article>
+
+        <article class="web-guide-card">
+          <div class="web-guide-card-head">
+            <span class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="M4 15l4-4 4 4 3-3 5 5"></path><circle cx="9" cy="8" r="1"></circle></svg>
+            </span>
+            <h3>3. 이미지·슬라이드 확대</h3>
+          </div>
+          <p>이미지나 슬라이드를 클릭하면 팝업에서 크게 볼 수 있습니다. 다운로드 버튼이 있으면 원본 자료를 저장합니다.</p>
+          <div class="ui-demo-row"><span class="ui-demo-button">클릭해서 확대</span><span class="ui-demo-button">다운로드</span></div>
+        </article>
+
+        <article class="web-guide-card">
+          <div class="web-guide-card-head">
+            <span class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 13h8"></path><path d="M8 17h6"></path></svg>
+            </span>
+            <h3>4. 산출물은 Markdown으로 저장</h3>
+          </div>
+          <p>다음 챕터에서 다시 사용할 결과는 <strong>.md 파일</strong> 또는 복사 가능한 구조로 저장하고 파일명을 통일합니다.</p>
+          <div class="ui-demo-row"><span class="ui-demo-chip">.md 저장</span><span class="ui-demo-chip">성명 표기</span></div>
+        </article>
+
+        <article class="web-guide-card">
+          <div class="web-guide-card-head">
+            <span class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </span>
+            <h3>5. 완료 기준 체크</h3>
+          </div>
+          <p>각 클립의 <strong>완료 / 보완 필요</strong> 상태를 선택합니다. 운영 환경에 따라 계정 또는 현재 브라우저에 자동 저장됩니다.</p>
+          <div class="ui-demo-row"><span class="ui-demo-button primary">완료</span><span class="ui-demo-button">보완 필요</span></div>
+        </article>
+
+        <article class="web-guide-card">
+          <div class="web-guide-card-head">
+            <span class="icon-shell" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16"></path><path d="M6 17l10-10 3 3-10 10H6z"></path><path d="M14 9l3 3"></path></svg>
+            </span>
+            <h3>6. 메모·공유보드 활용</h3>
+          </div>
+          <p>상단의 <strong>메모 펼치기</strong>로 질문과 현업 아이디어를 기록하고, <strong>공유</strong> 버튼으로 Miro 보드를 엽니다. CH03 토론 오디오는 해당 클립의 공유방에 학습팀당 1개만 업로드합니다.</p>
+          <div class="ui-demo-row"><span class="ui-demo-button">메모 펼치기</span><span class="ui-demo-button">공유 · Miro</span></div>
+        </article>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-title">도구 혼동 방지</div>
+        <div>
+          프롬프트 카드의 도구 배지를 먼저 확인합니다. <strong>CH03·CH03은 주로 Gemini</strong>,
+          <strong>CH04 Step 1~3은 NotebookLM</strong>, 선택형 AI 비서 제작은 <strong>Gemini Gems</strong>에서 진행합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">산출물 저장 규칙</div>
+    <div class="clip-section-content">
+      <p class="section-lead">바탕화면 또는 개인 작업 폴더에 <strong>성과향상_with_AI_성명</strong> 폴더를 만들고, 아래 파일을 한곳에 모읍니다.</p>
+
+      <div class="file-grid">
+        <div class="file-card"><strong>CH03 리더 역할 프로필</strong><span class="file-name">CH02_리더역할프로필_성명.md</span></div>
+        <div class="file-card"><strong>CH03 성과관리 실행 브리프</strong><span class="file-name">CH02_성과관리실행브리프_성명.md</span></div>
+        <div class="file-card"><strong>CH03 팀 성과 병목 진단</strong><span class="file-name">CH03_팀성과병목진단_성명.md</span></div>
+        <div class="file-card"><strong>CH03 행동역량 프로파일</strong><span class="file-name">CH03_행동역량프로파일_성명.md</span></div>
+        <div class="file-card"><strong>CH03 Workflow Re-design</strong><span class="file-name">CH03_Workflow_ReDesign_성명.md</span></div>
+        <div class="file-card"><strong>CH04 자료 연결표</strong><span class="file-name">CH04_자료연결표_성명.md</span></div>
+        <div class="file-card"><strong>CH04 핵심 실행과제 TOP 3</strong><span class="file-name">CH04_핵심실행과제_TOP3_성명.md</span></div>
+        <div class="file-card"><strong>CH04 30일 Action Plan</strong><span class="file-name">CH04_30일_ActionPlan_성명.md</span></div>
+        <div class="file-card"><strong>학습팀 공용 토론 오디오</strong><span class="file-name">1조_AI리더십토론.m4a</span></div>
+      </div>
+
+      <div class="tip-block">
+        <div class="tip-block-title">파일명보다 더 중요한 것</div>
+        <div class="tip-block-content">
+          파일 안에는 <strong>제목·소제목·표 구조</strong>가 유지되어야 합니다.
+          CH04 NotebookLM에서 어떤 자료가 어떤 판단 근거를 제공하는지 구분할 수 있도록 파일명을 명확히 하고, 최종 저장 여부를 직접 확인합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section" id="ch00ReadinessSection">
+    <div class="clip-section-title">실습 시작 전 준비 체크</div>
+    <div class="clip-section-content">
+      <div class="readiness-shell">
+        <div class="readiness-list">
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="gemini-login">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>Gemini 로그인</strong><span>Google 계정으로 접속하고 입력창·파일 첨부 메뉴를 확인했습니다.</span></span>
+          </label>
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="notebooklm-login">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>NotebookLM 로그인</strong><span>새 노트북 생성 위치와 소스·채팅·Studio 패널을 확인할 준비가 되었습니다.</span></span>
+          </label>
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="audio-ready">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>토론 녹음 준비</strong><span>스마트폰 녹음 또는 Tiro 사용이 가능하고, 녹음 목적·동의·민감정보 원칙을 확인했습니다.</span></span>
+          </label>
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="team-issue">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>팀 성과 문제 1개</strong><span>회의·보고·업무지시·피드백 등 실제 장면에서 반복되는 문제를 하나 떠올렸습니다.</span></span>
+          </label>
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="workflow-case">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>비효율 업무 1개</strong><span>반복성·시간 소요·품질 편차가 큰 대표 업무를 하나 선정할 준비가 되었습니다.</span></span>
+          </label>
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="output-folder">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>산출물 저장 폴더</strong><span>성과향상_with_AI_성명 폴더를 만들고 충전기·네트워크·브라우저 상태를 확인했습니다.</span></span>
+          </label>
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="security-rule">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>민감정보 제한</strong><span>실명·평가·보상·징계·건강정보·고객 식별정보·민감 영업정보를 입력하지 않습니다.</span></span>
+          </label>
+          <label class="readiness-item">
+            <input type="checkbox" data-ready-item="human-accountability">
+            <span class="readiness-checkmark" aria-hidden="true"></span>
+            <span class="readiness-copy"><strong>리더 최종 책임</strong><span>AI 결과는 초안과 분석 보조이며, 최종 판단·피드백·전달 책임은 리더에게 있음을 확인했습니다.</span></span>
+          </label>
+        </div>
+
+        <div class="readiness-footer" aria-live="polite">
+          <div>
+            <span class="readiness-summary" data-ready-summary>준비 완료 0 / 8</span><br>
+            <span class="readiness-message" data-ready-message>아직 저장된 준비 상태가 없습니다.</span>
+          </div>
+          <div class="readiness-actions">
+            <button type="button" class="readiness-reset" data-ready-reset>준비 상태 초기화</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 동적 HTML 주입 환경에서도 준비 상태를 복원하고 자동 저장합니다. -->
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(marker){
+        var root=marker.closest('.ch00-clip01-revised');
+        if(!root||root.getAttribute('data-readiness-ready')==='true'){return;}
+        root.setAttribute('data-readiness-ready','true');
+        var section=root.querySelector('#ch00ReadinessSection');
+        if(!section){return;}
+        var controls=section.querySelectorAll('[data-ready-item]');
+        var summaryEl=section.querySelector('[data-ready-summary]');
+        var messageEl=section.querySelector('[data-ready-message]');
+        var resetBtn=section.querySelector('[data-ready-reset]');
+        var courseCode='AXCAMP';
+        var accountId='public';
+        try{
+          courseCode=localStorage.getItem('ax_literacy_course_code')||courseCode;
+          accountId=localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||accountId;
+        }catch(ignore){}
+        var storageKey='ax_literacy_checklist_status:'+encodeURIComponent(courseCode)+':ch00-clip01-readiness:'+encodeURIComponent(accountId);
+
+        function formatSavedTime(value){
+          if(!value){return '';}
+          var date=new Date(value);
+          if(Number.isNaN(date.getTime())){return '';}
+          return date.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+        }
+
+        function collect(){
+          var items={};
+          for(var i=0;i&lt;controls.length;i+=1){items[controls[i].getAttribute('data-ready-item')]=Boolean(controls[i].checked);}
+          return items;
+        }
+
+        function updateSummary(items){
+          var done=0;
+          var keys=Object.keys(items||{});
+          for(var i=0;i&lt;keys.length;i+=1){if(items[keys[i]]){done+=1;}}
+          if(summaryEl){summaryEl.textContent='준비 완료 '+done+' / '+controls.length;}
+        }
+
+        function restore(){
+          var saved=null;
+          try{saved=JSON.parse(localStorage.getItem(storageKey)||'null');}catch(ignore){saved=null;}
+          var items=saved&amp;&amp;saved.items?saved.items:{};
+          for(var i=0;i&lt;controls.length;i+=1){
+            var key=controls[i].getAttribute('data-ready-item');
+            controls[i].checked=Boolean(items[key]);
+          }
+          updateSummary(items);
+          if(messageEl){messageEl.textContent=saved&amp;&amp;saved.updatedAt?'저장된 준비 상태 불러옴 · '+formatSavedTime(saved.updatedAt):'아직 저장된 준비 상태가 없습니다.';}
+        }
+
+        function save(){
+          var items=collect();
+          var payload={version:1,clipKey:'ch00-clip01-readiness',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};
+          try{
+            localStorage.setItem(storageKey,JSON.stringify(payload));
+            updateSummary(items);
+            if(messageEl){messageEl.textContent='자동 저장 완료 · '+formatSavedTime(payload.updatedAt);}
+          }catch(error){
+            updateSummary(items);
+            if(messageEl){messageEl.textContent='상태는 선택되었지만 브라우저 저장에 실패했습니다.';}
+          }
+        }
+
+        section.addEventListener('change',function(event){
+          if(event.target&amp;&amp;event.target.matches('[data-ready-item]')){save();}
+        });
+
+        if(resetBtn){
+          resetBtn.addEventListener('click',function(){
+            if(!window.confirm('저장된 준비 상태를 모두 초기화하시겠습니까?')){return;}
+            for(var i=0;i&lt;controls.length;i+=1){controls[i].checked=false;}
+            try{localStorage.removeItem(storageKey);}catch(ignore){}
+            updateSummary({});
+            if(messageEl){messageEl.textContent='저장된 준비 상태를 초기화했습니다.';}
+          });
+        }
+
+        restore();
+      })(this);">
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">오늘의 공통 운영 원칙</div>
+    <div class="clip-section-content">
+      <div class="principle-grid">
+        <article class="principle-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path><path d="M8 11l2 2 4-4"></path></svg>
+          </span>
+          <h3>근거를 확인합니다</h3>
+          <p>자료에 없는 수치와 사실을 임의로 채우지 않습니다. 중요한 판단은 원문과 출처를 열어 확인하고 근거와 추론을 구분합니다.</p>
+        </article>
+        <article class="principle-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          </span>
+          <h3>민감정보를 보호합니다</h3>
+          <p>사례는 익명화·일반화합니다. 평가·보상·징계·건강정보·고객 식별정보·민감 영업정보는 입력하지 않습니다.</p>
+        </article>
+        <article class="principle-card">
+          <span class="icon-shell" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5v6c0 5-3.5 8-9 9-5.5-1-9-4-9-9v-6L12 3z"></path><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+          </span>
+          <h3>리더가 최종 책임집니다</h3>
+          <p>AI는 초안·요약·비교·질문 생성·점검을 돕습니다. 목표 기준, 피드백 전달, 공정성, 민감한 판단은 리더가 책임집니다.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-block" style="margin-top:18px">
+    <div class="info-block-title">오늘의 핵심 메시지</div>
+    <div>
+      이 과정의 성과는 AI를 몇 번 사용했는지가 아니라,
+      <strong>리더의 판단 기준, 팀의 일하는 방식, 실행과 검증의 루틴이 어떻게 달라졌는가</strong>로 확인합니다.
+      오늘 만든 결과는 교육장에서 끝내지 않고 다음 주 첫 회의와 업무 장면에서 바로 시험합니다.
+    </div>
+  </div>
+
+  <div class="clip-nav-footer">
+    <span class="clip-nav-btn disabled" aria-disabled="true">← 처음</span>
+    <a class="clip-nav-btn" href="#ch01-clip01">AI 트렌드 →</a>
+  </div>
+</section>
