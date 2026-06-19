@@ -3858,8 +3858,8 @@ async function handleAdminPublish(req, res, urlObj) {
       await runGit(["commit", "-m", message]);
       operations.push("commit");
     } catch (error) {
-      const stderr = String(error?.stderr || error?.message || "");
-      if (!/nothing to commit/i.test(stderr)) {
+      const errText = String(error?.stdout || error?.stderr || error?.message || "");
+      if (!/nothing to commit/i.test(errText)) {
         throw error;
       }
     }
