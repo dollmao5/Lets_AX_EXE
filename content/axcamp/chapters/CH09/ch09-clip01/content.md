@@ -1,90 +1,237 @@
 ---
-route: "#ch06-clip01"
-chapter: "ch06"
-title: "오늘의 핵심 정리"
-source_url: "https://lg.cmdspace.work/axcamp#ch06-clip01"
+route: "#ch05-clip01"
+chapter: "ch05"
+title: "오늘의 핵심 정리: 배움에서 현업 자산으로"
+source_url: "https://lg.cmdspace.work/axcamp#ch05-clip01"
 exported_at: "2026-02-28T01:54:29.602Z"
 ---
 
 ~10분
-개요
+CH 05
+회수 · 연결
 
-# 오늘의 핵심 정리
+# 오늘의 핵심 정리: 배움에서 현업 자산으로
 
-오늘 수업은 AI를 읽고, 맡기고, 맥락으로 깊게 만들고, 실제 앱으로 구현해보는 흐름이었습니다. 마지막에는 각 단계가 어떻게 연결되는지 다시 짚고, 내일부터 바로 적용할 포인트를 정리합니다.
+이 클립은 CH01~CH04의 내용을 다시 설명하는 복습 시간이 아닙니다.
 
-## 오늘 실제로 경험한 5단계
+하루 동안 만든 **진단 결과, 리더 프로필, 팀 진단 리포트, Workflow Canvas, 30일 Action Plan**을 다시 찾아
+서로 연결하고, 현업에서 실제로 사용할 자료를 확정하는 단계입니다.
 
-|
-단계 |
-도구 |
-오늘 한 일 |
-남는 감각 |
+이 단계의 핵심 질문은 **“무엇을 배웠는가?”가 아니라 “현업에 무엇을 가져갈 것인가?”**입니다.
 
-|
-**1** |
-AI 트렌드 |
-Assistant에서 Agentic AI, Physical AI로 넘어가는 흐름을 봤습니다. |
-AI는 답변 도구를 넘어 실제 일을 맡는 방향으로 가고 있습니다. |
+## CH01~CH04 학습 여정 한눈에 보기
 
-|
-**2** |
-Gemini / ChatGPT / GPTs |
-대화를 통해 맥락을 만들고, 프롬프트를 구조화하고, 공유된 GPTs로 심층 리서치 흐름을 이어봤습니다. |
-좋은 결과는 좋은 질문보다도 좋은 맥락과 구조에서 나옵니다. |
+CH01 · Understand
+AI 변화 이해와 출발점 진단
 
-|
-**3** |
-NotebookLM |
-회의 결과와 외부 보고서를 함께 넣고, 교차 검증과 브리핑 생성 흐름을 실습했습니다. |
-자료를 어떻게 함께 보게 하느냐에 따라 해석의 깊이가 달라집니다. |
+나는 어디에서 출발하고 있는가?
 
-|
-**4** |
-AI Studio Build |
-시스템 개발 명세를 만들고, 앱으로 바꾸고, 수정 요청으로 결과를 발전시켰습니다. |
-이제 중요한 것은 코드를 처음부터 쓰는 것이 아니라, 원하는 결과를 더 잘 설명하는 것입니다. |
+Assistant에서 Agentic AI로의 변화, AI 리터러시 수준, AI-Friendly 리더십 스타일을 확인했습니다.
 
-|
-**5** |
-Hi-D Code |
-사내 환경에서 Vibe Coding과 업무 자동화가 어떻게 이어질 수 있는지 시연으로 확인했습니다. |
-개인 실험을 넘어 조직의 실행 환경으로 연결될 수 있어야 진짜 변화가 됩니다. |
+CH02 · Define
+리더 역할·책임·역량 정의
 
-## 오늘 남겨야 할 4가지 메시지
+AI 시대에도 내가 책임질 일은 무엇인가?
 
-- **AI는 질문을 잘 받는 도구가 아니라, 맥락을 잘 받는 실행 파트너입니다.**
+AI와 리더의 역할 경계를 정하고, 리더 역할 프로필과 핵심 역량·성과관리 실행 브리프를 만들었습니다.
 
-- **한 번 잘 만든 자료는 다음 단계의 입력으로 이어질 때 가치가 커집니다.** 회의 메모, 리서치 결과, 브리핑 초안, 앱 명세가 서로 연결됩니다.
+CH03 · Re-design
+팀 병목 진단과 Workflow 재설계
 
-- **실습의 핵심은 따라 하기보다 수정해보기입니다.** 같은 예제를 봐도 각자 다른 결과가 나오는 것이 정상입니다.
+우리 팀은 성과가 흐르는 구조로 일하는가?
 
-- **조직 적용은 개인의 작은 성공에서 시작하지만, 결국 데이터·보안·운영 환경으로 확장되어야 합니다.**
+성과 병목, 팀 효과성 지표, 행동역량을 정의하고 대표 업무를 Divide–Navigate–Arrange로 재설계했습니다.
 
-## 내일부터 바로 해볼 3가지
+CH04 · Execute
+근거 통합과 30일 실행계획
 
-|
-구분 |
-바로 할 일 |
-기대 효과 |
+30일 동안 무엇을 실행하고 확인할 것인가?
 
-|
-**개인** |
-자주 반복하는 업무 하나를 골라 Gemini 또는 ChatGPT로 다시 해봅니다. |
-내 업무에서 AI가 가장 먼저 효율을 주는 지점을 찾을 수 있습니다. |
+NotebookLM에서 근거를 연결하고 핵심 실행과제 TOP 3와 30일 Action Plan을 완성했습니다.
 
-|
-**리서치** |
-회의 메모, 보고서, 외부 자료를 NotebookLM에 함께 넣고 교차 검증을 해봅니다. |
-한 자료만 볼 때 놓치던 맥락과 근거를 더 잘 볼 수 있습니다. |
+### 한 문장으로 연결하면
 
-|
-**제작** |
-오늘 만든 앱을 한 번 더 수정하거나, 새 아이디어를 AI Studio Build에서 가볍게 만들어봅니다. |
-설명하고 고치는 리듬이 실제로 몸에 남습니다. |
+**나의 AI 활용 출발점을 알고 → 리더의 책임 기준을 세우고 → 팀의 성과 구조와 Workflow를 바꾸며 → 30일 동안 실행하고 증거로 점검하는 과정**입니다.
 
-## 마지막으로 던져볼 질문
+## 과정을 관통한 다섯 가지 핵심 원칙
 
-### 오늘 가장 중요하게 가져갈 질문
+1
+**도구보다 업무 구조가 먼저입니다**AI 활용 성과는 접속 횟수가 아니라 Workflow, 품질 기준, 검증 방식이 달라졌는지로 확인합니다.
 
-내 조직에서 AI를 “한 번 써보는 도구”로 둘 것인가, 아니면 **맥락을 쌓고 반복 가능한 흐름으로 남기는 실행 체계**로 만들 것인가?
+2
+**AI는 지원하고 리더는 책임집니다**AI는 초안·요약·비교·질문 생성을 돕고, 목표 기준·최종 판단·피드백·공정성은 리더가 책임집니다.
+
+3
+**프롬프트는 업무 위임서입니다**역할, 맥락, 판단 기준, 출력 형식, 제한 조건을 함께 지정해야 결과를 재사용할 수 있습니다.
+
+4
+**사람을 탓하기 전에 시스템을 봅니다**개인의 태도보다 목표·역할·프로세스·관계·심리적 안전감·실행 신뢰성의 병목을 먼저 진단합니다.
+
+5
+**작게 시작하고 증거로 학습합니다**실행과제는 세 개 이하로 좁히고, 30일 안에 관찰 가능한 변화와 근거를 주간 단위로 확인합니다.
+
+## 과정 산출물 회수 및 연결
+
+체크박스를 선택하고 파일명 또는 저장 위치를 적습니다. 파일이 없으면 체크하지 말고, 보완이 필요한 위치를 메모합니다. 선택 내용은 현재 브라우저와 로그인 계정 기준으로 자동 저장됩니다.
+
+필수 산출물 회수 0 / 8 · 선택 산출물 0 / 1
+
+현업 적용 초점 0 / 3 작성
+
+CH01. 나의 출발점
+
+진단 결과 회수
+
+-
+
+**AI 리터러시 유형과 AI-Friendly 리더십 스타일**
+나의 현재 활용 수준, 강점, 보완점을 확인할 수 있는 결과
+
+파일명·스크린샷·저장 위치 메모
+
+CH02. 리더 기준
+
+역할·역량 회수
+
+- **AI와 리더 역할 분담표 + 리더 역할 프로필**
+AI에게 맡길 일과 리더가 직접 책임질 일을 구분한 기준
+
+- **리더 핵심 역량·성과관리 실행 브리프**
+핵심 역량·스킬과 30일 리더 행동 후보를 정리한 Markdown
+
+파일명·저장 위치 메모
+
+CH03. 팀 시스템
+
+진단·재설계 회수
+
+- **팀 성과 병목 진단 리포트와 효과성 지표**
+표면 증상, 구조적 병목, Root Cause, 30일 점검 지표
+
+- **조직·인재 행동역량 프로파일**
+리더·팀원·팀 공통의 관찰 가능한 행동 기준
+
+- **Workflow Re-design Canvas**
+Task별 AI 적합도, 검증 포인트, 책임, Fallback을 포함한 파일럿 후보
+
+파일명·저장 위치 메모
+
+CH04. 현업 실행
+
+Action Plan 회수
+
+- **CH04 자료 연결표(Source Map) + 핵심 실행과제 TOP 3**
+리더 기준과 팀 시스템 근거를 실행 우선순위로 연결한 자료
+
+- **우리 팀 성과향상 30일 Action Plan**
+현재 상태, 목표, 주차별 행동, 역할, 지표, 리스크를 포함한 최종 계획
+
+- **주간 점검 Gem 또는 팀 공유용 원페이지**선택
+Action Plan을 반복 점검하거나 팀과 공유하기 위한 운영 자료
+
+파일명·저장 위치 메모
+
+### 산출물이 보이지 않을 때
+
+새로 만들기보다 먼저 기존 Gemini 대화, NotebookLM Note, 다운로드 폴더, 개인 메모를 확인합니다. 찾지 못한 자료는 파일 위치 메모란에 **“보완 필요”**라고 적고, 현업 적용에 반드시 필요한 **CH04 30일 Action Plan**부터 우선 회수합니다.
+
+## 산출물을 하나의 실행 논리로 연결하기
+
+**1. 나의 출발점**AI 리터러시와 리더십 스타일
+
+**2. 리더 책임 기준**역할 분담표, 역할 프로필, 핵심 역량
+
+**3. 팀 성과 구조**병목, 효과성 지표, 행동역량, Workflow
+
+**4. 30일 실행**Source Map, TOP 3, Action Plan, 주간 점검
+
+TAKEAWAY 1 · LEADER
+
+현업에서 내가 직접 책임질 리더 행동 한 가지
+
+TAKEAWAY 2 · TEAM
+
+팀과 함께 바꿀 업무 장면 또는 Workflow 한 가지
+
+TAKEAWAY 3 · EVIDENCE
+
+30일 후 반드시 확인할 변화 또는 증거 한 가지
+
+**입력 내용은 자동 저장됩니다**
+아직 저장된 내용이 없습니다.
+
+성명
+
+요약 복사
+회수표 다운로드
+입력 초기화
+
+## 이번 클립의 완료 기준
+
+**다음 클립으로 넘어가기 전 확인합니다**
+필수 산출물 8개를 회수했거나 보완 위치를 파악하고, 현업 적용 초점 3가지를 작성했습니다. 특히 CH04의 30일 Action Plan 저장 위치를 알고 있어야 합니다.
+
+현업 전환 준비 중
+
+### 핵심 메시지
+
+과정의 결과는 기억한 개념의 양이 아니라, **현업에서 다시 열어 실행할 수 있는 자료와 행동 기준**으로 남아야 합니다.
+
+지금 회수한 산출물과 세 가지 현업 적용 초점은 다음 클립의 **Start / Stop / Continue 개인 실천계획**으로 이어집니다.
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
+
+핵심 질문: 무엇을 배웠는가가 아니라, 현업에 무엇을 가져갈 것인가?');
+return lines.join('\n');
+}
+
+function safeFileName(value){
+return String(value||'성명미입력').trim().replace(/[\\/:*?\x22|\s]+/g,'_').replace(/[\u003C\u003E]/g,'_').replace(/^_+|_+$/g,'')||'성명미입력';
+}
+
+function downloadText(text,fileName,type){
+var mime=type||'text/plain;charset=utf-8';
+var link=document.createElement('a');
+var objectUrl='';
+link.download=fileName;
+if(window.URL&&typeof URL.createObjectURL==='function'){
+var blob=new Blob([text],{type:mime});
+objectUrl=URL.createObjectURL(blob);
+link.href=objectUrl;
+}else{
+link.href='data:'+mime+','+encodeURIComponent(text);
+}
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+if(objectUrl&&window.URL&&typeof URL.revokeObjectURL==='function'){window.setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);}
+}
+
+root.addEventListener('input',function(event){if(event.target&&event.target.matches('[data-c501-field]')){save();}});
+root.addEventListener('change',function(event){if(event.target&&event.target.matches('[data-c501-artifact]')){save();}});
+
+if(downloadBtn){downloadBtn.addEventListener('click',function(){
+save();
+var name=safeFileName(getFieldValue('participantName'));
+downloadText(buildMarkdown(),'CH05_과정산출물_회수표_'+name+'.md','text/markdown;charset=utf-8');
+if(saveMessageEl){saveMessageEl.textContent='회수표 다운로드 완료 · '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});}
+});}
+
+if(copyBtn){copyBtn.addEventListener('click',function(){
+var text=buildMarkdown();
+var done=function(){copyBtn.textContent='복사 완료';window.setTimeout(function(){copyBtn.textContent='요약 복사';},1400);};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){window.prompt('아래 내용을 복사하세요.',text);});}
+else{window.prompt('아래 내용을 복사하세요.',text);}
+});}
+
+if(resetBtn){resetBtn.addEventListener('click',function(){
+if(!window.confirm('CH05-clip01에 저장된 체크와 입력 내용을 모두 초기화하시겠습니까?')){return;}
+Array.prototype.forEach.call(fields,function(field){field.value='';});
+Array.prototype.forEach.call(artifacts,function(item){item.checked=false;});
+try{localStorage.removeItem(storageKey);}catch(ignore){}
+if(saveMessageEl){saveMessageEl.textContent='저장된 내용을 초기화했습니다.';}
+updateUI();
+});}
+
+restore();
+})(this);">
