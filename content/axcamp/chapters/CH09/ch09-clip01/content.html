@@ -363,177 +363,6 @@
       box-shadow: 0 0 0 4px color-mix(in srgb, var(--c51-brand) 14%, transparent);
     }
 
-    .ch05-clip01-revised .connection-flow {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin: 12px 0 18px;
-    }
-
-    .ch05-clip01-revised .connection-step {
-      position: relative;
-      padding: 18px;
-      border: 1px solid var(--c51-border);
-      border-radius: 16px;
-      background: #fff;
-    }
-
-    .ch05-clip01-revised .connection-step:not(:last-child)::after {
-      content: "→";
-      position: absolute;
-      top: 50%;
-      right: -19px;
-      z-index: 2;
-      color: var(--c51-brand);
-      font-size: 1.15rem;
-      font-weight: 950;
-      transform: translateY(-50%);
-    }
-
-    .ch05-clip01-revised .connection-step strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--c51-heading);
-      font-size: 1rem !important;
-      line-height: 1.4 !important;
-    }
-
-    .ch05-clip01-revised .connection-step span {
-      color: var(--c51-secondary);
-      font-size: 0.94rem !important;
-      line-height: 1.5 !important;
-    }
-
-    .ch05-clip01-revised .takeaway-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--c51-gap);
-      margin: 12px 0 20px;
-    }
-
-    .ch05-clip01-revised .takeaway-card {
-      padding: 18px;
-      border: 1px solid var(--c51-border);
-      border-radius: var(--c51-radius);
-      background: var(--c51-offwhite);
-    }
-
-    .ch05-clip01-revised .takeaway-kicker {
-      margin-bottom: 8px;
-      color: var(--c51-brand);
-      font-size: 0.92rem !important;
-      line-height: 1.3 !important;
-      font-weight: 900;
-    }
-
-    .ch05-clip01-revised .takeaway-card .field-label {
-      min-height: 58px;
-    }
-
-    .ch05-clip01-revised .save-panel {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-top: 16px;
-      padding: 16px;
-      border: 1px solid var(--c51-border);
-      border-radius: 16px;
-      background: var(--c51-offwhite);
-    }
-
-    .ch05-clip01-revised .save-copy {
-      flex: 1 1 360px;
-    }
-
-    .ch05-clip01-revised .save-copy strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--c51-heading);
-      font-size: 1rem !important;
-      line-height: 1.35 !important;
-    }
-
-    .ch05-clip01-revised .save-message {
-      color: var(--c51-secondary);
-      font-size: 0.94rem !important;
-      line-height: 1.45 !important;
-    }
-
-    .ch05-clip01-revised .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .ch05-clip01-revised .action-btn {
-      min-height: 44px;
-      padding: 9px 15px;
-      border: 1px solid var(--c51-border);
-      border-radius: 999px;
-      background: #fff;
-      color: var(--c51-heading);
-      font: inherit;
-      font-size: 0.96rem !important;
-      line-height: 1.25 !important;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    .ch05-clip01-revised .action-btn.primary {
-      border-color: var(--c51-brand);
-      background: var(--c51-brand);
-      color: #fff;
-    }
-
-    .ch05-clip01-revised .action-btn:hover { transform: translateY(-1px); }
-    .ch05-clip01-revised .action-btn:focus-visible {
-      outline: 4px solid color-mix(in srgb, var(--c51-brand) 18%, transparent);
-      outline-offset: 2px;
-    }
-
-    .ch05-clip01-revised .completion-box {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 16px;
-      align-items: center;
-      padding: 18px 20px;
-      border: 1px solid var(--c51-border);
-      border-left: 6px solid var(--c51-brand);
-      border-radius: 16px;
-      background: #fff;
-    }
-
-    .ch05-clip01-revised .completion-box strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--c51-heading);
-      font-size: 1.06rem !important;
-    }
-
-    .ch05-clip01-revised .completion-status {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 38px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: var(--c51-offwhite);
-      color: var(--c51-secondary);
-      font-size: 0.92rem !important;
-      line-height: 1.2 !important;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .ch05-clip01-revised .completion-status.is-ready {
-      background: var(--c51-brand-soft);
-      color: var(--c51-brand);
-    }
-
     .ch05-clip01-revised .visually-hidden {
       position: absolute !important;
       width: 1px !important;
@@ -555,29 +384,18 @@
     }
 
     @media (max-width: 980px) {
-      .ch05-clip01-revised .journey-grid,
-      .ch05-clip01-revised .connection-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .ch05-clip01-revised .journey-card::after,
-      .ch05-clip01-revised .connection-step::after { display: none; }
+      .ch05-clip01-revised .journey-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ch05-clip01-revised .journey-card::after { display: none; }
     }
 
     @media (max-width: 680px) {
       .ch05-clip01-revised { font-size: 18px; }
       .ch05-clip01-revised .clip-overview { padding: 20px !important; }
       .ch05-clip01-revised .journey-grid,
-      .ch05-clip01-revised .artifact-grid,
-      .ch05-clip01-revised .connection-flow,
-      .ch05-clip01-revised .takeaway-grid { grid-template-columns: 1fr; }
+      .ch05-clip01-revised .artifact-grid { grid-template-columns: 1fr; }
       .ch05-clip01-revised .journey-card { min-height: 0; }
       .ch05-clip01-revised .artifact-card-head { display: block; }
       .ch05-clip01-revised .artifact-card-purpose { margin-top: 5px; text-align: left; }
-      .ch05-clip01-revised .takeaway-card .field-label { min-height: 0; }
-      .ch05-clip01-revised .save-panel,
-      .ch05-clip01-revised .action-row { align-items: stretch; }
-      .ch05-clip01-revised .action-row,
-      .ch05-clip01-revised .action-btn { width: 100%; }
-      .ch05-clip01-revised .completion-box { grid-template-columns: 1fr; }
-      .ch05-clip01-revised .completion-status { justify-self: start; }
     }
   </style>
 
@@ -585,7 +403,7 @@
     <div class="clip-badges">
       <span class="clip-badge time">~10분</span>
       <span class="clip-badge chapter">CH 09</span>
-      <span class="clip-badge type-reflection">회수 · 연결</span>
+      <span class="clip-badge type-overview">개요</span>
     </div>
     <h1 class="clip-title" data-keep-title="">오늘의 핵심 정리: 배움에서 현업 자산으로</h1>
   </div>
@@ -671,10 +489,9 @@
 
       <div class="recovery-toolbar" aria-live="polite">
         <div>
-          <div class="recovery-summary" data-c501-summary>필수 산출물 회수 0 / 8 · 선택 산출물 0 / 1</div>
-          <div class="save-message" data-c501-takeaway-summary>현업 적용 초점 0 / 3 작성</div>
+          <div class="recovery-summary" data-c501-summary="">필수 산출물 회수 0 / 8 · 선택 산출물 0 / 1</div>
         </div>
-        <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-c501-progress></div></div>
+        <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-c501-progress=""></div></div>
       </div>
 
       <div class="artifact-grid">
@@ -744,75 +561,15 @@
     </div>
   </div>
 
-  <div class="clip-section">
-    <div class="clip-section-title">산출물을 하나의 실행 논리로 연결하기</div>
-    <div class="clip-section-content">
-      <div class="connection-flow" aria-label="산출물 연결 구조">
-        <div class="connection-step"><strong>1. 나의 출발점</strong><span>AI 리터러시와 리더십 스타일</span></div>
-        <div class="connection-step"><strong>2. 리더 책임 기준</strong><span>역할 분담표, 역할 프로필, 핵심 역량</span></div>
-        <div class="connection-step"><strong>3. 팀 성과 구조</strong><span>병목, 효과성 지표, 행동역량, Workflow</span></div>
-        <div class="connection-step"><strong>4. 30일 실행</strong><span>Source Map, TOP 3, Action Plan, 주간 점검</span></div>
-      </div>
-
-      <div class="takeaway-grid">
-        <article class="takeaway-card">
-          <div class="takeaway-kicker">TAKEAWAY 1 · LEADER</div>
-          <label class="field-label" for="c501-leader-action">현업에서 내가 직접 책임질 리더 행동 한 가지</label>
-          <textarea class="text-area" id="c501-leader-action" data-c501-field="leaderAction" placeholder="예: 매주 1:1에서 AI가 만든 질문 초안을 검토하고, 팀원의 맥락을 반영해 직접 피드백한다."></textarea>
-        </article>
-        <article class="takeaway-card">
-          <div class="takeaway-kicker">TAKEAWAY 2 · TEAM</div>
-          <label class="field-label" for="c501-team-scene">팀과 함께 바꿀 업무 장면 또는 Workflow 한 가지</label>
-          <textarea class="text-area" id="c501-team-scene" data-c501-field="teamScene" placeholder="예: 주간회의 준비 업무를 Task로 분해하고 AI 초안–인간 검증–리더 승인 흐름으로 재설계한다."></textarea>
-        </article>
-        <article class="takeaway-card">
-          <div class="takeaway-kicker">TAKEAWAY 3 · EVIDENCE</div>
-          <label class="field-label" for="c501-evidence">30일 후 반드시 확인할 변화 또는 증거 한 가지</label>
-          <textarea class="text-area" id="c501-evidence" data-c501-field="evidence" placeholder="예: 회의 준비시간, 재작업 건수, 팀원의 우려 제기 빈도 중 최소 한 지표의 변화를 확인한다."></textarea>
-        </article>
-      </div>
-
-      <div class="save-panel" aria-live="polite">
-        <div class="save-copy">
-          <strong>입력 내용은 자동 저장됩니다</strong>
-          <div class="save-message" data-c501-save-message>아직 저장된 내용이 없습니다.</div>
-        </div>
-        <div class="action-row">
-          <label class="visually-hidden" for="c501-participant-name">성명</label>
-          <input class="text-input" id="c501-participant-name" style="width:180px" type="text" data-c501-field="participantName" placeholder="성명 입력">
-          <button class="action-btn" type="button" data-c501-copy>요약 복사</button>
-          <button class="action-btn primary" type="button" data-c501-download>회수표 다운로드</button>
-          <button class="action-btn" type="button" data-c501-reset>입력 초기화</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립의 완료 기준</div>
-    <div class="clip-section-content">
-      <div class="completion-box">
-        <div>
-          <strong>다음 클립으로 넘어가기 전 확인합니다</strong>
-          필수 산출물 8개를 회수했거나 보완 위치를 파악하고, 현업 적용 초점 3가지를 작성했습니다. 특히 CH04의 30일 Action Plan 저장 위치를 알고 있어야 합니다.
-        </div>
-        <span class="completion-status" data-c501-ready-status>현업 전환 준비 중</span>
-      </div>
-    </div>
-  </div>
-
   <div class="info-block" style="margin-top:18px">
     <div class="info-block-title">핵심 메시지</div>
     <div>
       과정의 결과는 기억한 개념의 양이 아니라, <strong>현업에서 다시 열어 실행할 수 있는 자료와 행동 기준</strong>으로 남아야 합니다.<br>
-      지금 회수한 산출물과 세 가지 현업 적용 초점은 다음 클립의 <strong>Start / Stop / Continue 개인 실천계획</strong>으로 이어집니다.
+      지금 회수한 산출물은 다음 클립의 <strong>Start / Stop / Continue 개인 실천계획</strong>으로 이어집니다.
     </div>
   </div>
 
-  <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#ch04-clip02">← 팀 성과향상 및 피드백 실전</a>
-    <a class="clip-nav-btn" href="#ch09-clip02">Wrap-up 및 마무리 →</a>
-  </div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch03-clip04">← ChatGPT 및 GPTs 소개</a><a class="clip-nav-btn" href="#ch09-clip02">Wrap-up 및 마무리: Start · Stop · Continue →</a></div>
 
   <!-- 동적 HTML 주입 환경에서도 자동 저장·복원·다운로드 기능을 초기화합니다. -->
   <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(marker){
@@ -825,13 +582,7 @@
     var requiredArtifacts=root.querySelectorAll('[data-c501-artifact][data-required=true]');
     var optionalArtifacts=root.querySelectorAll('[data-c501-artifact][data-required=false]');
     var summaryEl=root.querySelector('[data-c501-summary]');
-    var takeawaySummaryEl=root.querySelector('[data-c501-takeaway-summary]');
     var progressEl=root.querySelector('[data-c501-progress]');
-    var saveMessageEl=root.querySelector('[data-c501-save-message]');
-    var readyStatusEl=root.querySelector('[data-c501-ready-status]');
-    var downloadBtn=root.querySelector('[data-c501-download]');
-    var copyBtn=root.querySelector('[data-c501-copy]');
-    var resetBtn=root.querySelector('[data-c501-reset]');
     var courseCode='AXCAMP';
     var accountId='public';
     try{
@@ -840,19 +591,13 @@
     }catch(ignore){}
     var storageKey='ax_literacy_form:'+encodeURIComponent(courseCode)+':ch05-clip01:'+encodeURIComponent(accountId);
 
-    function formatTime(value){
-      if(!value){return '';}
-      var date=new Date(value);
-      if(Number.isNaN(date.getTime())){return '';}
-      return date.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
-    }
 
     function readSaved(){
       try{
         var raw=localStorage.getItem(storageKey);
         if(!raw){return null;}
         var parsed=JSON.parse(raw);
-        return parsed&&typeof parsed==='object'?parsed:null;
+        return parsed&amp;&amp;typeof parsed==='object'?parsed:null;
       }catch(error){return null;}
     }
 
@@ -877,29 +622,14 @@
     function updateUI(){
       var requiredDone=countChecked(requiredArtifacts);
       var optionalDone=countChecked(optionalArtifacts);
-      var takeawayKeys=['leaderAction','teamScene','evidence'];
-      var takeawayDone=0;
-      Array.prototype.forEach.call(takeawayKeys,function(key){if(getFieldValue(key)){takeawayDone+=1;}});
       if(summaryEl){summaryEl.textContent='필수 산출물 회수 '+requiredDone+' / '+requiredArtifacts.length+' · 선택 산출물 '+optionalDone+' / '+optionalArtifacts.length;}
-      if(takeawaySummaryEl){takeawaySummaryEl.textContent='현업 적용 초점 '+takeawayDone+' / 3 작성';}
-      var totalRequired=requiredArtifacts.length+takeawayKeys.length;
-      var totalDone=requiredDone+takeawayDone;
-      if(progressEl){progressEl.style.width=Math.round((totalDone/totalRequired)*100)+'%';}
-      var isReady=requiredDone===requiredArtifacts.length&&takeawayDone===takeawayKeys.length;
-      if(readyStatusEl){
-        readyStatusEl.textContent=isReady?'현업 전환 준비 완료':'현업 전환 준비 중';
-        readyStatusEl.classList.toggle('is-ready',isReady);
-      }
+      var progressBase=Math.max(requiredArtifacts.length,1);
+      if(progressEl){progressEl.style.width=Math.round((requiredDone/progressBase)*100)+'%';}
     }
 
     function save(){
       var data=collect();
-      try{
-        localStorage.setItem(storageKey,JSON.stringify(data));
-        if(saveMessageEl){saveMessageEl.textContent='자동 저장 완료 · '+formatTime(data.updatedAt);}
-      }catch(error){
-        if(saveMessageEl){saveMessageEl.textContent='입력은 유지되지만 브라우저 저장에 실패했습니다. 다운로드로 별도 보관해 주세요.';}
-      }
+      try{localStorage.setItem(storageKey,JSON.stringify(data));}catch(error){}
       try{window.dispatchEvent(new CustomEvent('ch05:clip01-updated',{detail:data}));}catch(ignore){}
       updateUI();
     }
@@ -917,90 +647,11 @@
         var key=item.getAttribute('data-c501-artifact');
         item.checked=Boolean(savedArtifacts[key]);
       });
-      if(saveMessageEl){saveMessageEl.textContent=saved.updatedAt?'저장된 내용 불러옴 · '+formatTime(saved.updatedAt):'저장된 내용을 불러왔습니다.';}
       updateUI();
     }
 
-    function artifactLabel(item){
-      var label=item.closest('label');
-      return label?label.innerText.replace(/\s+/g,' ').trim():item.getAttribute('data-c501-artifact');
-    }
-
-    function buildMarkdown(){
-      var name=getFieldValue('participantName')||'성명 미입력';
-      var lines=[];
-      lines.push('# CH09 과정 산출물 회수 및 연결표');
-      lines.push('');
-      lines.push('- 성명: '+name);
-      lines.push('- 저장 시각: '+new Date().toLocaleString('ko-KR'));
-      lines.push('');
-      lines.push('## 1. CH01~CH04 산출물 회수');
-      Array.prototype.forEach.call(artifacts,function(item){
-        lines.push('- ['+(item.checked?'x':' ')+'] '+artifactLabel(item));
-      });
-      lines.push('');
-      lines.push('### 파일명·저장 위치');
-      lines.push('- CH01: '+(getFieldValue('locationCh01')||'미입력'));
-      lines.push('- CH03: '+(getFieldValue('locationCh02')||'미입력'));
-      lines.push('- CH03: '+(getFieldValue('locationCh03')||'미입력'));
-      lines.push('- CH04: '+(getFieldValue('locationCh04')||'미입력'));
-      lines.push('');
-      lines.push('## 2. 현업으로 가져갈 세 가지');
-      lines.push('1. 내가 직접 책임질 리더 행동: '+(getFieldValue('leaderAction')||'미입력'));
-      lines.push('2. 팀과 함께 바꿀 업무 장면·Workflow: '+(getFieldValue('teamScene')||'미입력'));
-      lines.push('3. 30일 후 확인할 변화·증거: '+(getFieldValue('evidence')||'미입력'));
-      lines.push('');
-      lines.push('> 핵심 질문: 무엇을 배웠는가가 아니라, 현업에 무엇을 가져갈 것인가?');
-      return lines.join('\n');
-    }
-
-    function safeFileName(value){
-      return String(value||'성명미입력').trim().replace(/[\\/:*?\x22|\s]+/g,'_').replace(/[\u003C\u003E]/g,'_').replace(/^_+|_+$/g,'')||'성명미입력';
-    }
-
-    function downloadText(text,fileName,type){
-      var mime=type||'text/plain;charset=utf-8';
-      var link=document.createElement('a');
-      var objectUrl='';
-      link.download=fileName;
-      if(window.URL&&typeof URL.createObjectURL==='function'){
-        var blob=new Blob([text],{type:mime});
-        objectUrl=URL.createObjectURL(blob);
-        link.href=objectUrl;
-      }else{
-        link.href='data:'+mime+','+encodeURIComponent(text);
-      }
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      if(objectUrl&&window.URL&&typeof URL.revokeObjectURL==='function'){window.setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);}
-    }
-
-    root.addEventListener('input',function(event){if(event.target&&event.target.matches('[data-c501-field]')){save();}});
-    root.addEventListener('change',function(event){if(event.target&&event.target.matches('[data-c501-artifact]')){save();}});
-
-    if(downloadBtn){downloadBtn.addEventListener('click',function(){
-      save();
-      var name=safeFileName(getFieldValue('participantName'));
-      downloadText(buildMarkdown(),'CH05_과정산출물_회수표_'+name+'.md','text/markdown;charset=utf-8');
-      if(saveMessageEl){saveMessageEl.textContent='회수표 다운로드 완료 · '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});}
-    });}
-
-    if(copyBtn){copyBtn.addEventListener('click',function(){
-      var text=buildMarkdown();
-      var done=function(){copyBtn.textContent='복사 완료';window.setTimeout(function(){copyBtn.textContent='요약 복사';},1400);};
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){window.prompt('아래 내용을 복사하세요.',text);});}
-      else{window.prompt('아래 내용을 복사하세요.',text);}
-    });}
-
-    if(resetBtn){resetBtn.addEventListener('click',function(){
-      if(!window.confirm('CH09-clip01에 저장된 체크와 입력 내용을 모두 초기화하시겠습니까?')){return;}
-      Array.prototype.forEach.call(fields,function(field){field.value='';});
-      Array.prototype.forEach.call(artifacts,function(item){item.checked=false;});
-      try{localStorage.removeItem(storageKey);}catch(ignore){}
-      if(saveMessageEl){saveMessageEl.textContent='저장된 내용을 초기화했습니다.';}
-      updateUI();
-    });}
+    root.addEventListener('input',function(event){if(event.target&amp;&amp;event.target.matches('[data-c501-field]')){save();}});
+    root.addEventListener('change',function(event){if(event.target&amp;&amp;event.target.matches('[data-c501-artifact]')){save();}});
 
     restore();
   })(this);">
