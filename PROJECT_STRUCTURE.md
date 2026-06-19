@@ -12,7 +12,9 @@ AX_CAMP/
 ├─ data/
 ├─ content/
 │  └─ axcamp/
-└─ scripts/
+├─ scripts/
+├─ lecture_note/                 # 강의 시나리오 및 오프닝 멘트 등 강의노트 아카이브
+└─ _backup_chapters_original/    # 리팩토링 이전의 구식 원본 chapters 백업
 ```
 
 ## 2) 콘텐츠 구조
@@ -23,14 +25,15 @@ content/axcamp/
 ├─ visible-catalog-overrides.json
 ├─ README.md
 ├─ chapters/
-│  ├─ CH00/
-│  ├─ CH01/
-│  ├─ CH02/
-│  ├─ CH03/
-│  ├─ CH04/
-│  ├─ CH05/
-│  ├─ CH06/
-│  └─ CH07/
+│  ├─ CH00/    # 과정 안내
+│  ├─ CH01/    # AI 핵심 개념
+│  ├─ CH02/    # Gemini 활용 (1)
+│  ├─ CH03/    # Gemini 활용 (2)
+│  ├─ CH04/    # NotebookLM
+│  ├─ CH05/    # Key Takeaways & Q/A
+│  ├─ CH06/    # 참고자료 라이브러리
+│  ├─ CH07/    # AI Studio와 API 이해 (숨김)
+│  └─ CH08/    # Vibe Coding (숨김)
 ├─ [공유용] LG 성과향상 with AI 실습자료/
 ├─ practice_zips/
 └─ survey/
@@ -57,18 +60,19 @@ content/axcamp/
 - visible 제목/시간/클립명 오버라이드는 `visible-catalog-overrides.json` 기준
 - 클립 렌더링은 `content.html` 우선, 없으면 `content.md`/`content.txt` fallback
 
-## 4) 현재 서비스 챕터와 물리 폴더
+## 4) 현재 서비스 챕터와 물리 폴더 (1:1 매칭 완료)
 
-- `CH00` 오늘의 여정 -> `chapters/CH00`
+- `CH00` 과정 안내 -> `chapters/CH00`
 - `CH01` AI 핵심 개념 -> `chapters/CH01`
-- `CH02` Gemini & ChatGPT -> `chapters/CH02`
-- `CH03` NotebookLM -> `chapters/CH03`
-- `CH04` Google AI Studio & Vibe Coding -> `chapters/CH04`
-- `CH05` Hi-D Code -> `chapters/CH05`
-- `CH06` Key Takeaways & Q/A -> `chapters/CH06`
-- `CH07` 참고자료 라이브러리 -> `chapters/CH07`
+- `CH02` Gemini 활용 (1) -> `chapters/CH02`
+- `CH03` Gemini 활용 (2) -> `chapters/CH03`
+- `CH04` NotebookLM -> `chapters/CH04`
+- `CH05` Key Takeaways & Q/A -> `chapters/CH05`
+- `CH06` 참고자료 라이브러리 -> `chapters/CH06`
+- `CH07` AI Studio와 API 이해 (숨김) -> `chapters/CH07`
+- `CH08` Vibe Coding (숨김) -> `chapters/CH08`
 
-일부 canonical route id는 과거 export와의 호환성 때문에 유지된다. 예를 들어 `chapters/CH02` 내부 파일은 현재 visible `CH02`이지만 route는 `#ch03-clip01` 같은 값을 가질 수 있다.
+모든 가시적 라우트 ID(Route)와 물리적 폴더 경로 및 ID는 1:1로 정합성이 완전히 일치되어, 중복이나 혼선 없이 깔끔하게 관리됩니다.
 
 ## 5) 정적/다운로드 라우트
 
@@ -81,3 +85,4 @@ content/axcamp/
 - `public/`: 클라이언트 UI
 - `content/axcamp/`: 현재 수업 콘텐츠 원본
 - `scripts/build-pages.mjs`: GitHub Pages용 정적 스냅샷 생성
+
