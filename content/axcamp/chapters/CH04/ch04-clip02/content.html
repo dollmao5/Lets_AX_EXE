@@ -1,11 +1,11 @@
-<div class="ch04-clip02-revised" id="ch04-clip02">
+<div class="CH04-clip02-revised" id="CH04-clip02">
   <style>
     /* CH04-clip02 final alignment
        - Canonical inputs: CH03-3, CH03-4, CH03 final outputs
        - Core practice: 3 NotebookLM prompts only
        - Step 4 and Step 5 are optional, independently collapsible
        - Completion status is saved immediately in localStorage */
-    .ch04-clip02-revised {
+    .CH04-clip02-revised {
       --c42-font-base: 20px;
       --c42-radius: 18px;
       --c42-gap: 16px;
@@ -15,58 +15,58 @@
       word-break: keep-all;
     }
 
-    .ch04-clip02-revised .clip-title {
+    .CH04-clip02-revised .clip-title {
       font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
       line-height: 1.22 !important;
       letter-spacing: -0.04em;
       margin-top: 10px;
     }
 
-    .ch04-clip02-revised .clip-badge {
+    .CH04-clip02-revised .clip-badge {
       font-size: 0.95rem !important;
       padding: 8px 12px !important;
       border-radius: 999px !important;
     }
 
-    .ch04-clip02-revised .clip-overview {
+    .CH04-clip02-revised .clip-overview {
       font-size: 1.16rem !important;
       line-height: 1.78 !important;
       padding: 24px 26px !important;
       border-radius: var(--c42-radius) !important;
     }
 
-    .ch04-clip02-revised .clip-section-title {
+    .CH04-clip02-revised .clip-section-title {
       font-size: 1.5rem !important;
       line-height: 1.35 !important;
       letter-spacing: -0.025em;
       margin-bottom: 14px !important;
     }
 
-    .ch04-clip02-revised .clip-section-content,
-    .ch04-clip02-revised p,
-    .ch04-clip02-revised li,
-    .ch04-clip02-revised .tip-block-content,
-    .ch04-clip02-revised .info-block,
-    .ch04-clip02-revised .info-block div {
+    .CH04-clip02-revised .clip-section-content,
+    .CH04-clip02-revised p,
+    .CH04-clip02-revised li,
+    .CH04-clip02-revised .tip-block-content,
+    .CH04-clip02-revised .info-block,
+    .CH04-clip02-revised .info-block div {
       font-size: 1.08rem !important;
       line-height: 1.66 !important;
     }
 
-    .ch04-clip02-revised .info-block,
-    .ch04-clip02-revised .tip-block {
+    .CH04-clip02-revised .info-block,
+    .CH04-clip02-revised .tip-block {
       padding: 18px 20px !important;
       border-radius: var(--c42-radius) !important;
     }
 
-    .ch04-clip02-revised .info-block-title,
-    .ch04-clip02-revised .tip-block-title {
+    .CH04-clip02-revised .info-block-title,
+    .CH04-clip02-revised .tip-block-title {
       font-size: 1.08rem !important;
       line-height: 1.45 !important;
       font-weight: 900 !important;
       margin-bottom: 8px !important;
     }
 
-    .ch04-clip02-revised .clip-nav-btn {
+    .CH04-clip02-revised .clip-nav-btn {
       font-size: 1.04rem !important;
       line-height: 1.3 !important;
       padding: 10px 16px !important;
@@ -75,16 +75,16 @@
     }
 
     /* Output and source cards */
-    .ch04-clip02-revised .output-grid,
-    .ch04-clip02-revised .resource-grid {
+    .CH04-clip02-revised .output-grid,
+    .CH04-clip02-revised .resource-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: var(--c42-gap);
       margin: 14px 0 20px;
     }
 
-    .ch04-clip02-revised .output-card,
-    .ch04-clip02-revised .resource-card {
+    .CH04-clip02-revised .output-card,
+    .CH04-clip02-revised .resource-card {
       padding: 20px;
       border: 1px solid var(--border);
       border-radius: var(--c42-radius);
@@ -92,13 +92,13 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .ch04-clip02-revised .output-card.optional-card,
-    .ch04-clip02-revised .resource-card.optional-card {
+    .CH04-clip02-revised .output-card.optional-card,
+    .CH04-clip02-revised .resource-card.optional-card {
       border-style: dashed;
     }
 
-    .ch04-clip02-revised .output-card strong,
-    .ch04-clip02-revised .resource-card strong {
+    .CH04-clip02-revised .output-card strong,
+    .CH04-clip02-revised .resource-card strong {
       display: block;
       margin-bottom: 8px;
       color: var(--text-heading);
@@ -106,14 +106,14 @@
       line-height: 1.42 !important;
     }
 
-    .ch04-clip02-revised .output-card p,
-    .ch04-clip02-revised .resource-card p {
+    .CH04-clip02-revised .output-card p,
+    .CH04-clip02-revised .resource-card p {
       margin: 0 0 8px !important;
       font-size: 1.02rem !important;
       line-height: 1.58 !important;
     }
 
-    .ch04-clip02-revised .file-name {
+    .CH04-clip02-revised .file-name {
       display: inline-block;
       margin-top: 8px;
       padding: 5px 9px;
@@ -126,14 +126,14 @@
     }
 
     /* Flow cards */
-    .ch04-clip02-revised .practice-flow-grid {
+    .CH04-clip02-revised .practice-flow-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: var(--c42-gap);
       margin: 10px 0 20px;
     }
 
-    .ch04-clip02-revised .flow-card {
+    .CH04-clip02-revised .flow-card {
       min-height: 158px;
       padding: 20px;
       background: linear-gradient(135deg, #fff, var(--bg-offwhite));
@@ -142,11 +142,11 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .ch04-clip02-revised .flow-card.optional-card {
+    .CH04-clip02-revised .flow-card.optional-card {
       border-style: dashed;
     }
 
-    .ch04-clip02-revised .flow-card-head {
+    .CH04-clip02-revised .flow-card-head {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
@@ -155,7 +155,7 @@
       margin-bottom: 10px;
     }
 
-    .ch04-clip02-revised .flow-card-title {
+    .CH04-clip02-revised .flow-card-title {
       margin: 0;
       color: var(--brand);
       font-size: 1rem !important;
@@ -163,14 +163,14 @@
       line-height: 1.42 !important;
     }
 
-    .ch04-clip02-revised .flow-card-body {
+    .CH04-clip02-revised .flow-card-body {
       color: var(--text-body);
       font-size: 1.08rem !important;
       line-height: 1.62 !important;
     }
 
-    .ch04-clip02-revised .flow-time-badge,
-    .ch04-clip02-revised .tool-badge {
+    .CH04-clip02-revised .flow-time-badge,
+    .CH04-clip02-revised .tool-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -186,13 +186,13 @@
       white-space: nowrap;
     }
 
-    .ch04-clip02-revised .tool-badge {
+    .CH04-clip02-revised .tool-badge {
       background: #fff;
       color: var(--text-heading);
     }
 
     /* Tool lock / instruction strip */
-    .ch04-clip02-revised .tool-lock {
+    .CH04-clip02-revised .tool-lock {
       margin: 14px 0 18px;
       padding: 18px 20px;
       border: 1px solid var(--border);
@@ -201,24 +201,24 @@
       background: #fff;
     }
 
-    .ch04-clip02-revised .tool-lock strong {
+    .CH04-clip02-revised .tool-lock strong {
       display: block;
       margin-bottom: 8px;
       color: var(--text-heading);
       font-size: 1.08rem !important;
     }
 
-    .ch04-clip02-revised .tool-lock ol {
+    .CH04-clip02-revised .tool-lock ol {
       margin: 0;
       padding-left: 24px;
     }
 
-    .ch04-clip02-revised .tool-lock li {
+    .CH04-clip02-revised .tool-lock li {
       margin-bottom: 6px;
     }
 
     /* Tables */
-    .ch04-clip02-revised .table-wrap {
+    .CH04-clip02-revised .table-wrap {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -227,14 +227,14 @@
       border-radius: 16px;
     }
 
-    .ch04-clip02-revised .table-wrap table {
+    .CH04-clip02-revised .table-wrap table {
       min-width: 820px;
       margin: 0 !important;
       border: 0 !important;
     }
 
-    .ch04-clip02-revised .comparison-table th,
-    .ch04-clip02-revised .comparison-table td {
+    .CH04-clip02-revised .comparison-table th,
+    .CH04-clip02-revised .comparison-table td {
       font-size: 1.06rem !important;
       line-height: 1.45 !important;
       padding: 9px 12px !important;
@@ -242,20 +242,20 @@
       word-break: keep-all;
     }
 
-    .ch04-clip02-revised .comparison-table th {
+    .CH04-clip02-revised .comparison-table th {
       font-weight: 900 !important;
       color: var(--text-heading) !important;
       background: var(--bg-offwhite) !important;
     }
 
     /* Prompts */
-    .ch04-clip02-revised .prompt-block {
+    .CH04-clip02-revised .prompt-block {
       margin: 16px 0 22px;
       overflow: hidden;
       border-radius: var(--c42-radius) !important;
     }
 
-    .ch04-clip02-revised .prompt-header {
+    .CH04-clip02-revised .prompt-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -263,7 +263,7 @@
       padding: 14px 16px !important;
     }
 
-    .ch04-clip02-revised .prompt-label {
+    .CH04-clip02-revised .prompt-label {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -273,7 +273,7 @@
       font-weight: 900 !important;
     }
 
-    .ch04-clip02-revised .copy-btn {
+    .CH04-clip02-revised .copy-btn {
       flex: 0 0 auto;
       padding: 8px 14px !important;
       border-radius: 999px !important;
@@ -282,7 +282,7 @@
       font-weight: 900 !important;
     }
 
-    .ch04-clip02-revised .prompt-content {
+    .CH04-clip02-revised .prompt-content {
       padding: 18px 20px !important;
       font-size: 1.02rem !important;
       line-height: 1.62 !important;
@@ -291,7 +291,7 @@
       word-break: normal;
     }
 
-    .ch04-clip02-revised .step-output-note {
+    .CH04-clip02-revised .step-output-note {
       margin: 16px 0 4px;
       padding: 16px 18px;
       border: 1px solid var(--border);
@@ -300,7 +300,7 @@
       background: #fff;
     }
 
-    .ch04-clip02-revised .step-output-note strong {
+    .CH04-clip02-revised .step-output-note strong {
       display: block;
       margin-bottom: 5px;
       color: var(--text-heading);
@@ -308,7 +308,7 @@
     }
 
     /* Optional independently collapsible sections */
-    .ch04-clip02-revised .optional-details {
+    .CH04-clip02-revised .optional-details {
       margin-top: 14px;
       overflow: hidden;
       border: 1px dashed var(--border);
@@ -316,7 +316,7 @@
       background: #fff;
     }
 
-    .ch04-clip02-revised .optional-details summary {
+    .CH04-clip02-revised .optional-details summary {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -332,16 +332,16 @@
       line-height: 1.45 !important;
     }
 
-    .ch04-clip02-revised .optional-details[open] summary {
+    .CH04-clip02-revised .optional-details[open] summary {
       border-bottom: 1px solid var(--border);
     }
 
-    .ch04-clip02-revised .optional-details-body {
+    .CH04-clip02-revised .optional-details-body {
       padding: 18px 20px 4px;
     }
 
     /* Completion status */
-    .ch04-clip02-revised .visually-hidden {
+    .CH04-clip02-revised .visually-hidden {
       position: absolute !important;
       width: 1px !important;
       height: 1px !important;
@@ -353,15 +353,15 @@
       border: 0 !important;
     }
 
-    .ch04-clip02-revised .completion-table {
+    .CH04-clip02-revised .completion-table {
       min-width: 980px !important;
     }
 
-    .ch04-clip02-revised .completion-status-cell {
+    .CH04-clip02-revised .completion-status-cell {
       min-width: 300px;
     }
 
-    .ch04-clip02-revised .completion-state-group {
+    .CH04-clip02-revised .completion-state-group {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -370,12 +370,12 @@
       border: 0;
     }
 
-    .ch04-clip02-revised .completion-state-option {
+    .CH04-clip02-revised .completion-state-option {
       position: relative;
       display: inline-flex;
     }
 
-    .ch04-clip02-revised .completion-state-option input {
+    .CH04-clip02-revised .completion-state-option input {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -387,7 +387,7 @@
       border: 0;
     }
 
-    .ch04-clip02-revised .completion-state-option label {
+    .CH04-clip02-revised .completion-state-option label {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -405,7 +405,7 @@
       transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
     }
 
-    .ch04-clip02-revised .completion-state-option label::before {
+    .CH04-clip02-revised .completion-state-option label::before {
       content: "";
       width: 18px;
       height: 18px;
@@ -416,30 +416,30 @@
       box-sizing: border-box;
     }
 
-    .ch04-clip02-revised .completion-state-option label:hover {
+    .CH04-clip02-revised .completion-state-option label:hover {
       border-color: var(--brand);
       transform: translateY(-1px);
     }
 
-    .ch04-clip02-revised .completion-state-option input:focus-visible + label {
+    .CH04-clip02-revised .completion-state-option input:focus-visible + label {
       outline: 4px solid rgba(165, 0, 52, 0.18);
       outline-offset: 2px;
     }
 
-    .ch04-clip02-revised .completion-state-option input:checked + label {
+    .CH04-clip02-revised .completion-state-option input:checked + label {
       border-color: var(--brand);
       background: #fff7f9;
       color: var(--text-heading);
       box-shadow: 0 3px 10px rgba(165, 0, 52, 0.10);
     }
 
-    .ch04-clip02-revised .completion-state-option input:checked + label::before {
+    .CH04-clip02-revised .completion-state-option input:checked + label::before {
       border-color: var(--brand);
       background: var(--brand);
       box-shadow: inset 0 0 0 4px #fff;
     }
 
-    .ch04-clip02-revised .completion-save-panel {
+    .CH04-clip02-revised .completion-save-panel {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -452,12 +452,12 @@
       background: var(--bg-offwhite);
     }
 
-    .ch04-clip02-revised .completion-save-copy {
+    .CH04-clip02-revised .completion-save-copy {
       min-width: 240px;
       flex: 1 1 420px;
     }
 
-    .ch04-clip02-revised .completion-save-copy strong {
+    .CH04-clip02-revised .completion-save-copy strong {
       display: block;
       margin-bottom: 3px;
       color: var(--text-heading);
@@ -465,15 +465,15 @@
       line-height: 1.35 !important;
     }
 
-    .ch04-clip02-revised .completion-save-copy span,
-    .ch04-clip02-revised .completion-save-message,
-    .ch04-clip02-revised .completion-summary {
+    .CH04-clip02-revised .completion-save-copy span,
+    .CH04-clip02-revised .completion-save-message,
+    .CH04-clip02-revised .completion-summary {
       color: var(--text-secondary);
       font-size: 0.96rem !important;
       line-height: 1.5 !important;
     }
 
-    .ch04-clip02-revised .completion-save-actions {
+    .CH04-clip02-revised .completion-save-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -481,7 +481,7 @@
       gap: 10px;
     }
 
-    .ch04-clip02-revised .completion-reset-btn {
+    .CH04-clip02-revised .completion-reset-btn {
       min-height: 42px;
       padding: 8px 14px;
       border: 1px solid var(--border);
@@ -494,55 +494,55 @@
       cursor: pointer;
     }
 
-    .ch04-clip02-revised .completion-reset-btn:hover {
+    .CH04-clip02-revised .completion-reset-btn:hover {
       border-color: var(--brand);
       color: var(--brand);
     }
 
-    .ch04-clip02-revised .completion-reset-btn:focus-visible {
+    .CH04-clip02-revised .completion-reset-btn:focus-visible {
       outline: 4px solid rgba(165, 0, 52, 0.18);
       outline-offset: 2px;
     }
 
     @media (max-width: 680px) {
-      .ch04-clip02-revised {
+      .CH04-clip02-revised {
         font-size: 18px;
       }
 
-      .ch04-clip02-revised .clip-overview {
+      .CH04-clip02-revised .clip-overview {
         padding: 20px !important;
       }
 
-      .ch04-clip02-revised .practice-flow-grid,
-      .ch04-clip02-revised .output-grid,
-      .ch04-clip02-revised .resource-grid {
+      .CH04-clip02-revised .practice-flow-grid,
+      .CH04-clip02-revised .output-grid,
+      .CH04-clip02-revised .resource-grid {
         grid-template-columns: 1fr;
       }
 
-      .ch04-clip02-revised .flow-card {
+      .CH04-clip02-revised .flow-card {
         min-height: 0;
       }
 
-      .ch04-clip02-revised .prompt-header {
+      .CH04-clip02-revised .prompt-header {
         align-items: flex-start;
       }
 
-      .ch04-clip02-revised .prompt-content {
+      .CH04-clip02-revised .prompt-content {
         padding: 16px !important;
         font-size: 1rem !important;
       }
 
-      .ch04-clip02-revised .completion-save-panel,
-      .ch04-clip02-revised .completion-save-actions {
+      .CH04-clip02-revised .completion-save-panel,
+      .CH04-clip02-revised .completion-save-actions {
         align-items: stretch;
       }
 
-      .ch04-clip02-revised .completion-save-actions,
-      .ch04-clip02-revised .completion-reset-btn {
+      .CH04-clip02-revised .completion-save-actions,
+      .CH04-clip02-revised .completion-reset-btn {
         width: 100%;
       }
 
-      .ch04-clip02-revised .optional-details summary {
+      .CH04-clip02-revised .optional-details summary {
         align-items: flex-start;
       }
     }
@@ -757,9 +757,9 @@
       <div class="prompt-block">
         <div class="prompt-header">
           <span class="prompt-label"><span class="tool-badge">NotebookLM 채팅</span> 실습 1. CH04 자료 연결표 만들기</span>
-          <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-core-step1')">복사</button>
+          <button class="copy-btn" type="button" onclick="copyPrompt(this,'CH04-core-step1')">복사</button>
         </div>
-        <div class="prompt-content" id="ch04-core-step1">현재 선택된 소스만 사용해 “CH04 자료 연결표(Source Map)”를 작성해 주세요.
+        <div class="prompt-content" id="CH04-core-step1">현재 선택된 소스만 사용해 “CH04 자료 연결표(Source Map)”를 작성해 주세요.
 
 [이 노트북에 포함되어야 할 핵심 소스]
 - CH03-3 리더 역할 프로필 Markdown 저장본
@@ -816,9 +816,9 @@
       <div class="prompt-block">
         <div class="prompt-header">
           <span class="prompt-label"><span class="tool-badge">NotebookLM 채팅</span> 실습 2. 핵심 실행과제 TOP 3 선정</span>
-          <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-core-step2')">복사</button>
+          <button class="copy-btn" type="button" onclick="copyPrompt(this,'CH04-core-step2')">복사</button>
         </div>
-        <div class="prompt-content" id="ch04-core-step2">방금 작성한 “CH04 자료 연결표(Source Map)”와 현재 선택된 소스를 바탕으로, 우리 팀이 30일 동안 집중할 핵심 실행과제를 최대 3개까지 선정해 주세요.
+        <div class="prompt-content" id="CH04-core-step2">방금 작성한 “CH04 자료 연결표(Source Map)”와 현재 선택된 소스를 바탕으로, 우리 팀이 30일 동안 집중할 핵심 실행과제를 최대 3개까지 선정해 주세요.
 
 [선정 기준]
 - 팀 성과 병목을 직접 줄이는가
@@ -863,9 +863,9 @@
       <div class="prompt-block">
         <div class="prompt-header">
           <span class="prompt-label"><span class="tool-badge">NotebookLM 채팅</span> 실습 3. 우리 팀 성과향상 30일 Action Plan</span>
-          <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-core-step3')">복사</button>
+          <button class="copy-btn" type="button" onclick="copyPrompt(this,'CH04-core-step3')">복사</button>
         </div>
-        <div class="prompt-content" id="ch04-core-step3">방금 확정한 “30일 핵심 실행과제 TOP 3”와 현재 선택된 소스를 바탕으로, 우리 팀 성과향상 30일 Action Plan을 작성해 주세요.
+        <div class="prompt-content" id="CH04-core-step3">방금 확정한 “30일 핵심 실행과제 TOP 3”와 현재 선택된 소스를 바탕으로, 우리 팀 성과향상 30일 Action Plan을 작성해 주세요.
 
 # 우리 팀 성과향상 30일 Action Plan
 
@@ -936,9 +936,9 @@
           <div class="prompt-block">
             <div class="prompt-header">
               <span class="prompt-label"><span class="tool-badge">Gemini Gems</span> 선택 4-1. 주간 점검 Gem 인스트럭션</span>
-              <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-optional-gem')">복사</button>
+              <button class="copy-btn" type="button" onclick="copyPrompt(this,'CH04-optional-gem')">복사</button>
             </div>
-            <div class="prompt-content" id="ch04-optional-gem">당신은 팀장의 “우리 팀 성과향상 30일 Action Plan” 실행을 돕는 주간 점검 AI 보좌관입니다.
+            <div class="prompt-content" id="CH04-optional-gem">당신은 팀장의 “우리 팀 성과향상 30일 Action Plan” 실행을 돕는 주간 점검 AI 보좌관입니다.
 
 [역할]
 - 사용자가 입력한 주간 실행 결과를 Action Plan과 비교해 진행상황을 정리합니다.
@@ -981,9 +981,9 @@
           <div class="prompt-block">
             <div class="prompt-header">
               <span class="prompt-label"><span class="tool-badge">Gem Preview</span> 선택 4-2. 한 번 테스트하기</span>
-              <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-optional-gem-test')">복사</button>
+              <button class="copy-btn" type="button" onclick="copyPrompt(this,'CH04-optional-gem-test')">복사</button>
             </div>
-            <div class="prompt-content" id="ch04-optional-gem-test">현재 30일 Action Plan 1주차입니다.
+            <div class="prompt-content" id="CH04-optional-gem-test">현재 30일 Action Plan 1주차입니다.
 이번 주에는 주간회의에서 새로운 업무점검 기준을 공유했고, 보고서 초안 작성에 AI를 시범 적용했습니다.
 회의 기준은 공유했지만 팀원별 이해 수준을 아직 확인하지 못했고, AI 산출물 검증 기준도 충분히 합의되지 않았습니다.
 
@@ -1019,9 +1019,9 @@
           <div class="prompt-block">
             <div class="prompt-header">
               <span class="prompt-label"><span class="tool-badge">NotebookLM 채팅</span> 선택 5-1. 팀 공유용 원페이지</span>
-              <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-optional-share')">복사</button>
+              <button class="copy-btn" type="button" onclick="copyPrompt(this,'CH04-optional-share')">복사</button>
             </div>
-            <div class="prompt-content" id="ch04-optional-share">방금 작성한 “우리 팀 성과향상 30일 Action Plan”을 팀원에게 공유할 수 있는 한 페이지 요약으로 바꿔 주세요.
+            <div class="prompt-content" id="CH04-optional-share">방금 작성한 “우리 팀 성과향상 30일 Action Plan”을 팀원에게 공유할 수 있는 한 페이지 요약으로 바꿔 주세요.
 
 ## 팀 공유용 원페이지
 1. 왜 바꾸는가
@@ -1100,7 +1100,7 @@
     </div>
   </div>
 
-  <div class="clip-section" id="ch04Clip02Completion">
+  <div class="clip-section" id="CH04Clip02Completion">
     <div class="clip-section-title">이번 클립의 완료 기준</div>
     <div class="clip-section-content">
       <div class="table-wrap">
@@ -1119,8 +1119,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="sources-ready">
                   <legend class="visually-hidden">핵심 소스 준비 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-done" name="ch04c02-sources" value="done" data-completion-status=""><label for="ch04c02-sources-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-review" name="ch04c02-sources" value="needs-review" data-completion-status=""><label for="ch04c02-sources-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-sources-done" name="CH04c02-sources" value="done" data-completion-status=""><label for="CH04c02-sources-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-sources-review" name="CH04c02-sources" value="needs-review" data-completion-status=""><label for="CH04c02-sources-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1130,8 +1130,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="source-map">
                   <legend class="visually-hidden">자료 연결표 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-done" name="ch04c02-map" value="done" data-completion-status=""><label for="ch04c02-map-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-review" name="ch04c02-map" value="needs-review" data-completion-status=""><label for="ch04c02-map-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-map-done" name="CH04c02-map" value="done" data-completion-status=""><label for="CH04c02-map-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-map-review" name="CH04c02-map" value="needs-review" data-completion-status=""><label for="CH04c02-map-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1141,8 +1141,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="top-agendas">
                   <legend class="visually-hidden">핵심 실행과제 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-done" name="ch04c02-agenda" value="done" data-completion-status=""><label for="ch04c02-agenda-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-review" name="ch04c02-agenda" value="needs-review" data-completion-status=""><label for="ch04c02-agenda-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-agenda-done" name="CH04c02-agenda" value="done" data-completion-status=""><label for="CH04c02-agenda-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-agenda-review" name="CH04c02-agenda" value="needs-review" data-completion-status=""><label for="CH04c02-agenda-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1152,8 +1152,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="action-plan">
                   <legend class="visually-hidden">30일 Action Plan 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-done" name="ch04c02-plan" value="done" data-completion-status=""><label for="ch04c02-plan-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-review" name="ch04c02-plan" value="needs-review" data-completion-status=""><label for="ch04c02-plan-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-plan-done" name="CH04c02-plan" value="done" data-completion-status=""><label for="CH04c02-plan-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-plan-review" name="CH04c02-plan" value="needs-review" data-completion-status=""><label for="CH04c02-plan-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1163,8 +1163,8 @@
               <td class="completion-status-cell">
                 <fieldset class="completion-state-group" data-completion-item="evidence-safety">
                   <legend class="visually-hidden">근거·보안 점검 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-done" name="ch04c02-safety" value="done" data-completion-status=""><label for="ch04c02-safety-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-review" name="ch04c02-safety" value="needs-review" data-completion-status=""><label for="ch04c02-safety-review">보완 필요</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-safety-done" name="CH04c02-safety" value="done" data-completion-status=""><label for="CH04c02-safety-done">완료</label></span>
+                  <span class="completion-state-option"><input type="radio" id="CH04c02-safety-review" name="CH04c02-safety" value="needs-review" data-completion-status=""><label for="CH04c02-safety-review">보완 필요</label></span>
                 </fieldset>
               </td>
             </tr>
@@ -1185,7 +1185,7 @@
       </div>
 
       <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(marker){
-        var section=marker.closest('#ch04Clip02Completion');
+        var section=marker.closest('#CH04Clip02Completion');
         if(!section||section.getAttribute('data-completion-ready')==='true'){return;}
         section.setAttribute('data-completion-ready','true');
         var controls=section.querySelectorAll('[data-completion-status]');
@@ -1194,7 +1194,7 @@
         var resetBtn=section.querySelector('[data-completion-reset]');
         var courseCode=localStorage.getItem('ax_literacy_course_code')||'Lets_AX_EXE';
         var accountId=localStorage.getItem('ax_literacy_last_lets_id')||localStorage.getItem('ax_literacy_account_id')||'guest';
-        var storageKey='ax_literacy_checklist_status:'+courseCode+':ch04-clip02:'+accountId;
+        var storageKey='ax_literacy_checklist_status:'+courseCode+':CH04-clip02:'+accountId;
 
         function collectItems(){
           var result={};
@@ -1243,7 +1243,7 @@
 
         function saveState(){
           var items=collectItems();
-          var payload={version:1,clipKey:'ch04-clip02',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};
+          var payload={version:1,clipKey:'CH04-clip02',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};
           try{
             localStorage.setItem(storageKey,JSON.stringify(payload));
             updateSummary(items);
@@ -1283,5 +1283,5 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch04-clip01">← NotebookLM 소개 및 접속 방법</a><a class="clip-nav-btn" href="#ch03-clip04">ChatGPT 및 GPTs 소개 →</a></div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#CH04-clip01">← NotebookLM 소개 및 접속 방법</a><a class="clip-nav-btn" href="#CH04-clip03">ChatGPT 및 GPTs 소개 →</a></div>
 </div>

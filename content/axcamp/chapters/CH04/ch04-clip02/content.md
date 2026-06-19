@@ -1,8 +1,8 @@
 ---
-route: "#ch04-clip02"
-chapter: "ch04"
+route: "#CH04-clip02"
+chapter: "CH04"
 title: "NotebookLM & Gems 활용: 팀 성과 창출 및 피드백 실전"
-source_url: "https://lg.cmdspace.work/axcamp#ch04-clip02"
+source_url: "https://lg.cmdspace.work/axcamp#CH04-clip02"
 exported_at: "2026-03-30T00:00:00.000Z"
 ---
 

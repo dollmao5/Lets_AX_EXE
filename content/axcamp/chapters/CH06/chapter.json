@@ -1,38 +1,92 @@
 {
   "chapterId": "ch06",
   "chapterNum": "CH 06",
-  "title": "Vibe Coding",
-  "time": "13:55",
+  "title": "참고자료 라이브러리",
+  "time": "17:20",
   "clips": [
     {
       "route": "#ch06-clip01",
-      "title": "바이브 코딩이란",
+      "title": "에이전틱 AI란",
       "type": "개념",
-      "folder": "chapters/CH06/ch06-clip01",
-      "linkCount": 2,
-      "imageCount": 1,
-      "sectionCount": 3,
-      "promptCount": 0
+      "folder": "chapters/CH06/ch06-clip01"
     },
     {
       "route": "#ch06-clip02",
-      "title": "바이브 코딩으로 웹앱 제작하기",
-      "type": "실습",
-      "folder": "chapters/CH06/ch06-clip02",
-      "linkCount": 3,
-      "imageCount": 4,
-      "sectionCount": 6,
-      "promptCount": 17
+      "title": "에이전틱 AI 도구 소개",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip02"
     },
     {
       "route": "#ch06-clip03",
-      "title": "실습 워크숍: 경쟁사 리서치 대시보드",
-      "type": "실습",
-      "folder": "chapters/CH06/ch06-clip03",
-      "linkCount": 9,
-      "imageCount": 0,
-      "sectionCount": 5,
-      "promptCount": 5
+      "title": "시연: 3종 보고서 → 대시보드",
+      "type": "개요",
+      "folder": "chapters/CH06/ch06-clip03"
+    },
+    {
+      "route": "#ch06-clip04",
+      "title": "듀얼 출력의 원리 심화",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip04"
+    },
+    {
+      "route": "#ch06-clip05",
+      "title": "HTML + PPT 동시 출력 심화",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip05"
+    },
+    {
+      "route": "#ch06-clip06",
+      "title": "스킬(Skill)이란 심화",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip06"
+    },
+    {
+      "route": "#ch06-clip07",
+      "title": "스킬 저장 & 재사용 심화",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip07"
+    },
+    {
+      "route": "#ch06-clip08",
+      "title": "정리 & 핵심 인사이트",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip08"
+    },
+    {
+      "route": "#ch06-clip09",
+      "title": "Tool Pantry ( MCP MCP\nAI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. & CLI CLI\n마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다. )",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip09"
+    },
+    {
+      "route": "#ch06-clip10",
+      "title": "추가 읽을거리",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip10"
+    },
+    {
+      "route": "#ch06-clip11",
+      "title": "웹 스타일 프롬프트 가이드",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip11"
+    },
+    {
+      "route": "#ch06-clip12",
+      "title": "Copilot 참고자료",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip12"
+    },
+    {
+      "route": "#ch06-clip13",
+      "title": "실습용 컨텍스트 파일",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip13"
+    },
+    {
+      "route": "#ch06-clip14",
+      "title": "AI Readiness 분석",
+      "type": "개념",
+      "folder": "chapters/CH06/ch06-clip14"
     }
   ]
 }

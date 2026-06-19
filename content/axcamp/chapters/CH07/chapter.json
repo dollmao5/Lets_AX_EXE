@@ -1,88 +1,20 @@
 {
   "chapterId": "ch07",
   "chapterNum": "CH 07",
-  "title": "Agentic AI",
-  "time": "16:00",
+  "title": "AI Studio와 API 이해",
+  "time": "14:30",
   "clips": [
     {
       "route": "#ch07-clip01",
-      "title": "에이전틱 AI란",
+      "title": "LLM 앱과 API의 동작 원리",
       "type": "개념",
-      "folder": "chapters/CH07/ch07-clip01",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 6,
-      "promptCount": 0
+      "folder": "chapters/CH07/ch07-clip01"
     },
     {
       "route": "#ch07-clip02",
-      "title": "에이전틱 AI 도구 소개",
+      "title": "Google AI Studio 소개 및 접속 방법",
       "type": "개념",
-      "folder": "chapters/CH07/ch07-clip02",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 3,
-      "promptCount": 0
-    },
-    {
-      "route": "#ch07-clip03",
-      "title": "시연: 3종 보고서 → 대시보드",
-      "type": "개요",
-      "folder": "chapters/CH07/ch07-clip03",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 4,
-      "promptCount": 0
-    },
-    {
-      "route": "#ch07-clip04",
-      "title": "듀얼 출력의 원리 심화",
-      "type": "참고",
-      "folder": "chapters/CH07/ch07-clip04",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 2,
-      "promptCount": 0
-    },
-    {
-      "route": "#ch07-clip05",
-      "title": "HTML + PPT 동시 출력 심화",
-      "type": "참고",
-      "folder": "chapters/CH07/ch07-clip05",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 2,
-      "promptCount": 1
-    },
-    {
-      "route": "#ch07-clip06",
-      "title": "스킬(Skill)이란 심화",
-      "type": "참고",
-      "folder": "chapters/CH07/ch07-clip06",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 2,
-      "promptCount": 0
-    },
-    {
-      "route": "#ch07-clip07",
-      "title": "스킬 저장 & 재사용 심화",
-      "type": "참고",
-      "folder": "chapters/CH07/ch07-clip07",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 1,
-      "promptCount": 0
-    },
-    {
-      "route": "#ch07-clip08",
-      "title": "정리 & 핵심 인사이트",
-      "type": "개요",
-      "folder": "chapters/CH07/ch07-clip08",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 3,
-      "promptCount": 0
+      "folder": "chapters/CH07/ch07-clip02"
     }
   ]
 }

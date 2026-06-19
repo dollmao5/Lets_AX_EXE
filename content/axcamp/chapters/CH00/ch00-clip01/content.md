@@ -1,8 +1,8 @@
 ---
-route: "#ch00-clip01"
-chapter: "ch00"
+route: "#CH00-clip01"
+chapter: "CH00"
 title: "성과향상 with AI: 오늘의 여정과 학습 준비"
-source_url: "https://lg.cmdspace.work/axcamp#ch00-clip01"
+source_url: "https://lg.cmdspace.work/axcamp#CH00-clip01"
 ---
 
 ~15분
@@ -51,16 +51,16 @@ CH03·CH03 산출물을 NotebookLM에서 연결해 실행과제 TOP 3과 주차�
 
 각 챕터의 결과물이 다음 챕터의 입력자료가 됩니다. 좋은 답변을 한 번 얻는 것보다 **산출물을 구조화해 저장하고 다시 연결하는 것**이 중요합니다.
 
-[CH01이해·진단 AI 핵심 개념과 출발점 Assistant–Agent–Agentic AI의 차이를 이해하고 AI 리터러시와 리더십 스타일을 진단합니다. Output 개인 학습 초점과 리더십 출발점](#ch01-clip01)
-[CH03Gemini 리더 역할·책임·역량 토론과 Gemini 대화를 통해 AI와 리더의 역할 분담, 리더 역할 프로필, 실행 브리프를 만듭니다. Output 리더 역할 프로필 · 핵심 역량·실행 브리프](#ch03-clip01)
-[CH03팀 시스템 우리 팀 성과 병목·역량·Workflow 팀 성과 병목과 효과성 지표를 진단하고 대표 업무를 AI 협업 구조로 재설계합니다. Output 성과 병목 진단 · 행동역량 · Workflow](#ch03-clip01)
-[CH04NotebookLM 산출물 통합과 30일 실행계획 앞선 결과를 하나의 소스 묶음으로 연결하고 실행과제 TOP 3과 30일 Action Plan을 확정합니다. Output Source Map · TOP 3 · 30일 Action Plan](#ch04-clip01)
+[CH01이해·진단 AI 핵심 개념과 출발점 Assistant–Agent–Agentic AI의 차이를 이해하고 AI 리터러시와 리더십 스타일을 진단합니다. Output 개인 학습 초점과 리더십 출발점](#CH01-clip01)
+[CH03Gemini 리더 역할·책임·역량 토론과 Gemini 대화를 통해 AI와 리더의 역할 분담, 리더 역할 프로필, 실행 브리프를 만듭니다. Output 리더 역할 프로필 · 핵심 역량·실행 브리프](#CH02-clip01)
+[CH03팀 시스템 우리 팀 성과 병목·역량·Workflow 팀 성과 병목과 효과성 지표를 진단하고 대표 업무를 AI 협업 구조로 재설계합니다. Output 성과 병목 진단 · 행동역량 · Workflow](#CH02-clip01)
+[CH04NotebookLM 산출물 통합과 30일 실행계획 앞선 결과를 하나의 소스 묶음으로 연결하고 실행과제 TOP 3과 30일 Action Plan을 확정합니다. Output Source Map · TOP 3 · 30일 Action Plan](#CH04-clip01)
 
 ## 강사 및 운영진 소개
 
 강사 소개
 
-![[강사명] 메인 강사 프로필 사진](/course-files/AXCAMP/ch00-clip01/assets/instructor-main.jpg)
+![[강사명] 메인 강사 프로필 사진](/course-files/AXCAMP/CH00-clip01/assets/instructor-main.jpg)
 
 Main Instructor
 
@@ -107,7 +107,7 @@ Gemini·NotebookLM 접속, 파일 업로드, 보안 기준과 실습 오류 해�
 
 |
 08:45~09:30 |
-[CH01. AI 핵심 개념 및 진단](#ch01-clip01) |
+[CH01. AI 핵심 개념 및 진단](#CH01-clip01) |
 AI 트렌드와 Agentic AI 이해 · 기술 활용 로드맵 · AI 리터러시 및 AI-Friendly 리더십 진단 |
 강의·진단 |
 
@@ -119,7 +119,7 @@ Gemini 로그인 및 학습팀 좌석·녹음 준비 최종 확인 |
 
 |
 09:40~12:10 |
-[CH03. Gemini 활용: 리더 역할·역량](#ch03-clip01) |
+[CH03. Gemini 활용: 리더 역할·역량](#CH02-clip01) |
 Gemini 환경 세팅 · 팀 토론 오디오 · AI와 리더 역할 분담 · 리더 역할 프로필 · 핵심 역량 및 성과관리 실행 브리프 |
 토론·실습 |
 
@@ -137,7 +137,7 @@ CH03 Markdown 저장 · 팀 성과 문제 1개와 재설계할 비효율 업무 
 
 |
 13:30~15:30 |
-[CH03. 조직 역량 점검 및 Workflow 재설계](#ch03-clip01) |
+[CH03. 조직 역량 점검 및 Workflow 재설계](#CH02-clip01) |
 팀 성과 병목 진단 · 효과성 지표 · 조직/인재 행동역량 · Divide–Navigate–Arrange · Workflow Re-design Canvas |
 실습 |
 
@@ -149,7 +149,7 @@ CH03 산출물 저장 및 NotebookLM 업로드 자료 정리 |
 
 |
 15:40~17:00 |
-[CH04. NotebookLM: 팀 성과향상 실행](#ch04-clip01) |
+[CH04. NotebookLM: 팀 성과향상 실행](#CH04-clip01) |
 CH03·CH03 소스 통합 · Source Map · 핵심 실행과제 TOP 3 · 우리 팀 성과향상 30일 Action Plan |
 통합 실습 |
 

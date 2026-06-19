@@ -1,8 +1,8 @@
 ---
-route: "#ch00-clip02"
-chapter: "ch00"
+route: "#CH00-clip02"
+chapter: "CH00"
 title: "자사 생성형 AI 서비스 현황"
-source_url: "https://lg.cmdspace.work/axcamp#ch00-clip02"
+source_url: "https://lg.cmdspace.work/axcamp#CH00-clip02"
 ---
 
 ~10분

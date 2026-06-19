@@ -1,8 +1,8 @@
 ---
-route: "#ch02-clip03"
-chapter: "ch02"
+route: "#CH02-clip03"
+chapter: "CH02"
 title: "비지니스 프롬프팅: AI 회의록"
-source_url: "https://lg.cmdspace.work/axcamp#ch02-clip03"
+source_url: "https://lg.cmdspace.work/axcamp#CH02-clip03"
 ---
 
 ~20분

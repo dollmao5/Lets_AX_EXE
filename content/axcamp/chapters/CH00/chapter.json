@@ -6,23 +6,15 @@
   "clips": [
     {
       "route": "#ch00-clip01",
-      "title": "오늘의 시간표",
+      "title": "성과향상 with AI: 오늘의 여정과 학습 준비",
       "type": "개요",
-      "folder": "chapters/CH00/ch00-clip01",
-      "linkCount": 10,
-      "imageCount": 0,
-      "sectionCount": 4,
-      "promptCount": 0
+      "folder": "chapters/CH00/ch00-clip01"
     },
     {
       "route": "#ch00-clip02",
       "title": "자사 생성형 AI 서비스 현황",
       "type": "개요",
-      "folder": "chapters/CH00/ch00-clip02",
-      "linkCount": 15,
-      "imageCount": 0,
-      "sectionCount": 1,
-      "promptCount": 0
+      "folder": "chapters/CH00/ch00-clip02"
     }
   ]
 }

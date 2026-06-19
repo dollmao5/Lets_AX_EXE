@@ -7,62 +7,32 @@
     {
       "route": "#ch01-clip01",
       "title": "AI 트렌드",
-      "type": "참고",
-      "folder": "chapters/CH01/ch01-clip01",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 2,
-      "promptCount": 0
+      "type": "개요",
+      "folder": "chapters/CH01/ch01-clip01"
     },
     {
       "route": "#ch01-clip02",
       "title": "Assistant에서 Agentic AI로",
-      "type": "개념",
-      "folder": "chapters/CH01/ch01-clip02",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 4,
-      "promptCount": 0
+      "type": "개요",
+      "folder": "chapters/CH01/ch01-clip02"
     },
     {
       "route": "#ch01-clip03",
       "title": "기술 활용 로드맵",
       "type": "개념",
-      "folder": "chapters/CH01/ch01-clip03",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 0,
-      "promptCount": 0
+      "folder": "chapters/CH01/ch01-clip03"
     },
     {
       "route": "#ch01-clip04",
       "title": "개념 다지기",
-      "type": "참고",
-      "folder": "chapters/CH01/ch01-clip04",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 1,
-      "promptCount": 0
+      "type": "개념",
+      "folder": "chapters/CH01/ch01-clip04"
     },
     {
       "route": "#ch01-clip05",
-      "title": "AI 리터러시 및 퀴즈",
-      "type": "퀴즈",
-      "folder": "ch01/clip05",
-      "linkCount": 0,
-      "imageCount": 0,
-      "sectionCount": 1,
-      "promptCount": 0
-    },
-    {
-      "route": "#ch01-clip06",
       "title": "비지니스 프롬프팅: AI 회의록",
-      "type": "참고",
-      "folder": "chapters/CH01/ch01-clip05",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 3,
-      "promptCount": 0
+      "type": "실습",
+      "folder": "chapters/CH01/ch01-clip05"
     }
   ]
 }

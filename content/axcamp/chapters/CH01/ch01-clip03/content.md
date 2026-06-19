@@ -1,8 +1,8 @@
 ---
-route: "#ch01-clip03"
-chapter: "ch01"
+route: "#CH01-clip03"
+chapter: "CH01"
 title: "기술 활용 로드맵"
-source_url: "https://lg.cmdspace.work/axcamp#ch01-clip03"
+source_url: "https://lg.cmdspace.work/axcamp#CH01-clip03"
 ---
 
 CH 01

@@ -1,8 +1,8 @@
 ---
-route: "#ch01-clip02"
-chapter: "ch01"
+route: "#CH01-clip02"
+chapter: "CH01"
 title: "자사 생성형 AI 서비스 현황"
-source_url: "https://lg.cmdspace.work/axcamp#ch01-clip02"
+source_url: "https://lg.cmdspace.work/axcamp#CH01-clip02"
 exported_at: "2026-02-28T01:53:41.410Z"
 ---
 

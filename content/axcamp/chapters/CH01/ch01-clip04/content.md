@@ -1,8 +1,8 @@
 ---
-route: "#ch01-clip04"
-chapter: "ch01"
+route: "#CH01-clip04"
+chapter: "CH01"
 title: "개념 다지기"
-source_url: "https://lg.cmdspace.work/axcamp#ch01-clip04"
+source_url: "https://lg.cmdspace.work/axcamp#CH01-clip04"
 ---
 
 CH 01

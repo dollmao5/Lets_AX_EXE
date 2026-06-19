@@ -1,149 +1,100 @@
 ---
-route: "#ch07-clip01"
-chapter: "ch07"
-title: "에이전틱 AI란"
-source_url: "https://lg.cmdspace.work/axcamp#ch07-clip01"
-exported_at: "2026-02-28T01:54:14.823Z"
+route: "#CH08-clip01"
+chapter: "CH06"
+title: "Google AI Studio 설정"
+source_url: "https://lg.cmdspace.work/axcamp#CH08-clip01"
+exported_at: "2026-02-28T01:54:04.171Z"
 ---
-~15분 CH 07 개념
+~10분 CH 07 플랫폼
 
-# 에이전틱 AI란
+# Google AI Studio 설정
 
-AI가 목표만 받고 스스로 계획하고, 실행하고, 검증하는 **에이전틱 AI**의 핵심 개념 3가지를 이해합니다.
+교육 실습에 사용할 GCP(Google Cloud Platform) 무료 계정을 등록하고 AI Studio에 접속합니다.
 
-에이전틱 AI란 무엇인가
+영상 가이드
 
-지금까지 우리는 AI에게 **한 번에 하나씩** 지시했습니다. "이것 요약해줘", "저것 번역해줘". 에이전틱 AI는 다릅니다. **목표만 알려주면 AI가 스스로 계획을 세우고, 필요한 도구를 선택하고, 결과를 검증하며, 부족하면 다시 시도합니다.**
+영상을 따라하면서 아래 단계를 진행해 주세요
 
-<table class="comparison-table"><thead><tr><th></th><th>기존 AI (Chat)</th><th>에이전틱 AI (Agent)</th></tr></thead><tbody><tr><td><strong>작동 방식</strong></td><td>질문 1개 → 답변 1개</td><td>목표 1개 → 자율 반복 실행</td></tr><tr><td><strong>AI 역할</strong></td><td>비서 (물으면 답함)</td><td>팀원 (알아서 해냄)</td></tr><tr><td><strong>사람의 역할</strong></td><td>매 단계 지시</td><td>목표 설정 + 결과 검증</td></tr><tr><td><strong>도구 활용</strong></td><td>텍스트 생성만</td><td>파일, 검색, 코드, 브라우저 전부</td></tr><tr><td><strong>복잡한 작업</strong></td><td>사람이 단계별 반복 지시</td><td>AI가 병렬로 동시 처리</td></tr></tbody></table>
+비용 안내
 
-AI 활용 단계의 진화
+• 신규 가입 시 제공되는 **$300 무료 크레딧**을 사용하므로 개인 비용이 청구되지 않습니다  
+• 본인 확인을 위한 신용카드 등록 과정이 있지만, **유료 계정으로 직접 업그레이드하기 전까지는 자동 결제되지 않습니다**
 
-오전
+Step 1. 구글 클라우드 접속
 
-Chat
+구글에 **gcp**를 검색하거나 [cloud.google.com/free](https://cloud.google.com/free)에 접속하여 메인 화면의 '무료로 시작하기' 버튼을 클릭합니다.
 
-질의응답 대화
+![GCP 검색 화면](https://i.imghippo.com/files/sAG9723FZI.jpg)
 
-"물으면 답한다"
+구글에서 'gcp' 검색 후 최상단 Google Cloud 링크 클릭
 
-→
+![GCP 메인 화면](https://i.imghippo.com/files/fBta2607X.jpg)
 
-오후 전반
+'무료로 시작하기' 버튼 클릭
 
-Build
+Step 2. 국가 선택 및 약관 동의 (1/2단계)
 
-자연어 → 앱 생성
+로그인 후 나오는 첫 번째 화면입니다.
 
-"시키면 만든다"
+-   **국가:** '대한민국' 확인 (또는 선택)
+-   **약관:** 서비스 약관 동의 체크 후 **\[계속\]** 클릭
 
-→
+![국가 선택 및 약관 동의 화면](https://i.imghippo.com/files/zvZ3830NB.jpg)
 
-오후 후반
+가입 1단계: 국가 선택 및 약관 동의 체크박스
 
-Agent
+Step 3. 본인 인증 및 결제 정보 등록 (2/2단계)
 
-목표 → 자율 실행
+계정 유형과 주소, 카드를 등록합니다.
 
-"알아서 해낸다"
+-   **계정 유형:** 개인
+-   **주소:** 본인 주소 입력
+-   **결제 수단:** 해외 결제 가능한 카드 정보 입력
 
-이 세션에서 체험하는 것이 현재 AI 기술의 **최전선**입니다.
+참고
 
-핵심 개념 1 — 에이전트 루프 (Agent Loop)
+영상 가이드에서는 개인정보 보호를 위해 상세 입력 과정이 생략되었습니다.
 
-에이전틱 AI의 가장 기본적인 작동 원리입니다. AI가 목표를 받으면 **Plan → Execute → Check** 사이클을 스스로 반복하며 작업을 완성합니다.
+![고객 정보 입력 화면](https://i.imghippo.com/files/aQur3249eQ.jpg)
 
-에이전트  
-루프
+가입 2단계: 고객 정보 및 결제 정보 입력란
 
-Plan
+![결제 설정 처리 화면](https://i.imghippo.com/files/zfwb6451X.jpg)
 
-계획 수립
+결제 설정 처리 중 로딩 화면
 
-Execute
+Step 4. 가입 완료 및 콘솔 진입
 
-도구로 실행
+설문 팝업이 뜨면 답변하거나 건너뛰세요. **'My First Project'**라는 문구와 함께 환영 메시지가 보이면 성공입니다.
 
-Check
+![GCP 환영 화면](https://i.imghippo.com/files/daLH2042Y.jpg)
 
-결과 검증
+GCP 콘솔 로딩 후 환영 메시지 화면
 
-→
+Step 5. Google AI Studio 접속
 
-→
+주소창에 [**aistudio.google.com**](https://aistudio.google.com)을 입력하여 이동합니다.
 
-→
+![AI Studio 접속 화면](https://i.imghippo.com/files/nzDx9281SrI.jpg)
 
-**비유: PDCA 사이클** — 경영에서 익숙한 Plan-Do-Check-Act 사이클과 동일한 원리입니다. 차이점은 AI가 이 사이클을 **수십 번 자동으로 반복**한다는 것입니다. 사람이 하나하나 지시할 필요 없이, 시행착오를 거쳐 최적의 결과를 찾아갑니다.
+브라우저 주소창에 aistudio.google.com 입력
 
-핵심 개념 2 — 멀티에이전트
+Step 6. 좌측 메뉴에서 주요 기능 확인
 
-하나의 AI가 모든 것을 처리하는 대신, **여러 AI 에이전트가 각자 역할을 맡아 병렬로 작업**합니다.
+AI Studio에 접속하면 좌측 사이드바에 다음 메뉴가 표시됩니다:
 
-매니저 (목표 분배)
+-   **Home:** AI Studio 대시보드 (시작 화면)
+-   **Playground:** AI와 대화하며 파라미터를 조절하는 실험 공간
+-   **Build:** 코드 기반 웹앱을 자연어로 생성하는 빌더
+-   **Dashboard:** API**API**  
+    프로그램끼리 대화하는 통로예요. 마치 레스토랑의 웨이터처럼, 주문(요청)을 주방(서비스)에 전달하고 요리(결과)를 가져다줍니다. 사용량 및 프로젝트 관리
+-   **Documentation:** API**API**  
+    프로그램끼리 대화하는 통로예요. 마치 레스토랑의 웨이터처럼, 주문(요청)을 주방(서비스)에 전달하고 요리(결과)를 가져다줍니다. 문서 및 가이드
 
-|
+오후 실습 안내
 
-Agent 1
+오전에 Gemini**Gemini**  
+Google이 만든 AI예요. 텍스트뿐 아니라 이미지, 음성, 영상까지 한꺼번에 이해하고 처리할 수 있습니다. 오늘 실습에서 주로 사용하는 AI예요. 채팅으로 질문/답변을 했다면, 오후에는 AI Studio에서 **직접 앱을 만들고 API**API**  
+프로그램끼리 대화하는 통로예요. 마치 레스토랑의 웨이터처럼, 주문(요청)을 주방(서비스)에 전달하고 요리(결과)를 가져다줍니다.를 연결**합니다. Playground에서 파라미터를 조절해 보고, Build에서 실제 웹앱을 만들어 봅니다.
 
-리서치
-
-데이터 수집 + 분석
-
-Agent 2
-
-문서 작성
-
-보고서 3종 동시 작성
-
-Agent 3
-
-시각화
-
-대시보드 + PPT 생성
-
-**비유: 프로젝트 TF팀 운영** — 한 에이전트가 리서치하는 동안, 다른 에이전트는 문서를 작성하고, 또 다른 에이전트는 대시보드를 만듭니다. 리더가 TF팀에 역할을 분배하는 것과 같은 원리입니다.
-
-핵심 개념 3 — 스킬 (Skill)
-
-성공한 워크플로우를 **패턴화하여 저장하고, 클릭 한 번으로 재사용**하는 단위입니다.
-
-목표 입력
-
-→
-
-AI 자율 실행
-
-→
-
-결과물 완성
-
-→
-
-스킬로 저장
-
-이후 반복 사용
-
-스킬 클릭
-
-→
-
-새 데이터 입력
-
-→
-
-동일 품질 결과물
-
-**비유: 업무 매뉴얼의 자동화 버전** — 한 명이 만든 스킬을 팀 전체가 재사용하면, 업무 프로세스의 표준화(SOP 디지털화)가 가능합니다. 개인의 노하우가 조직의 자산으로 전환됩니다.
-
-3가지 핵심 개념 정리
-
-<table class="comparison-table"><thead><tr><th style="width:22%">개념</th><th>설명</th><th style="width:22%">조직 비유</th></tr></thead><tbody><tr><td><strong>에이전트 루프</strong></td><td>Plan → Execute → Check 반복. AI가 시행착오를 거쳐 최적의 결과를 찾아갑니다.</td><td>PDCA 사이클</td></tr><tr><td><strong>멀티에이전트</strong></td><td>여러 AI가 각자 역할을 맡아 병렬로 작업합니다. 동시에 여러 산출물을 생성합니다.</td><td>프로젝트 TF팀</td></tr><tr><td><strong>스킬</strong></td><td>성공한 워크플로우를 저장하여 클릭 한 번으로 재사용합니다. 팀 전체가 공유 가능합니다.</td><td>업무 매뉴얼 자동화</td></tr></tbody></table>
-
-핵심 인사이트
-
-**"AI를 부리는 것은 곧 조직을 관리하는 것과 같습니다."**  
-  
-명확한 목표 설정, 역할 분담, 품질 검증 — 리더가 팀을 운영하는 역량이 곧 AI를 활용하는 역량입니다. 이것이 AI 시대에 임원의 역할이 더욱 중요해지는 이유입니다.
-
-[← 실습 시트: 앱 만들기](#ch06-clip05) [에이전틱 AI 도구 소개 →](#ch07-clip02)
+[← 실습 시트](#CH04-clip05) [유료 API KEY 발급 →](#CH08-clip02)

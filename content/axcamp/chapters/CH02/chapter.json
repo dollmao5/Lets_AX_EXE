@@ -1,0 +1,32 @@
+{
+  "chapterId": "ch02",
+  "chapterNum": "CH 02",
+  "title": "Gemini 활용 (1)",
+  "time": "09:30",
+  "clips": [
+    {
+      "route": "#ch02-clip01",
+      "title": "Gemini Overview: 실습 환경 세팅과 핵심 기능 이해",
+      "type": "플랫폼",
+      "folder": "chapters/CH02/ch02-clip01"
+    },
+    {
+      "route": "#ch02-clip02",
+      "title": "팀 토론: AI 시대, 리더의 고민과 역할",
+      "type": "토론·실습",
+      "folder": "chapters/CH02/ch02-clip02"
+    },
+    {
+      "route": "#ch02-clip03",
+      "title": "프롬프팅 기초: 초인공 AI 시대, 변화된 팀 리더의 역할 정의하기",
+      "type": "실습",
+      "folder": "chapters/CH02/ch02-clip03"
+    },
+    {
+      "route": "#ch02-clip04",
+      "title": "프롬프팅 활용: 리더의 핵심 역량 및 스킬",
+      "type": "실습",
+      "folder": "chapters/CH02/ch02-clip04"
+    }
+  ]
+}

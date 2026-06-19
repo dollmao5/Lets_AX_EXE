@@ -1,99 +1,94 @@
 ---
-route: "#ch07-clip02"
-chapter: "ch07"
-title: "에이전틱 AI 도구 소개"
-source_url: "https://lg.cmdspace.work/axcamp#ch07-clip02"
-exported_at: "2026-02-28T01:54:15.955Z"
+route: "#CH04-clip01"
+chapter: "CH04"
+title: "Google AI Studio 소개 및 접속 방법"
+source_url: "https://lg.cmdspace.work/axcamp#CH04-clip01"
+exported_at: "2026-02-28T01:54:08.055Z"
 ---
 
-~10분
 CH 07
-개념
+설정
 
-# 에이전틱 AI 도구 소개
+# Google AI Studio 소개 및 접속 방법
 
-현재 주요 에이전틱 AI 도구 4종의 특징을 비교하고, 오늘 시연에서 사용할 도구를 소개합니다.
+Gemini와 ChatGPT가 대화형 도구였다면, Google AI Studio는 **프롬프트 실험, 앱 제작, 공유와 실행**까지 이어지는 작업대입니다. 여기서는 접속 경로와 핵심 화면을 먼저 익히고, 나중에 내가 만든 앱을 실제로 가져가 실행하려면 왜 API key와 실행 환경을 함께 이해해야 하는지까지 자연스럽게 연결합니다.
 
-## 4가지 주요 에이전틱 AI 도구
+## Google AI Studio 진입 화면
 
-2025~2026년 현재, 주요 AI 기업들이 경쟁적으로 에이전틱 AI 도구를 출시하고 있습니다. 핵심 4종을 비교합니다.
+![Google AI Studio Playground 화면](/assets/aistudio/CH04/aistudio-playground-main.png)
 
-| 도구 | 개발사 | 핵심 특징 | AI 모델 | 적합한 사용자 |
-| --- | --- | --- | --- | --- |
-|
-**Antigravity** |
-Google |
-Agent-First IDE, 3-Surface(Editor+Terminal+Browser), Manager View로 멀티에이전트 오케스트레이션 |
-Gemini 3.1 Pro |
-프론트엔드/풀스택 개발, 에이전트 워크플로우 |
+**Playground**는 모델을 바꿔가며 프롬프트를 시험해 보는 곳입니다. Gemini를 조금 더 실험적으로 다루는 화면이라고 보면 됩니다.
 
-|
-**Claude Code** |
-Anthropic |
-CLI 기반, 코드베이스 전체 컨텍스트, MCP 통합, 프로젝트 단위 자율 작업 |
-Claude Opus 4 |
-대규모 코드 리팩토링, 복잡한 코드 분석 |
+![Google AI Studio Build 화면](/assets/aistudio/CH04/aistudio-build-main.png)
 
-|
-**Codex** |
-OpenAI |
-클라우드 샌드박스, 비동기 병렬 작업, GitHub 통합 |
-GPT-4.1 / o3 |
-CI/CD 연동, 이슈 기반 자동화 |
+**Build**는 자연어로 앱을 만들고, 수정하고, 공유하는 공간입니다. 오늘 CH06 실습의 중심은 이 화면입니다.
 
-|
-**Gemini CLI** |
-Google |
-터미널 네이티브, 100만 토큰 컨텍스트, MCP 지원, Google 생태계 연동 |
-Gemini 3.1 Pro |
-터미널 중심 작업, Google Cloud 연동 |
+## 접속과 기본 흐름
 
-## MCP (Model Context Protocol)
+### Quick Path
 
-위 도구들이 공통적으로 지원하는 핵심 표준이 있습니다. **MCP**는 AI 도구들이 외부 데이터와 서비스에 표준화된 방식으로 연결되는 프로토콜입니다.
+1. [aistudio.google.com](https://aistudio.google.com/prompts/new_chat)에 로그인합니다.
 
-AI 도구
+2. 먼저 Playground에서 간단한 프롬프트를 시험해 볼 수 있습니다.
 
-Antigravity, Claude Code, Cline 등
+3. 앱을 만들고 싶으면 **Build**로 이동합니다.
 
-←
+4. Build에서 만든 결과를 로컬로 가져가 실행하거나 공유하려면, 이후 API key와 실행 환경을 함께 보게 됩니다.
 
-MCP
+| 화면 | 무엇을 하나 | 오늘 실습에서의 의미 |
+| --- | --- | --- |
+| **Playground** | 프롬프트와 모델 반응을 빠르게 실험 | 생각을 시험하고 감을 잡는 공간 |
+| **Build** | 앱을 만들고 반복 수정 | CH06 핵심 실습 공간 |
+| **Share / Publish** | 결과를 공유하거나 배포 | 결과물을 다른 사람과 확인하는 단계 |
+| **API Key** | 외부 실행 환경과 모델 호출 연결 | 내 PC나 사내 환경에서 실행할 때 필요 |
+## 최근 참고 영상
 
-표준 연결 프로토콜
+[최근 소개형 제미나이 3.1 제대로 쓰는 법! 구글 AI 스튜디오 플레이그라운드 활용 가이드 `GPT PARK의 AI팩트` · 약 15분 · 1개월 전. Playground 중심으로 AI Studio가 어떤 실험실인지 감을 잡기 좋습니다.](https://www.youtube.com/watch?v=irw2SOuu_UI)
+[최근 실습형 말 한마디로 앱 만든다｜Google AI Studio Build로 생활 앱 3종 실습 `Christina의 AI Studio` · 약 14분 · 5개월 전. Build에서 실제로 앱을 뽑아보는 장면을 보기 좋습니다.](https://www.youtube.com/watch?v=3IITukX8r8Q)
 
-→
+### 수업에서는 이렇게 쓰면 됩니다
 
-외부 서비스
+길게 틀기보다, 오늘은 화면 감각만 익히는 용도로 `최근 소개형`을 강사용 참고로 두고, 실제 수업에서는 아래 `바이브 코딩이란` 클립에서 짧은 영상 1개만 보고 바로 Build 실습으로 넘어가는 편이 자연스럽습니다.
 
-Slack, DB, 파일, 브라우저
+## 앱을 잘 활용하려면 같이 이해해야 할 것
 
-USB 포트가 어떤 기기든 연결할 수 있듯, MCP는 어떤 AI 도구든 외부 시스템과 연결할 수 있게 합니다. 2024년 11월 출시 후 6개월 만에 다운로드 80배 성장을 기록했습니다.
+| 요소 | 왜 필요한가 | 오늘 기억할 점 |
+| --- | --- | --- |
+| **API Key** | 누가 어떤 프로젝트로 모델을 호출하는지 식별 | 앱을 내 환경에서 실행하려면 결국 연결이 필요합니다. |
+| **Quota** | 얼마나 자주, 얼마나 많이 호출할 수 있는지 제한 | 앱이 잘 만들어져도 호출 한도에 막히면 동작이 달라질 수 있습니다. |
+| **Billing** | 모델 사용량과 기능에 따른 비용 | 테스트와 운영의 비용 감각이 다를 수 있습니다. |
+| **Environment** | 내 컴퓨터와 다른 실행 환경의 차이 | 복사해 온 결과물이 내 PC에서 바로 안 될 수도 있습니다. |
+### 왜 내 컴퓨터에서 바로 안 될 수 있나
 
-## 오늘 시연에서 사용할 도구 — Hi-D Code (Cline)
+AI Studio에서 만든 결과를 복사해 와도, 내 로컬 환경에 **API key가 없거나**, **환경 변수가 연결되지 않았거나**, **필요한 실행 조건이 맞지 않으면** 앱이 그대로 동작하지 않을 수 있습니다. 즉, 결과물만 가져오는 것과 실행 환경까지 가져오는 것은 다른 문제입니다.
 
-중 오늘 시연에서는 **Hi-D Code (Cline)** 를 사용합니다.
+## API key와 과금은 어떤 정책으로 가져가야 하나
 
-선택 이유
+개인 실험용
 
-- Manager View에서 에이전트 진행 상황을 실시간 확인 가능
+개인 계정 키로 빠르게 실험할 수 있지만, 장기 운영이나 공유 앱에는 그대로 쓰지 않는 편이 좋습니다.
 
-- 파일 생성(HTML, PPT) 결과를 즉시 미리보기 가능
+팀/사내 서비스용
 
-- 에이전트 루프의 Plan-Execute-Check 과정이 화면에 표시됨
+키를 코드에 넣지 않고, 비밀값 관리 체계나 환경 변수로 분리해 팀 기준으로 관리해야 합니다.
 
-핵심 기능
+운영 원칙
 
-- **3-Surface:** Editor + Terminal + Browser 동시 조작
+누가 쓰는지, 비용은 어디에 붙는지, 유출 시 어떻게 폐기할지까지 같이 생각해야 합니다.
 
-- **Manager View:** 다중 에이전트 실시간 현황판
+### 수업에서 강조할 한 줄
 
-- **스킬:** 워크플로우 저장 및 재사용
+API key는 단순한 기술 설정이 아니라 **비용, 보안, 운영 책임이 붙는 접점**입니다. 그래서 앱을 만들 수 있다는 것과, 그 앱을 조직 안에서 안전하게 돌릴 수 있다는 것은 다른 단계입니다.
 
-- **Hi-D Code (Qwen-Coder-3.5):** 최신 AI 모델 탑재
+### 예시 연결 방식
 
-### 핵심 메시지
+로컬에서 앱을 실행할 때는 보통 아래처럼 환경 변수로 넣습니다.
+`GEMINI_API_KEY=your_api_key_here`
 
-**"도구가 달라도 원리는 같습니다."**
+## 오늘 수업에서는 여기까지만
 
-Antigravity, Claude Code, Codex, Cline — 도구의 인터페이스는 다르지만, 에이전틱 AI의 핵심 원리는 동일합니다: **목표 설정, 컨텍스트 제공, 결과 검증**. 오늘 이 원리를 체험하면, 어떤 도구를 사용하든 적용할 수 있습니다.
+- AI Studio는 Gemini를 앱 제작과 공유로 확장하는 작업대라는 점을 이해합니다.
+
+- 내가 만든 결과를 다른 환경에서 실행하려면 API key와 실행 환경이 같이 필요하다는 점을 기억합니다.
+
+- 조직 안에서 앱을 다룰 때는 개인 실험과 운영 정책을 구분해야 한다는 감각만 잡으면 충분합니다.

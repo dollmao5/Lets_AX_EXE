@@ -1,6 +1,6 @@
 {
-  "route": "#ch01-clip04",
-  "url": "https://lg.cmdspace.work/axcamp#ch01-clip04",
+  "route": "#CH01-clip04",
+  "url": "https://lg.cmdspace.work/axcamp#CH01-clip04",
   "pageTitle": "성과향상 with AI | LG",
   "clipTitle": "개념 다지기",
   "overview": "오늘 반복해서 만나게 될 AI 핵심 용어를 NotebookLM 인포그래픽 한 장으로 빠르게 정리합니다. 필요하면 크게 확대해 보면서 수업 중간중간 다시 참조하면 된다.",
@@ -8,7 +8,7 @@
     "CH 01",
     "참고"
   ],
-  "html": "<div class=\"clip-header\">\n  <div class=\"clip-badges\">\n    <span class=\"clip-badge chapter\">CH 01</span>\n    <span class=\"clip-badge type-reference\">참고</span>\n  </div>\n  <h1 class=\"clip-title\">개념 다지기</h1>\n</div>\n\n<div class=\"clip-overview\">오늘 반복해서 만나게 될 AI 핵심 용어를 NotebookLM 인포그래픽 한 장으로 빠르게 정리합니다. 필요하면 크게 확대해 보면서 수업 중간중간 다시 참조하면 된다.</div>\n\n<div class=\"clip-section slide-preview-shell\">\n  <div class=\"slide-preview-head\">\n    <p class=\"slide-briefing-eyebrow\">NotebookLM Infographic</p>\n    <div class=\"slide-preview-top\">\n      <div>\n        <h2 class=\"slide-briefing-title\">전문가용 AI 핵심 개념 가이드</h2>\n        <p class=\"slide-briefing-desc\">멀티모달, 컨텍스트 엔지니어링, RAG, MCP, Agentic AI까지 오늘 실습 전반에서 반복되는 개념을 한 장으로 훑을 수 있다.</p>\n      </div>\n      <div class=\"slide-preview-actions\">\n        <a class=\"slide-briefing-link\" data-slide-deck-download=\"concept-foundation-guide\">다운로드</a>\n      </div>\n    </div>\n  </div>\n  <div class=\"slide-preview-gallery\" data-slide-deck-preview=\"concept-foundation-guide\"></div>\n</div>\n\n<div class=\"clip-nav-footer\"><a class=\"clip-nav-btn\" href=\"#ch01-clip03\">← 기술 활용 로드맵</a><a class=\"clip-nav-btn\" href=\"#ch01-clip05\">AI 리터러시 및 퀴즈 →</a></div>\n",
+  "html": "<div class=\"clip-header\">\n  <div class=\"clip-badges\">\n    <span class=\"clip-badge chapter\">CH 01</span>\n    <span class=\"clip-badge type-reference\">참고</span>\n  </div>\n  <h1 class=\"clip-title\">개념 다지기</h1>\n</div>\n\n<div class=\"clip-overview\">오늘 반복해서 만나게 될 AI 핵심 용어를 NotebookLM 인포그래픽 한 장으로 빠르게 정리합니다. 필요하면 크게 확대해 보면서 수업 중간중간 다시 참조하면 된다.</div>\n\n<div class=\"clip-section slide-preview-shell\">\n  <div class=\"slide-preview-head\">\n    <p class=\"slide-briefing-eyebrow\">NotebookLM Infographic</p>\n    <div class=\"slide-preview-top\">\n      <div>\n        <h2 class=\"slide-briefing-title\">전문가용 AI 핵심 개념 가이드</h2>\n        <p class=\"slide-briefing-desc\">멀티모달, 컨텍스트 엔지니어링, RAG, MCP, Agentic AI까지 오늘 실습 전반에서 반복되는 개념을 한 장으로 훑을 수 있다.</p>\n      </div>\n      <div class=\"slide-preview-actions\">\n        <a class=\"slide-briefing-link\" data-slide-deck-download=\"concept-foundation-guide\">다운로드</a>\n      </div>\n    </div>\n  </div>\n  <div class=\"slide-preview-gallery\" data-slide-deck-preview=\"concept-foundation-guide\"></div>\n</div>\n\n<div class=\"clip-nav-footer\"><a class=\"clip-nav-btn\" href=\"#CH01-clip03\">← 기술 활용 로드맵</a><a class=\"clip-nav-btn\" href=\"#CH01-clip05\">AI 리터러시 및 퀴즈 →</a></div>\n",
   "text": "CH 01\n참고\n\n개념 다지기\n\n오늘 반복해서 만나게 될 AI 핵심 용어를 NotebookLM 인포그래픽 한 장으로 빠르게 정리합니다. 필요하면 크게 확대해 보면서 수업 중간중간 다시 참조하면 된다.\n\nNotebookLM Infographic\n\n전문가용 AI 핵심 개념 가이드\n\n멀티모달, 컨텍스트 엔지니어링, RAG, MCP, Agentic AI까지 오늘 실습 전반에서 반복되는 개념을 한 장으로 훑을 수 있다.\n\n다운로드",
   "sections": [],
   "prompts": [],

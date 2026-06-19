@@ -56,29 +56,28 @@ const PRACTICE_FILE_MAP = {
 const HOST = "0.0.0.0";
 const PORT = Number(process.env.PORT || 4071);
 const EXCLUDED_CLIP_KEYS = new Set([
-  "ch02-clip01",
-  "ch02-clip02",
-  "ch02-clip03",
-  "ch02-clip04",
-  // [HIDDEN] 자사 생성형 AI 서비스 현황 — 복구 시 아래 줄만 삭제하세요
-  "ch00-clip02"
+  "ch00-clip02",
+  "ch03-clip02",
+  "ch03-clip03",
+  "ch03-clip04",
+  "ch04-clip04",
+  "ch04-clip05",
+  "ch06-clip12",
+  "ch06-clip13",
+  "ch06-clip14"
 ]);
 
 // [HIDDEN_CHAPTERS] CH04(Google AI Studio & Vibe Coding), CH05(Hi-D Code) 숨김 처리 중
 // 복구 방법: server.js의 visibleBlueprints 배열에서 아래 주석 처리된 블록을 되살리세요.
 // 이 Set은 숨겨진 챕터/클립의 canonical 키 목록으로, 해시 직접 접근 시 안전 처리에 사용됩니다.
 const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
-  // ch04 (Google AI Studio & Vibe Coding) 소속 클립들
-  "ch05-clip01",
-  "ch05-clip02",
-  "ch06-clip01",
-  "ch06-clip02",
-  "ch06-clip03",
-  "ch06-clip04",
-  "ch06-clip05",
-  // ch05 (Hi-D Code) 소속 합성 클립들
-  "ch05-clip01-hidcode",
-
+  "ch07-clip01",
+  "ch07-clip02",
+  "ch08-clip01",
+  "ch08-clip02",
+  "ch08-clip03",
+  "ch08-clip04",
+  "ch08-clip05"
 ]);
 const SKIP_TITLE_KEYWORDS = new Set(["개념", "실습", "참고", "개요", "플랫폼", "심화"]);
 const ALLOWED_SECTION_TYPES = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요", "토론", "퀴즈"]);
@@ -1337,13 +1336,7 @@ function rewriteVisibleReferences(input, catalog, currentClip = null) {
   let output = String(input || "");
   if (!output || !catalog) return output;
 
-  // ch03-clip01 및 ch03-clip09 클립은 CH 03을 유지해야 하므로 치환을 우회합니다.
-  if (currentClip) {
-    const clipKey = String(currentClip.canonicalClipKey || currentClip.clipKey || "").toLowerCase().trim();
-    if (clipKey === "ch03-clip09" || clipKey === "ch03-clip01") {
-      return output;
-    }
-  }
+  
 
   output = output.replace(/#(ch\d{2}-clip\d{2})/gi, (_match, rawKey) => {
     const mapped = toVisibleClipKey(catalog, rawKey);
@@ -1401,13 +1394,7 @@ function rewriteCanonicalReferences(input, catalog, currentClip = null) {
   let output = String(input || "");
   if (!output || !catalog) return output;
 
-  // ch03-clip01 및 ch03-clip09 클립은 CH 03을 유지해야 하므로 치환을 우회합니다.
-  if (currentClip) {
-    const clipKey = String(currentClip.canonicalClipKey || currentClip.clipKey || "").toLowerCase().trim();
-    if (clipKey === "ch03-clip09" || clipKey === "ch03-clip01") {
-      return output;
-    }
-  }
+  
 
   output = output.replace(/#(ch\d{2}-clip\d{2})/gi, (_match, rawKey) => {
     const mapped = toCanonicalClipKey(catalog, rawKey);
@@ -2087,14 +2074,12 @@ async function buildCatalog(sourceRoot) {
   }
 
   // 2. 가시적 챕터 노출용 블루프린트 설정 정의
-  const visibleBlueprints = [
+    const visibleBlueprints = [
     {
       visibleChapterId: "ch00",
       title: "과정 안내",
       time: "08:30",
       sourceChapterIds: ["ch00"],
-      // [HIDDEN] 자사 생성형 AI 서비스 현황(ch00-clip02) 제외 중.
-      // 복구 시: clipKeys 배열에 "ch00-clip02" 를 다시 추가하세요.
       clipKeys: ["ch00-clip01"]
     },
     {
@@ -2108,62 +2093,47 @@ async function buildCatalog(sourceRoot) {
       visibleChapterId: "ch02",
       title: "Gemini 활용 (1)",
       time: "09:30",
-      sourceChapterIds: ["ch03"],
-      // [HIDDEN] ch03-clip03 (Gems 소개: AI 비서 만들기) 제외됨 — 복구 시 clipKeys에 "ch03-clip03" 추가 및 EXCLUDED_CLIP_KEYS에서 제거
-      clipKeys: ["ch03-clip01", "ch03-clip08", "ch03-clip02", "ch03-clip03"],
-      clipTitles: {
-        "ch03-clip01": "Gemini 소개 및 접속 방법",
-        "ch03-clip08": "팀 토론: AI 시대, 리더의 고민과 역할",
-        "ch03-clip02": "프롬프팅 기초: AI 시대, 리더의 역할",
-        "ch03-clip03": "프롬프팅 활용: 리더의 핵심 역량 및 스킬"
-      }
+      sourceChapterIds: ["ch02"],
+      clipKeys: ["ch02-clip01", "ch02-clip02", "ch02-clip03", "ch02-clip04"]
     },
     {
       visibleChapterId: "ch03",
       title: "Gemini 활용 (2)",
       time: "13:30",
       sourceChapterIds: ["ch03"],
-      clipKeys: ["ch03-clip09"],
-      clipTitles: {
-        "ch03-clip09": "조직 역량 점검 및 Workflow 재설계"
-      }
+      clipKeys: ["ch03-clip01"]
     },
     {
       visibleChapterId: "ch04",
       title: "NotebookLM",
       time: "13:00",
       sourceChapterIds: ["ch04"],
-      clipKeys: ["ch04-clip01", "ch04-clip02", "ch03-clip04"],
-      clipTitles: {
-        "ch04-clip01": "NotebookLM 소개 및 접속 방법",
-        "ch04-clip02": "팀 성과향상 및 피드백 실전",
-        "ch03-clip04": "ChatGPT 및 GPTs 소개"
-      }
+      clipKeys: ["ch04-clip01", "ch04-clip02", "ch04-clip03"]
     },
     {
       visibleChapterId: "ch05",
       title: "Key Takeaways & Q/A",
       time: "17:10",
-      sourceChapterIds: ["ch09"],
-      clipKeys: ["ch09-clip01", "ch09-clip02"]
+      sourceChapterIds: ["ch05"],
+      clipKeys: ["ch05-clip01", "ch05-clip02"]
     },
     {
       visibleChapterId: "ch06",
       title: "참고자료 라이브러리",
       time: "17:20",
-      sourceChapterIds: ["ch07", "ch08"],
+      sourceChapterIds: ["ch06"],
       clipKeys: [
-        "ch07-clip01",
-        "ch07-clip02",
-        "ch07-clip03",
-        "ch07-clip04",
-        "ch07-clip05",
-        "ch07-clip06",
-        "ch07-clip07",
-        "ch07-clip08",
-        "ch08-clip01",
-        "ch08-clip03",
-        "ch08-clip06"
+        "ch06-clip01",
+        "ch06-clip02",
+        "ch06-clip03",
+        "ch06-clip04",
+        "ch06-clip05",
+        "ch06-clip06",
+        "ch06-clip07",
+        "ch06-clip08",
+        "ch06-clip09",
+        "ch06-clip10",
+        "ch06-clip11"
       ]
     }
   ];

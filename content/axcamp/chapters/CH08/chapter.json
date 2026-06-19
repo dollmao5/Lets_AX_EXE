@@ -1,68 +1,38 @@
 {
   "chapterId": "ch08",
   "chapterNum": "CH 08",
-  "title": "참고자료 라이브러리",
-  "time": "",
+  "title": "Vibe Coding",
+  "time": "15:30",
   "clips": [
     {
       "route": "#ch08-clip01",
-      "title": "Tool Pantry (MCPMCPAI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. & CLICLI마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다.)",
-      "type": "참고",
-      "folder": "chapters/CH08/ch08-clip01",
-      "linkCount": 21,
-      "imageCount": 0,
-      "sectionCount": 2,
-      "promptCount": 0
+      "title": "바이브 코딩이란",
+      "type": "개념",
+      "folder": "chapters/CH08/ch08-clip01"
     },
     {
       "route": "#ch08-clip02",
-      "title": "Copilot 참고자료",
-      "type": "참고",
-      "folder": "chapters/CH08/ch08-clip02",
-      "linkCount": 4,
-      "imageCount": 0,
-      "sectionCount": 2,
-      "promptCount": 0
-    },
-    {
-      "route": "#ch08-clip06",
-      "title": "웹 스타일 프롬프트 가이드",
-      "type": "참고",
-      "folder": "chapters/CH08/ch08-clip06",
-      "linkCount": 2,
-      "imageCount": 0,
-      "sectionCount": 1,
-      "promptCount": 0
+      "title": "바이브 코딩으로 웹앱 제작하기",
+      "type": "실습",
+      "folder": "chapters/CH08/ch08-clip02"
     },
     {
       "route": "#ch08-clip03",
-      "title": "추가 읽을거리",
-      "type": "참고",
-      "folder": "chapters/CH08/ch08-clip03",
-      "linkCount": 28,
-      "imageCount": 0,
-      "sectionCount": 1,
-      "promptCount": 0
+      "title": "경쟁사 리서치 대시보드",
+      "type": "실습",
+      "folder": "chapters/CH08/ch08-clip03"
     },
     {
       "route": "#ch08-clip04",
-      "title": "실습용 컨텍스트 파일",
-      "type": "참고",
-      "folder": "chapters/CH08/ch08-clip04",
-      "linkCount": 37,
-      "imageCount": 0,
-      "sectionCount": 8,
-      "promptCount": 0
+      "title": "외부 APIAPI프로그램끼리 대화하는 통로예요. 마치 레스토랑의 웨이터처럼, 주문(요청)을 주방(서비스)에 전달하고 요리(결과)를 가져다줍니다. 연동",
+      "type": "개념",
+      "folder": "chapters/CH08/ch08-clip04"
     },
     {
       "route": "#ch08-clip05",
-      "title": "AI Readiness 분석",
-      "type": "참고",
-      "folder": "chapters/CH08/ch08-clip05",
-      "linkCount": 3,
-      "imageCount": 0,
-      "sectionCount": 1,
-      "promptCount": 0
+      "title": "실습 시트: 앱 만들기",
+      "type": "실습",
+      "folder": "chapters/CH08/ch08-clip05"
     }
   ]
 }

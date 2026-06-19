@@ -1,93 +1,84 @@
 ---
-route: "#ch04-clip04"
-chapter: "ch04"
-title: "경쟁사 리서치 대시보드"
-source_url: "https://lg.cmdspace.work/axcamp#ch04-clip04"
-exported_at: "2026-02-28T01:54:11.436Z"
+route: "#CH06-clip03"
+chapter: "CH08"
+title: "시연: 3종 보고서 → 대시보드"
+source_url: "https://lg.cmdspace.work/axcamp#CH06-clip03"
+exported_at: "2026-02-28T01:54:17.085Z"
 ---
+~25분 CH 06 개요
 
-~50분
-CH 04
-실습
+# 시연: 3종 보고서 → 대시보드
 
-# 경쟁사 리서치 대시보드
+강사가 Antigravity**Antigravity**  
+AI 에이전트 플랫폼이에요. 에디터·터미널·브라우저를 AI가 동시에 조작하여 코드 작성, 파일 생성, 웹 작업을 한꺼번에 자율적으로 처리합니다.를 사용하여 전략보고서에서 **3종 보고서 + HTML 대시보드 + PPT**를 자동 생성하는 과정을 시연합니다. AI의 자율 실행 과정에 주목하며 관람하세요.
 
-Gems로 앱 프롬프트 초안을 만들고, AI Studio Build에서 경쟁사 리서치 기능이 있는 React 대시보드를 생성한 뒤, refinement와 LG 스타일 적용, 외부 API 확장까지 이어가는 실습입니다.
+시연 개요
 
-## 실습 진행 순서
+• 전략보고서를 입력하여 본인용/상사 보고용/부하 지시용 3종 보고서를 동시에 생성합니다  
+• 같은 분석 결과를 HTML 대시보드 + PPT로 동시 출력합니다  
+• AI가 스스로 계획하고, 도구를 선택하고, 결과를 검증하는 에이전트 루프를 관찰합니다
 
-| 순서 | 무엇을 하나 | 사용 파일 |
-| --- | --- | --- |
-|
-**0** |
-Gems로 Build 초안 프롬프트 생성 |
+3종 보고서란?
 
-보기
-[다운로드](/assets/practice/ch05/phase-0-gems-build-brief.md)
+같은 사실을 수신자에 따라 다르게 가공하는 것은 임원의 핵심 역량입니다. AI는 이 **정보 변환**을 자동화합니다.
 
-|
+<table class="comparison-table"><thead><tr><th>보고서 유형</th><th>수신자</th><th>목적</th><th>핵심 특성</th></tr></thead><tbody><tr><td><strong>본인용(自用)</strong></td><td>본인</td><td>의사결정 참고</td><td>솔직한 판단, 리스크 우선</td></tr><tr><td><strong>상사 보고용</strong></td><td>상사 (부사장)</td><td>승인/지원 요청</td><td>격식체, 숫자 중심, 1페이지</td></tr><tr><td><strong>부하 지시용</strong></td><td>각 팀장/팀원</td><td>실행 지시</td><td>구체적 액션 아이템, 기한 명시</td></tr></tbody></table>
 
-|
-**1** |
-기본 리서치 대시보드 생성 |
+이 세 가지를 수작업으로 만들면 최소 2~3시간, 여기에 대시보드와 PPT까지 합하면 6~8시간이 소요됩니다. AI에게 맡기면 **15~20분**입니다.
 
-보기
-[다운로드](/assets/practice/ch05/phase-1-competitive-dashboard-prompt.md)
+시연 흐름 — 관람 가이드
 
-|
+<table class="comparison-table"><thead><tr><th style="width:10%">단계</th><th style="width:25%">강사 행동</th><th>관찰 포인트</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>조직정보 + 전략보고서 업로드</td><td>AI에게 <strong>컨텍스트(맥락)</strong>를 제공하는 단계입니다. 조직정보가 상세할수록 결과 품질이 높아집니다.</td></tr><tr><td><strong>2</strong></td><td>3종 보고서 생성 프롬프트 입력</td><td><strong>에이전트 루프 관찰:</strong> AI가 자동으로 계획을 수립하고, 3종 보고서를 동시에 작성하는 과정을 살펴보세요. Plan → Execute → Check 사이클이 반복됩니다.</td></tr><tr><td><strong>3</strong></td><td>HTML + PPT 동시 생성 프롬프트 입력</td><td><strong>멀티에이전트 관찰:</strong> 하나의 에이전트가 대시보드를, 다른 에이전트가 PPT를 동시에 생성합니다. Manager View에서 진행 상황을 확인합니다.</td></tr><tr><td><strong>4</strong></td><td>생성된 결과물 리뷰</td><td>같은 데이터가 수신자별로 어떻게 다르게 변환되었는지, HTML과 PPT의 용도 차이를 비교합니다.</td></tr></tbody></table>
 
-|
-**2** |
-감성 분석, KPI, 정렬 등 기능 refinement |
+시연에서 생성되는 산출물
 
-보기
-[다운로드](/assets/practice/ch05/phase-2-refinement-prompts.md)
+3종 보고서
 
-|
+**본인용** — 비공식 메모체, 핵심 수치 + 의사결정 포인트
 
-|
-**3** |
-LG 스타일과 웹 스타일 요청 반영 |
+**상사 보고용** — 격식체, 두괄식, A4 1페이지
 
-보기
-[다운로드](/assets/practice/ch05/phase-3-lg-style-prompt.md)
+**부하 지시용** — 지시체, 팀별 액션 아이템 + 기한
 
-|
+대시보드 + PPT
 
-|
-**4** |
-외부 데이터 수집 API 확장 |
+**HTML 대시보드** — 인터랙티브 차트, 필터링, 다크/라이트 모드
 
-보기
-[다운로드](/assets/practice/ch05/phase-4-firecrawl-extension-prompt.md)
+**PowerPoint** — 이사회 보고 수준, 16:9 와이드, 5~7 슬라이드
 
-|
+**브랜드 컬러** — LG Heritage Red(#A50034) 일관 적용
 
-## 구조화된 프롬프트를 한 번 더 써보자
+관람 포인트
 
-처음부터 XML을 손으로 길게 쓰기보다, **Gems에서 비즈니스 brief를 먼저 정리하고 그 결과를 XML로 다시 묶는 흐름**이 실습에서는 가장 안정적입니다. 아래 예시는 전체 파일의 핵심만 추린 것입니다.
+시연을 관람할 때 다음 세 가지에 주목하세요:  
+  
+**1\. 자율 계획 수립:** 프롬프트를 입력한 후, AI가 스스로 작업 계획을 세우는 과정을 관찰하세요. 사람이 단계별로 지시하지 않아도 AI가 최적의 순서를 결정합니다.  
+  
+**2\. 도구 자동 선택:** AI가 필요에 따라 Editor, Terminal, Browser를 오가며 작업하는 것을 확인하세요. 코드를 작성하고, 실행하고, 결과를 확인하는 전 과정이 자동입니다.  
+  
+**3\. 결과 자체 검증:** AI가 생성한 결과물을 스스로 확인하고, 문제가 있으면 수정하는 과정을 살펴보세요. 이것이 에이전트 루프의 Check 단계입니다.
 
-XML 프롬프트 예시복사
+시연 결과 요약
 
-<app_request>
-<goal>Create an executive competitive-intelligence dashboard</goal>
-<framework>React</framework>
-<data_flow>Search recent news, summarize findings, assign urgency, and prepare export-friendly cards.</data_flow>
-<brand_style>LG magenta accent, restrained executive tone, white background.</brand_style>
-</app_request>
+파일 업로드  
+조직정보 + 전략보고서
 
-### 언제 XML을 넣는 것이 가장 좋은가
+→
 
-초안 프롬프트를 만든 직후보다, **한두 번 refinement를 거쳐 요구사항이 굳은 다음** XML로 정리하는 편이 효율적입니다. 필요하면 Gems에 “이 프롬프트를 app_request XML 형식으로 다시 써줘”라고 맡겨 **가벼운 XML 변환 보조 앱처럼** 쓰는 정도면 충분하다.
+3종 보고서  
+본인용 / 상사 보고용 / 부하 지시용
 
-## 마지막 체크포인트
+→
 
-### 완료 기준
+듀얼 출력  
+HTML 대시보드 + PPT
 
-1. 검색 입력과 결과 카드가 동작합니다.
+수작업 6~8시간 → AI 15~20분
 
-2. KPI 또는 요약 카드가 추가되어 있다.
+핵심 메시지
 
-3. LG 스타일 지시문이 반영되어 화면 위계가 정리되어 있다.
+**이 워크플로우를 스킬로 저장하면, 조직 전체가 재사용할 수 있습니다.**  
+  
+매주 월요일 주간 보고서, 매월 초 월간 실적, 분기말 이사회 자료 — 반복되는 보고서 업무에 이 스킬을 적용하면 시간을 90% 이상 절약할 수 있습니다. 한 명이 만든 스킬이 팀 전체의 업무 표준이 됩니다.
 
-4. 필요하면 Share 또는 Publish로 다른 사람에게 보여줄 준비가 되어 있다.
+[← 에이전틱 AI 도구 소개](#CH06-clip02) [듀얼 출력의 원리 심화 →](#CH06-clip04)

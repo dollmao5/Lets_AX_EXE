@@ -1,38 +1,393 @@
+<div class="clip-header">
+  <div class="clip-badges">
+    <span class="clip-badge time">~25분</span>
+    <span class="clip-badge chapter">CH 07</span>
+    <span class="clip-badge type-practice">실습</span>
+  </div>
+  <h1 class="clip-title">바이브 코딩으로 웹앱 제작하기</h1>
+</div>
 
-    <div class="clip-header">
-      <div class="clip-badges">
-        
-        <span class="clip-badge chapter">CH 08</span>
-        <span class="clip-badge type-reference">참고</span>
+<div class="clip-overview">AI Studio Build는 자연어로 React 웹앱을 만들고 고치고 공유할 수 있는 작업대입니다. 이번 클립에서는 <strong>시스템 개발 기술명세서를 먼저 만들고</strong>, 그 결과를 Build 시작창에 붙여 넣어 앱 제작을 시작한 뒤, 각자 만든 결과를 Miro에 공유하는 흐름까지 함께 익힙니다.</div>
+
+<div class="clip-section">
+  <div class="clip-section-title">AI Studio로 바로 이동</div>
+  <div class="clip-section-content">
+    <div class="product-hero">
+      <div class="product-hero-info">
+        <div class="product-hero-name">Google AI Studio Build</div>
+        <div class="product-hero-desc">자연어로 앱을 만들고, React 코드로 내려받고, 링크로 공유하는 빌더</div>
       </div>
-      <h1 class="clip-title">Copilot 참고자료</h1>
+      <a class="product-hero-link" href="https://aistudio.google.com/apps" target="_blank" rel="noopener noreferrer">aistudio.google.com/apps →</a>
     </div>
-    
-    <div class="clip-overview">Microsoft Copilot의 핵심 기능과 기업 환경에서의 활용법을 정리한 참고 자료입니다.</div>
-<div class="clip-section">
- <div class="clip-section-title">Microsoft Copilot이란?</div>
- <div class="clip-section-content">
- <ul>
- <li><strong>Microsoft 365 통합:</strong> Word, Excel, PowerPoint, Outlook, Teams에 AI가 내장</li>
- <li><strong>업무 자동화:</strong> 이메일 요약, 문서 초안, 프레젠테이션 생성, 데이터 분석을 각 앱 내에서 처리</li>
- <li><strong>기업 보안:</strong> Microsoft 365 Enterprise의 보안 체계 내에서 동작, 데이터가 외부로 유출되지 않음</li>
- <li><strong>Graph 연동:</strong> 사내 이메일, 문서, 캘린더, 채팅 기록 등을 통합하여 맥락 있는 답변 제공</li>
- </ul>
- </div>
-</div>
-<div class="clip-section">
- <div class="clip-section-title">참고 링크</div>
- <ul class="ref-links">
- <li class="ref-link-item"><div class="ref-link-text"><a class="ref-link-title" href="https://www.microsoft.com/ko-kr/microsoft-copilot" target="_blank">Microsoft Copilot 공식 페이지</a><div class="ref-link-desc">Copilot의 기능 및 요금제 안내</div></div></li>
- <li class="ref-link-item"><div class="ref-link-text"><a class="ref-link-title" href="https://adoption.microsoft.com/ko-kr/copilot/" target="_blank">Copilot 도입 가이드 (기업용)</a><div class="ref-link-desc">조직 단위 도입을 위한 공식 가이드라인</div></div></li>
- </ul>
-</div>
-    <div class="clip-nav-footer">
-      <a class="clip-nav-btn " href="#ch08-clip01">
-        ← Tool Pantry (MCP &amp; CLI)
-      </a>
-      <a class="clip-nav-btn " href="#ch08-clip06">
-        웹 스타일 프롬프트 가이드 →
-      </a>
+    <div class="tip-block" style="margin-top:16px">
+      <div class="tip-block-title">오늘은 React를 사용합니다</div>
+      <div class="tip-block-content">Advanced settings에서 프레임워크를 고를 수 있지만, 오늘 실습은 <strong>React</strong>를 기준으로 진행합니다. 컴포넌트 단위로 고치기 쉽고, AI와의 반복 대화에서 수정 방향이 가장 직관적이기 때문입니다.</div>
     </div>
-  
+  </div>
+</div>
+
+<div class="clip-section">
+  <div class="clip-section-title">실제 화면으로 보는 Build 인터페이스</div>
+  <div class="clip-section-content">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+      <div style="border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg-white)">
+        <img src="/assets/aistudio/CH06/framework-dropdown.png" alt="AI Studio Build Advanced settings와 Framework 선택 화면" style="width:100%;display:block" loading="lazy">
+        <div style="padding:12px 14px;background:var(--bg-offwhite);font-size:0.8rem;line-height:1.6;color:var(--text-secondary)">Advanced settings에서는 모델, 시스템 지침, 프레임워크, 마이크 입력 등을 정합니다. 여기서 React / Next.js / Angular 중 하나를 고를 수 있습니다.</div>
+      </div>
+      <div style="border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg-white)">
+        <img src="/assets/aistudio/CH06/lotto-app-workspace.png" alt="Google AI Studio Build로 만든 Lotto Lucky Draw 앱 작업 화면" style="width:100%;display:block" loading="lazy">
+        <div style="padding:12px 14px;background:var(--bg-offwhite);font-size:0.8rem;line-height:1.6;color:var(--text-secondary)">실제 생성된 앱 화면입니다. 프롬프트를 주면 오른쪽 preview가 바뀌고, 같은 대화에서 계속 기능을 덧붙이며 앱을 발전시킬 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clip-section">
+  <div class="clip-section-title">Advanced settings에서 볼 5가지</div>
+  <div class="clip-section-content">
+    <table class="comparison-table">
+      <thead><tr><th>항목</th><th>무엇을 정하나</th><th>오늘 실습 기준</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Model</strong></td><td>어떤 Gemini 엔진으로 앱 생성과 대화를 할지</td><td>기본 추천 모델을 쓰되, 응답 품질이 아쉬우면 상위 모델로 바꾸는 정도만 익힙니다.</td></tr>
+        <tr><td><strong>System instructions</strong></td><td>앱의 역할과 성격, 작성 규칙</td><td>“임원용 보고 앱”, “LG 스타일”, “React로 작성” 같은 기준을 넣습니다.</td></tr>
+        <tr><td><strong>Framework</strong></td><td>어떤 웹 프레임워크로 앱을 생성할지</td><td><strong>React</strong>를 선택합니다. 반복 수정과 코드 확인이 가장 직관적입니다.</td></tr>
+        <tr><td><strong>Preview / Assistant</strong></td><td>채팅과 결과 화면을 어떻게 같이 볼지</td><td>한쪽에서 수정 요청, 다른 쪽에서 바로 결과 검수하는 리듬을 만듭니다.</td></tr>
+        <tr><td><strong>Share / Publish</strong></td><td>앱을 동료와 공유할지, 공개 링크로 배포할지</td><td>내부 실습은 공유 링크 중심, 외부 공개는 Publish 패널을 따로 봅니다.</td></tr>
+      </tbody>
+    </table>
+    <div class="info-block" style="margin-top:16px">
+      <div class="info-block-title">React / Next.js / Angular를 어떻게 구분하면 되나</div>
+      <div style="font-size:0.85rem;line-height:1.8;color:var(--text-body)">
+        <strong>React</strong>는 빠른 프로토타이핑과 컴포넌트 수정에 유리해서 오늘 실습용으로 가장 적합합니다.<br>
+        <strong>Next.js</strong>는 라우팅, 서버 기능, 정식 배포까지 염두에 둘 때 좋습니다.<br>
+        <strong>Angular</strong>는 기업 표준과 복잡한 대형 화면 구조를 강하게 통제해야 할 때 어울립니다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clip-section">
+  <div class="clip-section-title">Gems로 시스템개발 프롬프트 작성하기</div>
+  <div class="clip-section-content">
+    <div class="info-block">
+      <div class="info-block-title">시스템 개발 기술명세서 작성기</div>
+      <div style="font-size:0.85rem;line-height:1.8;color:var(--text-body)">
+        만들고 싶은 앱의 컨셉만 넣으면 AI가 <strong>기능 명세, 화면 구조, 데이터 모델, 구현 체크리스트</strong>까지 포함한 lean spec을 작성해 주는 Gem입니다.<br>
+        예를 들어 <strong>포켓몬 배틀 게임</strong>처럼 간단한 아이디어를 넣어도, 참가자는 생성된 기술명세서를 <strong>AI Studio Build 시작창에 그대로 붙여 넣는 것만으로</strong> 앱 개발을 시작할 수 있습니다.
+      </div>
+    </div>
+    <div style="margin-top:16px;border:1px solid var(--border);border-radius:16px;background:var(--bg-offwhite);padding:16px 18px">
+      <div style="font-size:0.78rem;font-weight:800;color:var(--brand);margin-bottom:10px">요청사항 미리보기</div>
+      <pre style="margin:0;font-size:0.8rem;line-height:1.65;color:var(--text-body);white-space:pre-wrap;font-family:var(--font-mono)">시스템 개발 프롬프트
+
+You are Simple React App Builder Agent.
+
+## Principles
+- MVP-focused
+- React-first
+- client-first architecture
+- avoid over-engineering
+
+## Mandatory Sections
+## 1) App Summary
+## 2) MVP Scope
+## 3) UX / UI (React 기준)
+## 4) Data Model (Minimal)
+## 5) State & Logic
+## 6) API/Integration (Optional)
+## 7) Build Plan
+## 8) Assumptions & Open Questions</pre>
+    </div>
+    <div class="prompt-block" style="margin-top:14px">
+      <div class="prompt-header"><span class="prompt-label">시스템 개발 기술명세서 작성기 전체 요청사항</span><button class="copy-btn" onclick="copyPrompt(this,'CH06-system-dev-gem-full')">전체 복사</button></div>
+      <div class="prompt-content" style="font-size:0.82rem;line-height:1.7">화면에는 일부만 보이고, 아래 복사 버튼은 전체 요청사항을 복사합니다. Gems 설정의 요청사항에 그대로 붙여 넣으세요.</div>
+      <pre id="CH06-system-dev-gem-full" style="display:none;white-space:pre-wrap">시스템 개발 프롬프트 
+
+You are Simple React App Builder Agent.
+
+Your job is to convert a user's keywords/needs into a simple, buildable React-first spec (MVP-focused). Keep it lean: UI/UX + core features + minimal data model + minimal API/contracts + implementation checklist. Assume a small team and fast iteration.
+
+## Principles
+
+- Output language: Korean, but keep key jargon as Korean (English) or English.
+
+- Default stack: React + TypeScript + Vite (or Next.js if routing/SSR is needed). Choose one and justify in 1 line.
+
+- Prefer client-first architecture: LocalStorage/IndexedDB first, then optional backend.
+
+- Avoid over-engineering: no microservices, no heavy infra. Minimize dependencies.
+
+- Never omit sections; if unknown, make assumptions and label them.
+
+## Input You Will Receive
+
+- Keywords, problem, target users, scenario, constraints.
+
+## Output Format Rules
+
+- Use markdown headings H2 and H4 only.
+
+- Use bullet lists only ("- ").
+
+- Nested bullets must be tab-indented.
+
+- No blank lines between headings/sections/bullets.
+
+## Mandatory Sections (Lean)
+
+## 1) App Summary
+
+#### 1.1 One-liner
+
+#### 1.2 Target User
+
+#### 1.3 Core Workflow (3 steps)
+
+## 2) MVP Scope
+
+#### 2.1 Must-have
+
+#### 2.2 Nice-to-have
+
+#### 2.3 Out-of-scope
+
+## 3) UX / UI (React 기준)
+
+#### 3.1 Screens (routes)
+
+#### 3.2 Components (per screen)
+
+#### 3.3 States (empty/loading/error)
+
+## 4) Data Model (Minimal)
+
+#### 4.1 Types (TypeScript interfaces)
+
+#### 4.2 Storage strategy (LocalStorage vs IndexedDB)
+
+## 5) State & Logic
+
+#### 5.1 State management choice (useState/useReducer/Zustand)
+
+#### 5.2 Validation rules
+
+#### 5.3 Edge cases
+
+## 6) API/Integration (Optional)
+
+#### 6.1 When needed
+
+#### 6.2 Contract shapes (request/response) in JSON
+
+## 7) Build Plan
+
+#### 7.1 Folder structure
+
+#### 7.2 Implementation checklist (step-by-step)
+
+#### 7.3 Test checklist (smoke tests)
+
+## 8) Assumptions & Open Questions
+
+#### 8.1 Assumptions
+
+#### 8.2 Open Questions (max 8)
+
+## Defaults
+
+- Auth: none for MVP unless the user explicitly needs accounts.
+
+- Persistence: LocalStorage for small data; IndexedDB for large/structured data.
+
+- Styling: Tailwind or CSS Modules (pick one).
+
+- Forms: React Hook Form only if forms are complex; otherwise controlled inputs.
+
+- Routing: React Router if multi-screen; otherwise single page.
+
+## Behavior
+
+- Do NOT ask many clarifying questions upfront.
+
+- Produce a complete lean spec with assumptions.
+
+- Keep total length practical: prefer checklists and concrete names.
+
+Now wait. When the user provides the idea, generate the full lean spec.</pre>
+    </div>
+    <div class="tip-block" style="margin-top:14px">
+      <div class="tip-block-title">권장 사용 흐름</div>
+      <div class="tip-block-content">1. Gem에 앱 아이디어를 입력합니다. 2. 나온 기술명세서를 읽고 필요한 가정만 고칩니다. 3. 수정된 spec 전체를 AI Studio Build 시작창에 붙여 넣습니다. 4. 앱이 생성되면 다시 대화로 기능을 추가합니다.</div>
+    </div>
+  </div>
+</div>
+
+<div class="clip-section">
+  <div class="clip-section-title">처음 만들어보기 좋은 예제 3가지</div>
+  <div class="clip-section-content">
+    <p style="font-size:0.85rem;line-height:1.7;margin-bottom:14px">예제는 많을수록 좋지 않습니다. 오늘은 <strong>가볍게 웃기는 것 1개, 해보면 재밌는 것 1개, 실무형 1개</strong>만 잡고, 나머지는 각자 자신의 아이디어로 확장해보는 흐름으로 갑니다.</p>
+
+    <div class="tip-block" style="margin-bottom:16px">
+      <div class="tip-block-title">어떤 순서로 보여주면 좋나</div>
+      <div class="tip-block-content">1. 결과가 빨리 나오는 <strong>Lotto Lucky Draw</strong>로 분위기를 풉니다. 2. 반응과 상호작용이 살아 있는 <strong>포켓몬 배틀 게임</strong>으로 재미를 줍니다. 3. 실제 업무와 바로 연결되는 <strong>Executive Briefing Formatter</strong>로 마무리합니다.</div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:18px;padding:18px;display:grid;gap:12px">
+        <div style="display:grid;gap:6px">
+          <div style="font-size:0.74rem;font-weight:800;color:var(--brand)">Funny Warm-up</div>
+          <strong style="font-size:1rem;color:var(--text)">Lotto Lucky Draw</strong>
+          <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">가장 빨리 결과가 보이는 워밍업 예제입니다. 버튼, 랜덤 로직, 상태 저장, 애니메이션까지 짧은 시간 안에 확인할 수 있어서 수업 초반 긴장을 풀기 좋습니다.</div>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-header"><span class="prompt-label">Lotto Lucky Draw 시작 프롬프트</span><button class="copy-btn" onclick="copyPrompt(this,'CH06-lotto-start')">복사</button></div>
+          <div class="prompt-content" id="CH06-lotto-start">React로 동작하는 간단한 웹앱을 만들어줘.
+
+목표:
+- 사용자가 버튼을 누르면 1~45 사이의 중복 없는 로또 번호 6개를 생성한다.
+- 번호는 색이 다른 공(ball) 형태로 보여준다.
+- 최근 생성 이력을 최대 20개까지 저장한다.
+- 각 이력은 개별 삭제 가능하게 한다.
+
+UI 요구사항:
+- 한 화면에서 바로 사용할 수 있게 단순하게 구성
+- 밝은 배경, 큰 번호 공, 명확한 CTA 버튼
+- 모바일에서도 보기 쉽게 반응형으로 구성
+
+기술 요구사항:
+- Framework는 React
+- 브라우저 localStorage에 이력 저장
+- 코드는 읽기 쉽게 분리
+
+마무리:
+- 사용자가 한 번 더 번호를 뽑고 싶게 만드는 가벼운 애니메이션을 추가해줘.</div>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-header"><span class="prompt-label">Lotto Lucky Draw 기능 추가</span><button class="copy-btn" onclick="copyPrompt(this,'CH06-lotto-upgrade')">복사</button></div>
+          <div class="prompt-content" id="CH06-lotto-upgrade">다음을 추가해줘:
+- 지난 회차와의 중복 개수를 보여주는 비교 영역
+- 번호 합계, 홀짝 비율, 구간 분포를 보여주는 통계 카드
+- 자동 생성과 수동 선택을 전환하는 탭
+- 생성 결과를 이미지 카드처럼 저장하고 공유하는 버튼</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:18px;padding:18px;display:grid;gap:12px">
+        <div style="display:grid;gap:6px">
+          <div style="font-size:0.74rem;font-weight:800;color:var(--brand)">Fun Interactive</div>
+          <strong style="font-size:1rem;color:var(--text)">포켓몬 배틀 게임</strong>
+          <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">캐릭터 선택, 턴 기반 상태 변화, 애니메이션, 승패 로직이 한 번에 들어가는 놀이형 예제입니다. 눈에 보이는 변화가 많아서 참가자들이 `아 이런 것도 바로 만들 수 있구나`를 가장 빨리 체감합니다.</div>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-header"><span class="prompt-label">포켓몬 배틀 게임 시작 프롬프트</span><button class="copy-btn" onclick="copyPrompt(this,'CH06-pokemon-start')">복사</button></div>
+          <div class="prompt-content" id="CH06-pokemon-start">React 기반의 간단한 포켓몬 배틀 게임 웹앱을 만들어줘.
+
+목표:
+- 사용자가 포켓몬 3마리 중 1마리를 고른다.
+- AI 상대 포켓몬도 자동으로 선택된다.
+- 턴마다 공격 / 방어 / 특수기 중 하나를 선택해 배틀한다.
+- 체력이 0이 되면 승패를 보여준다.
+
+UI 요구사항:
+- 카드형 포켓몬 선택 화면
+- 배틀 시작 후에는 양쪽 HP 바와 로그창 표시
+- 공격할 때 간단한 흔들림이나 번쩍임 애니메이션 추가
+- 전반적으로 밝고 장난감 같은 느낌의 컬러 사용
+
+기술 요구사항:
+- React
+- 상태는 useState 중심으로 단순하게 관리
+- 새로고침하면 다시 시작되는 구조로 간단하게 구현
+
+출력 톤:
+- 가볍고 경쾌한 게임 화면
+- 규칙은 단순하지만 바로 몰입 가능하게</div>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-header"><span class="prompt-label">포켓몬 배틀 게임 기능 추가</span><button class="copy-btn" onclick="copyPrompt(this,'CH06-pokemon-upgrade')">복사</button></div>
+          <div class="prompt-content" id="CH06-pokemon-upgrade">다음을 추가해줘:
+- 포켓몬마다 타입 상성을 넣어줘
+- 배틀 중 랜덤 이벤트 카드가 뜨게 해줘
+- 승리 시 배지 하나를 획득하는 화면을 추가해줘
+- 최근 승패 기록을 localStorage에 저장해줘
+- 모바일에서 한 손으로 조작하기 쉽게 버튼 크기를 키워줘</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-offwhite);border:1px solid var(--border);border-radius:18px;padding:18px;display:grid;gap:12px">
+        <div style="display:grid;gap:6px">
+          <div style="font-size:0.74rem;font-weight:800;color:var(--brand)">Serious Work Tool</div>
+          <strong style="font-size:1rem;color:var(--text)">Executive Briefing Formatter</strong>
+          <div style="font-size:0.84rem;line-height:1.65;color:var(--text-body)">긴 메모나 회의 내용을 1페이지 임원 브리핑으로 바꾸는 앱입니다. CH04~CH06에서 다룬 회의 메모, 리서치 결과, 브리핑 흐름과 가장 직접적으로 이어지는 실무형 예제입니다.</div>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-header"><span class="prompt-label">Executive Briefing Formatter 시작 프롬프트</span><button class="copy-btn" onclick="copyPrompt(this,'CH06-exec-start')">복사</button></div>
+          <div class="prompt-content" id="CH06-exec-start">경영진 보고용 초안을 빠르게 정리하는 React 웹앱을 만들어줘.
+
+핵심 기능:
+- 긴 메모나 회의 내용을 붙여넣으면
+- 1페이지 브리핑 형식으로 요약한다
+- 아래 4개 블록으로 출력한다
+  - Situation
+  - Key Signals
+  - Decision Points
+  - Recommended Actions
+
+UI 요구사항:
+- 임원 보고 문서처럼 차분하고 정돈된 레이아웃
+- 카드형 섹션
+- 복사 버튼과 Markdown 다운로드 버튼 제공
+
+스타일:
+- 화이트 배경
+- 짙은 네이비 텍스트
+- 액센트 컬러는 #A50034
+
+출력 톤:
+- 간결하고 격식 있는 비즈니스 문체</div>
+        </div>
+        <div class="prompt-block">
+          <div class="prompt-header"><span class="prompt-label">Executive Briefing Formatter 수정 요청</span><button class="copy-btn" onclick="copyPrompt(this,'CH06-exec-upgrade')">복사</button></div>
+          <div class="prompt-content" id="CH06-exec-upgrade">다음을 추가해줘:
+- 원문과 요약문을 나란히 비교하는 split view
+- 출력 톤을 보고용 / 이메일용 / 발표용으로 바꾸는 옵션
+- Markdown 외에 PPT 아웃라인과 회의 메모 형식으로도 내보내는 탭
+- 추천 액션 항목을 체크리스트로 저장하는 기능</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block" style="margin-top:16px">
+      <div class="info-block-title">이제는 각자 자기 앱을 만들어봅니다</div>
+      <div style="font-size:0.85rem;line-height:1.8;color:var(--text-body)">
+        위 세 예제는 출발점일 뿐입니다. 참가자는 세 예제 중 하나를 변형해도 좋고, 자신의 업무나 관심사에 맞는 앱을 새로 만들어도 됩니다.<br>
+        실습 후에는 만든 앱의 링크, 화면 캡처, 혹은 핵심 프롬프트를 <strong>Miro 보드에 공유</strong>해서 서로의 결과를 함께 살펴봅니다. 같은 도구를 써도 결과가 얼마나 다르게 나오는지 비교하는 것이 이 실습의 중요한 포인트입니다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clip-section">
+  <div class="clip-section-title">공유와 Publish는 다르다</div>
+  <div class="clip-section-content">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+      <div style="border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg-white)">
+        <img src="/assets/aistudio/CH06/share-settings.png" alt="AI Studio Build 공유 설정 화면" style="width:100%;display:block" loading="lazy">
+        <div style="padding:12px 14px;background:var(--bg-offwhite);font-size:0.8rem;line-height:1.6;color:var(--text-secondary)">Share는 특정 동료와 앱을 같이 보는 협업 설정입니다. 링크 공유나 사람별 권한 지정이 이 단계입니다.</div>
+      </div>
+      <div style="border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg-white)">
+        <img src="/assets/aistudio/CH06/publish-panel.png" alt="AI Studio Build Publish 패널" style="width:100%;display:block" loading="lazy">
+        <div style="padding:12px 14px;background:var(--bg-offwhite);font-size:0.8rem;line-height:1.6;color:var(--text-secondary)">Publish는 공개 URL 배포에 가깝습니다. Notebook 기록이나 코드 편집 내역은 private로 두고, 결과 앱만 외부에 보여주는 흐름으로 이해하면 됩니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clip-nav-footer">
+  <a class="clip-nav-btn" href="#CH06-clip01">
+    ← 바이브 코딩이란
+  </a>
+  <a class="clip-nav-btn" href="#CH08-clip03">
+    실습 워크숍: 경쟁사 리서치 대시보드 →
+  </a>
+</div>
