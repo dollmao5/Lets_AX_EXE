@@ -1,7 +1,7 @@
-<section class="CH00-clip01-revised" id="CH00-clip01">
+<section class="CH00-clip01-revised" id="ch00-clip01">
   <style>
     /* CH00 과정안내
-       - CH03·CH03·CH04의 20px 기반 타이포그래피와 카드·표·상태 UI를 동일하게 적용
+       - CH02·CH03·CH04의 20px 기반 타이포그래피와 카드·표·상태 UI를 동일하게 적용
        - 전역 CSS 변수와 기본 컴포넌트를 재사용하므로 현재 과정 테마에 자동으로 맞춰집니다.
        - 동적 HTML 주입 환경에서도 준비 체크리스트가 localStorage에 저장됩니다. */
     .CH00-clip01-revised {
@@ -917,6 +917,57 @@
 
   </div>
 
+  <!-- 260622 learning focus: performance + AI -->
+  <div class="clip-section">
+    <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
+    <div class="clip-section-content">
+      <div class="info-block">
+        <div class="info-block-title">성과관리·성과향상 관점</div>
+        <div>오늘 만들어야 할 산출물이 다음 단계의 입력이 되는 구조를 이해하고, 최종적으로 우리 팀의 30일 성과향상 실행계획까지 연결합니다. 성과향상은 AI 사용량이 아니라 <strong>리더 행동·팀 Workflow·점검 지표의 변화</strong>로 확인합니다.</div>
+      </div>
+      <div class="tip-block" style="margin-top:14px">
+        <div class="tip-block-title">AI 기능·활용 학습</div>
+        <div class="tip-block-content">Gemini는 대화·파일 분석·구조화된 초안에, NotebookLM은 여러 산출물의 근거 연결·출처 확인에 사용합니다. 웹페이지의 프롬프트 유형 배지와 지정 도구를 확인한 뒤 결과를 <strong>Markdown(.md)</strong>으로 저장하는 기본 흐름을 익힙니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 260622 participant guide: literacy variance and prompt types -->
+  <div class="clip-section">
+    <div class="clip-section-title">AI 활용 경험이 달라도 이렇게 따라옵니다</div>
+    <div class="clip-section-content">
+      <div class="info-block">
+        <div class="info-block-title">필수 실습은 같은 순서로 진행합니다</div>
+        <div>
+          <strong>처음 사용하는 경우</strong>에는 지정 도구 열기 → 프롬프트 복사 → 붙여넣기 → AI 질문에 평소 말로 답하기 → 결과 저장의 순서만 따라갑니다.<br>
+          <strong>기본 활용 경험이 있는 경우</strong>에는 우리 팀의 실제 업무 장면을 1~2문장 더하고, 결과의 누락·근거·보안 항목을 확인합니다.<br>
+          <strong>활용이 익숙한 경우</strong>에는 필수 산출물을 먼저 완성한 뒤 Deep Research·Gems·공유자료 등 선택 활동으로 확장합니다.<br><br>
+          AI 활용 수준과 관계없이 <strong>필수 산출물과 완료 기준은 동일</strong>합니다. 기능을 많이 쓰는 것보다 결과를 확인하고 저장하는 것이 우선입니다.
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:14px">
+        <table class="comparison-table">
+          <thead><tr><th>프롬프트 표시</th><th>진행 방법</th><th>팀장이 할 일</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mini-label">대화형</span></td><td>AI가 질문하면 답하며 결과를 함께 구체화합니다.</td><td>질문에 한 번에 한 가지씩, 평소 사용하는 말로 답합니다.</td></tr>
+            <tr><td><span class="mini-label">복붙형</span></td><td>프롬프트를 그대로 붙여넣고 구조화된 결과를 확인합니다.</td><td>필요한 파일을 먼저 첨부하고 결과의 누락·오류를 검토합니다.</td></tr>
+            <tr><td><span class="mini-label">이어서형</span></td><td>앞 단계와 같은 대화창에 붙여넣어 분석을 이어갑니다.</td><td>새 대화를 열지 않고 앞선 결과가 남아 있는지 확인합니다.</td></tr>
+            <tr><td><span class="mini-label">설정형</span></td><td>Gem 채팅창이 아니라 Gem의 인스트럭션 입력란에 넣습니다.</td><td>저장 후 Preview에서 실제로 작동하는지 확인합니다.</td></tr>
+            <tr><td><span class="mini-label">테스트형</span></td><td>만든 Gem 또는 기능이 의도대로 작동하는지 예시로 시험합니다.</td><td>결과에서 보완점 한 가지를 찾아 지침을 수정합니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip-block" style="margin-top:14px">
+        <div class="tip-block-title">Markdown(.md)을 처음 접하는 경우</div>
+        <div class="tip-block-content">Markdown은 제목·목록·표 구조를 유지하는 가벼운 문서 파일입니다. 다운로드 기능이 있으면 그대로 저장하고, 없으면 AI 결과를 전체 복사해 메모장 또는 텍스트 편집기에 붙여넣은 뒤 안내된 파일명과 <strong>.md</strong> 확장자로 저장합니다.</div>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="clip-section">
     <div class="clip-section-title">과정 한눈에 보기</div>
     <div class="clip-section-content">
@@ -972,7 +1023,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 15l4-4 3 3 5-7"></path></svg>
           </span>
           <div>
-            <h3>2. 조직(팀)의 성과 이슈을 구조적으로 확인합니다</h3>
+            <h3>2. 조직(팀)의 성과 이슈를 구조적으로 확인합니다</h3>
             <p>리더 개인의 문제가 아니라 목표·역할·프로세스·관계·심리적 안전감·실행 신뢰성 관점에서 원인을 찾습니다.</p>
           </div>
         </article>
@@ -991,7 +1042,7 @@
           </span>
           <div>
             <h3>4. 우리 팀의 30일 Action Plan을 완성합니다</h3>
-            <p>CH03·CH03 산출물을 NotebookLM에서 연결해 실행과제 TOP 3과 주차별 Action Plan으로 전환합니다.</p>
+            <p>CH02·CH03 산출물을 NotebookLM에서 연결해 실행과제 TOP 3과 주차별 Action Plan으로 전환합니다.</p>
           </div>
         </article>
       </div>
@@ -1004,7 +1055,7 @@
       <p class="section-lead">각 챕터의 결과물이 다음 챕터의 입력자료가 됩니다. 좋은 답변을 한 번 얻는 것보다 <strong>산출물을 구조화해 저장하고 다시 연결하는 것</strong>이 중요합니다.</p>
 
       <div class="journey-grid">
-        <a class="journey-link" href="#CH01-clip01">
+        <a class="journey-link" href="#ch01-clip01">
           <article class="journey-card">
             <div class="journey-card-head"><span class="journey-code">CH01</span><span class="mini-label">이해·진단</span></div>
             <h3>AI 핵심 개념과 출발점</h3>
@@ -1012,15 +1063,15 @@
             <div class="journey-output"><strong>Output</strong><br>개인 학습 초점과 리더십 출발점</div>
           </article>
         </a>
-        <a class="journey-link" href="#CH03-clip01">
+        <a class="journey-link" href="#ch02-clip01">
           <article class="journey-card">
-            <div class="journey-card-head"><span class="journey-code">CH03</span><span class="mini-label">Gemini</span></div>
+            <div class="journey-card-head"><span class="journey-code">CH02</span><span class="mini-label">Gemini</span></div>
             <h3>리더 역할·책임·역량</h3>
             <p>토론과 Gemini 대화를 통해 AI와 리더의 역할 분담, 리더 역할 프로필, 실행 브리프를 만듭니다.</p>
             <div class="journey-output"><strong>Output</strong><br>리더 역할 프로필 · 핵심 역량·실행 브리프</div>
           </article>
         </a>
-        <a class="journey-link" href="#CH03-clip01">
+        <a class="journey-link" href="#ch03-clip01">
           <article class="journey-card">
             <div class="journey-card-head"><span class="journey-code">CH03</span><span class="mini-label">팀 시스템</span></div>
             <h3>우리 팀 성과 병목·역량·Workflow</h3>
@@ -1028,16 +1079,16 @@
             <div class="journey-output"><strong>Output</strong><br>성과 병목 진단 · 행동역량 · Workflow</div>
           </article>
         </a>
-        <a class="journey-link" href="#CH04-clip01">
+        <a class="journey-link" href="#ch04-clip01">
           <article class="journey-card">
             <div class="journey-card-head"><span class="journey-code">CH04</span><span class="mini-label">NotebookLM</span></div>
             <h3>산출물 통합과 30일 실행계획</h3>
             <p>앞선 결과를 하나의 소스 묶음으로 연결하고 실행과제 TOP 3과 30일 Action Plan을 확정합니다.</p>
-            <div class="journey-output"><strong>Output</strong><br>Source Map · TOP 3 · 30일 Action Plan</div>
+            <div class="journey-output"><strong>Output</strong><br>근거 정리표(Source Map) · TOP 3 · 30일 실행계획</div>
           </article>
         </a>
       </div>
-
+    </div>
   </div>
 
   <div class="clip-section">
@@ -1102,7 +1153,7 @@
   <div class="clip-section">
     <div class="clip-section-title">오늘의 시간표</div>
     <div class="clip-section-content">
-      <p class="section-lead">원활한 강의 및 실습 진행을 위해 <strong>필수 산출물은 틈틈히 정리하여 저장</strong>해주세요.</p>
+      <p class="section-lead">원활한 강의 및 실습 진행을 위해 <strong>필수 산출물은 틈틈이 정리하여 저장</strong>해주세요.</p>
 
       <div class="table-wrap">
         <table class="comparison-table schedule-table">
@@ -1123,7 +1174,7 @@
             </tr>
             <tr>
               <td>08:45~09:30</td>
-              <td><a class="schedule-link" href="#CH01-clip01">CH01. AI 핵심 개념 및 진단</a></td>
+              <td><a class="schedule-link" href="#ch01-clip01">CH01. AI 핵심 개념 및 진단</a></td>
               <td>AI 트렌드와 Agentic AI 이해 · 기술 활용 로드맵 · AI 리터러시 및 AI-Friendly 리더십 진단</td>
               <td><span class="mode-badge">강의·진단</span></td>
             </tr>
@@ -1135,14 +1186,14 @@
             </tr>
             <tr>
               <td>09:40~12:10</td>
-              <td><a class="schedule-link" href="#CH03-clip01">CH03. Gemini 활용: 리더 역할·역량</a></td>
+              <td><a class="schedule-link" href="#ch02-clip01">CH02. Gemini 활용: 리더 역할·역량</a></td>
               <td>Gemini 환경 세팅 · 팀 토론 오디오 · AI와 리더 역할 분담 · 리더 역할 프로필 · 핵심 역량 및 성과관리 실행 브리프</td>
               <td><span class="mode-badge practice">토론·실습</span></td>
             </tr>
             <tr>
               <td>12:10~12:30</td>
               <td><strong>오전 산출물 저장·오후 실습 준비</strong></td>
-              <td>CH03 Markdown 저장 · 팀 성과 문제 1개와 재설계할 비효율 업무 1개 확정 · 파일명·민감정보 점검</td>
+              <td>CH02 Markdown 저장 · 팀 성과 문제 1개와 재설계할 비효율 업무 1개 확정 · 파일명·민감정보 점검</td>
               <td><span class="mode-badge">정리</span></td>
             </tr>
             <tr class="schedule-lunch">
@@ -1153,7 +1204,7 @@
             </tr>
             <tr>
               <td>13:30~15:30</td>
-              <td><a class="schedule-link" href="#CH03-clip01">CH03. 조직 역량 점검 및 Workflow 재설계</a></td>
+              <td><a class="schedule-link" href="#ch03-clip01">CH03. 조직 역량 점검 및 Workflow 재설계</a></td>
               <td>팀 성과 병목 진단 · 효과성 지표 · 조직/인재 행동역량 · Divide–Navigate–Arrange · Workflow Re-design Canvas</td>
               <td><span class="mode-badge practice">실습</span></td>
             </tr>
@@ -1165,14 +1216,14 @@
             </tr>
             <tr>
               <td>15:40~17:00</td>
-              <td><a class="schedule-link" href="#CH04-clip01">CH04. NotebookLM: 팀 성과향상 실행</a></td>
-              <td>CH03·CH03 소스 통합 · Source Map · 핵심 실행과제 TOP 3 · 우리 팀 성과향상 30일 Action Plan</td>
+              <td><a class="schedule-link" href="#ch04-clip01">CH04. NotebookLM: 팀 성과향상 실행</a></td>
+              <td>CH02·CH03 소스 통합 · 근거 정리표(Source Map) · 핵심 실행과제 TOP 3 · 우리 팀 성과향상 30일 실행계획</td>
               <td><span class="mode-badge practice">통합 실습</span></td>
             </tr>
             <tr>
               <td>17:00~17:30</td>
-              <td><strong>Wrap-up 및 현업 전이</strong></td>
-              <td>Start / Stop / Continue · 첫 주 즉시 실행 행동 확정 · 최종 파일 저장</td>
+              <td><strong>CH05. Wrap-up 및 현업 전이</strong></td>
+              <td>Start / Stop / Continue · 복귀 후 72시간 내 첫 행동 · 30일 점검일 확정 · 최종 파일 저장</td>
               <td><span class="mode-badge">성찰</span></td>
             </tr>
           </tbody>
@@ -1197,7 +1248,7 @@
             <h3>1. 좌측 목차로 이동</h3>
           </div>
           <p>챕터와 클립을 눌러 이동합니다. 실습 중 이전 산출물이나 프롬프트를 다시 확인할 때 사용합니다.</p>
-          <div class="ui-demo-row"><span class="ui-demo-chip">CH03</span><span class="ui-demo-chip">CH03</span><span class="ui-demo-chip">CH04</span></div>
+          <div class="ui-demo-row"><span class="ui-demo-chip">CH02</span><span class="ui-demo-chip">CH03</span><span class="ui-demo-chip">CH04</span></div>
         </article>
 
         <article class="web-guide-card">
@@ -1251,7 +1302,7 @@
             </span>
             <h3>6. 메모·공유보드 활용</h3>
           </div>
-          <p>상단의 <strong>메모 펼치기</strong>로 질문과 현업 아이디어를 기록하고, <strong>공유</strong> 버튼으로 Miro 보드를 엽니다. CH03 토론 오디오는 해당 클립의 공유방에 학습팀당 1개만 업로드합니다.</p>
+          <p>상단의 <strong>메모 펼치기</strong>로 질문과 현업 아이디어를 기록하고, <strong>공유</strong> 버튼으로 Miro 보드를 엽니다. CH02 토론 오디오는 해당 클립의 공유방에 학습팀당 1개만 업로드합니다.</p>
           <div class="ui-demo-row"><span class="ui-demo-button">메모 펼치기</span><span class="ui-demo-button">공유 · Miro</span></div>
         </article>
       </div>
@@ -1259,7 +1310,7 @@
       <div class="info-block">
         <div class="info-block-title">도구 혼동 방지</div>
         <div>
-          프롬프트 카드의 도구 배지를 먼저 확인합니다. <strong>CH03·CH03은 주로 Gemini</strong>,
+          프롬프트 카드의 도구 배지를 먼저 확인합니다. <strong>CH02·CH03은 주로 Gemini</strong>,
           <strong>CH04 Step 1~3은 NotebookLM</strong>, 선택형 AI 비서 제작은 <strong>Gemini Gems</strong>에서 진행합니다.
         </div>
       </div>
@@ -1269,18 +1320,26 @@
   <div class="clip-section">
     <div class="clip-section-title">산출물 저장 규칙</div>
     <div class="clip-section-content">
-      <p class="section-lead">바탕화면 또는 개인 작업 폴더에 <strong>성과향상_with_AI_성명</strong> 폴더를 만들고, 아래 파일을 한곳에 모읍니다.</p>
+      <p class="section-lead">바탕화면 또는 개인 작업 폴더에 <strong>성과향상_with_AI_성명</strong> 폴더를 만들고, 아래 파일을 한곳에 모읍니다. 파일명은 <strong>CH번호_무엇을완성했는지_성명.확장자</strong> 순서로 읽히도록 통일합니다.</p>
+
+      <div class="info-block" style="margin-bottom:14px">
+        <div class="info-block-title">파일명만 보고도 내용을 알 수 있게 저장합니다</div>
+        <div><strong>‘최종·통합·자료1’처럼 내용이 드러나지 않는 표현은 피하고</strong>, ‘우리팀_성과병목과_점검지표’, ‘30일실행계획_근거정리표’처럼 파일의 목적을 그대로 적습니다. 성명 자리에는 본인 이름을 입력하며, 학습팀 공용 오디오만 조 번호를 사용합니다.</div>
+      </div>
 
       <div class="file-grid">
-        <div class="file-card"><strong>학습팀 공용 토론 오디오</strong><span class="file-name">1조_AI리더십토론.m4a</span></div>
-        <div class="file-card"><strong>CH03 리더 역할 프로필</strong><span class="file-name">CH02_리더역할프로필_성명.md</span></div>
-        <div class="file-card"><strong>CH03 성과관리 실행 브리프</strong><span class="file-name">CH02_성과관리실행브리프_성명.md</span></div>
-        <div class="file-card"><strong>CH03 팀 성과 병목 진단</strong><span class="file-name">CH03_팀성과병목진단_성명.md</span></div>
-        <div class="file-card"><strong>CH03 행동역량 프로파일</strong><span class="file-name">CH03_행동역량프로파일_성명.md</span></div>
-        <div class="file-card"><strong>CH03 Workflow Re-design</strong><span class="file-name">CH03_Workflow_ReDesign_성명.md</span></div>
-        <div class="file-card"><strong>CH04 자료 연결표</strong><span class="file-name">CH04_자료연결표_성명.md</span></div>
-        <div class="file-card"><strong>CH04 핵심 실행과제 TOP 3</strong><span class="file-name">CH04_핵심실행과제_TOP3_성명.md</span></div>
-        <div class="file-card"><strong>CH04 30일 Action Plan</strong><span class="file-name">CH04_30일_ActionPlan_성명.md</span></div>
+        <div class="file-card"><strong>학습팀 공용: AI 시대 리더 역할 토론 녹음</strong><span class="file-name">1조_AI시대_리더역할_토론녹음.m4a</span></div>
+        <div class="file-card"><strong>CH02 나의 AI 시대 리더 역할</strong><span class="file-name">CH02_나의_AI시대_리더역할_성명.md</span></div>
+        <div class="file-card"><strong>CH02 나의 핵심역량과 성과관리 실행안</strong><span class="file-name">CH02_나의_핵심역량과_성과관리실행안_성명.md</span></div>
+        <div class="file-card"><strong>CH03 우리 팀 성과 병목과 점검 지표</strong><span class="file-name">CH03_우리팀_성과병목과_점검지표_성명.md</span></div>
+        <div class="file-card"><strong>CH03 우리 팀에 필요한 행동역량</strong><span class="file-name">CH03_우리팀_필요행동역량_성명.md</span></div>
+        <div class="file-card"><strong>CH03 우리 팀 AI 협업 업무재설계</strong><span class="file-name">CH03_우리팀_AI협업_업무재설계_성명.md</span></div>
+        <div class="file-card"><strong>CH03 우리 팀 성과구조·AI 업무재설계 종합본 <span class="mini-label optional">권장</span></strong><span class="file-name">CH03_우리팀_성과구조와_AI업무재설계_종합본_성명.md</span></div>
+        <div class="file-card"><strong>CH04 30일 실행계획 근거 정리표 (Source Map)</strong><span class="file-name">CH04_30일실행계획_근거정리표_성명.md</span></div>
+        <div class="file-card"><strong>CH04 우리 팀 30일 핵심 실행과제 TOP 3</strong><span class="file-name">CH04_우리팀_30일_핵심실행과제_TOP3_성명.md</span></div>
+        <div class="file-card"><strong>CH04 우리 팀 성과향상 30일 실행계획</strong><span class="file-name">CH04_우리팀_성과향상_30일실행계획_성명.md</span></div>
+        <div class="file-card"><strong>CH05 현업 적용 산출물 회수표</strong><span class="file-name">CH05_현업적용_산출물회수표_성명.md</span></div>
+        <div class="file-card"><strong>CH05 나의 30일 리더 실천계획</strong><span class="file-name">CH05_나의_30일리더실천계획_성명.md</span></div>
 
       </div>
 
@@ -1473,5 +1532,5 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer"><a class="clip-nav-btn disabled" href="#">← 처음</a><a class="clip-nav-btn" href="#CH01-clip01">AI 트렌드 →</a></div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn disabled" href="#">← 처음</a><a class="clip-nav-btn" href="#ch01-clip01">AI 트렌드 →</a></div>
 </section>
