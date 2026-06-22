@@ -209,6 +209,237 @@
       white-space: nowrap;
       vertical-align: middle;
     }
+
+    /* 260622 Gate 1~4 내 상태 저장형 선택 UI */
+    .ch03-clip01-revised .sr-only,
+    #ch03-clip01 .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .ch03-clip01-revised .output-gate .comparison-table,
+    #ch03-clip01 .output-gate .comparison-table {
+      min-width: 860px;
+    }
+
+    .ch03-clip01-revised .output-gate .comparison-table th:nth-child(1),
+    .ch03-clip01-revised .output-gate .comparison-table td:nth-child(1),
+    #ch03-clip01 .output-gate .comparison-table th:nth-child(1),
+    #ch03-clip01 .output-gate .comparison-table td:nth-child(1) {
+      width: 240px;
+    }
+
+    .ch03-clip01-revised .output-gate .comparison-table th:nth-child(3),
+    .ch03-clip01-revised .output-gate .comparison-table td:nth-child(3),
+    #ch03-clip01 .output-gate .comparison-table th:nth-child(3),
+    #ch03-clip01 .output-gate .comparison-table td:nth-child(3) {
+      width: 230px;
+    }
+
+    .ch03-clip01-revised .gate-status-cell,
+    #ch03-clip01 .gate-status-cell {
+      width: 230px;
+      white-space: nowrap;
+    }
+
+    .ch03-clip01-revised .gate-status-group,
+    #ch03-clip01 .gate-status-group {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 6px;
+      align-items: center;
+      justify-content: flex-start;
+      min-width: 202px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .ch03-clip01-revised .gate-status-option,
+    #ch03-clip01 .gate-status-option {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-height: 34px;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font-size: 0.95rem !important;
+      font-weight: 900;
+      line-height: 1.2 !important;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .ch03-clip01-revised .gate-status-option:hover,
+    #ch03-clip01 .gate-status-option:hover {
+      border-color: var(--brand);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    .ch03-clip01-revised .gate-status-option input,
+    #ch03-clip01 .gate-status-option input {
+      width: 15px;
+      height: 15px;
+      margin: 0;
+      accent-color: var(--brand);
+      flex: 0 0 auto;
+    }
+
+    .ch03-clip01-revised .gate-status-option.is-selected[data-status-option="complete"],
+    #ch03-clip01 .gate-status-option.is-selected[data-status-option="complete"] {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+
+    .ch03-clip01-revised .gate-status-option.is-selected[data-status-option="needs"],
+    #ch03-clip01 .gate-status-option.is-selected[data-status-option="needs"] {
+      background: #fff7ed;
+      border-color: #fb923c;
+      color: #9a3412;
+    }
+
+    .ch03-clip01-revised .gate-status-option.is-selected[data-status-option="complete"] input,
+    #ch03-clip01 .gate-status-option.is-selected[data-status-option="complete"] input {
+      accent-color: #fff;
+    }
+
+    .ch03-clip01-revised .gate-status-panel,
+    #ch03-clip01 .gate-status-panel {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .ch03-clip01-revised .gate-status-panel-title,
+    #ch03-clip01 .gate-status-panel-title {
+      font-size: 1.04rem !important;
+      line-height: 1.35 !important;
+      font-weight: 900;
+      color: var(--text-heading);
+      margin-bottom: 10px;
+    }
+
+    .ch03-clip01-revised .gate-status-summary,
+    #ch03-clip01 .gate-status-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .ch03-clip01-revised .gate-status-summary-card,
+    #ch03-clip01 .gate-status-summary-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg-offwhite);
+      padding: 10px 12px;
+    }
+
+    .ch03-clip01-revised .gate-status-summary-label,
+    #ch03-clip01 .gate-status-summary-label {
+      display: block;
+      font-size: 0.86rem !important;
+      line-height: 1.25 !important;
+      font-weight: 900;
+      color: var(--brand);
+      margin-bottom: 4px;
+    }
+
+    .ch03-clip01-revised .gate-status-summary-value,
+    #ch03-clip01 .gate-status-summary-value {
+      display: block;
+      font-size: 1.2rem !important;
+      line-height: 1.25 !important;
+      font-weight: 950;
+      color: var(--text-heading);
+    }
+
+    .ch03-clip01-revised .gate-status-meta,
+    #ch03-clip01 .gate-status-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      color: var(--text-body);
+      font-size: 0.98rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .ch03-clip01-revised .gate-status-actions,
+    #ch03-clip01 .gate-status-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .ch03-clip01-revised .gate-status-btn,
+    #ch03-clip01 .gate-status-btn {
+      min-height: 36px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--brand);
+      font-size: 0.98rem !important;
+      font-weight: 900;
+      line-height: 1.2 !important;
+      cursor: pointer;
+    }
+
+    .ch03-clip01-revised .gate-status-btn.primary,
+    #ch03-clip01 .gate-status-btn.primary {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+
+    @media (max-width: 680px) {
+      .ch03-clip01-revised .gate-status-cell,
+      #ch03-clip01 .gate-status-cell {
+        width: auto;
+      }
+
+      .ch03-clip01-revised .gate-status-group,
+      #ch03-clip01 .gate-status-group {
+        min-width: 0;
+      }
+
+      .ch03-clip01-revised .gate-status-option,
+      #ch03-clip01 .gate-status-option {
+        padding: 5px 9px;
+      }
+
+      .ch03-clip01-revised .gate-status-actions,
+      #ch03-clip01 .gate-status-actions {
+        justify-content: stretch;
+      }
+
+      .ch03-clip01-revised .gate-status-btn,
+      #ch03-clip01 .gate-status-btn {
+        flex: 1 1 140px;
+      }
+    }
+
 </style>
   <div class="clip-header">
     <div class="clip-badges">
@@ -533,12 +764,36 @@
           <tr>
             <td><strong>표면 증상과 병목 구분</strong></td>
             <td>문제가 개인 탓이 아니라 구조적 병목으로 정리되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate1-bottleneck" aria-label="Gate 1 표면 증상과 병목 구분 내 상태">
+                <legend class="sr-only">Gate 1 표면 증상과 병목 구분 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate1-bottleneck" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate1-bottleneck" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
           <tr>
             <td><strong>근거 수준 표시</strong></td>
             <td>근거 있음 / 추론 / 추가 확인 필요가 구분되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate1-evidence" aria-label="Gate 1 근거 수준 표시 내 상태">
+                <legend class="sr-only">Gate 1 근거 수준 표시 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate1-evidence" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate1-evidence" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -628,12 +883,36 @@
           <tr>
             <td><strong>관찰 가능성</strong></td>
             <td>30일 안에 확인 가능한 정량·정성 지표가 있다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate2-observable" aria-label="Gate 2 관찰 가능성 내 상태">
+                <legend class="sr-only">Gate 2 관찰 가능성 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate2-observable" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate2-observable" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
           <tr>
             <td><strong>팀 단위 기준</strong></td>
             <td>개인 평가용이 아니라 팀 효과성 개선용 지표로 정리되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate2-team-standard" aria-label="Gate 2 팀 단위 기준 내 상태">
+                <legend class="sr-only">Gate 2 팀 단위 기준 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate2-team-standard" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate2-team-standard" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -725,12 +1004,36 @@ CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다
           <tr>
             <td><strong>행동 기준화</strong></td>
             <td>역량명이 아니라 관찰 가능한 행동 기준으로 정리되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate3-behavior-standard" aria-label="Gate 3 행동 기준화 내 상태">
+                <legend class="sr-only">Gate 3 행동 기준화 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate3-behavior-standard" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate3-behavior-standard" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
           <tr>
             <td><strong>대상 구분</strong></td>
             <td>리더·팀원·팀 공통 행동이 구분되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate3-target-separation" aria-label="Gate 3 대상 구분 내 상태">
+                <legend class="sr-only">Gate 3 대상 구분 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate3-target-separation" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate3-target-separation" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -905,22 +1208,86 @@ AI 강점 관점에서 “발견 / 신뢰 / 부적합” 중 어디에 해당하
           <tr>
             <td><strong>AI 적합도</strong></td>
             <td>Task별 AI 적합도와 부적합 영역이 구분되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate4-ai-fit" aria-label="Gate 4 AI 적합도 내 상태">
+                <legend class="sr-only">Gate 4 AI 적합도 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate4-ai-fit" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate4-ai-fit" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
           <tr>
             <td><strong>책임·검증</strong></td>
             <td>인간 검증 포인트, 리더 최종 책임, Fallback이 포함되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate4-responsibility-check" aria-label="Gate 4 책임·검증 내 상태">
+                <legend class="sr-only">Gate 4 책임·검증 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate4-responsibility-check" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate4-responsibility-check" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
           <tr>
             <td><strong>파일럿 구분</strong></td>
             <td>CH04 최종 Action Plan이 아니라 Workflow 파일럿 후보로 정리되었다.</td>
-            <td>□ 완료 □ 보완 필요</td>
+            <td class="gate-status-cell">
+              <fieldset class="gate-status-group" data-gate-status="gate4-pilot-separation" aria-label="Gate 4 파일럿 구분 내 상태">
+                <legend class="sr-only">Gate 4 파일럿 구분 내 상태</legend>
+                <label class="gate-status-option" data-status-option="complete">
+                  <input type="radio" name="ch03-gate4-pilot-separation" value="complete">
+                  <span>완료</span>
+                </label>
+                <label class="gate-status-option" data-status-option="needs">
+                  <input type="radio" name="ch03-gate4-pilot-separation" value="needs">
+                  <span>보완 필요</span>
+                </label>
+              </fieldset>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+
+    <div class="gate-status-panel" data-gate-status-panel>
+      <div class="gate-status-panel-title">Gate 1~4 내 상태 저장 현황</div>
+      <div class="gate-status-summary" aria-live="polite">
+        <div class="gate-status-summary-card">
+          <span class="gate-status-summary-label">완료</span>
+          <span class="gate-status-summary-value" data-gate-complete-count>0 / 9</span>
+        </div>
+        <div class="gate-status-summary-card">
+          <span class="gate-status-summary-label">보완 필요</span>
+          <span class="gate-status-summary-value" data-gate-needs-count>0 / 9</span>
+        </div>
+        <div class="gate-status-summary-card">
+          <span class="gate-status-summary-label">미선택</span>
+          <span class="gate-status-summary-value" data-gate-empty-count>9 / 9</span>
+        </div>
+      </div>
+      <div class="gate-status-meta">
+        <span data-gate-status-guide>Gate별 확인 항목의 완료 또는 보완 필요 상태를 선택하세요.</span>
+        <span data-gate-saved-at>마지막 저장: 저장 전</span>
+      </div>
+      <div class="gate-status-actions">
+        <button type="button" class="gate-status-btn primary" data-gate-save>Gate 상태 저장</button>
+        <button type="button" class="gate-status-btn" data-gate-reset>상태 초기화</button>
+      </div>
+    </div>
+
 
   <div class="clip-section">
     <div class="clip-section-title">선택 확장: Deep Research 질문 도출</div>
@@ -1094,4 +1461,192 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
   </div>
 
   <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip04">← 프롬프팅 활용: 리더의 핵심 역량 및 스킬</a><a class="clip-nav-btn" href="#ch04-clip01">NotebookLM 소개 및 접속 방법 →</a></div>
+
+  <script>
+    (function () {
+      var root = document.getElementById('ch03-clip01');
+      if (!root) {
+        return;
+      }
+
+      var storageKey = 'ch03-clip01-gate-status-v1';
+      var groups = Array.prototype.slice.call(root.querySelectorAll('[data-gate-status]'));
+      var totalCount = groups.length;
+      var savedAtValue = '';
+
+      function getCheckedValue(group) {
+        var checked = group.querySelector('input[type="radio"]:checked');
+        return checked ? checked.value : '';
+      }
+
+      function collectState() {
+        var statuses = {};
+        for (var i = 0; i < groups.length; i += 1) {
+          var id = groups[i].getAttribute('data-gate-status');
+          var value = getCheckedValue(groups[i]);
+          if (id && value) {
+            statuses[id] = value;
+          }
+        }
+        return statuses;
+      }
+
+      function applyState(statuses) {
+        statuses = statuses || {};
+        for (var i = 0; i < groups.length; i += 1) {
+          var id = groups[i].getAttribute('data-gate-status');
+          var inputs = groups[i].querySelectorAll('input[type="radio"]');
+          for (var j = 0; j < inputs.length; j += 1) {
+            inputs[j].checked = statuses[id] === inputs[j].value;
+          }
+        }
+      }
+
+      function formatSavedAt(isoString) {
+        if (!isoString) {
+          return '저장 전';
+        }
+        var date = new Date(isoString);
+        if (Number.isNaN(date.getTime())) {
+          return '저장 전';
+        }
+        return date.toLocaleString('ko-KR', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      }
+
+      function setText(selector, text) {
+        var el = root.querySelector(selector);
+        if (el) {
+          el.textContent = text;
+        }
+      }
+
+      function refreshStatusPanel(message) {
+        var completeCount = 0;
+        var needsCount = 0;
+        var emptyCount = 0;
+
+        for (var i = 0; i < groups.length; i += 1) {
+          var group = groups[i];
+          var value = getCheckedValue(group);
+          var labels = group.querySelectorAll('.gate-status-option');
+          for (var j = 0; j < labels.length; j += 1) {
+            labels[j].classList.remove('is-selected');
+          }
+          var checked = group.querySelector('input[type="radio"]:checked');
+          if (checked) {
+            var selectedLabel = checked.closest ? checked.closest('.gate-status-option') : checked.parentNode;
+            if (selectedLabel) {
+              selectedLabel.classList.add('is-selected');
+            }
+          }
+
+          if (value === 'complete') {
+            completeCount += 1;
+          } else if (value === 'needs') {
+            needsCount += 1;
+          } else {
+            emptyCount += 1;
+          }
+        }
+
+        setText('[data-gate-complete-count]', completeCount + ' / ' + totalCount);
+        setText('[data-gate-needs-count]', needsCount + ' / ' + totalCount);
+        setText('[data-gate-empty-count]', emptyCount + ' / ' + totalCount);
+        setText('[data-gate-saved-at]', '마지막 저장: ' + formatSavedAt(savedAtValue));
+
+        if (message) {
+          setText('[data-gate-status-guide]', message);
+        } else if (emptyCount > 0) {
+          setText('[data-gate-status-guide]', '아직 선택하지 않은 Gate 확인 항목이 있습니다.');
+        } else if (needsCount > 0) {
+          setText('[data-gate-status-guide]', '보완 필요 항목을 확인한 뒤 산출물을 수정하세요.');
+        } else {
+          setText('[data-gate-status-guide]', '모든 Gate 확인 항목이 완료 상태입니다.');
+        }
+      }
+
+      function saveState(messageOnSave) {
+        var payload = {
+          version: 1,
+          savedAt: new Date().toISOString(),
+          statuses: collectState()
+        };
+
+        try {
+          window.localStorage.setItem(storageKey, JSON.stringify(payload));
+          savedAtValue = payload.savedAt;
+          refreshStatusPanel(messageOnSave ? 'Gate 1~4 내 상태가 브라우저에 저장되었습니다.' : '');
+        } catch (error) {
+          refreshStatusPanel('브라우저 저장소를 사용할 수 없어 현재 화면에서만 상태가 유지됩니다.');
+        }
+      }
+
+      function loadState() {
+        try {
+          var raw = window.localStorage.getItem(storageKey);
+          if (raw) {
+            var payload = JSON.parse(raw);
+            applyState(payload.statuses || {});
+            savedAtValue = payload.savedAt || '';
+          }
+        } catch (error) {
+          savedAtValue = '';
+        }
+        refreshStatusPanel('');
+      }
+
+      function resetState() {
+        var ok = window.confirm('Gate 1~4 내 상태 선택과 저장 기록을 초기화할까요?');
+        if (!ok) {
+          return;
+        }
+
+        for (var i = 0; i < groups.length; i += 1) {
+          var inputs = groups[i].querySelectorAll('input[type="radio"]');
+          for (var j = 0; j < inputs.length; j += 1) {
+            inputs[j].checked = false;
+          }
+        }
+
+        try {
+          window.localStorage.removeItem(storageKey);
+        } catch (error) {
+          // 저장소 접근이 제한된 환경에서는 화면 상태만 초기화합니다.
+        }
+
+        savedAtValue = '';
+        refreshStatusPanel('Gate 1~4 내 상태가 초기화되었습니다.');
+      }
+
+      for (var i = 0; i < groups.length; i += 1) {
+        var inputs = groups[i].querySelectorAll('input[type="radio"]');
+        for (var j = 0; j < inputs.length; j += 1) {
+          inputs[j].addEventListener('change', function () {
+            saveState(false);
+          });
+        }
+      }
+
+      var saveButton = root.querySelector('[data-gate-save]');
+      if (saveButton) {
+        saveButton.addEventListener('click', function () {
+          saveState(true);
+        });
+      }
+
+      var resetButton = root.querySelector('[data-gate-reset]');
+      if (resetButton) {
+        resetButton.addEventListener('click', resetState);
+      }
+
+      loadState();
+    })();
+  </script>
+
 </div>
