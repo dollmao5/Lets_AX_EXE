@@ -38,7 +38,7 @@
       "chapterId": "CH01",
       "chapterNum": "CH 01",
       "title": "AI 핵심 개념",
-      "time": "08:50",
+      "time": "08:45",
       "clips": [
         {
           "route": "#ch01-clip01",
@@ -96,7 +96,7 @@
       "chapterId": "CH02",
       "chapterNum": "CH 02",
       "title": "Gemini 활용 (1)",
-      "time": "09:30",
+      "time": "09:40",
       "clips": [
         {
           "route": "#ch02-clip01",
@@ -192,7 +192,7 @@
       "chapterId": "CH04",
       "chapterNum": "CH 04",
       "title": "NotebookLM",
-      "time": "13:00",
+      "time": "15:40",
       "clips": [
         {
           "route": "#ch04-clip01",
@@ -250,7 +250,7 @@
       "chapterId": "CH05",
       "chapterNum": "CH 05",
       "title": "Key Takeaways & Q/A",
-      "time": "17:10",
+      "time": "17:00",
       "clips": [
         {
           "route": "#ch05-clip01",
@@ -278,7 +278,7 @@
       "chapterId": "CH06",
       "chapterNum": "CH 06",
       "title": "참고자료 라이브러리",
-      "time": "17:20",
+      "time": "",
       "clips": [
         {
           "route": "#ch06-clip01",
