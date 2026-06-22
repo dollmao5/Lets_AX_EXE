@@ -1,10 +1,8 @@
-<section id="ch01-clip01" class="ch01-clip01-revised">
+<div class="ch01-clip01-revised" id="ch01-clip01">
   <style>
-    .ch01-clip01-revised {
-      --c1-font-base: 20px;
-      --c1-radius: 18px;
-      --c1-gap: 16px;
-      font-size: var(--c1-font-base);
+    .ch01-clip01-revised,
+    #ch01-clip01 {
+      font-size: 20px;
       line-height: 1.72;
       color: var(--text-body, #333);
       word-break: keep-all;
@@ -12,31 +10,38 @@
 
     .ch01-clip01-revised *,
     .ch01-clip01-revised *::before,
-    .ch01-clip01-revised *::after {
+    .ch01-clip01-revised *::after,
+    #ch01-clip01 *,
+    #ch01-clip01 *::before,
+    #ch01-clip01 *::after {
       box-sizing: border-box;
     }
 
-    .ch01-clip01-revised .clip-title {
+    .ch01-clip01-revised .clip-title,
+    #ch01-clip01 .clip-title {
       font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
       line-height: 1.22 !important;
       letter-spacing: -0.04em;
       margin-top: 10px;
     }
 
-    .ch01-clip01-revised .clip-badge {
+    .ch01-clip01-revised .clip-badge,
+    #ch01-clip01 .clip-badge {
       font-size: 0.95rem !important;
       padding: 8px 12px !important;
       border-radius: 999px !important;
     }
 
-    .ch01-clip01-revised .clip-overview {
+    .ch01-clip01-revised .clip-overview,
+    #ch01-clip01 .clip-overview {
       font-size: 1.16rem !important;
       line-height: 1.78 !important;
       padding: 24px 26px !important;
-      border-radius: var(--c1-radius) !important;
+      border-radius: 18px !important;
     }
 
-    .ch01-clip01-revised .clip-section-title {
+    .ch01-clip01-revised .clip-section-title,
+    #ch01-clip01 .clip-section-title {
       font-size: 1.5rem !important;
       line-height: 1.35 !important;
       letter-spacing: -0.025em;
@@ -50,41 +55,58 @@
     .ch01-clip01-revised .info-block,
     .ch01-clip01-revised .slide-briefing-desc,
     .ch01-clip01-revised .roadmap-copy,
-    .ch01-clip01-revised .roadmap-points li {
+    .ch01-clip01-revised .roadmap-points li,
+    #ch01-clip01 .clip-section-content,
+    #ch01-clip01 p,
+    #ch01-clip01 li,
+    #ch01-clip01 .tip-block-content,
+    #ch01-clip01 .info-block,
+    #ch01-clip01 .slide-briefing-desc,
+    #ch01-clip01 .roadmap-copy,
+    #ch01-clip01 .roadmap-points li {
       font-size: 1.08rem !important;
       line-height: 1.66 !important;
     }
 
     .ch01-clip01-revised .info-block,
-    .ch01-clip01-revised .tip-block {
+    .ch01-clip01-revised .tip-block,
+    #ch01-clip01 .info-block,
+    #ch01-clip01 .tip-block {
       padding: 18px 20px !important;
-      border-radius: var(--c1-radius) !important;
+      border-radius: 18px !important;
     }
 
     .ch01-clip01-revised .info-block-title,
-    .ch01-clip01-revised .tip-block-title {
+    .ch01-clip01-revised .tip-block-title,
+    #ch01-clip01 .info-block-title,
+    #ch01-clip01 .tip-block-title {
       font-size: 1.08rem !important;
       line-height: 1.45 !important;
       font-weight: 900 !important;
       margin-bottom: 8px !important;
     }
 
-    .ch01-clip01-revised .slide-briefing-title {
+    .ch01-clip01-revised .slide-briefing-title,
+    #ch01-clip01 .slide-briefing-title {
       font-size: 1.38rem !important;
       line-height: 1.35 !important;
     }
 
-    .ch01-clip01-revised .roadmap-title {
+    .ch01-clip01-revised .roadmap-title,
+    #ch01-clip01 .roadmap-title {
       font-size: 1.32rem !important;
       line-height: 1.35 !important;
     }
 
-    .ch01-clip01-revised .roadmap-card {
-      border-radius: var(--c1-radius) !important;
+    .ch01-clip01-revised .roadmap-card,
+    #ch01-clip01 .roadmap-card {
+      border-radius: 18px !important;
     }
 
     .ch01-clip01-revised .clip-nav-btn,
-    .ch01-clip01-revised .slide-briefing-link {
+    .ch01-clip01-revised .slide-briefing-link,
+    #ch01-clip01 .clip-nav-btn,
+    #ch01-clip01 .slide-briefing-link {
       font-size: 1.06rem !important;
       line-height: 1.3 !important;
       padding: 10px 18px !important;
@@ -92,14 +114,16 @@
       font-weight: 900 !important;
     }
 
-    .ch01-clip01-revised .video-desc {
+    .ch01-clip01-revised .video-desc,
+    #ch01-clip01 .video-desc {
       font-size: 0.9rem !important;
       line-height: 1.8 !important;
       color: var(--text-body, #333);
       margin: 0 0 14px;
     }
 
-    .ch01-clip01-revised .video-frame {
+    .ch01-clip01-revised .video-frame,
+    #ch01-clip01 .video-frame {
       width: 100%;
       aspect-ratio: 16 / 9;
       height: auto;
@@ -110,11 +134,13 @@
     }
 
     @media (max-width: 680px) {
-      .ch01-clip01-revised {
+      .ch01-clip01-revised,
+      #ch01-clip01 {
         font-size: 18px;
       }
 
-      .ch01-clip01-revised .clip-overview {
+      .ch01-clip01-revised .clip-overview,
+      #ch01-clip01 .clip-overview {
         padding: 20px !important;
       }
     }
@@ -126,7 +152,7 @@
       <span class="clip-badge chapter">CH 01</span>
       <span class="clip-badge type-reference">참고</span>
     </div>
-    <h1 class="clip-title" data-keep-title>AI 트렌드</h1>
+    <h1 class="clip-title" data-keep-title="">AI 트렌드</h1>
   </div>
 
   <div class="clip-overview">
@@ -137,7 +163,7 @@
   <div class="clip-section">
     <div class="clip-section-title">이번 클립에서 함께 배우는 것</div>
     <div class="clip-section-content">
-      <div class="tip-block" style="margin-top: 14px;">
+      <div class="tip-block" style="margin-top:14px">
         <div class="tip-block-title">AI 기능·활용 학습</div>
         <div>
           <strong>Assistant</strong>는 질문에 답합니다.
@@ -165,8 +191,8 @@
         allowfullscreen="allowfullscreen">
       </iframe>
 
-      <div style="display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 12px;">
-        <div style="font-size: 0.82rem; color: var(--text-secondary, #666);">3분 1초 · NVIDIA</div>
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px">
+        <div style="font-size:0.82rem;color:var(--text-secondary, #666)">3분 1초 · NVIDIA</div>
         <a href="https://www.youtube.com/watch?v=uhLDHA9skFk" target="_blank" rel="noopener" class="slide-briefing-link">YouTube에서 열기</a>
       </div>
     </div>
@@ -175,24 +201,24 @@
   <div class="clip-section">
     <div class="clip-section-title">이 장면에서 느껴볼 것</div>
     <div class="clip-section-content">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">업무 보조를 넘어 실행으로</div>
-          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+        <div style="padding:16px 18px;border:1px solid var(--border, #e5e7eb);border-radius:18px;background:var(--bg-white, #fff)">
+          <div style="font-weight:700;color:var(--text-primary, #111);margin-bottom:8px">업무 보조를 넘어 실행으로</div>
+          <div style="font-size:0.86rem;line-height:1.75;color:var(--text-body, #333)">
             Agentic AI는 질문에 답하는 수준을 넘어 계획을 세우고, 도구를 고르고, 결과를 확인하는 방향으로 움직이기 시작합니다.
           </div>
         </div>
 
-        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">화면 밖으로 확장되는 AI</div>
-          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
+        <div style="padding:16px 18px;border:1px solid var(--border, #e5e7eb);border-radius:18px;background:var(--bg-white, #fff)">
+          <div style="font-weight:700;color:var(--text-primary, #111);margin-bottom:8px">화면 밖으로 확장되는 AI</div>
+          <div style="font-size:0.86rem;line-height:1.75;color:var(--text-body, #333)">
             Physical AI는 소프트웨어 안의 추론을 넘어 센서, 장비, 로봇, 공정 같은 현실 환경과 연결되는 흐름을 보여줍니다.
           </div>
         </div>
 
-        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">결국 남는 것은 데이터와 운영 구조</div>
-          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
+        <div style="padding:16px 18px;border:1px solid var(--border, #e5e7eb);border-radius:18px;background:var(--bg-white, #fff)">
+          <div style="font-weight:700;color:var(--text-primary, #111);margin-bottom:8px">결국 남는 것은 데이터와 운영 구조</div>
+          <div style="font-size:0.86rem;line-height:1.75;color:var(--text-body, #333)">
             자율성이 커질수록 모델 자체보다 <strong>좋은 데이터, 맥락, 검증 체계</strong>가 조직의 성과 차이를 만들게 됩니다.
           </div>
         </div>
@@ -203,7 +229,7 @@
   <div class="clip-section">
     <div class="clip-section-title">추가 참고자료</div>
     <div class="clip-section-content">
-      <ul style="margin: 0; padding-left: 1.1rem; line-height: 1.9; color: var(--text-body, #333);">
+      <ul style="margin:0;padding-left:1.1rem;line-height:1.9;color:var(--text-body, #333)">
         <li>
           <a href="https://github.github.com/gh-aw/slides/github-agentic-workflows.pdf" target="_blank" rel="noopener">GitHub Agentic Workflows PDF</a>
           · AI가 개발과 실행 흐름을 어떻게 바꾸는지 보여주는 공식 자료
@@ -224,7 +250,7 @@
     </div>
   </div>
 
-  <div class="info-block" style="margin-top: 18px;">
+  <div class="info-block" style="margin-top:18px">
     <div class="info-block-title">이번 클립의 연결</div>
     <div>
       <strong>필수 파일 산출물은 없습니다.</strong>
@@ -236,4 +262,4 @@
     <a class="clip-nav-btn" href="#ch00-clip01">← 오늘의 시간표</a>
     <a class="clip-nav-btn" href="#ch01-clip02">Assistant에서 Agentic AI로 →</a>
   </div>
-</section>
+</div>
