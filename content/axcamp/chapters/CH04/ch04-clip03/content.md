@@ -6,8 +6,8 @@ source_url: "https://lg.cmdspace.work/axcamp#ch04-clip03"
 ---
 
 참고 · ~20분
-CH 03
-참고
+CH 04
+플랫폼
 
 # ChatGPT 및 GPTs 소개
 
@@ -122,12 +122,6 @@ GPT |
 조사 주제를 Deep Research에 바로 넣을 수 있는 완결된 요청문으로 구체화합니다.
 
 [공유 GPT 열기](https://chatgpt.com/g/g-69c236b0ec2481919676d5fc2549d675-simceungriseoci-peurompeuteu-saengseonggi)
-
-복붙형 대체
-**구조화된 프롬프트 생성기**
-기존 공유 링크의 접근 여부와 관계없이, 아래 예시 요청을 일반 ChatGPT에 붙여넣어 같은 목적의 결과를 만들 수 있습니다.
-
-[예시 프롬프트 보기](#ch03-clip02-prompts)
 
 공유 GPT
 **문서 템플릿 추출기**
