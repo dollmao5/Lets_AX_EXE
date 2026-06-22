@@ -54,12 +54,8 @@ AI Studio Build·Codex·Cline은 Agent 및 Agentic AI의 확장 사례로 이해
 
 ## Assistant · Agent · Agentic AI 비교
 
-|
-구분 |
-AI Assistant |
-AI Agent |
-Agentic AI |
-
+| 구분 | AI Assistant | AI Agent | Agentic AI |
+| --- | --- | --- | --- |
 |
 **쉽게 말하면** |
 요청받아 돕는 비서 |
@@ -92,11 +88,8 @@ Deep Research 등 선택 확장 |
 
 ## 어떻게 작동하는가 — 원리와 메커니즘
 
-|
-구분 |
-작동 원리 |
-팀장이 확인할 것 |
-
+| 구분 | 작동 원리 | 팀장이 확인할 것 |
+| --- | --- | --- |
 |
 **AI Assistant** |
 사용자의 요청과 현재 대화 맥락을 바탕으로 답변·요약·초안을 생성합니다. 일반적으로 사용자가 다음 질문이나 수정을 지시하며 대화를 이어갑니다. |

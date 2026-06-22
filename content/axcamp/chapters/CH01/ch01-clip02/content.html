@@ -1,204 +1,142 @@
-<div class="ch01-clip02-revised" id="ch01-clip02">
+<section class="ch01-clip02-revised" id="ch01-clip02">
   <style>
-    .ch01-clip02-revised,
-    #ch01-clip02 {
-      font-size: 20px;
+    .ch01-clip02-revised {
+      --c1-font-base: 20px;
+      --c1-radius: 18px;
+      --c1-gap: 16px;
+      font-size: var(--c1-font-base);
       line-height: 1.72;
-      color: var(--text-body, #333);
+      color: var(--text-body);
       word-break: keep-all;
     }
-
     .ch01-clip02-revised *,
     .ch01-clip02-revised *::before,
-    .ch01-clip02-revised *::after,
-    #ch01-clip02 *,
-    #ch01-clip02 *::before,
-    #ch01-clip02 *::after {
-      box-sizing: border-box;
-    }
-
-    .ch01-clip02-revised .clip-title,
-    #ch01-clip02 .clip-title {
+    .ch01-clip02-revised *::after { box-sizing: border-box; }
+    .ch01-clip02-revised .clip-title {
       margin-top: 10px;
       font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
       line-height: 1.22 !important;
       letter-spacing: -0.04em;
     }
-
-    .ch01-clip02-revised .clip-badge,
-    #ch01-clip02 .clip-badge {
+    .ch01-clip02-revised .clip-badge {
       padding: 8px 12px !important;
       border-radius: 999px !important;
       font-size: 0.95rem !important;
     }
-
-    .ch01-clip02-revised .clip-overview,
-    #ch01-clip02 .clip-overview {
+    .ch01-clip02-revised .clip-overview {
       padding: 24px 26px !important;
-      border-radius: 18px !important;
+      border-radius: var(--c1-radius) !important;
       font-size: 1.16rem !important;
       line-height: 1.78 !important;
     }
-
-    .ch01-clip02-revised .clip-section-title,
-    #ch01-clip02 .clip-section-title {
+    .ch01-clip02-revised .clip-section-title {
       margin-bottom: 14px !important;
       font-size: 1.5rem !important;
       line-height: 1.35 !important;
       letter-spacing: -0.025em;
     }
-
     .ch01-clip02-revised .clip-section-content,
     .ch01-clip02-revised p,
     .ch01-clip02-revised li,
     .ch01-clip02-revised .tip-block-content,
     .ch01-clip02-revised .info-block,
     .ch01-clip02-revised .info-block div,
-    .ch01-clip02-revised .slide-briefing-desc,
-    #ch01-clip02 .clip-section-content,
-    #ch01-clip02 p,
-    #ch01-clip02 li,
-    #ch01-clip02 .tip-block-content,
-    #ch01-clip02 .info-block,
-    #ch01-clip02 .info-block div,
-    #ch01-clip02 .slide-briefing-desc {
+    .ch01-clip02-revised .slide-briefing-desc {
       font-size: 1.08rem !important;
       line-height: 1.66 !important;
     }
-
     .ch01-clip02-revised .info-block,
-    .ch01-clip02-revised .tip-block,
-    #ch01-clip02 .info-block,
-    #ch01-clip02 .tip-block {
+    .ch01-clip02-revised .tip-block {
       padding: 18px 20px !important;
-      border-radius: 18px !important;
+      border-radius: var(--c1-radius) !important;
     }
-
     .ch01-clip02-revised .info-block-title,
-    .ch01-clip02-revised .tip-block-title,
-    #ch01-clip02 .info-block-title,
-    #ch01-clip02 .tip-block-title {
+    .ch01-clip02-revised .tip-block-title {
       margin-bottom: 8px !important;
       font-size: 1.08rem !important;
       line-height: 1.45 !important;
       font-weight: 900 !important;
     }
-
-    .ch01-clip02-revised .slide-briefing-title,
-    #ch01-clip02 .slide-briefing-title {
+    .ch01-clip02-revised .slide-briefing-title {
       font-size: 1.38rem !important;
       line-height: 1.35 !important;
     }
-
-    .ch01-clip02-revised .table-wrap,
-    #ch01-clip02 .table-wrap {
+    .ch01-clip02-revised .table-wrap {
       width: 100%;
       margin: 12px 0 18px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      border: 1px solid var(--border, #e5e7eb);
+      border: 1px solid var(--border);
       border-radius: 16px;
     }
-
-    .ch01-clip02-revised .table-wrap table,
-    #ch01-clip02 .table-wrap table {
+    .ch01-clip02-revised .table-wrap table {
       min-width: 900px;
       margin: 0 !important;
       border: 0 !important;
     }
-
     .ch01-clip02-revised .comparison-table th,
-    .ch01-clip02-revised .comparison-table td,
-    #ch01-clip02 .comparison-table th,
-    #ch01-clip02 .comparison-table td {
+    .ch01-clip02-revised .comparison-table td {
       padding: 9px 12px !important;
       vertical-align: middle !important;
       font-size: 1.04rem !important;
       line-height: 1.48 !important;
       word-break: keep-all;
     }
-
-    .ch01-clip02-revised .comparison-table th,
-    #ch01-clip02 .comparison-table th {
-      color: var(--text-heading, #111) !important;
-      background: var(--bg-offwhite, #f8fafc) !important;
+    .ch01-clip02-revised .comparison-table th {
+      color: var(--text-heading) !important;
+      background: var(--bg-offwhite) !important;
       font-weight: 900 !important;
     }
-
-    .ch01-clip02-revised .memory-grid,
-    #ch01-clip02 .memory-grid {
+    .ch01-clip02-revised .memory-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: var(--c1-gap);
       margin: 12px 0 18px;
     }
-
-    .ch01-clip02-revised .memory-card,
-    #ch01-clip02 .memory-card {
+    .ch01-clip02-revised .memory-card {
       padding: 18px;
-      border: 1px solid var(--border, #e5e7eb);
-      border-radius: 18px;
-      background: linear-gradient(135deg, #fff, var(--bg-offwhite, #f8fafc));
+      border: 1px solid var(--border);
+      border-radius: var(--c1-radius);
+      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
-
-    .ch01-clip02-revised .memory-kicker,
-    #ch01-clip02 .memory-kicker {
+    .ch01-clip02-revised .memory-kicker {
       margin-bottom: 8px;
-      color: var(--brand, #2563eb);
+      color: var(--brand);
       font-size: 0.92rem !important;
       line-height: 1.3 !important;
       font-weight: 900;
     }
-
-    .ch01-clip02-revised .memory-title,
-    #ch01-clip02 .memory-title {
+    .ch01-clip02-revised .memory-title {
       margin-bottom: 7px;
-      color: var(--text-heading, #111);
+      color: var(--text-heading);
       font-size: 1.08rem !important;
       line-height: 1.4 !important;
       font-weight: 900;
     }
-
-    .ch01-clip02-revised .memory-copy,
-    #ch01-clip02 .memory-copy {
-      color: var(--text-body, #333);
+    .ch01-clip02-revised .memory-copy {
+      color: var(--text-body);
       font-size: 1rem !important;
       line-height: 1.58 !important;
     }
-
     .ch01-clip02-revised .clip-nav-btn,
-    .ch01-clip02-revised .slide-briefing-link,
-    #ch01-clip02 .clip-nav-btn,
-    #ch01-clip02 .slide-briefing-link {
+    .ch01-clip02-revised .slide-briefing-link {
       padding: 10px 18px !important;
       border-radius: 999px !important;
       font-size: 1.06rem !important;
       line-height: 1.3 !important;
       font-weight: 900 !important;
     }
-
     @media (max-width: 760px) {
-      .ch01-clip02-revised,
-      #ch01-clip02 {
-        font-size: 18px;
-      }
-
-      .ch01-clip02-revised .clip-overview,
-      #ch01-clip02 .clip-overview {
-        padding: 20px !important;
-      }
-
-      .ch01-clip02-revised .memory-grid,
-      #ch01-clip02 .memory-grid {
-        grid-template-columns: 1fr;
-      }
+      .ch01-clip02-revised { font-size: 18px; }
+      .ch01-clip02-revised .clip-overview { padding: 20px !important; }
+      .ch01-clip02-revised .memory-grid { grid-template-columns: 1fr; }
     }
   </style>
 
   <div class="clip-header">
     <div class="clip-badges">
-      <span class="clip-badge time">~8분</span>
+      <span class="clip-badge time"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="timer" aria-hidden="true" style="width:13px;height:13px;vertical-align:-2px;" class="lucide lucide-timer"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg> ~8분</span>
       <span class="clip-badge chapter">CH 01</span>
       <span class="clip-badge type-concept">개념</span>
     </div>
@@ -213,7 +151,6 @@
 
   <div class="clip-section">
     <div class="clip-section-title">이번 클립에서 함께 배우는 것</div>
-    <div class="clip-section-content">
       <div class="tip-block" style="margin-top:14px">
         <div class="tip-block-title">AI 기능·활용 학습</div>
         <div class="tip-block-content">
@@ -228,21 +165,21 @@
     <div class="clip-section-title">세 단계를 쉽게 기억하기</div>
     <div class="clip-section-content">
       <div class="memory-grid">
-        <div class="memory-card">
+        <article class="memory-card">
           <div class="memory-kicker">ASSISTANT</div>
           <div class="memory-title">물어보기</div>
           <div class="memory-copy">사람이 질문하거나 자료를 주면 AI가 답변·요약·초안을 제공합니다.</div>
-        </div>
-        <div class="memory-card">
+        </article>
+        <article class="memory-card">
           <div class="memory-kicker">AGENT</div>
           <div class="memory-title">목표 맡기기</div>
           <div class="memory-copy">사람이 목표와 허용 범위를 주면 AI가 필요한 단계를 계획하고 도구를 사용합니다.</div>
-        </div>
-        <div class="memory-card">
+        </article>
+        <article class="memory-card">
           <div class="memory-kicker">AGENTIC AI</div>
           <div class="memory-title">운영 구조 만들기</div>
           <div class="memory-copy">하나 이상의 Agent와 도구·데이터·규칙·사람의 점검 지점을 Workflow로 연결합니다.</div>
-        </div>
+        </article>
       </div>
     </div>
   </div>
@@ -273,12 +210,7 @@
       <div class="table-wrap">
         <table class="comparison-table">
           <thead>
-            <tr>
-              <th>구분</th>
-              <th>AI Assistant</th>
-              <th>AI Agent</th>
-              <th>Agentic AI</th>
-            </tr>
+            <tr><th>구분</th><th>AI Assistant</th><th>AI Agent</th><th>Agentic AI</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -322,13 +254,7 @@
     <div class="clip-section-content">
       <div class="table-wrap">
         <table class="comparison-table">
-          <thead>
-            <tr>
-              <th style="width:20%">구분</th>
-              <th>작동 원리</th>
-              <th>팀장이 확인할 것</th>
-            </tr>
-          </thead>
+          <thead><tr><th style="width:20%">구분</th><th>작동 원리</th><th>팀장이 확인할 것</th></tr></thead>
           <tbody>
             <tr>
               <td><strong>AI Assistant</strong></td>
@@ -373,4 +299,4 @@
     <a class="clip-nav-btn" href="#ch01-clip01">← AI 트렌드</a>
     <a class="clip-nav-btn" href="#ch01-clip03">기술 활용 로드맵 →</a>
   </div>
-</div>
+</section>
