@@ -1,10 +1,10 @@
-<div class="CH02-clip01-revised">
+<div class="ch02-clip01-revised" id="ch02-clip01">
   <style>
     /* CH02-clip01 visibility upgrade v2
        - 카드형 유지: '오늘 Gemini에서 경험할 것', '시작 전 체크리스트'
        - 그 외 섹션: 기존 표·목록·갤러리 구조 유지
        - CH01-clip05 기준의 글자 크기, 여백, 표 가독성 적용 */
-    .CH02-clip01-revised {
+    .ch02-clip01-revised {
       --c2-font-base: 20px;
       --c2-radius: 18px;
       --c2-gap: 16px;
@@ -14,51 +14,51 @@
       word-break: keep-all;
     }
 
-    .CH02-clip01-revised .clip-title {
+    .ch02-clip01-revised .clip-title {
       font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
       line-height: 1.22 !important;
       letter-spacing: -0.04em;
       margin-top: 10px;
     }
 
-    .CH02-clip01-revised .clip-badge {
+    .ch02-clip01-revised .clip-badge {
       font-size: 0.95rem !important;
       padding: 8px 12px !important;
       border-radius: 999px !important;
     }
 
-    .CH02-clip01-revised .clip-overview {
+    .ch02-clip01-revised .clip-overview {
       font-size: 1.16rem !important;
       line-height: 1.78 !important;
       padding: 24px 26px !important;
       border-radius: var(--c2-radius) !important;
     }
 
-    .CH02-clip01-revised .clip-section-title {
+    .ch02-clip01-revised .clip-section-title {
       font-size: 1.5rem !important;
       line-height: 1.35 !important;
       letter-spacing: -0.025em;
       margin-bottom: 14px !important;
     }
 
-    .CH02-clip01-revised .clip-section-content,
-    .CH02-clip01-revised p,
-    .CH02-clip01-revised li,
-    .CH02-clip01-revised .tip-block-content,
-    .CH02-clip01-revised .info-block,
-    .CH02-clip01-revised .info-block div {
+    .ch02-clip01-revised .clip-section-content,
+    .ch02-clip01-revised p,
+    .ch02-clip01-revised li,
+    .ch02-clip01-revised .tip-block-content,
+    .ch02-clip01-revised .info-block,
+    .ch02-clip01-revised .info-block div {
       font-size: 1.08rem !important;
       line-height: 1.66 !important;
     }
 
-    .CH02-clip01-revised .info-block,
-    .CH02-clip01-revised .tip-block {
+    .ch02-clip01-revised .info-block,
+    .ch02-clip01-revised .tip-block {
       padding: 18px 20px !important;
       border-radius: var(--c2-radius) !important;
     }
 
-    .CH02-clip01-revised .info-block-title,
-    .CH02-clip01-revised .tip-block-title {
+    .ch02-clip01-revised .info-block-title,
+    .ch02-clip01-revised .tip-block-title {
       font-size: 1.08rem !important;
       line-height: 1.45 !important;
       font-weight: 900 !important;
@@ -66,7 +66,7 @@
     }
 
     /* 표는 기존 구조를 유지하되 가독성만 강화 */
-    .CH02-clip01-revised .table-wrap {
+    .ch02-clip01-revised .table-wrap {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -75,14 +75,14 @@
       border-radius: 16px;
     }
 
-    .CH02-clip01-revised .table-wrap table {
+    .ch02-clip01-revised .table-wrap table {
       min-width: 760px;
       margin: 0 !important;
       border: 0 !important;
     }
 
-    .CH02-clip01-revised .comparison-table th,
-    .CH02-clip01-revised .comparison-table td {
+    .ch02-clip01-revised .comparison-table th,
+    .ch02-clip01-revised .comparison-table td {
       font-size: 1.08rem !important;
       line-height: 1.42 !important;
       padding: 8px 12px !important;
@@ -90,30 +90,30 @@
       word-break: keep-all;
     }
 
-    .CH02-clip01-revised .comparison-table th {
+    .ch02-clip01-revised .comparison-table th {
       font-weight: 900 !important;
       color: var(--text-heading) !important;
       background: var(--bg-offwhite) !important;
     }
 
-    .CH02-clip01-revised .compact-list {
+    .ch02-clip01-revised .compact-list {
       margin: 0;
       padding-left: 24px;
     }
 
-    .CH02-clip01-revised .compact-list li {
+    .ch02-clip01-revised .compact-list li {
       margin-bottom: 10px;
     }
 
     /* 카드형 1: 오늘 Gemini에서 경험할 것 */
-    .CH02-clip01-revised .gemini-feature-grid {
+    .ch02-clip01-revised .gemini-feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: var(--c2-gap);
       margin: 10px 0 20px;
     }
 
-    .CH02-clip01-revised .feature-card {
+    .ch02-clip01-revised .feature-card {
       min-height: 150px;
       padding: 20px;
       background: linear-gradient(135deg, #fff, var(--bg-offwhite));
@@ -122,7 +122,7 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .CH02-clip01-revised .feature-card-title {
+    .ch02-clip01-revised .feature-card-title {
       margin-bottom: 10px;
       color: var(--brand);
       font-size: 1rem !important;
@@ -130,21 +130,21 @@
       line-height: 1.42;
     }
 
-    .CH02-clip01-revised .feature-card-body {
+    .ch02-clip01-revised .feature-card-body {
       color: var(--text-body);
       font-size: 1.08rem !important;
       line-height: 1.62 !important;
     }
 
     /* 카드형 2: 시작 전 체크리스트 */
-    .CH02-clip01-revised .split-check-grid {
+    .ch02-clip01-revised .split-check-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--c2-gap);
       margin: 10px 0 20px;
     }
 
-    .CH02-clip01-revised .check-card {
+    .ch02-clip01-revised .check-card {
       padding: 20px;
       background: var(--bg-offwhite);
       border: 1px solid var(--border);
@@ -152,7 +152,7 @@
       box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
-    .CH02-clip01-revised .check-card-title {
+    .ch02-clip01-revised .check-card-title {
       margin-bottom: 12px;
       color: var(--brand);
       font-size: 1.08rem !important;
@@ -160,11 +160,11 @@
       line-height: 1.45;
     }
 
-    .CH02-clip01-revised .slide-preview-gallery {
+    .ch02-clip01-revised .slide-preview-gallery {
       margin-top: 12px;
     }
 
-    .CH02-clip01-revised .clip-nav-btn {
+    .ch02-clip01-revised .clip-nav-btn {
       font-size: 1.06rem !important;
       line-height: 1.3 !important;
       padding: 10px 18px !important;
@@ -173,20 +173,20 @@
     }
 
     @media (max-width: 680px) {
-      .CH02-clip01-revised {
+      .ch02-clip01-revised {
         font-size: 18px;
       }
 
-      .CH02-clip01-revised .clip-overview {
+      .ch02-clip01-revised .clip-overview {
         padding: 20px !important;
       }
 
-      .CH02-clip01-revised .gemini-feature-grid,
-      .CH02-clip01-revised .split-check-grid {
+      .ch02-clip01-revised .gemini-feature-grid,
+      .ch02-clip01-revised .split-check-grid {
         grid-template-columns: 1fr;
       }
 
-      .CH02-clip01-revised .feature-card {
+      .ch02-clip01-revised .feature-card {
         min-height: 0;
       }
     }
@@ -195,7 +195,7 @@
   <div class="clip-header">
     <div class="clip-badges">
       <span class="clip-badge time">~15분</span>
-      <span class="clip-badge chapter">CH 03</span>
+      <span class="clip-badge chapter">CH 02</span>
       <span class="clip-badge type-platform">플랫폼</span>
     </div>
     <h1 class="clip-title" data-keep-title="">Gemini Overview: 실습 환경 세팅과 핵심 기능 이해</h1>
@@ -211,6 +211,34 @@
     이 과정에서 Gemini는 리더를 대신 판단하는 도구가 아니라,
     <strong>리더의 사고, 분석, 질문 생성, 초안 작성, 반복 업무 수행을 보조하는 AI 파트너</strong>로 활용합니다.
   </div>
+
+  <!-- 260622 learning focus: performance + AI -->
+  <div class="clip-section">
+    <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
+    <div class="clip-section-content">
+      <div class="info-block">
+        <div class="info-block-title">성과관리·성과향상 관점</div>
+        <div>Gemini를 통해 목표·업무지시·피드백·회의 등 성과관리 장면에서 <strong>리더가 직접 판단할 부분과 AI가 보조할 부분</strong>을 분석할 준비를 합니다.</div>
+      </div>
+      <div class="tip-block" style="margin-top:14px">
+        <div class="tip-block-title">AI 기능·활용 학습</div>
+        <div class="tip-block-content">Gemini 접속, 새 대화, 파일 첨부, 같은 대화에서 맥락 이어가기, 표·Markdown 출력, Gems 메뉴의 위치와 역할을 익힙니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 260622 participant guide: Gemini beginner path -->
+  <div class="clip-section">
+    <div class="clip-section-title">Gemini를 처음 사용하는 팀장을 위한 5단계</div>
+    <div class="clip-section-content">
+      <div class="info-block">
+        <div class="info-block-title">기능을 외우지 말고 아래 순서만 확인합니다</div>
+        <div>① Gemini에 로그인합니다. ② 새 대화를 열고 입력창을 확인합니다. ③ 웹페이지의 프롬프트를 복사해 붙여넣습니다. ④ AI가 질문하면 평소 말로 답합니다. ⑤ 필요한 표·Markdown 결과를 확인하고 안내된 파일명으로 저장합니다. 메뉴가 보이지 않으면 계정·라이선스 차이일 수 있으므로 필수 Chat 실습부터 진행합니다.</div>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="clip-section">
     <div class="clip-section-title">이번 클립의 역할</div>
@@ -228,12 +256,12 @@
             <tr>
               <td><strong>Gemini 접속</strong></td>
               <td>접속, 로그인, 입력창, 모델/도구 선택, 파일 업로드 위치를 확인합니다.</td>
-              <td>CH03 전체 실습의 기본 환경</td>
+              <td>CH02 전체 실습의 기본 환경</td>
             </tr>
             <tr>
               <td><strong>대화형 사용</strong></td>
               <td>한 번에 정답을 요구하지 않고, 질문과 답변을 누적하며 맥락을 정리하는 방식을 확인합니다.</td>
-              <td>CH03-3 리더 역할 정의, CH03-4 핵심 역량·스킬 도출</td>
+              <td>CH02-3 리더 역할 정의, CH02-4 핵심 역량·스킬 도출</td>
             </tr>
             <tr>
               <td><strong>자료 기반 분석</strong></td>
@@ -243,7 +271,7 @@
             <tr>
               <td><strong>Gems 메뉴 확인</strong></td>
               <td>Gems가 반복 프롬프트와 역할 지침을 저장하는 기능임을 이해하고, 생성 위치를 확인합니다.</td>
-              <td>CH03-4의 1차 Gem Seed, CH04의 최종 성과관리 AI 비서 구축</td>
+              <td>CH02-4의 1차 Gem Seed, CH04 선택 활동의 운영형 성과관리 AI 비서 구축</td>
             </tr>
           </tbody>
         </table>
@@ -366,12 +394,12 @@
             <tr>
               <td><strong>Deep Research</strong></td>
               <td>계정·라이선스에서 사용 가능한 경우, 핵심 병목이나 리더십 이슈를 외부 사례와 근거로 심층 조사</td>
-              <td>CH03-4 선택 확장 및 CH03 Workflow 병목 심층 탐색에 활용</td>
+              <td>CH02-4 선택 확장 및 CH03 Workflow 병목 심층 탐색에 활용</td>
             </tr>
             <tr>
               <td><strong>Gems</strong></td>
               <td>반복되는 프롬프트와 역할 지침을 저장해 맞춤형 AI 비서로 재사용합니다. 이번 클립에서는 메뉴 위치와 개념만 확인합니다.</td>
-              <td>CH03-4의 1차 Gem Seed, CH04의 최종 성과관리 AI 비서 구축</td>
+              <td>CH02-4의 1차 Gem Seed, CH04 선택 활동의 운영형 성과관리 AI 비서 구축</td>
             </tr>
           </tbody>
         </table>
@@ -492,5 +520,5 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#CH01-clip05">← AI 리터러시 퀴즈 &amp; AI-Friendly 리더십 진단</a><a class="clip-nav-btn" href="#CH02-clip02">팀 토론: AI 시대, 리더의 고민과 역할 →</a></div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip05">← AI 리터러시 퀴즈 &amp; AI-Friendly 리더십 진단</a><a class="clip-nav-btn" href="#ch02-clip02">팀 토론: AI 시대, 리더의 고민과 역할 →</a></div>
 </div>

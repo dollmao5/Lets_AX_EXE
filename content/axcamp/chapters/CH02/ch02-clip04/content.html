@@ -1,11 +1,11 @@
-<div class="CH02-clip04-revised"><style>
-/* CH04-clip03 visibility upgrade
-   - CH02-clip04과 동일한 기본 글자·여백·카드·표·프롬프트 가독성 적용
-   - 필수 4단계 40분 + 선택 확장 20분으로 60분 이내 운영
+<div class="ch02-clip04-revised" id="ch02-clip04"><style>
+/* CH02-clip04 visibility upgrade
+   - CH02-clip03과 동일한 기본 글자·여백·카드·표·프롬프트 가독성 적용
+   - 필수 4단계 40분 + 검증·저장 15분으로 55분 운영, 선택 확장 20분은 여유·사후활동
    - 업로드 메뉴 이미지는 클릭·키보드로 확대 확인 가능
    - 선택 확장에 Deep Research 실행, Gem 생성, Preview 테스트와 지침 개선 포함
    - 완료 기준은 클릭형 상태 선택 및 브라우저 자동 저장 지원 */
-.CH02-clip04-revised {
+.ch02-clip04-revised {
   --c24-font-base: 20px;
   --c24-radius: 18px;
   --c24-gap: 16px;
@@ -14,61 +14,61 @@
   color: var(--text-body);
   word-break: keep-all;
 }
-.CH02-clip04-revised .clip-title {
+.ch02-clip04-revised .clip-title {
   font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
   line-height: 1.22 !important;
   letter-spacing: -0.04em;
   margin-top: 10px;
 }
-.CH02-clip04-revised .clip-badge {
+.ch02-clip04-revised .clip-badge {
   font-size: 0.95rem !important;
   padding: 8px 12px !important;
   border-radius: 999px !important;
 }
-.CH02-clip04-revised .clip-overview {
+.ch02-clip04-revised .clip-overview {
   font-size: 1.16rem !important;
   line-height: 1.78 !important;
   padding: 24px 26px !important;
   border-radius: var(--c24-radius) !important;
 }
-.CH02-clip04-revised .clip-section-title {
+.ch02-clip04-revised .clip-section-title {
   font-size: 1.5rem !important;
   line-height: 1.35 !important;
   letter-spacing: -0.025em;
   margin-bottom: 14px !important;
 }
-.CH02-clip04-revised .clip-section-content,
-.CH02-clip04-revised p,
-.CH02-clip04-revised li,
-.CH02-clip04-revised .tip-block-content,
-.CH02-clip04-revised .info-block,
-.CH02-clip04-revised .info-block div,
-.CH02-clip04-revised .slide-briefing-desc {
+.ch02-clip04-revised .clip-section-content,
+.ch02-clip04-revised p,
+.ch02-clip04-revised li,
+.ch02-clip04-revised .tip-block-content,
+.ch02-clip04-revised .info-block,
+.ch02-clip04-revised .info-block div,
+.ch02-clip04-revised .slide-briefing-desc {
   font-size: 1.08rem !important;
   line-height: 1.66 !important;
 }
-.CH02-clip04-revised .info-block,
-.CH02-clip04-revised .tip-block {
+.ch02-clip04-revised .info-block,
+.ch02-clip04-revised .tip-block {
   padding: 18px 20px !important;
   border-radius: var(--c24-radius) !important;
 }
-.CH02-clip04-revised .info-block-title,
-.CH02-clip04-revised .tip-block-title {
+.ch02-clip04-revised .info-block-title,
+.ch02-clip04-revised .tip-block-title {
   font-size: 1.08rem !important;
   line-height: 1.45 !important;
   font-weight: 900 !important;
   margin-bottom: 8px !important;
 }
-.CH02-clip04-revised .slide-briefing-eyebrow {
+.ch02-clip04-revised .slide-briefing-eyebrow {
   font-size: 0.92rem !important;
   font-weight: 900 !important;
 }
-.CH02-clip04-revised .slide-briefing-title {
+.ch02-clip04-revised .slide-briefing-title {
   font-size: 1.38rem !important;
   line-height: 1.35 !important;
 }
-.CH02-clip04-revised .slide-briefing-link,
-.CH02-clip04-revised .clip-nav-btn {
+.ch02-clip04-revised .slide-briefing-link,
+.ch02-clip04-revised .clip-nav-btn {
   font-size: 1.04rem !important;
   line-height: 1.3 !important;
   padding: 10px 16px !important;
@@ -77,47 +77,47 @@
 }
 
 /* 산출물·자료 카드 */
-.CH02-clip04-revised .output-grid,
-.CH02-clip04-revised .resource-grid {
+.ch02-clip04-revised .output-grid,
+.ch02-clip04-revised .resource-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--c24-gap);
   margin: 14px 0 20px;
 }
-.CH02-clip04-revised .output-card,
-.CH02-clip04-revised .resource-card {
+.ch02-clip04-revised .output-card,
+.ch02-clip04-revised .resource-card {
   padding: 20px;
   border: 1px solid var(--border);
   border-radius: var(--c24-radius);
   background: linear-gradient(135deg, #fff, var(--bg-offwhite));
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
-.CH02-clip04-revised .output-card.optional-card {
+.ch02-clip04-revised .output-card.optional-card {
   border-style: dashed;
 }
-.CH02-clip04-revised .output-card strong,
-.CH02-clip04-revised .resource-card strong {
+.ch02-clip04-revised .output-card strong,
+.ch02-clip04-revised .resource-card strong {
   display: block;
   margin-bottom: 8px;
   color: var(--text-heading);
   font-size: 1.06rem !important;
   line-height: 1.42 !important;
 }
-.CH02-clip04-revised .output-card p,
-.CH02-clip04-revised .resource-card p {
+.ch02-clip04-revised .output-card p,
+.ch02-clip04-revised .resource-card p {
   margin: 0 0 10px !important;
   font-size: 1.02rem !important;
   line-height: 1.58 !important;
 }
 
 /* 실습 흐름 카드 */
-.CH02-clip04-revised .practice-flow-grid {
+.ch02-clip04-revised .practice-flow-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--c24-gap);
   margin: 10px 0 20px;
 }
-.CH02-clip04-revised .flow-card {
+.ch02-clip04-revised .flow-card {
   min-height: 158px;
   padding: 20px;
   background: linear-gradient(135deg, #fff, var(--bg-offwhite));
@@ -125,10 +125,10 @@
   border-radius: var(--c24-radius);
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
-.CH02-clip04-revised .flow-card.optional-card {
+.ch02-clip04-revised .flow-card.optional-card {
   border-style: dashed;
 }
-.CH02-clip04-revised .flow-card-head {
+.ch02-clip04-revised .flow-card-head {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -136,19 +136,19 @@
   gap: 8px;
   margin-bottom: 10px;
 }
-.CH02-clip04-revised .flow-card-title {
+.ch02-clip04-revised .flow-card-title {
   margin: 0;
   color: var(--brand);
   font-size: 1rem !important;
   font-weight: 900;
   line-height: 1.42 !important;
 }
-.CH02-clip04-revised .flow-card-body {
+.ch02-clip04-revised .flow-card-body {
   color: var(--text-body);
   font-size: 1.08rem !important;
   line-height: 1.62 !important;
 }
-.CH02-clip04-revised .flow-time-badge {
+.ch02-clip04-revised .flow-time-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +165,7 @@
 }
 
 /* 표 가독성 */
-.CH02-clip04-revised .table-wrap {
+.ch02-clip04-revised .table-wrap {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -173,34 +173,34 @@
   border: 1px solid var(--border);
   border-radius: 16px;
 }
-.CH02-clip04-revised .table-wrap table {
+.ch02-clip04-revised .table-wrap table {
   min-width: 820px;
   margin: 0 !important;
   border: 0 !important;
 }
-.CH02-clip04-revised .comparison-table th,
-.CH02-clip04-revised .comparison-table td {
+.ch02-clip04-revised .comparison-table th,
+.ch02-clip04-revised .comparison-table td {
   font-size: 1.06rem !important;
   line-height: 1.45 !important;
   padding: 9px 12px !important;
   vertical-align: middle !important;
   word-break: keep-all;
 }
-.CH02-clip04-revised .comparison-table th {
+.ch02-clip04-revised .comparison-table th {
   font-weight: 900 !important;
   color: var(--text-heading) !important;
   background: var(--bg-offwhite) !important;
 }
 
 /* 업로드 메뉴 이미지 */
-.CH02-clip04-revised .upload-menu-figure {
+.ch02-clip04-revised .upload-menu-figure {
   margin-bottom: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--c24-radius);
   background: var(--bg-white);
 }
-.CH02-clip04-revised .upload-menu-figure img {
+.ch02-clip04-revised .upload-menu-figure img {
   display: block;
   width: auto !important;
   max-width: 100%;
@@ -208,7 +208,7 @@
   margin: 0 auto;
   object-fit: contain;
 }
-.CH02-clip04-revised .upload-menu-caption {
+.ch02-clip04-revised .upload-menu-caption {
   padding: 12px 16px;
   background: var(--bg-offwhite);
   color: var(--text-secondary);
@@ -217,24 +217,24 @@
 }
 
 /* 프롬프트 가독성 */
-.CH02-clip04-revised .prompt-block {
+.ch02-clip04-revised .prompt-block {
   margin: 16px 0 22px;
   overflow: hidden;
   border-radius: var(--c24-radius) !important;
 }
-.CH02-clip04-revised .prompt-header {
+.ch02-clip04-revised .prompt-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 14px 16px !important;
 }
-.CH02-clip04-revised .prompt-label {
+.ch02-clip04-revised .prompt-label {
   font-size: 1.06rem !important;
   line-height: 1.42 !important;
   font-weight: 900 !important;
 }
-.CH02-clip04-revised .copy-btn {
+.ch02-clip04-revised .copy-btn {
   flex: 0 0 auto;
   padding: 8px 14px !important;
   border-radius: 999px !important;
@@ -242,7 +242,7 @@
   line-height: 1.3 !important;
   font-weight: 900 !important;
 }
-.CH02-clip04-revised .prompt-content {
+.ch02-clip04-revised .prompt-content {
   padding: 18px 20px !important;
   font-size: 1.02rem !important;
   line-height: 1.62 !important;
@@ -252,14 +252,14 @@
 }
 
 /* 선택 확장 접기·펼치기 */
-.CH02-clip04-revised .optional-details {
+.ch02-clip04-revised .optional-details {
   margin-top: 14px;
   overflow: hidden;
   border: 1px dashed var(--border);
   border-radius: var(--c24-radius);
   background: #fff;
 }
-.CH02-clip04-revised .optional-details summary {
+.ch02-clip04-revised .optional-details summary {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -274,15 +274,15 @@
   font-weight: 900;
   line-height: 1.45 !important;
 }
-.CH02-clip04-revised .optional-details[open] summary {
+.ch02-clip04-revised .optional-details[open] summary {
   border-bottom: 1px solid var(--border);
 }
-.CH02-clip04-revised .optional-details-body {
+.ch02-clip04-revised .optional-details-body {
   padding: 18px 20px 4px;
 }
 
 /* 완료 기준 상태 선택·자동 저장 */
-.CH02-clip04-revised .visually-hidden {
+.ch02-clip04-revised .visually-hidden {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
@@ -293,13 +293,13 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
-.CH02-clip04-revised .completion-table {
+.ch02-clip04-revised .completion-table {
   min-width: 980px !important;
 }
-.CH02-clip04-revised .completion-status-cell {
+.ch02-clip04-revised .completion-status-cell {
   min-width: 300px;
 }
-.CH02-clip04-revised .completion-state-group {
+.ch02-clip04-revised .completion-state-group {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -307,11 +307,11 @@
   padding: 0;
   border: 0;
 }
-.CH02-clip04-revised .completion-state-option {
+.ch02-clip04-revised .completion-state-option {
   position: relative;
   display: inline-flex;
 }
-.CH02-clip04-revised .completion-state-option input {
+.ch02-clip04-revised .completion-state-option input {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -322,7 +322,7 @@
   white-space: nowrap;
   border: 0;
 }
-.CH02-clip04-revised .completion-state-option label {
+.ch02-clip04-revised .completion-state-option label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -339,7 +339,7 @@
   user-select: none;
   transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
 }
-.CH02-clip04-revised .completion-state-option label::before {
+.ch02-clip04-revised .completion-state-option label::before {
   content: "";
   width: 18px;
   height: 18px;
@@ -349,26 +349,26 @@
   background: #fff;
   box-sizing: border-box;
 }
-.CH02-clip04-revised .completion-state-option label:hover {
+.ch02-clip04-revised .completion-state-option label:hover {
   border-color: var(--brand);
   transform: translateY(-1px);
 }
-.CH02-clip04-revised .completion-state-option input:focus-visible + label {
+.ch02-clip04-revised .completion-state-option input:focus-visible + label {
   outline: 4px solid rgba(165, 0, 52, 0.18);
   outline-offset: 2px;
 }
-.CH02-clip04-revised .completion-state-option input:checked + label {
+.ch02-clip04-revised .completion-state-option input:checked + label {
   border-color: var(--brand);
   background: #fff7f9;
   color: var(--text-heading);
   box-shadow: 0 3px 10px rgba(165, 0, 52, 0.10);
 }
-.CH02-clip04-revised .completion-state-option input:checked + label::before {
+.ch02-clip04-revised .completion-state-option input:checked + label::before {
   border-color: var(--brand);
   background: var(--brand);
   box-shadow: inset 0 0 0 4px #fff;
 }
-.CH02-clip04-revised .completion-save-panel {
+.ch02-clip04-revised .completion-save-panel {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -380,32 +380,32 @@
   border-radius: 14px;
   background: var(--bg-offwhite);
 }
-.CH02-clip04-revised .completion-save-copy {
+.ch02-clip04-revised .completion-save-copy {
   min-width: 240px;
   flex: 1 1 420px;
 }
-.CH02-clip04-revised .completion-save-copy strong {
+.ch02-clip04-revised .completion-save-copy strong {
   display: block;
   margin-bottom: 3px;
   color: var(--text-heading);
   font-size: 1rem !important;
   line-height: 1.35 !important;
 }
-.CH02-clip04-revised .completion-save-copy span,
-.CH02-clip04-revised .completion-save-message,
-.CH02-clip04-revised .completion-summary {
+.ch02-clip04-revised .completion-save-copy span,
+.ch02-clip04-revised .completion-save-message,
+.ch02-clip04-revised .completion-summary {
   color: var(--text-secondary);
   font-size: 0.96rem !important;
   line-height: 1.5 !important;
 }
-.CH02-clip04-revised .completion-save-actions {
+.ch02-clip04-revised .completion-save-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
 }
-.CH02-clip04-revised .completion-reset-btn {
+.ch02-clip04-revised .completion-reset-btn {
   min-height: 42px;
   padding: 8px 14px;
   border: 1px solid var(--border);
@@ -417,17 +417,17 @@
   font-weight: 850;
   cursor: pointer;
 }
-.CH02-clip04-revised .completion-reset-btn:hover {
+.ch02-clip04-revised .completion-reset-btn:hover {
   border-color: var(--brand);
   color: var(--brand);
 }
-.CH02-clip04-revised .completion-reset-btn:focus-visible {
+.ch02-clip04-revised .completion-reset-btn:focus-visible {
   outline: 4px solid rgba(165, 0, 52, 0.18);
   outline-offset: 2px;
 }
 
 /* 업로드 메뉴 이미지 확대 */
-.CH02-clip04-revised .upload-menu-image-button {
+.ch02-clip04-revised .upload-menu-image-button {
   display: block;
   width: 100%;
   padding: 0;
@@ -435,12 +435,12 @@
   background: transparent;
   cursor: zoom-in;
 }
-.CH02-clip04-revised .upload-menu-image-button:focus-visible {
+.ch02-clip04-revised .upload-menu-image-button:focus-visible {
   outline: 3px solid var(--brand);
   outline-offset: 4px;
   border-radius: 14px;
 }
-.CH02-clip04-revised .upload-menu-zoom-hint {
+.ch02-clip04-revised .upload-menu-zoom-hint {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -449,8 +449,8 @@
   font-size: 0.94rem !important;
   font-weight: 900;
 }
-.CH02-clip04-revised .image-lightbox[hidden] { display: none !important; }
-.CH02-clip04-revised .image-lightbox {
+.ch02-clip04-revised .image-lightbox[hidden] { display: none !important; }
+.ch02-clip04-revised .image-lightbox {
   position: fixed;
   inset: 0;
   z-index: 99999;
@@ -461,7 +461,7 @@
   background: rgba(15, 23, 42, 0.82);
   backdrop-filter: blur(4px);
 }
-.CH02-clip04-revised .image-lightbox-dialog {
+.ch02-clip04-revised .image-lightbox-dialog {
   position: relative;
   width: min(1120px, 96vw);
   max-height: 92vh;
@@ -471,7 +471,7 @@
   background: #fff;
   box-shadow: 0 28px 70px rgba(15, 23, 42, 0.36);
 }
-.CH02-clip04-revised .image-lightbox-dialog img {
+.ch02-clip04-revised .image-lightbox-dialog img {
   display: block;
   width: auto;
   max-width: 100%;
@@ -479,13 +479,13 @@
   margin: 0 auto;
   object-fit: contain;
 }
-.CH02-clip04-revised .image-lightbox-caption {
+.ch02-clip04-revised .image-lightbox-caption {
   margin: 14px 42px 0 0;
   color: var(--text-body);
   font-size: 1rem !important;
   line-height: 1.55 !important;
 }
-.CH02-clip04-revised .image-lightbox-close {
+.ch02-clip04-revised .image-lightbox-close {
   position: absolute;
   top: 10px;
   right: 12px;
@@ -502,44 +502,44 @@
   font-size: 1.45rem;
   font-weight: 900;
 }
-.CH02-clip04-revised .image-lightbox-close:focus-visible {
+.ch02-clip04-revised .image-lightbox-close:focus-visible {
   outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
 
 /* 선택 확장 실습 */
-.CH02-clip04-revised .optional-action-grid {
+.ch02-clip04-revised .optional-action-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
   margin: 16px 0;
 }
-.CH02-clip04-revised .optional-action-card {
+.ch02-clip04-revised .optional-action-card {
   padding: 18px;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--bg-offwhite);
 }
-.CH02-clip04-revised .optional-action-card strong {
+.ch02-clip04-revised .optional-action-card strong {
   display: block;
   margin-bottom: 8px;
   color: var(--text-heading);
   font-size: 1.06rem !important;
   line-height: 1.42 !important;
 }
-.CH02-clip04-revised .optional-action-card p {
+.ch02-clip04-revised .optional-action-card p {
   margin: 0 !important;
   font-size: 1.02rem !important;
   line-height: 1.58 !important;
 }
-.CH02-clip04-revised .optional-toolbar {
+.ch02-clip04-revised .optional-toolbar {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
   margin: 16px 0 12px;
 }
-.CH02-clip04-revised .optional-toggle-btn {
+.ch02-clip04-revised .optional-toggle-btn {
   padding: 9px 15px;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -549,18 +549,18 @@
   font-size: 1rem;
   font-weight: 900;
 }
-.CH02-clip04-revised .optional-toggle-btn:focus-visible {
+.ch02-clip04-revised .optional-toggle-btn:focus-visible {
   outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
-.CH02-clip04-revised .optional-subdetails {
+.ch02-clip04-revised .optional-subdetails {
   margin: 12px 0;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: #fff;
 }
-.CH02-clip04-revised .optional-subdetails > summary {
+.ch02-clip04-revised .optional-subdetails > summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -574,17 +574,17 @@
   line-height: 1.45 !important;
   list-style: none;
 }
-.CH02-clip04-revised .optional-subdetails > summary::-webkit-details-marker { display: none; }
-.CH02-clip04-revised .optional-subdetails > summary::after {
+.ch02-clip04-revised .optional-subdetails > summary::-webkit-details-marker { display: none; }
+.ch02-clip04-revised .optional-subdetails > summary::after {
   content: '＋';
   color: var(--brand);
   font-size: 1.3rem;
   font-weight: 900;
 }
-.CH02-clip04-revised .optional-subdetails[open] > summary::after { content: '−'; }
-.CH02-clip04-revised .optional-subdetails-body { padding: 18px; }
-.CH02-clip04-revised .optional-subdetails .table-wrap table { min-width: 760px; }
-.CH02-clip04-revised .lab-minimum-box {
+.ch02-clip04-revised .optional-subdetails[open] > summary::after { content: '−'; }
+.ch02-clip04-revised .optional-subdetails-body { padding: 18px; }
+.ch02-clip04-revised .optional-subdetails .table-wrap table { min-width: 760px; }
+.ch02-clip04-revised .lab-minimum-box {
   margin: 16px 0;
   padding: 18px 20px;
   border: 1px solid var(--border);
@@ -592,13 +592,13 @@
   border-radius: 16px;
   background: #fff;
 }
-.CH02-clip04-revised .lab-minimum-box strong {
+.ch02-clip04-revised .lab-minimum-box strong {
   display: block;
   margin-bottom: 8px;
   color: var(--text-heading);
   font-size: 1.06rem !important;
 }
-.CH02-clip04-revised .test-badge {
+.ch02-clip04-revised .test-badge {
   display: inline-flex;
   align-items: center;
   padding: 4px 9px;
@@ -610,31 +610,50 @@
 }
 
 @media (max-width: 680px) {
-  .CH02-clip04-revised { font-size: 18px; }
-  .CH02-clip04-revised .clip-overview { padding: 20px !important; }
-  .CH02-clip04-revised .practice-flow-grid,
-  .CH02-clip04-revised .output-grid,
-  .CH02-clip04-revised .resource-grid { grid-template-columns: 1fr; }
-  .CH02-clip04-revised .flow-card { min-height: 0; }
-  .CH02-clip04-revised .prompt-header { align-items: flex-start; }
-  .CH02-clip04-revised .prompt-content { padding: 16px !important; font-size: 1rem !important; }
-  .CH02-clip04-revised .completion-save-panel,
-  .CH02-clip04-revised .completion-save-actions { align-items: stretch; }
-  .CH02-clip04-revised .completion-save-actions,
-  .CH02-clip04-revised .completion-reset-btn { width: 100%; }
-  .CH02-clip04-revised .optional-details summary { align-items: flex-start; }
-  .CH02-clip04-revised .image-lightbox { padding: 10px; }
-  .CH02-clip04-revised .image-lightbox-dialog { width: 100%; padding: 16px; }
-  .CH02-clip04-revised .image-lightbox-dialog img { max-height: 72vh; }
-  .CH02-clip04-revised .optional-toolbar,
-  .CH02-clip04-revised .optional-toggle-btn { width: 100%; }
-  .CH02-clip04-revised .optional-subdetails > summary { align-items: flex-start; }
+  .ch02-clip04-revised { font-size: 18px; }
+  .ch02-clip04-revised .clip-overview { padding: 20px !important; }
+  .ch02-clip04-revised .practice-flow-grid,
+  .ch02-clip04-revised .output-grid,
+  .ch02-clip04-revised .resource-grid { grid-template-columns: 1fr; }
+  .ch02-clip04-revised .flow-card { min-height: 0; }
+  .ch02-clip04-revised .prompt-header { align-items: flex-start; }
+  .ch02-clip04-revised .prompt-content { padding: 16px !important; font-size: 1rem !important; }
+  .ch02-clip04-revised .completion-save-panel,
+  .ch02-clip04-revised .completion-save-actions { align-items: stretch; }
+  .ch02-clip04-revised .completion-save-actions,
+  .ch02-clip04-revised .completion-reset-btn { width: 100%; }
+  .ch02-clip04-revised .optional-details summary { align-items: flex-start; }
+  .ch02-clip04-revised .image-lightbox { padding: 10px; }
+  .ch02-clip04-revised .image-lightbox-dialog { width: 100%; padding: 16px; }
+  .ch02-clip04-revised .image-lightbox-dialog img { max-height: 72vh; }
+  .ch02-clip04-revised .optional-toolbar,
+  .ch02-clip04-revised .optional-toggle-btn { width: 100%; }
+  .ch02-clip04-revised .optional-subdetails > summary { align-items: flex-start; }
 }
+
+
+    /* 260622 프롬프트 진행 방식 표기: 기존 색상·타이포그래피 체계 재사용 */
+    .prompt-mode-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg-offwhite);
+      color: var(--brand);
+      font-size: 0.86rem !important;
+      font-weight: 900;
+      line-height: 1.2 !important;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
 </style>
 <div class="clip-header">
 <div class="clip-badges">
-<span class="clip-badge time">~60분</span>
-<span class="clip-badge chapter">CH 03</span>
+<span class="clip-badge time">~55분</span>
+<span class="clip-badge chapter">CH 02</span>
 <span class="clip-badge type-practice">실습</span>
 </div>
 <h1 class="clip-title" data-keep-title="">프롬프팅 활용: 리더의 핵심 역량 및 스킬</h1>
@@ -642,13 +661,45 @@
 <div class="clip-overview">
     앞에서 익힌 <strong>페르소나 설정</strong>, <strong>맥락 누적</strong>, <strong>구조화된 출력</strong>을
     실제 리더의 성과관리에 적용합니다.
-    이 클립에서는 <strong>학습팀 토론 오디오</strong>, <strong>CH03-3 리더 역할 프로필</strong>,
+    이 클립에서는 <strong>학습팀 토론 오디오</strong>, <strong>CH02-3 리더 역할 프로필</strong>,
     <strong>팀장 기대행동 참고 문서</strong>를 분석하여
-    <strong>리더의 핵심 역량·스킬</strong>과 <strong>성과관리 실행 브리프 Markdown 저장본</strong>을 도출합니다.<br/><br/>
+    <strong>리더의 핵심 역량·스킬</strong>과 <strong>성과관리 실행 브리프 Markdown 저장본</strong>을 도출합니다.<br><br>
     핵심 메시지는 <strong>“프롬프트는 질문이 아니라 업무 위임서”</strong>입니다.
     자료를 넣고, 역할을 부여하고, 분석 기준과 출력 형식을 지정한 뒤,
     성공한 분석 흐름은 선택 확장에서 <strong>프로토타입 Gem</strong>으로 생성·테스트하고, CH04에서 운영형 AI 비서로 고도화합니다.
   </div>
+
+  <!-- 260622 learning focus: performance + AI -->
+  <div class="clip-section">
+    <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
+    <div class="clip-section-content">
+      <div class="info-block">
+        <div class="info-block-title">성과관리·성과향상 관점</div>
+        <div>토론과 조직의 팀장 기대행동을 근거로 핵심 역량·스킬과 30일 리더 행동 후보를 도출합니다. 일반론이 아니라 <strong>현업 성과관리 장면에 적용할 행동</strong>을 만듭니다.</div>
+      </div>
+      <div class="tip-block" style="margin-top:14px">
+        <div class="tip-block-title">AI 기능·활용 학습</div>
+        <div class="tip-block-content">오디오·문서·이전 산출물을 같은 대화에서 분석하고, 단계별 이어서 프롬프팅으로 결과를 심화합니다. Deep Research와 Gems는 필수 결과를 만든 뒤 선택적으로 학습합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 260622 participant guide: prompt execution modes -->
+  <div class="clip-section">
+    <div class="clip-section-title">프롬프트 유형과 진행 방법</div>
+    <div class="clip-section-content">
+      <div class="info-block">
+        <div class="info-block-title">프롬프트 제목 앞의 배지를 먼저 확인합니다</div>
+        <div><span class="prompt-mode-badge">대화형</span> AI가 질문하면 답하면서 진행합니다. <span class="prompt-mode-badge">복붙형</span> 필요한 자료를 먼저 넣고 프롬프트를 한 번 붙여넣습니다. <span class="prompt-mode-badge">이어서형</span> 앞 단계와 <strong>같은 Gemini 대화창</strong>에 붙여넣습니다. <span class="prompt-mode-badge">설정형</span> Gem의 인스트럭션 입력란에 넣습니다. <span class="prompt-mode-badge">테스트형</span> Gem Preview에서 동작을 확인합니다.</div>
+      </div>
+      <div class="tip-block" style="margin-top:14px">
+        <div class="tip-block-title">공통 실행 순서</div>
+        <div class="tip-block-content">① 배지와 지정 도구 확인 → ② 필요한 파일 먼저 첨부 → ③ 복사·붙여넣기 → ④ 대화형이면 AI 질문에 답변 → ⑤ 이어서형이면 새 대화를 열지 않음 → ⑥ 결과의 누락·오류·민감정보를 확인하고 저장합니다.</div>
+      </div>
+    </div>
+  </div>
+
+
 <div class="clip-section slide-preview-shell">
 <div class="slide-preview-head">
 <p class="slide-briefing-eyebrow">Business Prompting Infographic</p>
@@ -658,7 +709,7 @@
 <p class="slide-briefing-desc">
             오디오 회의록 작성, 성과관리 핵심 이슈 추출, 팀장 기대행동 자료 교차검증,
             최종 실행 브리프 작성까지 하나의 워크플로로 정리한 인포그래픽입니다.
-            CH03-4에서는 최종 운영형 AI 비서를 완성하는 것이 아니라,
+            CH02-4에서는 최종 운영형 AI 비서를 완성하는 것이 아니라,
             선택 확장에서 <strong>프로토타입 Gem을 생성·테스트</strong>하고, CH04에서 운영형 AI 비서로 고도화할 기준을 확보합니다.
           </p>
 </div>
@@ -676,14 +727,14 @@
 <div class="tip-block-title">필수 Output</div>
 <div class="tip-block-content">
     이 실습의 필수 산출물은 <strong>리더 핵심 역량·스킬 프로필</strong>과
-    <strong>성과관리 실행 브리프 Markdown 저장본</strong>입니다.<br/>
+    <strong>성과관리 실행 브리프 Markdown 저장본</strong>입니다.<br>권장 파일명: <code>CH02_나의_핵심역량과_성과관리실행안_성명.md</code><br>
     실행 브리프에는 성과관리 핵심 이슈, AI와 리더의 역할 분담,
     <strong>CH04 최종 Action Plan으로 넘길 30일 리더 행동 후보</strong>,
-    <strong>CH03·CH04 연결 메모</strong>를 포함합니다.<br/>
+    <strong>CH03·CH04 연결 메모</strong>를 포함합니다.<br>
     Deep Research 질문·실행, 프로토타입 Gem 생성, 테스트 로그는 시간과 계정 환경이 허용될 때 진행하는 선택 확장 활동입니다.
   </div>
 </div>
-<div aria-label="CH04-clip03 산출물 요약" class="output-grid">
+<div aria-label="CH02-clip04 산출물 요약" class="output-grid">
 <div class="output-card">
 <strong>필수 1. 리더 핵심 역량·스킬 프로필</strong>
 <p>역량명만 나열하지 않고, 필요한 이유·성과관리 장면·리더 행동으로 정리합니다.</p>
@@ -713,7 +764,7 @@
 </div>
 <div class="flow-card">
 <div class="flow-card-head"><div class="flow-card-title">Step 3. 기대행동 교차검증</div><span class="flow-time-badge">권장 10분</span></div>
-<div class="flow-card-body">팀장 기대행동 문서와 CH03-3 리더 역할 프로필을 비교해 일치·보완·누락 포인트를 확인합니다.</div>
+<div class="flow-card-body">팀장 기대행동 문서와 CH02-3 리더 역할 프로필을 비교해 일치·보완·누락 포인트를 확인합니다.</div>
 </div>
 <div class="flow-card">
 <div class="flow-card-head"><div class="flow-card-title">Step 4. 역량 프로필·실행 브리프</div><span class="flow-time-badge">권장 12분</span></div>
@@ -729,13 +780,13 @@
 </div>
 </div>
 <div class="tip-block">
-<div class="tip-block-title">60분 운영 기준</div>
-<div class="tip-block-content"><strong>필수 실습 40분 + 선택 확장 20분</strong>으로 구성합니다. Deep Research는 수업 중 조사 질문 확정과 실행 시작까지 완료하고, 보고서 검토는 생성 시간에 따라 수업 후 이어갈 수 있습니다. Gem은 수업 중 최소 1개 시나리오를 Preview 테스트하고 수정한 뒤 저장합니다.</div>
+<div class="tip-block-title">55분 공식 운영 기준</div>
+<div class="tip-block-content"><strong>필수 실습 40분 + 결과 검증·Markdown 저장·CH03 전환 준비 15분</strong>으로 운영합니다. Deep Research와 프로토타입 Gem은 공식 55분의 필수 완료 기준에 포함하지 않으며, 시간 여유가 있거나 수업 후 진행하는 선택 확장 활동입니다.</div>
 </div>
 </div>
 </div>
 <div class="clip-section">
-<div class="clip-section-title">CH03-4와 다음 단계의 역할 구분</div>
+<div class="clip-section-title">CH02-4와 다음 단계의 역할 구분</div>
 <div class="clip-section-content">
 <div class="table-wrap">
 <table class="comparison-table">
@@ -748,19 +799,19 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>CH03-4</strong></td>
-<td>학습팀 토론 오디오, CH03-3 리더 역할 프로필, 팀장 기대행동 문서를 분석해 리더 핵심 역량·스킬과 성과관리 실행 브리프를 만듭니다.</td>
+<td><strong>CH02-4</strong></td>
+<td>학습팀 토론 오디오, CH02-3 리더 역할 프로필, 팀장 기대행동 문서를 분석해 리더 핵심 역량·스킬과 성과관리 실행 브리프를 만듭니다.</td>
 <td>CH03의 조직/팀 진단과 CH04 Action Plan 수립의 입력 단서로 활용합니다.</td>
 </tr>
 <tr>
 <td><strong>CH03</strong></td>
 <td>팀/조직의 구조적 병목, 효과성 지표, 조직/인재 역량, Workflow Re-design을 다룹니다.</td>
-<td>CH03-4의 핵심 이슈를 조직/팀 시스템 관점으로 확장합니다.</td>
+<td>CH02-4의 핵심 이슈를 CH03의 조직/팀 시스템 관점으로 확장합니다.</td>
 </tr>
 <tr>
 <td><strong>CH04</strong></td>
-<td>CH03 리더 산출물과 CH03 팀 시스템 산출물을 NotebookLM에 통합하고 최종 Action Plan과 운영형 Gem을 구축합니다.</td>
-<td>CH03-4의 프로토타입 Gem과 테스트 로그를 성과관리 운영형 Gem으로 고도화합니다.</td>
+<td>CH02 리더 산출물과 CH03 팀 시스템 산출물을 NotebookLM에 통합하고 최종 Action Plan과 운영형 Gem을 구축합니다.</td>
+<td>CH02-4의 프로토타입 Gem과 테스트 로그를 성과관리 운영형 Gem으로 고도화합니다.</td>
 </tr>
 </tbody>
 </table>
@@ -773,10 +824,10 @@
 <div class="tip-block">
 <div class="tip-block-title">자료 선택 원칙</div>
 <div class="tip-block-content">
-          1순위는 <strong>CH02-clip03에서 직접 확보한 학습팀 토론 오디오</strong>입니다.<br/>
-          오디오 파일 분석이 어렵거나 업로드 환경이 제한되는 경우에는 <strong>샘플 대화문</strong>을 사용합니다.<br/>
+          1순위는 <strong>CH02-clip02에서 직접 확보한 학습팀 토론 오디오</strong>입니다.<br>
+          오디오 파일 분석이 어렵거나 업로드 환경이 제한되는 경우에는 <strong>샘플 대화문</strong>을 사용합니다.<br>
           팀장 기대행동 문서는 모든 참가자가 공통 맥락 자료로 활용하고,
-          CH03-3 리더 역할 프로필 Markdown은 가능한 경우 함께 붙여 넣습니다.
+          CH02-3 리더 역할 프로필 Markdown은 가능한 경우 함께 붙여 넣습니다.
         </div>
 </div>
 <div class="resource-grid">
@@ -796,7 +847,7 @@
 <button class="slide-briefing-link" onclick="copyResourceLink(this,'https://docs.google.com/document/d/1Xf-OarZruVAIUxdUIq3AwUvB-Hab_D6B6JT4gShaMc0/edit?usp=drive_link')" type="button">기대행동 문서 링크 복사</button>
 </div>
 <div class="resource-card">
-<strong>권장: CH03-3 리더 역할 프로필</strong>
+<strong>권장: CH02-3 리더 역할 프로필</strong>
 <p>나의 리더 책임 기준과 역량·스킬 도출 기준을 연결합니다.</p>
 <p>개인 Markdown 저장본을 Gemini 대화창에 함께 붙여 넣습니다.</p>
 </div>
@@ -807,43 +858,43 @@
 <div class="clip-section-title">회의/토론 자료로 실습하는 4단계 + 선택 확장</div>
 <div class="clip-section-content">
 <div class="upload-menu-figure">
-<button aria-controls="CH02Clip04UploadImageModal" aria-haspopup="dialog" class="upload-menu-image-button" data-upload-menu-open="" type="button">
-<img alt="Gemini 파일 업로드 메뉴" loading="lazy" src="/assets/gemini/CH02/gemini-upload-menu.png"/>
+<button aria-controls="ch02Clip04UploadImageModal" aria-haspopup="dialog" class="upload-menu-image-button" data-upload-menu-open="" type="button">
+<img alt="Gemini 파일 업로드 메뉴" loading="lazy" src="/assets/gemini/ch02/gemini-upload-menu.png">
 <span class="visually-hidden">Gemini 파일 업로드 메뉴 이미지를 팝업으로 확대해서 보기</span>
 </button>
-<div class="upload-menu-caption">회의 녹음과 맥락 자료는 모두 입력창 왼쪽의 파일 업로드 메뉴에서 붙입니다. 핵심은 <strong>같은 대화창을 유지하면서 단계별로 깊이를 더하는 것</strong>입니다.<br/><span class="upload-menu-zoom-hint">이미지를 클릭하거나 Enter 키를 누르면 크게 볼 수 있습니다.</span></div>
+<div class="upload-menu-caption">회의 녹음과 맥락 자료는 모두 입력창 왼쪽의 파일 업로드 메뉴에서 붙입니다. 핵심은 <strong>같은 대화창을 유지하면서 단계별로 깊이를 더하는 것</strong>입니다.<br><span class="upload-menu-zoom-hint">이미지를 클릭하거나 Enter 키를 누르면 크게 볼 수 있습니다.</span></div>
 </div>
-<div aria-labelledby="CH02Clip04UploadImageModalTitle" aria-modal="true" class="image-lightbox" hidden id="CH02Clip04UploadImageModal" role="dialog">
+<div aria-labelledby="ch02Clip04UploadImageModalTitle" aria-modal="true" class="image-lightbox" hidden="" id="ch02Clip04UploadImageModal" role="dialog">
 <div class="image-lightbox-dialog" role="document">
 <button aria-label="확대 이미지 닫기" class="image-lightbox-close" data-upload-menu-close="" type="button">×</button>
-<h2 class="visually-hidden" id="CH02Clip04UploadImageModalTitle">Gemini 파일 업로드 메뉴 확대 이미지</h2>
-<img alt="Gemini 입력창의 파일 업로드 메뉴 확대 화면" src="/assets/gemini/CH02/gemini-upload-menu.png"/>
-<p class="image-lightbox-caption">Gemini 입력창 왼쪽의 파일 첨부 메뉴에서 학습팀 토론 오디오, 대화문, 팀장 기대행동 문서, CH03-3 리더 역할 프로필을 같은 대화에 추가합니다.</p>
+<h2 class="visually-hidden" id="ch02Clip04UploadImageModalTitle">Gemini 파일 업로드 메뉴 확대 이미지</h2>
+<img alt="Gemini 입력창의 파일 업로드 메뉴 확대 화면" src="/assets/gemini/ch02/gemini-upload-menu.png">
+<p class="image-lightbox-caption">Gemini 입력창 왼쪽의 파일 첨부 메뉴에서 학습팀 토론 오디오, 대화문, 팀장 기대행동 문서, CH02-3 리더 역할 프로필을 같은 대화에 추가합니다.</p>
 </div>
 </div>
 <img alt="" onload="(function(loader){
-var root=loader.closest(&#x27;.CH02-clip04-revised&#x27;);
-if(!root||root.getAttribute(&#x27;data-upload-image-modal-ready&#x27;)===&#x27;true&#x27;){return;}
-root.setAttribute(&#x27;data-upload-image-modal-ready&#x27;,&#x27;true&#x27;);
-var openBtn=root.querySelector(&#x27;[data-upload-menu-open]&#x27;);
-var modal=root.querySelector(&#x27;#CH02Clip04UploadImageModal&#x27;);
-var closeBtn=modal?modal.querySelector(&#x27;[data-upload-menu-close]&#x27;):null;
+var root=loader.closest('.ch02-clip04-revised');
+if(!root||root.getAttribute('data-upload-image-modal-ready')==='true'){return;}
+root.setAttribute('data-upload-image-modal-ready','true');
+var openBtn=root.querySelector('[data-upload-menu-open]');
+var modal=root.querySelector('#ch02Clip04UploadImageModal');
+var closeBtn=modal?modal.querySelector('[data-upload-menu-close]'):null;
 if(!openBtn||!modal||!closeBtn){return;}
-var lastFocus=null;var previousOverflow=&#x27;&#x27;;
-function openModal(){lastFocus=document.activeElement;previousOverflow=document.body.style.overflow;modal.hidden=false;document.body.style.overflow=&#x27;hidden&#x27;;closeBtn.focus();}
-function closeModal(){modal.hidden=true;document.body.style.overflow=previousOverflow||&#x27;&#x27;;if(lastFocus&amp;&amp;typeof lastFocus.focus===&#x27;function&#x27;){lastFocus.focus();}}
-openBtn.addEventListener(&#x27;click&#x27;,openModal);
-closeBtn.addEventListener(&#x27;click&#x27;,closeModal);
-modal.addEventListener(&#x27;click&#x27;,function(event){if(event.target===modal){closeModal();}});
-document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&amp;&amp;event.key===&#x27;Escape&#x27;){closeModal();}});
-})(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
+var lastFocus=null;var previousOverflow='';
+function openModal(){lastFocus=document.activeElement;previousOverflow=document.body.style.overflow;modal.hidden=false;document.body.style.overflow='hidden';closeBtn.focus();}
+function closeModal(){modal.hidden=true;document.body.style.overflow=previousOverflow||'';if(lastFocus&amp;&amp;typeof lastFocus.focus==='function'){lastFocus.focus();}}
+openBtn.addEventListener('click',openModal);
+closeBtn.addEventListener('click',closeModal);
+modal.addEventListener('click',function(event){if(event.target===modal){closeModal();}});
+document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;event.key==='Escape'){closeModal();}});
+})(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none">
 <div class="table-wrap">
 <table class="comparison-table">
 <thead><tr><th>단계</th><th>권장 시간</th><th>입력</th><th>AI에게 시키는 일</th><th>산출물</th><th>구분</th></tr></thead>
 <tbody>
 <tr><td><strong>Step 1</strong></td><td>10분</td><td>학습팀 토론 오디오 또는 대화문</td><td>구조화된 토론 회의록 작성</td><td>핵심 내용, 리더의 고민, 확인 필요 사항</td><td>필수</td></tr>
 <tr><td><strong>Step 2</strong></td><td>8분</td><td>방금 만든 회의록</td><td>성과관리 핵심 이슈 TOP 3 추출</td><td>핵심 이슈, 근거, 성과관리 장면별 시사점</td><td>필수</td></tr>
-<tr><td><strong>Step 3</strong></td><td>10분</td><td>팀장 기대행동 문서, CH03-3 리더 역할 프로필</td><td>토론 내용과 기대행동 교차검증</td><td>일치·보완·누락 포인트, 리더 보완 행동</td><td>필수</td></tr>
+<tr><td><strong>Step 3</strong></td><td>10분</td><td>팀장 기대행동 문서, CH02-3 리더 역할 프로필</td><td>토론 내용과 기대행동 교차검증</td><td>일치·보완·누락 포인트, 리더 보완 행동</td><td>필수</td></tr>
 <tr><td><strong>Step 4</strong></td><td>12분</td><td>앞선 모든 분석 결과</td><td>리더 핵심 역량·스킬 및 실행 브리프 작성</td><td>역량·스킬 프로필, 실행 브리프 Markdown</td><td>필수</td></tr>
 <tr><td><strong>선택 5A</strong></td><td>8분</td><td>핵심 성과관리 이슈 1개</td><td>Deep Research 조사 설계 및 실행 시작</td><td>최종 조사 질문, 리포트 목차, 실행 연결 기준</td><td>선택</td></tr>
 <tr><td><strong>선택 5B</strong></td><td>12분</td><td>실행 브리프와 Gem 인스트럭션</td><td>Gem 생성, Preview 테스트, 지침 1회 개선</td><td>프로토타입 Gem, 테스트 결과, 수정 지침</td><td>선택</td></tr>
@@ -857,10 +908,10 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 <div class="clip-section-content">
 <div class="prompt-block">
 <div class="prompt-header">
-<span class="prompt-label">1. 학습팀 토론 회의록 작성</span>
-<button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gp1')">복사</button>
+<span class="prompt-label"><span class="prompt-mode-badge" title="프롬프트를 그대로 붙여넣고 구조화된 결과를 확인합니다.">복붙형</span> 1. 학습팀 토론 회의록 작성</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gp1')">복사</button>
 </div>
-<div class="prompt-content" id="CH02-4-gp1">첨부한 음성 파일 또는 대화문은 내가 참여한 학습팀 토론 기록입니다.
+<div class="prompt-content" id="ch02-4-gp1">첨부한 음성 파일 또는 대화문은 내가 참여한 학습팀 토론 기록입니다.
 토론 주제는 “초인공 AI 시대, 리더의 고민과 역할”입니다.
 이 토론 내용을 바탕으로, 이후 내 현업 팀에 적용할 성과관리 시사점을 정리하려고 합니다.
 
@@ -895,10 +946,10 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 </div>
 <div class="prompt-block">
 <div class="prompt-header">
-<span class="prompt-label">2. 회의록 기반 성과관리 핵심 이슈 추출</span>
-<button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gp2')">복사</button>
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 2. 회의록 기반 성과관리 핵심 이슈 추출</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gp2')">복사</button>
 </div>
-<div class="prompt-content" id="CH02-4-gp2">방금 작성한 회의록을 바탕으로, 성과관리 전문가 관점에서
+<div class="prompt-content" id="ch02-4-gp2">방금 작성한 회의록을 바탕으로, 성과관리 전문가 관점에서
 내가 팀장으로서 현업 팀의 성과향상을 위해 점검해야 할 핵심 이슈를 정리해 주세요.
 
 출력 형식:
@@ -930,13 +981,13 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 </div>
 <div class="prompt-block">
 <div class="prompt-header">
-<span class="prompt-label">3. 팀장 기대행동 교차검증</span>
-<button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gp3')">복사</button>
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 3. 팀장 기대행동 교차검증</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gp3')">복사</button>
 </div>
-<div class="prompt-content" id="CH02-4-gp3">방금 첨부한 문서는 “팀장의 기대행동/역할” 문서입니다.
-가능하다면 CH03-3에서 만든 나의 리더 역할 프로필 Markdown도 함께 참고해 주세요.
+<div class="prompt-content" id="ch02-4-gp3">방금 첨부한 문서는 “팀장의 기대행동/역할” 문서입니다.
+가능하다면 CH02-3에서 만든 나의 리더 역할 프로필 Markdown도 함께 참고해 주세요.
 
-앞서 정리한 학습팀 토론 내용, 기대행동 문서, CH03-3 리더 역할 프로필을 교차검증하여 비교해 주세요.
+앞서 정리한 학습팀 토론 내용, 기대행동 문서, CH02-3 리더 역할 프로필을 교차검증하여 비교해 주세요.
 목적은 내가 현업 팀의 성과향상을 위해 보완해야 할 행동을 찾는 것입니다.
 
 출력 형식:
@@ -948,8 +999,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 | 기대행동 | 왜 중요한가 | 현업 팀 적용 예시 |
 |---|---|---|
 
-## 3. CH03-3 리더 역할 프로필과의 연결
-| CH03-3 리더 역할 기준 | 기대행동 문서와의 연결 | 보완 필요 여부 |
+## 3. CH02-3 리더 역할 프로필과의 연결
+| CH02-3 리더 역할 기준 | 기대행동 문서와의 연결 | 보완 필요 여부 |
 |---|---|---|
 
 ## 4. 토론에서는 부족했지만 반드시 챙겨야 할 것
@@ -963,23 +1014,23 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 조건:
 - 기대행동 문서에 근거해 비교해 주세요.
 - 문서에 없는 내용은 추정하지 말고 “문서 내 확인 필요”로 표시해 주세요.
-- CH03-3 리더 역할 프로필과 충돌하거나 보완되는 부분이 있으면 별도 표시해 주세요.
+- CH02-3 리더 역할 프로필과 충돌하거나 보완되는 부분이 있으면 별도 표시해 주세요.
 - 리더 개인의 보완 행동과 CH03에서 다룰 조직/팀 구조 이슈를 구분해 주세요.
 - 평가, 보상, 징계, 개인정보 관련 내용은 리더의 최종 책임과 조직 기준 확인이 필요하다고 표시해 주세요.</div>
 </div>
 <div class="prompt-block">
 <div class="prompt-header">
-<span class="prompt-label">4. 리더 핵심 역량·스킬 및 성과관리 실행 브리프 작성</span>
-<button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gp4')">복사</button>
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 4. 리더 핵심 역량·스킬 및 성과관리 실행 브리프 작성</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gp4')">복사</button>
 </div>
-<div class="prompt-content" id="CH02-4-gp4">지금까지의 결과를 분석하여
+<div class="prompt-content" id="ch02-4-gp4">지금까지의 결과를 분석하여
 내 현업 팀의 성과향상을 돕는 성과관리 전문가/보좌관 역할로 최종 실행 브리프를 작성해 주세요.
 
 ## 사용할 자료
 - 학습팀 토론 회의록
 - 성과관리 핵심 이슈 분석 결과
 - 팀장 기대행동 문서와의 비교 결과
-- 가능하다면 CH03-3 리더 역할 프로필 Markdown
+- 가능하다면 CH02-3 리더 역할 프로필 Markdown
 
 ## 출력 형식
 # AI 시대 리더 핵심 역량·성과관리 실행 브리프
@@ -1026,29 +1077,29 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 </div>
 </div>
 </div>
-<div class="clip-section" id="CH02Clip04OptionalLab">
+<div class="clip-section" id="ch02Clip04OptionalLab">
 <div class="clip-section-title">선택 확장: Deep Research 실행 · Gem 생성 · 테스트</div>
 <div class="clip-section-content">
 <details class="optional-details">
-<summary><span>선택 활동 펼쳐보기</span><span class="flow-time-badge">권장 20분</span></summary>
+<summary><span>선택 활동 펼쳐보기</span><span class="flow-time-badge">선택 · 사후 20분</span></summary>
 <div class="optional-details-body">
 <div class="info-block">
-<div class="info-block-title">선택 확장 운영 원칙</div>
-<div>필수 산출물을 저장한 뒤 진행합니다. <strong>선택 5A는 Deep Research 질문 확정과 실행 시작</strong>, <strong>선택 5B는 Gem 생성과 Preview 테스트 1회</strong>가 수업 중 최소 도착점입니다. 계정·라이선스·관리자 설정에 따라 메뉴와 사용 가능 범위가 다를 수 있습니다. 평가·보상·징계·개인정보가 포함된 실제 자료는 입력하지 않고 익명화된 실습 상황을 사용합니다.</div>
+<div class="info-block-title">선택·사후 확장 운영 원칙</div>
+<div>필수 산출물을 저장한 뒤 진행합니다. <strong>선택 5A는 Deep Research 질문 확정과 실행 시작</strong>, <strong>선택 5B는 Gem 생성과 Preview 테스트 1회</strong>가 선택 활동의 최소 도착점입니다. 계정·라이선스·관리자 설정에 따라 메뉴와 사용 가능 범위가 다를 수 있습니다. 평가·보상·징계·개인정보가 포함된 실제 자료는 입력하지 않고 익명화된 실습 상황을 사용합니다.</div>
 </div>
 <div class="optional-action-grid">
 <div class="optional-action-card"><strong>선택 5A · 8분</strong><p>핵심 이슈 1개를 근거 기반 조사 질문으로 전환하고 Deep Research 실행을 시작합니다. 생성 완료가 늦어지면 결과 검토는 수업 후 이어갑니다.</p></div>
 <div class="optional-action-card"><strong>선택 5B · 12분</strong><p>제공된 인스트럭션을 Gem에 붙여 넣고, 1:1 면담 또는 주간회의 테스트 1개를 실행해 지침을 한 번 보완하고 저장합니다.</p></div>
 </div>
-<div class="lab-minimum-box"><strong>수업 중 최소 완료 기준</strong>① Deep Research용 최종 질문을 저장하고 실행을 시작합니다. ② Gem을 하나 생성합니다. ③ 테스트 1 또는 테스트 2 중 하나를 실행합니다. ④ 테스트 결과에서 보완점 1개를 찾아 지침에 반영한 후 저장합니다.</div>
+<div class="lab-minimum-box"><strong>선택 활동 최소 완료 기준</strong>① Deep Research용 최종 질문을 저장하고 실행을 시작합니다. ② Gem을 하나 생성합니다. ③ 테스트 1 또는 테스트 2 중 하나를 실행합니다. ④ 테스트 결과에서 보완점 1개를 찾아 지침에 반영한 후 저장합니다.</div>
 <div class="optional-toolbar"><button class="optional-toggle-btn" data-optional-expand-all="" type="button">모두 펼치기</button><button class="optional-toggle-btn" data-optional-collapse-all="" type="button">모두 접기</button></div>
 
 <details class="optional-subdetails" data-optional-subdetails="">
 <summary><span>선택 5A. Deep Research 조사 설계 및 실행</span><span class="test-badge">권장 8분</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">5A-1. 성과관리 이슈를 Deep Research 질문으로 전환</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-dr-design')">복사</button></div>
-<div class="prompt-content" id="CH02-4-dr-design">지금까지 분석한 성과관리 핵심 이슈 중 하나를 Deep Research로 조사하려고 합니다.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 5A-1. 성과관리 이슈를 Deep Research 질문으로 전환</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-dr-design')">복사</button></div>
+<div class="prompt-content" id="ch02-4-dr-design">지금까지 분석한 성과관리 핵심 이슈 중 하나를 Deep Research로 조사하려고 합니다.
 
 바로 조사 문장을 작성하지 말고, 먼저 나에게 다음 질문을 해 주세요.
 “현재 팀에서 이 이슈가 반복될 때 가장 걸림돌이 되는 구체적인 장면이나 문제점은 무엇인가요?”
@@ -1097,8 +1148,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 - 평가·보상·징계·개인정보 관련 내용은 조직 기준 및 리더 최종 검토 영역으로 분리해 주세요.</div>
 </div>
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">5A-2. Deep Research 결과 검증 및 실행 연결</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-dr-review')">복사</button></div>
-<div class="prompt-content" id="CH02-4-dr-review">완료된 Deep Research 보고서를 우리 팀에 적용하기 전에 근거와 실행 가능성을 검토해 주세요.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 5A-2. Deep Research 결과 검증 및 실행 연결</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-dr-review')">복사</button></div>
+<div class="prompt-content" id="ch02-4-dr-review">완료된 Deep Research 보고서를 우리 팀에 적용하기 전에 근거와 실행 가능성을 검토해 주세요.
 
 ## 1. 근거 감사표
 | 보고서의 핵심 주장 | 근거 출처 | 기준 시점 | 직접 근거/추론 | 신뢰도 | 추가 확인 필요 |
@@ -1135,8 +1186,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 <tr><td>4</td><td>테스트 결과로 지침 1회 수정</td><td>수정 후 다시 Preview하고 저장</td></tr>
 </tbody></table></div>
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">팀 성과관리 분석 자동화 Gem 인스트럭션</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gem-performance-instruction')">복사</button></div>
-<div class="prompt-content" id="CH02-4-gem-performance-instruction">당신은 팀장의 성과관리를 돕는 AI 보좌관 Gem입니다.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="Gem 채팅이 아니라 인스트럭션 입력란에 붙여넣습니다.">설정형</span> 팀 성과관리 분석 자동화 Gem 인스트럭션</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-performance-instruction')">복사</button></div>
+<div class="prompt-content" id="ch02-4-gem-performance-instruction">당신은 팀장의 성과관리를 돕는 AI 보좌관 Gem입니다.
 
 [웰컴 안내]
 안녕하세요, 팀장님.
@@ -1221,8 +1272,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 <summary><span>선택 5B-2. 리더십 이슈 심층 리서치 보조 Gem 만들기</span><span class="test-badge">대안 Gem</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">리더십 이슈 심층 리서치 보조 Gem 인스트럭션</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gem-research-instruction')">복사</button></div>
-<div class="prompt-content" id="CH02-4-gem-research-instruction">당신은 팀장의 리더십 강화와 성과향상을 돕는 심층 리서치 보조 Gem입니다.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="Gem 채팅이 아니라 인스트럭션 입력란에 붙여넣습니다.">설정형</span> 리더십 이슈 심층 리서치 보조 Gem 인스트럭션</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-research-instruction')">복사</button></div>
+<div class="prompt-content" id="ch02-4-gem-research-instruction">당신은 팀장의 리더십 강화와 성과향상을 돕는 심층 리서치 보조 Gem입니다.
 
 [웰컴 안내]
 안녕하세요, 팀장님.
@@ -1263,8 +1314,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 <summary><span>Gem Preview 테스트 1. 다음 주 팀원 1:1 면담</span><span class="test-badge">수업 중 권장</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">테스트 1 · 1:1 면담 가이드라인</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gem-test-1')">복사</button></div>
-<div class="prompt-content" id="CH02-4-gem-test-1">방금 도출된 나의 리더십 프로필과 Speak-up 약속을 바탕으로 1:1 면담 가이드라인을 준비하려고 합니다.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="Gem 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> 테스트 1 · 1:1 면담 가이드라인</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-1')">복사</button></div>
+<div class="prompt-content" id="ch02-4-gem-test-1">방금 도출된 나의 리더십 프로필과 Speak-up 약속을 바탕으로 1:1 면담 가이드라인을 준비하려고 합니다.
 
 먼저 “어떤 팀원과 면담을 진행하시겠습니까?”라고 질문해 주세요.
 
@@ -1293,8 +1344,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 <summary><span>Gem Preview 테스트 2. 팀 주간회의 오프닝</span><span class="test-badge">수업 중 권장</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">테스트 2 · 주간회의 오프닝 스피치</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gem-test-2')">복사</button></div>
-<div class="prompt-content" id="CH02-4-gem-test-2">방금 정리한 리더십 프로필과 AI와 리더의 역할 분담 내용을 바탕으로, 다음 주 주간회의에서 “AI를 도구로 삼아 일하는 방식을 바꾸는 방향”을 설명하려고 합니다.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="Gem 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> 테스트 2 · 주간회의 오프닝 스피치</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-2')">복사</button></div>
+<div class="prompt-content" id="ch02-4-gem-test-2">방금 정리한 리더십 프로필과 AI와 리더의 역할 분담 내용을 바탕으로, 다음 주 주간회의에서 “AI를 도구로 삼아 일하는 방식을 바꾸는 방향”을 설명하려고 합니다.
 
 먼저 다음 질문을 해 주세요.
 “현재 우리 팀원들의 AI 활용 수준이나 변화에 대한 분위기는 어떠한가요? 예: 적극적으로 도입 중, 다소 조심스럽거나 막막함, 업무가 바빠 여유가 없음.”
@@ -1317,8 +1368,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 <summary><span>Gem Preview 테스트 3. Deep Research로 연결</span><span class="test-badge">추가 테스트</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">테스트 3 · 피드백·저성과자 코칭 리서치 설계</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gem-test-3')">복사</button></div>
-<div class="prompt-content" id="CH02-4-gem-test-3">지금까지 대화한 성과관리 이슈를 바탕으로, 우리 팀에 가장 시급한 피드백 및 저성과자 코칭 역량 강화를 위한 Deep Research를 준비하려고 합니다.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="Gem 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> 테스트 3 · 피드백·저성과자 코칭 리서치 설계</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-3')">복사</button></div>
+<div class="prompt-content" id="ch02-4-gem-test-3">지금까지 대화한 성과관리 이슈를 바탕으로, 우리 팀에 가장 시급한 피드백 및 저성과자 코칭 역량 강화를 위한 Deep Research를 준비하려고 합니다.
 
 먼저 다음 질문을 해 주세요.
 “현재 팀 내에서 피드백이나 저성과자 코칭을 할 때 가장 걸림돌이 되는 구체적인 장면이나 문제점은 무엇인가요? 예: 피드백 시 감정적 반발, 기준 미달에도 개선 의지 부족, 형식적인 면담 반복.”
@@ -1342,8 +1393,8 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 <summary><span>Gem 테스트 결과 평가 및 지침 개선</span><span class="test-badge">마무리</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label">테스트 로그·Gem 인스트럭션 수정 요청</span><button class="copy-btn" onclick="copyPrompt(this,'CH02-4-gem-test-review')">복사</button></div>
-<div class="prompt-content" id="CH02-4-gem-test-review">방금 실행한 Gem 테스트 결과를 평가하고 인스트럭션을 보완해 주세요.
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 테스트 로그·Gem 인스트럭션 수정 요청</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-review')">복사</button></div>
+<div class="prompt-content" id="ch02-4-gem-test-review">방금 실행한 Gem 테스트 결과를 평가하고 인스트럭션을 보완해 주세요.
 
 ## 1. 테스트 로그
 | 평가 기준 | 기대 수준 | 실제 응답의 강점 | 보완 필요 | 점수 1~4 |
@@ -1372,22 +1423,22 @@ document.addEventListener(&#x27;keydown&#x27;,function(event){if(!modal.hidden&a
 </details>
 
 <div class="table-wrap"><table class="comparison-table"><thead><tr><th>선택 확장 산출물</th><th>완료 기준</th><th>후속 활용</th></tr></thead><tbody>
-<tr><td>Deep Research 최종 질문</td><td>구체적 장면, 출처 우선순위, 검증 기준, CH03·CH04 활용이 포함됨</td><td>외부 근거·사례 보강</td></tr>
+<tr><td>Deep Research 최종 질문</td><td>구체적 장면, 출처 우선순위, 검증 기준, CH02·CH04 활용이 포함됨</td><td>외부 근거·사례 보강</td></tr>
 <tr><td>프로토타입 성과관리 Gem</td><td>역할, 자동 분기, 출력 형식, 제한사항이 저장됨</td><td>CH04 운영형 Gem 고도화</td></tr>
 <tr><td>Gem 테스트 로그</td><td>테스트 1개 이상 실행하고 보완점 1개 이상 지침에 반영함</td><td>현업 반복 사용 전 품질 검증</td></tr>
 </tbody></table></div>
 <img alt="" onload="(function(loader){
-var root=loader.closest(&#x27;.CH02-clip04-revised&#x27;);
-if(!root||root.getAttribute(&#x27;data-optional-lab-ready&#x27;)===&#x27;true&#x27;){return;}
-root.setAttribute(&#x27;data-optional-lab-ready&#x27;,&#x27;true&#x27;);
-var lab=root.querySelector(&#x27;#CH02Clip04OptionalLab&#x27;);
+var root=loader.closest('.ch02-clip04-revised');
+if(!root||root.getAttribute('data-optional-lab-ready')==='true'){return;}
+root.setAttribute('data-optional-lab-ready','true');
+var lab=root.querySelector('#ch02Clip04OptionalLab');
 if(!lab){return;}
-var details=lab.querySelectorAll(&#x27;[data-optional-subdetails]&#x27;);
-var expandBtn=lab.querySelector(&#x27;[data-optional-expand-all]&#x27;);
-var collapseBtn=lab.querySelector(&#x27;[data-optional-collapse-all]&#x27;);
-if(expandBtn){expandBtn.addEventListener(&#x27;click&#x27;,function(){details.forEach(function(item){item.open=true;});});}
-if(collapseBtn){collapseBtn.addEventListener(&#x27;click&#x27;,function(){details.forEach(function(item){item.open=false;});});}
-})(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
+var details=lab.querySelectorAll('[data-optional-subdetails]');
+var expandBtn=lab.querySelector('[data-optional-expand-all]');
+var collapseBtn=lab.querySelector('[data-optional-collapse-all]');
+if(expandBtn){expandBtn.addEventListener('click',function(){details.forEach(function(item){item.open=true;});});}
+if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(function(item){item.open=false;});});}
+})(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none">
 </div>
 </details>
 </div>
@@ -1453,7 +1504,7 @@ if(collapseBtn){collapseBtn.addEventListener(&#x27;click&#x27;,function(){detail
 <td><strong>필수</strong></td>
 <td>리더 핵심 역량·스킬 프로필</td>
 <td>역량명이 아니라 필요한 이유, 적용 장면, 리더 행동으로 정리되었는가</td>
-<td>CH03 Output 완성, CH03 조직/팀 진단 관점, CH04 코칭·피드백 기준</td>
+<td>CH02 Output 완성, CH03 조직/팀 진단 관점, CH04 코칭·피드백 기준</td>
 </tr>
 <tr>
 <td><strong>필수</strong></td>
@@ -1471,14 +1522,14 @@ if(collapseBtn){collapseBtn.addEventListener(&#x27;click&#x27;,function(){detail
 <td>선택</td>
 <td>프로토타입 Gem·테스트 로그</td>
 <td>Gem을 생성하고 실제 시나리오 1개 이상으로 테스트한 뒤 보완점을 지침에 반영했는가</td>
-<td>CH04 최종 성과관리 AI 비서 설계 기반</td>
+<td>CH04 선택형 운영 Gem 설계 기반</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div class="clip-section" id="CH02Clip04CompletionSection">
+<div class="clip-section" id="ch02Clip04CompletionSection">
 <div class="clip-section-title">이번 클립의 완료 기준</div>
 <div class="clip-section-content">
 <div class="table-wrap">
@@ -1487,28 +1538,28 @@ if(collapseBtn){collapseBtn.addEventListener(&#x27;click&#x27;,function(){detail
 <tbody>
 <tr>
 <td><strong>자료 통합</strong></td>
-<td>학습팀 토론 오디오 또는 대화문, 팀장 기대행동 문서, CH03-3 리더 역할 프로필 중 사용 가능한 자료를 같은 대화창에 반영했다.</td>
-<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="source-integration"><legend class="visually-hidden">자료 통합 상태</legend><span class="completion-state-option"><input data-completion-status="" id="CH02c04-source-integration-done" name="CH02c04-source-integration" type="radio" value="done"/><label for="CH02c04-source-integration-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="CH02c04-source-integration-review" name="CH02c04-source-integration" type="radio" value="needs-review"/><label for="CH02c04-source-integration-review">보완 필요</label></span></fieldset></td>
+<td>학습팀 토론 오디오 또는 대화문, 팀장 기대행동 문서, CH02-3 리더 역할 프로필 중 사용 가능한 자료를 같은 대화창에 반영했다.</td>
+<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="source-integration"><legend class="visually-hidden">자료 통합 상태</legend><span class="completion-state-option"><input data-completion-status="" id="ch02c04-source-integration-done" name="ch02c04-source-integration" type="radio" value="done"><label for="ch02c04-source-integration-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="ch02c04-source-integration-review" name="ch02c04-source-integration" type="radio" value="needs-review"><label for="ch02c04-source-integration-review">보완 필요</label></span></fieldset></td>
 </tr>
 <tr>
 <td><strong>회의록·핵심 이슈</strong></td>
 <td>토론 회의록을 구조화하고, 현업 팀 성과관리 관점의 핵심 이슈 TOP 3을 근거와 함께 도출했다.</td>
-<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="minutes-and-issues"><legend class="visually-hidden">회의록·핵심 이슈 상태</legend><span class="completion-state-option"><input data-completion-status="" id="CH02c04-minutes-and-issues-done" name="CH02c04-minutes-and-issues" type="radio" value="done"/><label for="CH02c04-minutes-and-issues-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="CH02c04-minutes-and-issues-review" name="CH02c04-minutes-and-issues" type="radio" value="needs-review"/><label for="CH02c04-minutes-and-issues-review">보완 필요</label></span></fieldset></td>
+<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="minutes-and-issues"><legend class="visually-hidden">회의록·핵심 이슈 상태</legend><span class="completion-state-option"><input data-completion-status="" id="ch02c04-minutes-and-issues-done" name="ch02c04-minutes-and-issues" type="radio" value="done"><label for="ch02c04-minutes-and-issues-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="ch02c04-minutes-and-issues-review" name="ch02c04-minutes-and-issues" type="radio" value="needs-review"><label for="ch02c04-minutes-and-issues-review">보완 필요</label></span></fieldset></td>
 </tr>
 <tr>
 <td><strong>기대행동 교차검증</strong></td>
-<td>토론 내용, 팀장 기대행동 문서, CH03-3 리더 역할 프로필의 일치·보완·누락 포인트와 리더 보완 행동을 확인했다.</td>
-<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="behavior-crosscheck"><legend class="visually-hidden">기대행동 교차검증 상태</legend><span class="completion-state-option"><input data-completion-status="" id="CH02c04-behavior-crosscheck-done" name="CH02c04-behavior-crosscheck" type="radio" value="done"/><label for="CH02c04-behavior-crosscheck-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="CH02c04-behavior-crosscheck-review" name="CH02c04-behavior-crosscheck" type="radio" value="needs-review"/><label for="CH02c04-behavior-crosscheck-review">보완 필요</label></span></fieldset></td>
+<td>토론 내용, 팀장 기대행동 문서, CH02-3 리더 역할 프로필의 일치·보완·누락 포인트와 리더 보완 행동을 확인했다.</td>
+<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="behavior-crosscheck"><legend class="visually-hidden">기대행동 교차검증 상태</legend><span class="completion-state-option"><input data-completion-status="" id="ch02c04-behavior-crosscheck-done" name="ch02c04-behavior-crosscheck" type="radio" value="done"><label for="ch02c04-behavior-crosscheck-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="ch02c04-behavior-crosscheck-review" name="ch02c04-behavior-crosscheck" type="radio" value="needs-review"><label for="ch02c04-behavior-crosscheck-review">보완 필요</label></span></fieldset></td>
 </tr>
 <tr>
 <td><strong>역량 프로필·실행 브리프 Markdown</strong></td>
-<td>리더 핵심 역량·스킬 프로필과 성과관리 실행 브리프를 Markdown으로 저장하고, 30일 리더 행동 후보와 CH03·CH04 연결 메모를 포함했다.</td>
-<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="profile-and-brief"><legend class="visually-hidden">역량 프로필·실행 브리프 Markdown 상태</legend><span class="completion-state-option"><input data-completion-status="" id="CH02c04-profile-and-brief-done" name="CH02c04-profile-and-brief" type="radio" value="done"/><label for="CH02c04-profile-and-brief-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="CH02c04-profile-and-brief-review" name="CH02c04-profile-and-brief" type="radio" value="needs-review"/><label for="CH02c04-profile-and-brief-review">보완 필요</label></span></fieldset></td>
+<td>리더 핵심 역량·스킬 프로필과 성과관리 실행 브리프를 Markdown으로 저장하고, 30일 리더 행동 후보와 CH02·CH04 연결 메모를 포함했다.</td>
+<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="profile-and-brief"><legend class="visually-hidden">역량 프로필·실행 브리프 Markdown 상태</legend><span class="completion-state-option"><input data-completion-status="" id="ch02c04-profile-and-brief-done" name="ch02c04-profile-and-brief" type="radio" value="done"><label for="ch02c04-profile-and-brief-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="ch02c04-profile-and-brief-review" name="ch02c04-profile-and-brief" type="radio" value="needs-review"><label for="ch02c04-profile-and-brief-review">보완 필요</label></span></fieldset></td>
 </tr>
 <tr>
 <td><strong>책임 경계·민감정보</strong></td>
 <td>AI가 지원할 일과 리더가 책임질 일을 구분하고, 평가·보상·징계·개인정보는 익명화·조직 기준 확인 영역으로 분리했다.</td>
-<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="safety-and-boundary"><legend class="visually-hidden">책임 경계·민감정보 상태</legend><span class="completion-state-option"><input data-completion-status="" id="CH02c04-safety-and-boundary-done" name="CH02c04-safety-and-boundary" type="radio" value="done"/><label for="CH02c04-safety-and-boundary-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="CH02c04-safety-and-boundary-review" name="CH02c04-safety-and-boundary" type="radio" value="needs-review"/><label for="CH02c04-safety-and-boundary-review">보완 필요</label></span></fieldset></td>
+<td class="completion-status-cell"><fieldset class="completion-state-group" data-completion-item="safety-and-boundary"><legend class="visually-hidden">책임 경계·민감정보 상태</legend><span class="completion-state-option"><input data-completion-status="" id="ch02c04-safety-and-boundary-done" name="ch02c04-safety-and-boundary" type="radio" value="done"><label for="ch02c04-safety-and-boundary-done">완료</label></span><span class="completion-state-option"><input data-completion-status="" id="ch02c04-safety-and-boundary-review" name="ch02c04-safety-and-boundary" type="radio" value="needs-review"><label for="ch02c04-safety-and-boundary-review">보완 필요</label></span></fieldset></td>
 </tr>
 </tbody>
 </table>
@@ -1518,10 +1569,10 @@ if(collapseBtn){collapseBtn.addEventListener(&#x27;click&#x27;,function(){detail
 <div class="completion-save-actions"><span class="completion-summary" data-completion-summary="">완료 0 / 5 · 보완 필요 0 / 5</span><span aria-live="polite" class="completion-save-message" data-completion-save-message="" role="status">아직 저장된 상태가 없습니다.</span><button class="completion-reset-btn" data-completion-reset="" type="button">상태 초기화</button></div>
 </div>
 <img alt="" onload="(function(loader){
-  var root=loader.closest('.CH02-clip04-revised');
+  var root=loader.closest('.ch02-clip04-revised');
   if(!root||root.getAttribute('data-completion-status-ready')==='true'){return;}
   root.setAttribute('data-completion-status-ready','true');
-  var section=root.querySelector('#CH02Clip04CompletionSection');
+  var section=root.querySelector('#ch02Clip04CompletionSection');
   if(!section){return;}
   var controls=section.querySelectorAll('[data-completion-status]');
   var groups=section.querySelectorAll('[data-completion-item]');
@@ -1534,18 +1585,18 @@ if(collapseBtn){collapseBtn.addEventListener(&#x27;click&#x27;,function(){detail
     courseCode=localStorage.getItem('ax_literacy_course_code')||courseCode;
     accountId=localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||accountId;
   }catch(ignore){}
-  var storageKey='ax_literacy_checklist_status:'+encodeURIComponent(courseCode)+':CH02-clip04:'+encodeURIComponent(accountId);
+  var storageKey='ax_literacy_checklist_status:'+encodeURIComponent(courseCode)+':ch02-clip04:'+encodeURIComponent(accountId);
   function formatSavedTime(value){if(!value){return '';}var date=new Date(value);if(Number.isNaN(date.getTime())){return '';}return date.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});}
   function readState(){try{var raw=localStorage.getItem(storageKey);if(!raw){return null;}var parsed=JSON.parse(raw);return parsed&amp;&amp;typeof parsed==='object'?parsed:null;}catch(error){return null;}}
   function collectItems(){var items={};for(var i=0;i&lt;groups.length;i+=1){var group=groups[i];var key=group.getAttribute('data-completion-item');var checked=group.querySelector('[data-completion-status]:checked');if(key&amp;&amp;checked){items[key]=checked.value;}}return items;}
   function updateSummary(items){var done=0;var review=0;var keys=Object.keys(items||{});for(var i=0;i&lt;keys.length;i+=1){if(items[keys[i]]==='done'){done+=1;}if(items[keys[i]]==='needs-review'){review+=1;}}if(summaryEl){summaryEl.textContent='완료 '+done+' / '+groups.length+' · 보완 필요 '+review+' / '+groups.length;}}
   function findGroup(key){for(var i=0;i&lt;groups.length;i+=1){if(groups[i].getAttribute('data-completion-item')===key){return groups[i];}}return null;}
   function restoreState(){var saved=readState();var items=saved&amp;&amp;saved.items?saved.items:{};var keys=Object.keys(items);for(var i=0;i&lt;keys.length;i+=1){var key=keys[i];var value=items[key];var group=findGroup(key);if(!group){continue;}var inputs=group.querySelectorAll('[data-completion-status]');for(var j=0;j&lt;inputs.length;j+=1){if(inputs[j].value===value){inputs[j].checked=true;break;}}}updateSummary(items);if(messageEl){messageEl.textContent=saved&amp;&amp;saved.updatedAt?'저장된 상태 불러옴 · '+formatSavedTime(saved.updatedAt):'아직 저장된 상태가 없습니다.';}}
-  function saveState(){var items=collectItems();var payload={version:1,clipKey:'CH02-clip04',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};try{localStorage.setItem(storageKey,JSON.stringify(payload));updateSummary(items);if(messageEl){messageEl.textContent='자동 저장 완료 · '+formatSavedTime(payload.updatedAt);}}catch(error){updateSummary(items);if(messageEl){messageEl.textContent='상태는 선택되었지만 브라우저 저장에 실패했습니다.';}}}
+  function saveState(){var items=collectItems();var payload={version:1,clipKey:'ch02-clip04',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};try{localStorage.setItem(storageKey,JSON.stringify(payload));updateSummary(items);if(messageEl){messageEl.textContent='자동 저장 완료 · '+formatSavedTime(payload.updatedAt);}}catch(error){updateSummary(items);if(messageEl){messageEl.textContent='상태는 선택되었지만 브라우저 저장에 실패했습니다.';}}}
   section.addEventListener('change',function(event){if(event.target&amp;&amp;event.target.matches('[data-completion-status]')){saveState();}});
   if(resetBtn){resetBtn.addEventListener('click',function(){if(!window.confirm('저장된 완료 기준 상태를 모두 초기화하시겠습니까?')){return;}for(var i=0;i&lt;controls.length;i+=1){controls[i].checked=false;}try{localStorage.removeItem(storageKey);}catch(ignore){}updateSummary({});if(messageEl){messageEl.textContent='저장된 상태를 초기화했습니다.';}});}
   restoreState();
-})(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
+})(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none">
 </div>
 </div>
 <div class="info-block" style="margin-top:18px">
@@ -1554,7 +1605,7 @@ if(collapseBtn){collapseBtn.addEventListener(&#x27;click&#x27;,function(){detail
         이 클립에서는 자료를 넣고, 역할을 부여하고, 분석 기준과 출력 형식을 지정해
         <strong>리더 핵심 역량·스킬 프로필</strong>과 <strong>성과관리 실행 브리프 Markdown 저장본</strong>을 완성합니다.
         이 결과는 CH03의 조직/팀 진단과 CH04의 Action Plan 수립에 재사용하며,
-        선택 확장에서는 Deep Research를 실행하고 <strong>프로토타입 성과관리 Gem을 생성·테스트</strong>해 CH04의 운영형 AI 비서 구축 기반을 확보합니다.</div>
+        선택 확장에서는 Deep Research를 실행하고 <strong>프로토타입 성과관리 Gem을 생성·테스트</strong>해 CH04 선택 활동의 운영형 AI 비서 구축 기반을 확보합니다.</div>
 </div>
-<div class="clip-nav-footer"><a class="clip-nav-btn" href="#CH02-clip03">← 프롬프팅 기초: AI 시대, 리더의 역할</a><a class="clip-nav-btn" href="#CH03-clip01">조직 역량 점검 및 Workflow 재설계 →</a></div>
+<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip03">← 프롬프팅 기초: AI 시대, 리더의 역할</a><a class="clip-nav-btn" href="#ch03-clip01">조직 역량 점검 및 Workflow 재설계 →</a></div>
 </div>
