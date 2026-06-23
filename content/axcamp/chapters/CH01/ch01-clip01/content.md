@@ -3,6 +3,7 @@ route: "#ch01-clip01"
 chapter: "ch01"
 title: "AI 트렌드"
 source_url: "https://lg.cmdspace.work/axcamp#ch01-clip01"
+exported_at: "2026-02-28T01:53:41.410Z"
 ---
 
 ~7분
