@@ -834,7 +834,234 @@
     listEl.appendChild(p);
   }
 
+  let isMockMode = false;
+  if (window.location.hostname.endsWith('github.io')) {
+    isMockMode = true;
+  } else if (window.location.protocol === 'file:') {
+    isMockMode = true;
+  } else if (window.__AX_STATIC_CONFIG__) {
+    if (window.__AX_STATIC_CONFIG__.mode === 'static') {
+      isMockMode = true;
+    }
+  }
+
+  function initIndexedDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open('AXLiteracySharedAudioDB', 1);
+      request.onupgradeneeded = function(e) {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains('audios')) {
+          db.createObjectStore('audios', { keyPath: 'id' });
+        }
+      };
+      request.onsuccess = function(e) {
+        resolve(e.target.result);
+      };
+      request.onerror = function(e) {
+        reject(e.target.error);
+      };
+    });
+  }
+
+  function getIndexedDBAudios() {
+    return initIndexedDB().then(db => {
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['audios'], 'readonly');
+        const store = transaction.objectStore('audios');
+        const request = store.getAll();
+        request.onsuccess = function() {
+          resolve(request.result || []);
+        };
+        request.onerror = function() {
+          reject(request.error);
+        };
+      });
+    }).catch(err => {
+      console.error('IndexedDB open error:', err);
+      return [];
+    });
+  }
+
+  function saveIndexedDBAudio(audio) {
+    return initIndexedDB().then(db => {
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['audios'], 'readwrite');
+        const store = transaction.objectStore('audios');
+        const request = store.put(audio);
+        request.onsuccess = function() {
+          resolve(true);
+        };
+        request.onerror = function() {
+          reject(request.error);
+        };
+      });
+    });
+  }
+
+  function deleteIndexedDBAudio(id) {
+    return initIndexedDB().then(db => {
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['audios'], 'readwrite');
+        const store = transaction.objectStore('audios');
+        const request = store.delete(id);
+        request.onsuccess = function() {
+          resolve(true);
+        };
+        request.onerror = function() {
+          reject(request.error);
+        };
+      });
+    });
+  }
+
+  let activeObjectUrls = [];
+  function clearActiveObjectUrls() {
+    activeObjectUrls.forEach(url => {
+      try { (window.URL || URL).revokeObjectURL(url); } catch(e) {}
+    });
+    activeObjectUrls = [];
+  }
+
+  function base64ToBlob(base64, mimeType) {
+    const byteCharacters = atob(base64);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: mimeType });
+  }
+
+  async function mockRequestJson(url, options) {
+    const cleanUrl = String(url || '');
+    const isSharedAudio = cleanUrl.indexOf('/api/shared-audio') >= 0;
+    const method = (options ? (options.method || 'GET') : 'GET').toUpperCase();
+
+    if (isSharedAudio) {
+      let clipKey = 'ch02-clip02';
+      const ampChar = String.fromCharCode(38);
+      const queryIdx = cleanUrl.indexOf('?');
+      if (queryIdx >= 0) {
+        const query = cleanUrl.substring(queryIdx + 1);
+        const parts = query.split(ampChar);
+        for (let i = 0; i < parts.length; i++) {
+          const pair = parts[i].split('=');
+          if (pair[0] === 'clipKey') {
+            if (pair[1]) {
+              clipKey = decodeURIComponent(pair[1]);
+            }
+          }
+        }
+      }
+
+      if (method === 'GET') {
+        const list = await getIndexedDBAudios();
+        const filtered = list.filter(item => item.clipKey.toLowerCase() === clipKey.toLowerCase());
+        
+        clearActiveObjectUrls();
+        
+        const audios = filtered.map(item => {
+          let urlStr = '#';
+          try {
+            const ext = (item.fileName.split('.').pop() || '').toLowerCase();
+            const mime = {
+              'mp3': 'audio/mp3',
+              'wav': 'audio/wav',
+              'm4a': 'audio/mp4',
+              'ogg': 'audio/ogg',
+              'aac': 'audio/aac'
+            }[ext] || 'audio/mpeg';
+            const blob = base64ToBlob(item.contentBase64, mime);
+            urlStr = (window.URL || URL).createObjectURL(blob);
+            activeObjectUrls.push(urlStr);
+          } catch (e) {
+            console.error('Failed to create Blob URL', e);
+          }
+
+          return {
+            fileName: item.fileName,
+            size: item.size,
+            sizeLabel: item.sizeLabel,
+            url: urlStr,
+            uploadedAt: item.uploadedAt,
+            uploadedBy: item.uploadedBy,
+            uploadedByDisplay: item.uploadedByDisplay,
+            teamName: item.teamName
+          };
+        });
+
+        return { ok: true, audios };
+      }
+
+      if (method === 'POST') {
+        try {
+          const body = JSON.parse((options ? options.body : '') || '{}');
+          const fileName = body.fileName;
+          const base64 = body.contentBase64;
+          
+          if (!fileName || !base64) {
+            return { ok: false, error: '파일명 또는 데이터가 누락되었습니다.' };
+          }
+
+          const size = Math.round((base64.length * 3) / 4);
+          const sizeLabel = formatSize(size);
+          const uploadedAt = new Date().toISOString();
+
+          const accountId = localStorage.getItem('ax_literacy_last_lets_id') || 'public';
+          const uploaderName = localStorage.getItem('ax_literacy_session_token') ? '교육생' : '게스트';
+          
+          const newAudio = {
+            id: clipKey + '_' + fileName,
+            clipKey: clipKey,
+            fileName: fileName,
+            contentBase64: base64,
+            size: size,
+            sizeLabel: sizeLabel,
+            uploadedAt: uploadedAt,
+            uploadedBy: accountId,
+            uploadedByDisplay: uploaderName,
+            teamName: ''
+          };
+
+          await saveIndexedDBAudio(newAudio);
+
+          return {
+            ok: true,
+            audio: {
+              fileName: fileName,
+              size: size,
+              sizeLabel: sizeLabel,
+              uploadedAt: uploadedAt,
+              uploadedBy: accountId
+            }
+          };
+        } catch (e) {
+          return { ok: false, error: '업로드 처리 중 오류: ' + e.message };
+        }
+      }
+
+      if (method === 'DELETE') {
+        try {
+          const body = JSON.parse((options ? options.body : '') || '{}');
+          const fileName = body.fileName;
+          if (!fileName) {
+            return { ok: false, error: '삭제할 파일명이 필요합니다.' };
+          }
+          await deleteIndexedDBAudio(clipKey + '_' + fileName);
+          return { ok: true, message: '성공적으로 삭제되었습니다.' };
+        } catch (e) {
+          return { ok: false, error: '삭제 중 오류: ' + e.message };
+        }
+      }
+    }
+
+    return { ok: false, error: '지원하지 않는 Mock API 경로입니다.' };
+  }
+
   async function requestJson(url, options) {
+    if (isMockMode) {
+      return mockRequestJson(url, options);
+    }
     const res = await fetch(url, options || {});
     const text = await res.text();
     try {
