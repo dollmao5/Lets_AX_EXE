@@ -1,81 +1,70 @@
 ---
 route: "#ch01-clip03"
 chapter: "ch01"
-title: "기술 활용 로드맵"
+title: "AI 트렌드"
 source_url: "https://lg.cmdspace.work/axcamp#ch01-clip03"
 ---
 
 ~7분
 CH 01
-개념
+참고
 
-# 기술 활용 로드맵
+# AI 트렌드
 
-조직의 AI 활용은 대화형 어시스턴트에서 AI 앱 구축을 거쳐 Agentic AI로 확장됩니다. 아래에는 NotebookLM 노트북에서 내려받은 실제 슬라이드 3장을 배치해 각 단계의 인터페이스와 활용 도구를 한 번에 연결해 보여줍니다.
+지금 AI는 답을 잘하는 도구를 넘어, 일을 맡아 실행하고 현실 세계와 연결되는 방향으로 빠르게 확장되고 있습니다. 먼저 짧은 영상을 보고 오늘 실습이 어떤 변화 위에 놓여 있는지 방향을 확인합니다.
 
 ## 이번 클립에서 함께 배우는 것
 
-### 묻고 다듬기 → 작은 도구 만들기 → 여러 단계 맡기기
+### AI 기능·활용 학습
 
-**Level 1**은 AI와 대화하며 결과를 다듬는 단계, **Level 2**는 AI로 작은 앱·자동화 도구를 만드는 단계, **Level 3**은 AI가 여러 작업을 계획·실행·확인하도록 맡기는 단계입니다. 이번 과정의 필수 실습은 Gemini와 NotebookLM을 활용한 Level 1 중심이며, Level 2~3은 확장 방향을 이해하는 참고 영역입니다.
+**Assistant**는 질문에 답합니다.
+**Agentic AI**는 목표를 받아 여러 단계를 계획하고 도구를 사용합니다.
+**Physical AI**는 그 실행 능력이 장비·공정·로봇 등 현실 환경과 연결된 모습입니다.
+오늘은 기술 이름을 외우기보다, 자율성이 커질수록 리더의 기준·검증·책임이 더 중요해진다는 점을 기억합니다.
 
-NotebookLM Slide Deck
+## 먼저 보는 영상
 
-## 대화형 어시스턴트에서 실행형 에이전트로 확장되는 3단계 활용 로드맵
+이 영상은 **Physical AI**라는 키워드로 시작하지만, 실제로는 AI가 화면 안 답변기에서 벗어나 **현실 세계의 장비·공정·업무 흐름까지 다루기 시작하는 변화**를 직관적으로 보여줍니다.
 
-NotebookLM Studio의 **Enterprise AI Roadmap (2)** 슬라이드를 활용합니다. 어시스턴트, 바이브코딩·AI 앱 구축, Agentic AI 단계별 인터페이스와 대표 도구를 확인합니다.
+[The Next Wave of AI: Physical AI](https://www.youtube-nocookie.com/embed/uhLDHA9skFk)
 
-다운로드
+3분 1초 · NVIDIA
 
-Level 1 · 입문
+[YouTube에서 열기](https://www.youtube.com/watch?v=uhLDHA9skFk)
 
-## 어시스턴트
+## 이 장면에서 느껴볼 것
 
-질문하고, 리서치하고, 보고서 초안을 받고, 다시 수정시키는 가장 빠른 협업 루프입니다. 사람이 목표와 맥락을 정하고 AI가 반복 속도를 높이는 방식입니다.
+업무 보조를 넘어 실행으로
 
-- Gemini로 아이디어 탐색, 요약, 초안 작성
+Agentic AI는 질문에 답하는 수준을 넘어 계획을 세우고, 도구를 고르고, 결과를 확인하는 방향으로 움직이기 시작합니다.
 
-- NotebookLM으로 source-grounded research와 근거 확인
+화면 밖으로 확장되는 AI
 
-- 보고서 초안, 회의 정리, 브레인스토밍처럼 짧은 왕복이 많은 작업에 적합
+Physical AI는 소프트웨어 안의 추론을 넘어 센서, 장비, 로봇, 공정 같은 현실 환경과 연결되는 흐름을 보여줍니다.
 
-Gemini
-NotebookLM
-ChatGPT
+결국 남는 것은 데이터와 운영 구조
 
-Level 2 · 확장
+자율성이 커질수록 모델 자체보다 **좋은 데이터, 맥락, 검증 체계**가 조직의 성과 차이를 만들게 됩니다.
 
-## 바이브코딩·AI 앱 구축
+## 추가 참고자료
 
-AI의 도움으로 앱을 더 빨리 만들고, 완성된 앱이 다시 LLM API를 호출해 맞춤형 서비스를 제공하는 단계입니다. 개발 생산성과 서비스 자동화를 함께 높일 수 있습니다.
+-
+[GitHub Agentic Workflows PDF](https://github.github.com/gh-aw/slides/github-agentic-workflows.pdf)
+· AI가 개발과 실행 흐름을 어떻게 바꾸는지 보여주는 공식 자료
 
-- AI Studio Build로 서비스 흐름과 화면 초안을 빠르게 설계
+-
+[OpenClaw](https://openclaw.ai/)
+· AI가 업무 보조를 넘어 자율 실행형 동료로 이동하는 감각을 보여주는 사례
 
-- Gemini API로 앱 안에 요약, 분석, 생성 기능을 내장
+-
+[Harness Engineering](https://harness-engineering.ai/)
+· 에이전트를 운영 가능한 시스템으로 다루는 관점
 
-- 사내 데이터와 외부 API를 묶어 특정 업무에 맞는 전용 서비스를 구현
-
-AI Studio Build
-
-Level 3 · 자율
-
-## Agentic AI
-
-터미널을 인터페이스로 삼아 AI가 계획을 세우고, 도구를 호출하고, 실행 결과를 보며 다시 수정하는 단계다. 이 단계는 자율 실행형 AI 시스템으로 확장되는 방향을 보여주는 참고 단계입니다.
-
-- 문제를 작은 작업으로 나누고 순서대로 실행하는 harness 관점
-
-- 코드, 셸, 브라우저, 테스트를 엮어 자율적 workflow를 구성
-
-- 복잡한 문제 해결, 반복 수정, 검증 루프가 많은 작업에 적합
-
-Hi-D Code
-Cline
-
-### 오늘의 여정
-
-오늘의 필수 실습은 **Gemini와 NotebookLM**을 활용해 리더 기준, 팀 Workflow, 30일 Action Plan을 만드는 데 집중합니다. **Gems**는 선택 확장으로 다루며, Google AI Studio Build·Hi-D Code·Cline은 조직의 기술 활용 로드맵을 이해하기 위한 확장 사례로 참고합니다.
+-
+[Decisions You Can Trust](https://www.sas.com/content/dam/sasdam/documents/20250124/turn-agentic-ai-into-decisions-you-can-trust.pdf)
+· 데이터, 거버넌스, 설명 가능성이 왜 핵심인지 정리한 자료
 
 ### 이번 클립의 연결
 
-**필수 파일 산출물은 없습니다.** 우리 팀의 현재 AI 활용이 어느 단계에 가까운지 한 가지를 정하고, 다음 클립에서 반복 등장할 핵심 용어를 확인합니다.
+**필수 파일 산출물은 없습니다.**
+영상에서 확인한 변화 신호 한 가지를 기억하고, 다음 클립에서 Assistant·Agent·Agentic AI의 차이를 구분합니다.

@@ -1,225 +1,27 @@
-<section class="ch01-clip02-revised" id="ch01-clip02">
-  <style>
-    .ch01-clip02-revised {
-      --c1-font-base: 20px;
-      --c1-radius: 18px;
-      --c1-gap: 16px;
-      font-size: var(--c1-font-base);
-      line-height: 1.72;
-      color: var(--text-body);
-      word-break: keep-all;
-    }
-    .ch01-clip02-revised .clip-section-title {
-      margin-bottom: 14px !important;
-      font-size: 1.5rem !important;
-      line-height: 1.35 !important;
-      letter-spacing: -0.025em;
-    }
-    .ch01-clip02-revised .memory-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--c1-gap);
-      margin: 12px 0 18px;
-    }
-    .ch01-clip02-revised .memory-card {
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: var(--c1-radius);
-      background: linear-gradient(135deg, #fff, var(--bg-offwhite));
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-    }
-    .ch01-clip02-revised .memory-kicker {
-      margin-bottom: 8px;
-      color: var(--brand);
-      font-size: 0.92rem !important;
-      line-height: 1.3 !important;
-      font-weight: 900;
-    }
-    .ch01-clip02-revised .memory-title {
-      margin-bottom: 7px;
-      color: var(--text-heading);
-      font-size: 1.08rem !important;
-      line-height: 1.4 !important;
-      font-weight: 900;
-    }
-    .ch01-clip02-revised .memory-copy {
-      color: var(--text-body);
-      font-size: 1rem !important;
-      line-height: 1.58 !important;
-    }
-    .ch01-clip02-revised .clip-nav-btn,
-    .ch01-clip02-revised .slide-briefing-link {
-      padding: 10px 18px !important;
-      border-radius: 999px !important;
-      font-size: 1.06rem !important;
-      line-height: 1.3 !important;
-      font-weight: 900 !important;
-    }
-  </style>
-
-  <div class="clip-header">
-    <div class="clip-badges">
-      <span class="clip-badge time"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="timer" aria-hidden="true" style="width:13px;height:13px;vertical-align:-2px;" class="lucide lucide-timer"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg> ~8분</span>
-      <span class="clip-badge chapter">CH 01</span>
-      <span class="clip-badge type-concept">개념</span>
-    </div>
-    <h1 class="clip-title" data-keep-title="">Assistant에서 Agentic AI로</h1>
+<div class="clip-header">
+  <div class="clip-badges">
+    <span class="clip-badge chapter">CH 01</span>
+    <span class="clip-badge type-reference">참고</span>
   </div>
+  <h1 class="clip-title">개념 다지기</h1>
+</div>
 
-  <div class="clip-overview">
-    사용자의 질문에 답하는 <strong>AI Assistant</strong>, 목표를 받아 여러 단계를 수행하는 <strong>AI Agent</strong>,
-    그리고 하나 이상의 Agent·도구·데이터·검증 규칙이 연결된 <strong>Agentic AI</strong>의 차이를
-    인포그래픽과 비교표로 빠르게 이해합니다.
-  </div>
+<div class="clip-overview">오늘 반복해서 만나게 될 AI 핵심 용어를 NotebookLM 인포그래픽 한 장으로 빠르게 정리합니다. 필요하면 크게 확대해 보면서 수업 중간중간 다시 참조하면 된다.</div>
 
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립에서 함께 배우는 것</div>
-      <div class="tip-block" style="margin-top:14px">
-        <div class="tip-block-title">AI 기능·활용 학습</div>
-        <div class="tip-block-content">
-          Assistant는 요청에 응답하고, Agent는 목표를 받아 계획·도구 사용·결과 확인을 반복하며,
-          Agentic AI는 이 실행 흐름을 하나의 운영 구조로 연결합니다.<br>
-        </div>
+<div class="clip-section slide-preview-shell">
+  <div class="slide-preview-head">
+    <p class="slide-briefing-eyebrow">NotebookLM Infographic</p>
+    <div class="slide-preview-top">
+      <div>
+        <h2 class="slide-briefing-title">전문가용 AI 핵심 개념 가이드</h2>
+        <p class="slide-briefing-desc">멀티모달, 컨텍스트 엔지니어링, RAG, MCP, Agentic AI까지 오늘 실습 전반에서 반복되는 개념을 한 장으로 훑을 수 있다.</p>
+      </div>
+      <div class="slide-preview-actions">
+        <a class="slide-briefing-link" data-slide-deck-download="concept-foundation-guide">다운로드</a>
       </div>
     </div>
   </div>
+  <div class="slide-preview-gallery" data-slide-deck-preview="concept-foundation-guide"></div>
+</div>
 
-  <div class="clip-section">
-    <div class="clip-section-title">세 단계를 쉽게 기억하기</div>
-    <div class="clip-section-content">
-      <div class="memory-grid">
-        <article class="memory-card">
-          <div class="memory-kicker">ASSISTANT</div>
-          <div class="memory-title">물어보기</div>
-          <div class="memory-copy">사람이 질문하거나 자료를 주면 AI가 답변·요약·초안을 제공합니다.</div>
-        </article>
-        <article class="memory-card">
-          <div class="memory-kicker">AGENT</div>
-          <div class="memory-title">목표 맡기기</div>
-          <div class="memory-copy">사람이 목표와 허용 범위를 주면 AI가 필요한 단계를 계획하고 도구를 사용합니다.</div>
-        </article>
-        <article class="memory-card">
-          <div class="memory-kicker">AGENTIC AI</div>
-          <div class="memory-title">운영 구조 만들기</div>
-          <div class="memory-copy">하나 이상의 Agent와 도구·데이터·규칙·사람의 점검 지점을 Workflow로 연결합니다.</div>
-        </article>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section slide-preview-shell">
-    <div class="slide-preview-head">
-      <p class="slide-briefing-eyebrow">NotebookLM Infographic</p>
-      <div class="slide-preview-top">
-        <div>
-          <h2 class="slide-briefing-title">AI 활용은 질문형 Assistant에서 목표 수행형 Agent, Agentic Workflow로 확장됩니다</h2>
-          <p class="slide-briefing-desc">
-            오늘의 <strong>필수 실습은 Gemini와 NotebookLM을 활용한 Assistant 중심</strong>입니다.
-            Gemini Deep Research와 Gems는 선택 확장으로 경험하며,
-            AI Studio Build·Codex·Cline은 Agent 및 Agentic AI의 확장 사례로 이해합니다.
-          </p>
-        </div>
-        <div class="slide-preview-actions">
-          <a class="slide-briefing-link" data-slide-deck-download="assistant-agentic-spectrum">다운로드</a>
-        </div>
-      </div>
-    </div>
-    <div class="slide-preview-gallery" data-slide-deck-preview="assistant-agentic-spectrum"></div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">Assistant · Agent · Agentic AI 비교</div>
-    <div class="clip-section-content">
-      <div class="table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr><th>구분</th><th>AI Assistant</th><th>AI Agent</th><th>Agentic AI</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>쉽게 말하면</strong></td>
-              <td>요청받아 돕는 비서</td>
-              <td>목표를 받아 수행하는 담당자</td>
-              <td>Agent와 도구를 연결한 운영 체계</td>
-            </tr>
-            <tr>
-              <td><strong>시작 방식</strong></td>
-              <td>사용자가 질문·지시</td>
-              <td>사용자가 목표·권한·완료 기준 제시</td>
-              <td>설계된 Workflow 또는 이벤트에 따라 작동</td>
-            </tr>
-            <tr>
-              <td><strong>작동 방식</strong></td>
-              <td>질문 → 답변 → 후속 대화</td>
-              <td>목표 → 계획 → 실행 → 확인·수정</td>
-              <td>하나 이상의 Agent·도구·데이터·규칙이 역할을 나눠 협업</td>
-            </tr>
-            <tr>
-              <td><strong>사람의 역할</strong></td>
-              <td>맥락 제공과 결과 검토</td>
-              <td>권한 설정, 중간 점검, 최종 승인</td>
-              <td>거버넌스, 모니터링, 예외 처리, 최종 책임</td>
-            </tr>
-            <tr>
-              <td><strong>과정 내 위치</strong></td>
-              <td>Gemini·NotebookLM 필수 실습</td>
-              <td>Deep Research 등 선택 확장</td>
-              <td>향후 Workflow 고도화 방향과 확장 사례</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">어떻게 작동하는가 — 원리와 메커니즘</div>
-    <div class="clip-section-content">
-      <div class="table-wrap">
-        <table class="comparison-table">
-          <thead><tr><th style="width:20%">구분</th><th>작동 원리</th><th>팀장이 확인할 것</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><strong>AI Assistant</strong></td>
-              <td>사용자의 요청과 현재 대화 맥락을 바탕으로 답변·요약·초안을 생성합니다. 일반적으로 사용자가 다음 질문이나 수정을 지시하며 대화를 이어갑니다.</td>
-              <td>충분한 맥락을 주었는가? 결과를 직접 검토했는가?</td>
-            </tr>
-            <tr>
-              <td><strong>AI Agent</strong></td>
-              <td>목표를 받으면 <strong>계획(Plan) → 도구 실행(Act) → 결과 관찰·검증(Check) → 조정</strong>을 허용된 범위 안에서 반복합니다.</td>
-              <td>권한과 데이터 범위는 어디까지인가? 언제 사람이 승인하는가?</td>
-            </tr>
-            <tr>
-              <td><strong>Agentic AI</strong></td>
-              <td>하나 또는 여러 Agent가 도구·데이터·규칙과 연결되어 복수 단계 업무를 수행합니다. 중요한 판단에는 사람의 점검 지점과 예외 처리 절차를 함께 설계합니다.</td>
-              <td>품질·보안·실패 시 대안·최종 책임자가 명확한가?</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="tip-block" style="margin-top:20px">
-    <div class="tip-block-title">핵심 인사이트</div>
-    <div class="tip-block-content">
-      AI 활용의 핵심은 <strong>AI에게 많이 맡기는 것</strong>이 아니라,
-      <strong>무엇을 위임하고 어디에서 사람이 확인하며 누가 최종 책임질지를 설계하는 것</strong>입니다.
-      오늘 과정은 Assistant 중심의 필수 실습을 통해 이 기준을 만들고, Agent·Agentic AI는 향후 확장 방향으로 이해합니다.
-    </div>
-  </div>
-
-  <div class="info-block" style="margin-top:18px">
-    <div class="info-block-title">이번 클립의 연결</div>
-    <div>
-      <strong>필수 파일 산출물은 없습니다.</strong>
-      현재 팀 업무 한 가지를 떠올려 ‘질문해서 도움받을 일’, ‘목표로 맡길 수 있는 일’, ‘사람의 승인과 책임이 반드시 필요한 일’로 구분해 봅니다.
-      다음 클립에서 조직의 AI 활용 단계를 로드맵으로 연결합니다.
-    </div>
-  </div>
-
-  <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#ch01-clip01">← AI 트렌드</a>
-    <a class="clip-nav-btn" href="#ch01-clip03">기술 활용 로드맵 →</a>
-  </div>
-</section>
+<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip01">← AI 트렌드</a><a class="clip-nav-btn" href="#ch01-clip03">기술 활용 로드맵 →</a></div>

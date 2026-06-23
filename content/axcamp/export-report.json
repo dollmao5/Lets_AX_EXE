@@ -89,6 +89,26 @@
           "imageCount": 0,
           "sectionCount": 8,
           "promptCount": 0
+        },
+        {
+          "route": "#ch01-clip06",
+          "title": "Assistant에서 Agentic AI로 (신규)",
+          "type": "개념",
+          "folder": "chapters/CH01/ch01-clip06",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 0,
+          "promptCount": 0
+        },
+        {
+          "route": "#ch01-clip07",
+          "title": "기술 활용 로드맵 (신규)",
+          "type": "개념",
+          "folder": "chapters/CH01/ch01-clip07",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 0,
+          "promptCount": 0
         }
       ]
     },
@@ -1068,6 +1088,32 @@
       "linkCount": 0,
       "imageCount": 0,
       "type": "실습"
+    },
+    {
+      "chapterId": "ch01",
+      "route": "#ch01-clip06",
+      "title": "기술 활용 로드맵",
+      "folder": "chapters/CH01/ch01-clip06",
+      "textLength": 1305,
+      "htmlLength": 3913,
+      "sectionCount": 0,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "개념"
+    },
+    {
+      "chapterId": "ch01",
+      "route": "#ch01-clip07",
+      "title": "기술 활용 로드맵",
+      "folder": "chapters/CH01/ch01-clip07",
+      "textLength": 1305,
+      "htmlLength": 3913,
+      "sectionCount": 0,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "개념"
     }
   ],
   "links": {

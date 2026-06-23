@@ -7,13 +7,13 @@
     {
       "route": "#ch01-clip01",
       "title": "AI 트렌드",
-      "type": "개요",
+      "type": "참고",
       "folder": "chapters/CH01/ch01-clip01"
     },
     {
       "route": "#ch01-clip02",
       "title": "Assistant에서 Agentic AI로",
-      "type": "개요",
+      "type": "개념",
       "folder": "chapters/CH01/ch01-clip02"
     },
     {
@@ -33,6 +33,18 @@
       "title": "AI 리터러시 * AI-Friendly 리더십",
       "type": "실습",
       "folder": "chapters/CH01/ch01-clip05"
+    },
+    {
+      "route": "#ch01-clip06",
+      "title": "Assistant에서 Agentic AI로 (신규)",
+      "type": "개념",
+      "folder": "chapters/CH01/ch01-clip06"
+    },
+    {
+      "route": "#ch01-clip07",
+      "title": "기술 활용 로드맵 (신규)",
+      "type": "개념",
+      "folder": "chapters/CH01/ch01-clip07"
     }
   ]
 }

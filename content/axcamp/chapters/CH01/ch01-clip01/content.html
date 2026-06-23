@@ -1,4 +1,4 @@
-<div class="ch01-clip01-revised">
+<section id="ch01-clip01" class="ch01-clip01-revised">
   <style>
     .ch01-clip01-revised {
       --c1-font-base: 20px;
@@ -109,82 +109,6 @@
       display: block;
     }
 
-    /* Upload-safe card fallback
-       - The LMS may mount this fragment inside #ch01-clip01.
-       - Keep the style inside the single root DIV and support both scopes. */
-    .ch01-clip01-revised,
-    #ch01-clip01 {
-      --c1-safe-border: var(--border, #d8e2f1);
-      --c1-safe-bg: var(--bg-white, #ffffff);
-      --c1-safe-soft: var(--bg-offwhite, #f6f9ff);
-      --c1-safe-heading: var(--text-heading, var(--text-primary, #172b4d));
-      --c1-safe-body: var(--text-body, #344563);
-      --c1-safe-brand: var(--brand, #2166d1);
-    }
-
-    .ch01-clip01-revised .clip-overview,
-    #ch01-clip01 .clip-overview {
-      background: var(--c1-safe-soft) !important;
-      border: 1px solid var(--c1-safe-border) !important;
-    }
-
-    .ch01-clip01-revised .tip-block,
-    .ch01-clip01-revised .info-block,
-    #ch01-clip01 .tip-block,
-    #ch01-clip01 .info-block {
-      display: block !important;
-      background: var(--c1-safe-soft) !important;
-      border: 1px solid var(--c1-safe-border) !important;
-      border-left: 4px solid var(--c1-safe-brand) !important;
-      color: var(--c1-safe-body) !important;
-      overflow: hidden;
-    }
-
-    .ch01-clip01-revised .tip-block-title,
-    .ch01-clip01-revised .info-block-title,
-    #ch01-clip01 .tip-block-title,
-    #ch01-clip01 .info-block-title {
-      display: block !important;
-      color: var(--c1-safe-heading) !important;
-    }
-
-    .ch01-clip01-revised .trend-card-grid,
-    #ch01-clip01 .trend-card-grid {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-      gap: 14px !important;
-      width: 100%;
-    }
-
-    .ch01-clip01-revised .trend-card,
-    #ch01-clip01 .trend-card {
-      display: block !important;
-      min-width: 0;
-      padding: 16px 18px !important;
-      border: 1px solid var(--c1-safe-border) !important;
-      border-radius: 18px !important;
-      background: var(--c1-safe-bg) !important;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-    }
-
-    .ch01-clip01-revised .trend-card-title,
-    #ch01-clip01 .trend-card-title {
-      display: block !important;
-      margin-bottom: 8px !important;
-      color: var(--c1-safe-heading) !important;
-      font-size: 1.02rem !important;
-      line-height: 1.45 !important;
-      font-weight: 800 !important;
-    }
-
-    .ch01-clip01-revised .trend-card-body,
-    #ch01-clip01 .trend-card-body {
-      display: block !important;
-      color: var(--c1-safe-body) !important;
-      font-size: 0.98rem !important;
-      line-height: 1.66 !important;
-    }
-
     @media (max-width: 680px) {
       .ch01-clip01-revised {
         font-size: 18px;
@@ -251,24 +175,24 @@
   <div class="clip-section">
     <div class="clip-section-title">이 장면에서 느껴볼 것</div>
     <div class="clip-section-content">
-      <div class="trend-card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-        <div class="trend-card" style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div class="trend-card-title" style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">업무 보조를 넘어 실행으로</div>
-          <div class="trend-card-body" style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
+          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">업무 보조를 넘어 실행으로</div>
+          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
             Agentic AI는 질문에 답하는 수준을 넘어 계획을 세우고, 도구를 고르고, 결과를 확인하는 방향으로 움직이기 시작합니다.
           </div>
         </div>
 
-        <div class="trend-card" style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div class="trend-card-title" style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">화면 밖으로 확장되는 AI</div>
-          <div class="trend-card-body" style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
+        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
+          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">화면 밖으로 확장되는 AI</div>
+          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
             Physical AI는 소프트웨어 안의 추론을 넘어 센서, 장비, 로봇, 공정 같은 현실 환경과 연결되는 흐름을 보여줍니다.
           </div>
         </div>
 
-        <div class="trend-card" style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div class="trend-card-title" style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">결국 남는 것은 데이터와 운영 구조</div>
-          <div class="trend-card-body" style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
+        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
+          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">결국 남는 것은 데이터와 운영 구조</div>
+          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
             자율성이 커질수록 모델 자체보다 <strong>좋은 데이터, 맥락, 검증 체계</strong>가 조직의 성과 차이를 만들게 됩니다.
           </div>
         </div>
@@ -308,8 +232,5 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#ch00-clip01">← 오늘의 시간표</a>
-    <a class="clip-nav-btn" href="#ch01-clip02">Assistant에서 Agentic AI로 →</a>
-  </div>
-</div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch00-clip01">← 오늘의 시간표</a><a class="clip-nav-btn" href="#ch01-clip02">Assistant에서 Agentic AI로 →</a></div>
+</section>

@@ -4921,6 +4921,210 @@ function enhanceClipBody() {
   enhancePromptMarkdownBlocks();
   enhanceChartBlocks();
   enhanceMermaidBlocks();
+  initSharedAudioComponents();
+}
+
+function initSharedAudioComponents() {
+  const fileInput = document.getElementById('sharedAudioFileInput');
+  const fileLabel = document.getElementById('sharedAudioFileLabel');
+  const selectBtn = document.getElementById('selectSharedAudioBtn');
+  const uploadBtn = document.getElementById('uploadSharedAudioBtn');
+  const statusEl = document.getElementById('sharedAudioStatus');
+  const listEl = document.getElementById('sharedAudioList');
+
+  if (!fileInput || !selectBtn || !uploadBtn || !listEl) return;
+
+  const clipKey = 'ch02-clip02';
+
+  selectBtn.onclick = function() {
+    fileInput.click();
+  };
+
+  fileInput.onchange = function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      fileLabel.textContent = file.name + ' (' + formatSize(file.size) + ')';
+      statusEl.textContent = '선택 완료. 권장 형식과 용량은 안내 문구를 확인해 주세요.';
+      statusEl.style.color = 'var(--text-secondary)';
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
+    } else {
+      fileLabel.textContent = '선택된 파일 없음';
+      statusEl.textContent = '';
+      uploadBtn.disabled = true;
+      uploadBtn.style.opacity = '0.6';
+    }
+  };
+
+  function formatSize(bytes) {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  function formatDate(isoStr) {
+    const d = new Date(isoStr);
+    if (Number.isNaN(d.getTime())) return '';
+    return (d.getMonth()+1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+
+  function renderMessage(message, isError) {
+    listEl.innerHTML = '';
+    const p = document.createElement('p');
+    p.className = 'muted';
+    p.style.fontSize = '1rem';
+    p.style.lineHeight = '1.45';
+    p.style.textAlign = 'center';
+    p.style.margin = '0';
+    p.style.padding = '12px';
+    if (isError) p.style.color = 'var(--danger)';
+    p.textContent = message;
+    listEl.appendChild(p);
+  }
+
+  async function loadAudioList() {
+    try {
+      const data = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+        method: 'GET'
+      });
+
+      if (!data.ok) {
+        renderMessage(data.error || '목록을 불러오지 못했습니다.', true);
+        return;
+      }
+
+      if (!data.audios || data.audios.length === 0) {
+        renderMessage('공유된 오디오 파일이 없습니다.', false);
+        return;
+      }
+
+      listEl.innerHTML = '';
+      data.audios.forEach(function(audio) {
+        const row = document.createElement('div');
+        row.className = 'shared-audio-row';
+
+        const info = document.createElement('div');
+        info.className = 'shared-audio-info';
+
+        const name = document.createElement('strong');
+        name.className = 'shared-audio-name';
+        name.textContent = audio.fileName || '오디오 파일';
+        info.appendChild(name);
+
+        const meta = document.createElement('span');
+        meta.className = 'shared-audio-meta';
+        const uploaderLabel = audio.teamName
+          ? audio.teamName + (audio.uploadedBy ? ' (' + audio.uploadedBy + ')' : '')
+          : (audio.uploadedByDisplay || audio.uploadedBy || '');
+        const metaParts = [];
+        if (audio.sizeLabel) metaParts.push(audio.sizeLabel);
+        if (uploaderLabel) metaParts.push(uploaderLabel);
+        if (audio.uploadedAt) metaParts.push(formatDate(audio.uploadedAt));
+        meta.textContent = metaParts.join(' · ');
+        info.appendChild(meta);
+
+        row.appendChild(info);
+
+        const actions = document.createElement('div');
+        actions.className = 'shared-audio-actions';
+
+        const downloadLink = document.createElement('a');
+        downloadLink.href = audio.url || '#';
+        downloadLink.download = audio.fileName || '';
+        downloadLink.className = 'slide-briefing-link shared-audio-btn';
+        downloadLink.textContent = '다운로드';
+        actions.appendChild(downloadLink);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'slide-briefing-link shared-audio-btn shared-audio-delete';
+        deleteBtn.textContent = '삭제';
+        deleteBtn.onclick = async function() {
+          if (!confirm('이 오디오 파일을 삭제하시겠습니까?')) return;
+          try {
+            const delData = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+              method: 'DELETE',
+              body: { fileName: audio.fileName }
+            });
+            if (delData.ok) {
+              loadAudioList();
+            } else {
+              alert(delData.error || '삭제 실패');
+            }
+          } catch (err) {
+            alert('삭제 에러: ' + err.message);
+          }
+        };
+        actions.appendChild(deleteBtn);
+
+        row.appendChild(actions);
+        listEl.appendChild(row);
+      });
+    } catch (error) {
+      console.error(error);
+      renderMessage('서버 연결 에러', true);
+    }
+  }
+
+  uploadBtn.onclick = async function() {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    uploadBtn.disabled = true;
+    uploadBtn.style.opacity = '0.6';
+    statusEl.textContent = '파일 읽는 중...';
+    statusEl.style.color = 'var(--text-secondary)';
+
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+      const base64 = String(e.target.result || '').split(',')[1] || '';
+      statusEl.textContent = '업로드 중...';
+      statusEl.style.color = 'var(--text-secondary)';
+
+      try {
+        const data = await api('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+          method: 'POST',
+          body: {
+            fileName: file.name,
+            contentBase64: base64
+          }
+        });
+
+        if (data.ok) {
+          statusEl.textContent = '업로드 성공!';
+          statusEl.style.color = 'var(--brand)';
+          fileInput.value = '';
+          fileLabel.textContent = '선택된 파일 없음';
+          uploadBtn.disabled = true;
+          uploadBtn.style.opacity = '0.6';
+          loadAudioList();
+        } else {
+          statusEl.textContent = data.error || '업로드 실패';
+          statusEl.style.color = 'var(--danger)';
+          uploadBtn.disabled = false;
+          uploadBtn.style.opacity = '1';
+        }
+      } catch (err) {
+        statusEl.textContent = '에러: ' + err.message;
+        statusEl.style.color = 'var(--danger)';
+        uploadBtn.disabled = false;
+        uploadBtn.style.opacity = '1';
+      }
+    };
+
+    reader.onerror = function() {
+      statusEl.textContent = '파일 읽기 오류';
+      statusEl.style.color = 'var(--danger)';
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  loadAudioList();
 }
 
 function wireClipInteractions() {
