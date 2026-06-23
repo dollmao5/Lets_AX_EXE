@@ -17,12 +17,6 @@
       "folder": "chapters/CH04/ch04-clip02"
     },
     {
-      "route": "#ch04-clip03",
-      "title": "ChatGPT 및 GPTs 소개",
-      "type": "플랫폼",
-      "folder": "chapters/CH04/ch04-clip03"
-    },
-    {
       "route": "#ch04-clip04",
       "title": "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석",
       "type": "실습",

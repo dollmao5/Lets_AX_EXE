@@ -1,15 +1,15 @@
 ---
 route: "#ch04-clip03"
-chapter: "ch04"
-title: "ChatGPT 및 GPTs 소개"
+chapter: "ch03"
+title: "참고_ChatGPT 및 GPTs 소개"
 source_url: "https://lg.cmdspace.work/axcamp#ch04-clip03"
 ---
 
 참고 · ~20분
-CH 04
+CH 03
 플랫폼
 
-# ChatGPT 및 GPTs 소개
+# 참고_ChatGPT 및 GPTs 소개
 
 본 과정의 주요 실습은 **Gemini·Gems 및 NotebookLM**을 중심으로 진행합니다.
 
