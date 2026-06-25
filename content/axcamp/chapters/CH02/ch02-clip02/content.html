@@ -761,26 +761,366 @@
     </div>
   </div>
 
+  <!-- IIFE Script Hack: 동적 HTML 주입 환경에서도 오디오 공유방 초기화를 보장하기 위한 방식입니다. -->
+  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
+  if (window.__ch02Clip02SharedAudioInitialized) return;
+  window.__ch02Clip02SharedAudioInitialized = true;
 
+  const fileInput = document.getElementById('sharedAudioFileInput');
+  const fileLabel = document.getElementById('sharedAudioFileLabel');
+  const selectBtn = document.getElementById('selectSharedAudioBtn');
+  const uploadBtn = document.getElementById('uploadSharedAudioBtn');
+  const statusEl = document.getElementById('sharedAudioStatus');
+  const listEl = document.getElementById('sharedAudioList');
 
-  <div class="clip-section slide-preview-shell">
-    <div class="slide-preview-head">
-      <p class="slide-briefing-eyebrow">Tiro App Guide</p>
-      <div class="slide-preview-top">
-        <div>
-          <h2 class="slide-briefing-title">Tiro 설치 및 녹음 파일 저장 방법</h2>
-          <p class="slide-briefing-desc">
-            학습팀 토론을 녹음하기 위해 Tiro 앱을 사용할 수 있습니다. 이미 스마트폰 기본 녹음 앱을 사용할 수 있는 경우에는 해당 기능으로 녹음해도 됩니다.
-            현장에서 앱 설치가 지연되면 기본 녹음 앱을 우선 사용하고, 후속 Gemini 실습에서 활용할 수 있도록 반드시 오디오 파일 형태로 저장해 주세요.
-          </p>
-        </div>
-        <div class="slide-preview-actions">
-          <a class="slide-briefing-link" data-slide-deck-download="tiro-guide-deck">다운로드</a>
+  if (!fileInput || !selectBtn || !uploadBtn || !listEl) return;
+
+  const clipKey = 'ch02-clip02';
+
+  selectBtn.onclick = function() {
+    fileInput.click();
+  };
+
+  fileInput.onchange = function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      fileLabel.textContent = file.name + ' (' + formatSize(file.size) + ')';
+      statusEl.textContent = '선택 완료. 권장 형식과 용량은 안내 문구를 확인해 주세요.';
+      statusEl.style.color = 'var(--text-secondary)';
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
+    } else {
+      fileLabel.textContent = '선택된 파일 없음';
+      statusEl.textContent = '';
+      uploadBtn.disabled = true;
+      uploadBtn.style.opacity = '0.6';
+    }
+  };
+
+  function formatSize(bytes) {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  function formatDate(isoStr) {
+    const d = new Date(isoStr);
+    if (Number.isNaN(d.getTime())) return '';
+    return (d.getMonth()+1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+
+  function getHeaders(json) {
+    const headers = {
+      'x-session-token': localStorage.getItem('ax_literacy_session_token') || '',
+      'x-account-id': localStorage.getItem('ax_literacy_last_lets_id') || ''
+    };
+    if (json) headers['Content-Type'] = 'application/json';
+    return headers;
+  }
+
+  function renderMessage(message, isError) {
+    listEl.innerHTML = '';
+    const p = document.createElement('p');
+    p.className = 'muted';
+    p.style.fontSize = '1rem';
+    p.style.lineHeight = '1.45';
+    p.style.textAlign = 'center';
+    p.style.margin = '0';
+    p.style.padding = '12px';
+    if (isError) p.style.color = 'var(--danger)';
+    p.textContent = message;
+    listEl.appendChild(p);
+  }
+
+  async function requestJson(url, options) {
+    const res = await fetch(url, options || {});
+    const text = await res.text();
+    try {
+      return JSON.parse(text || '{}');
+    } catch (err) {
+      return { ok: false, error: '서버 응답을 해석하지 못했습니다.' };
+    }
+  }
+
+  async function loadAudioList() {
+    try {
+      const data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+        headers: getHeaders(false)
+      });
+
+      if (!data.ok) {
+        renderMessage(data.error || '목록을 불러오지 못했습니다.', true);
+        return;
+      }
+
+      if (!data.audios || data.audios.length === 0) {
+        renderMessage('공유된 오디오 파일이 없습니다.', false);
+        return;
+      }
+
+      listEl.innerHTML = '';
+      data.audios.forEach(function(audio) {
+        const row = document.createElement('div');
+        row.className = 'shared-audio-row';
+
+        const info = document.createElement('div');
+        info.className = 'shared-audio-info';
+
+        const name = document.createElement('strong');
+        name.className = 'shared-audio-name';
+        name.textContent = audio.fileName || '오디오 파일';
+        info.appendChild(name);
+
+        const meta = document.createElement('span');
+        meta.className = 'shared-audio-meta';
+        const uploaderLabel = audio.teamName
+          ? audio.teamName + (audio.uploadedBy ? ' (' + audio.uploadedBy + ')' : '')
+          : (audio.uploadedByDisplay || audio.uploadedBy || '');
+        const metaParts = [];
+        if (audio.sizeLabel) metaParts.push(audio.sizeLabel);
+        if (uploaderLabel) metaParts.push(uploaderLabel);
+        if (audio.uploadedAt) metaParts.push(formatDate(audio.uploadedAt));
+        meta.textContent = metaParts.join(' · ');
+        info.appendChild(meta);
+
+        row.appendChild(info);
+
+        const actions = document.createElement('div');
+        actions.className = 'shared-audio-actions';
+
+        const downloadLink = document.createElement('a');
+        downloadLink.href = audio.url || '#';
+        downloadLink.download = audio.fileName || '';
+        downloadLink.className = 'slide-briefing-link shared-audio-btn';
+        downloadLink.textContent = '다운로드';
+        actions.appendChild(downloadLink);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'slide-briefing-link shared-audio-btn shared-audio-delete';
+        deleteBtn.textContent = '삭제';
+        deleteBtn.onclick = async function() {
+          if (!confirm('이 오디오 파일을 삭제하시겠습니까?')) return;
+          try {
+            const delData = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+              method: 'DELETE',
+              headers: getHeaders(true),
+              body: JSON.stringify({ fileName: audio.fileName })
+            });
+            if (delData.ok) {
+              loadAudioList();
+            } else {
+              alert(delData.error || '삭제 실패');
+            }
+          } catch (err) {
+            alert('삭제 에러: ' + err.message);
+          }
+        };
+        actions.appendChild(deleteBtn);
+
+        row.appendChild(actions);
+        listEl.appendChild(row);
+      });
+    } catch (error) {
+      console.error(error);
+      renderMessage('서버 연결 에러', true);
+    }
+  }
+
+  uploadBtn.onclick = async function() {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    uploadBtn.disabled = true;
+    uploadBtn.style.opacity = '0.6';
+    statusEl.textContent = '파일 읽는 중...';
+    statusEl.style.color = 'var(--text-secondary)';
+
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+      const base64 = String(e.target.result || '').split(',')[1] || '';
+      statusEl.textContent = '업로드 중...';
+      statusEl.style.color = 'var(--text-secondary)';
+
+      try {
+        const data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+          method: 'POST',
+          headers: getHeaders(true),
+          body: JSON.stringify({
+            fileName: file.name,
+            contentBase64: base64
+          })
+        });
+
+        if (data.ok) {
+          statusEl.textContent = '업로드 성공!';
+          statusEl.style.color = 'var(--brand)';
+          fileInput.value = '';
+          fileLabel.textContent = '선택된 파일 없음';
+          uploadBtn.disabled = true;
+          uploadBtn.style.opacity = '0.6';
+          loadAudioList();
+        } else {
+          statusEl.textContent = data.error || '업로드 실패';
+          statusEl.style.color = 'var(--danger)';
+          uploadBtn.disabled = false;
+          uploadBtn.style.opacity = '1';
+        }
+      } catch (err) {
+        statusEl.textContent = '에러: ' + err.message;
+        statusEl.style.color = 'var(--danger)';
+        uploadBtn.disabled = false;
+        uploadBtn.style.opacity = '1';
+      }
+    };
+
+    reader.onerror = function() {
+      statusEl.textContent = '파일 읽기 오류';
+      statusEl.style.color = 'var(--danger)';
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  loadAudioList();
+})();" style="display:none;" alt="">
+
+  <div class="clip-section">
+    <div class="clip-section-title">Tiro 설치 및 녹음 파일 저장 방법</div>
+    <div class="clip-section-content">
+      <p style="margin-bottom: 14px; font-weight: 600; color: var(--text-body);">
+        학습팀 토론을 녹음하기 위해 Tiro 앱을 사용할 수 있습니다.
+        이미 스마트폰 기본 녹음 앱을 사용할 수 있는 경우에는 해당 기능으로 녹음해도 됩니다.
+        현장에서 앱 설치가 지연되면 기본 녹음 앱을 우선 사용하고, 후속 Gemini 실습에서 활용할 수 있도록 반드시 오디오 파일 형태로 저장해 주세요.
+      </p>
+
+      <div class="tip-block" style="margin-bottom: 14px;">
+        <div class="tip-block-title">진행 전 확인 사항</div>
+        <div class="tip-block-content">
+          <ul style="margin:0;padding-left:20px;">
+            <li>녹음 시작 전, 학습팀 구성원에게 녹음 목적과 활용 방식을 안내합니다.</li>
+            <li>토론 내용은 후속 Gemini 실습의 입력 자료로 사용됩니다.</li>
+            <li>녹음 파일은 학습팀별로 1개만 업로드하는 것을 권장합니다.</li>
+            <li>파일명이 구분되도록 학습팀 이름 또는 조 번호를 포함해 저장합니다. 예: 1조_AI시대_리더역할_토론녹음.m4a</li>
+            <li>토론 참여자의 목소리가 잘 녹음될 수 있도록 녹음 중인 스마트폰 또는 외장 마이크를 학습팀 중앙에 놓고 진행합니다.</li>
+          </ul>
         </div>
       </div>
+
+      <details class="tiro-guide-details">
+        <summary>Tiro 설치 및 녹음 파일 저장 방법 펼쳐보기</summary>
+        <p class="tiro-image-hint">각 이미지를 클릭하거나 키보드 Enter 키를 누르면 팝업에서 크게 볼 수 있습니다.</p>
+        <div class="tiro-guide-grid">
+          <div class="tiro-guide-card">
+            <h4>1. 앱 다운로드</h4>
+            <p>스마트폰 앱스토어에서 Tiro를 검색한 뒤 앱을 다운로드합니다. 설치가 완료되면 앱을 실행합니다.</p>
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/01_app_download.png" alt="앱 다운로드" loading="lazy">
+          </div>
+
+          <div class="tiro-guide-card">
+            <h4>2. 가입 단계</h4>
+            <p>앱 실행 후 회원가입 또는 로그인을 진행합니다. 교육 현장에서 바로 사용할 수 있도록 접근 가능한 계정으로 가입해 주세요.</p>
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/02_sign_up.png" alt="가입 단계" loading="lazy">
+          </div>
+
+          <div class="tiro-guide-card">
+            <h4>3. 가입 상세</h4>
+            <p>화면 안내에 따라 기본 정보를 입력하고 가입 절차를 완료합니다. 마이크 권한 요청이 나타나면 녹음을 위해 허용해 주세요.</p>
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/03_sign_up_detail.png" alt="가입 상세" loading="lazy">
+          </div>
+
+          <div class="tiro-guide-card">
+            <h4>4. 사전 설정 1</h4>
+            <p>녹음 전에 앱의 기본 설정을 확인합니다. 녹음 중인 스마트폰 또는 외장 마이크를 학습팀 중앙에 놓고 진행하는 것을 권장합니다.</p>
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/04_pre_settings.png" alt="사전 설정 1" loading="lazy">
+          </div>
+
+          <div class="tiro-guide-card">
+            <h4>5. 사전 설정 2</h4>
+            <p>녹음 품질과 저장 설정을 확인합니다. 토론이 시작되면 녹음 버튼을 누르고, 토론이 끝나면 반드시 녹음을 종료해 주세요.</p>
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/05_pre_settings_detail.png" alt="사전 설정 2" loading="lazy">
+          </div>
+
+          <div class="tiro-guide-card">
+            <h4>6. 파일 저장</h4>
+            <p>녹음이 완료되면 오디오 파일을 저장하거나 다운로드합니다. 저장한 파일은 위의 학습팀별 오디오 자료 공유방에 업로드해 주세요.</p>
+            <img class="tiro-guide-image" tabindex="0" role="button" title="클릭하여 크게 보기" src="/course-files/AXCAMP/ch02-clip02/06_save_file.png" alt="파일 저장" loading="lazy">
+          </div>
+        </div>
+      </details>
+
+      <div class="tiro-image-modal" id="ch02Clip02TiroImageModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="ch02Clip02TiroModalTitle" hidden="">
+        <div class="tiro-image-modal-dialog" role="document">
+          <h2 id="ch02Clip02TiroModalTitle" class="visually-hidden">Tiro 설치 안내 이미지 확대 보기</h2>
+          <button type="button" class="tiro-image-modal-close" aria-label="확대 이미지 닫기">닫기 ×</button>
+          <img class="tiro-image-modal-image" alt="">
+          <p class="tiro-image-modal-caption" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <!-- 동적 HTML 주입 환경에서도 Tiro 이미지 확대 모달을 초기화합니다. -->
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(loader){
+        var root=loader.closest('.ch02-clip02-revised');
+        if(!root||root.getAttribute('data-tiro-modal-ready')==='true'){return;}
+        root.setAttribute('data-tiro-modal-ready','true');
+        var modal=root.querySelector('#ch02Clip02TiroImageModal');
+        var modalImage=modal&amp;&amp;modal.querySelector('.tiro-image-modal-image');
+        var caption=modal&amp;&amp;modal.querySelector('.tiro-image-modal-caption');
+        var closeButton=modal&amp;&amp;modal.querySelector('.tiro-image-modal-close');
+        if(!modal||!modalImage||!caption||!closeButton){return;}
+        var lastTrigger=null;
+        var previousBodyOverflow='';
+
+        function openModal(image){
+          var card=image.closest('.tiro-guide-card');
+          var titleEl=card&amp;&amp;card.querySelector('h4');
+          var descriptionEl=card&amp;&amp;card.querySelector('p');
+          var title=titleEl?titleEl.textContent.trim():(image.alt||'Tiro 안내 이미지');
+          var description=descriptionEl?descriptionEl.textContent.trim():'';
+          lastTrigger=image;
+          modalImage.src=image.currentSrc||image.src;
+          modalImage.alt=image.alt||title;
+          caption.textContent=description?title+' — '+description:title;
+          previousBodyOverflow=document.body.style.overflow;
+          document.body.style.overflow='hidden';
+          modal.hidden=false;
+          modal.setAttribute('aria-hidden','false');
+          window.requestAnimationFrame(function(){closeButton.focus();});
+        }
+
+        function closeModal(){
+          if(modal.hidden){return;}
+          modal.hidden=true;
+          modal.setAttribute('aria-hidden','true');
+          modalImage.removeAttribute('src');
+          document.body.style.overflow=previousBodyOverflow;
+          if(lastTrigger&amp;&amp;document.contains(lastTrigger)){lastTrigger.focus();}
+        }
+
+        root.addEventListener('click',function(event){
+          var image=event.target.closest('.tiro-guide-card .tiro-guide-image');
+          if(image&amp;&amp;root.contains(image)){openModal(image);return;}
+          if(event.target===modal||event.target===closeButton){closeModal();}
+        });
+
+        root.addEventListener('keydown',function(event){
+          var image=event.target.closest&amp;&amp;event.target.closest('.tiro-guide-card .tiro-guide-image');
+          if(image&amp;&amp;(event.key==='Enter'||event.key===' ')){
+            event.preventDefault();
+            openModal(image);
+            return;
+          }
+          if(event.key==='Escape'&amp;&amp;!modal.hidden){
+            event.preventDefault();
+            closeModal();
+          }
+        });
+      })(this);">
     </div>
-    <div class="slide-preview-gallery" data-slide-deck-preview="tiro-guide-deck"></div>
-  </div>
   </div>
 
 
@@ -1024,12 +1364,4 @@
   </div>
 
   <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip01">← Gemini 소개 및 접속 방법</a><a class="clip-nav-btn" href="#ch02-clip03">프롬프팅 기초: AI 시대, 리더의 역할 →</a></div>
-  <!-- static-build-copy-targets:
-    /course-files/AXCAMP/ch02-clip02/01_app_download.png
-    /course-files/AXCAMP/ch02-clip02/02_sign_up.png
-    /course-files/AXCAMP/ch02-clip02/03_sign_up_detail.png
-    /course-files/AXCAMP/ch02-clip02/04_pre_settings.png
-    /course-files/AXCAMP/ch02-clip02/05_pre_settings_detail.png
-    /course-files/AXCAMP/ch02-clip02/06_save_file.png
-  -->
 </div>

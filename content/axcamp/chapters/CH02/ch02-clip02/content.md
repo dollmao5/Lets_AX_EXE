@@ -127,7 +127,7 @@ Tiro 설치 및 녹음 파일 저장 방법 펼쳐보기
 
 #### 1. 앱 다운로드
 
-스마트폰 앱스토어에서 Tiro를 검색하거나 [Tiro 설치 페이지](https://tiro.ooo/ko/download/app)를 통해 앱을 다운로드합니다. 설치가 완료되면 앱을 실행합니다.
+스마트폰 앱스토어에서 Tiro를 검색한 뒤 앱을 다운로드합니다. 설치가 완료되면 앱을 실행합니다.
 
 ![앱 다운로드](/course-files/AXCAMP/ch02-clip02/01_app_download.png)
 
