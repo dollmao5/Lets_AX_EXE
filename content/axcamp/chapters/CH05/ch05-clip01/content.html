@@ -404,31 +404,6 @@
       line-height: 1.5 !important;
     }
 
-    .ch05-clip01-revised .takeaway-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--c51-gap);
-      margin: 12px 0 20px;
-    }
-
-    .ch05-clip01-revised .takeaway-card {
-      padding: 18px;
-      border: 1px solid var(--c51-border);
-      border-radius: var(--c51-radius);
-      background: var(--c51-offwhite);
-    }
-
-    .ch05-clip01-revised .takeaway-kicker {
-      margin-bottom: 8px;
-      color: var(--c51-brand);
-      font-size: 0.92rem !important;
-      line-height: 1.3 !important;
-      font-weight: 900;
-    }
-
-    .ch05-clip01-revised .takeaway-card .field-label {
-      min-height: 58px;
-    }
 
     .ch05-clip01-revised .save-panel {
       display: flex;
@@ -566,12 +541,10 @@
       .ch05-clip01-revised .clip-overview { padding: 20px !important; }
       .ch05-clip01-revised .journey-grid,
       .ch05-clip01-revised .artifact-grid,
-      .ch05-clip01-revised .connection-flow,
-      .ch05-clip01-revised .takeaway-grid { grid-template-columns: 1fr; }
+      .ch05-clip01-revised .connection-flow { grid-template-columns: 1fr; }
       .ch05-clip01-revised .journey-card { min-height: 0; }
       .ch05-clip01-revised .artifact-card-head { display: block; }
       .ch05-clip01-revised .artifact-card-purpose { margin-top: 5px; text-align: left; }
-      .ch05-clip01-revised .takeaway-card .field-label { min-height: 0; }
       .ch05-clip01-revised .save-panel,
       .ch05-clip01-revised .action-row { align-items: stretch; }
       .ch05-clip01-revised .action-row,
@@ -579,13 +552,41 @@
       .ch05-clip01-revised .completion-box { grid-template-columns: 1fr; }
       .ch05-clip01-revised .completion-status { justify-self: start; }
     }
+
+
+    /* 주요 산출물 저장 파일명 배지 */
+    .ch05-clip01-revised .output-file-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border: 1px solid var(--c51-border);
+      border-radius: 999px;
+      background: var(--c51-offwhite);
+      color: var(--c51-brand);
+      font-size: 0.86rem !important;
+      font-weight: 900;
+      line-height: 1.2 !important;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      text-align: left;
+    }
+
+    @media (max-width: 680px) {
+      .ch05-clip01-revised .output-file-badge {
+        width: 100%;
+        max-width: 100%;
+        justify-content: flex-start;
+      }
+    }
   </style>
 
   <div class="clip-header">
     <div class="clip-badges">
       <span class="clip-badge time">~15분</span>
       <span class="clip-badge chapter">CH 05</span>
-      <span class="clip-badge type-reflection">회수 · 연결</span>
+      <span class="clip-badge type-overview">개요</span>
     </div>
     <h1 class="clip-title" data-keep-title="">오늘의 핵심 정리: 배움에서 현업 자산으로</h1>
   </div>
@@ -687,10 +688,9 @@
 
       <div class="recovery-toolbar" aria-live="polite">
         <div>
-          <div class="recovery-summary" data-c501-summary>필수 산출물 회수 0 / 8 · 선택 산출물 0 / 1</div>
-          <div class="save-message" data-c501-takeaway-summary>현업 적용 초점 0 / 3 작성</div>
+          <div class="recovery-summary" data-c501-summary="">필수 산출물 회수 0 / 10</div>
         </div>
-        <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-c501-progress></div></div>
+        <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-c501-progress=""></div></div>
       </div>
 
       <div class="artifact-grid">
@@ -713,44 +713,89 @@
 
         <article class="artifact-card">
           <div class="artifact-card-head">
-            <div class="artifact-card-title">CH02. 리더 기준</div>
-            <div class="artifact-card-purpose">역할·역량 회수</div>
+            <div class="artifact-card-title">CH02. 리더 역할 및 역량 점검</div>
+            <div class="artifact-card-purpose">역할·역량 2종 회수</div>
           </div>
           <ul class="artifact-check-list">
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch02-role" data-required="true"><span><strong>AI와 리더 역할 분담표 + 리더 역할 프로필</strong><br>AI에게 맡길 일과 리더가 직접 책임질 일을 구분한 기준</span></label></li>
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch02-brief" data-required="true"><span><strong>리더 핵심 역량·성과관리 실행 브리프</strong><br>핵심 역량·스킬과 30일 리더 행동 후보를 정리한 Markdown</span></label></li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch02-role" data-required="true">
+                <span><strong>나의 AI 시대 리더 역할</strong><br><code>저장 파일 · CH02_나의_AI시대_리더역할_성명.md</code><br>AI와 리더의 역할 경계, 리더 역할 정의와 책임 기준을 정리한 Markdown</span>
+              </label>
+            </li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch02-brief" data-required="true">
+                <span><strong>나의 핵심역량과 성과관리 실행안</strong><br><code>저장 파일 · CH02_나의_핵심역량과_성과관리실행안_성명.md</code><br>리더 핵심 역량·스킬, AI와 리더의 역할 분담, 30일 리더 행동 후보를 정리한 Markdown</span>
+              </label>
+            </li>
           </ul>
           <label class="field-label" for="c501-location-ch02">파일명·저장 위치 메모</label>
-          <input class="text-input" id="c501-location-ch02" type="text" data-c501-field="locationCh02" placeholder="예: CH02_나의_AI시대_리더역할_성명.md">
+          <input class="text-input" id="c501-location-ch02" type="text" data-c501-field="locationCh02" placeholder="예: 성과향상_with_AI_성명 / CH02 폴더">
         </article>
 
         <article class="artifact-card">
           <div class="artifact-card-head">
-            <div class="artifact-card-title">CH03. 팀 시스템</div>
-            <div class="artifact-card-purpose">진단·재설계 회수</div>
+            <div class="artifact-card-title">CH03. 조직(팀) 역량 및 Workflow 점검</div>
+            <div class="artifact-card-purpose">진단·재설계 4종 회수</div>
           </div>
           <ul class="artifact-check-list">
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch03-bottleneck" data-required="true"><span><strong>팀 성과 병목 진단 리포트와 효과성 지표</strong><br>표면 증상, 구조적 병목, Root Cause, 30일 점검 지표</span></label></li>
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch03-competency" data-required="true"><span><strong>조직·인재 행동역량 프로파일</strong><br>리더·팀원·팀 공통의 관찰 가능한 행동 기준</span></label></li>
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch03-workflow" data-required="true"><span><strong>Workflow Re-design Canvas</strong><br>Task별 AI 적합도, 검증 포인트, 책임, Fallback을 포함한 파일럿 후보</span></label></li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch03-bottleneck" data-required="true">
+                <span><strong>우리 팀 성과병목과 점검지표</strong><br><code>저장 파일 · CH03_우리팀_성과병목과_점검지표_성명.md</code><br>표면 증상, 구조적 병목, Root Cause와 30일 점검 지표를 정리한 자료</span>
+              </label>
+            </li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch03-competency" data-required="true">
+                <span><strong>우리 팀에 필요한 행동역량</strong><br><code>저장 파일 · CH03_우리팀_필요행동역량_성명.md</code><br>리더·팀원·팀 공통의 관찰 가능한 행동 기준을 정리한 자료</span>
+              </label>
+            </li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch03-workflow" data-required="true">
+                <span><strong>우리 팀 AI 협업 업무재설계</strong><br><code>저장 파일 · CH03_우리팀_AI협업_업무재설계_성명.md</code><br>Task별 AI 적합도, 검증 포인트, 책임과 Fallback을 포함한 Workflow Re-design 자료</span>
+              </label>
+            </li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch03-integrated" data-required="true">
+                <span><strong>우리 팀 성과구조와 AI 업무재설계 종합본</strong><br><code>저장 파일 · CH03_우리팀_성과구조와_AI업무재설계_종합본_성명.md</code><br>성과병목·점검지표·행동역량·업무재설계 결과를 CH04 업로드용으로 통합한 Markdown</span>
+              </label>
+            </li>
           </ul>
           <label class="field-label" for="c501-location-ch03">파일명·저장 위치 메모</label>
-          <input class="text-input" id="c501-location-ch03" type="text" data-c501-field="locationCh03" placeholder="예: CH03_우리팀_AI협업_업무재설계_성명.md">
+          <input class="text-input" id="c501-location-ch03" type="text" data-c501-field="locationCh03" placeholder="예: 성과향상_with_AI_성명 / CH03 폴더">
         </article>
 
         <article class="artifact-card">
           <div class="artifact-card-head">
-            <div class="artifact-card-title">CH04. 현업 실행</div>
-            <div class="artifact-card-purpose">Action Plan 회수</div>
+            <div class="artifact-card-title">CH04. 팀 성과 창출 및 피드백 실전</div>
+            <div class="artifact-card-purpose">30일 실행계획 3종 회수</div>
           </div>
           <ul class="artifact-check-list">
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch04-map" data-required="true"><span><strong>30일 실행계획 근거 정리표(Source Map)</strong><br>CH02 리더 기준과 CH03 팀 시스템 근거를 연결한 자료</span></label></li>
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch04-top3" data-required="true"><span><strong>30일 핵심 실행과제 TOP 3</strong><br>팀 병목과 실행 우선순위를 세 개 이하로 좁힌 자료</span></label></li>
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch04-plan" data-required="true"><span><strong>우리 팀 성과향상 30일 Action Plan</strong><br>현재 상태, 목표, 주차별 행동, 역할, 지표, 리스크를 포함한 최종 계획</span></label></li>
-            <li><label class="artifact-check"><input type="checkbox" data-c501-artifact="ch04-optional" data-required="false"><span><strong>주간 점검 Gem 또는 팀 공유용 원페이지</strong><span class="optional-label">선택</span><br>Action Plan을 반복 점검하거나 팀과 공유하기 위한 운영 자료</span></label></li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch04-map" data-required="true">
+                <span><strong>30일 실행계획 근거 정리표</strong><br><code>저장 파일 · CH04_30일실행계획_근거정리표_성명.md</code><br>CH02 리더 기준과 CH03 팀 시스템의 근거를 연결한 Source Map</span>
+              </label>
+            </li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch04-top3" data-required="true">
+                <span><strong>우리 팀 30일 핵심 실행과제 TOP 3</strong><br><code>저장 파일 · CH04_우리팀_30일_핵심실행과제_TOP3_성명.md</code><br>팀 병목과 실행 우선순위를 세 개 이하로 좁힌 자료</span>
+              </label>
+            </li>
+            <li>
+              <label class="artifact-check">
+                <input type="checkbox" data-c501-artifact="ch04-plan" data-required="true">
+                <span><strong>우리 팀 성과향상 30일 실행계획</strong><br><code>저장 파일 · CH04_우리팀_성과향상_30일실행계획_성명.md</code><br>현재 상태, 목표, 주차별 행동, 역할, 지표와 리스크를 포함한 최종 계획</span>
+              </label>
+            </li>
           </ul>
           <label class="field-label" for="c501-location-ch04">파일명·저장 위치 메모</label>
-          <input class="text-input" id="c501-location-ch04" type="text" data-c501-field="locationCh04" placeholder="예: CH04_우리팀_성과향상_30일실행계획_성명.md">
+          <input class="text-input" id="c501-location-ch04" type="text" data-c501-field="locationCh04" placeholder="예: 성과향상_with_AI_성명 / CH04 폴더">
         </article>
       </div>
 
@@ -761,45 +806,21 @@
     </div>
   </div>
 
-  <div class="clip-section">
-    <div class="clip-section-title">산출물을 하나의 실행 논리로 연결하기</div>
-    <div class="clip-section-content">
-      <div class="connection-flow" aria-label="산출물 연결 구조">
-        <div class="connection-step"><strong>1. 나의 출발점</strong><span>AI 리터러시와 리더십 스타일</span></div>
-        <div class="connection-step"><strong>2. 리더 책임 기준</strong><span>역할 분담표, 역할 프로필, 핵심 역량</span></div>
-        <div class="connection-step"><strong>3. 팀 성과 구조</strong><span>병목, 효과성 지표, 행동역량, Workflow</span></div>
-        <div class="connection-step"><strong>4. 30일 실행</strong><span>근거 정리표, TOP 3, 30일 실행계획, 주간 점검</span></div>
-      </div>
 
-      <div class="takeaway-grid">
-        <article class="takeaway-card">
-          <div class="takeaway-kicker">TAKEAWAY 1 · LEADER</div>
-          <label class="field-label" for="c501-leader-action">현업에서 내가 직접 책임질 리더 행동 한 가지</label>
-          <textarea class="text-area" id="c501-leader-action" data-c501-field="leaderAction" placeholder="예: 매주 1:1에서 AI가 만든 질문 초안을 검토하고, 팀원의 맥락을 반영해 직접 피드백한다."></textarea>
-        </article>
-        <article class="takeaway-card">
-          <div class="takeaway-kicker">TAKEAWAY 2 · TEAM</div>
-          <label class="field-label" for="c501-team-scene">팀과 함께 바꿀 업무 장면 또는 Workflow 한 가지</label>
-          <textarea class="text-area" id="c501-team-scene" data-c501-field="teamScene" placeholder="예: 주간회의 준비 업무를 Task로 분해하고 AI 초안–인간 검증–리더 승인 흐름으로 재설계한다."></textarea>
-        </article>
-        <article class="takeaway-card">
-          <div class="takeaway-kicker">TAKEAWAY 3 · EVIDENCE</div>
-          <label class="field-label" for="c501-evidence">30일 후 반드시 확인할 변화 또는 증거 한 가지</label>
-          <textarea class="text-area" id="c501-evidence" data-c501-field="evidence" placeholder="예: 회의 준비시간, 재작업 건수, 팀원의 우려 제기 빈도 중 최소 한 지표의 변화를 확인한다."></textarea>
-        </article>
-      </div>
+
 
       <div class="save-panel" aria-live="polite">
         <div class="save-copy">
           <strong>입력 내용은 자동 저장됩니다</strong>
-          <div class="save-message" data-c501-save-message>아직 저장된 내용이 없습니다.</div>
+          <div class="save-message" data-c501-save-message="">아직 저장된 내용이 없습니다.</div>
         </div>
         <div class="action-row">
           <label class="visually-hidden" for="c501-participant-name">성명</label>
           <input class="text-input" id="c501-participant-name" style="width:180px" type="text" data-c501-field="participantName" placeholder="성명 입력">
-          <button class="action-btn" type="button" data-c501-copy>요약 복사</button>
-          <button class="action-btn primary" type="button" data-c501-download>회수표 다운로드</button>
-          <button class="action-btn" type="button" data-c501-reset>입력 초기화</button>
+          <span class="output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH05_현업적용_산출물회수표_성명.md</span>
+          <button class="action-btn" type="button" data-c501-copy="">요약 복사</button>
+          <button class="action-btn primary" type="button" data-c501-download="">회수표 다운로드</button>
+          <button class="action-btn" type="button" data-c501-reset="">입력 초기화</button>
         </div>
       </div>
     </div>
@@ -811,9 +832,9 @@
       <div class="completion-box">
         <div>
           <strong>다음 클립으로 넘어가기 전 확인합니다</strong>
-          필수 산출물 9개를 회수했거나 보완 위치를 파악하고, 현업 적용 초점 3가지를 작성했습니다. 특히 CH04의 30일 실행계획 저장 위치를 알고 있어야 합니다.
+          필수 산출물 10개를 회수했거나 보완 위치를 파악했습니다. 특히 CH04의 30일 실행계획 저장 위치를 알고 있어야 합니다.
         </div>
-        <span class="completion-status" data-c501-ready-status>현업 전환 준비 중</span>
+        <span class="completion-status" data-c501-ready-status="">현업 전환 준비 중</span>
       </div>
     </div>
   </div>
@@ -822,14 +843,11 @@
     <div class="info-block-title">핵심 메시지</div>
     <div>
       과정의 결과는 기억한 개념의 양이 아니라, <strong>현업에서 다시 열어 실행할 수 있는 자료와 행동 기준</strong>으로 남아야 합니다.<br>
-      지금 회수한 산출물과 세 가지 현업 적용 초점은 다음 클립의 <strong>Start / Stop / Continue 개인 실천계획</strong>으로 이어집니다.
+      지금 회수한 산출물은 다음 클립의 <strong>Start / Stop / Continue 개인 실천계획</strong>으로 이어집니다.
     </div>
   </div>
 
-  <div class="clip-nav-footer">
-    <a class="clip-nav-btn" href="#ch04-clip02">← 팀 성과향상 및 피드백 실전</a>
-    <a class="clip-nav-btn" href="#ch05-clip02">Wrap-up 및 마무리 →</a>
-  </div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch04-clip02">← 팀 성과향상 및 피드백 실전</a><a class="clip-nav-btn" href="#ch05-clip02">Wrap-up 및 마무리: Start · Stop · Continue →</a></div>
 
   <!-- 동적 HTML 주입 환경에서도 자동 저장·복원·다운로드 기능을 초기화합니다. -->
   <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(marker){
@@ -840,9 +858,7 @@
     var fields=root.querySelectorAll('[data-c501-field]');
     var artifacts=root.querySelectorAll('[data-c501-artifact]');
     var requiredArtifacts=root.querySelectorAll('[data-c501-artifact][data-required=true]');
-    var optionalArtifacts=root.querySelectorAll('[data-c501-artifact][data-required=false]');
     var summaryEl=root.querySelector('[data-c501-summary]');
-    var takeawaySummaryEl=root.querySelector('[data-c501-takeaway-summary]');
     var progressEl=root.querySelector('[data-c501-progress]');
     var saveMessageEl=root.querySelector('[data-c501-save-message]');
     var readyStatusEl=root.querySelector('[data-c501-ready-status]');
@@ -869,7 +885,7 @@
         var raw=localStorage.getItem(storageKey);
         if(!raw){return null;}
         var parsed=JSON.parse(raw);
-        return parsed&&typeof parsed==='object'?parsed:null;
+        return parsed&amp;&amp;typeof parsed==='object'?parsed:null;
       }catch(error){return null;}
     }
 
@@ -893,16 +909,9 @@
 
     function updateUI(){
       var requiredDone=countChecked(requiredArtifacts);
-      var optionalDone=countChecked(optionalArtifacts);
-      var takeawayKeys=['leaderAction','teamScene','evidence'];
-      var takeawayDone=0;
-      Array.prototype.forEach.call(takeawayKeys,function(key){if(getFieldValue(key)){takeawayDone+=1;}});
-      if(summaryEl){summaryEl.textContent='필수 산출물 회수 '+requiredDone+' / '+requiredArtifacts.length+' · 선택 산출물 '+optionalDone+' / '+optionalArtifacts.length;}
-      if(takeawaySummaryEl){takeawaySummaryEl.textContent='현업 적용 초점 '+takeawayDone+' / 3 작성';}
-      var totalRequired=requiredArtifacts.length+takeawayKeys.length;
-      var totalDone=requiredDone+takeawayDone;
-      if(progressEl){progressEl.style.width=Math.round((totalDone/totalRequired)*100)+'%';}
-      var isReady=requiredDone===requiredArtifacts.length&&takeawayDone===takeawayKeys.length;
+      if(summaryEl){summaryEl.textContent='필수 산출물 회수 '+requiredDone+' / '+requiredArtifacts.length;}
+      if(progressEl){progressEl.style.width=Math.round((requiredDone/requiredArtifacts.length)*100)+'%';}
+      var isReady=requiredDone===requiredArtifacts.length;
       if(readyStatusEl){
         readyStatusEl.textContent=isReady?'현업 전환 준비 완료':'현업 전환 준비 중';
         readyStatusEl.classList.toggle('is-ready',isReady);
@@ -962,12 +971,7 @@
       lines.push('- CH03: '+(getFieldValue('locationCh03')||'미입력'));
       lines.push('- CH04: '+(getFieldValue('locationCh04')||'미입력'));
       lines.push('');
-      lines.push('## 2. 현업으로 가져갈 세 가지');
-      lines.push('1. 내가 직접 책임질 리더 행동: '+(getFieldValue('leaderAction')||'미입력'));
-      lines.push('2. 팀과 함께 바꿀 업무 장면·Workflow: '+(getFieldValue('teamScene')||'미입력'));
-      lines.push('3. 30일 후 확인할 변화·증거: '+(getFieldValue('evidence')||'미입력'));
-      lines.push('');
-      lines.push('> 핵심 질문: 무엇을 배웠는가가 아니라, 현업에 무엇을 가져갈 것인가?');
+      lines.push('&gt; 핵심 질문: 무엇을 배웠는가가 아니라, 현업에 무엇을 가져갈 것인가?');
       return lines.join('\n');
     }
 
@@ -980,7 +984,7 @@
       var link=document.createElement('a');
       var objectUrl='';
       link.download=fileName;
-      if(window.URL&&typeof URL.createObjectURL==='function'){
+      if(window.URL&amp;&amp;typeof URL.createObjectURL==='function'){
         var blob=new Blob([text],{type:mime});
         objectUrl=URL.createObjectURL(blob);
         link.href=objectUrl;
@@ -990,11 +994,11 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      if(objectUrl&&window.URL&&typeof URL.revokeObjectURL==='function'){window.setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);}
+      if(objectUrl&amp;&amp;window.URL&amp;&amp;typeof URL.revokeObjectURL==='function'){window.setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);}
     }
 
-    root.addEventListener('input',function(event){if(event.target&&event.target.matches('[data-c501-field]')){save();}});
-    root.addEventListener('change',function(event){if(event.target&&event.target.matches('[data-c501-artifact]')){save();}});
+    root.addEventListener('input',function(event){if(event.target&amp;&amp;event.target.matches('[data-c501-field]')){save();}});
+    root.addEventListener('change',function(event){if(event.target&amp;&amp;event.target.matches('[data-c501-artifact]')){save();}});
 
     if(downloadBtn){downloadBtn.addEventListener('click',function(){
       save();
@@ -1006,7 +1010,7 @@
     if(copyBtn){copyBtn.addEventListener('click',function(){
       var text=buildMarkdown();
       var done=function(){copyBtn.textContent='복사 완료';window.setTimeout(function(){copyBtn.textContent='요약 복사';},1400);};
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){window.prompt('아래 내용을 복사하세요.',text);});}
+      if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){window.prompt('아래 내용을 복사하세요.',text);});}
       else{window.prompt('아래 내용을 복사하세요.',text);}
     });}
 

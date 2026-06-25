@@ -440,6 +440,25 @@
       }
     }
 
+
+
+  /* 주요 산출물 저장 파일명 배지 */
+  .ch03-clip01-revised .prompt-header:has(.output-file-badge) {
+    flex-wrap: wrap;
+  }
+
+  .ch03-clip01-revised .prompt-header:has(.output-file-badge) .prompt-label {
+    flex: 1 1 360px;
+  }
+
+  .ch03-clip01-revised .output-file-badge {
+    flex: 0 1 auto;
+    margin-left: auto;
+    max-width: min(520px, calc(100% - 84px));
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
 </style>
   <div class="clip-header">
     <div class="clip-badges">
@@ -834,6 +853,7 @@
       <div class="prompt-block">
         <div class="prompt-header">
           <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 2-2. 최종 효과성 지표 도출 요청</span>
+          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_성과병목과_점검지표_성명.md</span>
           <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-2-2')">복사</button>
         </div>
         <div class="prompt-content" id="ch03-dialogue-2-2">이제 지금까지 대화한 내용을 바탕으로, 우리 팀의 최종 효과성 지표를 정리해 주세요.
@@ -958,6 +978,7 @@ CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다
       <div class="prompt-block">
         <div class="prompt-header">
           <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 3-2. 최종 행동역량 프로파일 요청</span>
+          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_필요행동역량_성명.md</span>
           <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-3-2')">복사</button>
         </div>
         <div class="prompt-content" id="ch03-dialogue-3-2">이제 지금까지 대화한 내용을 바탕으로, AI 시대 성과향상에 필요한 우리 조직(팀)/인재 행동역량 프로파일을 최종 정리해 주세요.
@@ -1155,6 +1176,7 @@ AI 강점 관점에서 “발견 / 신뢰 / 부적합” 중 어디에 해당하
       <div class="prompt-block">
         <div class="prompt-header">
           <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 4-5. Workflow Re-design Canvas 완성</span>
+          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_AI협업_업무재설계_성명.md</span>
           <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-4-5')">복사</button>
         </div>
         <div class="prompt-content" id="ch03-dialogue-4-5">지금까지 대화한 Divide, Navigate, Arrange 결과를 바탕으로 최종 Workflow Re-design Canvas를 작성해 주세요.
@@ -1262,29 +1284,29 @@ AI 강점 관점에서 “발견 / 신뢰 / 부적합” 중 어디에 해당하
   </div>
 
 
-    <div class="gate-status-panel" data-gate-status-panel>
+    <div class="gate-status-panel" data-gate-status-panel="">
       <div class="gate-status-panel-title">Gate 1~4 내 상태 저장 현황</div>
       <div class="gate-status-summary" aria-live="polite">
         <div class="gate-status-summary-card">
           <span class="gate-status-summary-label">완료</span>
-          <span class="gate-status-summary-value" data-gate-complete-count>0 / 9</span>
+          <span class="gate-status-summary-value" data-gate-complete-count="">0 / 9</span>
         </div>
         <div class="gate-status-summary-card">
           <span class="gate-status-summary-label">보완 필요</span>
-          <span class="gate-status-summary-value" data-gate-needs-count>0 / 9</span>
+          <span class="gate-status-summary-value" data-gate-needs-count="">0 / 9</span>
         </div>
         <div class="gate-status-summary-card">
           <span class="gate-status-summary-label">미선택</span>
-          <span class="gate-status-summary-value" data-gate-empty-count>9 / 9</span>
+          <span class="gate-status-summary-value" data-gate-empty-count="">9 / 9</span>
         </div>
       </div>
       <div class="gate-status-meta">
-        <span data-gate-status-guide>Gate별 확인 항목의 완료 또는 보완 필요 상태를 선택하세요.</span>
-        <span data-gate-saved-at>마지막 저장: 저장 전</span>
+        <span data-gate-status-guide="">Gate별 확인 항목의 완료 또는 보완 필요 상태를 선택하세요.</span>
+        <span data-gate-saved-at="">마지막 저장: 저장 전</span>
       </div>
       <div class="gate-status-actions">
-        <button type="button" class="gate-status-btn primary" data-gate-save>Gate 상태 저장</button>
-        <button type="button" class="gate-status-btn" data-gate-reset>상태 초기화</button>
+        <button type="button" class="gate-status-btn primary" data-gate-save="">Gate 상태 저장</button>
+        <button type="button" class="gate-status-btn" data-gate-reset="">상태 초기화</button>
       </div>
     </div>
 
@@ -1354,6 +1376,7 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
       <div class="prompt-block">
         <div class="prompt-header">
           <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 권장 저장. CH03 우리 팀 성과구조·AI 업무재설계 종합본</span>
+          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_성과구조와_AI업무재설계_종합본_성명.md</span>
           <button class="copy-btn" onclick="copyPrompt(this,'ch03-integrated-markdown')">복사</button>
         </div>
         <div class="prompt-content" id="ch03-integrated-markdown">지금까지 완성한 CH03 결과를 CH04 NotebookLM에 업로드할 수 있는 하나의 종합 Markdown으로 정리해 주세요.
@@ -1460,7 +1483,7 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
     </div>
   </div>
 
-  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip04">← 프롬프팅 활용: 리더의 핵심 역량 및 스킬</a><a class="clip-nav-btn" href="#ch03-clip02">참고_ChatGPT 및 GPTs 소개 →</a></div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip04">← 프롬프팅 활용: 리더의 핵심 역량 및 스킬</a><a class="clip-nav-btn" href="#ch04-clip01">NotebookLM 소개 및 접속 방법 →</a></div>
 
   <script>
     (function () {

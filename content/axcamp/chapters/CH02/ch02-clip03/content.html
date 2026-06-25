@@ -473,6 +473,25 @@
       white-space: nowrap;
       vertical-align: middle;
     }
+
+
+  /* 주요 산출물 저장 파일명 배지 */
+  .ch02-clip03-revised .prompt-header:has(.output-file-badge) {
+    flex-wrap: wrap;
+  }
+
+  .ch02-clip03-revised .prompt-header:has(.output-file-badge) .prompt-label {
+    flex: 1 1 360px;
+  }
+
+  .ch02-clip03-revised .output-file-badge {
+    flex: 0 1 auto;
+    margin-left: auto;
+    max-width: min(520px, calc(100% - 84px));
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
 </style>
 
 <div class="clip-header">
@@ -808,6 +827,7 @@ AI 시대에도 팀장인 내가 직접 책임져야 할 역할과 판단 기준
     <div class="prompt-block">
       <div class="prompt-header">
         <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 4-2. Markdown 코드블록 저장 요청</span>
+        <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH02_나의_AI시대_리더역할_성명.md</span>
         <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step4-2')">복사</button>
       </div>
       <div class="prompt-content" id="ch02-3-step4-2">방금 정리한 “초인공 AI 시대, 나의 팀 리더 역할 프로필”을 다시 한 번 정돈해서 출력해 주세요.
@@ -930,11 +950,11 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
               <fieldset class="completion-state-group" data-completion-item="dialogue-start">
                 <legend class="visually-hidden">대화 시작 상태</legend>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-dialogue-start-done" name="ch02c03-dialogue-start" value="done" data-completion-status>
+                  <input type="radio" id="ch02c03-dialogue-start-done" name="ch02c03-dialogue-start" value="done" data-completion-status="">
                   <label for="ch02c03-dialogue-start-done">완료</label>
                 </span>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-dialogue-start-review" name="ch02c03-dialogue-start" value="needs-review" data-completion-status>
+                  <input type="radio" id="ch02c03-dialogue-start-review" name="ch02c03-dialogue-start" value="needs-review" data-completion-status="">
                   <label for="ch02c03-dialogue-start-review">보완 필요</label>
                 </span>
               </fieldset>
@@ -947,11 +967,11 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
               <fieldset class="completion-state-group" data-completion-item="role-deepening">
                 <legend class="visually-hidden">리더 역할 심화 상태</legend>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-role-deepening-done" name="ch02c03-role-deepening" value="done" data-completion-status>
+                  <input type="radio" id="ch02c03-role-deepening-done" name="ch02c03-role-deepening" value="done" data-completion-status="">
                   <label for="ch02c03-role-deepening-done">완료</label>
                 </span>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-role-deepening-review" name="ch02c03-role-deepening" value="needs-review" data-completion-status>
+                  <input type="radio" id="ch02c03-role-deepening-review" name="ch02c03-role-deepening" value="needs-review" data-completion-status="">
                   <label for="ch02c03-role-deepening-review">보완 필요</label>
                 </span>
               </fieldset>
@@ -964,11 +984,11 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
               <fieldset class="completion-state-group" data-completion-item="role-boundary-table">
                 <legend class="visually-hidden">AI와 리더 역할 분담표 상태</legend>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-role-boundary-table-done" name="ch02c03-role-boundary-table" value="done" data-completion-status>
+                  <input type="radio" id="ch02c03-role-boundary-table-done" name="ch02c03-role-boundary-table" value="done" data-completion-status="">
                   <label for="ch02c03-role-boundary-table-done">완료</label>
                 </span>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-role-boundary-table-review" name="ch02c03-role-boundary-table" value="needs-review" data-completion-status>
+                  <input type="radio" id="ch02c03-role-boundary-table-review" name="ch02c03-role-boundary-table" value="needs-review" data-completion-status="">
                   <label for="ch02c03-role-boundary-table-review">보완 필요</label>
                 </span>
               </fieldset>
@@ -981,11 +1001,11 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
               <fieldset class="completion-state-group" data-completion-item="markdown-profile">
                 <legend class="visually-hidden">리더 역할 프로필 Markdown 상태</legend>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-markdown-profile-done" name="ch02c03-markdown-profile" value="done" data-completion-status>
+                  <input type="radio" id="ch02c03-markdown-profile-done" name="ch02c03-markdown-profile" value="done" data-completion-status="">
                   <label for="ch02c03-markdown-profile-done">완료</label>
                 </span>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-markdown-profile-review" name="ch02c03-markdown-profile" value="needs-review" data-completion-status>
+                  <input type="radio" id="ch02c03-markdown-profile-review" name="ch02c03-markdown-profile" value="needs-review" data-completion-status="">
                   <label for="ch02c03-markdown-profile-review">보완 필요</label>
                 </span>
               </fieldset>
@@ -998,11 +1018,11 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
               <fieldset class="completion-state-group" data-completion-item="safety-and-transfer">
                 <legend class="visually-hidden">민감정보·후속 활용 점검 상태</legend>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-safety-and-transfer-done" name="ch02c03-safety-and-transfer" value="done" data-completion-status>
+                  <input type="radio" id="ch02c03-safety-and-transfer-done" name="ch02c03-safety-and-transfer" value="done" data-completion-status="">
                   <label for="ch02c03-safety-and-transfer-done">완료</label>
                 </span>
                 <span class="completion-state-option">
-                  <input type="radio" id="ch02c03-safety-and-transfer-review" name="ch02c03-safety-and-transfer" value="needs-review" data-completion-status>
+                  <input type="radio" id="ch02c03-safety-and-transfer-review" name="ch02c03-safety-and-transfer" value="needs-review" data-completion-status="">
                   <label for="ch02c03-safety-and-transfer-review">보완 필요</label>
                 </span>
               </fieldset>
@@ -1018,9 +1038,9 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
         <span>현재 브라우저의 로그인 계정을 기준으로 저장되며, 다시 접속하면 선택 상태를 불러옵니다. 선택 활동은 완료 기준에 포함하지 않습니다.</span>
       </div>
       <div class="completion-save-actions">
-        <span class="completion-summary" data-completion-summary>완료 0 / 5 · 보완 필요 0 / 5</span>
-        <span class="completion-save-message" data-completion-save-message role="status" aria-live="polite">아직 저장된 상태가 없습니다.</span>
-        <button type="button" class="completion-reset-btn" data-completion-reset>상태 초기화</button>
+        <span class="completion-summary" data-completion-summary="">완료 0 / 5 · 보완 필요 0 / 5</span>
+        <span class="completion-save-message" data-completion-save-message="" role="status" aria-live="polite">아직 저장된 상태가 없습니다.</span>
+        <button type="button" class="completion-reset-btn" data-completion-reset="">상태 초기화</button>
       </div>
     </div>
 
@@ -1057,7 +1077,7 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
           var raw=localStorage.getItem(storageKey);
           if(!raw){return null;}
           var parsed=JSON.parse(raw);
-          return parsed&&typeof parsed==='object'?parsed:null;
+          return parsed&amp;&amp;typeof parsed==='object'?parsed:null;
         }catch(error){
           return null;
         }
@@ -1069,7 +1089,7 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
           var group=groups[i];
           var key=group.getAttribute('data-completion-item');
           var checked=group.querySelector('[data-completion-status]:checked');
-          if(key&&checked){items[key]=checked.value;}
+          if(key&amp;&amp;checked){items[key]=checked.value;}
         }
         return items;
       }
@@ -1094,7 +1114,7 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
 
       function restoreState(){
         var saved=readState();
-        var items=saved&&saved.items?saved.items:{};
+        var items=saved&amp;&amp;saved.items?saved.items:{};
         var keys=Object.keys(items);
         for(var i=0;i&lt;keys.length;i+=1){
           var key=keys[i];
@@ -1108,7 +1128,7 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
         }
         updateSummary(items);
         if(messageEl){
-          if(saved&&saved.updatedAt){
+          if(saved&amp;&amp;saved.updatedAt){
             messageEl.textContent='저장된 상태 불러옴 · '+formatSavedTime(saved.updatedAt);
           }else{
             messageEl.textContent='아직 저장된 상태가 없습니다.';
@@ -1130,7 +1150,7 @@ Gemini의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있는
       }
 
       section.addEventListener('change',function(event){
-        if(event.target&&event.target.matches('[data-completion-status]')){saveState();}
+        if(event.target&amp;&amp;event.target.matches('[data-completion-status]')){saveState();}
       });
 
       if(resetBtn){

@@ -8,7 +8,7 @@ exported_at: "2026-02-28T01:54:29.602Z"
 
 ~15분
 CH 05
-회수 · 연결
+개요
 
 # 오늘의 핵심 정리: 배움에서 현업 자산으로
 
@@ -84,9 +84,7 @@ NotebookLM에서 근거를 연결하고 핵심 실행과제 TOP 3와 30일 Actio
 
 체크박스를 선택하고 파일명 또는 저장 위치를 적습니다. 파일이 없으면 체크하지 말고, 보완이 필요한 위치를 메모합니다. 선택 내용은 현재 브라우저와 로그인 계정 기준으로 자동 저장됩니다.
 
-필수 산출물 회수 0 / 8 · 선택 산출물 0 / 1
-
-현업 적용 초점 0 / 3 작성
+필수 산출물 회수 0 / 10
 
 CH01. 나의 출발점
 
@@ -99,48 +97,75 @@ CH01. 나의 출발점
 
 파일명·스크린샷·저장 위치 메모
 
-CH02. 리더 기준
+CH02. 리더 역할 및 역량 점검
 
-역할·역량 회수
+역할·역량 2종 회수
 
-- **AI와 리더 역할 분담표 + 리더 역할 프로필**
-AI에게 맡길 일과 리더가 직접 책임질 일을 구분한 기준
+-
 
-- **리더 핵심 역량·성과관리 실행 브리프**
-핵심 역량·스킬과 30일 리더 행동 후보를 정리한 Markdown
+**나의 AI 시대 리더 역할**
+`저장 파일 · CH02_나의_AI시대_리더역할_성명.md`
+AI와 리더의 역할 경계, 리더 역할 정의와 책임 기준을 정리한 Markdown
 
-파일명·저장 위치 메모
+-
 
-CH03. 팀 시스템
-
-진단·재설계 회수
-
-- **팀 성과 병목 진단 리포트와 효과성 지표**
-표면 증상, 구조적 병목, Root Cause, 30일 점검 지표
-
-- **조직·인재 행동역량 프로파일**
-리더·팀원·팀 공통의 관찰 가능한 행동 기준
-
-- **Workflow Re-design Canvas**
-Task별 AI 적합도, 검증 포인트, 책임, Fallback을 포함한 파일럿 후보
+**나의 핵심역량과 성과관리 실행안**
+`저장 파일 · CH02_나의_핵심역량과_성과관리실행안_성명.md`
+리더 핵심 역량·스킬, AI와 리더의 역할 분담, 30일 리더 행동 후보를 정리한 Markdown
 
 파일명·저장 위치 메모
 
-CH04. 현업 실행
+CH03. 조직(팀) 역량 및 Workflow 점검
 
-Action Plan 회수
+진단·재설계 4종 회수
 
-- **30일 실행계획 근거 정리표(Source Map)**
-CH02 리더 기준과 CH03 팀 시스템 근거를 연결한 자료
+-
 
-- **30일 핵심 실행과제 TOP 3**
+**우리 팀 성과병목과 점검지표**
+`저장 파일 · CH03_우리팀_성과병목과_점검지표_성명.md`
+표면 증상, 구조적 병목, Root Cause와 30일 점검 지표를 정리한 자료
+
+-
+
+**우리 팀에 필요한 행동역량**
+`저장 파일 · CH03_우리팀_필요행동역량_성명.md`
+리더·팀원·팀 공통의 관찰 가능한 행동 기준을 정리한 자료
+
+-
+
+**우리 팀 AI 협업 업무재설계**
+`저장 파일 · CH03_우리팀_AI협업_업무재설계_성명.md`
+Task별 AI 적합도, 검증 포인트, 책임과 Fallback을 포함한 Workflow Re-design 자료
+
+-
+
+**우리 팀 성과구조와 AI 업무재설계 종합본**
+`저장 파일 · CH03_우리팀_성과구조와_AI업무재설계_종합본_성명.md`
+성과병목·점검지표·행동역량·업무재설계 결과를 CH04 업로드용으로 통합한 Markdown
+
+파일명·저장 위치 메모
+
+CH04. 팀 성과 창출 및 피드백 실전
+
+30일 실행계획 3종 회수
+
+-
+
+**30일 실행계획 근거 정리표**
+`저장 파일 · CH04_30일실행계획_근거정리표_성명.md`
+CH02 리더 기준과 CH03 팀 시스템의 근거를 연결한 Source Map
+
+-
+
+**우리 팀 30일 핵심 실행과제 TOP 3**
+`저장 파일 · CH04_우리팀_30일_핵심실행과제_TOP3_성명.md`
 팀 병목과 실행 우선순위를 세 개 이하로 좁힌 자료
 
-- **우리 팀 성과향상 30일 Action Plan**
-현재 상태, 목표, 주차별 행동, 역할, 지표, 리스크를 포함한 최종 계획
+-
 
-- **주간 점검 Gem 또는 팀 공유용 원페이지**선택
-Action Plan을 반복 점검하거나 팀과 공유하기 위한 운영 자료
+**우리 팀 성과향상 30일 실행계획**
+`저장 파일 · CH04_우리팀_성과향상_30일실행계획_성명.md`
+현재 상태, 목표, 주차별 행동, 역할, 지표와 리스크를 포함한 최종 계획
 
 파일명·저장 위치 메모
 
@@ -148,33 +173,12 @@ Action Plan을 반복 점검하거나 팀과 공유하기 위한 운영 자료
 
 새로 만들기보다 먼저 기존 Gemini 대화, NotebookLM Note, 다운로드 폴더, 개인 메모를 확인합니다. 찾지 못한 자료는 파일 위치 메모란에 **“보완 필요”**라고 적고, 현업 적용에 반드시 필요한 **CH04 30일 실행계획**부터 우선 회수합니다.
 
-## 산출물을 하나의 실행 논리로 연결하기
-
-**1. 나의 출발점**AI 리터러시와 리더십 스타일
-
-**2. 리더 책임 기준**역할 분담표, 역할 프로필, 핵심 역량
-
-**3. 팀 성과 구조**병목, 효과성 지표, 행동역량, Workflow
-
-**4. 30일 실행**근거 정리표, TOP 3, 30일 실행계획, 주간 점검
-
-TAKEAWAY 1 · LEADER
-
-현업에서 내가 직접 책임질 리더 행동 한 가지
-
-TAKEAWAY 2 · TEAM
-
-팀과 함께 바꿀 업무 장면 또는 Workflow 한 가지
-
-TAKEAWAY 3 · EVIDENCE
-
-30일 후 반드시 확인할 변화 또는 증거 한 가지
-
 **입력 내용은 자동 저장됩니다**
 아직 저장된 내용이 없습니다.
 
 성명
 
+저장 파일 · CH05_현업적용_산출물회수표_성명.md
 요약 복사
 회수표 다운로드
 입력 초기화
@@ -182,7 +186,7 @@ TAKEAWAY 3 · EVIDENCE
 ## 이번 클립의 완료 기준
 
 **다음 클립으로 넘어가기 전 확인합니다**
-필수 산출물 9개를 회수했거나 보완 위치를 파악하고, 현업 적용 초점 3가지를 작성했습니다. 특히 CH04의 30일 실행계획 저장 위치를 알고 있어야 합니다.
+필수 산출물 10개를 회수했거나 보완 위치를 파악했습니다. 특히 CH04의 30일 실행계획 저장 위치를 알고 있어야 합니다.
 
 현업 전환 준비 중
 
@@ -190,61 +194,6 @@ TAKEAWAY 3 · EVIDENCE
 
 과정의 결과는 기억한 개념의 양이 아니라, **현업에서 다시 열어 실행할 수 있는 자료와 행동 기준**으로 남아야 합니다.
 
-지금 회수한 산출물과 세 가지 현업 적용 초점은 다음 클립의 **Start / Stop / Continue 개인 실천계획**으로 이어집니다.
+지금 회수한 산출물은 다음 클립의 **Start / Stop / Continue 개인 실천계획**으로 이어집니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-
-핵심 질문: 무엇을 배웠는가가 아니라, 현업에 무엇을 가져갈 것인가?');
-return lines.join('\n');
-}
-
-function safeFileName(value){
-return String(value||'성명미입력').trim().replace(/[\\/:*?\x22|\s]+/g,'_').replace(/[\u003C\u003E]/g,'_').replace(/^_+|_+$/g,'')||'성명미입력';
-}
-
-function downloadText(text,fileName,type){
-var mime=type||'text/plain;charset=utf-8';
-var link=document.createElement('a');
-var objectUrl='';
-link.download=fileName;
-if(window.URL&&typeof URL.createObjectURL==='function'){
-var blob=new Blob([text],{type:mime});
-objectUrl=URL.createObjectURL(blob);
-link.href=objectUrl;
-}else{
-link.href='data:'+mime+','+encodeURIComponent(text);
-}
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
-if(objectUrl&&window.URL&&typeof URL.revokeObjectURL==='function'){window.setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);}
-}
-
-root.addEventListener('input',function(event){if(event.target&&event.target.matches('[data-c501-field]')){save();}});
-root.addEventListener('change',function(event){if(event.target&&event.target.matches('[data-c501-artifact]')){save();}});
-
-if(downloadBtn){downloadBtn.addEventListener('click',function(){
-save();
-var name=safeFileName(getFieldValue('participantName'));
-downloadText(buildMarkdown(),'CH05_현업적용_산출물회수표_'+name+'.md','text/markdown;charset=utf-8');
-if(saveMessageEl){saveMessageEl.textContent='회수표 다운로드 완료 · '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});}
-});}
-
-if(copyBtn){copyBtn.addEventListener('click',function(){
-var text=buildMarkdown();
-var done=function(){copyBtn.textContent='복사 완료';window.setTimeout(function(){copyBtn.textContent='요약 복사';},1400);};
-if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){window.prompt('아래 내용을 복사하세요.',text);});}
-else{window.prompt('아래 내용을 복사하세요.',text);}
-});}
-
-if(resetBtn){resetBtn.addEventListener('click',function(){
-if(!window.confirm('CH05-clip01에 저장된 체크와 입력 내용을 모두 초기화하시겠습니까?')){return;}
-Array.prototype.forEach.call(fields,function(field){field.value='';});
-Array.prototype.forEach.call(artifacts,function(item){item.checked=false;});
-try{localStorage.removeItem(storageKey);}catch(ignore){}
-if(saveMessageEl){saveMessageEl.textContent='저장된 내용을 초기화했습니다.';}
-updateUI();
-});}
-
-restore();
-})(this);">
