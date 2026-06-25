@@ -2912,6 +2912,7 @@ function buildWebStylePromptSlide(entry, index) {
 
 
 const SLIDE_DECK_BUILDERS = {
+  "tiro-guide-deck": buildTiroGuideDeck,
   "agentic-physical-ecosystem": buildAgenticPhysicalEcosystemDeck,
   "industry-landscape": buildIndustryLandscapeDeck,
   "assistant-agentic-spectrum": buildAssistantAgenticSpectrumDeck,
@@ -3434,6 +3435,55 @@ function buildPromptContextWorkflowDeck() {
         title: "AI 성과를 결정짓는 3단계 진화 전략",
         imageSrc: imagePath,
         imageAlt: "프롬프트 엔지니어링에서 컨텍스트 기반 워크플로우로 진화하는 AI 성과 창출 전략의 3단계를 설명하는 인포그래픽"
+      }
+    ]
+  };
+}
+
+function buildTiroGuideDeck() {
+  const basePath = withBase("/course-files/AXCAMP/ch02-clip02");
+
+  return {
+    id: "tiro-guide-deck",
+    kicker: "Tiro Guide",
+    title: "Tiro 설치 및 녹음 파일 저장 방법",
+    subtitle: "Tiro 사용법 가이드",
+    slides: [
+      {
+        eyebrow: "01 앱 다운로드",
+        title: "Tiro 설치 및 다운로드",
+        imageSrc: `${basePath}/01_app_download.png`,
+        imageAlt: "스마트폰 앱스토어에서 Tiro를 검색하거나 Tiro 설치 페이지(https://tiro.ooo/ko/download/app)를 통해 앱을 다운로드합니다. 설치가 완료되면 앱을 실행합니다."
+      },
+      {
+        eyebrow: "02 가입 단계",
+        title: "Tiro 회원가입 및 로그인",
+        imageSrc: `${basePath}/02_sign_up.png`,
+        imageAlt: "앱 실행 후 회원가입 또는 로그인을 진행합니다. 교육 현장에서 바로 사용할 수 있도록 접근 가능한 계정으로 가입해 주세요."
+      },
+      {
+        eyebrow: "03 가입 상세",
+        title: "기본 정보 입력 및 마이크 권한",
+        imageSrc: `${basePath}/03_sign_up_detail.png`,
+        imageAlt: "화면 안내에 따라 기본 정보를 입력하고 가입 절차를 완료합니다. 마이크 권한 요청이 나타나면 녹음을 위해 허용해 주세요."
+      },
+      {
+        eyebrow: "04 사전 설정 1",
+        title: "기본 설정 및 마이크 위치",
+        imageSrc: `${basePath}/04_pre_settings.png`,
+        imageAlt: "녹음 전에 앱의 기본 설정을 확인합니다. 녹음 중인 스마트폰 또는 외장 마이크를 학습팀 중앙에 놓고 진행하는 것을 권장합니다."
+      },
+      {
+        eyebrow: "05 사전 설정 2",
+        title: "녹음 품질 및 기록 시작/종료",
+        imageSrc: `${basePath}/05_pre_settings_detail.png`,
+        imageAlt: "녹음 품질과 저장 설정을 확인합니다. 토론이 시작되면 녹음 버튼을 누르고, 토론이 끝나면 반드시 녹음을 종료해 주세요."
+      },
+      {
+        eyebrow: "06 파일 저장",
+        title: "오디오 파일 다운로드 및 공유방 업로드",
+        imageSrc: `${basePath}/06_save_file.png`,
+        imageAlt: "녹음이 완료되면 오디오 파일을 저장하거나 다운로드합니다. 저장한 파일은 위의 학습팀별 오디오 자료 공유방에 업로드해 주세요."
       }
     ]
   };
