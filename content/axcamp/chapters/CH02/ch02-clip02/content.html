@@ -860,7 +860,7 @@
     }
   }
 
-  // GitHub 리포지토리에 실시간 파일 업로드 (메타데이터 포함)
+  // GitHub 리포지토리에 실시간 파일 업로드 (메타데이터 포함, 덮어쓰기 대응)
   async function githubUploadAudio(fileName, contentBase64, sizeBytes, sizeLabel) {
     try {
       if (!GITHUB_TOKEN) {
@@ -877,6 +877,31 @@
       // 한글 지원을 위한 base64 인코딩 처리
       const metaBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(metaObj))));
 
+      // 0. 기존에 동일한 파일이 존재하는지 확인하여 sha 값 획득 (덮어쓰기 에러 방지)
+      let existingSha = null;
+      let existingMetaSha = null;
+      try {
+        const checkUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${encodeURIComponent(fileName)}?ref=${BRANCH}`;
+        const checkRes = await fetch(checkUrl, { headers: getGithubHeaders() });
+        if (checkRes.ok) {
+          const checkData = await checkRes.json();
+          existingSha = checkData.sha;
+        }
+      } catch (e) {
+        console.warn('기존 파일 확인 건너뜀:', e);
+      }
+
+      try {
+        const checkMetaUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${encodeURIComponent(fileName)}.meta.json?ref=${BRANCH}`;
+        const checkMetaRes = await fetch(checkMetaUrl, { headers: getGithubHeaders() });
+        if (checkMetaRes.ok) {
+          const checkMetaData = await checkMetaRes.json();
+          existingMetaSha = checkMetaData.sha;
+        }
+      } catch (e) {
+        console.warn('기존 메타데이터 확인 건너뜀:', e);
+      }
+
       // 1. 오디오 본체 업로드
       const audioUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${encodeURIComponent(fileName)}`;
       const audioBody = {
@@ -884,6 +909,9 @@
         content: contentBase64,
         branch: BRANCH
       };
+      if (existingSha) {
+        audioBody.sha = existingSha; // 기존 파일이 있을 때만 sha 지정
+      }
 
       const audioRes = await fetch(audioUrl, {
         method: 'PUT',
@@ -903,6 +931,9 @@
         content: metaBase64,
         branch: BRANCH
       };
+      if (existingMetaSha) {
+        metaBody.sha = existingMetaSha; // 기존 메타데이터가 있을 때만 sha 지정
+      }
 
       await fetch(metaUrl, {
         method: 'PUT',
