@@ -780,65 +780,84 @@
   const isStaticHosting = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
 
   // =================================================================
-  // [Supabase 설정 정보]
-  // 깃허브 배포 사이트에서 실시간 파일 공유를 위해 아래 두 값을 본인의 Supabase 정보로 변경해 주세요.
-  // 스토리지에 'shared-audio' 버킷을 생성하고 'Public'으로 설정해야 합니다.
+  // [GitHub API 설정 정보]
+  // 깃허브 배포 사이트에서 실시간 파일 공유를 위해 아래 값을 본인의 GitHub 정보로 설정해 주세요.
+  // GITHUB_TOKEN은 보안을 위해 최소 권한(Fine-grained PAT)으로 발급하는 것을 권장합니다.
   // =================================================================
-  const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-  const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-  const BUCKET_NAME = 'shared-audio';
-  let supabaseClient = null;
+  const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN';
+  const REPO_OWNER = 'dollmao5';
+  const REPO_NAME = 'Lets_AX_EXE';
+  const BRANCH = 'main';
+  const FOLDER_PATH = 'content/axcamp/chapters/CH02/ch02-clip02/shared-audios';
 
-  // Supabase CDN 라이브러리 동적 로드 헬퍼
-  function loadSupabaseSdk() {
-    return new Promise((resolve, reject) => {
-      if (window.supabase) return resolve(window.supabase);
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-      script.onload = () => resolve(window.supabase);
-      script.onerror = () => reject(new Error('Supabase SDK 로드 실패'));
-      document.head.appendChild(script);
-    });
+  function getGithubHeaders() {
+    return {
+      'Authorization': 'token ' + GITHUB_TOKEN,
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    };
   }
 
-  async function getSupabase() {
-    if (supabaseClient) return supabaseClient;
-    const supabaseLib = await loadSupabaseSdk();
-    if (SUPABASE_URL === 'YOUR_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
-      throw new Error('Supabase URL 및 API Key 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
-    }
-    supabaseClient = supabaseLib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    return supabaseClient;
-  }
-
-  // Supabase 실시간 파일 목록 가져오기
-  async function supabaseLoadAudioList(clipKey) {
+  // GitHub 리포지토리에서 실시간 파일 목록 가져오기
+  async function githubLoadAudioList() {
     try {
-      const supabase = await getSupabase();
-      
-      // 버킷 내 clipKey(폴더) 하위 파일 목록 조회
-      const { data: files, error } = await supabase.storage
-        .from(BUCKET_NAME)
-        .list(clipKey);
+      if (GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN') {
+        throw new Error('GitHub 토큰 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
+      }
 
-      if (error) throw error;
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}`;
+      const res = await fetch(url, { headers: getGithubHeaders() });
+      if (res.status === 404) {
+        return { ok: true, audios: [] }; // 폴더가 아직 없는 경우 빈 목록 반환
+      }
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error('목록 조회 실패: ' + errText);
+      }
+
+      const files = await res.json();
+      const audioFiles = [];
+      const metaFiles = {};
+
+      // 오디오 파일과 메타데이터 파일 분리 및 매핑 준비
+      files.forEach(file => {
+        if (file.name.endsWith('.meta.json')) {
+          metaFiles[file.name] = file;
+        } else if (file.name !== '.gitkeep') {
+          audioFiles.push(file);
+        }
+      });
 
       const audios = [];
-      for (let i = 0; i < (files || []).length; i++) {
-        const file = files[i];
-        if (file.name === '.emptyFolderPlaceholder') continue;
+      for (let i = 0; i < audioFiles.length; i++) {
+        const file = audioFiles[i];
+        const metaFileName = file.name + '.meta.json';
+        let metaData = {
+          uploadedBy: '학습팀원',
+          uploadedAt: new Date().toISOString(),
+          sizeLabel: formatSize(file.size || 0)
+        };
 
-        // 다운로드용 Public URL 획득
-        const { data: urlData } = supabase.storage
-          .from(BUCKET_NAME)
-          .getPublicUrl(`${clipKey}/${file.name}`);
+        // 메타데이터가 서버에 존재하면 가져와서 파싱
+        if (metaFiles[metaFileName]) {
+          try {
+            const metaRes = await fetch(metaFiles[metaFileName].download_url);
+            if (metaRes.ok) {
+              metaData = await metaRes.json();
+            }
+          } catch (e) {
+            console.warn('메타데이터 파싱 실패:', e);
+          }
+        }
 
         audios.push({
           fileName: file.name,
-          sizeLabel: formatSize(file.metadata?.size || 0),
-          uploadedBy: '학습팀원',
-          uploadedAt: file.created_at || new Date().toISOString(),
-          url: urlData.publicUrl
+          sizeLabel: metaData.sizeLabel || formatSize(file.size || 0),
+          uploadedBy: metaData.uploadedBy || '학습팀원',
+          uploadedAt: metaData.uploadedAt || new Date().toISOString(),
+          url: file.download_url,
+          sha: file.sha,
+          metaSha: metaFiles[metaFileName] ? metaFiles[metaFileName].sha : null
         });
       }
 
@@ -848,51 +867,107 @@
     }
   }
 
-  // Supabase 실시간 파일 업로드
-  async function supabaseUploadAudio(clipKey, fileName, contentBase64, sizeBytes, sizeLabel) {
+  // GitHub 리포지토리에 실시간 파일 업로드 (메타데이터 포함)
+  async function githubUploadAudio(fileName, contentBase64, sizeBytes, sizeLabel) {
     try {
-      const supabase = await getSupabase();
-
-      // base64 -> Blob 변환
-      const byteCharacters = atob(contentBase64);
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      if (GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN') {
+        throw new Error('GitHub 토큰 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
       }
-      const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray], { type: 'audio/mpeg' });
 
-      // 업로드 경로: [clipKey]/[fileName]
-      const filePath = `${clipKey}/${fileName}`;
+      const uploader = localStorage.getItem('ax_literacy_last_lets_id') || '사용자';
+      const metaObj = {
+        uploadedBy: uploader,
+        uploadedAt: new Date().toISOString(),
+        sizeLabel: sizeLabel
+      };
+      
+      // 한글 지원을 위한 base64 인코딩 처리
+      const metaBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(metaObj))));
 
-      const { error } = await supabase.storage
-        .from(BUCKET_NAME)
-        .upload(filePath, blob, {
-          upsert: true,
-          contentType: 'audio/mpeg'
-        });
+      // 1. 오디오 본체 업로드
+      const audioUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${encodeURIComponent(fileName)}`;
+      const audioBody = {
+        message: `Upload audio: ${fileName}`,
+        content: contentBase64,
+        branch: BRANCH
+      };
 
-      if (error) throw error;
+      const audioRes = await fetch(audioUrl, {
+        method: 'PUT',
+        headers: getGithubHeaders(),
+        body: JSON.stringify(audioBody)
+      });
+
+      if (!audioRes.ok) {
+        const errText = await audioRes.text();
+        throw new Error('오디오 업로드 실패: ' + errText);
+      }
+
+      // 2. 메타데이터 파일 업로드
+      const metaUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${encodeURIComponent(fileName)}.meta.json`;
+      const metaBody = {
+        message: `Upload audio meta: ${fileName}`,
+        content: metaBase64,
+        branch: BRANCH
+      };
+
+      await fetch(metaUrl, {
+        method: 'PUT',
+        headers: getGithubHeaders(),
+        body: JSON.stringify(metaBody)
+      });
+
       return { ok: true };
     } catch (err) {
-      return { ok: false, error: '클라우드 업로드 실패: ' + err.message };
+      return { ok: false, error: 'GitHub 업로드 실패: ' + err.message };
     }
   }
 
-  // Supabase 실시간 파일 삭제
-  async function supabaseDeleteAudio(clipKey, fileName) {
+  // GitHub 리포지토리에서 파일 삭제 (메타데이터 포함)
+  async function githubDeleteAudio(audio) {
     try {
-      const supabase = await getSupabase();
-      const filePath = `${clipKey}/${fileName}`;
-      
-      const { error } = await supabase.storage
-        .from(BUCKET_NAME)
-        .remove([filePath]);
+      if (GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN') {
+        throw new Error('GitHub 토큰 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
+      }
 
-      if (error) throw error;
+      // 1. 오디오 본체 삭제
+      const audioUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${encodeURIComponent(audio.fileName)}`;
+      const audioBody = {
+        message: `Delete audio: ${audio.fileName}`,
+        sha: audio.sha,
+        branch: BRANCH
+      };
+
+      const audioRes = await fetch(audioUrl, {
+        method: 'DELETE',
+        headers: getGithubHeaders(),
+        body: JSON.stringify(audioBody)
+      });
+
+      if (!audioRes.ok) {
+        const errText = await audioRes.text();
+        throw new Error('오디오 삭제 실패: ' + errText);
+      }
+
+      // 2. 메타데이터 파일 삭제
+      if (audio.metaSha) {
+        const metaUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}/${encodeURIComponent(audio.fileName)}.meta.json`;
+        const metaBody = {
+          message: `Delete audio meta: ${audio.fileName}`,
+          sha: audio.metaSha,
+          branch: BRANCH
+        };
+
+        await fetch(metaUrl, {
+          method: 'DELETE',
+          headers: getGithubHeaders(),
+          body: JSON.stringify(metaBody)
+        });
+      }
+
       return { ok: true };
     } catch (err) {
-      return { ok: false, error: '클라우드 삭제 실패: ' + err.message };
+      return { ok: false, error: 'GitHub 삭제 실패: ' + err.message };
     }
   }
   // =================================================================
@@ -968,7 +1043,7 @@
     try {
       let data;
       if (isStaticHosting) {
-        data = await supabaseLoadAudioList(clipKey);
+        data = await githubLoadAudioList();
       } else {
         data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
           headers: getHeaders(false)
@@ -981,7 +1056,7 @@
       }
 
       if (!data.audios || data.audios.length === 0) {
-        renderMessage('공유된 오디오 파일이 없습니다.' + (isStaticHosting ? ' (Supabase 클라우드 모드)' : ''), false);
+        renderMessage('공유된 오디오 파일이 없습니다.' + (isStaticHosting ? ' (GitHub 저장소 연동 모드)' : ''), false);
         return;
       }
 
@@ -1031,7 +1106,7 @@
           try {
             let delData;
             if (isStaticHosting) {
-              delData = await supabaseDeleteAudio(clipKey, audio.fileName);
+              delData = await githubDeleteAudio(audio);
             } else {
               delData = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
                 method: 'DELETE',
@@ -1077,7 +1152,7 @@
       try {
         let data;
         if (isStaticHosting) {
-          data = await supabaseUploadAudio(clipKey, file.name, base64, file.size, formatSize(file.size));
+          data = await githubUploadAudio(file.name, base64, file.size, formatSize(file.size));
         } else {
           data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
             method: 'POST',
@@ -1090,7 +1165,7 @@
         }
 
         if (data.ok) {
-          statusEl.textContent = '업로드 성공!' + (isStaticHosting ? ' (Supabase 클라우드 저장)' : '');
+          statusEl.textContent = '업로드 성공!' + (isStaticHosting ? ' (GitHub 저장소 저장)' : '');
           statusEl.style.color = 'var(--brand)';
           fileInput.value = '';
           fileLabel.textContent = '선택된 파일 없음';
