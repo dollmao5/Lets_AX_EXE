@@ -779,107 +779,123 @@
   const clipKey = 'ch02-clip02';
   const isStaticHosting = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
 
-  // --- IndexedDB Fallback Logic for Static Hosting (No URL.createObjectURL) ---
-  const DB_NAME = 'LetsAXAudioDB';
-  const STORE_NAME = 'audios';
+  // =================================================================
+  // [Supabase 설정 정보]
+  // 깃허브 배포 사이트에서 실시간 파일 공유를 위해 아래 두 값을 본인의 Supabase 정보로 변경해 주세요.
+  // 스토리지에 'shared-audio' 버킷을 생성하고 'Public'으로 설정해야 합니다.
+  // =================================================================
+  const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+  const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+  const BUCKET_NAME = 'shared-audio';
+  let supabaseClient = null;
 
-  function openDB() {
+  // Supabase CDN 라이브러리 동적 로드 헬퍼
+  function loadSupabaseSdk() {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open(DB_NAME, 1);
-      request.onupgradeneeded = function(e) {
-        const db = e.target.result;
-        if (!db.objectStoreNames.contains(STORE_NAME)) {
-          db.createObjectStore(STORE_NAME, { keyPath: 'id' });
-        }
-      };
-      request.onsuccess = function(e) {
-        resolve(e.target.result);
-      };
-      request.onerror = function(e) {
-        reject(e.target.error);
-      };
+      if (window.supabase) return resolve(window.supabase);
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+      script.onload = () => resolve(window.supabase);
+      script.onerror = () => reject(new Error('Supabase SDK 로드 실패'));
+      document.head.appendChild(script);
     });
   }
 
-  async function dbLoadAudioList(clipKey) {
+  async function getSupabase() {
+    if (supabaseClient) return supabaseClient;
+    const supabaseLib = await loadSupabaseSdk();
+    if (SUPABASE_URL === 'YOUR_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
+      throw new Error('Supabase URL 및 API Key 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
+    }
+    supabaseClient = supabaseLib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return supabaseClient;
+  }
+
+  // Supabase 실시간 파일 목록 가져오기
+  async function supabaseLoadAudioList(clipKey) {
     try {
-      const db = await openDB();
-      return new Promise((resolve) => {
-        const transaction = db.transaction(STORE_NAME, 'readonly');
-        const store = transaction.objectStore(STORE_NAME);
-        const request = store.getAll();
-        request.onsuccess = function() {
-          const all = request.result || [];
-          const filtered = all.filter(item => item.clipKey === clipKey);
-          resolve({
-            ok: true,
-            audios: filtered.map(item => ({
-              fileName: item.fileName,
-              sizeLabel: item.sizeLabel,
-              uploadedBy: item.uploadedBy,
-              uploadedAt: item.uploadedAt,
-              contentBase64: item.contentBase64 // base64 데이터를 목록 객체에 직접 탑재
-            }))
-          });
-        };
-        request.onerror = function() {
-          resolve({ ok: false, error: '로컬 데이터베이스 읽기 실패' });
-        };
-      });
+      const supabase = await getSupabase();
+      
+      // 버킷 내 clipKey(폴더) 하위 파일 목록 조회
+      const { data: files, error } = await supabase.storage
+        .from(BUCKET_NAME)
+        .list(clipKey);
+
+      if (error) throw error;
+
+      const audios = [];
+      for (let i = 0; i < (files || []).length; i++) {
+        const file = files[i];
+        if (file.name === '.emptyFolderPlaceholder') continue;
+
+        // 다운로드용 Public URL 획득
+        const { data: urlData } = supabase.storage
+          .from(BUCKET_NAME)
+          .getPublicUrl(`${clipKey}/${file.name}`);
+
+        audios.push({
+          fileName: file.name,
+          sizeLabel: formatSize(file.metadata?.size || 0),
+          uploadedBy: '학습팀원',
+          uploadedAt: file.created_at || new Date().toISOString(),
+          url: urlData.publicUrl
+        });
+      }
+
+      return { ok: true, audios: audios };
     } catch (err) {
-      return { ok: false, error: '로컬 DB 연결 실패: ' + err.message };
+      return { ok: false, error: err.message };
     }
   }
 
-  async function dbUploadAudio(clipKey, fileName, contentBase64, sizeBytes, sizeLabel) {
+  // Supabase 실시간 파일 업로드
+  async function supabaseUploadAudio(clipKey, fileName, contentBase64, sizeBytes, sizeLabel) {
     try {
-      const db = await openDB();
-      const item = {
-        id: clipKey + '_' + fileName,
-        clipKey: clipKey,
-        fileName: fileName,
-        contentBase64: contentBase64,
-        sizeBytes: sizeBytes,
-        sizeLabel: sizeLabel,
-        uploadedBy: localStorage.getItem('ax_literacy_last_lets_id') || '사용자',
-        uploadedAt: new Date().toISOString()
-      };
+      const supabase = await getSupabase();
 
-      return new Promise((resolve) => {
-        const transaction = db.transaction(STORE_NAME, 'readwrite');
-        const store = transaction.objectStore(STORE_NAME);
-        const request = store.put(item);
-        request.onsuccess = function() {
-          resolve({ ok: true });
-        };
-        request.onerror = function() {
-          resolve({ ok: false, error: '로컬 저장 실패' });
-        };
-      });
+      // base64 -> Blob 변환
+      const byteCharacters = atob(contentBase64);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: 'audio/mpeg' });
+
+      // 업로드 경로: [clipKey]/[fileName]
+      const filePath = `${clipKey}/${fileName}`;
+
+      const { error } = await supabase.storage
+        .from(BUCKET_NAME)
+        .upload(filePath, blob, {
+          upsert: true,
+          contentType: 'audio/mpeg'
+        });
+
+      if (error) throw error;
+      return { ok: true };
     } catch (err) {
-      return { ok: false, error: '로컬 DB 업로드 실패: ' + err.message };
+      return { ok: false, error: '클라우드 업로드 실패: ' + err.message };
     }
   }
 
-  async function dbDeleteAudio(clipKey, fileName) {
+  // Supabase 실시간 파일 삭제
+  async function supabaseDeleteAudio(clipKey, fileName) {
     try {
-      const db = await openDB();
-      return new Promise((resolve) => {
-        const transaction = db.transaction(STORE_NAME, 'readwrite');
-        const store = transaction.objectStore(STORE_NAME);
-        const request = store.delete(clipKey + '_' + fileName);
-        request.onsuccess = function() {
-          resolve({ ok: true });
-        };
-        request.onerror = function() {
-          resolve({ ok: false, error: '로컬 삭제 실패' });
-        };
-      });
+      const supabase = await getSupabase();
+      const filePath = `${clipKey}/${fileName}`;
+      
+      const { error } = await supabase.storage
+        .from(BUCKET_NAME)
+        .remove([filePath]);
+
+      if (error) throw error;
+      return { ok: true };
     } catch (err) {
-      return { ok: false, error: '로컬 DB 삭제 실패: ' + err.message };
+      return { ok: false, error: '클라우드 삭제 실패: ' + err.message };
     }
   }
-  // -----------------------------------------------------
+  // =================================================================
 
   selectBtn.onclick = function() {
     fileInput.click();
@@ -952,7 +968,7 @@
     try {
       let data;
       if (isStaticHosting) {
-        data = await dbLoadAudioList(clipKey);
+        data = await supabaseLoadAudioList(clipKey);
       } else {
         data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
           headers: getHeaders(false)
@@ -965,7 +981,7 @@
       }
 
       if (!data.audios || data.audios.length === 0) {
-        renderMessage('공유된 오디오 파일이 없습니다.' + (isStaticHosting ? ' (로컬 브라우저 저장 모드)' : ''), false);
+        renderMessage('공유된 오디오 파일이 없습니다.' + (isStaticHosting ? ' (Supabase 클라우드 모드)' : ''), false);
         return;
       }
 
@@ -1000,12 +1016,7 @@
         actions.className = 'shared-audio-actions';
 
         const downloadLink = document.createElement('a');
-        // 정적 호스팅 환경일 경우 base64 데이터를 직접 Data URL로 매핑
-        if (isStaticHosting && audio.contentBase64) {
-          downloadLink.href = 'data:audio/mpeg;base64,' + audio.contentBase64;
-        } else {
-          downloadLink.href = audio.url || '#';
-        }
+        downloadLink.href = audio.url || '#';
         downloadLink.download = audio.fileName || '';
         downloadLink.className = 'slide-briefing-link shared-audio-btn';
         downloadLink.textContent = '다운로드';
@@ -1020,7 +1031,7 @@
           try {
             let delData;
             if (isStaticHosting) {
-              delData = await dbDeleteAudio(clipKey, audio.fileName);
+              delData = await supabaseDeleteAudio(clipKey, audio.fileName);
             } else {
               delData = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
                 method: 'DELETE',
@@ -1044,7 +1055,7 @@
       });
     } catch (error) {
       console.error(error);
-      renderMessage('서버 연결 에러', true);
+      renderMessage('서버 연결 에러: ' + error.message, true);
     }
   }
 
@@ -1066,7 +1077,7 @@
       try {
         let data;
         if (isStaticHosting) {
-          data = await dbUploadAudio(clipKey, file.name, base64, file.size, formatSize(file.size));
+          data = await supabaseUploadAudio(clipKey, file.name, base64, file.size, formatSize(file.size));
         } else {
           data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
             method: 'POST',
@@ -1079,7 +1090,7 @@
         }
 
         if (data.ok) {
-          statusEl.textContent = '업로드 성공!' + (isStaticHosting ? ' (로컬 브라우저 저장)' : '');
+          statusEl.textContent = '업로드 성공!' + (isStaticHosting ? ' (Supabase 클라우드 저장)' : '');
           statusEl.style.color = 'var(--brand)';
           fileInput.value = '';
           fileLabel.textContent = '선택된 파일 없음';
