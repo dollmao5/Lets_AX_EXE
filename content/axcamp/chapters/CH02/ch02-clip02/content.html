@@ -699,6 +699,32 @@
         </div>
       </div>
 
+      <div class="shared-audio-dropzone">
+        <div class="shared-audio-controls">
+          <input type="file" id="sharedAudioFileInput" style="display: none;">
+          <button type="button" class="slide-briefing-link" id="selectSharedAudioBtn" style="margin: 0;">파일 선택</button>
+          <span id="sharedAudioFileLabel">선택된 파일 없음</span>
+        </div>
+        <div class="shared-audio-controls" style="justify-content: space-between;">
+          <span id="sharedAudioStatus"></span>
+          <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled="">업로드 하기</button>
+        </div>
+      </div>
+
+      <!-- GitHub API 토큰 설정 영역 -->
+      <div class="shared-audio-controls" style="margin-top: 14px; gap: 8px; justify-content: flex-end; align-items: center;">
+        <label for="githubTokenInput" style="font-size: 0.9rem; color: var(--text-secondary); font-weight: bold;">GitHub 토큰 설정:</label>
+        <input type="password" id="githubTokenInput" placeholder="github_pat_..." style="font-size: 0.9rem; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; width: 240px; background: #fff;">
+        <button type="button" class="slide-briefing-link" id="saveTokenBtn" style="margin: 0; padding: 8px 14px; font-size: 0.9rem;">토큰 저장</button>
+      </div>
+
+      <div style="margin-top: 14px;">
+        <h5 style="margin: 0 0 8px 0; font-size: 1.05rem;">업로드된 오디오 목록</h5>
+        <div id="sharedAudioList">
+          <p class="muted" style="font-size: 1rem; margin: 0; text-align: center; padding: 12px;">불러오는 중...</p>
+        </div>
+      </div>
+
       <div class="discussion-question-box">
         <h4>핵심 토론 질문 <span style="font-weight:600;color:var(--text-secondary)">(토론·녹음 20분)</span></h4>
         <ul style="margin: 0; padding-left: 20px; color: var(--text-body);">
@@ -728,40 +754,6 @@
     </div>
   </div>
 
-  <div class="clip-section" id="shared-audio-section">
-    <div class="clip-section-title">학습팀별 오디오 자료 공유방</div>
-    <div class="clip-section-content">
-      <p style="margin-bottom: 10px; color: var(--text-secondary);">
-        학습팀별 리더십 토론을 녹음한 오디오 파일을 이곳에 업로드하세요.
-        업로드된 파일은 학습팀 구성원이 목록에서 바로 다운로드할 수 있습니다.
-        이후 Gemini 실습에서 회의록 작성, 핵심 이슈 정리, 리더 역할 분석 자료로 활용합니다.
-      </p>
-      <p style="margin-bottom: 14px; color: var(--text-secondary);">
-        권장 형식: MP3, WAV, M4A 등 오디오 파일 / 권장 용량: 최대 32MB.<br>
-        웹페이지는 형식·용량을 자동 차단하지 않습니다. 업로드 전 <strong>파일 재생 여부, 파일명, 민감정보 포함 여부</strong>를 직접 확인해 주세요.
-      </p>
-
-      <div class="shared-audio-dropzone">
-        <div class="shared-audio-controls">
-          <input type="file" id="sharedAudioFileInput" style="display: none;">
-          <button type="button" class="slide-briefing-link" id="selectSharedAudioBtn" style="margin: 0;">파일 선택</button>
-          <span id="sharedAudioFileLabel">선택된 파일 없음</span>
-        </div>
-        <div class="shared-audio-controls" style="justify-content: space-between;">
-          <span id="sharedAudioStatus"></span>
-          <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled="">업로드 하기</button>
-        </div>
-      </div>
-
-      <div style="margin-top: 14px;">
-        <h5 style="margin: 0 0 8px 0; font-size: 1.05rem;">업로드된 오디오 목록</h5>
-        <div id="sharedAudioList">
-          <p class="muted" style="font-size: 1rem; margin: 0; text-align: center; padding: 12px;">불러오는 중...</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- IIFE Script Hack: 동적 HTML 주입 환경에서도 오디오 공유방 초기화를 보장하기 위한 방식입니다. -->
   <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(){
   if (window.__ch02Clip02SharedAudioInitialized) return;
@@ -773,6 +765,8 @@
   const uploadBtn = document.getElementById('uploadSharedAudioBtn');
   const statusEl = document.getElementById('sharedAudioStatus');
   const listEl = document.getElementById('sharedAudioList');
+  const tokenInput = document.getElementById('githubTokenInput');
+  const saveTokenBtn = document.getElementById('saveTokenBtn');
 
   if (!fileInput || !selectBtn || !uploadBtn || !listEl) return;
 
@@ -781,10 +775,9 @@
 
   // =================================================================
   // [GitHub API 설정 정보]
-  // 깃허브 배포 사이트에서 실시간 파일 공유를 위해 아래 값을 본인의 GitHub 정보로 설정해 주세요.
-  // GITHUB_TOKEN은 보안을 위해 최소 권한(Fine-grained PAT)으로 발급하는 것을 권장합니다.
+  // GITHUB_TOKEN은 브라우저 보안 및 Push Protection 우회를 위해 localStorage에서 동적으로 읽어옵니다.
   // =================================================================
-  const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN';
+  let GITHUB_TOKEN = localStorage.getItem('ax_github_token') || '';
   const REPO_OWNER = 'dollmao5';
   const REPO_NAME = 'Lets_AX_EXE';
   const BRANCH = 'main';
@@ -801,8 +794,8 @@
   // GitHub 리포지토리에서 실시간 파일 목록 가져오기
   async function githubLoadAudioList() {
     try {
-      if (GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN') {
-        throw new Error('GitHub 토큰 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
+      if (!GITHUB_TOKEN) {
+        throw new Error('실시간 오디오 공유방을 이용하려면 하단의 [GitHub 토큰 설정] 입력창에 발급받으신 토큰(PAT)을 입력하고 저장해 주세요.');
       }
 
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}`;
@@ -870,8 +863,8 @@
   // GitHub 리포지토리에 실시간 파일 업로드 (메타데이터 포함)
   async function githubUploadAudio(fileName, contentBase64, sizeBytes, sizeLabel) {
     try {
-      if (GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN') {
-        throw new Error('GitHub 토큰 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
+      if (!GITHUB_TOKEN) {
+        throw new Error('GitHub 토큰 설정이 필요합니다.');
       }
 
       const uploader = localStorage.getItem('ax_literacy_last_lets_id') || '사용자';
@@ -926,8 +919,8 @@
   // GitHub 리포지토리에서 파일 삭제 (메타데이터 포함)
   async function githubDeleteAudio(audio) {
     try {
-      if (GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN') {
-        throw new Error('GitHub 토큰 설정이 필요합니다. content.html의 설정을 확인해 주세요.');
+      if (!GITHUB_TOKEN) {
+        throw new Error('GitHub 토큰 설정이 필요합니다.');
       }
 
       // 1. 오디오 본체 삭제
@@ -1195,6 +1188,23 @@
 
     reader.readAsDataURL(file);
   };
+
+  // GitHub 토큰 입력창 제어 바인딩
+  if (tokenInput && saveTokenBtn) {
+    tokenInput.value = GITHUB_TOKEN;
+    saveTokenBtn.onclick = function() {
+      const val = tokenInput.value.trim();
+      if (val) {
+        localStorage.setItem('ax_github_token', val);
+        alert('GitHub 토큰이 브라우저에 임시 저장되었습니다. 페이지를 새로고침합니다.');
+        window.location.reload();
+      } else {
+        localStorage.removeItem('ax_github_token');
+        alert('GitHub 토큰이 브라우저에서 삭제되었습니다. 페이지를 새로고침합니다.');
+        window.location.reload();
+      }
+    };
+  }
 
   loadAudioList();
 })();" style="display:none;" alt="">
