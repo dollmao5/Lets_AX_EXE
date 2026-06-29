@@ -777,6 +777,109 @@
   if (!fileInput || !selectBtn || !uploadBtn || !listEl) return;
 
   const clipKey = 'ch02-clip02';
+  const isStaticHosting = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
+
+  // --- IndexedDB Fallback Logic for Static Hosting (No URL.createObjectURL) ---
+  const DB_NAME = 'LetsAXAudioDB';
+  const STORE_NAME = 'audios';
+
+  function openDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(DB_NAME, 1);
+      request.onupgradeneeded = function(e) {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains(STORE_NAME)) {
+          db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        }
+      };
+      request.onsuccess = function(e) {
+        resolve(e.target.result);
+      };
+      request.onerror = function(e) {
+        reject(e.target.error);
+      };
+    });
+  }
+
+  async function dbLoadAudioList(clipKey) {
+    try {
+      const db = await openDB();
+      return new Promise((resolve) => {
+        const transaction = db.transaction(STORE_NAME, 'readonly');
+        const store = transaction.objectStore(STORE_NAME);
+        const request = store.getAll();
+        request.onsuccess = function() {
+          const all = request.result || [];
+          const filtered = all.filter(item => item.clipKey === clipKey);
+          resolve({
+            ok: true,
+            audios: filtered.map(item => ({
+              fileName: item.fileName,
+              sizeLabel: item.sizeLabel,
+              uploadedBy: item.uploadedBy,
+              uploadedAt: item.uploadedAt,
+              contentBase64: item.contentBase64 // base64 데이터를 목록 객체에 직접 탑재
+            }))
+          });
+        };
+        request.onerror = function() {
+          resolve({ ok: false, error: '로컬 데이터베이스 읽기 실패' });
+        };
+      });
+    } catch (err) {
+      return { ok: false, error: '로컬 DB 연결 실패: ' + err.message };
+    }
+  }
+
+  async function dbUploadAudio(clipKey, fileName, contentBase64, sizeBytes, sizeLabel) {
+    try {
+      const db = await openDB();
+      const item = {
+        id: clipKey + '_' + fileName,
+        clipKey: clipKey,
+        fileName: fileName,
+        contentBase64: contentBase64,
+        sizeBytes: sizeBytes,
+        sizeLabel: sizeLabel,
+        uploadedBy: localStorage.getItem('ax_literacy_last_lets_id') || '사용자',
+        uploadedAt: new Date().toISOString()
+      };
+
+      return new Promise((resolve) => {
+        const transaction = db.transaction(STORE_NAME, 'readwrite');
+        const store = transaction.objectStore(STORE_NAME);
+        const request = store.put(item);
+        request.onsuccess = function() {
+          resolve({ ok: true });
+        };
+        request.onerror = function() {
+          resolve({ ok: false, error: '로컬 저장 실패' });
+        };
+      });
+    } catch (err) {
+      return { ok: false, error: '로컬 DB 업로드 실패: ' + err.message };
+    }
+  }
+
+  async function dbDeleteAudio(clipKey, fileName) {
+    try {
+      const db = await openDB();
+      return new Promise((resolve) => {
+        const transaction = db.transaction(STORE_NAME, 'readwrite');
+        const store = transaction.objectStore(STORE_NAME);
+        const request = store.delete(clipKey + '_' + fileName);
+        request.onsuccess = function() {
+          resolve({ ok: true });
+        };
+        request.onerror = function() {
+          resolve({ ok: false, error: '로컬 삭제 실패' });
+        };
+      });
+    } catch (err) {
+      return { ok: false, error: '로컬 DB 삭제 실패: ' + err.message };
+    }
+  }
+  // -----------------------------------------------------
 
   selectBtn.onclick = function() {
     fileInput.click();
@@ -847,9 +950,14 @@
 
   async function loadAudioList() {
     try {
-      const data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
-        headers: getHeaders(false)
-      });
+      let data;
+      if (isStaticHosting) {
+        data = await dbLoadAudioList(clipKey);
+      } else {
+        data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+          headers: getHeaders(false)
+        });
+      }
 
       if (!data.ok) {
         renderMessage(data.error || '목록을 불러오지 못했습니다.', true);
@@ -857,7 +965,7 @@
       }
 
       if (!data.audios || data.audios.length === 0) {
-        renderMessage('공유된 오디오 파일이 없습니다.', false);
+        renderMessage('공유된 오디오 파일이 없습니다.' + (isStaticHosting ? ' (로컬 브라우저 저장 모드)' : ''), false);
         return;
       }
 
@@ -892,7 +1000,12 @@
         actions.className = 'shared-audio-actions';
 
         const downloadLink = document.createElement('a');
-        downloadLink.href = audio.url || '#';
+        // 정적 호스팅 환경일 경우 base64 데이터를 직접 Data URL로 매핑
+        if (isStaticHosting && audio.contentBase64) {
+          downloadLink.href = 'data:audio/mpeg;base64,' + audio.contentBase64;
+        } else {
+          downloadLink.href = audio.url || '#';
+        }
         downloadLink.download = audio.fileName || '';
         downloadLink.className = 'slide-briefing-link shared-audio-btn';
         downloadLink.textContent = '다운로드';
@@ -905,11 +1018,16 @@
         deleteBtn.onclick = async function() {
           if (!confirm('이 오디오 파일을 삭제하시겠습니까?')) return;
           try {
-            const delData = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
-              method: 'DELETE',
-              headers: getHeaders(true),
-              body: JSON.stringify({ fileName: audio.fileName })
-            });
+            let delData;
+            if (isStaticHosting) {
+              delData = await dbDeleteAudio(clipKey, audio.fileName);
+            } else {
+              delData = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+                method: 'DELETE',
+                headers: getHeaders(true),
+                body: JSON.stringify({ fileName: audio.fileName })
+              });
+            }
             if (delData.ok) {
               loadAudioList();
             } else {
@@ -946,17 +1064,22 @@
       statusEl.style.color = 'var(--text-secondary)';
 
       try {
-        const data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
-          method: 'POST',
-          headers: getHeaders(true),
-          body: JSON.stringify({
-            fileName: file.name,
-            contentBase64: base64
-          })
-        });
+        let data;
+        if (isStaticHosting) {
+          data = await dbUploadAudio(clipKey, file.name, base64, file.size, formatSize(file.size));
+        } else {
+          data = await requestJson('/api/shared-audio?clipKey=' + encodeURIComponent(clipKey), {
+            method: 'POST',
+            headers: getHeaders(true),
+            body: JSON.stringify({
+              fileName: file.name,
+              contentBase64: base64
+            })
+          });
+        }
 
         if (data.ok) {
-          statusEl.textContent = '업로드 성공!';
+          statusEl.textContent = '업로드 성공!' + (isStaticHosting ? ' (로컬 브라우저 저장)' : '');
           statusEl.style.color = 'var(--brand)';
           fileInput.value = '';
           fileLabel.textContent = '선택된 파일 없음';
