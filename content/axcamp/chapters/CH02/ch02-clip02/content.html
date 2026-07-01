@@ -624,7 +624,7 @@
 
   <div class="clip-overview">
     본 세션은 Gemini 실습에 앞서, <strong>“AI 시대, 리더의 고민과 역할”</strong>을 주제로
-    학습팀별 토론을 진행하고 그 내용을 오디오 파일로 기록하는 활동입니다.<br><br>
+    학습팀별 토론을 진행하고 그 내용을 오디오 파일로 기록하는 활동입니다.<br>
     참가자들은 AI가 현업 팀 업무에 도입될 때 리더의 역할이 어떻게 달라지는지 논의하고,
     AI에게 맡길 수 있는 업무와 리더가 직접 판단하고 책임져야 할 영역을 구분합니다.
     녹음된 토론 오디오 파일은 이후 Gemini를 활용한 회의록 작성, 핵심 이슈 정리,
@@ -809,7 +809,7 @@
         throw new Error('실시간 오디오 공유방을 이용하려면 GitHub 토큰 로드가 필요합니다.');
       }
 
-      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}&t=${new Date().getTime()}`;
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}&amp;t=${new Date().getTime()}`;
       const res = await fetch(url, { headers: getGithubHeaders() });
       if (res.status === 404) {
         return { ok: true, audios: [] }; // 폴더가 아직 없는 경우 빈 목록 반환
@@ -824,7 +824,7 @@
       const metaFiles = {};
 
       // 오디오 파일과 메타데이터 파일 분리 및 매핑 준비
-      files.forEach(file => {
+      files.forEach(file =&gt; {
         if (file.name.endsWith('.meta.json')) {
           metaFiles[file.name] = file;
         } else if (file.name !== '.gitkeep') {
@@ -833,7 +833,7 @@
       });
 
       const audios = [];
-      for (let i = 0; i < audioFiles.length; i++) {
+      for (let i = 0; i &lt; audioFiles.length; i++) {
         const file = audioFiles[i];
         const metaFileName = file.name + '.meta.json';
         let metaData = {
@@ -891,12 +891,12 @@
       // 0. 폴더 내 파일 목록을 한 번에 조회하여 중복되지 않는 최종 파일명(finalFileName) 획득
       let finalFileName = fileName;
       try {
-        const checkDirUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}&t=${new Date().getTime()}`;
+        const checkDirUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}&amp;t=${new Date().getTime()}`;
         const checkDirRes = await fetch(checkDirUrl, { headers: getGithubHeaders() });
         if (checkDirRes.ok) {
           const files = await checkDirRes.json();
           if (Array.isArray(files)) {
-            const existingNames = new Set(files.map(f => f.name));
+            const existingNames = new Set(files.map(f =&gt; f.name));
             if (existingNames.has(fileName)) {
               const lastDot = fileName.lastIndexOf('.');
               const stem = lastDot !== -1 ? fileName.substring(0, lastDot) : fileName;
