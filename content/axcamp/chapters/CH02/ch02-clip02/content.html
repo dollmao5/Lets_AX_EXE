@@ -699,36 +699,40 @@
         </div>
       </div>
 
-      <div class="shared-audio-dropzone">
-        <div class="shared-audio-controls">
-          <input type="file" id="sharedAudioFileInput" style="display: none;">
-          <button type="button" class="slide-briefing-link" id="selectSharedAudioBtn" style="margin: 0;">파일 선택</button>
-          <span id="sharedAudioFileLabel">선택된 파일 없음</span>
-        </div>
-        <div class="shared-audio-controls" style="justify-content: space-between;">
-          <span id="sharedAudioStatus"></span>
-          <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled="">업로드 하기</button>
-        </div>
-      </div>
-
-      <div style="margin-top: 14px;">
-        <h5 style="margin: 0 0 8px 0; font-size: 1.05rem;">업로드된 오디오 목록</h5>
-        <div id="sharedAudioList">
-          <p class="muted" style="font-size: 1rem; margin: 0; text-align: center; padding: 12px;">불러오는 중...</p>
-        </div>
-      </div>
-
       <div class="discussion-question-box">
         <h4>핵심 토론 질문 <span style="font-weight:600;color:var(--text-secondary)">(토론·녹음 20분)</span></h4>
         <ul style="margin: 0; padding-left: 20px; color: var(--text-body);">
-          <li>AI 도입에 따른 리더의 가장 큰 역할 변화는 무엇이며, 이 과정에서 느끼는 혼란과 고민은 무엇인가?</li>
-          <li>AI에게 맡기면 좋은 일과 리더가 직접 판단하고 책임져야 할 일은 무엇인가?
+          <li>AI 도입에 따른 리더의 가장 큰 역할 변화는 무엇이며, 이 과정에서 느끼는 혼란 and 고민은 무엇인가?</li>
+          <li>AI에게 맡기면 좋은 일과 리더가 직접 판단하고 책임져야 할 일은 무엇인가?</li>
           <li>AI 활용으로 생산성 기대와 성과 압박이 높아질 때, 리더는 어떤 기준으로 업무를 요구하고 무엇을 직접 책임져야 하는가?</li>
           <li>팀원들이 AI 활용을 걱정하거나 저항할 때 리더는 어떻게 대화해야 하는가?</li>
           <li>내 현업 팀에서 AI를 활용해 가장 먼저 개선할 수 있는 업무 장면은 무엇인가?</li>
           <li>현재 회사나 조직(HR) 차원의 지원 중 가장 아쉬운 점은 무엇이며, 현업 리더와 팀이 바라는 실질적인 개선 사항은 무엇인가?</li>
         </ul>
         <p class="time-note">녹음 준비, 파일 저장, 공유방 업로드는 강사 안내에 따라 토론 전후 5분 안에 진행합니다.</p>
+      </div>
+
+      <div class="shared-audio-dropzone" style="text-align: center; padding: 22px 20px !important; margin-top: 18px;">
+        <div style="margin-bottom: 16px;">
+          <strong style="display: block; font-size: 1.1rem; color: var(--text-heading); margin-bottom: 4px;">토론 녹음 파일 업로드</strong>
+          <span style="font-size: 0.92rem; color: var(--text-secondary);">팀 토론이 끝나면 녹음된 오디오 파일을 선택하여 업로드해 주세요.</span>
+        </div>
+        <div class="shared-audio-controls" style="justify-content: center;">
+          <input type="file" id="sharedAudioFileInput" style="display: none;">
+          <button type="button" class="slide-briefing-link" id="selectSharedAudioBtn" style="margin: 0;">파일 선택</button>
+          <span id="sharedAudioFileLabel" style="margin-left: 8px;">선택된 파일 없음</span>
+        </div>
+        <div class="shared-audio-controls" style="justify-content: center; margin-top: 12px;">
+          <span id="sharedAudioStatus"></span>
+          <button type="button" class="slide-briefing-link" id="uploadSharedAudioBtn" style="margin: 0; background: var(--brand); color: white; border: none; opacity: 0.6;" disabled="">업로드 하기</button>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px; margin-bottom: 18px;">
+        <h5 style="margin: 0 0 8px 0; font-size: 1.05rem;">업로드된 오디오 목록</h5>
+        <div id="sharedAudioList">
+          <p class="muted" style="font-size: 1rem; margin: 0; text-align: center; padding: 12px;">불러오는 중...</p>
+        </div>
       </div>
 
       <div class="output-box">
