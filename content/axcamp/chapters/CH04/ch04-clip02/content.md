@@ -1,7 +1,7 @@
 ---
 route: "#ch04-clip02"
 chapter: "ch04"
-title: "NotebookLM & Gems 활용: 팀 성과 창출 및 피드백 실전"
+title: "NotebookLM & Gems 활용: 팀 성과 향상 및 피드백 실전"
 source_url: "https://lg.cmdspace.work/axcamp#ch04-clip02"
 exported_at: "2026-03-30T00:00:00.000Z"
 ---
@@ -10,7 +10,7 @@ exported_at: "2026-03-30T00:00:00.000Z"
 CH 04
 실습
 
-# NotebookLM & Gems 활용: 팀 성과 창출 및 피드백 실전
+# NotebookLM & Gems 활용: 팀 성과 향상 및 피드백 실전
 
 이 클립의 핵심은 **NotebookLM에서 CH02의 리더 역할·역량 점검 내용과 CH03의 조직(팀) 역량 및 Workflow 점검 내용을 연결하여, 우리 팀의 30일 실행계획을 만드는 것**입니다.
 
