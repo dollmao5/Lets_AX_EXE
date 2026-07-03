@@ -137,7 +137,7 @@ CH02 Markdown 저장 · 팀 성과 문제 1개와 재설계할 비효율 업무 
 
 |
 13:30~15:30 |
-[CH03. 조직(팀)의 역량 점검](#ch03-clip01) |
+[CH03. 조직(팀) 역량 점검](#ch03-clip01) |
 Gemini 활용(2): 팀 성과 병목 진단 · 효과성 지표 · 조직/인재 행동역량 · Divide–Navigate–Arrange · Workflow Re-design Canvas |
 실습 |
 
@@ -149,7 +149,7 @@ CH03 산출물 저장 및 NotebookLM 업로드 자료 정리 |
 
 |
 15:40~17:00 |
-[CH04. 팀 성과향상 실행](#ch04-clip01) |
+[CH04. 우리 팀의 성과향상 실천](#ch04-clip01) |
 NotebookLM 활용: CH02·CH03 소스 통합 · 근거 정리표(Source Map) · 핵심 실행과제 TOP 3 · 우리 팀 성과향상 30일 실행계획 |
 통합 실습 |
 
