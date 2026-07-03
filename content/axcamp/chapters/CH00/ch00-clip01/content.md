@@ -107,7 +107,7 @@ Gemini·NotebookLM 접속, 파일 업로드, 보안 기준과 실습 오류 해�
 
 |
 08:45~09:30 |
-[CH01. AI 핵심 개념 및 진단](#ch01-clip01) |
+[CH01. 리더를 위한 AI 핵심](#ch01-clip01) |
 AI 트렌드와 Agentic AI 이해 · 기술 활용 로드맵 · AI 리터러시 및 AI-Friendly 리더십 진단 |
 강의·진단 |
 
@@ -119,8 +119,8 @@ Gemini 로그인 및 학습팀 좌석·녹음 준비 최종 확인 |
 
 |
 09:40~12:10 |
-[CH02. Gemini 활용: 리더 역할·역량](#ch02-clip01) |
-Gemini 환경 세팅 · 팀 토론 오디오 · AI와 리더 역할 분담 · 리더 역할 프로필 · 핵심 역량 및 성과관리 실행 브리프 |
+[CH02. 리더 역할 및 역량 점검](#ch02-clip01) |
+Gemini 활용(1): Gemini 환경 세팅 · 팀 토론 오디오 · AI와 리더 역할 분담 · 리더 역할 프로필 · 핵심 역량 및 성과관리 실행 브리프 |
 토론·실습 |
 
 |
@@ -137,8 +137,8 @@ CH02 Markdown 저장 · 팀 성과 문제 1개와 재설계할 비효율 업무 
 
 |
 13:30~15:30 |
-[CH03. 조직 역량 점검 및 Workflow 재설계](#ch03-clip01) |
-팀 성과 병목 진단 · 효과성 지표 · 조직/인재 행동역량 · Divide–Navigate–Arrange · Workflow Re-design Canvas |
+[CH03. 조직(팀)의 역량 점검](#ch03-clip01) |
+Gemini 활용(2): 팀 성과 병목 진단 · 효과성 지표 · 조직/인재 행동역량 · Divide–Navigate–Arrange · Workflow Re-design Canvas |
 실습 |
 
 |
@@ -149,13 +149,13 @@ CH03 산출물 저장 및 NotebookLM 업로드 자료 정리 |
 
 |
 15:40~17:00 |
-[CH04. NotebookLM: 팀 성과향상 실행](#ch04-clip01) |
-CH02·CH03 소스 통합 · 근거 정리표(Source Map) · 핵심 실행과제 TOP 3 · 우리 팀 성과향상 30일 실행계획 |
+[CH04. 팀 성과향상 실행](#ch04-clip01) |
+NotebookLM 활용: CH02·CH03 소스 통합 · 근거 정리표(Source Map) · 핵심 실행과제 TOP 3 · 우리 팀 성과향상 30일 실행계획 |
 통합 실습 |
 
 |
 17:00~17:30 |
-**CH05. Wrap-up 및 현업 전이** |
+**CH05. 오늘의 핵심 요약** |
 Start / Stop / Continue · 복귀 후 72시간 내 첫 행동 · 30일 점검일 확정 · 최종 파일 저장 |
 성찰 |
 
