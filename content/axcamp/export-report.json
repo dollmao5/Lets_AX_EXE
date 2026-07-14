@@ -14,7 +14,7 @@
       "clips": [
         {
           "route": "#ch00-clip01",
-          "title": "성과향상 with AI: 오늘의 여정과 학습 준비",
+          "title": "리더십 향상 with AI: 오늘의 여정과 학습 준비",
           "type": "개요",
           "folder": "chapters/CH00/ch00-clip01",
           "linkCount": 0,
@@ -221,7 +221,7 @@
     {
       "chapterId": "CH04",
       "chapterNum": "CH 04",
-      "title": "우리 팀의 성과향상 실천",
+      "title": "우리 팀의 리더십 향상 실천",
       "time": "15:40",
       "clips": [
         {
@@ -533,7 +533,7 @@
     {
       "chapterId": "ch00",
       "route": "#ch00-clip01",
-      "title": "성과향상 with AI: 오늘의 여정과 학습 준비",
+      "title": "리더십 향상 with AI: 오늘의 여정과 학습 준비",
       "folder": "chapters/CH00/ch00-clip01",
       "textLength": 4948,
       "htmlLength": 53050,
