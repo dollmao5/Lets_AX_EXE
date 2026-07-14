@@ -1,8 +1,8 @@
 ---
-route: "#ch01-clip04"
+route: "#ch01-clip02"
 chapter: "ch01"
 title: "Assistant에서 Agentic AI로: 기술 활용 로드맵"
-source_url: "https://lg.cmdspace.work/axcamp#ch01-clip04"
+source_url: "https://lg.cmdspace.work/axcamp#ch01-clip02"
 ---
 
 ~12분
