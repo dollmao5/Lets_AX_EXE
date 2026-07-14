@@ -59,6 +59,7 @@ const EXCLUDED_CLIP_KEYS = new Set([
   "ch00-clip02",
   "ch01-clip01",
   "ch01-clip02",
+  "ch01-clip07",
   "ch03-clip02",
   "ch03-clip03",
   "ch03-clip04",
@@ -2207,12 +2208,14 @@ async function buildCatalog(sourceRoot) {
     }
 
     // 각 클립 명세를 순회하여 visible 기준 클립 오브젝트 빌드
-    for (const [clipIndex, clipSpec] of clipSpecs.entries()) {
-      const clipSuffix = String(clipIndex + 1).padStart(2, "0");
-      const visibleClipKey = `${visibleChapterId}-clip${clipSuffix}`;
+    let visibleClipCounter = 0;
+    for (const clipSpec of clipSpecs) {
       let clipObj = null;
 
       if (clipSpec.synthetic) {
+        visibleClipCounter++;
+        const clipSuffix = String(visibleClipCounter).padStart(2, "0");
+        const visibleClipKey = `${visibleChapterId}-clip${clipSuffix}`;
         // 합성 클립 빌드 및 키 오버라이드
         const rawSynthetic = await buildSyntheticClip(
           sourceRoot,
@@ -2233,6 +2236,10 @@ async function buildCatalog(sourceRoot) {
         const sourceClipKey = normalizeWs(clipSpec.clipKey).toLowerCase();
         const sourceClip = canonicalClipsByKey.get(sourceClipKey);
         if (!sourceClip) continue;
+
+        visibleClipCounter++;
+        const clipSuffix = String(visibleClipCounter).padStart(2, "0");
+        const visibleClipKey = `${visibleChapterId}-clip${clipSuffix}`;
 
         const overrideTitle = blueprint.clipTitles?.[clipSpec.clipKey] || clipSpec.title || sourceClip.title;
         clipObj = {
