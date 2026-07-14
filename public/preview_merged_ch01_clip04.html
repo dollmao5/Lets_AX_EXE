@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>통합 클립 미리보기</title>
+  <style>
+    :root {
+      --brand: #4f46e5;
+      --brand-soft: #e0e7ff;
+      --text-heading: #1e293b;
+      --text-body: #334155;
+      --bg-offwhite: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 12px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+      color: var(--text-body);
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #ffffff;
+    }
+    .preview-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: var(--brand-soft);
+      color: var(--brand);
+      margin-right: 8px;
+    }
+    .badge.time {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--text-heading);
+      margin-top: 15px;
+      letter-spacing: -0.03em;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: var(--text-heading);
+      margin-top: 40px;
+      border-left: 5px solid var(--brand);
+      padding-left: 12px;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: var(--text-heading);
+      margin-top: 25px;
+    }
+    p, li {
+      font-size: 1.05rem;
+    }
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 25px 0;
+    }
+    .roadmap-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: var(--bg-offwhite);
+      transition: all 0.2s ease;
+    }
+    .roadmap-card:hover {
+      box-shadow: 0 10px 20px rgba(79, 70, 229, 0.05);
+      border-color: var(--brand);
+    }
+    .roadmap-card strong {
+      display: block;
+      font-size: 1.15rem;
+      color: var(--text-heading);
+      margin-bottom: 8px;
+    }
+    .roadmap-card span {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    th {
+      background: var(--bg-offwhite);
+      color: var(--text-heading);
+      font-weight: 700;
+    }
+    .info-block {
+      border: 1px dashed var(--brand);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: #faf5ff;
+      margin: 35px 0;
+    }
+    .info-block strong {
+      color: var(--brand);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-header">
+    <div>
+      <span class="badge time">~8분</span>
+      <span class="badge">CH 01</span>
+      <span class="badge">개념 통합</span>
+    </div>
+    <h1>Assistant에서 Agentic AI로: 기술 활용 로드맵</h1>
+  </div>
+
+  <p>조직의 AI 협업 방식은 질문에 답하는 어시스턴트에서 시작하여, 주도적으로 목표를 수행하는 에이전트를 거쳐, 복잡한 시스템으로 움직이는 에이전틱 AI로 빠르게 확장되고 있습니다. 개념적 진화와 실제 도구 활용 수준을 한눈에 이해하고, 리더로서의 준비 방향을 설정합니다.</p>
+
+  <h2>1. 이번 클립에서 함께 배우는 것</h2>
+  <p>개개인의 실무 생산성을 향상시키는 AI 활용 단계에서부터 시스템적 자율 협업으로 이어지는 3가지 단계의 본질을 비교 정의합니다.</p>
+
+  <div class="roadmap-grid">
+    <div class="roadmap-card">
+      <span>Level 1 · 입문</span>
+      <strong>AI Assistant</strong>
+      <p style="margin: 0; font-size: 0.95rem; color: #475569;">질문과 피드백을 반복하며 보고서 초안, 요약 등 개인 업무 속도를 빠르게 극대화하는 단계</p>
+    </div>
+    <div class="roadmap-card">
+      <span>Level 2 · 확장</span>
+      <strong>AI Agent</strong>
+      <p style="margin: 0; font-size: 0.95rem; color: #475569;">목표와 실행 권한을 받아 필요한 행동 계획을 스스로 수립하여 실행해 나가는 단계</p>
+    </div>
+    <div class="roadmap-card">
+      <span>Level 3 · 자율</span>
+      <strong>Agentic AI</strong>
+      <p style="margin: 0; font-size: 0.95rem; color: #475569;">여러 에이전트와 도구, 데이터, 검증 규칙을 유기적 Workflow로 엮어 작동시키는 단계</p>
+    </div>
+  </div>
+
+  <h2>2. 핵심 비교: AI 협업의 단계별 운영 기준</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>구분</th>
+        <th>Level 1: AI Assistant</th>
+        <th>Level 2: AI Agent</th>
+        <th>Level 3: Agentic AI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>쉬운 정의</strong></td>
+        <td>요청을 받아 돕는 똑똑한 비서</td>
+        <td>목표를 받아 자율 실행하는 담당자</td>
+        <td>에이전트와 도구를 엮은 협업 체계</td>
+      </tr>
+      <tr>
+        <td><strong>대표 도구</strong></td>
+        <td>Gemini, NotebookLM, ChatGPT</td>
+        <td>Gemini Gems, AI Studio Build</td>
+        <td>Cline, Hi-D Code, Antigravity</td>
+      </tr>
+      <tr>
+        <td><strong>작동 방식</strong></td>
+        <td>질문 입력 ➔ AI의 즉각적인 답변</td>
+        <td>목표 부여 ➔ 스스로 계획 및 도구 실행</td>
+        <td>설계된 Workflow에 따라 자율 협업</td>
+      </tr>
+      <tr>
+        <td><strong>팀장의 역할</strong></td>
+        <td>명확한 맥락 제공과 산출물 검증</td>
+        <td>명확한 목표 설정과 가이드라인 모니터링</td>
+        <td>시스템 거버넌스 수립 및 최종 예외 책임</td>
+      </tr>
+      <tr>
+        <td><strong>실습 위치</strong></td>
+        <td><strong>오늘의 필수 실습 대상</strong></td>
+        <td><strong>선택 확장 실습 (Gems 제작)</strong></td>
+        <td><strong>미래 기술 방향성 참고 영역</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-block">
+    <strong>오늘의 여정 안에서의 위치:</strong><br>
+    우리는 오늘 <strong>Level 1 (Gemini & NotebookLM)</strong>을 활용하여 개인 리더십 역량 및 팀 Workflow 혁신 산출물을 구축하는 필수 실습을 수행합니다. 
+    이후 <strong>Level 2 (Gems)</strong>를 이용해 업무용 맞춤 비서 프로토타입을 만들어보며, <strong>Level 3 (Agentic AI)</strong>는 조직의 미래 로드맵 설계를 돕는 참고용으로 이해합니다.
+  </div>
+
+</body>
+</html>
