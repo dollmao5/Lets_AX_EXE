@@ -34,7 +34,7 @@ content/axcamp/
 │  ├─ CH06/    # 참고자료 라이브러리
 │  ├─ CH07/    # AI Studio와 API 이해 (숨김)
 │  └─ CH08/    # Vibe Coding (숨김)
-├─ [공유용] LG 성과향상 with AI 실습자료/
+├─ [공유용] LG 리더십 향상 with AI 실습자료/
 ├─ practice_zips/
 └─ survey/
 ```

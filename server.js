@@ -28,7 +28,7 @@ const GENERATED_COURSE_CATALOG_FILE = path.join(GENERATED_COURSES_DIR, "catalog.
 const DEFAULT_COURSE_CODE = "AXCAMP";
 const DEFAULT_COURSE_SLUG = "axcamp";
 const VISIBLE_CATALOG_OVERRIDES_FILE = "visible-catalog-overrides.json";
-const PRACTICE_ROOT_REL = "[공유용] LG 성과향상 with AI 실습자료";
+const PRACTICE_ROOT_REL = "[공유용] LG 리더십 향상 with AI 실습자료";
 const PRACTICE_FILE_MAP = {
   "all-zip": "practice_zips/LG_AX_Camp_For_Leaders_practice_all.zip",
   "ch04-zip": "practice_zips/CH04_NotebookLM_practice.zip",
