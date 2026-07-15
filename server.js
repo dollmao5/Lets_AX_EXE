@@ -44,13 +44,7 @@ const PRACTICE_FILE_MAP = {
   "1rUUUqSBenQZAUnM-53nKHajIX9sA_azI": `${PRACTICE_ROOT_REL}/CH04-NotebookLM_멀티소스리서치/global-powers-of-luxury-goods-2026.pdf`,
   "1MzJFg7xjyU5tiaulI-DyKBUYPxkQMZMA": `${PRACTICE_ROOT_REL}/CH04-NotebookLM_멀티소스리서치/09_NotebookLM_프롬프트.md`,
   "1gvjUkRlvncW_qN2t59e_f83tW9rA2Ddr": `${PRACTICE_ROOT_REL}/CH04-NotebookLM_멀티소스리서치/lg-logo-red.png`,
-  "1PH3gO05x64ANRdLktbKBl0GoZJ7XZ_9Q": `${PRACTICE_ROOT_REL}/CH06-바이브코딩_리서치앱/10_바이브코딩_리서치앱_프롬프트.md`,
-  "19dEPUVL57KQJaTA8HiTqb-V2QErT--fz": `${PRACTICE_ROOT_REL}/CH07-Antigravity_에이전틱AI/04_가상_조직정보.md`,
-  "1AoN6JCsoGFoFm-531R54u5AVFnyHMRXP": `${PRACTICE_ROOT_REL}/CH07-Antigravity_에이전틱AI/05_Antigravity_입력_전략보고서.md`,
-  "13ss0C1KvCf8uIe3HUQEpjduTX-715AVw": `${PRACTICE_ROOT_REL}/CH07-Antigravity_에이전틱AI/TB 26-01-01 하이센스의 중국 신규 스마트 팩토리 가동, CAC 산업 지각변동의 신호탄이 될 것인가.pdf`,
-  "1QXGAklXpqr1movIgVJl-Eq_47fLbONoJ": `${PRACTICE_ROOT_REL}/CH07-Antigravity_에이전틱AI/11_Antigravity_3종보고서_프롬프트.md`,
-  "1Zo0XTTSV2P1IBXelGk823KZLLhyyM1hH": `${PRACTICE_ROOT_REL}/CH07-Antigravity_에이전틱AI/12_Antigravity_HTML_PPT_프롬프트.md`,
-  "15H72UwB7f2q11RiBvA9vqavJbA6NA08P": `${PRACTICE_ROOT_REL}/CH07-Antigravity_에이전틱AI/13_Antigravity_스킬_가이드.md`
+  "1PH3gO05x64ANRdLktbKBl0GoZJ7XZ_9Q": `${PRACTICE_ROOT_REL}/CH06-바이브코딩_리서치앱/10_바이브코딩_리서치앱_프롬프트.md`
 };
 
 const HOST = "0.0.0.0";
@@ -73,15 +67,7 @@ const EXCLUDED_CLIP_KEYS = new Set([
 // [HIDDEN_CHAPTERS] CH04(Google AI Studio & Vibe Coding), CH05(Hi-D Code) 숨김 처리 중
 // 복구 방법: server.js의 visibleBlueprints 배열에서 아래 주석 처리된 블록을 되살리세요.
 // 이 Set은 숨겨진 챕터/클립의 canonical 키 목록으로, 해시 직접 접근 시 안전 처리에 사용됩니다.
-const HIDDEN_CHAPTER_CLIP_KEYS = new Set([
-  "ch07-clip01",
-  "ch07-clip02",
-  "ch08-clip01",
-  "ch08-clip02",
-  "ch08-clip03",
-  "ch08-clip04",
-  "ch08-clip05"
-]);
+const HIDDEN_CHAPTER_CLIP_KEYS = new Set([]);
 const SKIP_TITLE_KEYWORDS = new Set(["개념", "실습", "참고", "개요", "플랫폼", "심화"]);
 const ALLOWED_SECTION_TYPES = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요", "토론", "퀴즈"]);
 const ALLOWED_BLOCK_KINDS = new Set([

@@ -458,7 +458,7 @@ const HIDDEN_CLIP_KEYS_REDIRECT_SET = new Set([
 
 // '오늘의 핵심 정리' 챕터 ID — 숨겨진 클립 해시 접근 시 이 챕터의 첫 클립으로 리다이렉트합니다.
 // 서버 visibleBlueprints 기준 ch07 (Key Takeaways & Q/A)
-const HIDDEN_REDIRECT_TARGET_CHAPTER_ID = "ch07";
+const HIDDEN_REDIRECT_TARGET_CHAPTER_ID = "ch05";
 
 const CLIENT_RUNTIME_CLIP_OVERRIDE_URLS = {
   "ch00-clip02": "/runtime-overrides/ch00-clip02.html",
@@ -758,10 +758,6 @@ function rewriteClientClipHtml(clipKey, contentHtml) {
         anchor.setAttribute("href", "#ch06-clip01");
         anchor.textContent = "CH04: Key Takeaways & Q/A";
         return;
-      }
-      if (text === "CH07: 참고자료 라이브러리" || text === "CH08: 참고자료 라이브러리") {
-        anchor.setAttribute("href", "#ch07-clip01");
-        anchor.textContent = "CH05: 참고자료 라이브러리";
       }
     });
   }
