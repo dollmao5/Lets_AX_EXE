@@ -21,16 +21,6 @@
           "imageCount": 0,
           "sectionCount": 8,
           "promptCount": 0
-        },
-        {
-          "route": "#ch00-clip02",
-          "title": "자사 생성형 AI 서비스 현황",
-          "type": "개요",
-          "folder": "chapters/CH00/ch00-clip02",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 3,
-          "promptCount": 0
         }
       ]
     },
@@ -183,26 +173,6 @@
           "imageCount": 0,
           "sectionCount": 11,
           "promptCount": 9
-        },
-        {
-          "route": "#ch04-clip04",
-          "title": "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석",
-          "type": "실습",
-          "folder": "chapters/CH04/ch04-clip04",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 6,
-          "promptCount": 4
-        },
-        {
-          "route": "#ch04-clip05",
-          "title": "실습 시트",
-          "type": "개념",
-          "folder": "chapters/CH04/ch04-clip05",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 3,
-          "promptCount": 0
         }
       ]
     },
@@ -349,36 +319,6 @@
           "imageCount": 0,
           "sectionCount": 0,
           "promptCount": 0
-        },
-        {
-          "route": "#ch06-clip12",
-          "title": "Copilot 참고자료",
-          "type": "개념",
-          "folder": "chapters/CH06/ch06-clip12",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 2,
-          "promptCount": 0
-        },
-        {
-          "route": "#ch06-clip13",
-          "title": "실습용 컨텍스트 파일",
-          "type": "개념",
-          "folder": "chapters/CH06/ch06-clip13",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 8,
-          "promptCount": 0
-        },
-        {
-          "route": "#ch06-clip14",
-          "title": "AI Readiness 분석",
-          "type": "개념",
-          "folder": "chapters/CH06/ch06-clip14",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 1,
-          "promptCount": 0
         }
       ]
     }
@@ -392,19 +332,6 @@
       "textLength": 4948,
       "htmlLength": 53050,
       "sectionCount": 8,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개요"
-    },
-    {
-      "chapterId": "ch00",
-      "route": "#ch00-clip02",
-      "title": "자사 생성형 AI 서비스 현황",
-      "folder": "chapters/CH00/ch00-clip02",
-      "textLength": 929,
-      "htmlLength": 3142,
-      "sectionCount": 3,
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
@@ -565,32 +492,6 @@
       "linkCount": 0,
       "imageCount": 0,
       "type": "실습"
-    },
-    {
-      "chapterId": "ch04",
-      "route": "#ch04-clip04",
-      "title": "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석",
-      "folder": "chapters/CH04/ch04-clip04",
-      "textLength": 2743,
-      "htmlLength": 8561,
-      "sectionCount": 6,
-      "promptCount": 4,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "실습"
-    },
-    {
-      "chapterId": "ch04",
-      "route": "#ch04-clip05",
-      "title": "실습 시트",
-      "folder": "chapters/CH04/ch04-clip05",
-      "textLength": 1620,
-      "htmlLength": 8037,
-      "sectionCount": 3,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개념"
     },
     {
       "chapterId": "ch05",
@@ -756,45 +657,6 @@
       "textLength": 6474,
       "htmlLength": 29494,
       "sectionCount": 0,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개념"
-    },
-    {
-      "chapterId": "ch06",
-      "route": "#ch06-clip12",
-      "title": "Copilot 참고자료",
-      "folder": "chapters/CH06/ch06-clip12",
-      "textLength": 463,
-      "htmlLength": 1670,
-      "sectionCount": 2,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개념"
-    },
-    {
-      "chapterId": "ch06",
-      "route": "#ch06-clip13",
-      "title": "실습용 컨텍스트 파일",
-      "folder": "chapters/CH06/ch06-clip13",
-      "textLength": 73439,
-      "htmlLength": 94302,
-      "sectionCount": 8,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개념"
-    },
-    {
-      "chapterId": "ch06",
-      "route": "#ch06-clip14",
-      "title": "AI Readiness 분석",
-      "folder": "chapters/CH06/ch06-clip14",
-      "textLength": 307,
-      "htmlLength": 1428,
-      "sectionCount": 1,
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,

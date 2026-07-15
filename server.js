@@ -49,14 +49,7 @@ const PRACTICE_FILE_MAP = {
 
 const HOST = "0.0.0.0";
 const PORT = Number(process.env.PORT || 4071);
-const EXCLUDED_CLIP_KEYS = new Set([
-  "ch00-clip02",
-  "ch04-clip04",
-  "ch04-clip05",
-  "ch06-clip12",
-  "ch06-clip13",
-  "ch06-clip14"
-]);
+const EXCLUDED_CLIP_KEYS = new Set([]);
 
 // [HIDDEN_CHAPTERS] CH04(Google AI Studio & Vibe Coding), CH05(Hi-D Code) 숨김 처리 중
 // 복구 방법: server.js의 visibleBlueprints 배열에서 아래 주석 처리된 블록을 되살리세요.
