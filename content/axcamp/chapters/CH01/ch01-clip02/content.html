@@ -1,4 +1,402 @@
-<section class="clip-integrated-layout-v2" id="ch01-clip02">
+<section class="ch01-clip02-integrated-v2" id="ch01-clip02">
+  <style>
+    .ch01-clip02-integrated-v2 {
+      --c1i-brand: var(--brand, #a50034);
+      --c1i-text: var(--text-body, #334155);
+      --c1i-heading: var(--text-heading, #172033);
+      --c1i-secondary: var(--text-secondary, #667085);
+      --c1i-border: var(--border, #e4e7ec);
+      --c1i-offwhite: var(--bg-offwhite, #f8f9fb);
+      --c1i-white: var(--bg-white, #fff);
+      --c1i-soft: color-mix(in srgb, var(--c1i-brand) 7%, #fff);
+      --c1i-soft-strong: color-mix(in srgb, var(--c1i-brand) 12%, #fff);
+      --c1i-radius: 18px;
+      --c1i-gap: 16px;
+      font-size: 20px;
+      line-height: 1.72;
+      color: var(--c1i-text);
+      word-break: keep-all;
+    }
+
+    .ch01-clip02-integrated-v2 *,
+    .ch01-clip02-integrated-v2 *::before,
+    .ch01-clip02-integrated-v2 *::after { box-sizing: border-box; }
+
+    .ch01-clip02-integrated-v2 .clip-title {
+      margin-top: 10px;
+      font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
+      line-height: 1.22 !important;
+      letter-spacing: -0.04em;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-badge {
+      padding: 8px 12px !important;
+      border-radius: 999px !important;
+      font-size: 0.95rem !important;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-overview {
+      padding: 24px 26px !important;
+      border-radius: var(--c1i-radius) !important;
+      font-size: 1.16rem !important;
+      line-height: 1.78 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-section-title {
+      margin-bottom: 14px !important;
+      font-size: 1.5rem !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.025em;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-section-content,
+    .ch01-clip02-integrated-v2 p,
+    .ch01-clip02-integrated-v2 li,
+    .ch01-clip02-integrated-v2 .info-block,
+    .ch01-clip02-integrated-v2 .info-block div,
+    .ch01-clip02-integrated-v2 .tip-block-content,
+    .ch01-clip02-integrated-v2 .slide-briefing-desc {
+      font-size: 1.08rem !important;
+      line-height: 1.66 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .info-block,
+    .ch01-clip02-integrated-v2 .tip-block {
+      padding: 18px 20px !important;
+      border-radius: var(--c1i-radius) !important;
+    }
+
+    .ch01-clip02-integrated-v2 .info-block-title,
+    .ch01-clip02-integrated-v2 .tip-block-title {
+      margin-bottom: 8px !important;
+      font-size: 1.08rem !important;
+      line-height: 1.45 !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .slide-briefing-eyebrow {
+      font-size: 0.92rem !important;
+      line-height: 1.3 !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .slide-briefing-title {
+      font-size: 1.38rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .slide-briefing-link,
+    .ch01-clip02-integrated-v2 .clip-nav-btn {
+      padding: 10px 18px !important;
+      border-radius: 999px !important;
+      font-size: 1.06rem !important;
+      line-height: 1.3 !important;
+      font-weight: 900 !important;
+    }
+
+    /* 두 개의 학습 축 */
+    .ch01-clip02-integrated-v2 .axis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--c1i-gap);
+      margin: 12px 0 16px;
+    }
+
+    .ch01-clip02-integrated-v2 .axis-card {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--c1i-border);
+      border-radius: var(--c1i-radius);
+      background: linear-gradient(135deg, #fff, var(--c1i-offwhite));
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch01-clip02-integrated-v2 .axis-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--c1i-soft);
+      color: var(--c1i-brand);
+      font-size: 0.88rem !important;
+      line-height: 1.2 !important;
+      font-weight: 900;
+    }
+
+    .ch01-clip02-integrated-v2 .axis-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--c1i-heading);
+      font-size: 1.08rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .axis-card p {
+      margin: 0 !important;
+      color: var(--c1i-text);
+      font-size: 1rem !important;
+      line-height: 1.58 !important;
+    }
+
+    /* 통합 3단계 카드 */
+    .ch01-clip02-integrated-v2 .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--c1i-gap);
+      margin: 12px 0 18px;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-card {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--c1i-border);
+      border-radius: var(--c1i-radius);
+      background: var(--c1i-white);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch01-clip02-integrated-v2 .stage-card::before {
+      content: "";
+      display: block;
+      height: 6px;
+      background: var(--c1i-brand);
+    }
+
+    .ch01-clip02-integrated-v2 .stage-card-body { padding: 20px; }
+
+    .ch01-clip02-integrated-v2 .stage-level {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--c1i-soft);
+      color: var(--c1i-brand);
+      font-size: 0.9rem !important;
+      line-height: 1.2 !important;
+      font-weight: 900;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-title {
+      margin: 0 0 6px;
+      color: var(--c1i-heading);
+      font-size: 1.24rem !important;
+      line-height: 1.38 !important;
+      font-weight: 950;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-tagline {
+      margin-bottom: 10px;
+      color: var(--c1i-brand);
+      font-size: 0.98rem !important;
+      line-height: 1.42 !important;
+      font-weight: 850;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-copy {
+      margin: 0 0 14px !important;
+      color: var(--c1i-text);
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-loop {
+      margin: 0 0 14px;
+      padding: 11px 12px;
+      border: 1px dashed var(--c1i-border);
+      border-radius: 13px;
+      background: var(--c1i-offwhite);
+      color: var(--c1i-heading);
+      font-size: 0.94rem !important;
+      line-height: 1.5 !important;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-points {
+      margin: 0 0 14px;
+      padding-left: 22px;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-points li {
+      margin-bottom: 7px;
+      font-size: 0.98rem !important;
+      line-height: 1.55 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch-grid {
+      display: grid;
+      gap: 9px;
+      margin: 0 0 14px;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch {
+      padding: 11px 12px;
+      border: 1px solid var(--c1i-border);
+      border-radius: 13px;
+      background: var(--c1i-offwhite);
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--c1i-heading);
+      font-size: 0.92rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch span {
+      display: block;
+      color: var(--c1i-text);
+      font-size: 0.9rem !important;
+      line-height: 1.48 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 0 0 14px;
+    }
+
+    .ch01-clip02-integrated-v2 .tool-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border: 1px solid var(--c1i-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--c1i-text);
+      font-size: 0.84rem !important;
+      line-height: 1.2 !important;
+      font-weight: 850;
+    }
+
+    .ch01-clip02-integrated-v2 .human-role {
+      padding-top: 12px;
+      border-top: 1px solid var(--c1i-border);
+      color: var(--c1i-secondary);
+      font-size: 0.94rem !important;
+      line-height: 1.52 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .human-role strong { color: var(--c1i-heading); }
+
+    /* 비교표 */
+    .ch01-clip02-integrated-v2 .table-wrap {
+      width: 100%;
+      margin: 12px 0 18px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--c1i-border);
+      border-radius: 16px;
+    }
+
+    .ch01-clip02-integrated-v2 .table-wrap table {
+      min-width: 1040px;
+      margin: 0 !important;
+      border: 0 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .comparison-table th,
+    .ch01-clip02-integrated-v2 .comparison-table td {
+      padding: 9px 12px !important;
+      vertical-align: middle !important;
+      font-size: 1.02rem !important;
+      line-height: 1.48 !important;
+      word-break: keep-all;
+    }
+
+    .ch01-clip02-integrated-v2 .comparison-table th {
+      color: var(--c1i-heading) !important;
+      background: var(--c1i-offwhite) !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .comparison-table td:first-child {
+      width: 152px;
+      color: var(--c1i-heading);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    /* 리더 체크포인트 */
+    .ch01-clip02-integrated-v2 .leader-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--c1i-gap);
+      margin: 12px 0 18px;
+    }
+
+    .ch01-clip02-integrated-v2 .leader-card {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--c1i-border);
+      border-radius: var(--c1i-radius);
+      background: linear-gradient(135deg, #fff, var(--c1i-offwhite));
+    }
+
+    .ch01-clip02-integrated-v2 .leader-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background: var(--c1i-brand);
+      color: #fff;
+      font-size: 0.92rem !important;
+      line-height: 1 !important;
+      font-weight: 950;
+    }
+
+    .ch01-clip02-integrated-v2 .leader-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--c1i-heading);
+      font-size: 1.04rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .leader-card p {
+      margin: 0 !important;
+      color: var(--c1i-text);
+      font-size: 0.98rem !important;
+      line-height: 1.56 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0 0 0 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    @media (max-width: 1040px) {
+      .ch01-clip02-integrated-v2 .roadmap-grid,
+      .ch01-clip02-integrated-v2 .leader-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .ch01-clip02-integrated-v2 { font-size: 18px; }
+      .ch01-clip02-integrated-v2 .clip-overview { padding: 20px !important; }
+      .ch01-clip02-integrated-v2 .axis-grid { grid-template-columns: 1fr; }
+      .ch01-clip02-integrated-v2 .stage-card-body { padding: 18px; }
+    }
+  </style>
 
   <div class="clip-header">
     <div class="clip-badges">
