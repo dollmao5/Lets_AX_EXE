@@ -263,24 +263,28 @@ async function main() {
     const runtimeFileRoutes = new Set();
     const downloadFilenames = {};
 
+    let snapshotCount = 0;
     for (const clipKey of clipKeys) {
-      log(`snapshot ${clipKey}`);
       const clipData = await fetchJson(baseUrl, `/api/clips/${encodeURIComponent(clipKey)}`);
       clipPayloads.set(clipKey, clipData);
       collectRuntimePaths(clipData, runtimeFileRoutes);
+      snapshotCount++;
     }
+    log(`Successfully snapshotted ${snapshotCount} clips.`);
 
+    let copyCount = 0;
     for (const routePath of runtimeFileRoutes) {
-      log(`copy ${routePath}`);
       try {
         const fileInfo = await downloadRuntimeFile(baseUrl, routePath);
         if (routePath.startsWith("/practice-files/")) {
           downloadFilenames[routePath] = fileInfo.fileName;
         }
+        copyCount++;
       } catch (error) {
         log(`warning: failed to copy ${routePath} - ${error.message}`);
       }
     }
+    log(`Successfully copied ${copyCount} runtime assets.`);
 
     const staticConfig = buildStaticConfig(downloadFilenames);
     await writeStaticEntryFiles(staticConfig);
