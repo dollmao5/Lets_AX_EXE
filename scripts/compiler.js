@@ -405,6 +405,36 @@ async function readCatalogVersion(sourceRoot) {
         parts.push(`${filePath}:missing`);
       }
     }
+
+    let maxMtime = 0;
+    try {
+      const chaptersDir = path.join(sourceRoot, "chapters");
+      const chapters = await fs.readdir(chaptersDir);
+      for (const ch of chapters) {
+        const chPath = path.join(chaptersDir, ch);
+        const chStat = await fs.stat(chPath);
+        if (chStat.isDirectory()) {
+          const clips = await fs.readdir(chPath);
+          for (const clip of clips) {
+            const clipPath = path.join(chPath, clip);
+            const clipStat = await fs.stat(clipPath);
+            if (clipStat.isDirectory()) {
+              for (const file of ["content.html", "metadata.json"]) {
+                const filePath = path.join(clipPath, file);
+                try {
+                  const fStat = await fs.stat(filePath);
+                  if (fStat.mtimeMs > maxMtime) {
+                    maxMtime = fStat.mtimeMs;
+                  }
+                } catch {}
+              }
+            }
+          }
+        }
+      }
+    } catch {}
+    parts.push(`chaptersMtime:${maxMtime}`);
+
     return parts.join("|");
   } catch {
     return "missing";
