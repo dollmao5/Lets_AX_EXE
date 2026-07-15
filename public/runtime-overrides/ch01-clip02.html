@@ -1,71 +1,663 @@
-<div class="clip-header">
-      <div class="clip-badges">
-        <span class="clip-badge time"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="timer" aria-hidden="true" style="width:13px;height:13px;vertical-align:-2px;" class="lucide lucide-timer"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg> ~10분</span>
-        <span class="clip-badge chapter">CH 01</span>
-        <span class="clip-badge type-concept">개념</span>
-      </div>
-      <h1 class="clip-title">Assistant에서 Agentic AI로</h1>
+<section class="ch01-clip02-integrated-v2" id="ch01-clip02">
+  <style>
+    .ch01-clip02-integrated-v2 {
+      --c1i-brand: var(--brand, #a50034);
+      --c1i-text: var(--text-body, #334155);
+      --c1i-heading: var(--text-heading, #172033);
+      --c1i-secondary: var(--text-secondary, #667085);
+      --c1i-border: var(--border, #e4e7ec);
+      --c1i-offwhite: var(--bg-offwhite, #f8f9fb);
+      --c1i-white: var(--bg-white, #fff);
+      --c1i-soft: color-mix(in srgb, var(--c1i-brand) 7%, #fff);
+      --c1i-soft-strong: color-mix(in srgb, var(--c1i-brand) 12%, #fff);
+      --c1i-radius: 18px;
+      --c1i-gap: 16px;
+      font-size: 20px;
+      line-height: 1.72;
+      color: var(--c1i-text);
+      word-break: keep-all;
+    }
+
+    .ch01-clip02-integrated-v2 *,
+    .ch01-clip02-integrated-v2 *::before,
+    .ch01-clip02-integrated-v2 *::after { box-sizing: border-box; }
+
+    .ch01-clip02-integrated-v2 .clip-title {
+      margin-top: 10px;
+      font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
+      line-height: 1.22 !important;
+      letter-spacing: -0.04em;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-badge {
+      padding: 8px 12px !important;
+      border-radius: 999px !important;
+      font-size: 0.95rem !important;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-overview {
+      padding: 24px 26px !important;
+      border-radius: var(--c1i-radius) !important;
+      font-size: 1.16rem !important;
+      line-height: 1.78 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-section-title {
+      margin-bottom: 14px !important;
+      font-size: 1.5rem !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.025em;
+    }
+
+    .ch01-clip02-integrated-v2 .clip-section-content,
+    .ch01-clip02-integrated-v2 p,
+    .ch01-clip02-integrated-v2 li,
+    .ch01-clip02-integrated-v2 .info-block,
+    .ch01-clip02-integrated-v2 .info-block div,
+    .ch01-clip02-integrated-v2 .tip-block-content,
+    .ch01-clip02-integrated-v2 .slide-briefing-desc {
+      font-size: 1.08rem !important;
+      line-height: 1.66 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .info-block,
+    .ch01-clip02-integrated-v2 .tip-block {
+      padding: 18px 20px !important;
+      border-radius: var(--c1i-radius) !important;
+    }
+
+    .ch01-clip02-integrated-v2 .info-block-title,
+    .ch01-clip02-integrated-v2 .tip-block-title {
+      margin-bottom: 8px !important;
+      font-size: 1.08rem !important;
+      line-height: 1.45 !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .slide-briefing-eyebrow {
+      font-size: 0.92rem !important;
+      line-height: 1.3 !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .slide-briefing-title {
+      font-size: 1.38rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .slide-briefing-link,
+    .ch01-clip02-integrated-v2 .clip-nav-btn {
+      padding: 10px 18px !important;
+      border-radius: 999px !important;
+      font-size: 1.06rem !important;
+      line-height: 1.3 !important;
+      font-weight: 900 !important;
+    }
+
+    /* 두 개의 학습 축 */
+    .ch01-clip02-integrated-v2 .axis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--c1i-gap);
+      margin: 12px 0 16px;
+    }
+
+    .ch01-clip02-integrated-v2 .axis-card {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--c1i-border);
+      border-radius: var(--c1i-radius);
+      background: linear-gradient(135deg, #fff, var(--c1i-offwhite));
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch01-clip02-integrated-v2 .axis-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--c1i-soft);
+      color: var(--c1i-brand);
+      font-size: 0.88rem !important;
+      line-height: 1.2 !important;
+      font-weight: 900;
+    }
+
+    .ch01-clip02-integrated-v2 .axis-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--c1i-heading);
+      font-size: 1.08rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .axis-card p {
+      margin: 0 !important;
+      color: var(--c1i-text);
+      font-size: 1rem !important;
+      line-height: 1.58 !important;
+    }
+
+    /* 통합 3단계 카드 */
+    .ch01-clip02-integrated-v2 .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--c1i-gap);
+      margin: 12px 0 18px;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-card {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--c1i-border);
+      border-radius: var(--c1i-radius);
+      background: var(--c1i-white);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch01-clip02-integrated-v2 .stage-card::before {
+      content: "";
+      display: block;
+      height: 6px;
+      background: var(--c1i-brand);
+    }
+
+    .ch01-clip02-integrated-v2 .stage-card-body { padding: 20px; }
+
+    .ch01-clip02-integrated-v2 .stage-level {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--c1i-soft);
+      color: var(--c1i-brand);
+      font-size: 0.9rem !important;
+      line-height: 1.2 !important;
+      font-weight: 900;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-title {
+      margin: 0 0 6px;
+      color: var(--c1i-heading);
+      font-size: 1.24rem !important;
+      line-height: 1.38 !important;
+      font-weight: 950;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-tagline {
+      margin-bottom: 10px;
+      color: var(--c1i-brand);
+      font-size: 0.98rem !important;
+      line-height: 1.42 !important;
+      font-weight: 850;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-copy {
+      margin: 0 0 14px !important;
+      color: var(--c1i-text);
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-loop {
+      margin: 0 0 14px;
+      padding: 11px 12px;
+      border: 1px dashed var(--c1i-border);
+      border-radius: 13px;
+      background: var(--c1i-offwhite);
+      color: var(--c1i-heading);
+      font-size: 0.94rem !important;
+      line-height: 1.5 !important;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-points {
+      margin: 0 0 14px;
+      padding-left: 22px;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-points li {
+      margin-bottom: 7px;
+      font-size: 0.98rem !important;
+      line-height: 1.55 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch-grid {
+      display: grid;
+      gap: 9px;
+      margin: 0 0 14px;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch {
+      padding: 11px 12px;
+      border: 1px solid var(--c1i-border);
+      border-radius: 13px;
+      background: var(--c1i-offwhite);
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--c1i-heading);
+      font-size: 0.92rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .stage-branch span {
+      display: block;
+      color: var(--c1i-text);
+      font-size: 0.9rem !important;
+      line-height: 1.48 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 0 0 14px;
+    }
+
+    .ch01-clip02-integrated-v2 .tool-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border: 1px solid var(--c1i-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--c1i-text);
+      font-size: 0.84rem !important;
+      line-height: 1.2 !important;
+      font-weight: 850;
+    }
+
+    .ch01-clip02-integrated-v2 .human-role {
+      padding-top: 12px;
+      border-top: 1px solid var(--c1i-border);
+      color: var(--c1i-secondary);
+      font-size: 0.94rem !important;
+      line-height: 1.52 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .human-role strong { color: var(--c1i-heading); }
+
+    /* 비교표 */
+    .ch01-clip02-integrated-v2 .table-wrap {
+      width: 100%;
+      margin: 12px 0 18px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--c1i-border);
+      border-radius: 16px;
+    }
+
+    .ch01-clip02-integrated-v2 .table-wrap table {
+      min-width: 1040px;
+      margin: 0 !important;
+      border: 0 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .comparison-table th,
+    .ch01-clip02-integrated-v2 .comparison-table td {
+      padding: 9px 12px !important;
+      vertical-align: middle !important;
+      font-size: 1.02rem !important;
+      line-height: 1.48 !important;
+      word-break: keep-all;
+    }
+
+    .ch01-clip02-integrated-v2 .comparison-table th {
+      color: var(--c1i-heading) !important;
+      background: var(--c1i-offwhite) !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .comparison-table td:first-child {
+      width: 152px;
+      color: var(--c1i-heading);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    /* 리더 체크포인트 */
+    .ch01-clip02-integrated-v2 .leader-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--c1i-gap);
+      margin: 12px 0 18px;
+    }
+
+    .ch01-clip02-integrated-v2 .leader-card {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--c1i-border);
+      border-radius: var(--c1i-radius);
+      background: linear-gradient(135deg, #fff, var(--c1i-offwhite));
+    }
+
+    .ch01-clip02-integrated-v2 .leader-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background: var(--c1i-brand);
+      color: #fff;
+      font-size: 0.92rem !important;
+      line-height: 1 !important;
+      font-weight: 950;
+    }
+
+    .ch01-clip02-integrated-v2 .leader-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--c1i-heading);
+      font-size: 1.04rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .leader-card p {
+      margin: 0 !important;
+      color: var(--c1i-text);
+      font-size: 0.98rem !important;
+      line-height: 1.56 !important;
+    }
+
+    .ch01-clip02-integrated-v2 .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0 0 0 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    @media (max-width: 1040px) {
+      .ch01-clip02-integrated-v2 .roadmap-grid,
+      .ch01-clip02-integrated-v2 .leader-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .ch01-clip02-integrated-v2 { font-size: 18px; }
+      .ch01-clip02-integrated-v2 .clip-overview { padding: 20px !important; }
+      .ch01-clip02-integrated-v2 .axis-grid { grid-template-columns: 1fr; }
+      .ch01-clip02-integrated-v2 .stage-card-body { padding: 18px; }
+    }
+  </style>
+
+  <div class="clip-header">
+    <div class="clip-badges">
+      <span class="clip-badge time">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:13px;height:13px;vertical-align:-2px;"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg>
+        ~12분
+      </span>
+      <span class="clip-badge chapter">CH 01</span>
+      <span class="clip-badge type-concept">개념</span>
     </div>
-    
-    <div class="clip-overview">질문형 Assistant에서 목표 중심 Agent, 그리고 여러 역할이 협업하는 Agentic AI까지의 차이를 한 장의 인포그래픽과 비교표로 빠르게 이해합니다.</div>
-<div class="clip-section slide-preview-shell">
-  <div class="slide-preview-head">
-    <p class="slide-briefing-eyebrow">NotebookLM Infographic</p>
-    <div class="slide-preview-top">
-      <div>
-        <h2 class="slide-briefing-title">AI 활용은 질문형 Assistant에서 자율 운영형 Agentic AI로 진화합니다</h2>
-        <p class="slide-briefing-desc">오늘 수업은 Gemini와 NotebookLM으로 질문형 AI를 익히고, Gemini Deep Research와 AI Studio Build로 goal-based agent를 체험하며, Codex와 Cline 시연으로 agentic workflow를 봅니다.</p>
+    <h1 class="clip-title" data-keep-title="">Assistant에서 Agentic AI로: 기술 활용 로드맵</h1>
+  </div>
+
+  <div class="clip-overview">
+    조직의 AI 활용은 사람이 질문하고 결과를 다듬는 <strong>AI Assistant</strong>에서 시작해,
+    작은 AI 앱·자동화 도구를 만들거나 목표를 맡기는 <strong>확장 단계</strong>를 거쳐,
+    Agent·도구·데이터·규칙·사람의 승인 지점을 연결한 <strong>Agentic AI</strong>로 발전합니다.<br>
+    이번 클립에서는 <strong>AI의 자율성</strong>과 <strong>기술 구현 방식</strong>을 하나의 로드맵으로 연결하고,
+    자율성이 커질수록 팀장이 무엇을 설계·검증·승인·책임해야 하는지 확인합니다.
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">이번 클립에서 함께 배우는 것</div>
+    <div class="clip-section-content">
+      <div class="axis-grid">
+        <article class="axis-card">
+          <span class="axis-kicker">협업 자율성의 축</span>
+          <strong>Assistant → Agent → Agentic AI</strong>
+          <p>AI가 질문에 반응하는 수준에서, 목표를 받아 계획·도구 사용·결과 확인을 반복하고, 여러 실행 주체가 Workflow로 연결되는 수준까지 구분합니다.</p>
+        </article>
+        <article class="axis-card">
+          <span class="axis-kicker">기술 구현의 축</span>
+          <strong>대화형 사용 → AI 앱·자동화 → Agentic Workflow</strong>
+          <p>사람과 AI의 대화에서 시작해 반복 가능한 작은 도구와 앱을 만들고, 여러 단계·시스템·승인 지점을 연결하는 방식으로 확장합니다.</p>
+        </article>
       </div>
-      <div class="slide-preview-actions">
-        <a class="slide-briefing-link" data-slide-deck-download="assistant-agentic-spectrum">다운로드</a>
+
+      <div class="info-block">
+        <div class="info-block-title">Level 2는 ‘두 갈래의 확장’으로 이해합니다</div>
+        <div>
+          <strong>AI 앱·자동화</strong>는 사람이 설계한 흐름과 화면 안에서 기능을 반복 실행하는 구현 방식이고,
+          <strong>AI Agent</strong>는 목표와 허용 범위를 받아 계획(Plan)·실행(Act)·확인(Check)·조정을 반복하는 협업 방식입니다.
+          두 개념은 동일하지 않지만, 모두 단순 대화형 활용에서 한 단계 확장되는 경로입니다.
+        </div>
       </div>
     </div>
   </div>
-  <div class="slide-preview-gallery" data-slide-deck-preview="assistant-agentic-spectrum"></div>
-</div>
 
-<div class="clip-section">
-  <table class="comparison-table">
-    <thead><tr><th></th><th>AI 어시스턴트</th><th>AI 에이전트</th><th>에이전틱 AI</th></tr></thead>
-    <tbody>
-      <tr><td><strong>비유</strong></td><td>유능한 비서</td><td>프로젝트 매니저</td><td>자율 운영 부서</td></tr>
-      <tr><td><strong>작동 방식</strong></td><td>질문 → 답변 (1회성)</td><td>목표 → 계획 → 실행 (자율)</td><td>여러 에이전트가 협업하여 복잡한 업무 자동 처리</td></tr>
-      <tr><td><strong>사람의 개입</strong></td><td>매 단계 지시 필요</td><td>목표만 제시, 중간 과정은 자율</td><td>최소한의 감독만 필요</td></tr>
-      <tr><td><strong>대표 도구</strong></td><td>Gemini, NotebookLM</td><td>AI Studio Build</td><td>Codex, Cline</td></tr>
-      <tr><td><strong>오늘의 실습</strong></td><td>Gemini (ChatGPT), NotebookLM</td><td>Deep Research, Google AI Studio</td><td>강사 시연: Hi-D Code with Cline</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="clip-section">
-  <div class="clip-section-title">어떻게 작동하는가 — 원리와 메커니즘</div>
-  <div class="clip-section-content">
-    <table class="comparison-table">
-      <thead><tr><th style="width:20%">구분</th><th>작동 원리</th><th>비유</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>AI Assistant</strong></td>
-          <td>사용자의 질문(프롬프트) 1개를 받아 AI가 답변 1개를 생성합니다. <strong>매번 새로 시작</strong>하며, 이전 대화를 기억하려면 같은 채팅창을 유지해야 합니다.</td>
-          <td>1문 1답 인터뷰</td>
-        </tr>
-        <tr>
-          <td><strong>AI Agent</strong></td>
-          <td>목표를 받으면 <strong>계획(Plan) → 도구 실행(Act) → 결과 검증(Check)</strong>을 스스로 반복합니다. 필요하면 웹 검색, 파일 생성, 코드 실행까지 자율적으로 수행합니다.</td>
-          <td>Plan-Act-Check 루프</td>
-        </tr>
-        <tr>
-          <td><strong>Agentic AI</strong></td>
-          <td>여러 Agent가 <strong>각자 역할을 맡아 병렬로 작업</strong>합니다. 매니저 Agent가 전체를 조율하고, 실행 Agent들이 동시에 리서치·분석·문서 작성을 처리합니다.</td>
-          <td>프로젝트 TF팀</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="clip-section slide-preview-shell">
+    <div class="slide-preview-head">
+      <p class="slide-briefing-eyebrow">NotebookLM Slide Deck</p>
+      <div class="slide-preview-top">
+        <div>
+          <h2 class="slide-briefing-title">묻고 다듬기에서 작은 도구 만들기, 여러 단계 맡기기로 확장되는 활용 로드맵</h2>
+          <p class="slide-briefing-desc">
+            NotebookLM Studio의 <strong>Enterprise AI Roadmap (2)</strong> 슬라이드 3장을 활용합니다.
+            단계별 인터페이스와 대표 도구를 확인하되, 제품명보다 <strong>계획 범위·실행 권한·도구 연결·사람의 승인 지점</strong>에 주목합니다.
+          </p>
+        </div>
+        <div class="slide-preview-actions">
+          <a class="slide-briefing-link" data-slide-deck-download="tech-utilization-roadmap">다운로드</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide-preview-gallery" data-slide-deck-preview="tech-utilization-roadmap"></div>
   </div>
-</div>
 
-<div class="tip-block" style="margin-top:20px">
-  <div class="tip-block-title">핵심 인사이트</div>
-  <div class="tip-block-content">AI 활용의 핵심은 <strong>"도구를 얼마나 잘 쓰느냐"가 아니라, "AI에게 얼마나 효과적으로 위임할 수 있느냐"</strong>입니다. 오늘 하루 동안 질문하기(어시스턴트) → 맡기기(에이전트) → 자동화하기(에이전틱)의 세 단계를 직접 체험합니다.</div>
-</div>
+  <div class="clip-section">
+    <div class="clip-section-title">한눈에 보는 통합 3단계 로드맵</div>
+    <div class="clip-section-content">
+      <div class="roadmap-grid">
+        <article class="stage-card">
+          <div class="stage-card-body">
+            <span class="stage-level">Level 1 · 입문</span>
+            <h2 class="stage-title">AI Assistant</h2>
+            <div class="stage-tagline">묻고, 확인하고, 함께 다듬기</div>
+            <p class="stage-copy">
+              사람이 질문·자료·맥락을 제공하면 AI가 답변, 요약, 분석, 초안을 만들고 후속 대화를 통해 결과를 개선합니다.
+            </p>
+            <div class="stage-loop">질문·자료 → 답변 → 후속 대화</div>
+            <ul class="stage-points">
+              <li>아이디어 탐색, 보고서·메일·회의록 초안</li>
+              <li>소스 기반 리서치와 근거 확인</li>
+              <li>사람의 지시와 검토가 자주 필요한 업무에 적합</li>
+            </ul>
+            <div class="tool-tags" aria-label="Level 1 대표 도구">
+              <span class="tool-tag">Gemini</span>
+              <span class="tool-tag">NotebookLM</span>
+              <span class="tool-tag">ChatGPT</span>
+            </div>
+            <div class="human-role"><strong>팀장이 확인할 것:</strong> 충분한 맥락을 주었는가? 사실·누락·품질을 직접 검토했는가?</div>
+          </div>
+        </article>
 
-<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip01">← AI 트렌드</a><a class="clip-nav-btn" href="#ch01-clip03">기술 활용 로드맵 →</a></div>
+        <article class="stage-card">
+          <div class="stage-card-body">
+            <span class="stage-level">Level 2 · 확장</span>
+            <h2 class="stage-title">AI 앱·자동화 / 범위형 Agent</h2>
+            <div class="stage-tagline">작은 도구를 만들거나 목표 맡기기</div>
+            <p class="stage-copy">
+              반복 업무를 재사용 가능한 앱·도구로 만들거나, 명확한 목표와 허용 범위 안에서 AI가 여러 단계를 계획하고 수행하도록 확장합니다.
+            </p>
+            <div class="stage-branch-grid" aria-label="Level 2 두 가지 확장 경로">
+              <div class="stage-branch">
+                <strong>구현 확장 · AI 앱·자동화</strong>
+                <span>사람이 정한 업무 흐름, 화면, 데이터 연결을 반복 가능한 서비스로 만듭니다.</span>
+              </div>
+              <div class="stage-branch">
+                <strong>자율성 확장 · AI Agent</strong>
+                <span>목표 → 계획 → 도구 실행 → 결과 확인·수정을 허용 범위 안에서 반복합니다.</span>
+              </div>
+            </div>
+            <ul class="stage-points">
+              <li>반복 지침과 출력 형식을 맞춤형 비서로 저장</li>
+              <li>업무용 미니앱과 자동화 흐름을 설계</li>
+              <li>권한·데이터·완료 기준·승인 지점을 명시</li>
+            </ul>
+            <div class="tool-tags" aria-label="Level 2 확장 사례">
+              <span class="tool-tag">Gemini Deep Research</span>
+              <span class="tool-tag">Gemini Gems</span>
+              <span class="tool-tag">AI Studio Build</span>
+              <span class="tool-tag">Gemini API</span>
+            </div>
+            <div class="human-role"><strong>팀장이 확인할 것:</strong> 목표와 완료 기준은 무엇인가? 권한과 데이터 범위는 어디까지이며 언제 사람이 승인하는가?</div>
+          </div>
+        </article>
+
+        <article class="stage-card">
+          <div class="stage-card-body">
+            <span class="stage-level">Level 3 · 자율</span>
+            <h2 class="stage-title">Agentic AI</h2>
+            <div class="stage-tagline">여러 단계와 도구를 운영 구조로 연결하기</div>
+            <p class="stage-copy">
+              하나 또는 여러 Agent가 도구·데이터·규칙과 연결되어 복수 단계 업무를 수행하고, 실행 결과를 바탕으로 다음 행동을 조정합니다.
+              중요한 판단에는 사람의 점검과 예외 처리 절차를 함께 설계합니다.
+            </p>
+            <div class="stage-loop">목표·이벤트 → 계획 → 도구 실행 → 확인·재계획</div>
+            <ul class="stage-points">
+              <li>문제를 작은 Task로 나누고 순서를 조정</li>
+              <li>코드·셸·브라우저·테스트·외부 시스템을 연결</li>
+              <li>복잡한 문제 해결과 반복 검증이 많은 업무에 적합</li>
+            </ul>
+            <div class="tool-tags" aria-label="Level 3 확장 사례">
+              <span class="tool-tag">Codex</span>
+              <span class="tool-tag">Cline</span>
+              <span class="tool-tag">Hi-D Code</span>
+            </div>
+            <div class="human-role"><strong>팀장이 확인할 것:</strong> 품질·보안·모니터링·예외 처리·Fallback·중단 기준·최종 책임자가 명확한가?</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">핵심 비교: AI 협업의 단계별 운영 기준</div>
+    <div class="clip-section-content">
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <caption class="visually-hidden">AI Assistant, AI 앱·자동화 및 범위형 Agent, Agentic AI의 운영 기준 비교</caption>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>Level 1 · AI Assistant</th>
+              <th>Level 2 · AI 앱·자동화 / 범위형 Agent</th>
+              <th>Level 3 · Agentic AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>쉽게 말하면</td>
+              <td>요청받아 돕는 비서</td>
+              <td>특정 업무용 도구를 만들거나 목표를 맡기는 담당자</td>
+              <td>Agent와 도구를 연결한 운영 체계</td>
+            </tr>
+            <tr>
+              <td>시작 방식</td>
+              <td>사용자가 질문·자료·지시를 입력</td>
+              <td>사용자가 업무 흐름 또는 목표·권한·완료 기준을 설정</td>
+              <td>목표, 이벤트 또는 설계된 Workflow에 따라 작동</td>
+            </tr>
+            <tr>
+              <td>작동 방식</td>
+              <td>질문 → 답변 → 후속 대화</td>
+              <td>정해진 흐름 반복 또는 목표 → 계획 → 실행 → 확인·수정</td>
+              <td>하나 이상의 Agent·도구·데이터·규칙이 역할을 나눠 협업</td>
+            </tr>
+            <tr>
+              <td>적합 업무</td>
+              <td>요약, 초안, 리서치, 회의 정리, 브레인스토밍</td>
+              <td>반복 분석, 전용 양식, 업무용 미니앱, 제한된 자동화·목표 수행</td>
+              <td>복잡한 문제 해결, 다단계 Workflow, 도구 호출과 반복 검증</td>
+            </tr>
+            <tr>
+              <td>사람의 역할</td>
+              <td>맥락 제공과 결과 검토</td>
+              <td>업무 범위·권한·데이터·완료 기준 설정, 중간 점검과 승인</td>
+              <td>거버넌스, 모니터링, 예외 처리, 중단 결정, 최종 책임</td>
+            </tr>
+            <tr>
+              <td>과정 내 위치</td>
+              <td><strong>필수 실습</strong><br>Gemini·NotebookLM</td>
+              <td><strong>선택 확장</strong><br>Deep Research·Gems·AI 앱</td>
+              <td><strong>방향성 참고</strong><br>향후 Workflow 고도화</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">자율성이 커질수록 팀장이 먼저 정할 것</div>
+    <div class="clip-section-content">
+      <div class="leader-grid">
+        <article class="leader-card">
+          <span class="leader-number">1</span>
+          <strong>어떤 수준이 이 업무에 적합한가?</strong>
+          <p>업무의 반복성, 복잡성, 오류 영향, 데이터 민감도, 검증 비용을 보고 Assistant·앱·Agentic Workflow 중 적정 수준을 선택합니다.</p>
+        </article>
+        <article class="leader-card">
+          <span class="leader-number">2</span>
+          <strong>AI가 어디까지 계획·결정·실행하는가?</strong>
+          <p>목표, 권한, 데이터 범위, 완료 기준, 사람의 승인 지점, AI에게 맡기지 않을 판단을 명시합니다.</p>
+        </article>
+        <article class="leader-card">
+          <span class="leader-number">3</span>
+          <strong>오류와 예외가 생기면 어떻게 멈추는가?</strong>
+          <p>근거 확인, 로그와 모니터링, 예외 처리, Fallback, 중단 조건과 최종 책임자를 사전에 정합니다.</p>
+        </article>
+      </div>
+
+      <div class="tip-block">
+        <div class="tip-block-title">핵심 인사이트</div>
+        <div class="tip-block-content">
+          AI 활용의 핵심은 <strong>AI에게 많이 맡기는 것</strong>이 아니라,
+          <strong>무엇을 위임하고 어디에서 사람이 확인하며 누가 최종 책임질지를 설계하는 것</strong>입니다.
+          높은 단계가 항상 더 좋은 것도 아닙니다. 최적의 수준은 자율성의 크기가 아니라 <strong>업무 성과와 리스크를 가장 잘 통제하는 구조</strong>로 결정합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-block" style="margin-top:18px">
+    <div class="info-block-title">오늘의 여정 안에서의 위치</div>
+    <div>
+      오늘의 필수 실습은 <strong>Gemini와 NotebookLM을 활용한 Assistant 중심</strong>입니다.
+      <strong>Deep Research·Gems·AI 앱 구축</strong>은 선택 확장으로 경험하고,
+      <strong>Agentic AI</strong>는 향후 조직의 Workflow를 고도화하기 위한 방향성으로 이해합니다.
+    </div>
+  </div>
+
+  <div class="tip-block" style="margin-top:20px">
+    <div class="tip-block-title">이번 클립의 연결</div>
+    <div class="tip-block-content">
+      <strong>필수 파일 산출물은 없습니다.</strong>
+      현재 팀 업무 한 가지를 떠올려
+      <strong>① 질문해서 도움받을 일, ② 작은 도구로 만들거나 목표로 맡길 일, ③ 사람의 승인과 책임이 반드시 필요한 일</strong>로 구분해 봅니다.
+      다음 클립에서 멀티모달·컨텍스트 설계·RAG·MCP·Agentic AI 등 실습에 반복 등장할 핵심 용어를 확인합니다.
+    </div>
+  </div>
+
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip03">← AI 트렌드</a><a class="clip-nav-btn" href="#ch01-clip05">기술 활용 로드맵 →</a></div>
+</section>
