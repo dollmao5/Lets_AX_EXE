@@ -460,11 +460,7 @@ const HIDDEN_CLIP_KEYS_REDIRECT_SET = new Set([
 // 서버 visibleBlueprints 기준 ch07 (Key Takeaways & Q/A)
 const HIDDEN_REDIRECT_TARGET_CHAPTER_ID = "ch05";
 
-const CLIENT_RUNTIME_CLIP_OVERRIDE_URLS = {
-  "ch00-clip02": "/runtime-overrides/ch00-clip02.html",
-  "ch01-clip01": "/runtime-overrides/ch01-clip01.html",
-  "ch01-clip02": "/runtime-overrides/ch01-clip02.html"
-};
+const CLIENT_RUNTIME_CLIP_OVERRIDE_URLS = {};
 
 async function applyRuntimeClipOverride(clipKey, payload) {
   const normalized = normalizeClipKey(clipKey);
