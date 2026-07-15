@@ -2246,7 +2246,7 @@ async function buildCatalog(sourceRoot) {
       if (!clipObj) continue;
 
       // JSON 오버라이드 설정에 따른 메타데이터 덮어쓰기 적용
-      const clipOverride = overrides.clips?.[clipObj.clipKey] || {};
+      const clipOverride = overrides.clips?.[clipObj.canonicalClipKey] || {};
       if (clipOverride.title) {
         clipObj.title = clipOverride.title;
       }
