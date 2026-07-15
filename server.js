@@ -51,9 +51,6 @@ const HOST = "0.0.0.0";
 const PORT = Number(process.env.PORT || 4071);
 const EXCLUDED_CLIP_KEYS = new Set([
   "ch00-clip02",
-  "ch03-clip02",
-  "ch03-clip03",
-  "ch03-clip04",
   "ch04-clip04",
   "ch04-clip05",
   "ch06-clip12",
@@ -2087,7 +2084,7 @@ async function buildCatalog(sourceRoot) {
       title: "Gemini 활용 (2)",
       time: "13:30",
       sourceChapterIds: ["ch03"],
-      clipKeys: ["ch03-clip01", "ch04-clip03"]
+      clipKeys: ["ch03-clip01", "ch03-clip02"]
     },
     {
       visibleChapterId: "ch04",
