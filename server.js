@@ -51,9 +51,6 @@ const HOST = "0.0.0.0";
 const PORT = Number(process.env.PORT || 4071);
 const EXCLUDED_CLIP_KEYS = new Set([
   "ch00-clip02",
-  "ch01-clip01",
-  "ch01-clip02",
-  "ch01-clip07",
   "ch03-clip02",
   "ch03-clip03",
   "ch03-clip04",
@@ -2076,7 +2073,7 @@ async function buildCatalog(sourceRoot) {
       title: "AI 핵심 개념",
       time: "08:50",
       sourceChapterIds: ["ch01"],
-      clipKeys: ["ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip06", "ch01-clip07", "ch01-clip04", "ch01-clip05"]
+      clipKeys: ["ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip04"]
     },
     {
       visibleChapterId: "ch02",

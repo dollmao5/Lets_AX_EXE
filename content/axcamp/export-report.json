@@ -43,7 +43,7 @@
         {
           "route": "#ch01-clip01",
           "title": "AI 트렌드",
-          "type": "개요",
+          "type": "개념",
           "folder": "chapters/CH01/ch01-clip01",
           "linkCount": 0,
           "imageCount": 0,
@@ -52,8 +52,8 @@
         },
         {
           "route": "#ch01-clip02",
-          "title": "Assistant에서 Agentic AI로",
-          "type": "개요",
+          "title": "Assistant에서 Agentic AI로: 기술 활용 로드맵",
+          "type": "개념",
           "folder": "chapters/CH01/ch01-clip02",
           "linkCount": 0,
           "imageCount": 0,
@@ -62,7 +62,7 @@
         },
         {
           "route": "#ch01-clip03",
-          "title": "기술 활용 로드맵",
+          "title": "개념 다지기",
           "type": "개념",
           "folder": "chapters/CH01/ch01-clip03",
           "linkCount": 0,
@@ -72,42 +72,12 @@
         },
         {
           "route": "#ch01-clip04",
-          "title": "개념 다지기",
-          "type": "개념",
+          "title": "AI-Friendly 리더십 & AI 리터러시 진단",
+          "type": "실습",
           "folder": "chapters/CH01/ch01-clip04",
           "linkCount": 0,
           "imageCount": 0,
-          "sectionCount": 0,
-          "promptCount": 0
-        },
-        {
-          "route": "#ch01-clip05",
-          "title": "AI 리터러시 * AI-Friendly 리더십",
-          "type": "실습",
-          "folder": "chapters/CH01/ch01-clip05",
-          "linkCount": 0,
-          "imageCount": 0,
           "sectionCount": 8,
-          "promptCount": 0
-        },
-        {
-          "route": "#ch01-clip06",
-          "title": "Assistant에서 Agentic AI로 (신규)",
-          "type": "개념",
-          "folder": "chapters/CH01/ch01-clip06",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 0,
-          "promptCount": 0
-        },
-        {
-          "route": "#ch01-clip07",
-          "title": "기술 활용 로드맵 (신규)",
-          "type": "개념",
-          "folder": "chapters/CH01/ch01-clip07",
-          "linkCount": 0,
-          "imageCount": 0,
-          "sectionCount": 0,
           "promptCount": 0
         }
       ]
@@ -481,26 +451,13 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개요"
+      "type": "개념"
     },
     {
       "chapterId": "ch01",
       "route": "#ch01-clip02",
-      "title": "Assistant에서 Agentic AI로",
+      "title": "Assistant에서 Agentic AI로: 기술 활용 로드맵",
       "folder": "chapters/CH01/ch01-clip02",
-      "textLength": 1243,
-      "htmlLength": 3845,
-      "sectionCount": 4,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개요"
-    },
-    {
-      "chapterId": "ch01",
-      "route": "#ch01-clip03",
-      "title": "기술 활용 로드맵",
-      "folder": "chapters/CH01/ch01-clip03",
       "textLength": 1305,
       "htmlLength": 3913,
       "sectionCount": 0,
@@ -511,9 +468,9 @@
     },
     {
       "chapterId": "ch01",
-      "route": "#ch01-clip04",
+      "route": "#ch01-clip03",
       "title": "개념 다지기",
-      "folder": "chapters/CH01/ch01-clip04",
+      "folder": "chapters/CH01/ch01-clip03",
       "textLength": 237,
       "htmlLength": 1166,
       "sectionCount": 0,
@@ -524,9 +481,9 @@
     },
     {
       "chapterId": "ch01",
-      "route": "#ch01-clip05",
-      "title": "AI 리터러시 * AI-Friendly 리더십",
-      "folder": "chapters/CH01/ch01-clip05",
+      "route": "#ch01-clip04",
+      "title": "AI-Friendly 리더십 & AI 리터러시 진단",
+      "folder": "chapters/CH01/ch01-clip04",
       "textLength": 6612,
       "htmlLength": 40566,
       "sectionCount": 8,
@@ -907,32 +864,6 @@
       "textLength": 307,
       "htmlLength": 1428,
       "sectionCount": 1,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개념"
-    },
-    {
-      "chapterId": "ch01",
-      "route": "#ch01-clip06",
-      "title": "기술 활용 로드맵",
-      "folder": "chapters/CH01/ch01-clip06",
-      "textLength": 1305,
-      "htmlLength": 3913,
-      "sectionCount": 0,
-      "promptCount": 0,
-      "linkCount": 0,
-      "imageCount": 0,
-      "type": "개념"
-    },
-    {
-      "chapterId": "ch01",
-      "route": "#ch01-clip07",
-      "title": "기술 활용 로드맵",
-      "folder": "chapters/CH01/ch01-clip07",
-      "textLength": 1305,
-      "htmlLength": 3913,
-      "sectionCount": 0,
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
