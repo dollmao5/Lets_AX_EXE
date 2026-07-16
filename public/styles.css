@@ -6118,3 +6118,25 @@ button.ghost {
   }
 }
 
+/* --- concept-foundation-guide 전용 분할 확대 줌 스타일 --- */
+.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"] .slide-preview-image[data-zoom-area="top"],
+.slide-stage-image[data-zoom-area="top"] {
+  object-fit: cover !important;
+  object-position: top center !important;
+  transform: scale(1.05) translateZ(0) !important;
+}
+
+.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"] .slide-preview-image[data-zoom-area="middle"],
+.slide-stage-image[data-zoom-area="middle"] {
+  object-fit: cover !important;
+  object-position: center center !important;
+  transform: scale(1.05) translateZ(0) !important;
+}
+
+.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"] .slide-preview-image[data-zoom-area="bottom"],
+.slide-stage-image[data-zoom-area="bottom"] {
+  object-fit: cover !important;
+  object-position: bottom center !important;
+  transform: scale(1.05) translateZ(0) !important;
+}
+

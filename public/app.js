@@ -3529,10 +3529,31 @@ function buildConceptFoundationGuideDeck() {
     downloadLabel: "다운로드",
     slides: [
       {
-        eyebrow: "01 / Infographic",
-        title: "오늘 수업을 관통하는 AI 핵심 용어 지도",
+        eyebrow: "01 / 전체 보기",
+        title: "오늘 수업을 관통하는 AI 핵심 용어 지도 (전체)",
         imageSrc: imagePath,
-        imageAlt: "전문가용 AI 핵심 개념 가이드 세로 인포그래픽. 멀티모달, 컨텍스트 엔지니어링, RAG, MCP, Agentic AI 등 핵심 개념을 한 장으로 정리합니다."
+        imageAlt: "전문가용 AI 핵심 개념 가이드 세로 인포그래픽 전체 보기"
+      },
+      {
+        eyebrow: "02 / AI 기본기",
+        title: "1. AI 기본기 (Core Concepts) - 확대 영역",
+        imageSrc: imagePath,
+        imageAlt: "1. AI 기본기 (LLM, AI 어시스턴트, 에이전트, 프롬프트 엔지니어링, 컨텍스트 엔지니어링, 할루시네이션) 확대 영역",
+        zoomArea: "top"
+      },
+      {
+        eyebrow: "03 / AI 시스템 뼈대",
+        title: "2. AI 시스템 뼈대 (Technical Foundations) - 확대 영역",
+        imageSrc: imagePath,
+        imageAlt: "2. AI 시스템 뼈대 (토큰, 임베딩, API, CLI, MCP) 확대 영역",
+        zoomArea: "middle"
+      },
+      {
+        eyebrow: "04 / AI 자동화의 미래",
+        title: "3. AI 자동화의 미래 (Advanced & Future Trends) - 확대 영역",
+        imageSrc: imagePath,
+        imageAlt: "3. AI 자동화의 미래 (멀티모달, 에이전틱 AI, RAG, 시스템 프롬프트, 바이브 코딩) 확대 영역",
+        zoomArea: "bottom"
       }
     ]
   };
@@ -4148,6 +4169,7 @@ function renderSlideDeckPreviews(root = el.clipBody, options = {}) {
                   class="slide-preview-image"
                   src="${escapeHtml(slide.imageSrc || "")}"
                   alt="${escapeHtml(entry.imageAlt || entry.title || slide.title || `슬라이드 ${index + 1}`)}"
+                  data-zoom-area="${escapeHtml(slide.zoomArea || "")}"
                   loading="lazy"
                 />
               </div>
@@ -4171,6 +4193,7 @@ function renderSlideDeckPreviews(root = el.clipBody, options = {}) {
                 class="slide-preview-image"
                 src="${escapeHtml(slide.imageSrc || "")}"
                 alt="${escapeHtml(entry.imageAlt || entry.title || slide.title || `슬라이드 ${index + 1}`)}"
+                data-zoom-area="${escapeHtml(slide.zoomArea || "")}"
                 loading="lazy"
               />
             </div>
@@ -4306,6 +4329,7 @@ function renderActiveSlideDeck() {
             class="slide-stage-image"
             src="${escapeHtml(slide.imageSrc)}"
             alt="${escapeHtml(slide.imageAlt || slide.title || `슬라이드 ${currentIndex + 1}`)}"
+            data-zoom-area="${escapeHtml(slide.zoomArea || "")}"
           />
         </div>
         <div class="slide-sheet-foot">
