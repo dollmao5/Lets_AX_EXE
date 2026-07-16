@@ -4133,23 +4133,14 @@ function renderSlideDeckPreviews(root = el.clipBody, options = {}) {
         const slide = entry.slide;
         const previewClass = normalizeWs(deck.previewClass || "");
         if (isImmersivePreview) {
-          // concept-foundation-guide 덱은 팝업 없이 이미지를 직접 표시
-          const isDirectView = deckId === "concept-foundation-guide";
-          const tag = isDirectView ? "div" : "button";
-          const btnAttrs = isDirectView
-            ? ""
-            : `type="button" data-slide-deck-card="${escapeHtml(deckId)}" data-slide-index="${entry.slideIndex}" ${sourceAttrs}`;
-          const ariaAttr = isDirectView
-            ? ""
-            : `aria-label="${escapeHtml(entry.title || slide.title || `슬라이드 ${index + 1}`)} 크게 보기"`;
-          const ctaHtml = isDirectView
-            ? ""
-            : `<span class="slide-preview-floating-cta">클릭해서 확대</span>`;
           return `
-            <${tag}
-              ${btnAttrs}
+            <button
+              type="button"
               class="slide-preview-card slide-preview-card-wide slide-preview-card-immersive${previewClass ? ` ${escapeHtml(previewClass)}` : ""}"
-              ${ariaAttr}
+              data-slide-deck-card="${escapeHtml(deckId)}"
+              data-slide-index="${entry.slideIndex}"
+              ${sourceAttrs}
+              aria-label="${escapeHtml(entry.title || slide.title || `슬라이드 ${index + 1}`)} 크게 보기"
             >
               <span class="slide-preview-page">${escapeHtml(entry.pageLabel)}</span>
               <div class="slide-preview-image-frame">
@@ -4161,8 +4152,8 @@ function renderSlideDeckPreviews(root = el.clipBody, options = {}) {
                   loading="lazy"
                 />
               </div>
-              ${ctaHtml}
-            </${tag}>
+              <span class="slide-preview-floating-cta">클릭해서 확대</span>
+            </button>
           `;
         }
 

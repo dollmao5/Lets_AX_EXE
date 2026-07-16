@@ -2344,36 +2344,15 @@ button.ghost {
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image-frame {
-  min-height: auto;
-  height: auto;
-  aspect-ratio: auto;
-  background: transparent;
-  border: none;
-}
-
-/* concept-foundation-guide는 팝업 없이 직접 표시하므로 클릭 UI 제거 */
-.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-card-immersive {
-  cursor: default;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-  border: none;
-}
-.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-card-immersive:hover {
-  transform: none;
-  box-shadow: none;
+  min-height: clamp(400px, 50vw, 720px);
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image,
 .slide-stage-image {
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain !important;
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: crisp-edges !important;
   image-rendering: pixelated !important;
   -ms-interpolation-mode: nearest-neighbor !important;
-  filter: contrast(1.10) brightness(1.02) saturate(1.03) !important;
 }
 
 .slide-preview-gallery.immersive-preview .slide-preview-page {
