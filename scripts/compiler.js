@@ -9,8 +9,7 @@ function normalizeWs(value) {
 }
 
 function formatChapterNum(index) {
-  const num = index + 1;
-  return `CH ${String(num).padStart(2, "0")}`;
+  return `CH ${String(index).padStart(2, "0")}`;
 }
 
 function clipKeyFromRoute(route) {
