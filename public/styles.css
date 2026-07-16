@@ -2353,6 +2353,12 @@ button.ghost {
   image-rendering: crisp-edges !important;
   image-rendering: pixelated !important;
   -ms-interpolation-mode: nearest-neighbor !important;
+  filter: contrast(1.10) brightness(1.02) saturate(1.03) !important;
+  
+  /* 리샘플링 소수점 픽셀 번짐 방지용 GPU 정렬 가속 */
+  transform: translate3d(0, 0, 0) !important;
+  backface-visibility: hidden !important;
+  will-change: transform !important;
 }
 
 .slide-preview-gallery.immersive-preview .slide-preview-page {
