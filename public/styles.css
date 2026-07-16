@@ -2344,7 +2344,7 @@ button.ghost {
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image-frame {
-  min-height: clamp(760px, 92vw, 1320px);
+  min-height: clamp(500px, 60vw, 880px);
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image {
