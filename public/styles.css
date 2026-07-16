@@ -2344,16 +2344,10 @@ button.ghost {
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image-frame {
-  height: 520px;
-  overflow-y: auto;
-  display: block;
-  background: #0c1421;
+  min-height: clamp(500px, 60vw, 880px);
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image {
-  width: 100%;
-  height: auto;
-  display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   transform: translateZ(0);
