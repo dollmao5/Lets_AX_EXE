@@ -1,5 +1,5 @@
 <div class="ch03-clip01-revised" id="ch03-clip01">
-  <style>
+<style>
     .ch03-clip01-revised,
     #ch03-clip01 {
       font-size: 20px;
@@ -210,7 +210,7 @@
       vertical-align: middle;
     }
 
-    /* 260622 Gate 1~4 내 상태 저장형 선택 UI */
+    /* 260622 Gate 1~3 내 상태 저장형 선택 UI */
     .ch03-clip01-revised .sr-only,
     #ch03-clip01 .sr-only {
       position: absolute !important;
@@ -460,254 +460,224 @@
     text-align: left;
   }
 </style>
-  <div class="clip-header">
-    <div class="clip-badges">
-      <span class="clip-badge time">~120분</span>
-      <span class="clip-badge chapter">CH 03</span>
-      <span class="clip-badge type-practice">실습</span>
-    </div>
-    <h1 class="clip-title" data-keep-title="">조직 역량 점검 및 Workflow 재설계</h1>
-  </div>
-
-  <div class="clip-overview">
-    본 모듈은 <strong>CH02에서 정리한 AI 시대 팀 리더 역할과 핵심 역량 프로필</strong>을 참고하되,
-    이번에는 관점을 리더 개인에서 <strong>조직(팀)의 성과 창출 구조</strong>로 확장하는 실습입니다.<br>
-    CH02가 “나는 어떤 리더가 되어야 하는가?”를 다뤘다면,
-    CH03은 “우리 팀은 성과를 내는 구조로 일하고 있는가?”를 점검합니다.<br><br>
-    이번 실습은 단순히 프롬프트를 복사해 붙여넣고 결과를 받는 방식이 아닙니다.
-    Gemini가 질문하고, 팀장이 답변하고, 다시 Gemini가 중간 정리와 보강 질문을 이어가며
-    <strong>팀 성과 병목 진단 리포트, 팀 효과성 지표, 조직/인재 행동역량 프로파일, Workflow Re-design Canvas</strong>를 완성하는
-    구조화된 대화형 실습입니다.
-  </div>
-
-  <!-- 260622 learning focus: performance + AI -->
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
-    <div class="clip-section-content">
-      <div class="info-block">
-        <div class="info-block-title">성과관리·리더십 향상 관점</div>
-        <div>개인 리더십을 넘어 팀의 목표·역할·프로세스·관계·심리적 안전감·실행 신뢰성의 병목을 진단하고, <strong>30일 지표와 AI 협업 Workflow</strong>로 재설계합니다.</div>
+<div class="clip-header">
+<div class="clip-badges">
+<span class="clip-badge time">~75분</span>
+<span class="clip-badge chapter">CH 03</span>
+<span class="clip-badge type-practice">실습</span>
+</div>
+<h1 class="clip-title" data-keep-title="">조직(팀) 역량 점검 및 행동역량 도출</h1>
+</div>
+<div class="clip-overview">
+  본 모듈은 <strong>CH02에서 정리한 AI 시대 팀 리더 역할과 핵심 역량 프로필</strong>을 참고하되,
+  이번에는 관점을 리더 개인에서 <strong>조직(팀)의 성과 창출 조건과 행동 패턴</strong>으로 확장하는 실습입니다.<br/>
+  CH02가 “나는 어떤 리더가 되어야 하는가?”를 다뤘다면,
+  CH03은 “우리 팀의 성과를 가로막는 구조적 병목은 무엇이며, 어떤 지표와 행동 기준으로 개선할 것인가?”를 점검합니다.<br/><br/>
+  Gemini가 질문하고, 팀장이 답변하고, 다시 Gemini가 중간 정리와 보강 질문을 이어가며
+  <strong>팀 성과 병목 진단 리포트, 30일 팀 효과성 지표, 조직/인재 행동역량 프로파일</strong>을 완성하는
+  구조화된 대화형 실습입니다.
+</div>
+<!-- 260622 learning focus: performance + AI -->
+<div class="clip-section">
+<div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
+<div class="clip-section-content">
+<div class="info-block">
+<div class="info-block-title">성과관리·리더십 향상 관점</div>
+<div>개인이나 태도를 먼저 탓하지 않고, 팀의 목표·역할·프로세스·관계·심리적 안전감·실행 신뢰성에서 <strong>성과 병목을 진단</strong>합니다. 진단 결과를 30일 안에 확인할 팀 효과성 지표와 리더·팀원·팀 공통의 행동 기준으로 전환합니다.</div>
+</div>
+<div class="tip-block" style="margin-top:14px">
+<div class="tip-block-title">AI 기능·활용 학습</div>
+<div class="tip-block-content">Gemini의 대화형 인터뷰, 맥락 누적, 구조화된 표 출력, 근거 수준 구분, 관찰 가능한 지표·행동 기준 설계, CH04 업로드용 종합 Markdown 생성을 실습합니다.</div>
+</div>
+</div>
+</div>
+<!-- 260622 participant guide: prompt execution modes -->
+<div class="clip-section">
+<div class="clip-section-title">프롬프트 유형과 진행 방법</div>
+<div class="clip-section-content">
+<div class="info-block">
+<div class="info-block-title">프롬프트 제목 앞의 배지를 먼저 확인합니다</div>
+<div><span class="prompt-mode-badge">대화형</span> Gemini가 질문하면 팀장이 답하면서 진단 내용을 구체화합니다. <span class="prompt-mode-badge">이어서형</span> 앞 단계의 맥락이 남아 있는 <strong>같은 Gemini 대화창</strong>에 붙여넣어 결과를 심화합니다.</div>
+</div>
+<div class="tip-block" style="margin-top:14px">
+<div class="tip-block-title">공통 실행 순서</div>
+<div class="tip-block-content">① 반복되는 팀 문제를 익명화해 준비 → ② Step 1 대화 시작 → ③ AI 질문에 실제 업무 장면으로 답변 → ④ Step 2·3은 같은 대화창에서 이어서 진행 → ⑤ 결과의 근거·누락·민감정보 확인 → ⑥ 안내된 파일명으로 저장합니다.</div>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">CH02와 CH03의 차이</div>
+<div class="clip-section-content">
+<div class="table-wrap">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>구분</th>
+<th>CH02. 리더 역할 및 역량 점검</th>
+<th>CH03. 조직(팀) 역량 점검</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>핵심 질문</strong></td>
+<td>AI 시대에 나는 어떤 리더가 되어야 하는가?</td>
+<td>우리 팀의 성과 병목은 무엇이며, 어떤 지표와 행동으로 개선할 것인가?</td>
+</tr>
+<tr>
+<td><strong>분석 단위</strong></td>
+<td>리더 개인의 역할·책임·역량</td>
+<td>조직/팀의 성과 조건과 반복 행동 패턴</td>
+</tr>
+<tr>
+<td><strong>주요 입력</strong></td>
+<td>리더의 고민, 학습팀 토론, 팀장 기대행동 문서</td>
+<td>현업 팀에서 반복되는 성과관리 문제와 실제 업무 장면</td>
+</tr>
+<tr>
+<td><strong>학습 방식</strong></td>
+<td>리더 역할과 핵심 역량을 대화형으로 탐색</td>
+<td>팀 병목 → 효과성 지표 → 행동역량을 대화형으로 연결</td>
+</tr>
+<tr>
+<td><strong>주요 산출물</strong></td>
+<td>리더 역할 프로필, 핵심 역량·스킬 프로필</td>
+<td>팀 성과 병목·점검지표 리포트, 조직/인재 행동역량 프로파일</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">실습 입력자료 최소화 원칙</div>
+<div class="clip-section-content">
+<div class="tip-block">
+<div class="tip-block-title">필수 입력은 1개만 준비합니다</div>
+<div class="tip-block-content">
+        이번 클립의 필수 입력은 <strong>현업 팀에서 반복되는 성과관리 또는 협업 문제 1개</strong>입니다.<br/>
+        문제를 보여주는 최근 회의·보고·업무지시·검토·마감 장면이 있으면 함께 설명합니다.
+        CH02에서 만든 리더 역할 프로필과 성과관리 실행 브리프는 진단 관점을 보정하는 참고자료이며, 없어도 실습을 진행할 수 있습니다.
       </div>
-      <div class="tip-block" style="margin-top:14px">
-        <div class="tip-block-title">AI 기능·활용 학습</div>
-        <div class="tip-block-content">Gemini의 대화형 진단, 구조화된 표 출력, Task 분해, AI 적합도·데이터 민감도 판단, 검증·책임·Fallback 설계, 종합 Markdown 생성을 실습합니다.</div>
+</div>
+<div class="table-wrap" style="margin-top:14px">
+<table class="comparison-table">
+<thead>
+<tr><th>구분</th><th>입력자료</th><th>활용 방식</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>필수</strong></td>
+<td>현업 팀에서 반복되는 성과관리·협업 문제 1개</td>
+<td>Step 1. 팀 성과 병목 진단의 출발점</td>
+</tr>
+<tr>
+<td>권장</td>
+<td>문제를 보여주는 최근 실제 업무 장면 1~2개</td>
+<td>표면 증상과 구조적 병목을 구분하는 근거</td>
+</tr>
+<tr>
+<td>권장</td>
+<td>CH02 리더 역할 프로필 Markdown</td>
+<td>리더 책임 경계와 팀 진단 관점 보정</td>
+</tr>
+<tr>
+<td>선택</td>
+<td>CH02-4 성과관리 실행 브리프</td>
+<td>팀 병목과 리더 행동 후보를 확인할 때 보조자료로 활용</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">이번 클립의 도착점</div>
+<div class="clip-section-content">
+<div class="tip-block">
+<div class="tip-block-title">필수 Output은 두 가지입니다</div>
+<div class="tip-block-content">
+<strong>팀 성과 병목·점검지표 리포트</strong>와 <strong>조직/인재 행동역량 프로파일</strong>을 완성합니다.<br/>
+        두 결과를 하나로 묶은 CH04 업로드용 종합본은 후속 실습의 입력 시간을 줄이기 위한 권장 Output입니다.
       </div>
-    </div>
-  </div>
-
-  <!-- 260622 participant guide: prompt execution modes -->
-  <div class="clip-section">
-    <div class="clip-section-title">프롬프트 유형과 진행 방법</div>
-    <div class="clip-section-content">
-      <div class="info-block">
-        <div class="info-block-title">프롬프트 제목 앞의 배지를 먼저 확인합니다</div>
-        <div><span class="prompt-mode-badge">대화형</span> AI가 질문하면 답하면서 진행합니다. <span class="prompt-mode-badge">복붙형</span> 필요한 자료를 먼저 넣고 프롬프트를 한 번 붙여넣습니다. <span class="prompt-mode-badge">이어서형</span> 앞 단계와 <strong>같은 Gemini 대화창</strong>에 붙여넣습니다. <span class="prompt-mode-badge">설정형</span> Gem의 인스트럭션 입력란에 넣습니다. <span class="prompt-mode-badge">테스트형</span> Gem Preview에서 동작을 확인합니다.</div>
-      </div>
-      <div class="tip-block" style="margin-top:14px">
-        <div class="tip-block-title">공통 실행 순서</div>
-        <div class="tip-block-content">① 배지와 지정 도구 확인 → ② 필요한 파일 먼저 첨부 → ③ 복사·붙여넣기 → ④ 대화형이면 AI 질문에 답변 → ⑤ 이어서형이면 새 대화를 열지 않음 → ⑥ 결과의 누락·오류·민감정보를 확인하고 저장합니다.</div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="clip-section">
-    <div class="clip-section-title">CH02와 CH03의 차이</div>
-    <div class="clip-section-content">
-      <div class="table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>구분</th>
-              <th>CH02. 리더 역할 및 역량 점검</th>
-              <th>CH03. 조직(팀) 역량 및 Workflow 점검</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>핵심 질문</strong></td>
-              <td>AI 시대에 나는 어떤 리더가 되어야 하는가?</td>
-              <td>AI 시대에 우리 팀은 어떤 구조로 성과를 창출해야 하는가?</td>
-            </tr>
-            <tr>
-              <td><strong>분석 단위</strong></td>
-              <td>리더 개인</td>
-              <td>조직/팀 시스템과 업무 흐름</td>
-            </tr>
-            <tr>
-              <td><strong>주요 입력</strong></td>
-              <td>리더의 고민, 학습팀 토론, 팀장 기대행동 문서</td>
-              <td>현업 팀의 성과관리 이슈, 비효율 상황, 대표 업무</td>
-            </tr>
-            <tr>
-              <td><strong>학습 방식</strong></td>
-              <td>리더 역할과 핵심 역량을 대화형으로 탐색</td>
-              <td>팀 병목, 지표, 행동역량, Workflow를 대화형으로 진단</td>
-            </tr>
-            <tr>
-              <td><strong>주요 산출물</strong></td>
-              <td>리더 역할 프로필, 핵심 역량·스킬 프로필</td>
-              <td>팀 성과 병목 진단 리포트, 조직/인재 행동역량 프로파일, Workflow Re-design Canvas</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">실습 입력자료 최소화 원칙</div>
-    <div class="clip-section-content">
-      <div class="tip-block">
-        <div class="tip-block-title">필수 입력은 2개만 준비합니다</div>
-        <div class="tip-block-content">
-          이번 클립의 필수 입력은 <strong>현업 팀에서 반복되는 성과관리 문제 1개</strong>와
-          <strong>재설계하고 싶은 대표 비효율 업무 1개</strong>입니다.<br>
-          CH02에서 만든 리더 역할 프로필과 CH02-4 성과관리 실행 브리프는 있으면 참고하지만,
-          없어도 CH03 실습은 진행할 수 있습니다.
-        </div>
-      </div>
-
-      <div class="table-wrap" style="margin-top:14px">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>구분</th>
-              <th>입력자료</th>
-              <th>활용 방식</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>현업 팀에서 반복되는 성과관리 문제 1개</td>
-              <td>Step 1. 팀 성과 병목 진단의 출발점</td>
-            </tr>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>재설계하고 싶은 대표 비효율 업무 1개</td>
-              <td>Step 4. Workflow Re-design Canvas 작성의 출발점</td>
-            </tr>
-            <tr>
-              <td>권장</td>
-              <td>CH02 리더 역할 프로필 Markdown</td>
-              <td>리더 책임 경계와 팀 진단 관점 보정</td>
-            </tr>
-            <tr>
-              <td>선택</td>
-              <td>CH02-4 성과관리 실행 브리프</td>
-              <td>팀 병목과 리더 행동 후보를 확인할 때 보조자료로 활용</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립의 도착점</div>
-    <div class="clip-section-content">
-      <div class="tip-block">
-        <div class="tip-block-title">필수 Output</div>
-        <div class="tip-block-content">
-          이 실습의 필수 산출물은 <strong>팀 성과 병목 진단 리포트</strong>,
-          <strong>조직/인재 행동역량 프로파일</strong>, <strong>Workflow Re-design Canvas</strong>입니다.<br>
-          Deep Research Query는 시간과 계정 환경이 허용될 때 진행하는 선택 확장 활동입니다.
-        </div>
-      </div>
-      <div class="output-grid">
-        <div class="output-card">
-          <strong>1. 팀 성과 병목 진단 리포트</strong>
-          <span>Root Cause, 팀 효과성 지표, 최우선 개선 차원을 하나로 묶어 정리합니다.<br><strong>저장 파일:</strong> <code>CH03_우리팀_성과병목과_점검지표_성명.md</code></span>
-        </div>
-        <div class="output-card">
-          <strong>2. 조직/인재 행동역량 프로파일</strong>
-          <span>리더·팀원·팀 공통 행동 기준을 관찰 가능한 수준으로 정의합니다.<br><strong>저장 파일:</strong> <code>CH03_우리팀_필요행동역량_성명.md</code></span>
-        </div>
-        <div class="output-card">
-          <strong>3. Workflow Re-design Canvas</strong>
-          <span>대표 업무 1개를 AI 협업 구조로 재설계하고 CH04 입력자료로 저장합니다.<br><strong>저장 파일:</strong> <code>CH03_우리팀_AI협업_업무재설계_성명.md</code></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립의 진행 방식</div>
-    <div class="clip-section-content">
-      <div class="compact-note">
-        대화 시작 → Gemini의 진단 질문 → 팀장의 답변 → 중간 요약 → 보강 질문 → 팀장의 추가 답변 → 구조화된 산출물 확정
-      </div>
-
-      <ul>
-        <li>Gemini에게 한 번에 1~2개 질문만 하도록 요청합니다.</li>
-        <li>답변이 추상적이면 실제 회의, 보고, 업무지시, 검토, 마감 상황으로 바꿔 질문하게 합니다.</li>
-        <li>중간중간 “현재까지 정리된 우리 팀 병목”을 3줄로 업데이트하게 합니다.</li>
-        <li>마지막에 팀장이 요청하면 표와 Canvas 형태로 산출물을 확정합니다.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립의 흐름</div>
-    <div class="clip-section-content">
-      <div class="flow-grid">
-        <div class="flow-card">
-          <div class="flow-card-title">Step 1. 팀 현황/이슈 인식</div>
-          <div class="flow-card-body">일정 지연, 보고서 품질 저하, R&amp;R 갈등 등 반복되는 문제를 말하고 구조적 병목 요인을 진단합니다.</div>
-        </div>
-        <div class="flow-card">
-          <div class="flow-card-title">Step 2. 팀 효과성 지표 도출</div>
-          <div class="flow-card-body">Root Cause를 팀 효과성 관점으로 연결하고, 30일 안에 관찰 가능한 정량·정성 지표를 설계합니다.</div>
-        </div>
-        <div class="flow-card">
-          <div class="flow-card-title">Step 3. 조직/인재 행동역량 정의</div>
-          <div class="flow-card-body">취약 지표를 개선하기 위한 리더·팀원·팀 공통 행동 기준을 정의합니다.</div>
-        </div>
-        <div class="flow-card">
-          <div class="flow-card-title">Step 4. Workflow Re-design</div>
-          <div class="flow-card-body">대표 비효율 업무를 Divide-Navigate-Arrange 방식으로 재설계하고 Canvas로 정리합니다.</div>
-        </div>
-        <div class="flow-card">
-          <div class="flow-card-title">선택. Deep Research Query</div>
-          <div class="flow-card-body">Canvas에서 발견된 특정 병목을 외부 사례나 추가 근거로 보강할 질문을 작성합니다.</div>
-        </div>
-      </div>
-
-      <div class="info-block" style="margin-top:14px">
-        <div class="info-block-title">120분 공식 운영 기준</div>
-        <div class="table-wrap" style="margin-top:10px">
-          <table class="comparison-table">
-            <thead><tr><th>구간</th><th>권장 시간</th><th>도착점</th></tr></thead>
-            <tbody>
-              <tr><td>Step 1. 팀 현황/이슈 인식</td><td>25분</td><td>팀 성과 병목 진단 리포트</td></tr>
-              <tr><td>Step 2. 팀 효과성 지표</td><td>20분</td><td>30일 관찰 지표와 최우선 개선 차원</td></tr>
-              <tr><td>Step 3. 행동역량 정의</td><td>20분</td><td>조직/인재 행동역량 프로파일</td></tr>
-              <tr><td>Step 4. Workflow Re-design</td><td>45분</td><td>Divide–Navigate–Arrange 및 Canvas</td></tr>
-              <tr><td>산출물 검증·통합 저장</td><td>10분</td><td>CH04 업로드용 종합본 Markdown</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>Deep Research Query는 공식 120분에 포함하지 않는 선택·사후 확장 활동입니다.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">Step 1. 팀 현황/이슈 인식</div>
-    <div class="clip-section-content">
-      <p>
+</div>
+<div class="output-grid">
+<div class="output-card">
+<strong>필수 1. 팀 성과 병목·점검지표 리포트</strong>
+<span>표면 증상, 구조적 병목, Root Cause, 근거 수준, 30일 팀 효과성 지표와 최우선 개선 차원을 정리합니다.<br/><strong>저장 파일:</strong> <code>CH03_우리팀_성과병목과_점검지표_성명.md</code></span>
+</div>
+<div class="output-card">
+<strong>필수 2. 조직/인재 행동역량 프로파일</strong>
+<span>취약 지표를 개선하기 위한 리더·팀원·팀 공통 행동 기준과 단기 코칭 조치 후보를 정의합니다.<br/><strong>저장 파일:</strong> <code>CH03_우리팀_필요행동역량_성명.md</code></span>
+</div>
+<div class="output-card" style="border-style:dashed">
+<strong>권장. CH04 업로드용 종합본</strong>
+<span>두 필수 산출물과 CH04로 넘길 30일 실행 후보를 하나의 근거 중심 Markdown으로 통합합니다.<br/><strong>저장 파일:</strong> <code>CH03_우리팀_성과구조와_행동역량_종합본_성명.md</code></span>
+</div>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">이번 클립의 진행 방식</div>
+<div class="clip-section-content">
+<div class="compact-note">대화 시작 → Gemini의 진단 질문 → 팀장의 답변 → 중간 요약 → 보강 질문 → 팀장의 추가 답변 → 구조화된 산출물 확정</div>
+<ul>
+<li>Gemini에게 한 번에 1~2개 질문만 하도록 요청합니다.</li>
+<li>답변이 추상적이면 실제 회의, 보고, 업무지시, 검토, 마감 상황으로 바꿔 질문하게 합니다.</li>
+<li>중간중간 “현재까지 정리된 우리 팀 병목” 또는 “필요 행동역량”을 3줄로 업데이트하게 합니다.</li>
+<li>마지막에는 근거가 있는 내용, 추론, 추가 확인 필요 사항을 구분하고 표·Markdown 형태로 저장합니다.</li>
+</ul>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">이번 클립의 흐름</div>
+<div class="clip-section-content">
+<div class="flow-grid">
+<div class="flow-card">
+<div class="flow-card-title">Step 1. 팀 현황/이슈 인식</div>
+<div class="flow-card-body">일정 지연, 보고서 품질 저하, R&amp;R 갈등 등 반복되는 문제를 실제 업무 장면으로 말하고 구조적 병목을 진단합니다.</div>
+</div>
+<div class="flow-card">
+<div class="flow-card-title">Step 2. 팀 효과성 지표 도출</div>
+<div class="flow-card-body">Root Cause를 팀 효과성 관점으로 연결하고, 30일 안에 관찰 가능한 정량·정성 지표를 설계합니다.</div>
+</div>
+<div class="flow-card">
+<div class="flow-card-title">Step 3. 조직/인재 행동역량 정의</div>
+<div class="flow-card-body">취약 지표를 개선하기 위한 리더·팀원·팀 공통 행동 기준과 단기 코칭 조치 후보를 정의합니다.</div>
+</div>
+<div class="flow-card">
+<div class="flow-card-title">마무리. 검증·통합 저장</div>
+<div class="flow-card-body">Gate 1~3으로 결과의 완성도를 확인하고, CH04 업로드용 종합 Markdown을 저장합니다.</div>
+</div>
+</div>
+<div class="info-block" style="margin-top:14px">
+<div class="info-block-title">75분 공식 운영 기준</div>
+<div class="table-wrap" style="margin-top:10px">
+<table class="comparison-table">
+<thead><tr><th>구간</th><th>권장 시간</th><th>도착점</th></tr></thead>
+<tbody>
+<tr><td>Step 1. 팀 현황/이슈 인식</td><td>25분</td><td>표면 증상과 구조적 병목, Root Cause</td></tr>
+<tr><td>Step 2. 팀 효과성 지표</td><td>20분</td><td>30일 관찰 지표와 최우선 개선 차원</td></tr>
+<tr><td>Step 3. 행동역량 정의</td><td>20분</td><td>조직/인재 행동역량 프로파일</td></tr>
+<tr><td>산출물 검증·통합 저장</td><td>10분</td><td>Gate 확인 및 CH04 업로드용 종합본</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">Step 1. 팀 현황/이슈 인식</div>
+<div class="clip-section-content">
+<p>
         우리 팀의 성과관리 및 비효율 상황을 정의합니다.
         처음부터 완성된 문제 진술을 쓰려고 하지 말고, 실제로 반복되는 문제를 자연스럽게 말하는 것부터 시작합니다.
       </p>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 1-1. 대화 시작 템플릿</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-1-1')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-1-1">당신은 조직 진단 및 성과관리 컨설팅 분야의 전문가이자, 나의 조직 진단 인터뷰어입니다.
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 1-1. 대화 시작 템플릿</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-1-1')">복사</button>
+</div>
+<div class="prompt-content" id="ch03-dialogue-1-1">당신은 조직 진단 및 성과관리 컨설팅 분야의 전문가이자, 나의 조직 진단 인터뷰어입니다.
 
 나는 지금 우리 팀의 성과 창출을 방해하는 문제를 구조적으로 진단하려고 합니다.
 내가 현업에서 실제로 겪고 있는 문제를 편하게 이야기하면, 단순한 개인 간 갈등이나 커뮤니케이션 문제가 아니라 우리 팀의 성과 체계 안에 있는 구조적 병목 요인을 찾을 수 있도록 질문을 이어가 주세요.
@@ -729,14 +699,13 @@
 - 아직 최종 리포트를 쓰지 말고, 먼저 나에게 질문을 이어가 주세요.
 
 먼저 우리 팀에서 반복되는 문제를 편하게 이야기해보겠습니다.</div>
-      </div>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 1-2. 팀 성과 병목 진단 리포트 요청</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-1-2')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-1-2">지금까지 나눈 대화를 바탕으로, 우리 팀의 성과관리 및 비효율 상황을 구조적으로 정리해 주세요.
+</div>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 1-2. 팀 성과 병목 진단 리포트 요청</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-1-2')">복사</button>
+</div>
+<div class="prompt-content" id="ch03-dialogue-1-2">지금까지 나눈 대화를 바탕으로, 우리 팀의 성과관리 및 비효율 상황을 구조적으로 정리해 주세요.
 
 출력 형식은 아래와 같이 해 주세요.
 
@@ -764,75 +733,72 @@
 - 근거 수준은 “리더 입력 근거 있음 / 추론 / 추가 확인 필요” 중 하나로 표시해 주세요.
 - 정보가 부족한 부분은 “리더 확인 필요”라고 표시해 주세요.
 - 개인 실명, 평가, 보상, 징계, 개인정보와 관련된 내용은 익명화·일반화해서 다루어 주세요.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="output-gate">
-    <h3>Gate 1. 병목 진단 통과 기준</h3>
-    <div class="table-wrap">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>확인 항목</th>
-            <th>통과 기준</th>
-            <th>내 상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>표면 증상과 병목 구분</strong></td>
-            <td>문제가 개인 탓이 아니라 구조적 병목으로 정리되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate1-bottleneck" aria-label="Gate 1 표면 증상과 병목 구분 내 상태">
-                <legend class="sr-only">Gate 1 표면 증상과 병목 구분 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate1-bottleneck" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate1-bottleneck" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>근거 수준 표시</strong></td>
-            <td>근거 있음 / 추론 / 추가 확인 필요가 구분되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate1-evidence" aria-label="Gate 1 근거 수준 표시 내 상태">
-                <legend class="sr-only">Gate 1 근거 수준 표시 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate1-evidence" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate1-evidence" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">Step 2. 팀 효과성 지표 도출</div>
-    <div class="clip-section-content">
-      <p>
+</div>
+</div>
+</div>
+<div class="output-gate">
+<h3>Gate 1. 병목 진단 통과 기준</h3>
+<div class="table-wrap">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>확인 항목</th>
+<th>통과 기준</th>
+<th>내 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>표면 증상과 병목 구분</strong></td>
+<td>문제가 개인 탓이 아니라 구조적 병목으로 정리되었다.</td>
+<td class="gate-status-cell">
+<fieldset aria-label="Gate 1 표면 증상과 병목 구분 내 상태" class="gate-status-group" data-gate-status="gate1-bottleneck">
+<legend class="sr-only">Gate 1 표면 증상과 병목 구분 내 상태</legend>
+<label class="gate-status-option" data-status-option="complete">
+<input name="ch03-gate1-bottleneck" type="radio" value="complete"/>
+<span>완료</span>
+</label>
+<label class="gate-status-option" data-status-option="needs">
+<input name="ch03-gate1-bottleneck" type="radio" value="needs"/>
+<span>보완 필요</span>
+</label>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>근거 수준 표시</strong></td>
+<td>근거 있음 / 추론 / 추가 확인 필요가 구분되었다.</td>
+<td class="gate-status-cell">
+<fieldset aria-label="Gate 1 근거 수준 표시 내 상태" class="gate-status-group" data-gate-status="gate1-evidence">
+<legend class="sr-only">Gate 1 근거 수준 표시 내 상태</legend>
+<label class="gate-status-option" data-status-option="complete">
+<input name="ch03-gate1-evidence" type="radio" value="complete"/>
+<span>완료</span>
+</label>
+<label class="gate-status-option" data-status-option="needs">
+<input name="ch03-gate1-evidence" type="radio" value="needs"/>
+<span>보완 필요</span>
+</label>
+</fieldset>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">Step 2. 팀 효과성 지표 도출</div>
+<div class="clip-section-content">
+<p>
         Step 1에서 도출한 Root Cause를 GRPI와 Project Aristotle 관점으로 매핑하고,
         30일 안에 관찰 가능한 팀 효과성 지표로 전환합니다.
       </p>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 2-1. 지표 설계 인터뷰 요청</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-2-1')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-2-1">방금 Step 1에서 작성한 Root Cause 진단 리포트를 바탕으로, 우리 팀의 리더십 향상 여부를 확인할 수 있는 팀 효과성 지표를 설계하려고 합니다.
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 2-1. 지표 설계 인터뷰 요청</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-2-1')">복사</button>
+</div>
+<div class="prompt-content" id="ch03-dialogue-2-1">방금 Step 1에서 작성한 Root Cause 진단 리포트를 바탕으로, 우리 팀의 리더십 향상 여부를 확인할 수 있는 팀 효과성 지표를 설계하려고 합니다.
 
 이번에도 바로 최종 표를 만들지 말고, 먼저 나에게 지표 설계를 위한 질문을 해 주세요.
 
@@ -848,15 +814,14 @@
 - 팀 단위 패턴을 보되, 개인 식별이나 평가·보상에 직접 연결되는 방식은 피해주세요.
 
 먼저 Step 1의 Root Cause를 기준으로 어떤 차원부터 지표화해야 할지 질문해 주세요.</div>
-      </div>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 2-2. 최종 효과성 지표 도출 요청</span>
-          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_성과병목과_점검지표_성명.md</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-2-2')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-2-2">이제 지금까지 대화한 내용을 바탕으로, 우리 팀의 최종 효과성 지표를 정리해 주세요.
+</div>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 2-2. 최종 효과성 지표 도출 요청</span>
+<span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_성과병목과_점검지표_성명.md</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-2-2')">복사</button>
+</div>
+<div class="prompt-content" id="ch03-dialogue-2-2">이제 지금까지 대화한 내용을 바탕으로, 우리 팀의 최종 효과성 지표를 정리해 주세요.
 
 출력 형식은 아래와 같이 해 주세요.
 
@@ -884,76 +849,73 @@
 - 정량 지표와 정성 지표를 균형 있게 제안해 주세요.
 - 개인 평가용 지표가 아니라 팀 효과성 개선용 지표로 설계해 주세요.
 - 현재 상태 확인 방식과 30일 후 기대 상태가 서로 연결되도록 작성해 주세요.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="output-gate">
-    <h3>Gate 2. 지표 설계 통과 기준</h3>
-    <div class="table-wrap">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>확인 항목</th>
-            <th>통과 기준</th>
-            <th>내 상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>관찰 가능성</strong></td>
-            <td>30일 안에 확인 가능한 정량·정성 지표가 있다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate2-observable" aria-label="Gate 2 관찰 가능성 내 상태">
-                <legend class="sr-only">Gate 2 관찰 가능성 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate2-observable" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate2-observable" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>팀 단위 기준</strong></td>
-            <td>개인 평가용이 아니라 팀 효과성 개선용 지표로 정리되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate2-team-standard" aria-label="Gate 2 팀 단위 기준 내 상태">
-                <legend class="sr-only">Gate 2 팀 단위 기준 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate2-team-standard" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate2-team-standard" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">Step 3. 조직/인재 행동역량 정의</div>
-    <div class="clip-section-content">
-      <p>
+</div>
+</div>
+</div>
+<div class="output-gate">
+<h3>Gate 2. 지표 설계 통과 기준</h3>
+<div class="table-wrap">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>확인 항목</th>
+<th>통과 기준</th>
+<th>내 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>관찰 가능성</strong></td>
+<td>30일 안에 확인 가능한 정량·정성 지표가 있다.</td>
+<td class="gate-status-cell">
+<fieldset aria-label="Gate 2 관찰 가능성 내 상태" class="gate-status-group" data-gate-status="gate2-observable">
+<legend class="sr-only">Gate 2 관찰 가능성 내 상태</legend>
+<label class="gate-status-option" data-status-option="complete">
+<input name="ch03-gate2-observable" type="radio" value="complete"/>
+<span>완료</span>
+</label>
+<label class="gate-status-option" data-status-option="needs">
+<input name="ch03-gate2-observable" type="radio" value="needs"/>
+<span>보완 필요</span>
+</label>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>팀 단위 기준</strong></td>
+<td>개인 평가용이 아니라 팀 효과성 개선용 지표로 정리되었다.</td>
+<td class="gate-status-cell">
+<fieldset aria-label="Gate 2 팀 단위 기준 내 상태" class="gate-status-group" data-gate-status="gate2-team-standard">
+<legend class="sr-only">Gate 2 팀 단위 기준 내 상태</legend>
+<label class="gate-status-option" data-status-option="complete">
+<input name="ch03-gate2-team-standard" type="radio" value="complete"/>
+<span>완료</span>
+</label>
+<label class="gate-status-option" data-status-option="needs">
+<input name="ch03-gate2-team-standard" type="radio" value="needs"/>
+<span>보완 필요</span>
+</label>
+</fieldset>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">Step 3. 조직/인재 행동역량 정의</div>
+<div class="clip-section-content">
+<p>
         Step 2에서 확인한 취약 지표를 개선하기 위해 필요한 조직/인재 행동역량을 정의합니다.
         CH02처럼 리더 개인의 역할을 다시 쓰는 것이 아니라,
         팀 성과 병목을 해결하기 위한 리더·팀원·팀 공통 행동 기준을 만듭니다.
       </p>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 3-1. 행동역량 설계 인터뷰 요청</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-3-1')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-3-1">방금 Step 2에서 도출한 우리 팀의 효과성 지표와 최우선 개선 차원을 바탕으로, AI 시대 리더십 향상에 필요한 우리 조직(팀)/인재 행동역량을 정의하려고 합니다.
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 3-1. 행동역량 설계 인터뷰 요청</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-3-1')">복사</button>
+</div>
+<div class="prompt-content" id="ch03-dialogue-3-1">방금 Step 2에서 도출한 우리 팀의 효과성 지표와 최우선 개선 차원을 바탕으로, AI 시대 리더십 향상에 필요한 우리 조직(팀)/인재 행동역량을 정의하려고 합니다.
 
 주의할 점은, 이번 단계는 리더 개인의 역량을 다시 정의하는 시간이 아닙니다.
 CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다.
@@ -973,15 +935,14 @@ CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다
 - 답변이 추상적이면 실제 업무 장면으로 바꿔 질문해 주세요.
 - “좋은 태도”가 아니라 관찰 가능한 행동 기준으로 정리해 주세요.
 - 중간중간 “현재까지 정리된 우리 팀 필요 행동역량”을 3줄로 업데이트해 주세요.</div>
-      </div>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 3-2. 최종 행동역량 프로파일 요청</span>
-          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_필요행동역량_성명.md</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-3-2')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-3-2">이제 지금까지 대화한 내용을 바탕으로, AI 시대 리더십 향상에 필요한 우리 조직(팀)/인재 행동역량 프로파일을 최종 정리해 주세요.
+</div>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 3-2. 최종 행동역량 프로파일 요청</span>
+<span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_필요행동역량_성명.md</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-3-2')">복사</button>
+</div>
+<div class="prompt-content" id="ch03-dialogue-3-2">이제 지금까지 대화한 내용을 바탕으로, AI 시대 리더십 향상에 필요한 우리 조직(팀)/인재 행동역량 프로파일을 최종 정리해 주세요.
 
 출력 형식은 아래와 같이 해 주세요.
 
@@ -1006,493 +967,210 @@ CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다
 - 팀의 성과 병목을 해결하는 데 필요한 역량으로 연결해 주세요.
 - 보안, 개인정보, 평가, 보상, 징계 관련 역량은 윤리적 거버넌스에 포함하고, 리더의 최종 책임을 명확히 표시해 주세요.
 - 30일 코칭 조치 후보는 CH04 최종 Action Plan이 아니라, 팀 성과 병목을 줄이기 위한 후보로만 정리해 주세요.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="output-gate">
-    <h3>Gate 3. 행동역량 정의 통과 기준</h3>
-    <div class="table-wrap">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>확인 항목</th>
-            <th>통과 기준</th>
-            <th>내 상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>행동 기준화</strong></td>
-            <td>역량명이 아니라 관찰 가능한 행동 기준으로 정리되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate3-behavior-standard" aria-label="Gate 3 행동 기준화 내 상태">
-                <legend class="sr-only">Gate 3 행동 기준화 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate3-behavior-standard" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate3-behavior-standard" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>대상 구분</strong></td>
-            <td>리더·팀원·팀 공통 행동이 구분되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate3-target-separation" aria-label="Gate 3 대상 구분 내 상태">
-                <legend class="sr-only">Gate 3 대상 구분 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate3-target-separation" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate3-target-separation" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">Step 4. Workflow Re-design</div>
-    <div class="clip-section-content">
-      <p>
-        대표 비효율 업무 1개를 선정해 Divide-Navigate-Arrange 3단계로 재설계합니다.
-        이 단계에서도 Gemini와 대화하며 업무를 고르고, Task를 분해하고, AI 적합도와 인간 책임을 확인합니다.
-      </p>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 4-1. 대표 업무 선택 대화 시작</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-4-1')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-4-1">이제 우리 팀의 대표 비효율 업무 1개를 선정해 Workflow Re-design을 진행하려고 합니다.
-
-앞서 Step 1~3에서 도출한 내용은 다음과 같습니다.
-- 우리 팀의 성과관리 및 비효율 상황
-- Root Cause 기반 구조적 병목
-- GRPI / Project Aristotle 기반 팀 효과성 지표
-- 취약 지표를 해결하기 위한 조직/인재 행동역량
-
-이번 단계에서는 바로 Canvas를 만들지 말고, 먼저 내가 재설계할 대표 업무를 고를 수 있도록 질문해 주세요.
-
-대표 업무 후보 예시는 다음과 같습니다.
-- 월간 성과 보고서 작성 및 취합
-- 고객 요구사항 대응 및 데이터화
-- 주간 업무회의 준비
-- 프로젝트 리스크 점검
-- 평가면담 사전자료 정리
-- 신규 과제 검토 보고서 작성
-- VOC 분석 및 개선 과제 도출
-
-조건:
-- 나에게 한 번에 1~2개 질문만 해 주세요.
-- 어떤 업무를 고르면 학습 효과가 큰지 판단 기준을 제시해 주세요.
-- 업무 선정 기준은 반복성, 시간 소요, 품질 편차, R&amp;R 갈등, AI 활용 가능성, 보안 리스크를 포함해 주세요.
-- 내가 업무를 선택하면, 다음 단계에서 Divide를 진행할 수 있도록 현재 업무 흐름을 질문해 주세요.</div>
-      </div>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 4-2. Divide - 업무 분해 대화</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-4-2')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-4-2">내가 선택한 대표 업무를 기준으로 Divide를 진행해 주세요.
-
-단, 바로 완성표를 만들기 전에 내가 실제 업무 흐름을 설명할 수 있도록 질문을 먼저 해 주세요.
-
-질문 기준:
-- 이 업무는 언제 시작되고 언제 끝나는가?
-- 누가 어떤 정보를 제공하는가?
-- 중간에 누구의 검토나 승인이 필요한가?
-- 시간이 가장 많이 걸리는 단계는 어디인가?
-- 품질 문제가 자주 생기는 단계는 어디인가?
-- R&amp;R 갈등이나 업무 공백이 생기는 단계는 어디인가?
-- 팀장이 직접 다시 수정하거나 판단하는 단계는 어디인가?
-
-조건:
-- 질문은 한 번에 1~2개씩만 해 주세요.
-- 내가 답변하면 현재까지 파악한 업무 흐름을 6~12개 Task 초안으로 정리해 주세요.
-- 불확실한 Task는 “리더 확인 필요”라고 표시해 주세요.</div>
-      </div>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 4-3. Navigate - AI 적합도 매핑</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-4-3')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-4-3">지금까지 정리한 Task 분해 초안을 바탕으로 Navigate를 진행해 주세요.
-
-각 Task별로 AI 적용 적합도를 High / Medium / Low / No로 판단하고,
-AI 강점 관점에서 “발견 / 신뢰 / 부적합” 중 어디에 해당하는지 구분해 주세요.
-
-또한 각 Task에서 사용하는 데이터의 보안 민감도를 아래 기준으로 분류해 주세요.
-- 공개 가능
-- 내부자료
-- 민감정보
-- AI 입력 금지
-
-출력 형식:
-## Task별 AI 적합도 매핑
-| Task 번호 | 세부 과업 | AI 적합도 | AI 강점 구분: 발견/신뢰/부적합 | 판단 사유 | 데이터 민감도 | 리더 확인 필요 사항 |
-|---|---|---|---|---|---|---|
-
-조건:
-- AI가 모든 일을 대신한다는 표현은 사용하지 마세요.
-- AI는 초안, 요약, 비교, 분류, 패턴 탐색, 시뮬레이션을 지원하는 도구로 설정해 주세요.
-- 평가, 보상, 징계, 개인정보, 민감 영업정보가 포함되는 Task는 보수적으로 판단해 주세요.
-- AI 입력 금지에 해당하는 데이터가 있으면 명확히 표시해 주세요.</div>
-      </div>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 4-4. Arrange - 책임·검증·Fallback 설계</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-4-4')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-4-4">이제 Navigate 결과를 바탕으로 Arrange를 진행해 주세요.
-
-목적은 AI와 인간의 역할을 재배치하는 것입니다.
-각 Task별로 AI가 만들 수 있는 산출물, 사람이 검증해야 할 지점, 리더가 최종 책임져야 할 판단, AI 실패 시 대안을 정리해 주세요.
-
-출력 형식:
-## Arrange: AI 협업 구조 재배치
-| Task 번호 | AI 활용 방식 | AI 산출물 기준 | 인간 검증 포인트 | 리더의 최종 책임 | Fallback Plan |
-|---|---|---|---|---|---|
-
-조건:
-- 목표 기준 설정, 최종 판단, 평가, 보상, 징계, 민감한 피드백은 리더의 최종 책임으로 명확히 구분해 주세요.
-- AI 산출물 기준은 형식, 정확성, 근거, 누락 여부, 보안 기준을 포함해 주세요.
-- Fallback Plan은 AI를 사용할 수 없거나 결과 품질이 낮을 때의 수동 대안으로 작성해 주세요.</div>
-      </div>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 실습 4-5. Workflow Re-design Canvas 완성</span>
-          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_AI협업_업무재설계_성명.md</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-4-5')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-dialogue-4-5">지금까지 대화한 Divide, Navigate, Arrange 결과를 바탕으로 최종 Workflow Re-design Canvas를 작성해 주세요.
-
-출력 형식은 아래와 같이 해 주세요.
-
-## Workflow Re-design Canvas
-| 항목 | 작성 내용 |
-|---|---|
-| 업무명 |  |
-| 고객/사용자 가치 |  |
-| 현재 핵심 비효율 |  |
-| 재설계 방향 |  |
-| Task 분해 요약 |  |
-| AI 적합 Task |  |
-| AI에게 맡기면 안 되는 Task |  |
-| 데이터 민감도 및 보안 주의사항 |  |
-| AI 산출물 형식 |  |
-| AI 산출물 품질 기준 |  |
-| 인간 검증 포인트 |  |
-| 리더의 최종 책임 |  |
-| Fallback Plan |  |
-| 30일 Workflow 파일럿 실행 후보 |  |
-
-## 30일 Workflow 파일럿 실행 후보
-| 주차 | 실행 내용 | 담당 | AI 활용 방식 | 점검 지표 | CH04에서 확인할 사항 |
-|---|---|---|---|---|---|
-
-조건:
-- 교육생이 그대로 제출할 수 있을 정도로 구체적으로 작성해 주세요.
-- 단, 실제 현업 적용 전 리더가 검토해야 할 부분은 “리더 최종 확인 필요”로 표시해 주세요.
-- 이 계획은 CH04의 최종 30일 팀 리더십 향상 Action Plan이 아니라, 재설계 업무 1개를 대상으로 한 Workflow 파일럿 실행 후보입니다.
-- 팀 단위 통합 실행계획과 최종 주차별 운영계획은 CH04에서 확정합니다.
-- CH04에서 NotebookLM에 업로드해 Action Plan 수립에 활용할 수 있도록 Markdown 형식으로 정리해 주세요.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="output-gate">
-    <h3>Gate 4. Workflow Canvas 통과 기준</h3>
-    <div class="table-wrap">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>확인 항목</th>
-            <th>통과 기준</th>
-            <th>내 상태</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>AI 적합도</strong></td>
-            <td>Task별 AI 적합도와 부적합 영역이 구분되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate4-ai-fit" aria-label="Gate 4 AI 적합도 내 상태">
-                <legend class="sr-only">Gate 4 AI 적합도 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate4-ai-fit" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate4-ai-fit" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>책임·검증</strong></td>
-            <td>인간 검증 포인트, 리더 최종 책임, Fallback이 포함되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate4-responsibility-check" aria-label="Gate 4 책임·검증 내 상태">
-                <legend class="sr-only">Gate 4 책임·검증 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate4-responsibility-check" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate4-responsibility-check" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>파일럿 구분</strong></td>
-            <td>CH04 최종 Action Plan이 아니라 Workflow 파일럿 후보로 정리되었다.</td>
-            <td class="gate-status-cell">
-              <fieldset class="gate-status-group" data-gate-status="gate4-pilot-separation" aria-label="Gate 4 파일럿 구분 내 상태">
-                <legend class="sr-only">Gate 4 파일럿 구분 내 상태</legend>
-                <label class="gate-status-option" data-status-option="complete">
-                  <input type="radio" name="ch03-gate4-pilot-separation" value="complete">
-                  <span>완료</span>
-                </label>
-                <label class="gate-status-option" data-status-option="needs">
-                  <input type="radio" name="ch03-gate4-pilot-separation" value="needs">
-                  <span>보완 필요</span>
-                </label>
-              </fieldset>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+<div class="output-gate">
+<h3>Gate 3. 행동역량 정의 통과 기준</h3>
+<div class="table-wrap">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>확인 항목</th>
+<th>통과 기준</th>
+<th>내 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>행동 기준화</strong></td>
+<td>역량명이 아니라 관찰 가능한 행동 기준으로 정리되었다.</td>
+<td class="gate-status-cell">
+<fieldset aria-label="Gate 3 행동 기준화 내 상태" class="gate-status-group" data-gate-status="gate3-behavior-standard">
+<legend class="sr-only">Gate 3 행동 기준화 내 상태</legend>
+<label class="gate-status-option" data-status-option="complete">
+<input name="ch03-gate3-behavior-standard" type="radio" value="complete"/>
+<span>완료</span>
+</label>
+<label class="gate-status-option" data-status-option="needs">
+<input name="ch03-gate3-behavior-standard" type="radio" value="needs"/>
+<span>보완 필요</span>
+</label>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>대상 구분</strong></td>
+<td>리더·팀원·팀 공통 행동이 구분되었다.</td>
+<td class="gate-status-cell">
+<fieldset aria-label="Gate 3 대상 구분 내 상태" class="gate-status-group" data-gate-status="gate3-target-separation">
+<legend class="sr-only">Gate 3 대상 구분 내 상태</legend>
+<label class="gate-status-option" data-status-option="complete">
+<input name="ch03-gate3-target-separation" type="radio" value="complete"/>
+<span>완료</span>
+</label>
+<label class="gate-status-option" data-status-option="needs">
+<input name="ch03-gate3-target-separation" type="radio" value="needs"/>
+<span>보완 필요</span>
+</label>
+</fieldset>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
-    <div class="gate-status-panel" data-gate-status-panel="">
-      <div class="gate-status-panel-title">Gate 1~4 내 상태 저장 현황</div>
-      <div class="gate-status-summary" aria-live="polite">
-        <div class="gate-status-summary-card">
-          <span class="gate-status-summary-label">완료</span>
-          <span class="gate-status-summary-value" data-gate-complete-count="">0 / 9</span>
-        </div>
-        <div class="gate-status-summary-card">
-          <span class="gate-status-summary-label">보완 필요</span>
-          <span class="gate-status-summary-value" data-gate-needs-count="">0 / 9</span>
-        </div>
-        <div class="gate-status-summary-card">
-          <span class="gate-status-summary-label">미선택</span>
-          <span class="gate-status-summary-value" data-gate-empty-count="">9 / 9</span>
-        </div>
-      </div>
-      <div class="gate-status-meta">
-        <span data-gate-status-guide="">Gate별 확인 항목의 완료 또는 보완 필요 상태를 선택하세요.</span>
-        <span data-gate-saved-at="">마지막 저장: 저장 전</span>
-      </div>
-      <div class="gate-status-actions">
-        <button type="button" class="gate-status-btn primary" data-gate-save="">Gate 상태 저장</button>
-        <button type="button" class="gate-status-btn" data-gate-reset="">상태 초기화</button>
-      </div>
-    </div>
+<div class="gate-status-panel" data-gate-status-panel="">
+<div class="gate-status-panel-title">Gate 1~3 내 상태 저장 현황</div>
+<div aria-live="polite" class="gate-status-summary">
+<div class="gate-status-summary-card">
+<span class="gate-status-summary-label">완료</span>
+<span class="gate-status-summary-value" data-gate-complete-count="">0 / 6</span>
+</div>
+<div class="gate-status-summary-card">
+<span class="gate-status-summary-label">보완 필요</span>
+<span class="gate-status-summary-value" data-gate-needs-count="">0 / 6</span>
+</div>
+<div class="gate-status-summary-card">
+<span class="gate-status-summary-label">미선택</span>
+<span class="gate-status-summary-value" data-gate-empty-count="">6 / 6</span>
+</div>
+</div>
+<div class="gate-status-meta">
+<span data-gate-status-guide="">Gate 1~3 확인 항목의 완료 또는 보완 필요 상태를 선택하세요.</span>
+<span data-gate-saved-at="">마지막 저장: 저장 전</span>
+</div>
+<div class="gate-status-actions">
+<button class="gate-status-btn primary" data-gate-save="" type="button">Gate 상태 저장</button>
+<button class="gate-status-btn" data-gate-reset="" type="button">상태 초기화</button>
+</div>
+</div>
 
+<div class="clip-section">
+<div class="clip-section-title">CH04 업로드용 종합본 Markdown 저장 <span style="color:var(--text-secondary);font-size:.9em">권장 · 10분</span></div>
+<div class="clip-section-content">
+<p>CH04에서 소스 연결 시간을 줄이기 위해 두 개의 필수 산출물을 하나의 종합 Markdown으로 저장합니다. 개별 파일을 유지하되, 아래 종합본을 함께 확보하는 것을 권장합니다.</p>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 권장 저장. CH03 우리 팀 성과구조와 행동역량 종합본</span>
+<span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_성과구조와_행동역량_종합본_성명.md</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch03-integrated-markdown')">복사</button>
+</div>
+<div class="prompt-content" id="ch03-integrated-markdown">지금까지 완성한 CH03 결과를 CH04 NotebookLM에 업로드할 수 있는 하나의 종합 Markdown으로 정리해 주세요.
 
-  <div class="clip-section">
-    <div class="clip-section-title">선택 확장: Deep Research 질문 도출</div>
-    <div class="clip-section-content">
-      <div class="info-block" style="margin-bottom:14px">
-        <div class="info-block-title">선택 확장 안내</div>
-        <div>
-          Deep Research Query는 필수 제출물이 아닙니다.
-          Workflow Re-design Canvas에서 발견된 특정 병목을 외부 사례나 추가 근거로 보강하고 싶을 때만 진행합니다.
-        </div>
-      </div>
+# CH03 우리 팀 성과구조와 행동역량 종합본
 
-      <details class="optional-details">
-        <summary>시간과 계정 환경이 허용될 때 펼쳐서 진행합니다</summary>
-        <div class="prompt-block">
-          <div class="prompt-header">
-            <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 선택 실습. Deep Research 확장 질문 도출</span>
-            <button class="copy-btn" onclick="copyPrompt(this,'ch03-dialogue-4-6')">복사</button>
-          </div>
-          <div class="prompt-content" id="ch03-dialogue-4-6">완성된 Workflow Re-design Canvas에서 발견된 핵심 병목 1~2개를 골라,
-Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작성해 주세요.
+## 1. 팀 현황 및 문제 상황
+- 반복되는 성과관리·협업 문제
+- 문제를 보여주는 실제 업무 장면
+- 표면 증상과 성과 영향
 
-단, 일반적인 “AI 시대 리더십 트렌드 조사”가 아니라,
-우리 팀의 특정 업무 병목을 해결하기 위한 질문이어야 합니다.
+## 2. 구조적 병목 및 Root Cause
+- 목표·성과 기준
+- 역할·책임·의사결정 권한
+- 프로세스·회의·보고·검토 방식
+- 관계·피드백·갈등관리
+- 심리적 안전감
+- 실행 신뢰성
+- 각 항목의 근거 수준: 근거 있음 / 추론 / 추가 확인 필요
 
-각 질문에는 아래 요소를 포함해 주세요.
-- 조사 목적
-- 우리 팀의 특정 병목
-- 비교하면 좋은 외부 사례 또는 산업
-- 필요한 데이터 유형
-- 결과물에 반드시 포함할 내용
-- 30일 Workflow 파일럿 실행 후보 또는 CH04 Action Plan에 반영할 방식
+## 3. 팀 효과성 지표
+- GRPI / Project Aristotle 연결
+- 현재 상태 확인 방식
+- 30일 후 기대 상태
+- 정량·정성 구분과 측정 주기
+- 최우선 개선 차원
 
-출력 형식:
-## Deep Research Query 1
-- 조사 목적:
-- 조사 질문:
-- 비교하면 좋은 외부 사례:
-- 필요한 데이터:
-- 결과물 포함사항:
-- 실행 반영 방식:
+## 4. 조직/인재 행동역량 프로파일
+- 리더·팀원·팀 공통 행동역량
+- 초급·중급·고급 행동 기준
+- 30일 이내 단기 육성·코칭 조치 후보
+- 팀원에게 공유할 역량 메시지
 
-## Deep Research Query 2
-- 조사 목적:
-- 조사 질문:
-- 비교하면 좋은 외부 사례:
-- 필요한 데이터:
-- 결과물 포함사항:
-- 실행 반영 방식:
+## 5. CH04로 넘길 30일 실행 후보
+- 최우선 팀 병목 1~2개
+- 30일 동안 확인할 핵심 지표
+- 리더가 먼저 바꿀 행동
+- 팀원과 팀 공통으로 실천할 행동
+- 회의·1:1·피드백·업무지시 장면의 단기 실행 후보
+- AI가 지원할 수 있는 분석·질문·초안 영역
+- AI에게 맡기지 않고 리더가 직접 판단·확인할 사항
 
-조건:
-- 반드시 Canvas에서 발견된 병목을 기반으로 작성해 주세요.
-- 외부 사례 조사가 끝난 뒤 우리 팀의 Workflow 파일럿 또는 CH04 Action Plan을 보완할 수 있어야 합니다.
-- 보안, 개인정보, 평가, 보상, 징계와 관련된 주제는 리더의 최종 검토와 조직 기준 확인이 필요하다고 명시해 주세요.</div>
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">CH04 업로드용 종합본 Markdown 저장 <span style="color:var(--text-secondary);font-size:.9em">권장 · 5분</span></div>
-    <div class="clip-section-content">
-      <p>CH04에서 소스 연결 시간을 줄이기 위해 앞선 필수 산출물 세 개를 하나의 종합 Markdown으로 저장합니다. 개별 파일을 유지하되, 아래 종합본을 추가로 확보하는 것을 권장합니다.</p>
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 권장 저장. CH03 우리 팀 성과구조·AI 업무재설계 종합본</span>
-          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH03_우리팀_성과구조와_AI업무재설계_종합본_성명.md</span>
-          <button class="copy-btn" onclick="copyPrompt(this,'ch03-integrated-markdown')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch03-integrated-markdown">지금까지 완성한 CH03 결과를 CH04 NotebookLM에 업로드할 수 있는 하나의 종합 Markdown으로 정리해 주세요.
-
-# CH03 우리 팀 성과구조와 AI 업무재설계 종합본
-
-## 1. 팀 성과 병목 진단 리포트
-- 문제 상황, 표면 증상, 구조적 병목, Root Cause, 근거 수준
-
-## 2. 팀 효과성 지표
-- GRPI / Project Aristotle 연결, 현재 상태 확인 방식, 30일 기대 상태, 측정 주기
-
-## 3. 조직/인재 행동역량 프로파일
-- 리더·팀원·팀 공통 행동역량과 수준별 행동 기준
-
-## 4. Workflow Re-design Canvas
-- Divide, Navigate, Arrange 결과
-- AI 적합도, 데이터 민감도, 품질 기준, 인간 검증, 리더 책임, Fallback
-
-## 5. CH04로 넘길 실행 후보
-- 최우선 팀 병목
-- 30일 점검 지표
-- 행동역량 후보
-- Workflow 파일럿 후보
-- AI가 지원할 일 / AI에게 맡기지 않을 판단
+## 6. 추가 확인 필요 사항
+- 자료에서 확인되지 않는 내용
+- 리더가 최종 확인할 내용
+- 조직 기준 확인이 필요한 내용
 
 조건:
 - 앞서 대화에서 실제로 확인된 내용만 사용해 주세요.
 - 자료에 없는 내용은 추정하지 말고 “리더 확인 필요”로 표시해 주세요.
+- 개인 평가·서열화용 문서가 아니라 팀 효과성 개선용 문서로 작성해 주세요.
 - 전체 결과를 하나의 markdown 코드블록 안에 넣어 주세요.
-- 파일명은 `CH03_우리팀_성과구조와_AI업무재설계_종합본_성명.md`로 저장할 수 있도록 제목 구조를 유지해 주세요.</div>
+- 파일명은 `CH03_우리팀_성과구조와_행동역량_종합본_성명.md`로 저장할 수 있도록 제목 구조를 유지해 주세요.</div>
+</div>
+<div class="tip-block">
+<div class="tip-block-title">저장 원칙</div>
+<div class="tip-block-content">종합본은 CH04의 권장 입력입니다. 통합본 생성이 어려우면 두 개의 필수 산출물을 그대로 업로드해도 됩니다. 기준 수치나 조직 정책이 자료에 없으면 임의로 만들지 않고 “리더 확인 필요”로 표시합니다.</div>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">최종 산출물 확인 체크리스트</div>
+<div class="clip-section-content">
+<div class="table-wrap">
+<table class="comparison-table">
+<thead>
+<tr><th>구분</th><th>산출물</th><th>확인 기준</th><th>CH04 활용</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>필수</strong></td>
+<td>팀 성과 병목·점검지표 리포트</td>
+<td>표면 증상, 구조적 병목, Root Cause, 근거 수준, 30일 팀 효과성 지표가 하나의 논리로 연결되었는가</td>
+<td>CH04 Source Map의 팀 문제 정의·핵심 지표·우선순위 기준</td>
+</tr>
+<tr>
+<td><strong>필수</strong></td>
+<td>조직/인재 행동역량 프로파일</td>
+<td>리더·팀원·팀 공통 행동이 구분되고, 역량명이 아니라 관찰 가능한 행동 기준으로 작성되었는가</td>
+<td>CH04의 리더 행동, 팀 실천, 면담·코칭 기준</td>
+</tr>
+<tr>
+<td>권장</td>
+<td>CH03 우리 팀 성과구조와 행동역량 종합본</td>
+<td>두 필수 산출물, CH04 실행 후보, 추가 확인 사항이 근거 중심으로 통합되었는가</td>
+<td>CH04 NotebookLM 권장 입력 소스</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">핵심 메시지</div>
+<div class="clip-section-content">
+<div class="info-block">
+<div class="info-block-title">사람을 탓하기 전에 성과를 만드는 조건과 행동 기준을 봅니다</div>
+<div>
+        AI 시대의 팀 리더십 향상은 “소통을 강화하자”는 추상적 구호나 개인의 태도 평가에서 시작되지 않습니다.
+        반복되는 문제를 표면 증상과 구조적 병목으로 구분하고, 30일 안에 확인할 지표를 정하고,
+        리더·팀원·팀 공통의 행동을 관찰 가능한 기준으로 정의할 때 실행 가능한 개선이 시작됩니다.
+        CH04에서는 이 결과를 CH02의 리더 역할·역량 자료와 연결해 우리 팀의 30일 Action Plan을 수립합니다.
       </div>
-      <div class="tip-block">
-        <div class="tip-block-title">저장 원칙</div>
-        <div class="tip-block-content">종합본은 CH04의 권장 입력입니다. 통합본 생성이 어려우면 기존 세 개의 개별 산출물을 그대로 업로드해도 됩니다.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">최종 산출물 확인 체크리스트</div>
-    <div class="clip-section-content">
-      <div class="table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>구분</th>
-              <th>산출물</th>
-              <th>확인 기준</th>
-              <th>CH04 활용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>팀 성과 병목 진단 리포트</td>
-              <td>표면 증상, 구조적 병목, Root Cause, 팀 효과성 지표가 함께 정리되었는가</td>
-              <td>CH04 30일 실행계획 근거 정리표(Source Map)의 문제 정의와 점검 지표</td>
-            </tr>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>조직/인재 행동역량 프로파일</td>
-              <td>리더·팀원·팀 공통 행동 기준이 관찰 가능한 수준으로 작성되었는가</td>
-              <td>CH04 면담·코칭·팀원 행동 기준</td>
-            </tr>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>Workflow Re-design Canvas</td>
-              <td>Task 분해, AI 적합도, 보안, 품질 기준, 인간 검증, 리더 책임, Fallback이 포함되었는가</td>
-              <td>CH04 실행 과제와 AI 활용 방식</td>
-            </tr>
-            <tr>
-              <td>권장</td>
-              <td>CH03 우리 팀 성과구조·AI 업무재설계 종합본</td>
-              <td>필수 산출물 세 개와 CH04 실행 후보가 하나의 Markdown에 근거 중심으로 통합되었는가</td>
-              <td>CH04 NotebookLM 권장 입력 소스</td>
-            </tr>
-            <tr>
-              <td>선택</td>
-              <td>Deep Research Query</td>
-              <td>Canvas에서 발견된 특정 병목을 해결하는 구조화 질문인가</td>
-              <td>외부 사례 조사 및 개선안 보강</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">핵심 메시지</div>
-    <div class="clip-section-content">
-      <div class="info-block">
-        <div class="info-block-title">일을 더 세게 시키는 것이 아니라, 일이 흐르는 구조를 바꿉니다</div>
-        <div>
-          AI 시대의 팀 리더십 향상은 사람을 더 열심히 일하게 만드는 방식이 아니라,
-          일이 흘러가는 구조를 다시 설계하는 방식에서 시작됩니다.
-          CH03에서 팀장은 Gemini와 대화하며 우리 팀의 성과 병목을 진단하고,
-          측정 가능한 효과성 지표를 만들고, 필요한 조직/인재 행동역량을 정의하고,
-          대표 업무를 AI 협업 구조로 재설계합니다.
-          최종 결과물은 CH04에서 NotebookLM과 Gems를 활용한 팀 리더십 향상 Action Plan의 핵심 입력자료가 됩니다.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip04">← 프롬프팅 활용: 리더의 핵심 역량 및 스킬</a><a class="clip-nav-btn" href="#ch03-clip02">참고_ChatGPT 및 GPTs 소개 →</a></div>
-
-  <script>
+</div>
+</div>
+</div>
+<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip04">← 프롬프팅 활용: 리더의 핵심 역량 및 스킬</a><a class="clip-nav-btn" href="#ch03-clip02">참고_ChatGPT 및 GPTs 소개 →</a></div>
+<script>
     (function () {
       var root = document.getElementById('ch03-clip01');
       if (!root) {
         return;
       }
 
-      var storageKey = 'ch03-clip01-gate-status-v1';
+      var storageKey = 'ch03-clip01-gate-status-v2';
       var groups = Array.prototype.slice.call(root.querySelectorAll('[data-gate-status]'));
       var totalCount = groups.length;
       var savedAtValue = '';
@@ -1596,7 +1274,7 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
 
       function saveState(messageOnSave) {
         var payload = {
-          version: 1,
+          version: 2,
           savedAt: new Date().toISOString(),
           statuses: collectState()
         };
@@ -1604,7 +1282,7 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
         try {
           window.localStorage.setItem(storageKey, JSON.stringify(payload));
           savedAtValue = payload.savedAt;
-          refreshStatusPanel(messageOnSave ? 'Gate 1~4 내 상태가 브라우저에 저장되었습니다.' : '');
+          refreshStatusPanel(messageOnSave ? 'Gate 1~3 내 상태가 브라우저에 저장되었습니다.' : '');
         } catch (error) {
           refreshStatusPanel('브라우저 저장소를 사용할 수 없어 현재 화면에서만 상태가 유지됩니다.');
         }
@@ -1625,7 +1303,7 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
       }
 
       function resetState() {
-        var ok = window.confirm('Gate 1~4 내 상태 선택과 저장 기록을 초기화할까요?');
+        var ok = window.confirm('Gate 1~3 내 상태 선택과 저장 기록을 초기화할까요?');
         if (!ok) {
           return;
         }
@@ -1644,7 +1322,7 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
         }
 
         savedAtValue = '';
-        refreshStatusPanel('Gate 1~4 내 상태가 초기화되었습니다.');
+        refreshStatusPanel('Gate 1~3 내 상태가 초기화되었습니다.');
       }
 
       for (var i = 0; i < groups.length; i += 1) {
@@ -1671,5 +1349,4 @@ Gemini Deep Research에 그대로 입력할 수 있는 구조화 질문을 작�
       loadState();
     })();
   </script>
-
 </div>
