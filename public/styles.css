@@ -2344,10 +2344,7 @@ button.ghost {
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image-frame {
-  min-height: clamp(425px, 51vw, 750px);
-  max-width: 85%;
-  margin-left: auto;
-  margin-right: auto;
+  min-height: clamp(500px, 60vw, 880px);
 }
 
 /* concept-foundation-guide는 팝업 없이 직접 표시하므로 클릭 UI 제거 */
