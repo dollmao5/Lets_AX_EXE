@@ -2361,6 +2361,23 @@ button.ghost {
   will-change: transform !important;
 }
 
+/* 팝업 모달창 내부 1:1 원본 리샘플링 회피 스타일 */
+.slide-image-sheet.deck-concept-foundation-guide .slide-image-wrap {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: block !important;
+  background: #0c1421 !important;
+}
+
+.slide-image-sheet.deck-concept-foundation-guide .slide-stage-image {
+  width: 724px !important; /* 이미지 고유 가로폭 1:1 박제 */
+  height: 1024px !important; /* 이미지 고유 세로폭 1:1 박제 */
+  max-width: 100% !important; /* 좁은 모니터/창 잘림 방지 가변 */
+  max-height: none !important;
+  object-fit: contain !important; /* 리샘플링 스무딩 왜곡 억제 */
+  margin: 0 auto !important;
+}
+
 .slide-preview-gallery.immersive-preview .slide-preview-page {
   top: 22px;
   left: 22px;

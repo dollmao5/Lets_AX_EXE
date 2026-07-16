@@ -3521,6 +3521,7 @@ function buildConceptFoundationGuideDeck() {
   return {
     id: "concept-foundation-guide",
     previewStyle: "immersive",
+    sheetClass: "deck-concept-foundation-guide",
     kicker: "NotebookLM Infographic",
     title: "전문가용 AI 핵심 개념 가이드",
     subtitle: "NotebookLM에서 내려받은 세로형 개념 인포그래픽",
