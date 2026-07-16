@@ -3516,7 +3516,7 @@ function buildTechUtilizationRoadmapDeck() {
 }
 
 function buildConceptFoundationGuideDeck() {
-  const imagePath = withBase("/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.png");
+  const imagePath = withBase("/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg");
 
   return {
     id: "concept-foundation-guide",
@@ -3525,7 +3525,7 @@ function buildConceptFoundationGuideDeck() {
     title: "전문가용 AI 핵심 개념 가이드",
     subtitle: "NotebookLM에서 내려받은 세로형 개념 인포그래픽",
     downloadUrl: imagePath,
-    downloadFilename: "expert-ai-core-concepts-guide2.png",
+    downloadFilename: "expert-ai-core-concepts-guide2.jpg",
     downloadLabel: "다운로드",
     slides: [
       {
