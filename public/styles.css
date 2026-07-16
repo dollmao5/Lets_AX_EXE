@@ -2350,6 +2350,15 @@ button.ghost {
   margin-right: auto;
 }
 
+/* concept-foundation-guide는 팝업 없이 직접 표시하므로 클릭 UI 제거 */
+.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-card-immersive {
+  cursor: default;
+}
+.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-card-immersive:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image,
 .slide-stage-image {
   image-rendering: -webkit-optimize-contrast !important;
