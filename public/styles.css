@@ -2347,6 +2347,13 @@ button.ghost {
   min-height: clamp(760px, 92vw, 1320px);
 }
 
+.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
 .slide-preview-gallery.immersive-preview .slide-preview-page {
   top: 22px;
   left: 22px;
