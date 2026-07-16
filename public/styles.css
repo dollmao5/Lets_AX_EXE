@@ -2345,18 +2345,15 @@ button.ghost {
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image-frame {
   min-height: clamp(500px, 60vw, 880px);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
-.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
-  transform: translate3d(0, 0, 0) scale(1.002);
-  will-change: transform;
-  filter: contrast(1.12) brightness(1.01) saturate(1.04);
+.slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image,
+.slide-stage-image {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  image-rendering: pixelated !important;
+  -ms-interpolation-mode: nearest-neighbor !important;
+  filter: contrast(1.10) brightness(1.02) saturate(1.03) !important;
 }
 
 .slide-preview-gallery.immersive-preview .slide-preview-page {
