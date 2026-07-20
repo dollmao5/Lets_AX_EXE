@@ -3652,7 +3652,7 @@ function buildChatgptScreenQuickTourDeck() {
         title: "파일 업로드 메뉴",
         imageSrc: `${basePath}/chatgpt-upload-menu.png`,
         imageAlt: "ChatGPT 파일 업로드 메뉴",
-        summary: "토론 전사 텍스트, 문서, 보고서를 붙여서 컨텍스트를 키우면 결과 품질이 확 달라집니다."
+        summary: "토론 대화문(텍스트), 문서, 보고서를 붙여서 컨텍스트를 키우면 결과 품질이 확 달라집니다."
       }
     ]
   };
