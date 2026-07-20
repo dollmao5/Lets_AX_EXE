@@ -3638,21 +3638,21 @@ function buildChatgptScreenQuickTourDeck() {
         title: "홈 화면",
         imageSrc: `${basePath}/chatgpt-home.png`,
         imageAlt: "ChatGPT 홈 화면",
-        summary: "왼쪽에는 대화 이력과 GPT 탐색 메뉴, 아래에는 입력창과 파일 첨부 버튼이 있습니다. 오늘 대부분의 실습은 이 화면에서 시작합니다."
+        summary: "가운데 입력창에서 바로 대화를 시작합니다. 입력창 왼쪽의 + 버튼으로 파일을 붙이고, 이미지 만들기·글쓰기·웹 검색 바로가기도 제공됩니다."
       },
       {
         eyebrow: "02 / Model",
-        title: "모델 표시 영역",
+        title: "모델·추론 수준 메뉴",
         imageSrc: `${basePath}/chatgpt-model-menu.png`,
-        imageAlt: "ChatGPT 모델 표시 영역",
-        summary: "무료 플랜은 상황에 맞는 모델이 자동 선택되는 방식이 기본입니다. 빠른 답과 깊은 추론을 구분하는 감각을 잡는 화면입니다."
+        imageAlt: "ChatGPT 모델·추론 수준 메뉴",
+        summary: "입력창 오른쪽에서 추론 수준(즉시·중간·높음 등)을 고를 수 있습니다. 빠른 답이 필요한 작업과 깊은 추론이 필요한 작업을 구분하는 감각을 잡는 화면입니다."
       },
       {
         eyebrow: "03 / Upload",
         title: "파일 업로드 메뉴",
         imageSrc: `${basePath}/chatgpt-upload-menu.png`,
         imageAlt: "ChatGPT 파일 업로드 메뉴",
-        summary: "토론 대화문(텍스트), 문서, 보고서를 붙여서 컨텍스트를 키우면 결과 품질이 확 달라집니다."
+        summary: "+ 메뉴에서 사진·파일 첨부, 웹 검색, 심층 리서치를 선택할 수 있습니다. 토론 대화문과 문서를 붙여 컨텍스트를 키우면 결과 품질이 확 달라집니다."
       }
     ]
   };
