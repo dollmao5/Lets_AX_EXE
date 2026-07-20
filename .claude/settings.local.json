@@ -31,7 +31,13 @@
       "Bash(ffmpeg -version)",
       "Bash(powershell -NoProfile -Command ' *)",
       "Bash(curl -s -o /dev/null -w \"local server: %{http_code}, %{size_download} bytes\\\\n\" \"http://localhost:4071/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg\")",
-      "Bash(git commit -m 'assets: replace CH01 concept guide image with high-res version *)"
+      "Bash(git commit -m 'assets: replace CH01 concept guide image with high-res version *)",
+      "Bash(grep -c -i \"gemini\" content/axcamp/chapters/CH02/*/content.html content/axcamp/chapters/CH03/*/content.html)",
+      "Bash(grep -c -iE \"gems|canvas|deep research\" content/axcamp/chapters/CH02/*/content.html content/axcamp/chapters/CH03/*/content.html)",
+      "Bash(grep -l -i \"gemini\" content/axcamp/chapters/CH00/*/content.html content/axcamp/chapters/CH01/*/content.html content/axcamp/chapters/CH04/*/content.html content/axcamp/chapters/CH05/*/content.html)",
+      "WebFetch(domain:dollmao5.github.io)",
+      "Bash(curl -sI \"https://dollmao5.github.io/Lets_AX_EXE/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg\")",
+      "Bash(powershell -NoProfile -Command \"\\(Invoke-WebRequest -Uri 'https://dollmao5.github.io/Lets_AX_EXE/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg' -Method Head -UseBasicParsing\\).Headers['Content-Length']\")"
     ]
   }
 }
