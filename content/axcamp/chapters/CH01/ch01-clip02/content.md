@@ -90,7 +90,7 @@ Level 2 · 확장
 
 ChatGPT Deep Research
 GPTs
-AI Studio Build
+GPT Builder
 OpenAI API
 
 **팀장이 확인할 것:** 목표와 완료 기준은 무엇인가? 권한과 데이터 범위는 어디까지이며 언제 사람이 승인하는가?
