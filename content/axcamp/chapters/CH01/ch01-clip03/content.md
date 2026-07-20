@@ -1,8 +1,8 @@
 ---
-route: "#ch01-clip04"
+route: "#ch01-clip03"
 chapter: "ch01"
 title: "개념 다지기"
-source_url: "https://lg.cmdspace.work/axcamp#ch01-clip04"
+source_url: "https://lg.cmdspace.work/axcamp#ch01-clip03"
 ---
 
 ~3분

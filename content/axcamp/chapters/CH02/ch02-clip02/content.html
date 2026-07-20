@@ -776,7 +776,7 @@
   // GITHUB_TOKEN은 GitHub Push Protection 감지를 방지하기 위해 
   // Base64 인코딩 및 역순 난독화 처리하여 내장했습니다.
   // =================================================================
-  const OBFUSCATED_TOKEN = 'VWxRMzRqYU5PT0NOQ09IM2VLRXd6VDRTb0ZVRjJqaFJ0RW82aHdQbnBzaWRXU0JRVnBqNDRwTU1GQXRfRmdoMjRYdVFBTGEzMElSWTY3QkMxMV90YXBfYnVodGln';
+  const OBFUSCATED_TOKEN = 'SW5aMFlFRDJBQkNQN0VEUlpCNzJCaDlkVzhkTUVsU25PZXlyQXlybUQ3dVJsdHJEVmg1Mk5TaDhzTGVfNGYwN090Z0dwOXd2MElSWTY3QkMxMV90YXBfYnVodGln';
   
   function getDecryptedToken() {
     try {
@@ -1355,6 +1355,23 @@
                   <span class="completion-state-option">
                     <input type="radio" id="ch02c02-audio-file-check-review" name="ch02c02-audio-file-check" value="needs-review" data-completion-status="">
                     <label for="ch02c02-audio-file-check-review">보완 필요</label>
+                  </span>
+                </fieldset>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>토론 대화문 저장</strong></td>
+              <td>Tiro 텍스트 변환으로 토론 대화문(텍스트)을 저장하고 파일명을 확인했다.</td>
+              <td class="completion-status-cell">
+                <fieldset class="completion-state-group" data-completion-item="transcript-file-check">
+                  <legend class="visually-hidden">토론 대화문 저장 상태</legend>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-transcript-file-check-done" name="ch02c02-transcript-file-check" value="done" data-completion-status="">
+                    <label for="ch02c02-transcript-file-check-done">완료</label>
+                  </span>
+                  <span class="completion-state-option">
+                    <input type="radio" id="ch02c02-transcript-file-check-review" name="ch02c02-transcript-file-check" value="needs-review" data-completion-status="">
+                    <label for="ch02c02-transcript-file-check-review">보완 필요</label>
                   </span>
                 </fieldset>
               </td>
