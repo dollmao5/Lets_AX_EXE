@@ -2913,6 +2913,7 @@ const SLIDE_DECK_BUILDERS = {
   "concept-foundation-guide": buildConceptFoundationGuideDeck,
   "gemini-access-roadshow": buildGeminiAccessRoadshowDeck,
   "gemini-screen-quick-tour": buildGeminiScreenQuickTourDeck,
+  "chatgpt-screen-quick-tour": buildChatgptScreenQuickTourDeck,
   "business-prompting-workshop": buildBusinessPromptingWorkshopDeck,
   "gemini-gems-roadshow": buildGeminiGemsRoadshowDeck,
   "gems-create-steps": buildGemsCreateStepsDeck,
@@ -3615,6 +3616,43 @@ function buildGeminiScreenQuickTourDeck() {
         imageSrc: `${basePath}/gemini-upload-menu.png`,
         imageAlt: "Gemini 파일 업로드 메뉴",
         summary: "문서, 데이터, 코드 파일, Drive 자료를 붙여서 컨텍스트를 키우면 결과 품질이 확 달라집니다."
+      }
+    ]
+  };
+}
+
+function buildChatgptScreenQuickTourDeck() {
+  // [1단계: Gemini→ChatGPT 전환] ch02-clip01용 ChatGPT 화면 3장 덱.
+  // 스크린샷이 public/assets/chatgpt/ch02/에 배치되면 content.html의 갤러리 주석을 복구해 사용한다.
+  const basePath = withBase("/assets/chatgpt/ch02");
+
+  return {
+    id: "chatgpt-screen-quick-tour",
+    previewColumns: 3,
+    kicker: "ChatGPT Practice",
+    title: "ChatGPT 화면 간단 소개",
+    subtitle: "실습에 들어가기 전 먼저 볼 3가지 화면",
+    slides: [
+      {
+        eyebrow: "01 / Home",
+        title: "홈 화면",
+        imageSrc: `${basePath}/chatgpt-home.png`,
+        imageAlt: "ChatGPT 홈 화면",
+        summary: "왼쪽에는 대화 이력과 GPT 탐색 메뉴, 아래에는 입력창과 파일 첨부 버튼이 있습니다. 오늘 대부분의 실습은 이 화면에서 시작합니다."
+      },
+      {
+        eyebrow: "02 / Model",
+        title: "모델 표시 영역",
+        imageSrc: `${basePath}/chatgpt-model-menu.png`,
+        imageAlt: "ChatGPT 모델 표시 영역",
+        summary: "무료 플랜은 상황에 맞는 모델이 자동 선택되는 방식이 기본입니다. 빠른 답과 깊은 추론을 구분하는 감각을 잡는 화면입니다."
+      },
+      {
+        eyebrow: "03 / Upload",
+        title: "파일 업로드 메뉴",
+        imageSrc: `${basePath}/chatgpt-upload-menu.png`,
+        imageAlt: "ChatGPT 파일 업로드 메뉴",
+        summary: "토론 전사 텍스트, 문서, 보고서를 붙여서 컨텍스트를 키우면 결과 품질이 확 달라집니다."
       }
     ]
   };

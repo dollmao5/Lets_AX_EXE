@@ -6,7 +6,7 @@
   "clips": [
     {
       "route": "#ch02-clip01",
-      "title": "Gemini Overview: 실습 환경 세팅과 핵심 기능 이해",
+      "title": "ChatGPT Overview: 실습 환경 세팅과 핵심 기능 이해",
       "type": "플랫폼",
       "folder": "chapters/CH02/ch02-clip01"
     },
