@@ -36,6 +36,9 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Content lint
+        run: npm run lint:content
+
       - name: Build static Pages artifact
         run: npm run build:pages -- --base-path "/${{ github.event.repository.name }}"
 

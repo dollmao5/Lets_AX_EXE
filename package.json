@@ -8,6 +8,7 @@
     "start": "node --watch server.js",
     "build:pages": "node scripts/build-pages.mjs",
     "preview:pages": "node scripts/preview-pages.mjs",
-    "regen:clip": "node scripts/regen-clip.js"
+    "regen:clip": "node scripts/regen-clip.js",
+    "lint:content": "node scripts/lint-content.mjs"
   }
 }
