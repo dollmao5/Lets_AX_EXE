@@ -138,7 +138,7 @@
         },
         {
           "route": "#ch03-clip02",
-          "title": "참고_ChatGPT 및 GPTs 소개",
+          "title": "참고_Gemini 및 Gems 소개",
           "type": "참고",
           "folder": "chapters/CH03/ch03-clip02",
           "linkCount": 0,
@@ -457,7 +457,7 @@
     {
       "chapterId": "ch03",
       "route": "#ch03-clip02",
-      "title": "참고_ChatGPT 및 GPTs 소개",
+      "title": "참고_Gemini 및 Gems 소개",
       "folder": "chapters/CH03/ch03-clip02",
       "textLength": 3343,
       "htmlLength": 8772,
