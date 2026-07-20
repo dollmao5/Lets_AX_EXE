@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls CLAUDE.md)",
+      "Bash(ls -la .cursor .cursorrules .github/copilot-instructions.md)",
+      "Bash(awk '/async function handlePublish\\\\\\(/{f=1} f{print NR\": \"$0} f&&/^}/{c++; if\\(c>=1 && /^}/\\){exit}}' server.js)",
+      "Bash(npm start *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4071/api/health)",
+      "Bash(git ls-remote *)",
+      "Bash(curl -s http://localhost:4071/api/chapters)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);j.chapters.forEach\\(ch=>{console.log\\(ch.chapterNum+' | '+ch.title+' | '+ch.time+' | clips:'+ch.clips.length\\);ch.clips.forEach\\(c=>console.log\\('  '+c.clipKey+' ['+c.type+'] '+c.title\\)\\)}\\)}\\)\")",
+      "Bash(node -e \"const o=require\\('./content/axcamp/visible-catalog-overrides.json'\\);console.log\\(JSON.stringify\\(o,null,1\\)\\)\")",
+      "Bash(node -e \"const o=require\\('./content/axcamp/visible-catalog-overrides.json'\\);console.log\\(JSON.stringify\\(Object.keys\\(o.clips\\)\\)\\)\")",
+      "Bash(node -e \"const c=require\\('./content/axcamp/chapters/CH06/chapter.json'\\);const clip=c.clips.find\\(x=>x.clipKey&&x.clipKey.includes\\('clip09'\\)\\)||c.clips[8];console.log\\(JSON.stringify\\(clip,null,1\\).slice\\(0,800\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);const ch=j.chapters.find\\(c=>c.chapterId==='ch06'\\);const clip=ch.clips.find\\(c=>c.clipKey==='ch06-clip09'\\);console.log\\(JSON.stringify\\(clip,null,1\\)\\)}\\)\")",
+      "Bash(curl -s http://localhost:4071/api/clips/ch06-clip09)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);console.log\\('overview:',JSON.stringify\\(j.clip?.overview\\)\\);console.log\\('title:',JSON.stringify\\(j.clip?.title\\)\\)}\\)\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);const c=j.clip||{};console.log\\('payload keys:',Object.keys\\(c\\).join\\(','\\)\\);\\(c.sections||[]\\).forEach\\(\\(s,i\\)=>console.log\\('section['+i+'].title:',JSON.stringify\\(\\(s.title||''\\).slice\\(0,70\\)\\)\\)\\);console.log\\('headings:',JSON.stringify\\(\\(c.headings||[]\\).map\\(h=>String\\(h\\).slice\\(0,50\\)\\)\\)\\)}\\)\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('content/axcamp/chapters/CH06/ch06-clip09/metadata.json','utf8'\\)\\);console.log\\('JSON valid'\\)\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);console.log\\('title:',j.clip.title\\);console.log\\('overview:',j.clip.overview\\);j.clip.sections.forEach\\(\\(s,i\\)=>console.log\\('section['+i+']:',s.title\\)\\)}\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m 'content: clean tooltip bleed from CH06 clip09 *)",
+      "Bash(git push *)",
+      "Bash(gh run *)",
+      "Bash(curl -s \"https://api.github.com/repos/dollmao5/Lets_AX_EXE/actions/runs?per_page=2\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);\\(j.workflow_runs||[]\\).forEach\\(r=>console.log\\(r.status,'|',r.conclusion,'|',r.head_sha.slice\\(0,7\\),'|',r.name,'|',r.created_at\\)\\)}\\)\")",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:www.githubstatus.com)",
+      "Bash(magick -version)",
+      "Bash(ffmpeg -version)",
+      "Bash(powershell -NoProfile -Command ' *)",
+      "Bash(curl -s -o /dev/null -w \"local server: %{http_code}, %{size_download} bytes\\\\n\" \"http://localhost:4071/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg\")",
+      "Bash(git commit -m 'assets: replace CH01 concept guide image with high-res version *)"
+    ]
+  }
+}
