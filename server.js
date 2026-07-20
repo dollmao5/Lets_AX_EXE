@@ -3863,7 +3863,21 @@ async function start() {
   });
 }
 
-start().catch((error) => {
-  console.error("[AX_Literacy] startup failed:", error);
-  process.exit(1);
-});
+// [리팩토링 1단계] require로 불러올 때는 서버를 기동하지 않는다.
+// - `node server.js` 직접 실행(npm start, build-pages의 spawn 포함): 기존과 동일하게 기동
+// - `require("./server.js")` (scripts/regen-clip.js 등): 기동 없이 아래 export만 사용
+if (require.main === module) {
+  start().catch((error) => {
+    console.error("[AX_Literacy] startup failed:", error);
+    process.exit(1);
+  });
+}
+
+// [리팩토링 1단계] 본문 저장(clip-source) 재생성 로직 공유 export.
+// 루트 편집기 저장과 scripts/regen-clip.js CLI가 동일한 함수를 사용하게 하여
+// content.html 직접 수정 시 파생 파일(md/txt/metadata) 불일치를 방지한다.
+module.exports = {
+  stripHtmlToText,
+  buildMarkdownDocument,
+  buildMetadataFromHtml
+};
