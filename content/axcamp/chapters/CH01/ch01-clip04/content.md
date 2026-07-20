@@ -1,8 +1,8 @@
 ---
-route: "#ch01-clip07"
+route: "#ch01-clip04"
 chapter: "ch01"
 title: "AI-Friendly 리더십 & AI 리터러시 진단"
-source_url: "https://lg.cmdspace.work/axcamp#ch01-clip07"
+source_url: "https://lg.cmdspace.work/axcamp#ch01-clip04"
 ---
 
 ~15분
@@ -35,7 +35,7 @@ AI 시대 리더십에 대해 오해하기 쉬운 문항 5개를 QuizN으로 확
 
 Step 3. AI 리터러시 활용 수준 진단
 
-Gemini, NotebookLM, Gems 등 개인별 AI 활용 수준을 10문항으로 점검합니다.
+ChatGPT, NotebookLM, GPTs 등 개인별 AI 활용 수준을 10문항으로 점검합니다.
 
 Step 4. 3분 Pair Talk
 
@@ -163,7 +163,7 @@ No |
 
 |
 1 |
-Gemini 등 생성형 AI 도구에 접속해 기본 질문을 해본 적이 있다. |
+ChatGPT 등 생성형 AI 도구에 접속해 기본 질문을 해본 적이 있다. |
 선택0점 · 거의 해본 적 없음1점 · 몇 번 해봄2점 · 반복 활용 중 |
 
 |
@@ -203,7 +203,7 @@ NotebookLM처럼 소스 기반으로 답변하는 도구를 사용해본 적이 
 
 |
 9 |
-Gems 또는 맞춤형 AI 비서를 만들어본 적이 있다. |
+GPTs 또는 맞춤형 AI 비서를 만들어본 적이 있다. |
 선택0점 · 거의 해본 적 없음1점 · 몇 번 해봄2점 · 반복 활용 중 |
 
 |
@@ -239,7 +239,7 @@ AI 리터러시 자동 계산 결과
 0~6점 |
 **AI Explorer** |
 AI를 알아가는 단계입니다. 도구 접속, 기본 대화, 파일 업로드 경험 확보가 우선입니다. |
-Gemini 기본 질문, 후속 질문, 간단한 문서 요약을 우선 실습합니다. |
+ChatGPT 기본 질문, 후속 질문, 간단한 문서 요약을 우선 실습합니다. |
 
 |
 7~13점 |
@@ -251,7 +251,7 @@ Gemini 기본 질문, 후속 질문, 간단한 문서 요약을 우선 실습합
 14~20점 |
 **AI Workflow Designer** |
 AI를 업무 흐름에 연결할 준비가 되어 있습니다. 개인 활용을 팀 단위 운영 방식으로 전환할 수 있습니다. |
-Workflow Re-design, 검증 기준 설계, Gems 저장까지 연결합니다. |
+Workflow Re-design, 검증 기준 설계, 비서 프롬프트 저장까지 연결합니다. |
 
 ## Step 4. 3분 Pair Talk: 오늘의 실습 초점 정하기
 

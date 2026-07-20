@@ -101,7 +101,7 @@ Source Map의 팀 시스템 근거 |
 
 |
 **선택** |
-Gemini Deep Research 결과 또는 외부 리서치 메모 |
+ChatGPT Deep Research 결과 또는 외부 리서치 메모 |
 외부 사례와 근거를 보강하되, 사내 맥락과 구분해 검토합니다. |
 실행 아이디어 보완 및 벤치마킹 |
 

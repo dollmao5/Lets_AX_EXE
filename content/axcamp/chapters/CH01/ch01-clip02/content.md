@@ -62,7 +62,7 @@ Level 1 · 입문
 
 - 사람의 지시와 검토가 자주 필요한 업무에 적합
 
-Gemini
+ChatGPT
 NotebookLM
 ChatGPT
 
@@ -88,10 +88,10 @@ Level 2 · 확장
 
 - 권한·데이터·완료 기준·승인 지점을 명시
 
-Gemini Deep Research
-Gemini Gems
+ChatGPT Deep Research
+GPTs
 AI Studio Build
-Gemini API
+OpenAI API
 
 **팀장이 확인할 것:** 목표와 완료 기준은 무엇인가? 권한과 데이터 범위는 어디까지이며 언제 사람이 승인하는가?
 
@@ -161,9 +161,9 @@ Agent와 도구를 연결한 운영 체계 |
 |
 과정 내 위치 |
 **필수 실습**
-Gemini·NotebookLM |
+ChatGPT·NotebookLM |
 **선택 확장**
-Deep Research·Gems·AI 앱 |
+Deep Research·GPTs·AI 앱 |
 **방향성 참고**
 향후 Workflow 고도화 |
 
@@ -189,8 +189,8 @@ AI 활용의 핵심은 **AI에게 많이 맡기는 것**이 아니라,
 
 ### 오늘의 여정 안에서의 위치
 
-오늘의 필수 실습은 **Gemini와 NotebookLM을 활용한 Assistant 중심**입니다.
-**Deep Research·Gems·AI 앱 구축**은 선택 확장으로 경험하고,
+오늘의 필수 실습은 **ChatGPT와 NotebookLM을 활용한 Assistant 중심**입니다.
+**Deep Research·GPTs·AI 앱 구축**은 선택 확장으로 경험하고,
 **Agentic AI**는 향후 조직의 Workflow를 고도화하기 위한 방향성으로 이해합니다.
 
 ### 이번 클립의 연결

@@ -166,7 +166,7 @@
         },
         {
           "route": "#ch04-clip02",
-          "title": "NotebookLM & Gems 활용: 팀 성과 창출 및 피드백 실전",
+          "title": "NotebookLM & AI 비서 활용: 팀 성과 창출 및 피드백 실전",
           "type": "실습",
           "folder": "chapters/CH04/ch04-clip02",
           "linkCount": 0,
@@ -483,7 +483,7 @@
     {
       "chapterId": "ch04",
       "route": "#ch04-clip02",
-      "title": "NotebookLM & Gems 활용: 팀 성과 창출 및 피드백 실전",
+      "title": "NotebookLM & AI 비서 활용: 팀 성과 창출 및 피드백 실전",
       "folder": "chapters/CH04/ch04-clip02",
       "textLength": 9704,
       "htmlLength": 44110,

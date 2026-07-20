@@ -422,7 +422,7 @@
         </div>
         <div class="step-card">
           <div class="card-kicker">Step 3. AI 리터러시 활용 수준 진단</div>
-          <div class="card-text">Gemini, NotebookLM, Gems 등 개인별 AI 활용 수준을 10문항으로 점검합니다.</div>
+          <div class="card-text">ChatGPT, NotebookLM, GPTs 등 개인별 AI 활용 수준을 10문항으로 점검합니다.</div>
         </div>
         <div class="step-card">
           <div class="card-kicker">Step 4. 3분 Pair Talk</div>
@@ -599,7 +599,7 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td>Gemini 등 생성형 AI 도구에 접속해 기본 질문을 해본 적이 있다.</td>
+              <td>ChatGPT 등 생성형 AI 도구에 접속해 기본 질문을 해본 적이 있다.</td>
               <td><select onchange="this.closest('#ai-literacy-check').querySelector('[data-literacy-calc]').click();" oninput="this.closest('#ai-literacy-check').querySelector('[data-literacy-calc]').click();" data-literacy-score="" aria-label="1번 문항 점수"><option value="">선택</option><option value="0">0점 · 거의 해본 적 없음</option><option value="1">1점 · 몇 번 해봄</option><option value="2">2점 · 반복 활용 중</option></select></td>
             </tr>
             <tr>
@@ -639,7 +639,7 @@
             </tr>
             <tr>
               <td>9</td>
-              <td>Gems 또는 맞춤형 AI 비서를 만들어본 적이 있다.</td>
+              <td>GPTs 또는 맞춤형 AI 비서를 만들어본 적이 있다.</td>
               <td><select onchange="this.closest('#ai-literacy-check').querySelector('[data-literacy-calc]').click();" oninput="this.closest('#ai-literacy-check').querySelector('[data-literacy-calc]').click();" data-literacy-score="" aria-label="9번 문항 점수"><option value="">선택</option><option value="0">0점 · 거의 해본 적 없음</option><option value="1">1점 · 몇 번 해봄</option><option value="2">2점 · 반복 활용 중</option></select></td>
             </tr>
             <tr>
@@ -669,7 +669,7 @@
             오늘의 실습 포인트: <strong data-literacy-guide="">전체 문항 입력 후 개인별 실습 방향을 확인합니다.</strong>
           </div>
           <div class="button-row" style="margin-top:0">
-            <button type="button" class="primary-btn" data-literacy-calc="" onclick="(function(root){var inputs=root.querySelectorAll('[data-literacy-score]');var answered=0;var total=0;for(var i=0;i&lt;inputs.length;i+=1){var rawValue=inputs[i].value;if(rawValue!==''){answered+=1;total+=parseInt(rawValue,10);}}var totalEl=root.querySelector('[data-literacy-total]');if(totalEl){totalEl.textContent=total+' / 20';}var answeredEl=root.querySelector('[data-literacy-answered-count]');if(answeredEl){answeredEl.textContent=answered+' / '+inputs.length;}var resultEl=root.querySelector('[data-literacy-result]');var guideEl=root.querySelector('[data-literacy-guide]');if(resultEl){if(answered===0){resultEl.textContent='점수를 입력하면 자동 표시됩니다.';}else if(answered&lt;inputs.length){resultEl.textContent=answered+'/'+inputs.length+'문항 입력됨 · 모든 문항 입력 후 최종 유형을 확인합니다.';}else if(total&lt;=6){resultEl.textContent='AI Explorer · '+total+'점';}else if(total&lt;=13){resultEl.textContent='AI Operator · '+total+'점';}else{resultEl.textContent='AI Workflow Designer · '+total+'점';}}if(guideEl){if(answered===0){guideEl.textContent='전체 문항 입력 후 개인별 실습 방향을 확인합니다.';}else if(answered&lt;inputs.length){guideEl.textContent='아직 미입력 문항이 있습니다. 0점도 유효한 응답입니다.';}else if(total&lt;=6){guideEl.textContent='접속, 기본 대화, 파일 업로드 경험을 우선 확보합니다.';}else if(total&lt;=13){guideEl.textContent='업무 위임형 프롬프트와 파일 기반 분석으로 활용 범위를 확장합니다.';}else{guideEl.textContent='Workflow Re-design과 Gems 저장까지 연결합니다.';}}})(this.closest('#ai-literacy-check'))">
+            <button type="button" class="primary-btn" data-literacy-calc="" onclick="(function(root){var inputs=root.querySelectorAll('[data-literacy-score]');var answered=0;var total=0;for(var i=0;i&lt;inputs.length;i+=1){var rawValue=inputs[i].value;if(rawValue!==''){answered+=1;total+=parseInt(rawValue,10);}}var totalEl=root.querySelector('[data-literacy-total]');if(totalEl){totalEl.textContent=total+' / 20';}var answeredEl=root.querySelector('[data-literacy-answered-count]');if(answeredEl){answeredEl.textContent=answered+' / '+inputs.length;}var resultEl=root.querySelector('[data-literacy-result]');var guideEl=root.querySelector('[data-literacy-guide]');if(resultEl){if(answered===0){resultEl.textContent='점수를 입력하면 자동 표시됩니다.';}else if(answered&lt;inputs.length){resultEl.textContent=answered+'/'+inputs.length+'문항 입력됨 · 모든 문항 입력 후 최종 유형을 확인합니다.';}else if(total&lt;=6){resultEl.textContent='AI Explorer · '+total+'점';}else if(total&lt;=13){resultEl.textContent='AI Operator · '+total+'점';}else{resultEl.textContent='AI Workflow Designer · '+total+'점';}}if(guideEl){if(answered===0){guideEl.textContent='전체 문항 입력 후 개인별 실습 방향을 확인합니다.';}else if(answered&lt;inputs.length){guideEl.textContent='아직 미입력 문항이 있습니다. 0점도 유효한 응답입니다.';}else if(total&lt;=6){guideEl.textContent='접속, 기본 대화, 파일 업로드 경험을 우선 확보합니다.';}else if(total&lt;=13){guideEl.textContent='업무 위임형 프롬프트와 파일 기반 분석으로 활용 범위를 확장합니다.';}else{guideEl.textContent='Workflow Re-design과 비서 프롬프트 저장까지 연결합니다.';}}})(this.closest('#ai-literacy-check'))">
               합계 다시 계산
             </button>
             <button type="button" class="secondary-btn" data-literacy-reset="" onclick="var root=this.closest('#ai-literacy-check');var inputs=root.querySelectorAll('[data-literacy-score]');for(var i=0;i&lt;inputs.length;i+=1){inputs[i].value='';}root.querySelector('[data-literacy-calc]').click();">
@@ -694,7 +694,7 @@
               <td>0~6점</td>
               <td><strong>AI Explorer</strong></td>
               <td>AI를 알아가는 단계입니다. 도구 접속, 기본 대화, 파일 업로드 경험 확보가 우선입니다.</td>
-              <td>Gemini 기본 질문, 후속 질문, 간단한 문서 요약을 우선 실습합니다.</td>
+              <td>ChatGPT 기본 질문, 후속 질문, 간단한 문서 요약을 우선 실습합니다.</td>
             </tr>
             <tr>
               <td>7~13점</td>
@@ -706,7 +706,7 @@
               <td>14~20점</td>
               <td><strong>AI Workflow Designer</strong></td>
               <td>AI를 업무 흐름에 연결할 준비가 되어 있습니다. 개인 활용을 팀 단위 운영 방식으로 전환할 수 있습니다.</td>
-              <td>Workflow Re-design, 검증 기준 설계, Gems 저장까지 연결합니다.</td>
+              <td>Workflow Re-design, 검증 기준 설계, 비서 프롬프트 저장까지 연결합니다.</td>
             </tr>
           </tbody>
         </table>
@@ -853,7 +853,7 @@
     </div>
   </div>
 
-  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip03">← 개념 다지기</a><a class="clip-nav-btn" href="#ch02-clip01">Gemini 소개 및 접속 방법 →</a></div>
+  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch01-clip03">← 개념 다지기</a><a class="clip-nav-btn" href="#ch02-clip01">ChatGPT 소개 및 접속 방법 →</a></div>
 
   <script>
     (function () {
