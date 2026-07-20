@@ -2344,7 +2344,13 @@ button.ghost {
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image-frame {
-  min-height: clamp(400px, 50vw, 720px);
+  /* 260720 피드백 반영: 세로형 인포그래픽 인라인 미리보기를 원본 표시 대비 80% 크기로.
+     기존 min-height: clamp(400px, 50vw, 720px)는 하한만 정해 실효 없었음(이미지가 폭 기준 ~1,200px로 확장).
+     aspect-ratio로 프레임 높이를 폭×1.13으로 잡으면 contain된 이미지가 정확히 원본 표시의 80% 스케일이 됨.
+     클릭 시 팝업 1:1 확대는 그대로 유지. (조정: 1.41=100%, 1.27=90%, 1.13=80%, 0.99=70%) */
+  aspect-ratio: 1 / 1.13;
+  height: auto;
+  min-height: 0;
 }
 
 .slide-preview-gallery[data-slide-deck-preview="concept-foundation-guide"].immersive-preview .slide-preview-image,
