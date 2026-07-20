@@ -54,7 +54,7 @@
     },
     {
       "route": "#ch06-clip09",
-      "title": "Tool Pantry ( MCP MCP\nAI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. & CLI CLI\n마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다. )",
+      "title": "Tool Pantry (MCP & CLI)",
       "type": "개념",
       "folder": "chapters/CH06/ch06-clip09"
     },

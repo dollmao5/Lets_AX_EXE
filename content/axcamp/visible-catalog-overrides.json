@@ -77,6 +77,10 @@
     "ch04-clip02": {
       "title": "팀 성과향상 및 피드백 실전",
       "type": "실습"
+    },
+    "ch06-clip09": {
+      "title": "Tool Pantry (MCP & CLI)",
+      "type": "개념"
     }
   }
 }
