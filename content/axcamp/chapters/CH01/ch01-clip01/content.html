@@ -1,114 +1,832 @@
 <section id="ch01-clip01" class="ch01-clip01-revised">
+  <style>
+    .ch01-clip01-revised {
+      --c101-font-base: 20px;
+      --c101-radius: 18px;
+      --c101-gap: 16px;
+      --c101-brand: var(--brand, #a50034);
+      --c101-brand-soft: color-mix(in srgb, var(--c101-brand) 7%, #fff);
+      --c101-brand-soft-strong: color-mix(in srgb, var(--c101-brand) 12%, #fff);
+      --c101-text: var(--text-body, #334155);
+      --c101-heading: var(--text-heading, #172033);
+      --c101-secondary: var(--text-secondary, #667085);
+      --c101-border: var(--border, #e4e7ec);
+      --c101-offwhite: var(--bg-offwhite, #f8f9fb);
+      --c101-white: var(--bg-white, #fff);
+      font-size: var(--c101-font-base);
+      line-height: 1.72;
+      color: var(--c101-text);
+      word-break: keep-all;
+    }
+
+    .ch01-clip01-revised *,
+    .ch01-clip01-revised *::before,
+    .ch01-clip01-revised *::after {
+      box-sizing: border-box;
+    }
+
+    .ch01-clip01-revised .clip-title {
+      margin-top: 10px;
+      font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
+      line-height: 1.22 !important;
+      letter-spacing: -0.04em;
+    }
+
+    .ch01-clip01-revised .clip-badge {
+      padding: 8px 12px !important;
+      border-radius: 999px !important;
+      font-size: 0.95rem !important;
+    }
+
+    .ch01-clip01-revised .type-concept {
+      border: 1px solid var(--c101-border);
+      background: var(--c101-brand-soft);
+      color: var(--c101-brand);
+      font-weight: 900;
+    }
+
+    .ch01-clip01-revised .clip-overview {
+      padding: 24px 26px !important;
+      border-radius: var(--c101-radius) !important;
+      font-size: 1.16rem !important;
+      line-height: 1.78 !important;
+    }
+
+    .ch01-clip01-revised .clip-section-title {
+      margin-bottom: 14px !important;
+      font-size: 1.5rem !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.025em;
+    }
+
+    .ch01-clip01-revised .clip-section-content,
+    .ch01-clip01-revised p,
+    .ch01-clip01-revised li,
+    .ch01-clip01-revised .tip-block-content,
+    .ch01-clip01-revised .info-block,
+    .ch01-clip01-revised .info-block div {
+      font-size: 1.08rem !important;
+      line-height: 1.66 !important;
+    }
+
+    .ch01-clip01-revised .info-block,
+    .ch01-clip01-revised .tip-block {
+      padding: 18px 20px !important;
+      border-radius: var(--c101-radius) !important;
+    }
+
+    .ch01-clip01-revised .info-block-title,
+    .ch01-clip01-revised .tip-block-title {
+      margin-bottom: 8px !important;
+      color: var(--c101-heading);
+      font-size: 1.08rem !important;
+      line-height: 1.45 !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip01-revised .learning-grid,
+    .ch01-clip01-revised .trend-grid,
+    .ch01-clip01-revised .watch-grid,
+    .ch01-clip01-revised .core-grid,
+    .ch01-clip01-revised .insight-grid,
+    .ch01-clip01-revised .course-link-grid,
+    .ch01-clip01-revised .reflection-grid {
+      display: grid;
+      gap: var(--c101-gap);
+      margin: 12px 0 20px;
+    }
+
+    .ch01-clip01-revised .learning-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ch01-clip01-revised .trend-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .ch01-clip01-revised .watch-grid,
+    .ch01-clip01-revised .core-grid,
+    .ch01-clip01-revised .course-link-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .ch01-clip01-revised .insight-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .ch01-clip01-revised .reflection-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .ch01-clip01-revised .learning-card,
+    .ch01-clip01-revised .trend-card,
+    .ch01-clip01-revised .watch-card,
+    .ch01-clip01-revised .core-card,
+    .ch01-clip01-revised .insight-card,
+    .ch01-clip01-revised .course-link-card,
+    .ch01-clip01-revised .reflection-card {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--c101-border);
+      border-radius: var(--c101-radius);
+      background: linear-gradient(135deg, #fff, var(--c101-offwhite));
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .ch01-clip01-revised .learning-card {
+      border-left: 6px solid var(--c101-brand);
+      background: #fff;
+    }
+
+    .ch01-clip01-revised .learning-kicker,
+    .ch01-clip01-revised .trend-stage,
+    .ch01-clip01-revised .watch-number,
+    .ch01-clip01-revised .core-kicker,
+    .ch01-clip01-revised .insight-kicker,
+    .ch01-clip01-revised .course-code,
+    .ch01-clip01-revised .reflection-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 29px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--c101-brand-soft);
+      color: var(--c101-brand);
+      font-size: 0.88rem !important;
+      line-height: 1.2 !important;
+      font-weight: 900;
+    }
+
+    .ch01-clip01-revised .learning-card strong,
+    .ch01-clip01-revised .trend-card strong,
+    .ch01-clip01-revised .watch-card strong,
+    .ch01-clip01-revised .core-card strong,
+    .ch01-clip01-revised .insight-card strong,
+    .ch01-clip01-revised .course-link-card strong,
+    .ch01-clip01-revised .reflection-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--c101-heading);
+      font-size: 1.08rem !important;
+      line-height: 1.42 !important;
+      font-weight: 950;
+    }
+
+    .ch01-clip01-revised .learning-card p,
+    .ch01-clip01-revised .trend-card p,
+    .ch01-clip01-revised .watch-card p,
+    .ch01-clip01-revised .core-card p,
+    .ch01-clip01-revised .insight-card p,
+    .ch01-clip01-revised .course-link-card p,
+    .ch01-clip01-revised .reflection-card p {
+      margin: 0 !important;
+      color: var(--c101-text);
+      font-size: 1rem !important;
+      line-height: 1.58 !important;
+    }
+
+    .ch01-clip01-revised .trend-card {
+      position: relative;
+      min-height: 224px;
+    }
+
+    .ch01-clip01-revised .trend-card:not(:last-child)::after,
+    .ch01-clip01-revised .course-link-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      right: -20px;
+      width: 26px;
+      transform: translateY(-50%);
+      color: var(--c101-brand);
+      font-size: 1.2rem;
+      line-height: 1;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .ch01-clip01-revised .trend-card:last-child {
+      border-color: color-mix(in srgb, var(--c101-brand) 38%, var(--c101-border));
+      background: linear-gradient(135deg, #fff, var(--c101-brand-soft));
+    }
+
+    .ch01-clip01-revised .trend-example {
+      display: block;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--c101-border);
+      color: var(--c101-secondary);
+      font-size: 0.92rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .ch01-clip01-revised .video-shell {
+      overflow: hidden;
+      border: 1px solid var(--c101-border);
+      border-radius: var(--c101-radius);
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+    }
+
+    .ch01-clip01-revised .video-guide {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--c101-border);
+      background: var(--c101-offwhite);
+    }
+
+    .ch01-clip01-revised .video-guide strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--c101-heading);
+      font-size: 1.08rem !important;
+    }
+
+    .ch01-clip01-revised .video-guide p {
+      margin: 0 !important;
+      color: var(--c101-text);
+      font-size: 1rem !important;
+      line-height: 1.58 !important;
+    }
+
+    .ch01-clip01-revised .video-frame {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      background: #000;
+    }
+
+    .ch01-clip01-revised .video-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      border-top: 1px solid var(--c101-border);
+      background: #fff;
+    }
+
+    .ch01-clip01-revised .video-meta-copy {
+      color: var(--c101-secondary);
+      font-size: 0.9rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .ch01-clip01-revised .slide-briefing-link,
+    .ch01-clip01-revised .clip-nav-btn {
+      padding: 10px 18px !important;
+      border-radius: 999px !important;
+      font-size: 1.04rem !important;
+      line-height: 1.3 !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip01-revised .physical-loop {
+      margin: 14px 0 20px;
+      padding: 20px;
+      border: 1px solid var(--c101-border);
+      border-left: 6px solid var(--c101-brand);
+      border-radius: var(--c101-radius);
+      background: #fff;
+    }
+
+    .ch01-clip01-revised .physical-loop-label {
+      margin-bottom: 12px;
+      color: var(--c101-heading);
+      font-size: 1.04rem !important;
+      font-weight: 950;
+    }
+
+    .ch01-clip01-revised .loop-track {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ch01-clip01-revised .loop-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 1px solid var(--c101-border);
+      border-radius: 999px;
+      background: var(--c101-offwhite);
+      color: var(--c101-heading);
+      font-size: 0.96rem !important;
+      line-height: 1.2 !important;
+      font-weight: 900;
+    }
+
+    .ch01-clip01-revised .loop-arrow {
+      color: var(--c101-brand);
+      font-size: 1.05rem !important;
+      font-weight: 950;
+    }
+
+    .ch01-clip01-revised .table-wrap {
+      width: 100%;
+      margin: 12px 0 18px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--c101-border);
+      border-radius: 16px;
+    }
+
+    .ch01-clip01-revised .table-wrap table {
+      min-width: 920px;
+      margin: 0 !important;
+      border: 0 !important;
+    }
+
+    .ch01-clip01-revised .comparison-table th,
+    .ch01-clip01-revised .comparison-table td {
+      padding: 10px 12px !important;
+      vertical-align: middle !important;
+      color: var(--c101-text);
+      font-size: 1.03rem !important;
+      line-height: 1.48 !important;
+      word-break: keep-all;
+    }
+
+    .ch01-clip01-revised .comparison-table th {
+      color: var(--c101-heading) !important;
+      background: var(--c101-offwhite) !important;
+      font-weight: 900 !important;
+    }
+
+    .ch01-clip01-revised .axis-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--c101-brand-soft);
+      color: var(--c101-brand);
+      font-size: 0.86rem !important;
+      line-height: 1.2 !important;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .ch01-clip01-revised .insight-card {
+      background: #fff;
+    }
+
+    .ch01-clip01-revised .leader-question {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--c101-brand-soft);
+      color: var(--c101-heading);
+      font-size: 0.96rem !important;
+      line-height: 1.52 !important;
+      font-weight: 850;
+    }
+
+    .ch01-clip01-revised .leader-question span {
+      color: var(--c101-brand);
+      font-weight: 950;
+    }
+
+    .ch01-clip01-revised .course-link-card {
+      position: relative;
+      min-height: 220px;
+      background: linear-gradient(135deg, #fff, var(--c101-offwhite));
+    }
+
+    .ch01-clip01-revised .course-question {
+      display: block;
+      margin: 10px 0 8px;
+      color: var(--c101-brand);
+      font-size: 0.94rem !important;
+      line-height: 1.5 !important;
+      font-weight: 900;
+    }
+
+    .ch01-clip01-revised .reflection-card {
+      background: #fff;
+    }
+
+    .ch01-clip01-revised .reference-details {
+      margin-top: 14px;
+      overflow: hidden;
+      border: 1px dashed var(--c101-border);
+      border-radius: var(--c101-radius);
+      background: #fff;
+    }
+
+    .ch01-clip01-revised .reference-details summary {
+      padding: 17px 20px;
+      cursor: pointer;
+      background: var(--c101-offwhite);
+      color: var(--c101-brand);
+      font-size: 1.04rem !important;
+      line-height: 1.45 !important;
+      font-weight: 900;
+      list-style-position: inside;
+    }
+
+    .ch01-clip01-revised .reference-details[open] summary {
+      border-bottom: 1px solid var(--c101-border);
+    }
+
+    .ch01-clip01-revised .reference-list {
+      margin: 0;
+      padding: 18px 22px 18px 42px;
+    }
+
+    .ch01-clip01-revised .reference-list li {
+      margin-bottom: 10px;
+      color: var(--c101-text);
+      font-size: 1rem !important;
+      line-height: 1.58 !important;
+    }
+
+    .ch01-clip01-revised .reference-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .ch01-clip01-revised .final-message {
+      margin-top: 20px;
+      padding: 22px 24px;
+      border: 1px solid var(--c101-border);
+      border-left: 7px solid var(--c101-brand);
+      border-radius: var(--c101-radius);
+      background: linear-gradient(135deg, #fff, var(--c101-brand-soft));
+    }
+
+    .ch01-clip01-revised .final-message strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--c101-heading);
+      font-size: 1.12rem !important;
+      line-height: 1.45 !important;
+    }
+
+    .ch01-clip01-revised .final-message p {
+      margin: 0 !important;
+      color: var(--c101-text);
+      font-size: 1.08rem !important;
+      line-height: 1.66 !important;
+    }
+
+    @media (max-width: 1080px) {
+      .ch01-clip01-revised .trend-grid,
+      .ch01-clip01-revised .watch-grid,
+      .ch01-clip01-revised .core-grid,
+      .ch01-clip01-revised .course-link-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ch01-clip01-revised .trend-card::after,
+      .ch01-clip01-revised .course-link-card::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .ch01-clip01-revised {
+        font-size: 18px;
+      }
+
+      .ch01-clip01-revised .clip-overview {
+        padding: 20px !important;
+      }
+
+      .ch01-clip01-revised .learning-grid,
+      .ch01-clip01-revised .trend-grid,
+      .ch01-clip01-revised .watch-grid,
+      .ch01-clip01-revised .core-grid,
+      .ch01-clip01-revised .insight-grid,
+      .ch01-clip01-revised .course-link-grid,
+      .ch01-clip01-revised .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ch01-clip01-revised .trend-card,
+      .ch01-clip01-revised .course-link-card {
+        min-height: 0;
+      }
+
+      .ch01-clip01-revised .video-meta {
+        align-items: stretch;
+      }
+
+      .ch01-clip01-revised .video-meta .slide-briefing-link {
+        width: 100%;
+        text-align: center;
+      }
+
+      .ch01-clip01-revised .loop-track {
+        align-items: stretch;
+      }
+
+      .ch01-clip01-revised .loop-step {
+        flex: 1 1 120px;
+      }
+    }
+  </style>
 
   <div class="clip-header">
     <div class="clip-badges">
-      <span class="clip-badge time">~7분</span>
+      <span class="clip-badge time">~12분</span>
       <span class="clip-badge chapter">CH 01</span>
-      <span class="clip-badge type-reference">참고</span>
+      <span class="clip-badge type-concept">개념</span>
     </div>
-    <h1 class="clip-title" data-keep-title>AI 트렌드</h1>
+    <h1 class="clip-title" data-keep-title="">AI 트렌드</h1>
   </div>
 
   <div class="clip-overview">
-    지금 AI는 답을 잘하는 도구를 넘어, 일을 맡아 실행하고 현실 세계와 연결되는 방향으로 빠르게 확장되고 있습니다. 먼저 짧은 영상을 보고 오늘 실습이 어떤 변화 위에 놓여 있는지 방향을 확인합니다.
+    이 클립은 <strong>AI의 발전 방향을 팀장의 업무와 리더십 과제로 연결하는 시간</strong>입니다.<br>
+    생성형 AI는 디지털 콘텐츠를 만드는 단계를 넘어 목표를 수행하고, 센서·장비·로봇과 연결되어 현실에서 행동하는 방향으로 확장되고 있습니다.<br><br>
+    핵심은 새로운 기술 이름을 외우는 것이 아닙니다.
+    <strong>AI가 더 많은 일을 실행할수록 팀장은 무엇을 맡기고, 어디에서 검증하며,
+    누가 승인하고 최종 책임질지를 더 정교하게 설계해야 합니다.</strong>
   </div>
 
-  <!-- 260622 learning focus: performance + AI -->
   <div class="clip-section">
-    <div class="clip-section-title">이번 클립에서 함께 배우는 것</div>
+    <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
     <div class="clip-section-content">
-      <div class="tip-block" style="margin-top: 14px;">
-        <div class="tip-block-title">AI 기능·활용 학습</div>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <span class="learning-kicker">AI 트렌드 이해</span>
+          <strong>디지털 생성에서 현실 행동으로 확장되는 AI</strong>
+          <p>Software 1.0·2.0, 생성형 AI, Physical AI의 흐름을 살펴보고 디지털 트윈·시뮬레이션·현장 실행이 왜 하나의 파이프라인으로 연결되는지 이해합니다.</p>
+        </article>
+        <article class="learning-card">
+          <span class="learning-kicker">리더십 향상</span>
+          <strong>도구 사용보다 Workflow·검증·책임을 설계하는 리더</strong>
+          <p>AI의 자율성이 높아질수록 목표, 권한, 품질 기준, 인간 승인 지점, 예외 처리, Fallback과 최종 책임을 분명하게 정해야 한다는 점을 확인합니다.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">AI의 진화, 네 단계로 먼저 이해하기</div>
+    <div class="clip-section-content">
+      <div class="trend-grid" aria-label="AI 진화 4단계">
+        <article class="trend-card">
+          <span class="trend-stage">1 · Software 1.0</span>
+          <strong>사람이 규칙을 코드로 작성</strong>
+          <p>입력과 출력의 관계를 개발자가 직접 정의합니다. 정해진 조건과 절차를 정확하게 반복하는 전통적 소프트웨어 방식입니다.</p>
+          <span class="trend-example">예: 규칙 기반 업무 시스템, 정해진 조건문</span>
+        </article>
+        <article class="trend-card">
+          <span class="trend-stage">2 · Software 2.0</span>
+          <strong>AI가 데이터에서 패턴을 학습</strong>
+          <p>사람이 모든 규칙을 작성하는 대신, 신경망이 데이터에서 패턴을 학습해 분류·예측·추천합니다.</p>
+          <span class="trend-example">예: 이미지 인식, 음성 인식, 추천 시스템</span>
+        </article>
+        <article class="trend-card">
+          <span class="trend-stage">3 · Generative AI</span>
+          <strong>새로운 디지털 결과물을 생성</strong>
+          <p>기존 정보를 분류하는 데서 나아가 텍스트·이미지·영상·코드 등 새로운 콘텐츠와 초안을 만듭니다.</p>
+          <span class="trend-example">예: 보고서 초안, 이미지 생성, 질의응답</span>
+        </article>
+        <article class="trend-card">
+          <span class="trend-stage">4 · Physical AI</span>
+          <strong>현실을 인식하고 판단하며 행동</strong>
+          <p>AI가 공간, 물체, 사람, 움직임과 물리적 환경을 이해하고 로봇·차량·설비를 통해 실제 행동을 수행합니다.</p>
+          <span class="trend-example">예: 산업 로봇, 자율주행, 물류 자동화</span>
+        </article>
+      </div>
+
+      <div class="tip-block">
+        <div class="tip-block-title">한 문장으로 기억하면</div>
+        <div class="tip-block-content">
+          <strong>AI의 다음 물결은 화면 안에서 답과 콘텐츠를 만드는 데서 끝나지 않고,
+          현실을 인식하고 판단하며 행동하는 시스템으로 확장되는 흐름</strong>입니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+      <div class="video-shell">
+        <div class="video-guide">
+          <strong>The Next Wave of AI: Physical AI</strong>
+          <p>영상은 Physical AI를 가능하게 하는 학습·시뮬레이션·현장 실행 구조와, 로봇이 현실 세계에서 작동하기 전에 디지털 환경에서 훈련하고 검증하는 과정을 보여줍니다.</p>
+        </div>
+        <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/uhLDHA9skFk" title="The Next Wave of AI: Physical AI by NVIDIA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen"></iframe>
+        <div class="video-meta">
+          <div class="video-meta-copy">3분 1초 · NVIDIA · 영어 영상</div>
+          <a href="https://www.youtube.com/watch?v=uhLDHA9skFk" target="_blank" rel="noopener noreferrer" class="slide-briefing-link">YouTube에서 열기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">영상 핵심 내용 요약</div>
+    <div class="clip-section-content">
+      <div class="physical-loop" aria-label="Physical AI의 작동 순환">
+        <div class="physical-loop-label">Physical AI는 현실 세계를 다음 순환으로 처리합니다</div>
+        <div class="loop-track">
+          <span class="loop-step">인식</span><span class="loop-arrow">→</span>
+          <span class="loop-step">추론</span><span class="loop-arrow">→</span>
+          <span class="loop-step">계획</span><span class="loop-arrow">→</span>
+          <span class="loop-step">행동</span><span class="loop-arrow">→</span>
+          <span class="loop-step">결과 학습</span>
+        </div>
+      </div>
+
+      <div class="core-grid">
+        <article class="core-card">
+          <span class="core-kicker">핵심 1</span>
+          <strong>생성형 AI에서 현실 행동으로</strong>
+          <p>생성형 AI가 언어와 디지털 정보를 다루는 기반을 만들었다면, Physical AI는 센서 정보와 공간 관계, 물체의 움직임, 물리적 환경을 이해해 기계가 실행할 행동으로 전환합니다.</p>
+        </article>
+        <article class="core-card">
+          <span class="core-kicker">핵심 2</span>
+          <strong>현실에서의 실패 비용은 더 큽니다</strong>
+          <p>잘못된 문장은 수정할 수 있지만 로봇의 잘못된 행동은 설비 손상, 작업 중단, 안전사고로 이어집니다. 따라서 실제 배치 전 검증과 인간의 통제 기준이 필수입니다.</p>
+        </article>
+        <article class="core-card">
+          <span class="core-kicker">핵심 3</span>
+          <strong>디지털 트윈은 가상 훈련장입니다</strong>
+          <p>디지털 트윈은 단순한 3D 화면이 아니라 설비, 센서, 작업 동선, 사람과 로봇의 상호작용, 충돌·중력 등 물리 조건을 반영해 실제 운영을 시험하는 환경입니다.</p>
+        </article>
+        <article class="core-card">
+          <span class="core-kicker">핵심 4</span>
+          <strong>Physical AI는 운영 파이프라인입니다</strong>
+          <p>하나의 모델만으로 완성되지 않습니다. <strong>Train–Simulate &amp; Validate–Deploy</strong>, 즉 학습–시뮬레이션·검증–현장 실행이 연결되어야 안전하고 일관되게 작동합니다.</p>
+        </article>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-title">제품명보다 기능 구조로 기억합니다</div>
         <div>
-          <strong>Assistant</strong>는 질문에 답합니다.
-          <strong>Agentic AI</strong>는 목표를 받아 여러 단계를 계획하고 도구를 사용합니다.
-          <strong>Physical AI</strong>는 그 실행 능력이 장비·공정·로봇 등 현실 환경과 연결된 모습입니다.
-          오늘은 기술 이름을 외우기보다, 자율성이 커질수록 리더의 기준·검증·책임이 더 중요해진다는 점을 기억합니다.
+          NVIDIA는 이를 모델을 학습하는 컴퓨터, 디지털 트윈에서 시뮬레이션·합성 데이터·검증을 수행하는 컴퓨터,
+          로봇과 자율 장비에서 실시간 추론과 행동을 실행하는 컴퓨터로 설명합니다.
+          제품명은 계속 바뀔 수 있으므로 본 과정에서는 <strong>학습 → 검증 → 현장 실행</strong>의 구조를 중심으로 이해합니다.
         </div>
       </div>
     </div>
   </div>
 
   <div class="clip-section">
-    <div class="clip-section-title">먼저 보는 영상</div>
+    <div class="clip-section-title">Agentic AI와 Physical AI, 한 축으로 보지 않습니다</div>
     <div class="clip-section-content">
-      <p class="video-desc">
-        이 영상은 <strong>Physical AI</strong>라는 키워드로 시작하지만, 실제로는 AI가 화면 안 답변기에서 벗어나 <strong>현실 세계의 장비·공정·업무 흐름까지 다루기 시작하는 변화</strong>를 직관적으로 보여줍니다.
-      </p>
-
-      <iframe
-        class="video-frame"
-        src="https://www.youtube-nocookie.com/embed/uhLDHA9skFk"
-        title="The Next Wave of AI: Physical AI"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen="allowfullscreen">
-      </iframe>
-
-      <div style="display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 12px;">
-        <div style="font-size: 0.82rem; color: var(--text-secondary, #666);">3분 1초 · NVIDIA</div>
-        <a href="https://www.youtube.com/watch?v=uhLDHA9skFk" target="_blank" rel="noopener" class="slide-briefing-link">YouTube에서 열기</a>
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>핵심 질문</th>
+              <th>의미</th>
+              <th>리더 관점</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="axis-badge">자율성의 축</span><br><strong>Assistant → Agentic AI</strong></td>
+              <td>AI가 얼마나 스스로 계획하고 실행하는가?</td>
+              <td>질문에 답하는 수준에서 목표를 받아 계획하고, 도구를 사용하고, 결과를 확인·수정하는 방식으로 확장됩니다.</td>
+              <td>목표, 권한, 완료 기준, 승인 지점과 예외 처리를 설계해야 합니다.</td>
+            </tr>
+            <tr>
+              <td><span class="axis-badge">적용 환경의 축</span><br><strong>Digital AI → Physical AI</strong></td>
+              <td>AI가 어디에서 인식하고 행동하는가?</td>
+              <td>디지털 문서·시스템 안에서 작동하는 AI에서 센서·장비·로봇·공정과 연결되는 AI로 확장됩니다.</td>
+              <td>현실에서의 실패 비용, 안전, 중단 기준, 복구 절차까지 고려해야 합니다.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </div>
 
-  <div class="clip-section">
-    <div class="clip-section-title">이 장면에서 느껴볼 것</div>
-    <div class="clip-section-content">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">업무 보조를 넘어 실행으로</div>
-          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
-            Agentic AI는 질문에 답하는 수준을 넘어 계획을 세우고, 도구를 고르고, 결과를 확인하는 방향으로 움직이기 시작합니다.
-          </div>
-        </div>
-
-        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">화면 밖으로 확장되는 AI</div>
-          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
-            Physical AI는 소프트웨어 안의 추론을 넘어 센서, 장비, 로봇, 공정 같은 현실 환경과 연결되는 흐름을 보여줍니다.
-          </div>
-        </div>
-
-        <div style="padding: 16px 18px; border: 1px solid var(--border, #e5e7eb); border-radius: 18px; background: var(--bg-white, #fff);">
-          <div style="font-weight: 700; color: var(--text-primary, #111); margin-bottom: 8px;">결국 남는 것은 데이터와 운영 구조</div>
-          <div style="font-size: 0.86rem; line-height: 1.75; color: var(--text-body, #333);">
-            자율성이 커질수록 모델 자체보다 <strong>좋은 데이터, 맥락, 검증 체계</strong>가 조직의 성과 차이를 만들게 됩니다.
-          </div>
+      <div class="tip-block">
+        <div class="tip-block-title">정확한 이해</div>
+        <div class="tip-block-content">
+          <strong>Physical AI는 Agentic AI 다음의 단일한 상위 단계가 아닙니다.</strong>
+          Agentic AI는 자율적 실행 방식에 관한 개념이고, Physical AI는 현실 세계와 연결되는 적용 환경에 관한 개념입니다.
+          현실에서 스스로 계획하고 행동하는 로봇은 Agentic AI이면서 동시에 Physical AI일 수 있습니다.
         </div>
       </div>
     </div>
   </div>
 
   <div class="clip-section">
-    <div class="clip-section-title">추가 참고자료</div>
+    <div class="clip-section-title">리더들이 알아야 할 다섯 가지 시사점</div>
     <div class="clip-section-content">
-      <ul style="margin: 0; padding-left: 1.1rem; line-height: 1.9; color: var(--text-body, #333);">
-        <li>
-          <a href="https://github.github.com/gh-aw/slides/github-agentic-workflows.pdf" target="_blank" rel="noopener">GitHub Agentic Workflows PDF</a>
-          · AI가 개발과 실행 흐름을 어떻게 바꾸는지 보여주는 공식 자료
-        </li>
-        <li>
-          <a href="https://openclaw.ai/" target="_blank" rel="noopener">OpenClaw</a>
-          · AI가 업무 보조를 넘어 자율 실행형 동료로 이동하는 감각을 보여주는 사례
-        </li>
-        <li>
-          <a href="https://harness-engineering.ai/" target="_blank" rel="noopener">Harness Engineering</a>
-          · 에이전트를 운영 가능한 시스템으로 다루는 관점
-        </li>
-        <li>
-          <a href="https://www.sas.com/content/dam/sasdam/documents/20250124/turn-agentic-ai-into-decisions-you-can-trust.pdf" target="_blank" rel="noopener">Decisions You Can Trust</a>
-          · 데이터, 거버넌스, 설명 가능성이 왜 핵심인지 정리한 자료
-        </li>
-      </ul>
+      <div class="insight-grid">
+        <article class="insight-card">
+          <span class="insight-kicker">시사점 1 · Workflow</span>
+          <strong>AI 도입의 단위는 도구가 아니라 업무 흐름입니다</strong>
+          <p>Physical AI가 학습–검증–실행 파이프라인으로 작동하듯, 사무업무의 AI도 입력자료 → AI 처리 → 인간 검토 → 승인 → 실행 → 결과 점검의 흐름으로 설계해야 합니다.</p>
+          <div class="leader-question"><span>생각할 질문</span> · 우리 팀은 AI를 기존 업무에 덧붙이고 있습니까, 아니면 업무 흐름 자체를 바꾸고 있습니까?</div>
+        </article>
+
+        <article class="insight-card">
+          <span class="insight-kicker">시사점 2 · Responsibility</span>
+          <strong>자율성이 높아질수록 리더의 책임 설계는 더 중요합니다</strong>
+          <p>AI가 초안을 넘어 도구를 호출하고 업무를 실행하면 권한 범위, 중간 승인, 중단 조건, 예외 시 개입자와 최종 책임자를 사전에 정해야 합니다.</p>
+          <div class="leader-question"><span>생각할 질문</span> · AI가 독립 처리해도 되는 일, 중간 확인이 필요한 일, 반드시 사람이 최종 판단할 일은 무엇입니까?</div>
+        </article>
+
+        <article class="insight-card">
+          <span class="insight-kicker">시사점 3 · Simulation-first</span>
+          <strong>전면 도입보다 안전한 파일럿이 먼저입니다</strong>
+          <p>모든 팀이 디지털 트윈을 만들 필요는 없습니다. 그러나 익명화된 사례, 가상 고객 질문, 한 개의 보고서나 회의 등 제한된 환경에서 먼저 시험하고 기준을 수정하는 방식은 모든 조직에 적용할 수 있습니다.</p>
+          <div class="leader-question"><span>생각할 질문</span> · 실패 비용을 낮추면서 AI 활용을 먼저 시험할 수 있는 우리 팀의 작은 실험장은 어디입니까?</div>
+        </article>
+
+        <article class="insight-card">
+          <span class="insight-kicker">시사점 4 · Quality Gate</span>
+          <strong>좋은 데이터보다 좋은 맥락·검증 기준이 먼저입니다</strong>
+          <p>AI에는 목표, 배경, 판단 기준, 출력 형식이 필요합니다. 팀 차원에서는 입력 가능한 자료, 익명화 기준, 품질 기준, 근거 확인, 승인자, 오류 발생 시 Fallback을 정해야 합니다.</p>
+          <div class="leader-question"><span>생각할 질문</span> · 우리 팀의 AI 결과물에는 공통 품질 기준과 검증 책임자가 명확하게 정해져 있습니까?</div>
+        </article>
+
+        <article class="insight-card">
+          <span class="insight-kicker">시사점 5 · Evidence</span>
+          <strong>AI 성과는 사용량이 아니라 운영 결과로 측정합니다</strong>
+          <p>접속 횟수와 프롬프트 수는 활동 지표입니다. 실제 성과는 처리시간, 오류·누락·재작업, 의사결정 속도, 역할 명확성, 구성원 경험, 보안·책임 리스크가 어떻게 달라졌는지로 확인합니다.</p>
+          <div class="leader-question"><span>생각할 질문</span> · 30일 후 어떤 업무 결과가 달라져야 우리 팀의 AI 활용이 성공했다고 판단하겠습니까?</div>
+        </article>
+      </div>
     </div>
+  </div>
+
+  <div class="clip-section">
+    <div class="clip-section-title">본 과정의 학습 여정과 연결하면</div>
+    <div class="clip-section-content">
+      <div class="course-link-grid" aria-label="CH01부터 CH04까지의 연결">
+        <article class="course-link-card">
+          <span class="course-code">CH01 · Understand</span>
+          <strong>AI 변화와 나의 출발점 이해</strong>
+          <span class="course-question">AI는 어떻게 달라지고 있으며 나는 어디에서 출발하는가?</span>
+          <p>Assistant·Agentic AI·Physical AI의 차이를 이해하고, 나의 AI 리터러시 수준과 오늘의 실습 초점을 확인합니다.</p>
+        </article>
+        <article class="course-link-card">
+          <span class="course-code">CH02 · Define</span>
+          <strong>AI와 리더의 책임 경계 정의</strong>
+          <span class="course-question">AI가 도와도 팀장이 직접 책임질 일은 무엇인가?</span>
+          <p>목표수립, 업무지시, 피드백, 1:1, 평가면담 등에서 AI에 맡길 일과 리더가 직접 판단할 일을 구분합니다.</p>
+        </article>
+        <article class="course-link-card">
+          <span class="course-code">CH03 · Re-design</span>
+          <strong>팀 성과구조와 Workflow 재설계</strong>
+          <span class="course-question">우리 팀의 업무 흐름은 AI와 사람이 안전하게 협업하도록 설계되어 있는가?</span>
+          <p>업무를 분해하고 AI 적합도, 데이터 민감도, 인간 검증, 승인, 책임자, Fallback을 포함한 Workflow를 설계합니다.</p>
+        </article>
+        <article class="course-link-card">
+          <span class="course-code">CH04 · Execute</span>
+          <strong>30일 실행과 증거 기반 점검</strong>
+          <span class="course-question">무엇을 작게 실행하고 어떤 증거로 개선할 것인가?</span>
+          <p>핵심 실행과제를 세 개 이하로 좁히고, 주차별 행동·역할·지표·리스크가 포함된 30일 Action Plan을 완성합니다.</p>
+        </article>
+      </div>
+
+      <div class="tip-block">
+        <div class="tip-block-title">과정 전체를 관통하는 실행 논리</div>
+        <div class="tip-block-content">
+          <strong>AI 변화 이해 → 리더의 책임 기준 정의 → 팀 Workflow 재설계 → 작게 실행 → 30일 증거로 학습</strong>입니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="clip-section">
+    <div class="clip-section-title">참고자료</div>
+    <div class="clip-section-content">
+      <details class="reference-details">
+        <summary>영상과 개념을 더 확인하고 싶을 때 열어봅니다 · 선택</summary>
+        <ul class="reference-list">
+          <li><a href="https://resources.nvidia.com/en-us-playlist-for-robotics/physical-ai" target="_blank" rel="noopener noreferrer"><strong>NVIDIA · The Next Wave of AI: Physical AI</strong></a> — 본 클립에 사용한 공식 영상 페이지</li>
+          <li><a href="https://www.nvidia.com/en-us/glossary/generative-physical-ai/" target="_blank" rel="noopener noreferrer"><strong>NVIDIA · What Is Physical AI?</strong></a> — Physical AI, 합성 데이터, 디지털 트윈, 학습·검증·배포 구조 설명</li>
+          <li><a href="https://blogs.nvidia.com/blog/three-computers-robotics/" target="_blank" rel="noopener noreferrer"><strong>NVIDIA · Three-Computer Solution for Robotics</strong></a> — 학습·시뮬레이션·현장 추론의 기능 구조 설명</li>
+          <li><a href="https://developer.nvidia.com/isaac/sim" target="_blank" rel="noopener noreferrer"><strong>NVIDIA Isaac Sim</strong></a> — 물리 기반 로봇 시뮬레이션, 시험, 검증, 합성 데이터 생성 공식 안내</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="final-message">
+    <strong>이번 클립의 핵심 메시지</strong>
+    <p>
+      <strong>AI가 더 많은 일을 실행할수록 팀장은 덜 책임지는 것이 아닙니다.</strong>
+      무엇을 맡기고, 어떤 맥락과 기준을 제공하며, 어디에서 사람이 검증·승인하고,
+      실패할 때 어떻게 중단·복구할지를 더 정교하게 설계해야 합니다.
+    </p>
   </div>
 
   <div class="info-block" style="margin-top: 18px;">
     <div class="info-block-title">이번 클립의 연결</div>
     <div>
       <strong>필수 파일 산출물은 없습니다.</strong>
-      영상에서 확인한 변화 신호 한 가지를 기억하고, 다음 클립에서 Assistant·Agent·Agentic AI의 차이를 구분합니다.
+      우리 팀에서 AI가 지원할 업무 한 가지와 사람이 반드시 검증할 지점 한 가지를 떠올리고,
+      다음 클립에서 Assistant·Agent·Agentic AI의 차이와 단계별 운영 기준을 구분합니다.
     </div>
   </div>
 
