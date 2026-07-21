@@ -1,6 +1,6 @@
 ---
 route: "#CH06-clip02"
-chapter: "CH08"
+chapter: "ch06"
 title: "에이전틱 AI 도구 소개"
 source_url: "https://lg.cmdspace.work/axcamp#CH06-clip02"
 exported_at: "2026-02-28T01:54:15.955Z"

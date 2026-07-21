@@ -1,67 +1,55 @@
 ---
 route: "#CH06-clip09"
-chapter: "CH08"
-title: "Tool Pantry (MCPMCPAI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. & CLICLI마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다.)"
+chapter: "ch06"
+title: "Tool Pantry ( MCP & CLI )"
 source_url: "https://lg.cmdspace.work/axcamp#CH06-clip09"
 exported_at: "2026-02-28T01:54:23.887Z"
 ---
-CH 06 참고
 
-# Tool Pantry (MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. & CLI**CLI**  
-마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다.)
+CH 06
+참고
 
-AI 업무에 유용한 MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. 서버와 CLI**CLI**  
-마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다. 도구를 정리했습니다. 나중에 필요할 때 참고하세요.
+# Tool Pantry (MCP & CLI)
 
-MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. Servers (Model Context Protocol)
+AI 업무에 유용한 MCP 서버와 CLI 도구를 정리했습니다. 나중에 필요할 때 참고하세요.
+
+## MCP Servers (Model Context Protocol)
 
 AI 모델에 외부 도구를 연결하는 표준 프로토콜. USB처럼 다양한 서비스를 AI에 꽂아 사용합니다.
 
-Playwright MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다.
+Playwright MCP
 
-Microsoft 공식 브라우저 자동화 MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. 서버
+Microsoft 공식 브라우저 자동화 MCP 서버
 
 웹 기반 업무 자동화QA 테스트
 
 [GitHub →](https://github.com/microsoft/playwright-mcp)
 
-GitHub MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. Server
+GitHub MCP Server
 
-GitHub 공식 MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. — 리포지토리 관리, PR 리뷰, 이슈 트래킹
+GitHub 공식 MCP — 리포지토리 관리, PR 리뷰, 이슈 트래킹
 
 코드 리뷰 자동화개발팀 생산성 분석
 
 [GitHub →](https://github.com/github/github-mcp-server)
 
-Notion MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. Server
+Notion MCP Server
 
-Notion 공식 MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. — 워크스페이스 문서 검색·생성·편집
+Notion 공식 MCP — 워크스페이스 문서 검색·생성·편집
 
 회의록 자동 정리사내 지식베이스 AI 검색
 
 [GitHub →](https://github.com/makenotion/notion-mcp-server)
 
-Slack MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. Server
+Slack MCP Server
 
-Slack 공식 MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. 플러그인 — 채널 관리·메시징을 AI가 수행
+Slack 공식 MCP 플러그인 — 채널 관리·메시징을 AI가 수행
 
 팀 커뮤니케이션 자동화대화 요약
 
 [GitHub →](https://github.com/slackapi/slack-mcp-plugin)
 
-Filesystem MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다.
+Filesystem MCP
 
 로컬 파일 시스템 안전 접근 — 읽기/쓰기/검색
 
@@ -69,18 +57,15 @@ AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI�
 
 [GitHub →](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)
 
-Brave Search MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다.
+Brave Search MCP
 
-Brave 공식 웹 검색 MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. — 프라이버시 중심
+Brave 공식 웹 검색 MCP — 프라이버시 중심
 
 실시간 시장 동향 조사뉴스 모니터링
 
 [GitHub →](https://github.com/brave/brave-search-mcp-server)
 
-Zapier MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다.
+Zapier MCP
 
 6,000+ 앱과 연동되는 워크플로우 자동화
 
@@ -88,8 +73,7 @@ AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI�
 
 [GitHub →](https://github.com/zapier/zapier-mcp)
 
-Firecrawl MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다.
+Firecrawl MCP
 
 웹페이지를 AI가 읽을 수 있는 마크다운으로 변환
 
@@ -97,18 +81,15 @@ AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI�
 
 [GitHub →](https://github.com/mendableai/firecrawl-mcp-server)
 
-MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. Spec (공식)
+MCP Spec (공식)
 
 Model Context Protocol 공식 스펙 — AI 도구 연결의 표준
 
-MCP**MCP**  
-AI에게 도구를 쥐어주는 표준 규격이에요. 이 규격 덕분에 AI가 이메일 전송, 캘린더 확인, 데이터 조회 같은 실제 업무 도구를 직접 사용할 수 있게 됩니다. 서버 개발커스텀 도구 구축
+MCP 서버 개발커스텀 도구 구축
 
 [GitHub →](https://github.com/modelcontextprotocol/specification)
 
-CLI**CLI**  
-마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다. & AI Tools
+## CLI & AI Tools
 
 터미널 기반 AI 도구와 주요 AI 플랫폼입니다.
 
@@ -120,9 +101,7 @@ Anthropic의 터미널 AI 코딩 에이전트 — 전체 코드베이스 자율 
 
 [Link →](https://docs.anthropic.com/en/docs/claude-code)
 
-Gemini**Gemini**  
-Google이 만든 AI예요. 텍스트뿐 아니라 이미지, 음성, 영상까지 한꺼번에 이해하고 처리할 수 있습니다. 오늘 실습에서 주로 사용하는 AI예요. CLI**CLI**  
-마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다.
+Gemini CLI
 
 Google의 오픈소스 터미널 AI — 100만 토큰, 무료 티어
 
@@ -130,8 +109,7 @@ Google의 오픈소스 터미널 AI — 100만 토큰, 무료 티어
 
 [Link →](https://github.com/google-gemini/gemini-cli)
 
-OpenAI Codex CLI**CLI**  
-마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다.
+OpenAI Codex CLI
 
 OpenAI의 경량 터미널 AI — 3단계 안전 모드
 
@@ -173,8 +151,7 @@ AI 기반 차세대 터미널 — GPU 가속, AI 명령 어시스턴트
 
 Perplexity
 
-AI 기반 검색 — 실시간 소스 인용, Deep Research**Deep Research**  
-AI가 알아서 여러 자료를 찾아보고 종합 보고서를 써주는 기능이에요. 사람이 리서치하면 몇 시간 걸릴 작업을 AI가 2~5분 만에 해냅니다. Gemini와 NotebookLM에서 사용할 수 있어요.
+AI 기반 검색 — 실시간 소스 인용, Deep Research
 
 시장 조사경쟁사 분석팩트체크
 
@@ -182,8 +159,7 @@ AI가 알아서 여러 자료를 찾아보고 종합 보고서를 써주는 기�
 
 OpenCode
 
-오픈소스 AI 코딩 CLI**CLI**  
-마우스 대신 텍스트 명령어로 컴퓨터를 조작하는 방식이에요. 검은 화면에 글자를 타이핑하는 그것! 개발자 도구의 기본이고, Antigravity도 CLI 기반으로 동작합니다. — 모든 모델 제공자 지원
+오픈소스 AI 코딩 CLI — 모든 모델 제공자 지원
 
 벤더 종속 없는 유연한 AI 코딩 환경
 
@@ -196,5 +172,3 @@ OpenAI의 범용 AI — 텍스트·이미지·코드·데이터 통합
 비즈니스 문서데이터 분석브레인스토밍
 
 [Link →](https://chatgpt.com)
-
-[← 정리 & 핵심 인사이트](#CH06-clip08) [Copilot 참고자료 →](#CH06-clip12)
