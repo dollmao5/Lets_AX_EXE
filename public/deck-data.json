@@ -1,0 +1,2260 @@
+{
+  "tiro-guide-deck": {
+    "id": "tiro-guide-deck",
+    "kicker": "Tiro Guide",
+    "title": "Tiro 설치 및 녹음 파일 저장 방법",
+    "subtitle": "Tiro 사용법 가이드",
+    "slides": [
+      {
+        "eyebrow": "01 앱 다운로드",
+        "title": "Tiro 설치 및 다운로드",
+        "imageSrc": "__BASE__/course-files/AXCAMP/ch02-clip02/01_app_download.png",
+        "imageAlt": "스마트폰 앱스토어에서 Tiro를 검색하거나 Tiro 설치 페이지(https://tiro.ooo/ko/download/app)를 통해 앱을 다운로드합니다. 설치가 완료되면 앱을 실행합니다."
+      },
+      {
+        "eyebrow": "02 가입 단계",
+        "title": "Tiro 회원가입 및 로그인",
+        "imageSrc": "__BASE__/course-files/AXCAMP/ch02-clip02/02_sign_up.png",
+        "imageAlt": "앱 실행 후 회원가입 또는 로그인을 진행합니다. 교육 현장에서 바로 사용할 수 있도록 접근 가능한 계정으로 가입해 주세요."
+      },
+      {
+        "eyebrow": "03 가입 상세",
+        "title": "기본 정보 입력 및 마이크 권한",
+        "imageSrc": "__BASE__/course-files/AXCAMP/ch02-clip02/03_sign_up_detail.png",
+        "imageAlt": "화면 안내에 따라 기본 정보를 입력하고 가입 절차를 완료합니다. 마이크 권한 요청이 나타나면 녹음을 위해 허용해 주세요."
+      },
+      {
+        "eyebrow": "04 사전 설정 1",
+        "title": "기본 설정 및 마이크 위치",
+        "imageSrc": "__BASE__/course-files/AXCAMP/ch02-clip02/04_pre_settings.png",
+        "imageAlt": "녹음 전에 앱의 기본 설정을 확인합니다. 녹음 중인 스마트폰 또는 외장 마이크를 학습팀 중앙에 놓고 진행하는 것을 권장합니다."
+      },
+      {
+        "eyebrow": "05 사전 설정 2",
+        "title": "녹음 품질 및 기록 시작/종료",
+        "imageSrc": "__BASE__/course-files/AXCAMP/ch02-clip02/05_pre_settings_detail.png",
+        "imageAlt": "녹음 품질과 저장 설정을 확인합니다. 토론이 시작되면 녹음 버튼을 누르고, 토론이 끝나면 반드시 녹음을 종료해 주세요."
+      },
+      {
+        "eyebrow": "06 파일 저장",
+        "title": "오디오 파일 다운로드 및 공유방 업로드",
+        "imageSrc": "__BASE__/course-files/AXCAMP/ch02-clip02/06_save_file.png",
+        "imageAlt": "녹음이 완료되면 오디오 파일을 저장하거나 다운로드합니다. 저장한 파일은 위의 학습팀별 오디오 자료 공유방에 업로드해 주세요."
+      }
+    ]
+  },
+  "agentic-physical-ecosystem": {
+    "id": "agentic-physical-ecosystem",
+    "kicker": "NotebookLM Source-Grounded Deck",
+    "title": "AI로 진화하는 산업 생태계",
+    "subtitle": "Agentic에서 Physical까지, 2026년 초 산업 변화를 리더 관점으로 읽는 22장 브리핑",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch00-ai-ecosystem/agentic-to-physical-ai.pdf",
+    "downloadFilename": "agentic-to-physical-ai.pdf",
+    "downloadLabel": "다운로드",
+    "previewColumns": 1,
+    "previewClass": "preview-theme-lg-ecosystem",
+    "sheetClass": "deck-theme-lg-ecosystem",
+    "previewSlides": [
+      {
+        "slideIndex": 0,
+        "pageLabel": "22장",
+        "eyebrow": "리더 브리핑",
+        "title": "AI로 진화하는 산업 생태계: Agentic에서 Physical까지",
+        "imageAlt": "AI로 진화하는 산업 생태계 슬라이드 표지"
+      }
+    ],
+    "slides": [
+      {
+        "eyebrow": "01 / Cover",
+        "title": "AI로 진화하는 산업 생태계",
+        "imageSrc": "__BASE__/assets/notebooklm/ch00-ai-ecosystem/slide-01.jpg",
+        "imageAlt": "NotebookLM에서 내려받은 AI로 진화하는 산업 생태계 표지 슬라이드"
+      },
+      {
+        "eyebrow": "02 / Why Now",
+        "title": "왜 지금 리더가 이 흐름을 읽어야 할까요",
+        "summary": "AI는 더 이상 모델 성능 경쟁만의 이슈가 아닙니다. 제품, 조직, 고객 접점, 물리 세계까지 산업의 운영체계를 다시 쓰고 있습니다.",
+        "bullets": [
+          "2026년 초 신호는 Agentic AI와 Physical AI가 동시에 전면화되고 있음을 보여줍니다.",
+          "차별화 포인트는 범용 모델 그 자체보다 데이터, 도메인 지식, 실행력으로 이동하고 있습니다.",
+          "지금 필요한 결정은 도입 여부가 아니라 무엇을 내재화하고 어디서 속도를 낼지입니다."
+        ],
+        "sources": [
+          {
+            "label": "McKinsey | GenAI 경제성",
+            "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier"
+          },
+          {
+            "label": "EY | CEO Outlook 2026",
+            "url": "https://www.ey.com/en_no/ceo/ceo-outlook-global-report"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "리더 질문",
+            "items": [
+              "우리는 어디에서 AI를 비용 절감이 아닌 구조 혁신에 연결할 것인가",
+              "우리 데이터와 현장 지식은 어디까지 전략 자산으로 보호되고 있는가"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "03 / February 2026",
+        "title": "2026년 2월, AI는 어떤 장면으로 등장했을까요",
+        "summary": "한 달 안에 휴머노이드 공연, 고도화된 추론 모델, 멀티모달 제작 도구, 에이전트형 업무 재설계가 한 화면에 겹쳐 나타났습니다.",
+        "bullets": [
+          "Physical AI는 공연과 시연을 통해 대중 전면으로 올라왔습니다.",
+          "멀티모달 모델은 영화와 콘텐츠 생산방식을 다시 묻기 시작했습니다.",
+          "기업 현장에서는 Agentic AI를 업무 흐름에 넣으려는 압력이 동시에 커졌습니다."
+        ],
+        "sources": [
+          {
+            "label": "Reuters | 춘절 로봇 공연",
+            "url": "https://www.reuters.com/business/media-telecom/chinas-humanoid-robots-ready-lunar-new-year-showtime-2026-02-16/"
+          },
+          {
+            "label": "Google | Gemini 3.1 Pro",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/"
+          },
+          {
+            "label": "Google | Flow + Veo",
+            "url": "https://blog.google/innovation-and-ai/products/google-flow-veo-ai-filmmaking-tool/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "핵심 시그널",
+            "items": [
+              "보여주기 단계가 아니라 사업 운영 단계로 이동 중입니다",
+              "소프트웨어와 로보틱스가 같은 서사로 묶이기 시작했습니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "04 / Humanoid Moment",
+        "title": "춘절 공연의 휴머노이드는 왜 상징적일까요",
+        "summary": "중국 춘절 무대에서 인간 공연자와 자연스럽게 어우러지는 휴머노이드 장면은 Physical AI가 대중의 상상에서 현실의 제품 경험으로 넘어가고 있음을 상징합니다.",
+        "bullets": [
+          "로봇은 더 이상 공장 안 기계가 아니라 미디어 이벤트의 주연으로 등장했습니다.",
+          "사람은 로봇의 성능보다 자연스러운 협업 장면에 더 크게 반응했습니다.",
+          "리더에게 중요한 것은 기술 그 자체보다 사회가 받아들이는 임계점입니다."
+        ],
+        "sources": [
+          {
+            "label": "Reuters | 춘절 로봇 공연",
+            "url": "https://www.reuters.com/business/media-telecom/chinas-humanoid-robots-ready-lunar-new-year-showtime-2026-02-16/"
+          },
+          {
+            "label": "Reuters Video | 춘절 로봇 영상",
+            "url": "https://www.reuters.com/video/watch/idRW638718022026RP1/"
+          },
+          {
+            "label": "YouTube | 춘절 갈라",
+            "url": "https://www.youtube.com/watch?v=XYAbHFcq5yw"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "리더 포인트",
+            "items": [
+              "시장 전환은 성능 수치보다 경험 장면이 만듭니다",
+              "Physical AI는 브랜드와 서비스 전략까지 바꿀 수 있습니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "05 / Long Arc",
+        "title": "하지만 이것은 갑자기 생긴 일이 아닙니다",
+        "summary": "휴머노이드 장면은 10년 이상 누적된 로보틱스 투자, 시뮬레이션, 제어, 센서, 데이터 축적의 결과입니다.",
+        "bullets": [
+          "Physical AI의 도약은 긴 투자 주기를 견딘 기업에게 먼저 돌아갑니다.",
+          "로보틱스는 시연이 반복될수록 실제 활용을 위한 데이터와 운영 노하우가 쌓입니다.",
+          "지속 투자와 기술 내재화가 결국 진입장벽이 됩니다."
+        ],
+        "sources": [
+          {
+            "label": "NVIDIA | Isaac GR00T N1",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-isaac-gr00t-n1-open-humanoid-robot-foundation-model-simulation-frameworks"
+          },
+          {
+            "label": "NVIDIA | Physical AI 생태계",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "보는 관점",
+            "items": [
+              "화려한 데모보다 축적된 인프라를 보셔야 합니다",
+              "10년을 견딘 투자만이 Physical AI의 출발점이 됩니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "06 / CES to Ecosystem",
+        "title": "CES와 NVIDIA가 보여준 것은 제품이 아니라 생태계입니다",
+        "summary": "휴머노이드 로봇, 월드 모델, 시뮬레이터, 합성 데이터가 한 세트로 묶이면서 Physical AI는 단일 제품이 아니라 학습 생태계로 진화하고 있습니다.",
+        "bullets": [
+          "Foundation model과 simulator, synthetic data가 함께 움직입니다.",
+          "로보틱스 경쟁력은 하드웨어 단독이 아니라 학습 파이프라인에서 나옵니다.",
+          "Physical AI는 제조, 물류, 서비스 현장을 연결하는 플랫폼 경쟁이 됩니다."
+        ],
+        "sources": [
+          {
+            "label": "NVIDIA | Isaac GR00T N1",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-isaac-gr00t-n1-open-humanoid-robot-foundation-model-simulation-frameworks"
+          },
+          {
+            "label": "NVIDIA | Physical AI 생태계",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world"
+          },
+          {
+            "label": "NVIDIA | Cosmos World Foundation Models",
+            "url": "https://developer.nvidia.com/blog/scale-synthetic-data-and-physical-ai-reasoning-with-nvidia-cosmos-world-foundation-models/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "산업 해석",
+            "items": [
+              "하드웨어 기업도 데이터 기업이 되어야 합니다",
+              "디지털 인프라와 물리 인프라가 같은 전략 언어로 묶입니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "07 / Agentic Shock",
+        "title": "Agentic AI는 소프트웨어 산업에 어떤 충격을 주고 있을까요",
+        "summary": "AI가 답변을 넘어서 계획하고 실행하는 단계로 가면서, 기존 SaaS의 일부는 기능이 아니라 워크플로 자체를 다시 증명해야 하는 상황에 놓였습니다.",
+        "bullets": [
+          "단순 기능형 소프트웨어는 에이전트 안으로 흡수될 위험이 커지고 있습니다.",
+          "기업 고객은 툴 하나보다 목표 달성형 자동화를 기대하기 시작했습니다.",
+          "SaaS의 경쟁축은 화면 수가 아니라 업무 대행 수준으로 이동합니다."
+        ],
+        "sources": [
+          {
+            "label": "Walmart | Agentic Future",
+            "url": "https://corporate.walmart.com/news/2025/05/29/inside-walmarts-strategy-for-building-an-agentic-future"
+          },
+          {
+            "label": "EY | Agentic AI in Retail",
+            "url": "https://www.ey.com/en_id/insights/retail/how-consumer-products-and-retail-players-can-lead-with-agentic-ai"
+          },
+          {
+            "label": "Menlo Ventures | Enterprise GenAI",
+            "url": "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "리더 질문",
+            "items": [
+              "우리 서비스는 기능을 제공하는가, 결과를 내는가",
+              "고객이 AI 에이전트로 대체할 수 있는 영역은 어디인가"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "08 / Vibe Coding",
+        "title": "바이브 코딩은 개발자의 역할을 어떻게 바꾸고 있을까요",
+        "summary": "비전문가도 언어 모델과 대화하며 코드를 만들기 시작했고, 개발자의 역할은 구현자만이 아니라 방향 설정자, 품질 판단자, 최종 책임자로 더 선명해지고 있습니다.",
+        "bullets": [
+          "속도는 비약적으로 빨라졌지만 품질 판단과 책임은 더 중요해졌습니다.",
+          "아이디어를 바로 앱으로 검증하는 조직이 실험 속도에서 앞서갑니다.",
+          "개발자는 코드를 모두 쓰는 사람이 아니라 좋은 시스템을 설계하는 사람으로 이동합니다."
+        ],
+        "sources": [
+          {
+            "label": "TechCrunch | Base44",
+            "url": "https://techcrunch.com/2025/06/18/6-month-old-solo-owned-vibe-coder-base44-sells-to-wix-for-80m-cash/"
+          },
+          {
+            "label": "TechCrunch | YC AI Codebases",
+            "url": "https://techcrunch.com/2025/03/06/a-quarter-of-startups-in-ycs-current-cohort-have-codebases-that-are-almost-entirely-ai-generated/"
+          },
+          {
+            "label": "Builder.io | AI coding tools",
+            "url": "https://www.builder.io/blog/cursor-vs-claude-code"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "조직 변화",
+            "items": [
+              "업무와 개발의 경계가 빠르게 낮아집니다",
+              "리더는 실험 수를 늘리되 품질 게이트를 더 명확히 해야 합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "09 / Multimodal Content",
+        "title": "멀티모달 생성은 영화와 콘텐츠 산업을 왜 긴장시키고 있을까요",
+        "summary": "짧은 자연어 명령만으로 영상 장면을 설계하고 제작하는 흐름이 현실화되면서, 제작 프로세스의 비용 구조와 역할 분담이 빠르게 재편되고 있습니다.",
+        "bullets": [
+          "콘텐츠 제작의 병목이 촬영보다 기획과 판단으로 이동합니다.",
+          "소규모 팀도 이전보다 훨씬 큰 표현력을 확보할 수 있습니다.",
+          "브랜드는 제작 능력보다 세계관과 품질 기준을 더 분명히 가져야 합니다."
+        ],
+        "sources": [
+          {
+            "label": "Google | Flow + Veo",
+            "url": "https://blog.google/innovation-and-ai/products/google-flow-veo-ai-filmmaking-tool/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "임원 관점",
+            "items": [
+              "콘텐츠 조직은 제작 인력 구조보다 편집 판단 체계를 먼저 재정의해야 합니다",
+              "생성 속도가 빨라질수록 브랜드 리스크 관리가 중요해집니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "10 / Model Ecosystem",
+        "title": "모델 생태계는 경쟁만이 아니라 협력도 함께 커지고 있습니다",
+        "summary": "기업들은 자체 모델을 강화하는 동시에 타사 모델을 제품 안에 넣는 협력도 병행하고 있습니다. 전략은 단일 모델 승부보다 조합 설계로 이동합니다.",
+        "bullets": [
+          "자체 모델은 주권과 차별화의 수단이 됩니다.",
+          "외부 모델 협력은 속도와 시장 대응력을 높여줍니다.",
+          "결국 중요한 것은 모델 하나보다 어떤 경험과 운영체계를 조합하느냐입니다."
+        ],
+        "sources": [
+          {
+            "label": "Google | Gemini 3.1 Pro",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/"
+          },
+          {
+            "label": "Walmart x Google",
+            "url": "https://corporate.walmart.com/news/2026/01/11/walmart-and-google-turn-ai-discovery-into-effortless-shopping-experiences"
+          },
+          {
+            "label": "Korea Herald | EXAONE",
+            "url": "https://www.koreaherald.com/article/10652980"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "핵심 포인트",
+            "items": [
+              "경쟁과 협력이 동시에 일어나는 구조입니다",
+              "리더는 무엇을 직접 만들고 무엇을 연결할지 정해야 합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "11 / Early Field Adoption",
+        "title": "산업 현장의 AI Agent 적용은 아직 초기 단계입니다",
+        "summary": "열기는 크지만 실제 현장에서는 여전히 PoC, 파일럿, 제한된 워크플로 도입이 중심입니다. 그래서 지금이 표준을 선점할 기회가 됩니다.",
+        "bullets": [
+          "많은 조직이 아직 업무 재설계보다 실험 검증 단계에 머물러 있습니다.",
+          "현장 확산을 막는 요인은 기술보다 데이터, 책임 구조, 운영 설계입니다.",
+          "초기 단계이기 때문에 지금의 실행 경험이 곧 내일의 격차가 됩니다."
+        ],
+        "sources": [
+          {
+            "label": "Menlo Ventures | Enterprise GenAI",
+            "url": "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/"
+          },
+          {
+            "label": "EY | CEO Outlook 2026",
+            "url": "https://www.ey.com/en_no/ceo/ceo-outlook-global-report"
+          },
+          {
+            "label": "Walmart | Agentic Future",
+            "url": "https://corporate.walmart.com/news/2025/05/29/inside-walmarts-strategy-for-building-an-agentic-future"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "실행 포인트",
+            "items": [
+              "PoC를 끝내고 업무 단위 확장 기준을 만드세요",
+              "도입 속도보다 적용 책임과 성과 정의가 중요합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "12 / Human Intent",
+        "title": "인간의 의지는 어떻게 AI 단계로 번역될까요",
+        "summary": "인간은 사물을 인식하고, 무언가를 만들고, 대신 행동하게 하고, 결국 현실 세계에서 물리적 결과를 기대합니다. AI의 진화도 같은 순서로 이어집니다.",
+        "bullets": [
+          "인식형 AI는 무엇인지 말합니다.",
+          "생성형 AI는 무언가를 만듭니다.",
+          "에이전트형 AI는 다음 행동을 대신 수행합니다."
+        ],
+        "sources": [
+          {
+            "label": "Google | Gemini 3.1 Pro",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/"
+          },
+          {
+            "label": "NVIDIA | Physical AI 생태계",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "다음 단계",
+            "items": [
+              "Physical AI는 현실의 물체와 환경까지 다룹니다",
+              "이 단계 구분은 투자 우선순위를 정리하는 데 유용합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "13 / Evolution Ladder",
+        "title": "인식 → 생성 → 에이전트 → Physical",
+        "summary": "AI는 점점 더 많은 의사결정과 실행 책임을 맡아가고 있습니다. 이 사다리를 이해하면 어디서 어떤 데이터와 제어가 필요한지 선명해집니다.",
+        "bullets": [
+          "인식: 무엇을 보는지 이해합니다.",
+          "생성: 결과물을 만들어냅니다.",
+          "에이전트: 도구를 써서 목표를 수행합니다.",
+          "Physical: 실제 환경에서 움직이고 조작합니다."
+        ],
+        "sources": [
+          {
+            "label": "Google | Gemini 3.1 Pro",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/"
+          },
+          {
+            "label": "NVIDIA | Isaac GR00T N1",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-isaac-gr00t-n1-open-humanoid-robot-foundation-model-simulation-frameworks"
+          },
+          {
+            "label": "NVIDIA | Cosmos World Foundation Models",
+            "url": "https://developer.nvidia.com/blog/scale-synthetic-data-and-physical-ai-reasoning-with-nvidia-cosmos-world-foundation-models/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "리더 질문",
+            "items": [
+              "우리 조직은 지금 어느 단계의 AI를 쓰고 있는가",
+              "다음 단계로 가기 위해 부족한 데이터와 제어는 무엇인가"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "14 / Data First",
+        "title": "데이터가 모델을 만듭니다",
+        "summary": "원하는 AI는 원하는 데이터에서 나옵니다. 학습 데이터는 모델의 지식과 경험이며, 결국 무엇을 보게 했는지가 무엇을 하게 하는지를 결정합니다.",
+        "bullets": [
+          "좋은 모델은 좋은 데이터에서만 나옵니다.",
+          "데이터 설계 없이 모델만 바꿔서는 원하는 성능이 나오지 않습니다.",
+          "AI 전략의 출발점은 모델 선정이 아니라 데이터 전략이어야 합니다."
+        ],
+        "sources": [
+          {
+            "label": "McKinsey | GenAI 경제성",
+            "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier"
+          },
+          {
+            "label": "NVIDIA | Cosmos World Foundation Models",
+            "url": "https://developer.nvidia.com/blog/scale-synthetic-data-and-physical-ai-reasoning-with-nvidia-cosmos-world-foundation-models/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "한 줄 메시지",
+            "items": [
+              "콩 심은 데 콩 납니다",
+              "학습 데이터의 수준이 AI 모델의 수준을 결정합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "15 / Manufacturing Data",
+        "title": "제조 현장의 데이터는 왜 특별할까요",
+        "summary": "제조 AI는 범용 웹 데이터만으로는 완성되지 않습니다. 공정, 품질, 설비, 검사, 운영 맥락이 담긴 현장 데이터가 성능 차이를 만듭니다.",
+        "bullets": [
+          "제조 데이터는 희소하고 맥락 의존적이며, 수집 난도가 높습니다.",
+          "품질 예측, 불량 검출, 공정 운영 최적화는 현장 데이터 없이는 고도화되기 어렵습니다.",
+          "현장 데이터는 AI 경쟁력과 직결되는 전략 자산입니다."
+        ],
+        "sources": [
+          {
+            "label": "Korea Herald | EXAONE",
+            "url": "https://www.koreaherald.com/article/10652980"
+          },
+          {
+            "label": "Digital Commerce 360 | LG B2B AI",
+            "url": "https://www.digitalcommerce360.com/2026/01/08/lg-electronics-b2b-ai-growth-2026/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "현장 의미",
+            "items": [
+              "제조 AI는 일반 LLM 적용보다 데이터 준비가 더 중요합니다",
+              "협력사와 현장 조직을 포함한 데이터 생태계가 필요합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "16 / Expert Knowledge",
+        "title": "좋은 모델은 결국 좋은 전문가를 키우는 과정과 닮아 있습니다",
+        "summary": "데이터 수집, 정답 정의, 반복 학습, 테스트를 완성도 있게 가져가려면 현장을 이해하고 좋은 기준을 제시할 수 있는 전문가가 필요합니다.",
+        "bullets": [
+          "데이터는 AI의 지식과 경험입니다.",
+          "전문가의 기준이 없으면 모델은 그럴듯하지만 신뢰하기 어려운 결과를 냅니다.",
+          "암묵지를 디지털 학습 자산으로 바꾸는 과정이 AX의 핵심입니다."
+        ],
+        "sources": [
+          {
+            "label": "Korea Herald | EXAONE",
+            "url": "https://www.koreaherald.com/article/10652980"
+          },
+          {
+            "label": "McKinsey | GenAI 경제성",
+            "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "비유",
+            "items": [
+              "학습용 데이터는 횟감입니다",
+              "최종 요리보다 싱싱하고 다양한 원재료가 먼저 중요합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "17 / Digital Twin vs World Model",
+        "title": "Digital Twin과 World Model은 무엇이 다를까요",
+        "summary": "Digital Twin은 현실을 복제하는 데 강하고, World Model은 세상을 이해하고 다음 행동의 결과를 예측하는 데 강합니다. Physical AI는 이 둘을 연결하며 성장합니다.",
+        "bullets": [
+          "Digital Twin은 상태를 비추는 거울에 가깝습니다.",
+          "World Model은 보이지 않는 변화와 다음 결과를 추론합니다.",
+          "리더는 복제형 투자와 행동형 투자 중 어디를 강화할지 구분해야 합니다."
+        ],
+        "sources": [
+          {
+            "label": "NVIDIA | Cosmos World Foundation Models",
+            "url": "https://developer.nvidia.com/blog/scale-synthetic-data-and-physical-ai-reasoning-with-nvidia-cosmos-world-foundation-models/"
+          },
+          {
+            "label": "NVIDIA | Physical AI 생태계",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "전략 포인트",
+            "items": [
+              "운영 가시화만으로는 부족합니다",
+              "예측과 행동까지 연결될 때 Physical AI의 가치가 커집니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "18 / Physical AI Learning",
+        "title": "Physical AI는 어떻게 학습될까요",
+        "summary": "Physical AI는 real-world teleoperation, robot trajectory, simulator, synthetic data를 함께 써서 실제 행동 능력을 끌어올립니다.",
+        "bullets": [
+          "현실 데이터는 비싸지만 반드시 필요합니다.",
+          "시뮬레이터와 합성 데이터는 학습 규모를 빠르게 키워줍니다.",
+          "핵심은 현실과 가상의 학습 루프를 어떻게 연결하느냐입니다."
+        ],
+        "sources": [
+          {
+            "label": "NVIDIA | Isaac GR00T N1",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-isaac-gr00t-n1-open-humanoid-robot-foundation-model-simulation-frameworks"
+          },
+          {
+            "label": "NVIDIA | Cosmos World Foundation Models",
+            "url": "https://developer.nvidia.com/blog/scale-synthetic-data-and-physical-ai-reasoning-with-nvidia-cosmos-world-foundation-models/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "산업 의미",
+            "items": [
+              "데이터 수집 체계가 곧 경쟁력입니다",
+              "로봇 학습은 설비 투자와 데이터 투자가 동시에 필요합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "19 / LG AI",
+        "title": "LG의 AI는 왜 자체 모델과 산업 특화 전략을 함께 가져가야 할까요",
+        "summary": "EXAONE은 단순한 범용 모델 경쟁이 아니라 데이터 주권과 산업 적용을 위한 전략 자산입니다. 동시에 LG는 전문 영역별 AI 포트폴리오를 넓혀야 합니다.",
+        "bullets": [
+          "자체 모델은 데이터와 노하우를 지키는 기반이 됩니다.",
+          "산업 특화 AI는 실행 가능한 가치를 만들고 차별화를 만듭니다.",
+          "범용 fast follower를 넘어 산업형 Agentic AI 리더로 가야 합니다."
+        ],
+        "sources": [
+          {
+            "label": "Korea Herald | EXAONE",
+            "url": "https://www.koreaherald.com/article/10652980"
+          },
+          {
+            "label": "Digital Commerce 360 | LG B2B AI",
+            "url": "https://www.digitalcommerce360.com/2026/01/08/lg-electronics-b2b-ai-growth-2026/"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "메시지",
+            "items": [
+              "범용 모델 하나보다 산업 실행 포트폴리오가 중요합니다",
+              "AI 주권은 기술과 데이터 모두를 포함합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "20 / LG Use Cases",
+        "title": "LG의 산업 적용 사례는 무엇을 시사할까요",
+        "summary": "제조, 소재, 바이오, 운영 최적화처럼 현장 문제를 풀기 위해서는 범용 LLM보다 산업 데이터와 업무 맥락을 결합한 AI가 더 중요합니다.",
+        "bullets": [
+          "품질 예측, 검사 자동화, 스케줄링 최적화, 신물질 탐색은 모두 도메인 데이터가 핵심입니다.",
+          "현장 문제를 푸는 AI는 조직 안의 지식 구조를 함께 바꿉니다.",
+          "실제 가치 창출은 현장 워크플로에 들어갈 때 시작됩니다."
+        ],
+        "sources": [
+          {
+            "label": "Digital Commerce 360 | LG B2B AI",
+            "url": "https://www.digitalcommerce360.com/2026/01/08/lg-electronics-b2b-ai-growth-2026/"
+          },
+          {
+            "label": "Korea Herald | EXAONE",
+            "url": "https://www.koreaherald.com/article/10652980"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "리더 포인트",
+            "items": [
+              "AX는 도구 도입보다 업무 재설계 프로젝트입니다",
+              "현장 팀과 데이터 팀의 공동 설계가 필요합니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "21 / AX Questions",
+        "title": "AX 시대, 리더가 고민해야 할 방향은 무엇일까요",
+        "summary": "모델 학습 과정에서 데이터가 넘어가면 장기적으로 노하우도 함께 넘어갈 수 있습니다. 그래서 데이터 주권, 기술 내재화, 실행 속도의 균형이 중요합니다.",
+        "bullets": [
+          "범용 모델 활용만으로는 차별화가 점점 어려워집니다.",
+          "무엇을 자체화하고 무엇을 연결할지 명확한 원칙이 필요합니다.",
+          "늦어 보이는 지금도 AI 개화기이기 때문에 후발 기회는 여전히 존재합니다."
+        ],
+        "sources": [
+          {
+            "label": "Korea Herald | EXAONE",
+            "url": "https://www.koreaherald.com/article/10652980"
+          },
+          {
+            "label": "EY | CEO Outlook 2026",
+            "url": "https://www.ey.com/en_no/ceo/ceo-outlook-global-report"
+          },
+          {
+            "label": "McKinsey | GenAI 경제성",
+            "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "오늘의 질문",
+            "items": [
+              "우리에게 꼭 남겨야 할 데이터와 노하우는 무엇인가",
+              "속도를 내면서도 주권을 지키는 운영 원칙은 무엇인가"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      },
+      {
+        "eyebrow": "22 / Conclusion",
+        "title": "새로운 기회는 대부분 혼란한 상황 속에서 열립니다",
+        "summary": "2030년까지 연구개발, 제조, 조직, 업무 분장, 산업 구조는 크게 바뀔 가능성이 높습니다. 다크 팩토리, 연구개발 자동화, 조직 역할 재설계는 이미 시작된 흐름입니다.",
+        "bullets": [
+          "소멸하는 역할과 지속되는 역할, 새로 생기는 역할이 동시에 나타날 것입니다.",
+          "AI 전환의 핵심은 기술 채택이 아니라 사업 운영 방식을 다시 설계하는 것입니다.",
+          "지금의 혼란은 뒤처짐의 신호가 아니라 새로운 기회의 창이기도 합니다."
+        ],
+        "sources": [
+          {
+            "label": "McKinsey | GenAI 경제성",
+            "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier"
+          },
+          {
+            "label": "EY | CEO Outlook 2026",
+            "url": "https://www.ey.com/en_no/ceo/ceo-outlook-global-report"
+          },
+          {
+            "label": "NVIDIA | Physical AI 생태계",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-and-global-robotics-leaders-take-physical-ai-to-the-real-world"
+          }
+        ],
+        "infoBlocks": [
+          {
+            "title": "마무리 메시지",
+            "items": [
+              "Agentic에서 Physical까지 흐름을 읽는 것이 곧 전략입니다",
+              "리더의 역할은 기술 선택보다 방향 설정과 실행 설계입니다"
+            ]
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      }
+    ]
+  },
+  "industry-landscape": {
+    "id": "industry-landscape",
+    "kicker": "NotebookLM PDF",
+    "title": "2026 LG AX Strategic Briefing",
+    "subtitle": "NotebookLM에서 생성한 슬라이드 PDF 다운로드본",
+    "downloadUrl": "__BASE__/assets/notebooklm/2026-lg-ax-strategic-briefing.pdf",
+    "downloadFilename": "2026-lg-ax-strategic-briefing.pdf",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "00 / Cover",
+        "title": "2026 엔터프라이즈 AI 산업동향 및 LG AX 전략 브리핑",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-1.jpg",
+        "imageAlt": "NotebookLM 슬라이드 표지"
+      },
+      {
+        "eyebrow": "01 / Executive Thesis",
+        "title": "Executive Thesis",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-2.jpg",
+        "imageAlt": "Executive Thesis 슬라이드"
+      },
+      {
+        "eyebrow": "02 / ROI Gap",
+        "title": "ROI Gap",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-3.jpg",
+        "imageAlt": "ROI Gap 슬라이드"
+      },
+      {
+        "eyebrow": "03 / Business Reset",
+        "title": "Business Reset",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-4.jpg",
+        "imageAlt": "Business Reset 슬라이드"
+      },
+      {
+        "eyebrow": "04 / Agent/Vibe Coding Shift",
+        "title": "Agent/Vibe Coding Shift",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-5.jpg",
+        "imageAlt": "Agent and Vibe Coding Shift 슬라이드"
+      },
+      {
+        "eyebrow": "05 / Model Race",
+        "title": "Model Race",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-6.jpg",
+        "imageAlt": "Model Race 슬라이드"
+      },
+      {
+        "eyebrow": "06 / Governance & AI Literacy",
+        "title": "Governance & AI Literacy",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-7.jpg",
+        "imageAlt": "Governance and AI Literacy 슬라이드"
+      },
+      {
+        "eyebrow": "07 / Next 90 Days",
+        "title": "Next 90 Days",
+        "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-8.jpg",
+        "imageAlt": "Next 90 Days 슬라이드"
+      }
+    ]
+  },
+  "assistant-agentic-spectrum": {
+    "id": "assistant-agentic-spectrum",
+    "previewStyle": "immersive",
+    "kicker": "NotebookLM Infographic",
+    "title": "AI 활용의 진화 로드맵",
+    "subtitle": "현재 페이지와 공식 자료 8건을 바탕으로 만든 1장 concept map",
+    "downloadUrl": "__BASE__/assets/notebooklm/assistant-agentic/ai-utilization-evolution-roadmap.png",
+    "downloadFilename": "ai-utilization-evolution-roadmap.png",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Infographic",
+        "title": "AI 활용의 진화 로드맵",
+        "imageSrc": "__BASE__/assets/notebooklm/assistant-agentic/ai-utilization-evolution-roadmap.png",
+        "imageAlt": "AI가 비서형에서 대리인형을 거쳐 자율 협업형으로 진화하는 세 단계를 비교한 인포그래픽 로드맵"
+      }
+    ]
+  },
+  "prompt-context-workflow": {
+    "id": "prompt-context-workflow",
+    "previewStyle": "immersive",
+    "kicker": "NotebookLM Infographic",
+    "title": "프롬프트 엔지니어링에서 컨텍스트 엔지니어링으로",
+    "subtitle": "현재 페이지와 공식 자료 6건을 바탕으로 만든 1장 concept map",
+    "downloadUrl": "__BASE__/assets/notebooklm/prompt-context/prompt-context-workflow-strategy.png",
+    "downloadFilename": "prompt-context-workflow-strategy.png",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Infographic",
+        "title": "AI 성과를 결정짓는 3단계 진화 전략",
+        "imageSrc": "__BASE__/assets/notebooklm/prompt-context/prompt-context-workflow-strategy.png",
+        "imageAlt": "프롬프트 엔지니어링에서 컨텍스트 기반 워크플로우로 진화하는 AI 성과 창출 전략의 3단계를 설명하는 인포그래픽"
+      }
+    ]
+  },
+  "tech-utilization-roadmap": {
+    "id": "tech-utilization-roadmap",
+    "kicker": "NotebookLM Slide Deck",
+    "title": "Enterprise AI Roadmap",
+    "subtitle": "NotebookLM Studio에서 내려받은 실제 3장 슬라이드",
+    "downloadUrl": "__BASE__/assets/notebooklm/tech-roadmap/enterprise-ai-roadmap-2.pdf",
+    "downloadFilename": "enterprise-ai-roadmap-2.pdf",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 Gemini/ChatGPT (챗봇)",
+        "title": "질문-리서치-초안-수정의 협업 루프",
+        "imageSrc": "__BASE__/assets/notebooklm/tech-roadmap/slide-1.png",
+        "imageAlt": "Enterprise AI Roadmap 슬라이드 1장. Chat UI 단계에서 질문, 리서치, 초안 작성, 수정 요청을 반복하는 흐름을 설명합니다."
+      },
+      {
+        "eyebrow": "02 AI Studio (바이브코딩)",
+        "title": "AI가 개발을 돕고 앱이 다시 AI를 호출하는 구조",
+        "imageSrc": "__BASE__/assets/notebooklm/tech-roadmap/slide-2.png",
+        "imageAlt": "Enterprise AI Roadmap 슬라이드 2장. AI Studio Build와 API를 활용해 앱을 만들고 서비스가 다시 AI를 호출하는 구조를 설명합니다."
+      },
+      {
+        "eyebrow": "03 Hi-D Code (Agent)",
+        "title": "Codex와 Cline으로 시연하는 에이전틱 워크플로우",
+        "imageSrc": "__BASE__/assets/notebooklm/tech-roadmap/slide-3.png",
+        "imageAlt": "Enterprise AI Roadmap 슬라이드 3장. Codex와 Cline을 통해 계획, 도구 호출, 실행, 검증을 잇는 CLI Agent 단계를 설명합니다."
+      }
+    ]
+  },
+  "concept-foundation-guide": {
+    "id": "concept-foundation-guide",
+    "previewStyle": "immersive",
+    "sheetClass": "deck-concept-foundation-guide",
+    "kicker": "NotebookLM Infographic",
+    "title": "전문가용 AI 핵심 개념 가이드",
+    "subtitle": "NotebookLM에서 내려받은 세로형 개념 인포그래픽",
+    "downloadUrl": "__BASE__/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg",
+    "downloadFilename": "expert-ai-core-concepts-guide2.jpg",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Infographic",
+        "title": "오늘 수업을 관통하는 AI 핵심 용어 지도",
+        "imageSrc": "__BASE__/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg",
+        "imageAlt": "전문가용 AI 핵심 개념 가이드 세로 인포그래픽. 멀티모달, 컨텍스트 엔지니어링, RAG, MCP, Agentic AI 등 핵심 개념을 한 장으로 정리합니다."
+      }
+    ]
+  },
+  "gemini-access-roadshow": {
+    "id": "gemini-access-roadshow",
+    "kicker": "NotebookLM Slide Deck",
+    "title": "Gemini Business Engine",
+    "subtitle": "Gemini를 단순 채팅이 아니라 멀티모달 비즈니스 엔진으로 쓰는 흐름",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/Gemini-Business-Engine.pdf",
+    "downloadFilename": "Gemini-Business-Engine.pdf",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Orientation",
+        "title": "Gemini 실습 오리엔테이션",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-01.png",
+        "imageAlt": "단순한 챗봇을 넘어선 멀티모달 비즈니스 분석 엔진을 주제로 한 LG 임원진 대상 Gemini 실습 오리엔테이션 슬라이드입니다."
+      },
+      {
+        "eyebrow": "02 / Multimodal",
+        "title": "텍스트·이미지·PDF·음성을 한 대화창에서",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-02.png",
+        "imageAlt": "텍스트, 이미지, PDF, 음성 등 다양한 데이터를 하나의 대화창에서 처리하여 업무 혁신을 이루는 Gemini의 멀티모달 기능을 설명합니다."
+      },
+      {
+        "eyebrow": "03 / Executive Use",
+        "title": "임원 의사결정을 돕는 세 가지 핵심 요소",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-03.png",
+        "imageAlt": "임원진의 의사결정을 돕는 세 가지 핵심 요소로 직관적 접근, 실무적 확장, 연속적 심화를 제시합니다."
+      },
+      {
+        "eyebrow": "04 / Onboarding",
+        "title": "접속부터 후속 질문까지 6단계 시작법",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-04.png",
+        "imageAlt": "gemini.google.com 접속부터 후속 질문까지 Gemini 사용을 시작하는 6단계 과정을 설명하는 타임라인입니다."
+      },
+      {
+        "eyebrow": "05 / Interface",
+        "title": "표 구조화, 요약, 초안 작성까지 한 화면에서",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-05.png",
+        "imageAlt": "표 구조화, 핵심 요약, 초안 작성 등 모든 분석 작업이 하나의 직관적인 인터페이스에서 가능함을 보여줍니다."
+      }
+    ]
+  },
+  "gemini-screen-quick-tour": {
+    "id": "gemini-screen-quick-tour",
+    "previewColumns": 3,
+    "kicker": "Gemini Practice",
+    "title": "Gemini 화면 간단 소개",
+    "subtitle": "실습에 들어가기 전 먼저 볼 3가지 화면",
+    "slides": [
+      {
+        "eyebrow": "01 / Home",
+        "title": "홈 화면",
+        "imageSrc": "__BASE__/assets/gemini/ch02/gemini-home.png",
+        "imageAlt": "Gemini 홈 화면",
+        "summary": "왼쪽에는 대화 이력과 Gems, 아래에는 입력창과 파일 첨부 버튼이 있습니다. 오늘 대부분의 실습은 이 화면에서 시작합니다."
+      },
+      {
+        "eyebrow": "02 / Mode",
+        "title": "모드 선택 메뉴",
+        "imageSrc": "__BASE__/assets/gemini/ch02/gemini-mode-menu.png",
+        "imageAlt": "Gemini 모드 선택 메뉴",
+        "summary": "빠른 답이 필요한 작업과 더 깊은 추론이 필요한 작업을 구분해 모델 사용 감각을 잡는 화면입니다."
+      },
+      {
+        "eyebrow": "03 / Upload",
+        "title": "파일 업로드 메뉴",
+        "imageSrc": "__BASE__/assets/gemini/ch02/gemini-upload-menu.png",
+        "imageAlt": "Gemini 파일 업로드 메뉴",
+        "summary": "문서, 데이터, 코드 파일, Drive 자료를 붙여서 컨텍스트를 키우면 결과 품질이 확 달라집니다."
+      }
+    ]
+  },
+  "chatgpt-screen-quick-tour": {
+    "id": "chatgpt-screen-quick-tour",
+    "previewColumns": 3,
+    "kicker": "ChatGPT Practice",
+    "title": "ChatGPT 화면 간단 소개",
+    "subtitle": "실습에 들어가기 전 먼저 볼 3가지 화면",
+    "slides": [
+      {
+        "eyebrow": "01 / Home",
+        "title": "홈 화면",
+        "imageSrc": "__BASE__/assets/chatgpt/ch02/chatgpt-home.png",
+        "imageAlt": "ChatGPT 홈 화면",
+        "summary": "가운데 입력창에서 바로 대화를 시작합니다. 입력창 왼쪽의 + 버튼으로 파일을 붙이고, 이미지 만들기·글쓰기·웹 검색 바로가기도 제공됩니다."
+      },
+      {
+        "eyebrow": "02 / Model",
+        "title": "모델·추론 수준 메뉴",
+        "imageSrc": "__BASE__/assets/chatgpt/ch02/chatgpt-model-menu.png",
+        "imageAlt": "ChatGPT 모델·추론 수준 메뉴",
+        "summary": "입력창 오른쪽에서 추론 수준(즉시·중간·높음 등)을 고를 수 있습니다. 빠른 답이 필요한 작업과 깊은 추론이 필요한 작업을 구분하는 감각을 잡는 화면입니다."
+      },
+      {
+        "eyebrow": "03 / Upload",
+        "title": "파일 업로드 메뉴",
+        "imageSrc": "__BASE__/assets/chatgpt/ch02/chatgpt-upload-menu.png",
+        "imageAlt": "ChatGPT 파일 업로드 메뉴",
+        "summary": "+ 메뉴에서 사진·파일 첨부, 웹 검색, 심층 리서치를 선택할 수 있습니다. 토론 대화문과 문서를 붙여 컨텍스트를 키우면 결과 품질이 확 달라집니다."
+      }
+    ]
+  },
+  "business-prompting-workshop": {
+    "id": "business-prompting-workshop",
+    "previewStyle": "immersive",
+    "kicker": "NotebookLM Infographic",
+    "title": "비즈니스 프롬프트 업무 위임 가이드",
+    "subtitle": "비즈니스 프롬프트 4종과 회의 분석 흐름을 한 장에 압축한 실습용 인포그래픽",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch02-structured-prompting/business-prompting-workshop-infographic.png",
+    "downloadFilename": "business-prompting-workshop-infographic.png",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Infographic",
+        "title": "비즈니스 프롬프트를 실무 업무로 바꾸는 구조",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/business-prompting-workshop-infographic.png",
+        "imageAlt": "비즈니스 프롬프트의 세 가지 활용 사례와 데이터 기반 워크플로우 및 작성 원칙을 요약한 인포그래픽입니다."
+      }
+    ]
+  },
+  "gemini-gems-roadshow": {
+    "id": "gemini-gems-roadshow",
+    "kicker": "NotebookLM Slide Deck",
+    "title": "Gemini 확장 기능: Deep Research와 Gems",
+    "subtitle": "멀티턴 분석에서 맞춤형 AI 비서 만들기로 넘어가는 후반부 슬라이드",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/Gemini-Business-Engine.pdf",
+    "downloadFilename": "Gemini-Business-Engine.pdf",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "09 / Extensions",
+        "title": "Deep Research와 Gems로 역할 확장",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-09.png",
+        "imageAlt": "광범위한 리서치를 돕는 Deep Research와 맞춤형 AI 파트너인 Gems 기능을 소개합니다."
+      },
+      {
+        "eyebrow": "10 / Blueprint",
+        "title": "질문에서 문서 분석, Gems 활용까지의 청사진",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-10.png",
+        "imageAlt": "질문 입력에서 시작해 문서 분석과 멀티턴 대화를 거쳐 맞춤형 비서 활용까지 이어지는 실습 전체 과정의 청사진입니다."
+      },
+      {
+        "eyebrow": "11 / Start",
+        "title": "직접 구조화된 프롬프팅을 시작하는 단계",
+        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/slide-11.png",
+        "imageAlt": "구조화된 프롬프팅을 통해 직접 비즈니스 분석을 시작하도록 독려하는 실습 시작 안내 슬라이드입니다."
+      }
+    ]
+  },
+  "gems-create-steps": {
+    "id": "gems-create-steps",
+    "previewColumns": 3,
+    "kicker": "Gemini Practice",
+    "title": "Gems 만들기 3단계",
+    "subtitle": "세 장의 이미지를 클릭하면 확대되어 보이며, 좌우 가장자리나 화살표 키로 넘길 수 있습니다.",
+    "slides": [
+      {
+        "eyebrow": "Step 1 / 탐색",
+        "title": "Gems 메뉴로 이동",
+        "imageSrc": "__BASE__/assets/gems/ch03-clip03/step-1-gems-menu.png",
+        "imageAlt": "Gemini 사이드바에서 Gems 메뉴로 이동하는 화면"
+      },
+      {
+        "eyebrow": "Step 2 / 생성",
+        "title": "새 Gem 만들기",
+        "imageSrc": "__BASE__/assets/gems/ch03-clip03/step-2-new-gem.png",
+        "imageAlt": "새 Gem을 만드는 설정 화면"
+      },
+      {
+        "eyebrow": "Step 3 / 검증",
+        "title": "인스트럭션 붙여넣기와 테스트",
+        "imageSrc": "__BASE__/assets/gems/ch03-clip03/step-3-system-instruction.png",
+        "imageAlt": "시스템 인스트럭션을 붙여넣고 저장하는 화면"
+      }
+    ]
+  },
+  "ciqo-executive-briefing": {
+    "id": "ciqo-executive-briefing",
+    "kicker": "NotebookLM Slide Deck",
+    "title": "Global Talent and Luxury Strategy",
+    "subtitle": "CIQO 기반 교차 분석을 LG 스타일로 재구성한 7장 브리핑",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing.pdf",
+    "downloadFilename": "ciqo-lg-executive-briefing.pdf",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Cover",
+        "title": "경영진 브리핑의 시작점",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing/slide-1.png",
+        "imageAlt": "LG 스타일 경영진 브리핑 표지 슬라이드"
+      },
+      {
+        "eyebrow": "02 / Context",
+        "title": "노동과 소비 지형을 동시에 읽는 문제 정의",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing/slide-2.png",
+        "imageAlt": "업로드한 보고서들의 문제 정의와 핵심 배경을 설명하는 슬라이드"
+      },
+      {
+        "eyebrow": "03 / Signals",
+        "title": "WEF와 Deloitte가 교차로 보여주는 변화 신호",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing/slide-3.png",
+        "imageAlt": "WEF와 Deloitte 소스의 핵심 신호를 교차 분석한 슬라이드"
+      },
+      {
+        "eyebrow": "04 / CIQO",
+        "title": "좋은 컨텍스트가 브리핑 품질을 끌어올리는 구조",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing/slide-4.png",
+        "imageAlt": "CIQO 관점에서 문서 기반 리서치 품질을 설명하는 슬라이드"
+      },
+      {
+        "eyebrow": "05 / LG Lens",
+        "title": "LG 관점에서 다시 읽은 시사점",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing/slide-5.png",
+        "imageAlt": "LG 경영진 관점으로 재해석한 전략 시사점 슬라이드"
+      },
+      {
+        "eyebrow": "06 / Action",
+        "title": "경영진 액션 아이템",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing/slide-6.png",
+        "imageAlt": "다음 실행 항목과 우선순위를 요약한 슬라이드"
+      },
+      {
+        "eyebrow": "07 / So What",
+        "title": "So What과 다음 액션",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing/slide-7.png",
+        "imageAlt": "최종 요약과 다음 액션을 정리한 마무리 슬라이드"
+      }
+    ]
+  },
+  "enterprise-research-workflow": {
+    "id": "enterprise-research-workflow",
+    "previewStyle": "immersive",
+    "kicker": "NotebookLM Infographic",
+    "title": "AI 기반 기업 분석 워크플로",
+    "subtitle": "Gems에서 NotebookLM과 슬라이드 산출물까지 잇는 실습 흐름도",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch03-notebooklm/enterprise-research-workflow.png",
+    "downloadFilename": "enterprise-research-workflow.png",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Workflow",
+        "title": "기업 분석 코스를 한 장에 정리한 인포그래픽",
+        "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/enterprise-research-workflow.png",
+        "imageAlt": "Gems로 자료 수집 기준을 만들고 NotebookLM으로 다중 소스를 분석한 뒤 슬라이드와 인포그래픽을 만드는 기업 분석 실습 워크플로 인포그래픽"
+      }
+    ]
+  },
+  "ai-studio-api-principles": {
+    "id": "ai-studio-api-principles",
+    "kicker": "NotebookLM Slide Deck",
+    "title": "AI API Essentials",
+    "subtitle": "AI Studio Build 앱, API key, quota, billing 원리를 설명하는 6장 브리핑",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/ai-api-essentials.pdf",
+    "downloadFilename": "ai-api-essentials.pdf",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Architecture",
+        "title": "AI Studio와 API의 연결 구조",
+        "imageSrc": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/slide-1.jpg",
+        "imageAlt": "AI Studio와 API가 사용자 인터페이스를 원격 구글 제미나이 모델과 연결하는 구조를 설명하는 슬라이드"
+      },
+      {
+        "eyebrow": "02 / Runtime Flow",
+        "title": "사용자 입력에서 응답 반환까지의 흐름",
+        "imageSrc": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/slide-2.jpg",
+        "imageAlt": "사용자 입력부터 구글 인프라의 모델 추론 및 결과 반환까지의 API 기반 앱 작동 흐름을 보여주는 슬라이드"
+      },
+      {
+        "eyebrow": "03 / API Key",
+        "title": "API key의 역할과 보관 원칙",
+        "imageSrc": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/slide-3.jpg",
+        "imageAlt": "원격 모델 접속을 위한 디지털 출입증인 API key의 주요 역할과 보관 방법을 설명하는 슬라이드"
+      },
+      {
+        "eyebrow": "04 / Cost & Quota",
+        "title": "왜 비용과 quota가 생기는가",
+        "imageSrc": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/slide-4.jpg",
+        "imageAlt": "LLM 서비스 이용 시 토큰 처리와 추론 연산 등 자원 소모가 비용과 쿼터 제한을 발생시킴을 설명하는 슬라이드"
+      },
+      {
+        "eyebrow": "05 / Setup Checklist",
+        "title": "배포 전 확인해야 할 설정",
+        "imageSrc": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/slide-5.jpg",
+        "imageAlt": "앱 배포 전 설정해야 할 모델 선택, API key 인증, 데이터 보안, 사용량 통제 등 필수 요소를 안내하는 슬라이드"
+      },
+      {
+        "eyebrow": "06 / Operating Principle",
+        "title": "로컬 앱도 결국 클라우드 호출입니다",
+        "imageSrc": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/slide-6.jpg",
+        "imageAlt": "로컬 앱의 클라우드 의존성, API key의 필요성, 자원 소모에 따른 비용 관리의 중요성을 강조하는 슬라이드"
+      }
+    ]
+  },
+  "vibe-coding-shift": {
+    "id": "vibe-coding-shift",
+    "previewStyle": "immersive",
+    "kicker": "NotebookLM Infographic",
+    "title": "바이브 코딩과 개발 패러다임 전환",
+    "subtitle": "리더가 목표를 정의하고 AI가 초안을 만들며 대화로 완성도를 끌어올리는 흐름을 설명하는 인포그래픽",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch05-vibe-coding/vibe-coding-shift-infographic.png",
+    "downloadFilename": "vibe-coding-shift-infographic.png",
+    "downloadLabel": "다운로드",
+    "slides": [
+      {
+        "eyebrow": "01 / Infographic",
+        "title": "아이디어에서 앱까지, 대화형 개발 루프",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-vibe-coding/vibe-coding-shift-infographic.png",
+        "imageAlt": "바이브 코딩이 기존 개발과 어떻게 다른지, 사람과 AI의 역할 분담, 반복 피드백 루프를 설명하는 NotebookLM 인포그래픽"
+      }
+    ]
+  },
+  "executive-app-build-sprint": {
+    "id": "executive-app-build-sprint",
+    "kicker": "NotebookLM Slide Deck",
+    "title": "임원용 경쟁사 리서치 대시보드 구축 실습",
+    "subtitle": "Gems로 초안 프롬프트를 만들고 AI Studio Build에서 경쟁사 리서치 대시보드를 생성·고도화·브랜딩·확장하는 흐름을 정리한 7장 deck",
+    "downloadUrl": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/executive-ai-dashboard-sprint.pdf",
+    "downloadFilename": "executive-ai-dashboard-sprint.pdf",
+    "downloadLabel": "다운로드",
+    "previewColumns": 3,
+    "previewSlides": [
+      {
+        "slideIndex": 1,
+        "pageLabel": "1",
+        "eyebrow": "Step 0 / Gems",
+        "title": "Gems로 Build용 초안 프롬프트 만들기"
+      },
+      {
+        "slideIndex": 2,
+        "pageLabel": "2",
+        "eyebrow": "Step 1 / Build",
+        "title": "리서치 대시보드 초안 생성"
+      },
+      {
+        "slideIndex": 3,
+        "pageLabel": "3",
+        "eyebrow": "Step 2 / Refinement",
+        "title": "리서치 카드와 분석 흐름 고도화"
+      },
+      {
+        "slideIndex": 4,
+        "pageLabel": "4",
+        "eyebrow": "Step 3 / Style",
+        "title": "LG 스타일과 웹 스타일 요청 적용"
+      },
+      {
+        "slideIndex": 5,
+        "pageLabel": "5",
+        "eyebrow": "Step 4 / API",
+        "title": "외부 API로 데이터 소스 확장"
+      },
+      {
+        "slideIndex": 6,
+        "pageLabel": "6",
+        "eyebrow": "Step 5 / Share",
+        "title": "공유 링크와 발표 준비 마무리"
+      }
+    ],
+    "slides": [
+      {
+        "eyebrow": "00 / Workshop",
+        "title": "임원용 경쟁사 리서치 대시보드 구축 실습",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-1.jpg",
+        "imageAlt": "임원용 경쟁사 리서치 대시보드 구축 실습의 주제를 소개하는 NotebookLM 표지 슬라이드"
+      },
+      {
+        "eyebrow": "01 / Gems",
+        "title": "Gems로 Build용 초안 프롬프트 만들기",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-2.jpg",
+        "imageAlt": "Gems를 활용해 실습용 Build 초안 프롬프트를 만드는 흐름을 설명하는 NotebookLM 슬라이드"
+      },
+      {
+        "eyebrow": "02 / Build",
+        "title": "리서치 대시보드 초안 생성",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-3.jpg",
+        "imageAlt": "경쟁사 리서치 대시보드의 첫 React 초안을 생성하는 과정을 정리한 슬라이드"
+      },
+      {
+        "eyebrow": "03 / Refinement",
+        "title": "리서치 카드와 분석 흐름 고도화",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-4.jpg",
+        "imageAlt": "검색 결과 카드와 분석 흐름을 refinement하는 프롬프트 과정을 설명하는 슬라이드"
+      },
+      {
+        "eyebrow": "04 / Style",
+        "title": "LG 스타일과 웹 스타일 요청 적용",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-5.jpg",
+        "imageAlt": "LG 스타일과 웹 스타일 프롬프트를 적용해 화면 위계를 정리하는 슬라이드"
+      },
+      {
+        "eyebrow": "05 / API",
+        "title": "외부 API로 데이터 소스 확장",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-6.jpg",
+        "imageAlt": "Firecrawl 같은 외부 API를 붙여 데이터 수집 범위를 넓히는 실습 확장 흐름을 보여주는 슬라이드"
+      },
+      {
+        "eyebrow": "06 / Share",
+        "title": "공유 링크와 발표 준비 마무리",
+        "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-7.jpg",
+        "imageAlt": "완성한 앱을 공유하고 발표 가능한 상태로 마무리하는 과정을 정리한 슬라이드"
+      }
+    ]
+  },
+  "web-style-prompt-library": {
+    "id": "web-style-prompt-library",
+    "kicker": "Prompt Deck",
+    "title": "웹 스타일 Prompt Library",
+    "subtitle": "Gemini / ChatGPT에 바로 붙여 넣을 수 있는 스타일별 full prompt 예제",
+    "downloadUrl": "",
+    "slides": [
+      {
+        "eyebrow": "01 / Minimal Grid",
+        "title": "Minimal Grid",
+        "summary": "임원용 경쟁사 대시보드에 바로 적용할 수 있는 Minimal × Grid prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "minimal",
+        "themeGrammar": "grid",
+        "stylePreview": {
+          "toneLabel": "Minimal",
+          "grammarLabel": "Grid",
+          "useCase": "임원용 경쟁사 대시보드",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Minimal — 절제된 무채색, 얇은 선, 조용한 업무용 화면",
+          "Layout grammar: Grid — 숫자와 비교표가 많은 보고서형 화면",
+          "Visual cues: 흰 배경, 얇은 규칙선, 정렬된 KPI와 표",
+          "Avoid: 장식용 일러스트, 과한 그라데이션"
+        ],
+        "signals": [
+          "Minimal",
+          "Grid",
+          "흰 배경",
+          "얇은 규칙선",
+          "정렬된 KPI와 표"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 요청하지 않으면 white / off-white / blue-gray 기반의 절제된 팔레트를 쓰고, 포인트는 1개만 둔다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "임원용 경쟁사 대시보드처럼 화면 목적이 분명할 때",
+              "Grid 문법을 먼저 고르고 톤은 Minimal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Minimal Grid 스타일로 임원용 경쟁사 대시보드 웹 화면을 만들어줘. 흰 배경, 얇은 규칙선, 정렬된 KPI와 표를 먼저 보이게 하고, 장식용 일러스트, 과한 그라데이션는 피해서 정리해줘. 색은 따로 지정하지 않으면 white, off-white, blue gray, muted navy 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 임원용 경쟁사 대시보드.\n\nStyle direction\n- Overall style: Minimal Grid\n- Tone family: Minimal (절제된 무채색, 얇은 선, 조용한 업무용 화면)\n- Layout grammar: Grid (strict aligned grid, table-like sections, even gutters, disciplined spacing)\n- Visual cues to emphasize: 흰 배경, 얇은 규칙선, 정렬된 KPI와 표\n- Avoid: 장식용 일러스트, 과한 그라데이션\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 숫자와 비교표가 많은 보고서형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Minimal palette: white, off-white, blue gray, muted navy.\n- If brand colors are required, keep them constrained so the Minimal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Minimal Grid."
+          }
+        ],
+        "accent": "#35517f",
+        "accentSoft": "rgba(53, 81, 127, 0.18)"
+      },
+      {
+        "eyebrow": "02 / Minimal System",
+        "title": "Minimal System",
+        "summary": "사내 분석 도구와 운영 포털에 바로 적용할 수 있는 Minimal × System prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "minimal",
+        "themeGrammar": "system",
+        "stylePreview": {
+          "toneLabel": "Minimal",
+          "grammarLabel": "System",
+          "useCase": "사내 분석 도구와 운영 포털",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Minimal — 절제된 무채색, 얇은 선, 조용한 업무용 화면",
+          "Layout grammar: System — 사내 포털과 업무 앱에 가까운 도구형 화면",
+          "Visual cues: 모듈 카드, 조용한 내비게이션, 기능 중심 패널",
+          "Avoid: 불필요한 모션, 과도한 브랜드 장식"
+        ],
+        "signals": [
+          "Minimal",
+          "System",
+          "모듈 카드",
+          "조용한 내비게이션",
+          "기능 중심 패널"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 요청하지 않으면 white / off-white / blue-gray 기반의 절제된 팔레트를 쓰고, 포인트는 1개만 둔다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "사내 분석 도구와 운영 포털처럼 화면 목적이 분명할 때",
+              "System 문법을 먼저 고르고 톤은 Minimal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Minimal System 스타일로 사내 분석 도구와 운영 포털 웹 화면을 만들어줘. 모듈 카드, 조용한 내비게이션, 기능 중심 패널를 먼저 보이게 하고, 불필요한 모션, 과도한 브랜드 장식는 피해서 정리해줘. 색은 따로 지정하지 않으면 white, off-white, blue gray, muted navy 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 사내 분석 도구와 운영 포털.\n\nStyle direction\n- Overall style: Minimal System\n- Tone family: Minimal (절제된 무채색, 얇은 선, 조용한 업무용 화면)\n- Layout grammar: System (modular cards, side navigation or utility rail, panels that feel like a real work tool)\n- Visual cues to emphasize: 모듈 카드, 조용한 내비게이션, 기능 중심 패널\n- Avoid: 불필요한 모션, 과도한 브랜드 장식\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 사내 포털과 업무 앱에 가까운 도구형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Minimal palette: white, off-white, blue gray, muted navy.\n- If brand colors are required, keep them constrained so the Minimal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Minimal System."
+          }
+        ],
+        "accent": "#35517f",
+        "accentSoft": "rgba(53, 81, 127, 0.18)"
+      },
+      {
+        "eyebrow": "03 / Minimal Pop",
+        "title": "Minimal Pop",
+        "summary": "핵심 KPI를 빠르게 보여주는 데모 앱에 바로 적용할 수 있는 Minimal × Pop prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "minimal",
+        "themeGrammar": "pop",
+        "stylePreview": {
+          "toneLabel": "Minimal",
+          "grammarLabel": "Pop",
+          "useCase": "핵심 KPI를 빠르게 보여주는 데모 앱",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Minimal — 절제된 무채색, 얇은 선, 조용한 업무용 화면",
+          "Layout grammar: Pop — 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면",
+          "Visual cues: 포인트 CTA 1개, 절제된 배경, 핵심 카드 강조",
+          "Avoid: 색상 남용, 복잡한 장식 패턴"
+        ],
+        "signals": [
+          "Minimal",
+          "Pop",
+          "포인트 CTA 1개",
+          "절제된 배경",
+          "핵심 카드 강조"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 요청하지 않으면 white / off-white / blue-gray 기반의 절제된 팔레트를 쓰고, 포인트는 1개만 둔다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "핵심 KPI를 빠르게 보여주는 데모 앱처럼 화면 목적이 분명할 때",
+              "Pop 문법을 먼저 고르고 톤은 Minimal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Minimal Pop 스타일로 핵심 KPI를 빠르게 보여주는 데모 앱 웹 화면을 만들어줘. 포인트 CTA 1개, 절제된 배경, 핵심 카드 강조를 먼저 보이게 하고, 색상 남용, 복잡한 장식 패턴는 피해서 정리해줘. 색은 따로 지정하지 않으면 white, off-white, blue gray, muted navy 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 핵심 KPI를 빠르게 보여주는 데모 앱.\n\nStyle direction\n- Overall style: Minimal Pop\n- Tone family: Minimal (절제된 무채색, 얇은 선, 조용한 업무용 화면)\n- Layout grammar: Pop (high-emphasis hero, CTA-led blocks, obvious focal points, quick demo readability)\n- Visual cues to emphasize: 포인트 CTA 1개, 절제된 배경, 핵심 카드 강조\n- Avoid: 색상 남용, 복잡한 장식 패턴\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Minimal palette: white, off-white, blue gray, muted navy.\n- If brand colors are required, keep them constrained so the Minimal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Minimal Pop."
+          }
+        ],
+        "accent": "#35517f",
+        "accentSoft": "rgba(53, 81, 127, 0.18)"
+      },
+      {
+        "eyebrow": "04 / Minimal Stage",
+        "title": "Minimal Stage",
+        "summary": "발표 첫 화면과 비전 소개용 웹 화면에 바로 적용할 수 있는 Minimal × Stage prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "minimal",
+        "themeGrammar": "stage",
+        "stylePreview": {
+          "toneLabel": "Minimal",
+          "grammarLabel": "Stage",
+          "useCase": "발표 첫 화면과 비전 소개용 웹 화면",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Minimal — 절제된 무채색, 얇은 선, 조용한 업무용 화면",
+          "Layout grammar: Stage — 메시지와 장면 연출이 먼저 읽히는 발표형 화면",
+          "Visual cues: 큰 타이포, 넓은 여백, 담백한 히어로",
+          "Avoid: 과장된 3D 그래픽, 잡다한 보조 정보"
+        ],
+        "signals": [
+          "Minimal",
+          "Stage",
+          "큰 타이포",
+          "넓은 여백",
+          "담백한 히어로"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 요청하지 않으면 white / off-white / blue-gray 기반의 절제된 팔레트를 쓰고, 포인트는 1개만 둔다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "발표 첫 화면과 비전 소개용 웹 화면처럼 화면 목적이 분명할 때",
+              "Stage 문법을 먼저 고르고 톤은 Minimal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Minimal Stage 스타일로 발표 첫 화면과 비전 소개용 웹 화면 웹 화면을 만들어줘. 큰 타이포, 넓은 여백, 담백한 히어로를 먼저 보이게 하고, 과장된 3D 그래픽, 잡다한 보조 정보는 피해서 정리해줘. 색은 따로 지정하지 않으면 white, off-white, blue gray, muted navy 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 발표 첫 화면과 비전 소개용 웹 화면.\n\nStyle direction\n- Overall style: Minimal Stage\n- Tone family: Minimal (절제된 무채색, 얇은 선, 조용한 업무용 화면)\n- Layout grammar: Stage (large editorial type, scene-like composition, dramatic section breaks, presentation-first hierarchy)\n- Visual cues to emphasize: 큰 타이포, 넓은 여백, 담백한 히어로\n- Avoid: 과장된 3D 그래픽, 잡다한 보조 정보\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 메시지와 장면 연출이 먼저 읽히는 발표형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Minimal palette: white, off-white, blue gray, muted navy.\n- If brand colors are required, keep them constrained so the Minimal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Minimal Stage."
+          }
+        ],
+        "accent": "#35517f",
+        "accentSoft": "rgba(53, 81, 127, 0.18)"
+      },
+      {
+        "eyebrow": "05 / Scandinavian Grid",
+        "title": "Scandinavian Grid",
+        "summary": "따뜻한 톤의 리서치 보드에 바로 적용할 수 있는 Scandinavian × Grid prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "scandinavian",
+        "themeGrammar": "grid",
+        "stylePreview": {
+          "toneLabel": "Scandinavian",
+          "grammarLabel": "Grid",
+          "useCase": "따뜻한 톤의 리서치 보드",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Scandinavian — 웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감",
+          "Layout grammar: Grid — 숫자와 비교표가 많은 보고서형 화면",
+          "Visual cues: 웜 뉴트럴, 소프트 룰, 리포트 감성",
+          "Avoid: 차가운 네온톤, 딱딱한 금속 질감"
+        ],
+        "signals": [
+          "Scandinavian",
+          "Grid",
+          "웜 뉴트럴",
+          "소프트 룰",
+          "리포트 감성"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 지정하지 않으면 warm white / sand / muted brown 중심으로 간다. 브랜드 색을 넣더라도 톤은 부드럽게 유지합니다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "따뜻한 톤의 리서치 보드처럼 화면 목적이 분명할 때",
+              "Grid 문법을 먼저 고르고 톤은 Scandinavian로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Scandinavian Grid 스타일로 따뜻한 톤의 리서치 보드 웹 화면을 만들어줘. 웜 뉴트럴, 소프트 룰, 리포트 감성를 먼저 보이게 하고, 차가운 네온톤, 딱딱한 금속 질감는 피해서 정리해줘. 색은 따로 지정하지 않으면 warm white, oatmeal, sand, muted brown 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 따뜻한 톤의 리서치 보드.\n\nStyle direction\n- Overall style: Scandinavian Grid\n- Tone family: Scandinavian (웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감)\n- Layout grammar: Grid (strict aligned grid, table-like sections, even gutters, disciplined spacing)\n- Visual cues to emphasize: 웜 뉴트럴, 소프트 룰, 리포트 감성\n- Avoid: 차가운 네온톤, 딱딱한 금속 질감\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 숫자와 비교표가 많은 보고서형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Scandinavian palette: warm white, oatmeal, sand, muted brown.\n- If brand colors are required, keep them constrained so the Scandinavian mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Scandinavian Grid."
+          }
+        ],
+        "accent": "#b58957",
+        "accentSoft": "rgba(181, 137, 87, 0.22)"
+      },
+      {
+        "eyebrow": "06 / Scandinavian System",
+        "title": "Scandinavian System",
+        "summary": "생활 브랜드 같은 내부 업무 도구에 바로 적용할 수 있는 Scandinavian × System prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "scandinavian",
+        "themeGrammar": "system",
+        "stylePreview": {
+          "toneLabel": "Scandinavian",
+          "grammarLabel": "System",
+          "useCase": "생활 브랜드 같은 내부 업무 도구",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Scandinavian — 웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감",
+          "Layout grammar: System — 사내 포털과 업무 앱에 가까운 도구형 화면",
+          "Visual cues: 부드러운 카드, 자연스러운 간격, 편안한 사용감",
+          "Avoid: 위협적인 대비, 공격적 CTA"
+        ],
+        "signals": [
+          "Scandinavian",
+          "System",
+          "부드러운 카드",
+          "자연스러운 간격",
+          "편안한 사용감"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 지정하지 않으면 warm white / sand / muted brown 중심으로 간다. 브랜드 색을 넣더라도 톤은 부드럽게 유지합니다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "생활 브랜드 같은 내부 업무 도구처럼 화면 목적이 분명할 때",
+              "System 문법을 먼저 고르고 톤은 Scandinavian로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Scandinavian System 스타일로 생활 브랜드 같은 내부 업무 도구 웹 화면을 만들어줘. 부드러운 카드, 자연스러운 간격, 편안한 사용감를 먼저 보이게 하고, 위협적인 대비, 공격적 CTA는 피해서 정리해줘. 색은 따로 지정하지 않으면 warm white, oatmeal, sand, muted brown 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 생활 브랜드 같은 내부 업무 도구.\n\nStyle direction\n- Overall style: Scandinavian System\n- Tone family: Scandinavian (웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감)\n- Layout grammar: System (modular cards, side navigation or utility rail, panels that feel like a real work tool)\n- Visual cues to emphasize: 부드러운 카드, 자연스러운 간격, 편안한 사용감\n- Avoid: 위협적인 대비, 공격적 CTA\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 사내 포털과 업무 앱에 가까운 도구형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Scandinavian palette: warm white, oatmeal, sand, muted brown.\n- If brand colors are required, keep them constrained so the Scandinavian mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Scandinavian System."
+          }
+        ],
+        "accent": "#b58957",
+        "accentSoft": "rgba(181, 137, 87, 0.22)"
+      },
+      {
+        "eyebrow": "07 / Scandinavian Pop",
+        "title": "Scandinavian Pop",
+        "summary": "온화하지만 산뜻한 서비스 소개형 앱에 바로 적용할 수 있는 Scandinavian × Pop prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "scandinavian",
+        "themeGrammar": "pop",
+        "stylePreview": {
+          "toneLabel": "Scandinavian",
+          "grammarLabel": "Pop",
+          "useCase": "온화하지만 산뜻한 서비스 소개형 앱",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Scandinavian — 웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감",
+          "Layout grammar: Pop — 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면",
+          "Visual cues: 웜 포인트 컬러, 친근한 버튼, 부드러운 대비",
+          "Avoid: 브루탈식 검은 보더, 광고 같은 과장 문구"
+        ],
+        "signals": [
+          "Scandinavian",
+          "Pop",
+          "웜 포인트 컬러",
+          "친근한 버튼",
+          "부드러운 대비"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 지정하지 않으면 warm white / sand / muted brown 중심으로 간다. 브랜드 색을 넣더라도 톤은 부드럽게 유지합니다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "온화하지만 산뜻한 서비스 소개형 앱처럼 화면 목적이 분명할 때",
+              "Pop 문법을 먼저 고르고 톤은 Scandinavian로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Scandinavian Pop 스타일로 온화하지만 산뜻한 서비스 소개형 앱 웹 화면을 만들어줘. 웜 포인트 컬러, 친근한 버튼, 부드러운 대비를 먼저 보이게 하고, 브루탈식 검은 보더, 광고 같은 과장 문구는 피해서 정리해줘. 색은 따로 지정하지 않으면 warm white, oatmeal, sand, muted brown 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 온화하지만 산뜻한 서비스 소개형 앱.\n\nStyle direction\n- Overall style: Scandinavian Pop\n- Tone family: Scandinavian (웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감)\n- Layout grammar: Pop (high-emphasis hero, CTA-led blocks, obvious focal points, quick demo readability)\n- Visual cues to emphasize: 웜 포인트 컬러, 친근한 버튼, 부드러운 대비\n- Avoid: 브루탈식 검은 보더, 광고 같은 과장 문구\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Scandinavian palette: warm white, oatmeal, sand, muted brown.\n- If brand colors are required, keep them constrained so the Scandinavian mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Scandinavian Pop."
+          }
+        ],
+        "accent": "#b58957",
+        "accentSoft": "rgba(181, 137, 87, 0.22)"
+      },
+      {
+        "eyebrow": "08 / Scandinavian Stage",
+        "title": "Scandinavian Stage",
+        "summary": "브랜드 비전과 스토리텔링 발표 화면에 바로 적용할 수 있는 Scandinavian × Stage prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "scandinavian",
+        "themeGrammar": "stage",
+        "stylePreview": {
+          "toneLabel": "Scandinavian",
+          "grammarLabel": "Stage",
+          "useCase": "브랜드 비전과 스토리텔링 발표 화면",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Scandinavian — 웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감",
+          "Layout grammar: Stage — 메시지와 장면 연출이 먼저 읽히는 발표형 화면",
+          "Visual cues: 따뜻한 히어로, 넓은 숨, 차분한 서사",
+          "Avoid: 극단적 명암, 딱딱한 데이터 보드"
+        ],
+        "signals": [
+          "Scandinavian",
+          "Stage",
+          "따뜻한 히어로",
+          "넓은 숨",
+          "차분한 서사"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 지정하지 않으면 warm white / sand / muted brown 중심으로 간다. 브랜드 색을 넣더라도 톤은 부드럽게 유지합니다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "브랜드 비전과 스토리텔링 발표 화면처럼 화면 목적이 분명할 때",
+              "Stage 문법을 먼저 고르고 톤은 Scandinavian로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Scandinavian Stage 스타일로 브랜드 비전과 스토리텔링 발표 화면 웹 화면을 만들어줘. 따뜻한 히어로, 넓은 숨, 차분한 서사를 먼저 보이게 하고, 극단적 명암, 딱딱한 데이터 보드는 피해서 정리해줘. 색은 따로 지정하지 않으면 warm white, oatmeal, sand, muted brown 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 브랜드 비전과 스토리텔링 발표 화면.\n\nStyle direction\n- Overall style: Scandinavian Stage\n- Tone family: Scandinavian (웜 뉴트럴, 부드러운 카드, 생활 브랜드 같은 안정감)\n- Layout grammar: Stage (large editorial type, scene-like composition, dramatic section breaks, presentation-first hierarchy)\n- Visual cues to emphasize: 따뜻한 히어로, 넓은 숨, 차분한 서사\n- Avoid: 극단적 명암, 딱딱한 데이터 보드\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 메시지와 장면 연출이 먼저 읽히는 발표형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Scandinavian palette: warm white, oatmeal, sand, muted brown.\n- If brand colors are required, keep them constrained so the Scandinavian mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Scandinavian Stage."
+          }
+        ],
+        "accent": "#b58957",
+        "accentSoft": "rgba(181, 137, 87, 0.22)"
+      },
+      {
+        "eyebrow": "09 / Neo Brutal Grid",
+        "title": "Neo Brutal Grid",
+        "summary": "교육용 실습 대시보드에 바로 적용할 수 있는 Neo Brutal × Grid prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "brutal",
+        "themeGrammar": "grid",
+        "stylePreview": {
+          "toneLabel": "Neo Brutal",
+          "grammarLabel": "Grid",
+          "useCase": "교육용 실습 대시보드",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Neo Brutal — 두꺼운 보더, 평면 색 블록, 공격적인 대비",
+          "Layout grammar: Grid — 숫자와 비교표가 많은 보고서형 화면",
+          "Visual cues: 두꺼운 경계, 선명한 블록, 데이터 펀치감",
+          "Avoid: 얇은 회색 선, 무난한 회사 템플릿"
+        ],
+        "signals": [
+          "Neo Brutal",
+          "Grid",
+          "두꺼운 경계",
+          "선명한 블록",
+          "데이터 펀치감"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Neo Brutal은 기본적으로 원색 대비를 전제합니다. 색을 따로 말하지 않으면 yellow / cyan / lime / black 계열을 과감하게 쓴다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "교육용 실습 대시보드처럼 화면 목적이 분명할 때",
+              "Grid 문법을 먼저 고르고 톤은 Neo Brutal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Neo Brutal Grid 스타일로 교육용 실습 대시보드 웹 화면을 만들어줘. 두꺼운 경계, 선명한 블록, 데이터 펀치감를 먼저 보이게 하고, 얇은 회색 선, 무난한 회사 템플릿는 피해서 정리해줘. 색은 따로 지정하지 않으면 yellow, cyan, lime, black, hot pink 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 교육용 실습 대시보드.\n\nStyle direction\n- Overall style: Neo Brutal Grid\n- Tone family: Neo Brutal (두꺼운 보더, 평면 색 블록, 공격적인 대비)\n- Layout grammar: Grid (strict aligned grid, table-like sections, even gutters, disciplined spacing)\n- Visual cues to emphasize: 두꺼운 경계, 선명한 블록, 데이터 펀치감\n- Avoid: 얇은 회색 선, 무난한 회사 템플릿\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 숫자와 비교표가 많은 보고서형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Neo Brutal palette: yellow, cyan, lime, black, hot pink.\n- If brand colors are required, keep them constrained so the Neo Brutal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Neo Brutal Grid."
+          }
+        ],
+        "accent": "#111111",
+        "accentSoft": "rgba(255, 87, 179, 0.22)"
+      },
+      {
+        "eyebrow": "10 / Neo Brutal System",
+        "title": "Neo Brutal System",
+        "summary": "데모용 관리 앱과 운영 콘솔에 바로 적용할 수 있는 Neo Brutal × System prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "brutal",
+        "themeGrammar": "system",
+        "stylePreview": {
+          "toneLabel": "Neo Brutal",
+          "grammarLabel": "System",
+          "useCase": "데모용 관리 앱과 운영 콘솔",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Neo Brutal — 두꺼운 보더, 평면 색 블록, 공격적인 대비",
+          "Layout grammar: System — 사내 포털과 업무 앱에 가까운 도구형 화면",
+          "Visual cues: 굵은 유틸리티, 평면 색, 강한 CTA",
+          "Avoid: 잔잔한 뉴트럴, 은은한 그림자 중심 UI"
+        ],
+        "signals": [
+          "Neo Brutal",
+          "System",
+          "굵은 유틸리티",
+          "평면 색",
+          "강한 CTA"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Neo Brutal은 기본적으로 원색 대비를 전제합니다. 색을 따로 말하지 않으면 yellow / cyan / lime / black 계열을 과감하게 쓴다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "데모용 관리 앱과 운영 콘솔처럼 화면 목적이 분명할 때",
+              "System 문법을 먼저 고르고 톤은 Neo Brutal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Neo Brutal System 스타일로 데모용 관리 앱과 운영 콘솔 웹 화면을 만들어줘. 굵은 유틸리티, 평면 색, 강한 CTA를 먼저 보이게 하고, 잔잔한 뉴트럴, 은은한 그림자 중심 UI는 피해서 정리해줘. 색은 따로 지정하지 않으면 yellow, cyan, lime, black, hot pink 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 데모용 관리 앱과 운영 콘솔.\n\nStyle direction\n- Overall style: Neo Brutal System\n- Tone family: Neo Brutal (두꺼운 보더, 평면 색 블록, 공격적인 대비)\n- Layout grammar: System (modular cards, side navigation or utility rail, panels that feel like a real work tool)\n- Visual cues to emphasize: 굵은 유틸리티, 평면 색, 강한 CTA\n- Avoid: 잔잔한 뉴트럴, 은은한 그림자 중심 UI\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 사내 포털과 업무 앱에 가까운 도구형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Neo Brutal palette: yellow, cyan, lime, black, hot pink.\n- If brand colors are required, keep them constrained so the Neo Brutal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Neo Brutal System."
+          }
+        ],
+        "accent": "#111111",
+        "accentSoft": "rgba(255, 87, 179, 0.22)"
+      },
+      {
+        "eyebrow": "11 / Neo Brutal Pop",
+        "title": "Neo Brutal Pop",
+        "summary": "짧고 강한 메시지의 이벤트형 앱에 바로 적용할 수 있는 Neo Brutal × Pop prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "brutal",
+        "themeGrammar": "pop",
+        "stylePreview": {
+          "toneLabel": "Neo Brutal",
+          "grammarLabel": "Pop",
+          "useCase": "짧고 강한 메시지의 이벤트형 앱",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Neo Brutal — 두꺼운 보더, 평면 색 블록, 공격적인 대비",
+          "Layout grammar: Pop — 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면",
+          "Visual cues: 검은 보더, 강한 대비, 직설적 CTA",
+          "Avoid: 얌전한 톤다운, 세밀한 장식"
+        ],
+        "signals": [
+          "Neo Brutal",
+          "Pop",
+          "검은 보더",
+          "강한 대비",
+          "직설적 CTA"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Neo Brutal은 기본적으로 원색 대비를 전제합니다. 색을 따로 말하지 않으면 yellow / cyan / lime / black 계열을 과감하게 쓴다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "짧고 강한 메시지의 이벤트형 앱처럼 화면 목적이 분명할 때",
+              "Pop 문법을 먼저 고르고 톤은 Neo Brutal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Neo Brutal Pop 스타일로 짧고 강한 메시지의 이벤트형 앱 웹 화면을 만들어줘. 검은 보더, 강한 대비, 직설적 CTA를 먼저 보이게 하고, 얌전한 톤다운, 세밀한 장식는 피해서 정리해줘. 색은 따로 지정하지 않으면 yellow, cyan, lime, black, hot pink 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 짧고 강한 메시지의 이벤트형 앱.\n\nStyle direction\n- Overall style: Neo Brutal Pop\n- Tone family: Neo Brutal (두꺼운 보더, 평면 색 블록, 공격적인 대비)\n- Layout grammar: Pop (high-emphasis hero, CTA-led blocks, obvious focal points, quick demo readability)\n- Visual cues to emphasize: 검은 보더, 강한 대비, 직설적 CTA\n- Avoid: 얌전한 톤다운, 세밀한 장식\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Neo Brutal palette: yellow, cyan, lime, black, hot pink.\n- If brand colors are required, keep them constrained so the Neo Brutal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Neo Brutal Pop."
+          }
+        ],
+        "accent": "#111111",
+        "accentSoft": "rgba(255, 87, 179, 0.22)"
+      },
+      {
+        "eyebrow": "12 / Neo Brutal Stage",
+        "title": "Neo Brutal Stage",
+        "summary": "런칭형 히어로와 충격적인 첫 화면에 바로 적용할 수 있는 Neo Brutal × Stage prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "brutal",
+        "themeGrammar": "stage",
+        "stylePreview": {
+          "toneLabel": "Neo Brutal",
+          "grammarLabel": "Stage",
+          "useCase": "런칭형 히어로와 충격적인 첫 화면",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Neo Brutal — 두꺼운 보더, 평면 색 블록, 공격적인 대비",
+          "Layout grammar: Stage — 메시지와 장면 연출이 먼저 읽히는 발표형 화면",
+          "Visual cues: 대문짝 타이포, 굵은 프레임, 무대감",
+          "Avoid: 잔잔한 정보 위계, 작은 본문 위주 구성"
+        ],
+        "signals": [
+          "Neo Brutal",
+          "Stage",
+          "대문짝 타이포",
+          "굵은 프레임",
+          "무대감"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Neo Brutal은 기본적으로 원색 대비를 전제합니다. 색을 따로 말하지 않으면 yellow / cyan / lime / black 계열을 과감하게 쓴다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "런칭형 히어로와 충격적인 첫 화면처럼 화면 목적이 분명할 때",
+              "Stage 문법을 먼저 고르고 톤은 Neo Brutal로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Neo Brutal Stage 스타일로 런칭형 히어로와 충격적인 첫 화면 웹 화면을 만들어줘. 대문짝 타이포, 굵은 프레임, 무대감를 먼저 보이게 하고, 잔잔한 정보 위계, 작은 본문 위주 구성는 피해서 정리해줘. 색은 따로 지정하지 않으면 yellow, cyan, lime, black, hot pink 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 런칭형 히어로와 충격적인 첫 화면.\n\nStyle direction\n- Overall style: Neo Brutal Stage\n- Tone family: Neo Brutal (두꺼운 보더, 평면 색 블록, 공격적인 대비)\n- Layout grammar: Stage (large editorial type, scene-like composition, dramatic section breaks, presentation-first hierarchy)\n- Visual cues to emphasize: 대문짝 타이포, 굵은 프레임, 무대감\n- Avoid: 잔잔한 정보 위계, 작은 본문 위주 구성\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 메시지와 장면 연출이 먼저 읽히는 발표형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Neo Brutal palette: yellow, cyan, lime, black, hot pink.\n- If brand colors are required, keep them constrained so the Neo Brutal mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Neo Brutal Stage."
+          }
+        ],
+        "accent": "#111111",
+        "accentSoft": "rgba(255, 87, 179, 0.22)"
+      },
+      {
+        "eyebrow": "13 / Poster Grid",
+        "title": "Poster Grid",
+        "summary": "시연용 브리핑 보드에 바로 적용할 수 있는 Poster × Grid prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "poster",
+        "themeGrammar": "grid",
+        "stylePreview": {
+          "toneLabel": "Poster",
+          "grammarLabel": "Grid",
+          "useCase": "시연용 브리핑 보드",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Poster — 다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출",
+          "Layout grammar: Grid — 숫자와 비교표가 많은 보고서형 화면",
+          "Visual cues: 큰 대비, 구조화된 정보 보드, 포스터형 제목",
+          "Avoid: 밋밋한 중간톤, 평범한 SaaS 카드"
+        ],
+        "signals": [
+          "Poster",
+          "Grid",
+          "큰 대비",
+          "구조화된 정보 보드",
+          "포스터형 제목"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Poster 계열은 다크 배경과 강한 명암이 기본입니다. 색을 별도 요청하지 않으면 black / charcoal / white 중심에 포인트 1개만 얹는다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "시연용 브리핑 보드처럼 화면 목적이 분명할 때",
+              "Grid 문법을 먼저 고르고 톤은 Poster로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Poster Grid 스타일로 시연용 브리핑 보드 웹 화면을 만들어줘. 큰 대비, 구조화된 정보 보드, 포스터형 제목를 먼저 보이게 하고, 밋밋한 중간톤, 평범한 SaaS 카드는 피해서 정리해줘. 색은 따로 지정하지 않으면 black, charcoal, white, one bold accent 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 시연용 브리핑 보드.\n\nStyle direction\n- Overall style: Poster Grid\n- Tone family: Poster (다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출)\n- Layout grammar: Grid (strict aligned grid, table-like sections, even gutters, disciplined spacing)\n- Visual cues to emphasize: 큰 대비, 구조화된 정보 보드, 포스터형 제목\n- Avoid: 밋밋한 중간톤, 평범한 SaaS 카드\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 숫자와 비교표가 많은 보고서형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Poster palette: black, charcoal, white, one bold accent.\n- If brand colors are required, keep them constrained so the Poster mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Poster Grid."
+          }
+        ],
+        "accent": "#f2f2f2",
+        "accentSoft": "rgba(255, 255, 255, 0.16)"
+      },
+      {
+        "eyebrow": "14 / Poster System",
+        "title": "Poster System",
+        "summary": "기능과 메시지를 함께 밀어야 하는 에디토리얼 앱에 바로 적용할 수 있는 Poster × System prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "poster",
+        "themeGrammar": "system",
+        "stylePreview": {
+          "toneLabel": "Poster",
+          "grammarLabel": "System",
+          "useCase": "기능과 메시지를 함께 밀어야 하는 에디토리얼 앱",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Poster — 다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출",
+          "Layout grammar: System — 사내 포털과 업무 앱에 가까운 도구형 화면",
+          "Visual cues: 에디토리얼 UI, 다크 베이스, 서사형 블록",
+          "Avoid: 흔한 관리도구 느낌, 밝은 저대비 테마"
+        ],
+        "signals": [
+          "Poster",
+          "System",
+          "에디토리얼 UI",
+          "다크 베이스",
+          "서사형 블록"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Poster 계열은 다크 배경과 강한 명암이 기본입니다. 색을 별도 요청하지 않으면 black / charcoal / white 중심에 포인트 1개만 얹는다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "기능과 메시지를 함께 밀어야 하는 에디토리얼 앱처럼 화면 목적이 분명할 때",
+              "System 문법을 먼저 고르고 톤은 Poster로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Poster System 스타일로 기능과 메시지를 함께 밀어야 하는 에디토리얼 앱 웹 화면을 만들어줘. 에디토리얼 UI, 다크 베이스, 서사형 블록를 먼저 보이게 하고, 흔한 관리도구 느낌, 밝은 저대비 테마는 피해서 정리해줘. 색은 따로 지정하지 않으면 black, charcoal, white, one bold accent 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 기능과 메시지를 함께 밀어야 하는 에디토리얼 앱.\n\nStyle direction\n- Overall style: Poster System\n- Tone family: Poster (다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출)\n- Layout grammar: System (modular cards, side navigation or utility rail, panels that feel like a real work tool)\n- Visual cues to emphasize: 에디토리얼 UI, 다크 베이스, 서사형 블록\n- Avoid: 흔한 관리도구 느낌, 밝은 저대비 테마\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 사내 포털과 업무 앱에 가까운 도구형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Poster palette: black, charcoal, white, one bold accent.\n- If brand colors are required, keep them constrained so the Poster mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Poster System."
+          }
+        ],
+        "accent": "#f2f2f2",
+        "accentSoft": "rgba(255, 255, 255, 0.16)"
+      },
+      {
+        "eyebrow": "15 / Poster Pop",
+        "title": "Poster Pop",
+        "summary": "제품 데모와 이벤트용 마이크로 앱에 바로 적용할 수 있는 Poster × Pop prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "poster",
+        "themeGrammar": "pop",
+        "stylePreview": {
+          "toneLabel": "Poster",
+          "grammarLabel": "Pop",
+          "useCase": "제품 데모와 이벤트용 마이크로 앱",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Poster — 다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출",
+          "Layout grammar: Pop — 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면",
+          "Visual cues: 광고형 문구, 강한 포인트 색, 빠른 임팩트",
+          "Avoid: 설명 위주 장문, 조용한 화면 전개"
+        ],
+        "signals": [
+          "Poster",
+          "Pop",
+          "광고형 문구",
+          "강한 포인트 색",
+          "빠른 임팩트"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Poster 계열은 다크 배경과 강한 명암이 기본입니다. 색을 별도 요청하지 않으면 black / charcoal / white 중심에 포인트 1개만 얹는다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "제품 데모와 이벤트용 마이크로 앱처럼 화면 목적이 분명할 때",
+              "Pop 문법을 먼저 고르고 톤은 Poster로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Poster Pop 스타일로 제품 데모와 이벤트용 마이크로 앱 웹 화면을 만들어줘. 광고형 문구, 강한 포인트 색, 빠른 임팩트를 먼저 보이게 하고, 설명 위주 장문, 조용한 화면 전개는 피해서 정리해줘. 색은 따로 지정하지 않으면 black, charcoal, white, one bold accent 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 제품 데모와 이벤트용 마이크로 앱.\n\nStyle direction\n- Overall style: Poster Pop\n- Tone family: Poster (다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출)\n- Layout grammar: Pop (high-emphasis hero, CTA-led blocks, obvious focal points, quick demo readability)\n- Visual cues to emphasize: 광고형 문구, 강한 포인트 색, 빠른 임팩트\n- Avoid: 설명 위주 장문, 조용한 화면 전개\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 데모, 프로토타입, 이벤트형 앱에 강한 강조형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Poster palette: black, charcoal, white, one bold accent.\n- If brand colors are required, keep them constrained so the Poster mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Poster Pop."
+          }
+        ],
+        "accent": "#f2f2f2",
+        "accentSoft": "rgba(255, 255, 255, 0.16)"
+      },
+      {
+        "eyebrow": "16 / Poster Stage",
+        "title": "Poster Stage",
+        "summary": "런칭형 마이크로사이트와 강한 시연 화면에 바로 적용할 수 있는 Poster × Stage prompt. 카드에서 보이는 프리뷰 구성을 실제 화면 프롬프트로 풀어쓴 버전입니다.",
+        "themeTone": "poster",
+        "themeGrammar": "stage",
+        "stylePreview": {
+          "toneLabel": "Poster",
+          "grammarLabel": "Stage",
+          "useCase": "런칭형 마이크로사이트와 강한 시연 화면",
+          "logoSrc": "",
+          "logoAlt": ""
+        },
+        "bullets": [
+          "Tone family: Poster — 다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출",
+          "Layout grammar: Stage — 메시지와 장면 연출이 먼저 읽히는 발표형 화면",
+          "Visual cues: 대형 타이포, 강한 블록, 몰입형 장면",
+          "Avoid: 잔잔한 비즈니스 카드, 얇은 보고서형 배치"
+        ],
+        "signals": [
+          "Poster",
+          "Stage",
+          "대형 타이포",
+          "강한 블록",
+          "몰입형 장면"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "Poster 계열은 다크 배경과 강한 명암이 기본입니다. 색을 별도 요청하지 않으면 black / charcoal / white 중심에 포인트 1개만 얹는다.",
+              "브랜드 컬러를 강하게 써야 할 때만 추가로 색을 지정하고, 그렇지 않으면 톤 패밀리 기본 팔레트를 믿는 편이 안정적입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "런칭형 마이크로사이트와 강한 시연 화면처럼 화면 목적이 분명할 때",
+              "Stage 문법을 먼저 고르고 톤은 Poster로 확정하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "Poster Stage 스타일로 런칭형 마이크로사이트와 강한 시연 화면 웹 화면을 만들어줘. 대형 타이포, 강한 블록, 몰입형 장면를 먼저 보이게 하고, 잔잔한 비즈니스 카드, 얇은 보고서형 배치는 피해서 정리해줘. 색은 따로 지정하지 않으면 black, charcoal, white, one bold accent 톤으로 잡아줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive web interface for 런칭형 마이크로사이트와 강한 시연 화면.\n\nStyle direction\n- Overall style: Poster Stage\n- Tone family: Poster (다크 바탕, 에디토리얼 타이포, 강한 명암과 장면 연출)\n- Layout grammar: Stage (large editorial type, scene-like composition, dramatic section breaks, presentation-first hierarchy)\n- Visual cues to emphasize: 대형 타이포, 강한 블록, 몰입형 장면\n- Avoid: 잔잔한 비즈니스 카드, 얇은 보고서형 배치\n\nLayout requirements\n- Keep the page usable as a realistic web app, not a poster-only mockup.\n- Use a clear header, one main working area, and support panels that match 메시지와 장면 연출이 먼저 읽히는 발표형 화면.\n- Make the hierarchy obvious within 3 seconds when the screen first loads.\n- Keep copy concise and executive-friendly.\n\nColor guidance\n- If I do not specify brand colors, use the default Poster palette: black, charcoal, white, one bold accent.\n- If brand colors are required, keep them constrained so the Poster mood still survives.\n\nOutput guidance\n- Return a production-minded web UI concept that could be implemented in HTML/CSS/JS or React.\n- Make the interface feel intentional and visually distinctive instead of generic SaaS.\n- The first impression should clearly read as Poster Stage."
+          }
+        ],
+        "accent": "#f2f2f2",
+        "accentSoft": "rgba(255, 255, 255, 0.16)"
+      },
+      {
+        "eyebrow": "17 / LG Style",
+        "title": "LG Style",
+        "summary": "LG 로고와 브랜드 톤을 참고해, 임원용 브리핑 화면과 사내 포털에 바로 쓸 수 있는 브랜드 프롬프트로 정리한 버전입니다.",
+        "themeTone": "lg",
+        "themeGrammar": "system",
+        "stylePreview": {
+          "toneLabel": "LG Style",
+          "grammarLabel": "System",
+          "useCase": "임원용 AI 브리핑 대시보드와 사내 포털",
+          "logoSrc": "__BASE__/assets/reference/lg-logo.png",
+          "logoAlt": "LG logo reference"
+        },
+        "bullets": [
+          "Tone family: LG Style — 화이트 기반, 회색 중심 타이포, 절제된 LG red 포인트, 엔터프라이즈 기술 브랜드 톤",
+          "Layout grammar: System — 사내 포털과 업무 앱에 가까운 도구형 화면",
+          "Visual cues: LG red accent, gray-led typography, restrained enterprise cards",
+          "Avoid: 네온 글로우, 과한 브루탈 보더"
+        ],
+        "signals": [
+          "LG Style",
+          "System",
+          "LG red",
+          "Enterprise",
+          "White base"
+        ],
+        "infoBlocks": [
+          {
+            "title": "색상 팁",
+            "items": [
+              "색을 따로 요청하지 않으면 white / light gray / charcoal을 기본으로 두고, LG red는 CTA와 핵심 강조 1~2곳에만 제한적으로 쓰는 편이 안정적입니다.",
+              "로고의 빨간색을 화면 전체 배경으로 확장하지 말고, CTA와 핵심 상태 강조에만 쓰는 편이 더 LG답습니다."
+            ]
+          },
+          {
+            "title": "브랜드 해석",
+            "items": [
+              "사내 브리핑과 엔터프라이즈 제품 같은 신뢰감을 먼저 보여주세요.",
+              "회색 중심 타이포, 얇은 선, 넓은 여백, 절제된 카드 구조가 기본입니다."
+            ]
+          },
+          {
+            "title": "언제 쓰나",
+            "items": [
+              "임원용 AI 대시보드, 전략 브리핑, 내부 포털처럼 브랜드 신뢰감이 중요한 화면일 때",
+              "4×4 매트릭스로 구조를 고른 뒤 마지막 브랜드 모드로 마감하고 싶을 때"
+            ]
+          }
+        ],
+        "promptBlocks": [
+          {
+            "label": "바로 써보는 예제 프롬프트",
+            "body": "LG Style로, 임원용 AI 브리핑 대시보드를 만들어줘. 흰 배경과 밝은 회색 베이스를 유지하고, 타이포는 회색 중심으로 정돈하며, LG red는 CTA와 핵심 강조에만 제한적으로 써줘. 카드 간 간격은 넉넉하게 두고, 과한 네온 효과·브루탈 보더·스타트업식 장식은 피해서 엔터프라이즈 기술 브랜드처럼 정리해줘."
+          },
+          {
+            "label": "Gemini / ChatGPT Full Prompt",
+            "body": "Create a polished responsive enterprise web interface for an internal AI briefing dashboard.\n\nBrand interpretation\n- Overall style: LG Style\n- Tone family: LG Style (화이트 기반, 회색 중심 타이포, 절제된 LG red 포인트, 엔터프라이즈 기술 브랜드 톤)\n- Layout grammar: System (modular cards, side navigation or utility rail, panels that feel like a real work tool)\n- Treat the LG logo only as a reference for brand character, not as a giant hero graphic.\n- The interface should feel like a credible internal product used by executives and strategy teams.\n\nVisual direction\n- Use a white or very light gray base with charcoal and gray-led typography.\n- Use LG red (#a50034) only for CTA, progress, status, or one focal accent at a time.\n- Prefer clean cards, generous whitespace, thin borders, and subtle shadows over flashy visual tricks.\n- Visual cues to emphasize: LG red accent, gray-led typography, restrained enterprise cards\n- Avoid: 네온 글로우, 과한 브루탈 보더\n\nLayout requirements\n- Make the structure clearly read as 사내 포털과 업무 앱에 가까운 도구형 화면.\n- Use a clean header, one focused working area, and restrained support panels.\n- Keep copy concise, executive-friendly, and easy to scan in three seconds.\n- Make the page feel like a production-minded React or HTML/CSS/JS app, not a poster-only mockup.\n\nColor guidance\n- If I do not specify colors, default to white, light gray, charcoal, LG red accent.\n- Keep the palette mostly neutral and let LG red appear only as a controlled accent.\n- Do not flood the background with saturated red.\n\nOutput guidance\n- Return a distinctive but restrained enterprise UI concept.\n- The first impression should read as LG-style technology brand, not generic SaaS or startup demo."
+          }
+        ],
+        "accent": "#a50034",
+        "accentSoft": "rgba(165, 0, 52, 0.16)"
+      }
+    ]
+  }
+}
