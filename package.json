@@ -9,6 +9,7 @@
     "build:pages": "node scripts/build-pages.mjs",
     "preview:pages": "node scripts/preview-pages.mjs",
     "regen:clip": "node scripts/regen-clip.js",
-    "lint:content": "node scripts/lint-content.mjs"
+    "lint:content": "node scripts/lint-content.mjs",
+    "smoke:pages": "node scripts/smoke-check.mjs"
   }
 }
