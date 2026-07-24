@@ -59,10 +59,12 @@ function loadCredentials() {
   );
 
   // 강사 비밀코드: 파일이 없으면 생성해 저장 (gitignore *_key_*.txt 패턴에 걸리는 이름 사용)
+  // 형식: "...: 코드" 한 줄 — 콜론 뒤 값을 코드로 쓴다 (임의 문자열 허용)
   let codeFile = findFile(/^AXCAMP_instructor_key.*\.txt$/i);
   let instructorCode = "";
   if (codeFile) {
-    instructorCode = (fs.readFileSync(path.join(ROOT_DIR, codeFile), "utf8").match(/AX-[A-Z2-9]+/) || [])[0] || "";
+    const raw = fs.readFileSync(path.join(ROOT_DIR, codeFile), "utf8");
+    instructorCode = (raw.match(/:\s*(\S+)/) || [])[1] || raw.trim().split(/\s+/).pop() || "";
   }
   if (!instructorCode) {
     const alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // 혼동 문자(I,L,O,0,1) 제외
