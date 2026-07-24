@@ -3116,6 +3116,138 @@ async function handleWrapupCohorts(req, res) {
   const cohorts = await listWrapupCohorts();
   return sendJson(res, 200, { ok: true, current: config.currentCohort, cohorts });
 }
+/* ---- [Wrapup 4단계] 프라이빗 저장소 동기화 + zip 내보내기 ---- */
+const WRAPUP_GIT_REMOTE_PLAIN = normalizeWs(process.env.WRAPUP_GIT_REMOTE) ||
+  "https://github.com/dollmao5/Lets_AX_Wrapup_DATA.git";
+
+async function loadWrapupGitToken() {
+  const envToken = normalizeWs(process.env.WRAPUP_GIT_TOKEN || "");
+  if (envToken) return envToken;
+  try {
+    const files = fsSync
+      .readdirSync(ROOT_DIR)
+      .filter((f) => /^Github_Fine-grained.*\.txt$/i.test(f));
+    for (const file of files) {
+      const raw = await fs.readFile(path.join(ROOT_DIR, file), "utf8");
+      const match = raw.match(/github_pat_[A-Za-z0-9_]+/);
+      if (match) return match[0];
+    }
+  } catch {
+    // ignore
+  }
+  return ""; // 토큰이 없으면 시스템 git 자격증명(자격 증명 관리자)으로 시도
+}
+
+async function wrapupRemoteUrl() {
+  const token = await loadWrapupGitToken();
+  if (!token) return WRAPUP_GIT_REMOTE_PLAIN;
+  return WRAPUP_GIT_REMOTE_PLAIN.replace(/^https:\/\//, `https://x-access-token:${token}@`);
+}
+
+async function wrapupGit(args, options = {}) {
+  return execFileAsync("git", ["-C", WRAPUP_DIR, ...args], {
+    timeout: 120000,
+    env: { ...process.env, GIT_TERMINAL_PROMPT: "0" },
+    ...options
+  });
+}
+
+async function ensureWrapupRepo() {
+  await fs.mkdir(WRAPUP_DIR, { recursive: true });
+  if (!(await pathExists(path.join(WRAPUP_DIR, ".git")))) {
+    await wrapupGit(["init", "-b", "main"]);
+    await wrapupGit(["config", "user.email", "wrapup-sync@local"]);
+    await wrapupGit(["config", "user.name", "AXCAMP Wrapup Sync"]);
+  }
+  const url = await wrapupRemoteUrl();
+  const remotes = await wrapupGit(["remote"]).then((r) => r.stdout.trim().split(/\r?\n/)).catch(() => []);
+  if (remotes.includes("origin")) {
+    await wrapupGit(["remote", "set-url", "origin", url]);
+  } else {
+    await wrapupGit(["remote", "add", "origin", url]);
+  }
+}
+
+function wrapupGitErrorMessage(error) {
+  const raw = String(error?.stderr || error?.message || error);
+  return raw
+    .replace(/https:\/\/[^@\s]+@github\.com/g, "https://***@github.com") // 토큰 마스킹
+    .split(/\r?\n/)
+    .filter(Boolean)
+    .slice(-3)
+    .join(" / ")
+    .slice(0, 300);
+}
+
+async function handleWrapupSync(req, res, urlObj) {
+  const admin = await requireWrapupAdmin(req, res, urlObj);
+  if (!admin) return;
+  const payload = await readRequestJson(req);
+  const direction = normalizeWs(payload.direction).toLowerCase();
+  if (direction !== "push" && direction !== "pull") {
+    return sendJson(res, 400, { ok: false, error: "direction은 push 또는 pull이어야 합니다." });
+  }
+  try {
+    await ensureWrapupRepo();
+    await wrapupGit(["fetch", "origin", "main"]).catch(() => null); // 원격이 비어 있으면 무시
+
+    if (direction === "pull") {
+      const hasRemote = await wrapupGit(["rev-parse", "--verify", "FETCH_HEAD"]).then(() => true).catch(() => false);
+      if (!hasRemote) {
+        return sendJson(res, 200, { ok: true, direction, message: "원격 저장소가 비어 있습니다. 불러올 데이터가 없습니다." });
+      }
+      // 로컬 미커밋 변경을 먼저 보존 커밋
+      await wrapupGit(["add", "-A"]);
+      await wrapupGit(["commit", "-m", `local snapshot before pull ${new Date().toISOString()}`]).catch(() => null);
+      await wrapupGit(["merge", "FETCH_HEAD", "--allow-unrelated-histories", "-X", "theirs", "-m", "wrapup pull merge"]).catch(() => null);
+      // 원격에 있는 파일을 전부 워킹트리에 복원한다 (로컬에서 지워졌던 파일 포함 — 원격 우선)
+      await wrapupGit(["checkout", "FETCH_HEAD", "--", "."]);
+      await wrapupGit(["add", "-A"]);
+      await wrapupGit(["commit", "-m", "wrapup pull restore"]).catch(() => null);
+      const files = await wrapupGit(["ls-files"]).then((r) => r.stdout.trim().split(/\r?\n/).filter(Boolean));
+      return sendJson(res, 200, { ok: true, direction, message: `불러오기 완료 (${files.length}개 파일)`, fileCount: files.length });
+    }
+
+    // push
+    await wrapupGit(["add", "-A"]);
+    const hasChanges = await wrapupGit(["diff", "--cached", "--quiet"]).then(() => false).catch(() => true);
+    if (hasChanges) {
+      await wrapupGit(["commit", "-m", `wrapup sync ${new Date().toISOString()}`]);
+    }
+    const hasRemote = await wrapupGit(["rev-parse", "--verify", "FETCH_HEAD"]).then(() => true).catch(() => false);
+    if (hasRemote) {
+      await wrapupGit(["merge", "FETCH_HEAD", "--allow-unrelated-histories", "-X", "ours", "-m", "wrapup push merge"]).catch(() => null);
+    }
+    await wrapupGit(["push", "-u", "origin", "main"]);
+    return sendJson(res, 200, { ok: true, direction, message: hasChanges ? "저장(백업) 완료 — 변경분을 원격에 올렸습니다." : "변경 사항이 없어 원격 상태만 맞췄습니다." });
+  } catch (error) {
+    return sendJson(res, 500, { ok: false, error: `동기화 실패: ${wrapupGitErrorMessage(error)}` });
+  }
+}
+
+async function handleWrapupExport(req, res, urlObj) {
+  const admin = await requireWrapupAdmin(req, res, urlObj);
+  if (!admin) return;
+  try {
+    await fs.mkdir(WRAPUP_DIR, { recursive: true });
+    const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+    const zipName = `wrapup-backup-${stamp}.zip`;
+    const zipPath = path.join(DATA_DIR, zipName);
+    // PowerShell Compress-Archive로 zip 생성 (.git 폴더 제외)
+    const psCommand = `Get-ChildItem -LiteralPath '${WRAPUP_DIR}' -Exclude '.git' | Compress-Archive -DestinationPath '${zipPath}' -Force`;
+    await execFileAsync("powershell", ["-NoProfile", "-NonInteractive", "-Command", psCommand], { timeout: 120000 });
+    const buffer = await fs.readFile(zipPath);
+    await fs.unlink(zipPath).catch(() => null);
+    res.writeHead(200, {
+      "Content-Type": "application/zip",
+      "Content-Disposition": makeAttachmentHeader(zipName),
+      "Content-Length": buffer.length
+    });
+    return res.end(buffer);
+  } catch (error) {
+    return sendJson(res, 500, { ok: false, error: `내보내기 실패: ${String(error.message || error).slice(0, 200)}` });
+  }
+}
 /* ============ [Wrapup] 끝 ============ */
 
 async function handleNotes(req, res, urlObj) {
@@ -4059,6 +4191,12 @@ async function route(req, res) {
   if (req.method === "GET" && urlObj.pathname === "/api/wrapup/cohorts") {
     return handleWrapupCohorts(req, res);
   }
+  if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/sync") {
+    return handleWrapupSync(req, res, urlObj);
+  }
+  if (req.method === "GET" && urlObj.pathname === "/api/admin/wrapup/export") {
+    return handleWrapupExport(req, res, urlObj);
+  }
 
   if (
     (req.method === "GET" || req.method === "POST") &&
@@ -4159,6 +4297,27 @@ async function start() {
   server.listen(PORT, HOST, () => {
     console.log(`[AX_Literacy] running on http://${HOST}:${PORT}`);
     console.log(`[AX_Literacy] source chapters: ${CHAPTERS_DIR}`);
+    // [Wrapup 4단계] 교육생 접속용 LAN 주소 안내
+    try {
+      const nets = require("os").networkInterfaces();
+      const lan = [];
+      for (const name of Object.keys(nets)) {
+        for (const net of nets[name] || []) {
+          if (net.family === "IPv4" && !net.internal) lan.push(net.address);
+        }
+      }
+      if (lan.length) {
+        console.log("");
+        console.log("================================================");
+        for (const ip of lan) {
+          console.log(`  교육생 접속 주소:  http://${ip}:${PORT}`);
+        }
+        console.log(`  Wrap-up 보드:      http://localhost:${PORT}/wrapup`);
+        console.log("================================================");
+      }
+    } catch {
+      // ignore
+    }
   });
 }
 

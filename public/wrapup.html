@@ -89,6 +89,9 @@
     <span class="admin-box" id="adminBox">
       <button id="genBtn" class="primary">요약 생성</button>
       <button id="cohortBtn">차수 설정</button>
+      <button id="pullBtn">불러오기(pull)</button>
+      <button id="pushBtn">저장·백업(push)</button>
+      <button id="zipBtn">zip 내보내기</button>
     </span>
   </div>
 
@@ -301,6 +304,40 @@
     var d = await api("/api/admin/wrapup/config", { method: "POST", body: { cohort: name } });
     if (d.ok) { toast("차수 변경: " + d.cohort); state.cohort = d.cohort; await refresh(); }
     else toast(d.error || "차수 변경 실패");
+  });
+
+  async function doSync(direction, btn, label) {
+    btn.disabled = true; btn.textContent = label + " 중...";
+    try {
+      var d = await api("/api/admin/wrapup/sync", { method: "POST", body: { direction: direction } });
+      toast(d.ok ? d.message : (d.error || label + " 실패"));
+      if (d.ok && direction === "pull") await refresh();
+    } catch (e) { toast("서버 오류로 " + label + "에 실패했습니다."); }
+    btn.disabled = false; btn.textContent = direction === "pull" ? "불러오기(pull)" : "저장·백업(push)";
+  }
+  $("pullBtn").addEventListener("click", function () {
+    if (!confirm("원격 저장소의 누적 데이터를 불러올까요? (다른 PC에서 저장한 차수들이 합쳐집니다)")) return;
+    doSync("pull", this, "불러오기");
+  });
+  $("pushBtn").addEventListener("click", function () {
+    if (!confirm("현재 데이터를 원격 저장소에 저장(백업)할까요?")) return;
+    doSync("push", this, "저장");
+  });
+  $("zipBtn").addEventListener("click", async function () {
+    var btn = this; btn.disabled = true;
+    try {
+      var r = await fetch("/api/admin/wrapup/export", { headers: { "x-session-token": sessionToken() } });
+      if (!r.ok) { var e = await r.json().catch(function () { return {}; }); toast(e.error || "내보내기 실패"); btn.disabled = false; return; }
+      var blob = await r.blob();
+      var name = (r.headers.get("Content-Disposition") || "").match(/filename="([^"]+)"/);
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = name ? name[1] : "wrapup-backup.zip";
+      a.click();
+      URL.revokeObjectURL(a.href);
+      toast("zip 다운로드 완료");
+    } catch (e) { toast("내보내기에 실패했습니다."); }
+    btn.disabled = false;
   });
 
   detectAdmin();

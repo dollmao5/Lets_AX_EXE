@@ -25,6 +25,7 @@ _backup_chapters_original/
 # [SECURITY 2026-07-23] 내부자료·음성 원본이 저장소에 들어오지 않도록 차단
 internal_only_DO_NOT_PUBLISH/
 # [SECURITY 2026-07-24] 토큰/키 메모 파일 커밋 차단
+AXCAMP_시작.bat
 Github_Fine-grained*
 Google?AI?Studio*
 *access_token*
