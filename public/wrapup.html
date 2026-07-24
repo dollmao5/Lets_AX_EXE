@@ -532,12 +532,12 @@
       toast("강사 로그아웃 완료");
       return;
     }
-    var code = prompt("강사 비밀코드를 입력하세요 (예: AX-XXXXXX)");
+    var code = prompt("강사 또는 관리자 비밀코드를 입력하세요");
     if (!code) return;
     try { localStorage.setItem(INSTRUCTOR_CODE_KEY, code.trim()); } catch (e) {}
     try {
       var v = await api("/api/wrapup/instructor-verify", { method: "POST" });
-      if (v && v.ok) { setInstructorUi(true); toast("강사 인증 완료"); return; }
+      if (v && v.ok) { setInstructorUi(true); toast(v.role === "admin" ? "관리자 인증 완료" : "강사 인증 완료"); return; }
       toast((v && v.error) || "코드가 올바르지 않습니다.");
     } catch (e) { toast("서버에 연결할 수 없습니다."); }
     try { localStorage.removeItem(INSTRUCTOR_CODE_KEY); } catch (e) {}

@@ -81,7 +81,15 @@ function loadCredentials() {
     log(`강사 비밀코드를 새로 생성해 ${codeFile} 파일에 저장했습니다.`);
   }
 
-  return { accountId, cfToken, githubToken, geminiKey, instructorCode };
+  // 관리자 비밀코드: 파일이 있으면 사용 (형식 동일 "...: 코드"), 없으면 미설정으로 둔다
+  let adminCode = "";
+  const adminFile = findFile(/^AXCAMP_admin_key.*\.txt$/i);
+  if (adminFile) {
+    const raw = fs.readFileSync(path.join(ROOT_DIR, adminFile), "utf8");
+    adminCode = (raw.match(/:\s*(\S+)/) || [])[1] || raw.trim().split(/\s+/).pop() || "";
+  }
+
+  return { accountId, cfToken, githubToken, geminiKey, instructorCode, adminCode };
 }
 
 async function cfApi(cred, apiPath, options = {}) {
@@ -120,6 +128,7 @@ async function main() {
     ["GEMINI_API_KEY", cred.geminiKey],
     ["INSTRUCTOR_CODE", cred.instructorCode]
   ];
+  if (cred.adminCode) secrets.push(["ADMIN_CODE", cred.adminCode]);
   for (const [name, text] of secrets) {
     await cfApi(cred, `/workers/scripts/${SCRIPT_NAME}/secrets`, {
       method: "PUT",

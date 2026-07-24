@@ -4893,12 +4893,9 @@ function bindEvents() {
   });
   function openModeLogin(prefillId) {
     if (STATIC_MODE) {
-      // [Wrapup 외부접속] 강사 모드: 공개 사이트에서도 Wrap-up 보드 사용 가능 (보드에서 강사 코드 로그인)
-      if (prefillId === "instructor") {
-        window.open("wrapup.html", "_blank", "noopener");
-        return;
-      }
-      alert("관리자 편집·배포 기능은 강사 PC(교육장 서버)로 접속했을 때 사용할 수 있습니다.\n공개 사이트에서는 학습 열람과 Wrap-up(강사 모드)만 가능합니다.");
+      // [Wrapup 외부접속] 강사·관리자 모드: 공개 사이트에서는 Wrap-up 보드로 연결 (보드에서 코드 로그인)
+      // 본문 편집·Pages 배포는 여전히 강사 PC 전용이며, 보드 관리 기능(차수·코드·요약·삭제)은 여기서 가능
+      window.open("wrapup.html", "_blank", "noopener");
       return;
     }
     showLogin();

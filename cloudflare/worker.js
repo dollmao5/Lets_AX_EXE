@@ -196,12 +196,20 @@ function parseSubmissionFilename(name) {
   return { team: parseInt(m[1], 10), name: m[2].replace(/_/g, " ") };
 }
 
-/* ---------- 강사 인증 ---------- */
+/* ---------- 강사·관리자 인증 (관리자 코드도 동일 권한으로 통과) ---------- */
+
+function authRole(request, env) {
+  const given = normalizeWs(request.headers.get("x-wrapup-instructor") || "");
+  if (!given) return "";
+  const adminCode = normalizeWs(env.ADMIN_CODE || "");
+  if (adminCode && given === adminCode) return "admin";
+  const instructorCode = normalizeWs(env.INSTRUCTOR_CODE || "");
+  if (instructorCode && given === instructorCode) return "instructor";
+  return "";
+}
 
 function isInstructor(request, env) {
-  const given = normalizeWs(request.headers.get("x-wrapup-instructor") || "");
-  const expected = normalizeWs(env.INSTRUCTOR_CODE || "");
-  return Boolean(expected) && given === expected;
+  return Boolean(authRole(request, env));
 }
 
 function requireInstructor(request, env) {
@@ -437,10 +445,11 @@ async function handleSaveSummary(request, env) {
 }
 
 function handleInstructorVerify(request, env) {
-  if (!isInstructor(request, env)) {
-    return json(request, 403, { ok: false, error: "강사 코드가 올바르지 않습니다." });
+  const role = authRole(request, env);
+  if (!role) {
+    return json(request, 403, { ok: false, error: "코드가 올바르지 않습니다." });
   }
-  return json(request, 200, { ok: true, role: "instructor" });
+  return json(request, 200, { ok: true, role });
 }
 
 /* ---------- 엔트리 ---------- */
