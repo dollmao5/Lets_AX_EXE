@@ -89,7 +89,16 @@ function loadCredentials() {
     adminCode = (raw.match(/:\s*(\S+)/) || [])[1] || raw.trim().split(/\s+/).pop() || "";
   }
 
-  return { accountId, cfToken, githubToken, geminiKey, instructorCode, adminCode };
+  // 공개 레포(Lets_AX_EXE) 편집용 PAT: 파일명에 exe가 들어간 Github 토큰 파일에서 읽는다
+  let publicRepoToken = "";
+  const pubFile = fs.readdirSync(ROOT_DIR).find(
+    (f) => /^Github.*exe.*\.txt$/i.test(f)
+  );
+  if (pubFile) {
+    publicRepoToken = (fs.readFileSync(path.join(ROOT_DIR, pubFile), "utf8").match(/github_pat_[A-Za-z0-9_]+/) || [])[0] || "";
+  }
+
+  return { accountId, cfToken, githubToken, geminiKey, instructorCode, adminCode, publicRepoToken };
 }
 
 async function cfApi(cred, apiPath, options = {}) {
@@ -129,6 +138,8 @@ async function main() {
     ["INSTRUCTOR_CODE", cred.instructorCode]
   ];
   if (cred.adminCode) secrets.push(["ADMIN_CODE", cred.adminCode]);
+  if (cred.publicRepoToken) secrets.push(["PUBLIC_REPO_TOKEN", cred.publicRepoToken]);
+  else log("주의: 공개 레포 편집용 PAT 파일(Github*exe*.txt)이 없어 PUBLIC_REPO_TOKEN을 건너뜁니다 — 원격 본문 편집이 비활성 상태가 됩니다.");
   for (const [name, text] of secrets) {
     await cfApi(cred, `/workers/scripts/${SCRIPT_NAME}/secrets`, {
       method: "PUT",

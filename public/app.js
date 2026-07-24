@@ -883,6 +883,119 @@ async function api(path, options = {}) {
   return data;
 }
 
+/* [원격 관리자] 정적 모드 관리자 API — 읽기는 정적 데이터로 합성, 쓰기는 Worker 편집 큐로 전달 */
+function staticAdminCode() {
+  try {
+    return localStorage.getItem("ax_wrapup_instructor_code") || "";
+  } catch {
+    return "";
+  }
+}
+
+async function remoteAdminPost(path, body) {
+  const response = await fetch(`${WRAPUP_REMOTE_API_BASE}${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-wrapup-instructor": staticAdminCode()
+    },
+    body: JSON.stringify(body || {})
+  });
+  let data = {};
+  try {
+    data = await response.json();
+  } catch {
+    data = {};
+  }
+  if (!response.ok) {
+    throw new Error(data.error || `요청 실패 (${response.status})`);
+  }
+  return data;
+}
+
+async function apiStaticAdmin(normalizedPath, method, options, fetchJson) {
+  const lastSegment = decodeURIComponent(normalizedPath.split("/").filter(Boolean).pop() || "");
+
+  if (normalizedPath.startsWith("/api/admin/clip-source/")) {
+    if (method === "GET") {
+      const data = await fetchJson(withBase(`/data/clips/${encodeURIComponent(lastSegment)}.json`));
+      return {
+        ok: true,
+        clip: { clipKey: lastSegment, title: data.clip?.title || "" },
+        source: {
+          contentHtml: String(data.clip?.contentHtml || ""),
+          contentPath: "원격 편집 — 저장 시 자동 커밋·배포 (약 3~4분 후 사이트 반영)"
+        },
+        metadata: {
+          clipTitle: data.clip?.title || "",
+          overview: "",
+          badges: []
+        }
+      };
+    }
+    return remoteAdminPost(normalizedPath, { contentHtml: String(options.body?.contentHtml || "") });
+  }
+
+  if (normalizedPath.startsWith("/api/admin/sidebar-source/")) {
+    if (method === "GET") {
+      // 화면에 보이는 현재 값이 우선 사용되므로 빈 응답이면 충분하다
+      return { ok: true, clip: { clipKey: lastSegment }, sidebar: {}, source: {} };
+    }
+    return remoteAdminPost(normalizedPath, options.body || {});
+  }
+
+  if (normalizedPath.startsWith("/api/admin/clip-assets/")) {
+    if (method === "GET") {
+      return {
+        ok: true,
+        assets: [],
+        upload: { allowedExtensions: ["공개 사이트에서는 업로드 불가 — 강사 PC에서 진행"], maxBytesLabel: "-" }
+      };
+    }
+    throw new Error("자산 업로드는 강사 PC(교육장 서버)에서만 가능합니다.");
+  }
+
+  if (normalizedPath === "/api/admin/publish-status" && method === "GET") {
+    return {
+      ok: true,
+      git: {
+        branch: "main",
+        upstream: "자동 배포",
+        head: null,
+        ahead: 0,
+        behind: 0,
+        publishable: { trackedCount: 0, untrackedCount: 0, trackedFiles: [], untrackedFiles: [] }
+      }
+    };
+  }
+
+  if (normalizedPath === "/api/admin/publish" && method === "POST") {
+    return {
+      ok: true,
+      operations: ["자동 배포"],
+      git: { head: "-", headMessage: "공개 사이트 편집은 저장 즉시 자동 커밋·배포됩니다 (약 3~4분 후 반영)" }
+    };
+  }
+
+  if (normalizedPath.startsWith("/api/admin/users")) {
+    return { ok: true, users: [] };
+  }
+
+  if (normalizedPath.startsWith("/api/admin/wrapup/")) {
+    if (method === "GET") {
+      const response = await fetch(`${WRAPUP_REMOTE_API_BASE}${normalizedPath}`, {
+        headers: { "x-wrapup-instructor": staticAdminCode() }
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || `요청 실패 (${response.status})`);
+      return data;
+    }
+    return remoteAdminPost(normalizedPath, options.body || {});
+  }
+
+  throw new Error("공개 사이트에서 지원되지 않는 관리자 기능입니다.");
+}
+
 async function apiStatic(path, options = {}) {
   const normalizedPath = String(path || "");
   const method = String(options.method || "GET").toUpperCase();
@@ -900,6 +1013,12 @@ async function apiStatic(path, options = {}) {
     }
     return data;
   };
+
+  // [원격 관리자] 공개 사이트 관리자 편집 — 저장은 Worker 경유 편집 큐로 커밋되고
+  // GitHub Actions가 서버 로직으로 적용 후 Pages를 자동 재배포한다 (약 3~4분)
+  if (normalizedPath.startsWith("/api/admin/")) {
+    return apiStaticAdmin(normalizedPath, method, options, fetchJson);
+  }
 
   if (normalizedPath === "/api/health" && method === "GET") {
     return { ok: true, mode: "static" };
@@ -4499,6 +4618,34 @@ async function enterGuestMode() {
   } catch { /* ignore */ }
 }
 
+// [원격 관리자] 정적 사이트에서 관리자 코드 인증 후 편집 UI 활성화
+function enterStaticAdminMode() {
+  state.isAdmin = true;
+  state.user = { ...STATIC_PUBLIC_USER, accountId: "root", displayName: "관리자(원격)" };
+  renderCurrentUser();
+  updateAdminVisibility();
+  alert("관리자 인증 완료.\n본문 수정·사이드바 수정 저장은 자동으로 커밋·배포되며, 약 3~4분 후 공개 사이트에 반영됩니다.");
+}
+
+async function verifyStaticAdminRestore() {
+  if (!staticAdminCode()) return;
+  try {
+    const response = await fetch(`${WRAPUP_REMOTE_API_BASE}/api/wrapup/instructor-verify`, {
+      method: "POST",
+      headers: { "x-wrapup-instructor": staticAdminCode() }
+    });
+    const v = await response.json().catch(() => null);
+    if (v?.ok && v.role === "admin") {
+      state.isAdmin = true;
+      state.user = { ...STATIC_PUBLIC_USER, accountId: "root", displayName: "관리자(원격)" };
+      renderCurrentUser();
+      updateAdminVisibility();
+    }
+  } catch {
+    // 미인증 상태 유지
+  }
+}
+
 async function tryAutoLogin() {
   await loadSlideDeckData();
   if (STATIC_MODE) {
@@ -4512,6 +4659,7 @@ async function tryAutoLogin() {
     applyStaticPublicModeUI();
     showApp();
     await loadChaptersAndDefaultClip();
+    verifyStaticAdminRestore(); // 저장된 관리자 코드가 있으면 조용히 복원
     return;
   }
 
@@ -4889,13 +5037,35 @@ function bindEvents() {
 
   // [Wrapup 1단계] 게스트 ↔ 관리자 로그인 전환
   el.openWrapupBtn?.addEventListener("click", () => {
-    window.open("/wrapup", "_blank", "noopener");
+    window.open(STATIC_MODE ? "wrapup.html" : "/wrapup", "_blank", "noopener");
   });
   function openModeLogin(prefillId) {
     if (STATIC_MODE) {
-      // [Wrapup 외부접속] 강사·관리자 모드: 공개 사이트에서는 Wrap-up 보드로 연결 (보드에서 코드 로그인)
-      // 본문 편집·Pages 배포는 여전히 강사 PC 전용이며, 보드 관리 기능(차수·코드·요약·삭제)은 여기서 가능
-      window.open("wrapup.html", "_blank", "noopener");
+      // [Wrapup 외부접속] 강사 모드 → Wrap-up 보드. [원격 관리자] 관리자 모드 → 코드 인증 후
+      // 본문 편집(저장 시 자동 커밋·배포)과 보드 관리까지 사용 가능
+      if (prefillId === "instructor") {
+        window.open("wrapup.html", "_blank", "noopener");
+        return;
+      }
+      const saved = staticAdminCode();
+      const code = window.prompt("관리자 비밀코드를 입력하세요", saved || "");
+      if (!code) return;
+      fetch(`${WRAPUP_REMOTE_API_BASE}/api/wrapup/instructor-verify`, {
+        method: "POST",
+        headers: { "x-wrapup-instructor": code.trim() }
+      })
+        .then((r) => r.json())
+        .then((v) => {
+          if (!v?.ok || v.role !== "admin") {
+            alert(v?.error || "관리자 코드가 올바르지 않습니다.");
+            return;
+          }
+          try {
+            localStorage.setItem("ax_wrapup_instructor_code", code.trim());
+          } catch {}
+          enterStaticAdminMode();
+        })
+        .catch(() => alert("인증 서버에 연결할 수 없습니다."));
       return;
     }
     showLogin();

@@ -1,0 +1,50 @@
+# [원격 관리자] 공개 사이트 관리자 편집 적용
+# Worker가 .edit-queue/에 편집 요청을 커밋하면 이 워크플로가 server.js 로직으로 적용하고
+# 적용 커밋을 push한 뒤 Pages 배포 워크플로를 직접 호출한다
+# (GITHUB_TOKEN push는 다른 워크플로를 자동 트리거하지 않으므로 명시적 dispatch가 필요).
+name: Apply remote edits
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".edit-queue/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: apply-edits
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Apply edit queue via server logic
+        run: node scripts/apply-edit-queue.mjs
+
+      - name: Push applied changes
+        run: |
+          if git log origin/main..HEAD --oneline | grep -q .; then
+            git push origin main
+            echo "pushed=true" >> "$GITHUB_ENV"
+          else
+            echo "적용 커밋 없음 — push 생략"
+            echo "pushed=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Trigger Pages rebuild
+        if: env.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run "Deploy GitHub Pages" --ref main

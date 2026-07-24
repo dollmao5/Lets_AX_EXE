@@ -444,6 +444,85 @@ async function handleSaveSummary(request, env) {
   return json(request, 200, record);
 }
 
+/* ---------- [원격 관리자] 본문·사이드바 편집 큐 ----------
+   관리자 코드 인증 시 편집 내용을 공개 레포(Lets_AX_EXE)의 .edit-queue/에 커밋한다.
+   → GitHub Actions(apply-edits.yml)가 server.js 로직 그대로 적용(md/txt/metadata 재생성 포함)
+   → 적용 커밋 후 Pages 재배포까지 자동. 시크릿 PUBLIC_REPO_TOKEN 필요 (contents RW). */
+
+const PUBLIC_REPO = "dollmao5/Lets_AX_EXE";
+
+async function publicRepoCommit(env, filePath, obj, message) {
+  const token = normalizeWs(env.PUBLIC_REPO_TOKEN || "");
+  if (!token) {
+    throw new Error("PUBLIC_REPO_TOKEN 시크릿이 없습니다. 공개 레포용 PAT를 발급해 배포 스크립트로 등록해 주세요.");
+  }
+  const res = await fetch(`https://api.github.com/repos/${PUBLIC_REPO}/contents/${ghPath([filePath])}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "User-Agent": "axcamp-wrapup-worker",
+      "X-GitHub-Api-Version": "2022-11-28"
+    },
+    body: JSON.stringify({
+      message,
+      content: b64encodeUtf8(JSON.stringify(obj, null, 2)),
+      branch: "main"
+    })
+  });
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    throw new Error(`편집 큐 저장 실패 (${res.status}) ${detail.slice(0, 120)}`);
+  }
+  return res.json();
+}
+
+async function handleAdminEditQueue(request, env, url) {
+  if (authRole(request, env) !== "admin") {
+    return json(request, 403, { ok: false, error: "관리자 코드 인증이 필요합니다." });
+  }
+  const parts = url.pathname.split("/").filter(Boolean); // api, admin, clip-source|sidebar-source, key
+  const type = parts[2];
+  const clipKey = normalizeWs(decodeURIComponent(parts[3] || "")).toLowerCase();
+  if (!clipKey || !/^[a-z0-9\-_]+$/.test(clipKey)) {
+    return json(request, 400, { ok: false, error: "클립 키가 올바르지 않습니다." });
+  }
+  const payload = await request.json().catch(() => ({}));
+
+  if (type === "clip-source") {
+    const contentHtml = String(payload.contentHtml || "");
+    if (!contentHtml.trim()) {
+      return json(request, 400, { ok: false, error: "contentHtml이 비어 있습니다." });
+    }
+    if (contentHtml.length > 2000000) {
+      return json(request, 400, { ok: false, error: "본문이 너무 큽니다." });
+    }
+  } else if (type === "sidebar-source") {
+    if (!normalizeWs(payload.chapterTitle || "") || !normalizeWs(payload.clipTitle || "")) {
+      return json(request, 400, { ok: false, error: "챕터 제목과 클립 제목이 필요합니다." });
+    }
+  } else {
+    return json(request, 404, { ok: false, error: "알 수 없는 편집 유형입니다." });
+  }
+
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const queuePath = `.edit-queue/${stamp}-${type}-${clipKey}.json`;
+  await publicRepoCommit(
+    env,
+    queuePath,
+    { type, clipKey, payload, requestedAt: new Date().toISOString() },
+    `edit-queue: ${type} ${clipKey}`
+  );
+  return json(request, 200, {
+    ok: true,
+    queued: true,
+    savedAt: new Date().toISOString(),
+    clip: { clipKey },
+    metadata: {},
+    message: "편집이 접수되었습니다. 약 3~4분 후 공개 사이트에 반영됩니다."
+  });
+}
+
 function handleInstructorVerify(request, env) {
   const role = authRole(request, env);
   if (!role) {
@@ -476,6 +555,9 @@ export default {
       if (request.method === "POST" && p === "/api/admin/wrapup/config") return handleAdminConfig(request, env);
       if (request.method === "GET" && p === "/api/admin/wrapup/list") return handleAdminList(request, env, url);
       if (request.method === "POST" && p === "/api/admin/wrapup/delete") return handleAdminDelete(request, env);
+      if (request.method === "POST" && (p.startsWith("/api/admin/clip-source/") || p.startsWith("/api/admin/sidebar-source/"))) {
+        return handleAdminEditQueue(request, env, url);
+      }
       if (request.method === "POST" && p === "/api/admin/wrapup/ai-config") return handleAiConfig(request, env);
       if (request.method === "POST" && p === "/api/admin/wrapup/save-summary") return handleSaveSummary(request, env);
       return json(request, 404, { ok: false, error: "알 수 없는 경로입니다." });
