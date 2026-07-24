@@ -1,38 +1,32 @@
 {
   "chapterId": "ch03",
   "chapterNum": "CH 03",
-  "title": "조직(팀) 역량 점검",
+  "title": "조직(팀) 성장역량과 일하는 방식 점검",
   "time": "13:30",
   "clips": [
     {
       "route": "#ch03-clip01",
-      "title": "조직(팀) 현황/이슈 점검 및 행동역량 도출",
-      "type": "개념",
+      "title": "조직(팀) 성장역량과 일하는 방식 점검",
+      "type": "실습",
       "folder": "chapters/CH03/ch03-clip01"
     },
     {
-      "route": "#ch04-clip03",
-      "title": "참고_Gemini 및 Gems 소개",
-      "type": "참고",
-      "folder": "chapters/CH04/ch04-clip03"
+      "route": "#ch03-clip01b",
+      "title": "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가",
+      "type": "팀 토론",
+      "folder": "chapters/CH03/ch03-clip01b"
+    },
+    {
+      "route": "#ch03-clip01c",
+      "title": "CH03 통합 저장 Gate: 성장역량·일하는 방식·팀 실험 통합",
+      "type": "통합·저장",
+      "folder": "chapters/CH03/ch03-clip01c"
     },
     {
       "route": "#ch03-clip02",
-      "title": "참고_Gemini 및 Gems 소개",
-      "type": "개념",
+      "title": "선택 참고: Gemini 및 Gems 소개",
+      "type": "참고",
       "folder": "chapters/CH03/ch03-clip02"
-    },
-    {
-      "route": "#ch03-clip03",
-      "title": "참고_Gemini 및 Gems 소개",
-      "type": "개념",
-      "folder": "chapters/CH03/ch03-clip03"
-    },
-    {
-      "route": "#ch03-clip04",
-      "title": "실습 시트",
-      "type": "개념",
-      "folder": "chapters/CH03/ch03-clip04"
     }
   ]
 }

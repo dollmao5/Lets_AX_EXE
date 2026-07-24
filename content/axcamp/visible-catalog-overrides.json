@@ -13,16 +13,16 @@
       "time": "09:40"
     },
     "ch03": {
-      "title": "조직(팀) 역량 점검",
+      "title": "조직(팀) 성장역량 점검",
       "time": "13:30"
     },
     "ch04": {
-      "title": "우리 팀의 성과 향상 실천",
-      "time": "15:40"
+      "title": "우리 팀의 성과·성장역량 향상",
+      "time": "15:30"
     },
     "ch05": {
       "title": "오늘의 핵심 요약",
-      "time": "17:00"
+      "time": "16:50"
     },
     "ch06": {
       "title": "참고자료 라이브러리",
@@ -31,7 +31,7 @@
   },
   "clips": {
     "ch00-clip01": {
-      "title": "오늘의 시간표",
+      "title": "오늘의 여정과 학습 준비",
       "type": "개요"
     },
     "ch00-clip02": {
@@ -40,43 +40,71 @@
     },
     "ch01-clip01": {
       "title": "AI 트렌드",
-      "type": "참고"
+      "type": "개념"
     },
     "ch01-clip02": {
       "title": "Assistant에서 Agentic AI로",
       "type": "개념"
     },
+    "ch01-clip04": {
+      "title": "AI-Friendly 리더십 & AI 리터러시",
+      "type": "실습"
+    },
     "ch02-clip01": {
-      "title": "ChatGPT 소개 및 접속 방법",
+      "title": "ChatGPT Overview",
       "type": "플랫폼"
     },
     "ch02-clip02": {
-      "title": "팀 토론: AI 시대, 리더의 고민과 역할",
-      "type": "토론"
+      "title": "팀토론_① AI, 팀 현실과 리더 고민",
+      "type": "팀 토론"
     },
     "ch02-clip03": {
-      "title": "프롬프팅 기초: AI 시대, 리더의 역할",
+      "title": "AI 시대, 리더 역할·책임 인식",
       "type": "실습"
+    },
+    "ch02-clip03b": {
+      "title": "팀토론_② AI와 리더의 책임경계",
+      "type": "팀 토론"
     },
     "ch02-clip04": {
-      "title": "프롬프팅 활용: 리더의 핵심 역량 및 스킬",
+      "title": "리더의 핵심 역량 및 스킬",
       "type": "실습"
+    },
+    "ch02-clip05": {
+      "title": "CH02 통합 저장 Gate",
+      "type": "통합·저장"
     },
     "ch03-clip01": {
-      "title": "조직(팀) 현황 점검 및 행동역량",
+      "title": "조직(팀) 성장역량과 일하는 방식 점검",
       "type": "실습"
     },
+    "ch03-clip01b": {
+      "title": "팀토론_③ 팀 성과와 성장 with AI",
+      "type": "팀 토론"
+    },
+    "ch03-clip01c": {
+      "title": "CH03 통합 저장 Gate",
+      "type": "통합·저장"
+    },
     "ch03-clip02": {
-      "title": "참고_Gemini 및 Gems 소개",
+      "title": "참고_Gemini Overview",
       "type": "참고"
     },
     "ch04-clip01": {
-      "title": "NotebookLM 소개 및 접속 방법",
+      "title": "NotebookLM Overview",
       "type": "플랫폼"
     },
     "ch04-clip02": {
-      "title": "팀 성과향상 및 피드백 실전",
+      "title": "팀 성과·성장역량 향상 및 피드백 실천",
       "type": "실습"
+    },
+    "ch05-clip01": {
+      "title": "정리정돈: 배움에서 현업 자산으로",
+      "type": "정리"
+    },
+    "ch05-clip02": {
+      "title": "마무리: Start · Stop · Continue",
+      "type": "실천·성찰"
     },
     "ch06-clip09": {
       "title": "Tool Pantry (MCP & CLI)",

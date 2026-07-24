@@ -1,5 +1,5 @@
 <div class="ch04-clip02-revised" id="ch04-clip02">
-  <style>
+<style>
     /* CH04-clip02 final alignment
        - Canonical inputs: CH02-3, CH02-4, CH03 final outputs
        - Core practice: 3 NotebookLM prompts only
@@ -585,429 +585,364 @@
     text-align: left;
   }
 </style>
-
-  <div class="clip-header">
-    <div class="clip-badges">
-      <span class="clip-badge time">~65분</span>
-      <span class="clip-badge chapter">CH 04</span>
-      <span class="clip-badge type-practice">실습</span>
-    </div>
-    <h1 class="clip-title" data-keep-title="">NotebookLM &amp; AI 비서 활용: 팀 성과 향상 및 피드백 실전</h1>
-  </div>
-
-  <div class="clip-overview">
-    이 클립의 핵심은 <strong>NotebookLM에서 CH02의 리더 역할·역량 점검 내용과 CH03의 조직(팀) 역량 점검 내용을 연결하여, 
-    우리 팀의 30일 실행계획을 만드는 것</strong>입니다.<br>
-    3단계 실습으로 진행되며, <strong>1) 자료의 근거를 연결하고 → 2) 30일 핵심 실행과제를 세 개 이하로 좁히고 → 3) 주차별 Action Plan으로 저장</strong>합니다.<br>
-    <strong>성과관리 AI 비서 만들기</strong>와 <strong>팀 공유용 요약 만들기</strong>는
-    필수 산출물을 완성한 뒤 진행하는 선택 활동입니다.
-  </div>
-
-  <!-- 260622 learning focus: performance + AI -->
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
-    <div class="clip-section-content">
-      <div class="info-block">
-        <div class="info-block-title">성과관리·리더십 향상 관점</div>
-        <div>근거를 연결하고 실행과제를 TOP 3 이하로 좁힌 뒤 리더·팀원·AI 역할, 주차별 행동, 점검 지표가 포함된 <strong>30일 리더십 향상 실행계획</strong>을 확정합니다.</div>
-      </div>
-      <div class="tip-block" style="margin-top:14px">
-        <div class="tip-block-title">AI 기능·활용 학습</div>
-        <div class="tip-block-content">NotebookLM에서 소스 기반 교차분석, 인라인 출처 확인, 이어서 프롬프팅, Note 저장을 수행합니다. 주간 점검 비서와 팀 공유용 요약은 선택 활동으로 분리합니다.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 260622 participant guide: NotebookLM/AI-assistant prompt execution modes -->
-  <div class="clip-section">
-    <div class="clip-section-title">프롬프트 유형과 진행 방법</div>
-    <div class="clip-section-content">
-      <div class="info-block">
-        <div class="info-block-title">도구 배지와 프롬프트 유형을 함께 확인합니다</div>
-        <div><span class="prompt-mode-badge">복붙형</span> NotebookLM 채팅에 붙여넣고 현재 소스로 결과를 만듭니다. <span class="prompt-mode-badge">이어서형</span> 앞 결과가 남아 있는 <strong>같은 NotebookLM 채팅</strong>에서 진행합니다. <span class="prompt-mode-badge">설정형</span> ChatGPT 새 채팅의 첫 메시지(역할 지침)로 넣습니다. <span class="prompt-mode-badge">테스트형</span> 같은 채팅에서 예시 상황을 입력해 작동을 확인합니다.</div>
-      </div>
-      <div class="tip-block" style="margin-top:14px">
-        <div class="tip-block-title">공통 실행 순서</div>
-        <div class="tip-block-content">① 지정 도구 확인 → ② NotebookLM에서는 사용할 소스 선택 → ③ 프롬프트 복사·붙여넣기 → ④ 이어서형은 같은 채팅 유지 → ⑤ 인라인 출처를 열어 원문 확인 → ⑥ Note·파일로 저장합니다. 비서 선택 활동은 필수 3단계를 완료한 뒤 진행합니다.</div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립의 도착점</div>
-    <div class="clip-section-content">
-      <div class="tip-block">
-        <div class="tip-block-title">필수 Output은 세 가지입니다</div>
-        <div class="tip-block-content">
-          <strong>CH04 30일 실행계획 근거 정리표(Source Map)</strong>, <strong>30일 핵심 실행과제 TOP 3</strong>,
-          <strong>우리 팀 리더십 향상 30일 Action Plan</strong>을 완성합니다.<br>
+<div class="clip-header">
+<div class="clip-badges">
+<span class="clip-badge time">필수 ~60분 · 선택 ~20분</span>
+<span class="clip-badge chapter">CH 04</span>
+<span class="clip-badge type-practice">통합 실습</span>
+</div>
+<h1 class="clip-title" data-keep-title="">NotebookLM &amp; AI 비서 활용: 팀 성과·성장역량 향상 및 피드백 실천</h1>
+</div>
+<div class="clip-overview">이 클립은 기존 개발자료의 핵심 Flow를 유지해 <strong>NotebookLM에서 CH02와 CH03 근거를 연결하고, 핵심 실행과제를 TOP 3 이하로 좁힌 뒤, 주차별 30일 Action Plan으로 저장</strong>하는 통합 실습입니다.<br/>
+    Revision에서는 CH02 리더 역할·책임·역량 통합본, CH03 성장역량·AI 협업 종합본, Round 1~3 Team Canvas를 소스로 추가하고, 성과뿐 아니라 <strong>구성원 성장·피드백·Speak-up·업무량 재투자·Quality Gate</strong>를 Action Plan에 포함합니다.<br/><br/>
+    성과관리 AI 비서와 팀 공유용 요약은 필수 3단계 후 진행하는 선택 활동이며, 기존처럼 접었다 펼칠 수 있습니다.</div>
+<!-- 260622 learning focus: performance + AI -->
+<div class="clip-section">
+<div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
+<div class="clip-section-content">
+<div class="info-block">
+<div class="info-block-title">성과관리·리더십 향상 관점</div>
+<div>근거를 연결하고 실행과제를 TOP 3 이하로 좁힌 뒤 리더·팀원·AI 역할, 주차별 행동, 점검 지표가 포함된 <strong>30일 리더십 향상 실행계획</strong>을 확정합니다.</div>
+</div>
+<div class="tip-block" style="margin-top:14px">
+<div class="tip-block-title">AI 기능·활용 학습</div>
+<div class="tip-block-content">NotebookLM에서 소스 기반 교차분석, 인라인 출처 확인, 이어서 프롬프팅, Note 저장을 수행합니다. 주간 점검 비서와 팀 공유용 요약은 선택 활동으로 분리합니다.</div>
+</div>
+</div>
+</div>
+<!-- 260622 participant guide: NotebookLM/AI-assistant prompt execution modes -->
+<div class="clip-section">
+<div class="clip-section-title">프롬프트 유형과 진행 방법</div>
+<div class="clip-section-content">
+<div class="info-block">
+<div class="info-block-title">도구 배지와 프롬프트 유형을 함께 확인합니다</div>
+<div><span class="prompt-mode-badge">복붙형</span> NotebookLM 채팅에 붙여넣고 현재 소스로 결과를 만듭니다. <span class="prompt-mode-badge">이어서형</span> 앞 결과가 남아 있는 <strong>같은 NotebookLM 채팅</strong>에서 진행합니다. <span class="prompt-mode-badge">설정형</span> ChatGPT 새 채팅의 첫 메시지(역할 지침)로 넣습니다. <span class="prompt-mode-badge">테스트형</span> 같은 채팅에서 예시 상황을 입력해 작동을 확인합니다.</div>
+</div>
+<div class="tip-block" style="margin-top:14px">
+<div class="tip-block-title">공통 실행 순서</div>
+<div class="tip-block-content">① 지정 도구 확인 → ② NotebookLM에서는 사용할 소스 선택 → ③ 프롬프트 복사·붙여넣기 → ④ 이어서형은 같은 채팅 유지 → ⑤ 인라인 출처를 열어 원문 확인 → ⑥ Note·파일로 저장합니다. 비서 선택 활동은 필수 3단계를 완료한 뒤 진행합니다.</div>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">이번 클립의 도착점</div>
+<div class="clip-section-content">
+<div class="tip-block">
+<div class="tip-block-title">필수 Output은 세 가지입니다</div>
+<div class="tip-block-content">
+<strong>CH04 30일 실행계획 근거 정리표(Source Map)</strong>, <strong>30일 핵심 실행과제 TOP 3</strong>,
+          <strong>우리 팀 리더십 향상 30일 Action Plan</strong>을 완성합니다.<br/>
           Step 4의 성과관리 AI 비서와 Step 5의 팀 공유용 원페이지는 선택 Output입니다.
         </div>
-      </div>
-
-      <div class="output-grid">
-        <div class="output-card">
-          <strong>필수 1. CH04 30일 실행계획 근거 정리표(Source Map)</strong>
-          <p>CH02·CH03 자료에서 어떤 근거를 가져와 30일 계획에 활용할지 한눈에 정리합니다.</p>
-          <span class="file-name">CH04_30일실행계획_근거정리표_성명.md</span>
+</div>
+<div class="output-grid">
+<div class="output-card">
+<strong>필수 1. CH04 30일 실행계획 근거 정리표(Source Map)</strong>
+<p>CH02·CH03 자료에서 어떤 근거를 가져와 30일 계획에 활용할지 한눈에 정리합니다.</p>
+<span class="file-name">CH04_30일실행계획_근거정리표_성명.md</span>
+</div>
+<div class="output-card">
+<strong>필수 2. 30일 핵심 실행과제 TOP 3</strong>
+<p>팀 병목, 리더 행동, 행동역량 과제를 연결해 30일 동안 집중할 과제를 세 개 이하로 좁힙니다.</p>
+<span class="file-name">CH04_우리팀_30일_핵심실행과제_TOP3_성명.md</span>
+</div>
+<div class="output-card">
+<strong>필수 3. 우리 팀 리더십 향상 30일 Action Plan</strong>
+<p>현재 상태, 30일 목표, 주차별 행동, 역할, 지표, 리스크를 실행 가능한 계획으로 저장합니다.</p>
+<span class="file-name">CH04_우리팀_성과향상_30일실행계획_성명.md</span>
+</div>
+<div class="output-card optional-card">
+<strong>선택. 성과관리 AI 비서</strong>
+<p>CH02-4의 프로토타입 비서 역할 지침이 있으면 30일 Action Plan 점검용으로 간단히 고도화합니다.</p>
+</div>
+<div class="output-card optional-card">
+<strong>선택. 팀 공유용 원페이지</strong>
+<p>30일 계획을 팀원이 부담 없이 이해할 수 있는 한 페이지 요약으로 전환합니다.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">CH02·CH03·CH04 연결 구조</div>
+<div class="clip-section-content">
+<div class="table-wrap">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>구분</th>
+<th>주요 산출물 Output 및 활용</th>
+<th>CH04에서 사용하는 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CH02-3</strong></td>
+<td>리더 역할 프로필 Markdown 저장본<br/><span style="color:var(--text-secondary)">※ AI와 리더 역할 분담표·한 줄 리더 역할 정의 포함</span></td>
+<td>리더가 직접 책임질 행동과 AI에 맡기지 않을 판단 기준</td>
+</tr>
+<tr>
+<td><strong>CH02-4</strong></td>
+<td>리더 핵심 역량·성과관리 실행 브리프 Markdown 저장본</td>
+<td>리더 핵심 역량·스킬, 보완 행동, 30일 리더 행동 후보</td>
+</tr>
+<tr>
+<td><strong>CH03 권장</strong></td>
+<td>CH03 우리 팀 성장역량과 AI 협업 종합본</td>
+<td>팀 병목, 팀 효과성 지표, 행동역량 실행 후보</td>
+</tr>
+<tr>
+<td><strong>CH03 대체</strong></td>
+<td>팀 성장역량의 구조적 병목 가설 진단 리포트<br/>조직/인재 행동역량 프로파일<br/>(파일명: CH03_우리팀_성과병목과_점검지표_성명.md / CH03_우리팀_필요행동역량_성명.md)</td>
+<td>종합본이 없을 때 세 개의 개별 산출물을 업로드</td>
+</tr>
+<tr>
+<td><strong>CH04</strong></td>
+<td>CH04 30일 실행계획 근거 정리표(Source Map)<br/>30일 핵심 실행과제 TOP 3<br/>우리 팀 리더십 향상 30일 Action Plan</td>
+<td>근거 기반 실행 우선순위와 현업 30일 실행 루틴</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">이번 클립의 흐름</div>
+<div class="clip-section-content">
+<div class="practice-flow-grid">
+<div class="flow-card">
+<div class="flow-card-head">
+<div class="flow-card-title">Step 1. 자료 업로드 및 근거 연결</div>
+<span class="flow-time-badge">권장 15분</span>
+</div>
+<div class="flow-card-body">NotebookLM에 핵심 자료 세 묶음을 넣고, 자료별 역할과 근거를 30일 실행계획 근거 정리표(Source Map)로 정리합니다.</div>
+</div>
+<div class="flow-card">
+<div class="flow-card-head">
+<div class="flow-card-title">Step 2. 30일 핵심 실행과제 선정</div>
+<span class="flow-time-badge">권장 20분</span>
+</div>
+<div class="flow-card-body">리더 행동, 팀 병목, 효과성 지표, 행동역량을 연결해 실행과제를 세 개 이하로 좁힙니다.</div>
+</div>
+<div class="flow-card">
+<div class="flow-card-head">
+<div class="flow-card-title">Step 3. 30일 Action Plan 작성·저장</div>
+<span class="flow-time-badge">권장 30분</span>
+</div>
+<div class="flow-card-body">현재 상태와 30일 목표를 정하고, 주차별 행동·역할·지표·리스크가 포함된 계획을 저장합니다.</div>
+</div>
+<div class="flow-card optional-card">
+<div class="flow-card-head">
+<div class="flow-card-title">Step 4. 성과관리 AI 비서 만들기</div>
+<span class="flow-time-badge">선택·사후 · 15분</span>
+</div>
+<div class="flow-card-body">ChatGPT 새 채팅에 30일 Action Plan 주간 점검용 비서 역할 지침을 붙여넣고 한 번 테스트합니다.</div>
+</div>
+<div class="flow-card optional-card">
+<div class="flow-card-head">
+<div class="flow-card-title">Step 5. 팀 공유용 요약 만들기</div>
+<span class="flow-time-badge">선택·사후 · 10분</span>
+</div>
+<div class="flow-card-body">NotebookLM에서 30일 계획을 팀 공유용 원페이지 또는 짧은 브리핑으로 전환합니다.</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-block-title">공식 65분 운영 + 선택·사후 25분</div>
+<div>
+<strong>공식 운영시간은 필수 NotebookLM 실습 65분</strong>입니다. Step 4의 비서 활동 15분과 Step 5의 원페이지 10분은 공식 65분에 포함하지 않는 선택·사후 활동이며, 필수 완료 기준에도 포함하지 않습니다.
         </div>
-        <div class="output-card">
-          <strong>필수 2. 30일 핵심 실행과제 TOP 3</strong>
-          <p>팀 병목, 리더 행동, 행동역량 과제를 연결해 30일 동안 집중할 과제를 세 개 이하로 좁힙니다.</p>
-          <span class="file-name">CH04_우리팀_30일_핵심실행과제_TOP3_성명.md</span>
-        </div>
-        <div class="output-card">
-          <strong>필수 3. 우리 팀 리더십 향상 30일 Action Plan</strong>
-          <p>현재 상태, 30일 목표, 주차별 행동, 역할, 지표, 리스크를 실행 가능한 계획으로 저장합니다.</p>
-          <span class="file-name">CH04_우리팀_성과향상_30일실행계획_성명.md</span>
-        </div>
-        <div class="output-card optional-card">
-          <strong>선택. 성과관리 AI 비서</strong>
-          <p>CH02-4의 프로토타입 비서 역할 지침이 있으면 30일 Action Plan 점검용으로 간단히 고도화합니다.</p>
-        </div>
-        <div class="output-card optional-card">
-          <strong>선택. 팀 공유용 원페이지</strong>
-          <p>30일 계획을 팀원이 부담 없이 이해할 수 있는 한 페이지 요약으로 전환합니다.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">CH02·CH03·CH04 연결 구조</div>
-    <div class="clip-section-content">
-      <div class="table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>구분</th>
-              <th>주요 산출물 Output 및 활용</th>
-              <th>CH04에서 사용하는 기준</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>CH02-3</strong></td>
-              <td>리더 역할 프로필 Markdown 저장본<br><span style="color:var(--text-secondary)">※ AI와 리더 역할 분담표·한 줄 리더 역할 정의 포함</span></td>
-              <td>리더가 직접 책임질 행동과 AI에 맡기지 않을 판단 기준</td>
-            </tr>
-            <tr>
-              <td><strong>CH02-4</strong></td>
-              <td>리더 핵심 역량·성과관리 실행 브리프 Markdown 저장본</td>
-              <td>리더 핵심 역량·스킬, 보완 행동, 30일 리더 행동 후보</td>
-            </tr>
-            <tr>
-              <td><strong>CH03 권장</strong></td>
-              <td>CH03 우리 팀 성과구조와 행동역량 종합본</td>
-              <td>팀 병목, 팀 효과성 지표, 행동역량 실행 후보</td>
-            </tr>
-            <tr>
-              <td><strong>CH03 대체</strong></td>
-              <td>팀 성과 병목 진단 리포트<br>조직/인재 행동역량 프로파일<br>(파일명: CH03_우리팀_성과병목과_점검지표_성명.md / CH03_우리팀_필요행동역량_성명.md)</td>
-              <td>종합본이 없을 때 세 개의 개별 산출물을 업로드</td>
-            </tr>
-            <tr>
-              <td><strong>CH04</strong></td>
-              <td>CH04 30일 실행계획 근거 정리표(Source Map)<br>30일 핵심 실행과제 TOP 3<br>우리 팀 리더십 향상 30일 Action Plan</td>
-              <td>근거 기반 실행 우선순위와 현업 30일 실행 루틴</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">이번 클립의 흐름</div>
-    <div class="clip-section-content">
-      <div class="practice-flow-grid">
-        <div class="flow-card">
-          <div class="flow-card-head">
-            <div class="flow-card-title">Step 1. 자료 업로드 및 근거 연결</div>
-            <span class="flow-time-badge">권장 15분</span>
-          </div>
-          <div class="flow-card-body">NotebookLM에 핵심 자료 세 묶음을 넣고, 자료별 역할과 근거를 30일 실행계획 근거 정리표(Source Map)로 정리합니다.</div>
-        </div>
-
-        <div class="flow-card">
-          <div class="flow-card-head">
-            <div class="flow-card-title">Step 2. 30일 핵심 실행과제 선정</div>
-            <span class="flow-time-badge">권장 20분</span>
-          </div>
-          <div class="flow-card-body">리더 행동, 팀 병목, 효과성 지표, 행동역량을 연결해 실행과제를 세 개 이하로 좁힙니다.</div>
-        </div>
-
-        <div class="flow-card">
-          <div class="flow-card-head">
-            <div class="flow-card-title">Step 3. 30일 Action Plan 작성·저장</div>
-            <span class="flow-time-badge">권장 30분</span>
-          </div>
-          <div class="flow-card-body">현재 상태와 30일 목표를 정하고, 주차별 행동·역할·지표·리스크가 포함된 계획을 저장합니다.</div>
-        </div>
-
-        <div class="flow-card optional-card">
-          <div class="flow-card-head">
-            <div class="flow-card-title">Step 4. 성과관리 AI 비서 만들기</div>
-            <span class="flow-time-badge">선택·사후 · 15분</span>
-          </div>
-          <div class="flow-card-body">ChatGPT 새 채팅에 30일 Action Plan 주간 점검용 비서 역할 지침을 붙여넣고 한 번 테스트합니다.</div>
-        </div>
-
-        <div class="flow-card optional-card">
-          <div class="flow-card-head">
-            <div class="flow-card-title">Step 5. 팀 공유용 요약 만들기</div>
-            <span class="flow-time-badge">선택·사후 · 10분</span>
-          </div>
-          <div class="flow-card-body">NotebookLM에서 30일 계획을 팀 공유용 원페이지 또는 짧은 브리핑으로 전환합니다.</div>
-        </div>
-      </div>
-
-      <div class="info-block">
-        <div class="info-block-title">공식 65분 운영 + 선택·사후 25분</div>
-        <div>
-          <strong>공식 운영시간은 필수 NotebookLM 실습 65분</strong>입니다. Step 4의 비서 활동 15분과 Step 5의 원페이지 10분은 공식 65분에 포함하지 않는 선택·사후 활동이며, 필수 완료 기준에도 포함하지 않습니다.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">실습 준비물: 핵심 소스 세 묶음</div>
-    <div class="clip-section-content">
-      <div class="resource-grid">
-        <div class="resource-card">
-          <strong>필수 1. CH02-3 리더 역할 프로필 Markdown</strong>
-          <p>리더 역할 정의, AI와 리더의 책임 경계, Speak-up 원칙을 확인합니다.</p>
-        </div>
-        <div class="resource-card">
-          <strong>필수 2. CH02-4 리더 핵심 역량·성과관리 실행 브리프 Markdown</strong>
-          <p>리더 핵심 역량·스킬, 보완 행동, 30일 리더 행동 후보를 확인합니다.</p>
-        </div>
-        <div class="resource-card">
-          <strong>필수 3. CH03 산출물 묶음: 개별 3종 또는 권장 종합본</strong>
-          <p>팀 성과 병목 진단 리포트(CH03_우리팀_성과병목과_점검지표_성명.md), 조직/인재 행동역량 프로파일(CH03_우리팀_필요행동역량_성명.md)을 각각 넣거나, 두 자료를 묶은 종합본(CH03_우리팀_성과구조와_행동역량_종합본_성명.md)이 있으면 한 개 소스로 넣습니다.</p>
-        </div>
-        <div class="resource-card optional-card">
-          <strong>선택. 사내 성과관리·팀장 기대행동 자료</strong>
-          <p>조직 기준과의 정합성을 확인할 때만 추가합니다. 핵심 실습은 위 세 묶음만으로 진행합니다.</p>
-        </div>
-      </div>
-
-      <div class="info-block">
-        <div class="info-block-title">업로드 전 보안 확인</div>
-        <div>
+</div>
+</div>
+</div>
+<div class="clip-section"><div class="clip-section-title">Revision 핵심 소스 세 묶음</div><div class="clip-section-content"><div class="resource-grid">
+<article class="resource-card"><strong>필수 1. CH02 리더 역할·책임·역량 통합본</strong><p><code>CH02_리더역할_책임경계_통합본_성명.md</code><br/>리더 행동·책임·역량 기준을 제공합니다.</p></article>
+<article class="resource-card"><strong>필수 2. CH03 성장역량·AI 협업 종합본</strong><p><code>CH03_우리팀_성장역량과_AI협업_종합본_성명.md</code><br/>병목 가설·지표·행동역량·Round 3 실험을 제공합니다.</p></article>
+<article class="resource-card"><strong>필수 3. Round 1~3 Team Canvas</strong><p>실제 장면, 팀 잠정 판단, 책임경계, 실험 가설을 확인하는 경험 근거입니다.</p></article>
+<article class="resource-card optional-card"><strong>선택. LG Way 서베이·실/팀장 기대행동·내부 제도</strong><p>조직 기준과의 정합성을 확인하되, 조직 전체 점수를 우리 팀 Baseline으로 사용하지 않습니다.</p></article>
+</div></div></div>
+<div class="clip-section"><div class="clip-section-title">1일 과정 운영: 필수 60분 + 선택 20분</div><div class="clip-section-content"><div class="table-wrap"><table class="comparison-table"><thead><tr><th>구분</th><th>활동</th><th>완료 기준</th></tr></thead><tbody>
+<tr><td><strong>필수 15분</strong></td><td>Step 1. 자료 업로드·Source Map·해석 경계</td><td>조직 전체 참고 신호와 우리 팀 근거, 사실·해석·가설을 구분함</td></tr>
+<tr><td><strong>필수 18분</strong></td><td>Step 2. 실행 후보 비교·TOP 3 이하 선정</td><td>리더가 통제할 수 있고 30일 안에 검증 가능한 과제로 좁힘</td></tr>
+<tr><td><strong>필수 27분</strong></td><td>Step 3. 30일 Action Plan·팀 피드백 계획 저장</td><td>리더·팀원·AI 역할, 성장·Speak-up, 지표·중단·72시간 팀 대화를 포함함</td></tr>
+<tr><td><strong>선택 10분</strong></td><td>Step 4. 주간 점검 AI 비서 설정·테스트</td><td>설정형 지침과 테스트 로그를 저장함</td></tr>
+<tr><td><strong>선택 10분</strong></td><td>Step 5. 팀 공유용 원페이지</td><td>확정안이 아닌 검증할 실험안으로 요약함</td></tr>
+</tbody></table></div></div></div><div class="clip-section">
+<div class="clip-section-title">실습 준비물: 핵심 소스 세 묶음</div>
+<div class="clip-section-content">
+<div class="resource-grid">
+<div class="resource-card">
+<strong>필수 1. CH02-3 리더 역할 프로필 Markdown</strong>
+<p>리더 역할 정의, AI와 리더의 책임 경계, Speak-up 원칙을 확인합니다.</p>
+</div>
+<div class="resource-card">
+<strong>필수 2. CH02-4 리더 핵심 역량·성과관리 실행 브리프 Markdown</strong>
+<p>리더 핵심 역량·스킬, 보완 행동, 30일 리더 행동 후보를 확인합니다.</p>
+</div>
+<div class="resource-card">
+<strong>필수 3. CH03 산출물 묶음: 개별 3종 또는 권장 종합본</strong>
+<p>팀 성장역량의 구조적 병목 가설 진단 리포트(CH03_우리팀_성과병목과_점검지표_성명.md), 조직/인재 행동역량 프로파일(CH03_우리팀_필요행동역량_성명.md)을 각각 넣거나, 두 자료를 묶은 종합본(CH03_우리팀_성장역량과_AI협업_종합본_성명.md)이 있으면 한 개 소스로 넣습니다.</p>
+</div>
+<div class="resource-card optional-card">
+<strong>선택. 사내 성과관리·팀장 기대행동 자료</strong>
+<p>조직 기준과의 정합성을 확인할 때만 추가합니다. 핵심 실습은 위 세 묶음만으로 진행합니다.</p>
+</div>
+</div>
+<div class="info-block">
+<div class="info-block-title">업로드 전 보안 확인</div>
+<div>
           평가·보상·징계·실명·건강정보·고객 식별정보·민감 영업정보는 업로드하지 않습니다.
           필요한 사례는 익명화·일반화하고 조직 정책과 계정의 데이터 처리 기준을 먼저 확인합니다.
         </div>
-      </div>
-    </div>
-  </div>
-
+</div>
+</div>
+</div>
 <div class="clip-section">
-  <div class="clip-section-title">Step 1. 자료 업로드 및 근거 연결 <span class="flow-time-badge">15분</span></div>
-  <div class="clip-section-content">
-    <div class="tool-lock">
-      <strong>Step 1~3은 반드시 NotebookLM에서 진행합니다</strong>
-      <ol>
-        <li style="white-space: nowrap;">CH04에서 사용할 <strong style="display: inline;">하나의 NotebookLM 노트북</strong>을 엽니다.</li>
-        <li>위 핵심 소스 세 묶음을 추가하고, 질문에 사용할 소스가 선택되어 있는지 확인합니다.</li>
-        <li style="white-space: nowrap;">아래 프롬프트를 <strong style="display: inline;">NotebookLM 채팅창</strong>에 붙여넣습니다. ChatGPT 일반 채팅에는 붙여넣지 않습니다.</li>
-        <li>답변의 인라인 출처를 클릭해 원문 근거를 확인합니다.</li>
-      </ol>
-    </div>
+<div class="clip-section-title">Step 1. 자료 업로드 및 근거 연결 <span class="flow-time-badge">15분</span></div>
+<div class="clip-section-content">
+<div class="tool-lock">
+<strong>Step 1~3은 반드시 NotebookLM에서 진행합니다</strong>
+<ol>
+<li style="white-space: nowrap;">CH04에서 사용할 <strong style="display: inline;">하나의 NotebookLM 노트북</strong>을 엽니다.</li>
+<li>위 핵심 소스 세 묶음을 추가하고, 질문에 사용할 소스가 선택되어 있는지 확인합니다.</li>
+<li style="white-space: nowrap;">아래 프롬프트를 <strong style="display: inline;">NotebookLM 채팅창</strong>에 붙여넣습니다. ChatGPT 일반 채팅에는 붙여넣지 않습니다.</li>
+<li>답변의 인라인 출처를 클릭해 원문 근거를 확인합니다.</li>
+</ol>
+</div>
+<p>자료를 올린 직후 바로 Action Plan을 요청하지 않습니다. 먼저 어떤 자료가 어떤 판단 근거를 제공하는지 간단히 연결합니다.</p>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="프롬프트를 그대로 붙여넣고 구조화된 결과를 확인합니다.">복붙형</span> <span class="tool-badge">NotebookLM 채팅</span> 실습 1. 30일 실행계획 근거 정리표 만들기</span>
+<span class="output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH04_30일실행계획_근거정리표_성명.md</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch04-core-step1')" type="button">복사</button>
+</div>
+<div class="prompt-content" id="ch04-core-step1">당신은 NotebookLM 안에서 선택된 소스만 사용하는 근거 통합 분석가입니다.
 
-      <p>자료를 올린 직후 바로 Action Plan을 요청하지 않습니다. 먼저 어떤 자료가 어떤 판단 근거를 제공하는지 간단히 연결합니다.</p>
+[선택할 핵심 소스]
+1. CH02 리더 역할·책임·역량 통합본
+2. CH03 우리 팀 성장역량·AI 협업 종합본
+3. Round 1~3 Team Canvas
+4. 선택: LG Way 서베이·실/팀장 기대행동·사내 기준
 
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="프롬프트를 그대로 붙여넣고 구조화된 결과를 확인합니다.">복붙형</span> <span class="tool-badge">NotebookLM 채팅</span> 실습 1. 30일 실행계획 근거 정리표 만들기</span>
-          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH04_30일실행계획_근거정리표_성명.md</span>
-          <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-core-step1')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch04-core-step1">현재 선택된 소스만 사용해 “CH04 30일 실행계획 근거 정리표(Source Map)”를 작성해 주세요.
+「30일 Action Plan 근거 정리표(Source Map)」를 작성해 주세요.
 
-[이 노트북에 포함되어야 할 핵심 소스]
-- CH02-3 리더 역할 프로필 Markdown 저장본
-- CH02-4 리더 핵심 역량·성과관리 실행 브리프 Markdown 저장본
-- CH03 우리 팀 성과구조와 행동역량 종합본
-  또는 팀 성과 병목 진단 리포트, 조직/인재 행동역량 프로파일
+[필수 열]
+- 실행 후보 또는 판단 주제
+- CH02 근거와 출처
+- CH03 근거와 출처
+- Round Canvas 근거
+- 조직 전체 참고 신호 또는 내부 기준
+- 근거 수준: 확인된 사실 / 리더·팀 해석 / 구조적 병목 가설 / 팀원·조직 확인 필요
+- 자료 간 일치·충돌·누락
+- 리더가 직접 확인할 사항
 
-[출력 형식]
-## 1. 업로드 소스 확인
-| 구분 | 실제 소스 제목 | 소스에서 확인된 핵심 내용 | CH04에서의 활용 |
-|---|---|---|---|
-| CH02-3 리더 기준 |  |  |  |
-| CH02-4 리더 역량·행동 기준 |  |  |  |
-| CH03 팀 시스템 기준 |  |  |  |
-| 선택 조직 기준 |  |  |  |
-
-## 2. 30일 실행계획 근거 정리표(Source Map)
-| 실행계획 기준 | 핵심 내용 | 근거 소스와 인라인 출처 | 30일 계획에서 활용할 내용 |
-|---|---|---|---|
-| 리더가 직접 책임질 행동 |  |  |  |
-| 리더가 보완할 핵심 역량·스킬 |  |  |  |
-| 팀의 핵심 성과 병목 |  |  |  |
-| 30일 동안 확인할 팀 효과성 지표 |  |  |  |
-| 리더·팀원·팀 공통 행동 기준 |  |  |  |
-| 우선 검토할 실행과제 후보 |  |  |  |
-| AI가 지원할 수 있는 업무 |  |  |  |
-| AI에게 맡기지 않을 판단 |  |  |  |
-
-## 3. 추가 확인 필요 사항
-- 자료에서 확인되지 않는 내용:
-- 리더가 최종 확인할 내용:
-- 조직 기준 확인이 필요한 내용:
-
-[조건]
-- 추가 인터뷰나 질문을 하지 말고, 현재 선택된 소스만으로 작성해 주세요.
-- 실제 업로드된 소스 제목이 위 명칭과 다르면 실제 소스 제목을 사용해 주세요.
-- 자료에 없는 내용은 추정하지 말고 “자료 내 확인 불가”로 표시해 주세요.
-- 각 핵심 판단에는 가능한 범위에서 NotebookLM 인라인 출처를 표시해 주세요.
-- 평가·보상·징계·개인정보 관련 내용은 실행 과제로 확정하지 말고 “조직 기준 확인 필요”로 분리해 주세요.</div>
-      </div>
-
-      <div class="step-output-note">
-        <strong>Step 1 완료 행동</strong>
+[해석 경계]
+- 조직 전체 서베이 점수를 특정 팀의 Baseline·원인으로 사용하지 마세요.
+- 자료에 없는 수치·정책·구성원 반응을 만들지 마세요.
+- 중요한 판단에는 NotebookLM 인라인 출처를 유지하세요.</div>
+</div>
+<div class="step-output-note">
+<strong>Step 1 완료 행동</strong>
         답변의 인라인 출처를 최소 세 곳 이상 열어 원문과 일치하는지 확인한 뒤, 응답을 Note에 저장합니다.
       </div>
-    </div>
-  </div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">Step 2. 30일 핵심 실행과제 선정 <span class="flow-time-badge">20분</span></div>
+<div class="clip-section-content">
+<p>같은 NotebookLM 채팅에서 이어서 진행합니다. 별도의 인터뷰 없이 자료 근거를 기준으로 실행과제를 세 개 이하로 좁힙니다.</p>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge">NotebookLM 채팅</span> 실습 2. 핵심 실행과제 TOP 3 선정</span>
+<span class="output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH04_우리팀_30일_핵심실행과제_TOP3_성명.md</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch04-core-step2')" type="button">복사</button>
+</div>
+<div class="prompt-content" id="ch04-core-step2">앞 단계 Source Map을 바탕으로 30일 핵심 실행과제 후보를 비교하고 TOP 3 이하로 좁혀 주세요.
 
-  <div class="clip-section">
-    <div class="clip-section-title">Step 2. 30일 핵심 실행과제 선정 <span class="flow-time-badge">20분</span></div>
-    <div class="clip-section-content">
-      <p>같은 NotebookLM 채팅에서 이어서 진행합니다. 별도의 인터뷰 없이 자료 근거를 기준으로 실행과제를 세 개 이하로 좁힙니다.</p>
+[비교 기준]
+1. 리더가 직접 통제하거나 영향력을 행사할 수 있는가
+2. 실제 회의·업무지시·1:1·피드백·업무배분·보고 장면에 적용되는가
+3. 팀의 성과와 구성원 성장에 동시에 기여하는가
+4. AI 활용이 목적이 아니라 Workflow 개선에 기여하는가
+5. 30일 안에 정량 지표 1개와 정성 증거 1개로 확인 가능한가
+6. 품질·보안·공정성·고객 신뢰 리스크를 통제할 수 있는가
+7. 팀원에게 설명하고 의견을 받아 수정할 수 있는가
 
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge">NotebookLM 채팅</span> 실습 2. 핵심 실행과제 TOP 3 선정</span>
-          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH04_우리팀_30일_핵심실행과제_TOP3_성명.md</span>
-          <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-core-step2')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch04-core-step2">방금 작성한 “30일 실행계획 근거 정리표(Source Map)”와 현재 선택된 소스를 바탕으로, 우리 팀이 30일 동안 집중할 핵심 실행과제를 최대 3개까지 선정해 주세요.
-
-[선정 기준]
-- 팀 성과 병목을 직접 줄이는가
-- 30일 안에 실행하고 변화를 확인할 수 있는가
-- 리더가 직접 영향력을 행사할 수 있는가
-- 팀원이 참여할 수 있는 실제 업무 장면인가
-- AI가 보조할 수 있으면서도 보안·책임 리스크를 통제할 수 있는가
-
-[출력 형식]
-## 1. 30일 핵심 실행과제 TOP 3
-| 순위 | 핵심 실행과제 | 해결하려는 팀 병목 | 선정 근거와 인라인 출처 | 30일 기대 변화 | 첫 주에 바로 할 행동 |
-|---|---|---|---|---|---|
-
-## 2. 리더·팀원·AI 역할 구분
-| 핵심 실행과제 | 리더가 직접 할 일 | 팀원이 함께 할 일 | AI가 지원할 일 | AI에게 맡기지 않을 일 |
-|---|---|---|---|---|
-
-## 3. 보류할 과제
-| 보류 과제 | 지금 보류하는 이유 | 다시 검토할 조건 |
-|---|---|---|
-
-[조건]
-- 추가 질문을 하지 말고, 근거 정리표와 선택된 소스만 사용해 주세요.
-- “소통 강화”, “문화 개선”처럼 넓은 표현 대신 회의, 보고, 1:1, 피드백, 업무점검 등 실제 장면으로 작성해 주세요.
-- 핵심 실행과제는 반드시 3개 이하로 제한해 주세요.
-- 근거가 부족하면 임의로 채우지 말고 “리더 확인 필요”로 표시해 주세요.
-- 평가·보상·징계·개인정보 관련 판단은 AI가 대신하지 않도록 분리해 주세요.</div>
-      </div>
-
-      <div class="step-output-note">
-        <strong>Step 2 완료 행동</strong>
+각 후보의 기대효과·근거·리스크·선행조건·리더 확인 사항을 표로 비교하고, 선택한 TOP 3와 보류한 후보의 이유를 명시해 주세요. Round 3에서 확정한 한 개 Workflow 실험은 분해하지 말고 후보로 유지하세요.</div>
+</div>
+<div class="step-output-note">
+<strong>Step 2 완료 행동</strong>
         세 개 과제 중 실제로 실행할 수 없는 항목은 직접 제외하고, 최종 TOP 3 또는 TOP 2를 Note에 저장합니다.
       </div>
-    </div>
-  </div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">Step 3. 30일 Action Plan 작성·저장 <span class="flow-time-badge">30분</span></div>
+<div class="clip-section-content">
+<p>Step 2에서 확정한 실행과제를 주차별 행동과 점검 지표로 전환합니다. 추가 인터뷰를 하지 않고, 부족한 부분은 “리더 확인 필요”로 남깁니다.</p>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge">NotebookLM 채팅</span> 실습 3. 우리 팀 리더십 향상 30일 Action Plan</span>
+<span class="output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH04_우리팀_성과향상_30일실행계획_성명.md</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch04-core-step3')" type="button">복사</button>
+</div>
+<div class="prompt-content" id="ch04-core-step3">앞 단계에서 확정한 TOP 3 이하 실행과제를 사용하여 「우리 팀 성과·성장역량 향상 30일 Action Plan」을 작성해 주세요.
 
-  <div class="clip-section">
-    <div class="clip-section-title">Step 3. 30일 Action Plan 작성·저장 <span class="flow-time-badge">30분</span></div>
-    <div class="clip-section-content">
-      <p>Step 2에서 확정한 실행과제를 주차별 행동과 점검 지표로 전환합니다. 추가 인터뷰를 하지 않고, 부족한 부분은 “리더 확인 필요”로 남깁니다.</p>
-
-      <div class="prompt-block">
-        <div class="prompt-header">
-          <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge">NotebookLM 채팅</span> 실습 3. 우리 팀 리더십 향상 30일 Action Plan</span>
-          <span class="prompt-mode-badge output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH04_우리팀_성과향상_30일실행계획_성명.md</span>
-          <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-core-step3')">복사</button>
-        </div>
-        <div class="prompt-content" id="ch04-core-step3">방금 확정한 “30일 핵심 실행과제 TOP 3”와 현재 선택된 소스를 바탕으로, 우리 팀 리더십 향상 30일 Action Plan을 작성해 주세요.
-
-# 우리 팀 리더십 향상 30일 Action Plan
-
-## 1. 실행 배경
-| 구분 | 핵심 내용 | 근거 소스와 인라인 출처 |
-|---|---|---|
-| CH02 리더 역할·책임 기준 |  |  |
-| CH02 리더 핵심 역량·보완 행동 |  |  |
-| CH03 팀 핵심 병목·효과성 지표 |  |  |
-| CH03 행동역량 실행 후보 |  |  |
+## 1. 실행 배경과 근거
+- CH02 리더 역할·책임 기준
+- CH03 구조적 병목 가설·효과성 지표·행동역량
+- Round 3 팀 운영 실험
+- 중요한 판단의 NotebookLM 인라인 출처
 
 ## 2. 30일 실행 목표와 점검 지표
-| 핵심 실행과제 | 현재 상태(Baseline) | 30일 목표 | 확인 방법 | 확인 주기 | 리더 확인 필요 사항 |
-|---|---|---|---|---|---|
+| 핵심 실행과제 | 현재 확인된 상태 | 30일 변화 가설 | 정량 지표 | 정성 증거 | 확인 주기 | 리더 확인 필요 |
 
 ## 3. 주차별 실행계획
-| 주차 | 적용할 성과관리·업무 장면 | 리더 행동 | 팀원 행동 | AI 활용 방식 | 점검 지표 |
-|---|---|---|---|---|---|
-| 1주차 |  |  |  |  |  |
-| 2주차 |  |  |  |  |  |
-| 3주차 |  |  |  |  |  |
-| 4주차 |  |  |  |  |  |
+| 주차 | 실제 업무 장면 | 리더 행동 | 팀원 행동 | AI 활용 방식 | 성장·피드백·Speak-up 장치 | 점검 지표 |
 
-## 4. 리스크와 책임 경계
-| 리스크 | 예방·대응 방안 | AI가 하지 않을 일 | 리더의 최종 책임 |
-|---|---|---|---|
+## 4. 책임·Quality Gate
+| AI가 할 일 | 팀원이 판단할 일 | 리더가 최종 책임질 일 | 인간 승인 지점 | 즉시 중단·개입 조건 | Fallback |
 
-## 5. 첫 주 즉시 실행
-- 다음 주 첫 회의 또는 업무 장면:
-- 리더가 가장 먼저 할 행동:
-- 팀원에게 확인할 질문:
-- AI를 사용할 업무:
-- AI를 사용하지 않을 업무:
+## 5. 절감 시간 재투자
+- 누구의 성장에 투자할지
+- 어떤 고부가가치 업무에 재투자할지
+- 업무량 과부족을 어떻게 조정할지
 
-[조건]
-- 추가 질문을 하지 말고, 현재 채팅의 근거 정리표·핵심 실행과제·선택된 소스를 사용해 주세요.
-- 자료에 없는 Baseline이나 목표 수치를 임의로 만들지 말고 “리더 확인 필요”로 표시해 주세요.
-- 핵심 실행과제는 Step 2에서 확정한 항목만 사용해 주세요.
-- 실행계획은 회의, 1:1, 피드백, 업무점검, 보고서 검토 등 실제 장면과 행동으로 작성해 주세요.
-- AI는 초안·요약·비교·질문 생성·점검 보조로만 설정하고, 최종 판단과 전달 책임은 리더에게 두세요.
-- 제목과 표가 유지되는 구조로 작성하되 코드블록은 사용하지 마세요. NotebookLM 인라인 출처를 유지해 주세요.</div>
-      </div>
+## 6. 현업 전환
+- 복귀 후 72시간 내 팀에 설명할 내용
+- 팀원에게 물을 질문
+- 함께 수정·합의할 항목
+- 주간 Go / Modify / Hold 기준
+- 30일 Continue / Modify / Stop 회고 기준
 
-      <div class="step-output-note">
-        <strong>Step 3 완료 행동</strong>
+자료에 없는 Baseline·목표 수치를 만들지 말고 ‘리더 확인 필요’로 표시해 주세요. Action Plan은 확정된 처방이 아니라 팀원과 검증·조정할 30일 실험안으로 표현해 주세요.</div>
+</div>
+<div class="step-output-note">
+<strong>Step 3 완료 행동</strong>
         중요한 판단의 출처를 확인하고 응답을 Note에 저장합니다. 필요하면 Notes 메뉴에서 Google Docs 또는 Sheets로 내보냅니다.
       </div>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">Step 4. 성과관리 AI 비서 만들기</div>
-    <div class="clip-section-content">
-      <details class="optional-details">
-        <summary>
-          <span>선택 활동 펼쳐보기: 30일 Action Plan 주간 점검 비서</span>
-          <span class="flow-time-badge">선택·사후 · 15분</span>
-        </summary>
-        <div class="optional-details-body">
-          <div class="info-block">
-            <div class="info-block-title">이 단계부터 ChatGPT(비서 프롬프트)를 사용합니다</div>
-            <div>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">Step 4. 성과관리 AI 비서 만들기</div>
+<div class="clip-section-content">
+<details class="optional-details">
+<summary>
+<span>선택 활동 펼쳐보기: 30일 Action Plan 주간 점검 비서</span>
+<span class="flow-time-badge">선택·사후 · 15분</span>
+</summary>
+<div class="optional-details-body">
+<div class="info-block">
+<div class="info-block-title">이 단계부터 ChatGPT(비서 프롬프트)를 사용합니다</div>
+<div>
               Step 1~3의 NotebookLM 채팅과 도구가 다릅니다. CH02-4에서 저장한 프로토타입 비서 역할 지침이 있으면 그 지침을 업데이트해 사용하고,
               없으면 아래 역할 지침을 ChatGPT 새 채팅의 첫 메시지로 붙여넣어 비서를 하나 준비합니다. 여러 기능을 한꺼번에 넣지 않고 <strong>30일 Action Plan 주간 점검</strong>에만 집중합니다.
             </div>
-          </div>
-
-          <div class="prompt-block">
-            <div class="prompt-header">
-              <span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> <span class="tool-badge">ChatGPT 비서 프롬프트</span> 선택 4-1. 주간 점검 비서 역할 지침</span>
-              <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-optional-gem')">복사</button>
-            </div>
-            <div class="prompt-content" id="ch04-optional-gem">당신은 팀장의 “우리 팀 리더십 향상 30일 Action Plan” 실행을 돕는 주간 점검 AI 보좌관입니다.
+</div>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> <span class="tool-badge">ChatGPT 비서 프롬프트</span> 선택 4-1. 주간 점검 비서 역할 지침</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch04-optional-gem')" type="button">복사</button>
+</div>
+<div class="prompt-content" id="ch04-optional-gem">당신은 팀장의 “우리 팀 리더십 향상 30일 Action Plan” 실행을 돕는 주간 점검 AI 보좌관입니다.
 
 [역할]
 - 사용자가 입력한 주간 실행 결과를 Action Plan과 비교해 진행상황을 정리합니다.
@@ -1045,52 +980,48 @@
 - 자료에 없는 내용은 추정하지 않고 “확인 필요”로 표시합니다.
 - 실명, 평가, 보상, 징계, 건강정보, 고객 식별정보는 입력하지 않도록 안내합니다.
 - AI는 초안·정리·질문 생성을 지원하며 최종 판단과 실행 책임은 리더에게 있음을 표시합니다.</div>
-          </div>
-
-          <div class="prompt-block">
-            <div class="prompt-header">
-              <span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> <span class="tool-badge">같은 ChatGPT 대화</span> 선택 4-2. 한 번 테스트하기</span>
-              <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-optional-gem-test')">복사</button>
-            </div>
-            <div class="prompt-content" id="ch04-optional-gem-test">현재 30일 Action Plan 1주차입니다.
+</div>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> <span class="tool-badge">같은 ChatGPT 대화</span> 선택 4-2. 한 번 테스트하기</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch04-optional-gem-test')" type="button">복사</button>
+</div>
+<div class="prompt-content" id="ch04-optional-gem-test">현재 30일 Action Plan 1주차입니다.
 이번 주에는 주간회의에서 새로운 업무점검 기준을 공유했고, 보고서 초안 작성에 AI를 시범 적용했습니다.
 회의 기준은 공유했지만 팀원별 이해 수준을 아직 확인하지 못했고, AI 산출물 검증 기준도 충분히 합의되지 않았습니다.
 
 위 상황을 바탕으로 이번 주 진행상황을 점검하고, 다음 주 우선 행동을 제안해 주세요.</div>
-          </div>
-
-          <div class="step-output-note">
-            <strong>선택 Step 4 최소 완료 기준</strong>
+</div>
+<div class="step-output-note">
+<strong>선택 Step 4 최소 완료 기준</strong>
             비서 역할 지침을 저장하고 테스트 한 번을 실행한 뒤, 질문 수·출력 형식·민감정보 제한 중 보완할 지침 하나를 수정합니다.
           </div>
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">Step 5. 팀 공유용 요약 만들기</div>
-    <div class="clip-section-content">
-      <details class="optional-details">
-        <summary>
-          <span>선택 활동 펼쳐보기: 팀 공유용 원페이지·브리핑</span>
-          <span class="flow-time-badge">선택·사후 · 10분</span>
-        </summary>
-        <div class="optional-details-body">
-          <div class="info-block">
-            <div class="info-block-title">NotebookLM 채팅 또는 Studio를 사용합니다</div>
-            <div>
+</div>
+</details>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">Step 5. 팀 공유용 요약 만들기</div>
+<div class="clip-section-content">
+<details class="optional-details">
+<summary>
+<span>선택 활동 펼쳐보기: 팀 공유용 원페이지·브리핑</span>
+<span class="flow-time-badge">선택·사후 · 10분</span>
+</summary>
+<div class="optional-details-body">
+<div class="info-block">
+<div class="info-block-title">NotebookLM 채팅 또는 Studio를 사용합니다</div>
+<div>
               가장 간단한 방식은 아래 프롬프트를 NotebookLM 채팅에 붙여넣고 응답을 Note에 저장하는 것입니다.
               계정에서 제공되는 경우 Studio의 Report·Infographic·Slide Deck으로 추가 전환할 수 있습니다.
             </div>
-          </div>
-
-          <div class="prompt-block">
-            <div class="prompt-header">
-              <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge">NotebookLM 채팅</span> 선택 5-1. 팀 공유용 원페이지</span>
-              <button class="copy-btn" type="button" onclick="copyPrompt(this,'ch04-optional-share')">복사</button>
-            </div>
-            <div class="prompt-content" id="ch04-optional-share">방금 작성한 “우리 팀 리더십 향상 30일 Action Plan”을 팀원에게 공유할 수 있는 한 페이지 요약으로 바꿔 주세요.
+</div>
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge">NotebookLM 채팅</span> 선택 5-1. 팀 공유용 원페이지</span>
+<button class="copy-btn" onclick="copyPrompt(this,'ch04-optional-share')" type="button">복사</button>
+</div>
+<div class="prompt-content" id="ch04-optional-share">방금 작성한 “우리 팀 리더십 향상 30일 Action Plan”을 팀원에게 공유할 수 있는 한 페이지 요약으로 바꿔 주세요.
 
 ## 팀 공유용 원페이지
 1. 왜 바꾸는가
@@ -1113,147 +1044,143 @@
 - 선언문처럼 과장하지 말고 실제 회의에서 사용할 수 있는 자연스러운 문장으로 작성해 주세요.
 - 평가·보상·징계·개인정보 내용은 포함하지 마세요.
 - 팀원이 우려와 반대 의견을 말할 수 있다는 Speak-up 메시지를 포함해 주세요.</div>
-          </div>
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <div class="clip-section">
-    <div class="clip-section-title">최종 산출물 확인 체크리스트</div>
-    <div class="clip-section-content">
-      <div class="table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>구분</th>
-              <th>산출물</th>
-              <th>확인 기준</th>
-              <th>현업 활용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>CH04 30일 실행계획 근거 정리표(Source Map)</td>
-              <td>CH02 리더 기준과 CH03 팀 시스템 기준이 정확한 소스명·근거와 연결되었는가</td>
-              <td>실행계획의 근거 확인</td>
-            </tr>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>30일 핵심 실행과제 TOP 3</td>
-              <td>실제 업무 장면으로 표현되고 세 개 이하로 좁혀졌는가</td>
-              <td>팀 실행 초점 정렬</td>
-            </tr>
-            <tr>
-              <td><strong>필수</strong></td>
-              <td>우리 팀 리더십 향상 30일 Action Plan</td>
-              <td>현재 상태, 30일 목표, 주차별 행동, 역할, 지표, 리스크가 포함되었는가</td>
-              <td>현업 실행 및 주간 점검</td>
-            </tr>
-            <tr>
-              <td>선택</td>
-              <td>30일 Action Plan 주간 점검 비서</td>
-              <td>한 가지 반복 장면에 집중하고 테스트·수정 후 저장했는가</td>
-              <td>현업 반복 점검</td>
-            </tr>
-            <tr>
-              <td>선택</td>
-              <td>팀 공유용 원페이지</td>
-              <td>리더·팀원·AI 역할과 30일 후 확인할 변화가 쉽게 설명되었는가</td>
-              <td>첫 주 회의·킥오프</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="clip-section" id="ch04Clip02Completion">
-    <div class="clip-section-title">이번 클립의 완료 기준</div>
-    <div class="clip-section-content">
-      <div class="table-wrap">
-        <table class="comparison-table completion-table">
-          <thead>
-            <tr>
-              <th>확인 항목</th>
-              <th>완료 기준</th>
-              <th>내 상태</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>핵심 소스 준비</strong></td>
-              <td>CH02-3, CH02-4, CH03 핵심 자료를 하나의 CH04 NotebookLM 노트북에 추가했다.</td>
-              <td class="completion-status-cell">
-                <fieldset class="completion-state-group" data-completion-item="sources-ready">
-                  <legend class="visually-hidden">핵심 소스 준비 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-done" name="ch04c02-sources" value="done" data-completion-status=""><label for="ch04c02-sources-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-sources-review" name="ch04c02-sources" value="needs-review" data-completion-status=""><label for="ch04c02-sources-review">보완 필요</label></span>
-                </fieldset>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>근거 정리표</strong></td>
-              <td>CH02·CH03 기준과 실제 소스명·인라인 출처가 연결된 30일 실행계획 근거 정리표를 저장했다.</td>
-              <td class="completion-status-cell">
-                <fieldset class="completion-state-group" data-completion-item="source-map">
-                  <legend class="visually-hidden">근거 정리표 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-done" name="ch04c02-map" value="done" data-completion-status=""><label for="ch04c02-map-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-map-review" name="ch04c02-map" value="needs-review" data-completion-status=""><label for="ch04c02-map-review">보완 필요</label></span>
-                </fieldset>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>핵심 실행과제</strong></td>
-              <td>30일 동안 집중할 실행과제를 세 개 이하로 확정하고 리더·팀원·AI 역할을 구분했다.</td>
-              <td class="completion-status-cell">
-                <fieldset class="completion-state-group" data-completion-item="top-agendas">
-                  <legend class="visually-hidden">핵심 실행과제 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-done" name="ch04c02-agenda" value="done" data-completion-status=""><label for="ch04c02-agenda-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-agenda-review" name="ch04c02-agenda" value="needs-review" data-completion-status=""><label for="ch04c02-agenda-review">보완 필요</label></span>
-                </fieldset>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>30일 Action Plan</strong></td>
-              <td>현재 상태, 30일 목표, 주차별 행동, 역할, 지표, 리스크가 포함된 계획을 Note에 저장했다.</td>
-              <td class="completion-status-cell">
-                <fieldset class="completion-state-group" data-completion-item="action-plan">
-                  <legend class="visually-hidden">30일 Action Plan 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-done" name="ch04c02-plan" value="done" data-completion-status=""><label for="ch04c02-plan-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-plan-review" name="ch04c02-plan" value="needs-review" data-completion-status=""><label for="ch04c02-plan-review">보완 필요</label></span>
-                </fieldset>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>근거·보안 점검</strong></td>
-              <td>중요 판단의 인라인 출처를 확인하고, 민감정보와 리더 최종 책임 영역을 분리했다.</td>
-              <td class="completion-status-cell">
-                <fieldset class="completion-state-group" data-completion-item="evidence-safety">
-                  <legend class="visually-hidden">근거·보안 점검 상태</legend>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-done" name="ch04c02-safety" value="done" data-completion-status=""><label for="ch04c02-safety-done">완료</label></span>
-                  <span class="completion-state-option"><input type="radio" id="ch04c02-safety-review" name="ch04c02-safety" value="needs-review" data-completion-status=""><label for="ch04c02-safety-review">보완 필요</label></span>
-                </fieldset>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="completion-save-panel" aria-live="polite">
-        <div class="completion-save-copy">
-          <strong>선택 즉시 자동 저장됩니다</strong>
-          <span>필수 Step 1~3만 완료 기준에 포함합니다. 선택 Step 4·5는 별도 산출물 표에서 확인합니다.</span>
-        </div>
-        <div class="completion-save-actions">
-          <span class="completion-summary" data-completion-summary="">완료 0 / 5 · 보완 필요 0 / 5</span>
-          <span class="completion-save-message" data-completion-message="">아직 저장된 상태가 없습니다.</span>
-          <button type="button" class="completion-reset-btn" data-completion-reset="">상태 초기화</button>
-        </div>
-      </div>
-
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" style="display:none" onload="(function(marker){
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="clip-section">
+<div class="clip-section-title">최종 산출물 확인 체크리스트</div>
+<div class="clip-section-content">
+<div class="table-wrap">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>구분</th>
+<th>산출물</th>
+<th>확인 기준</th>
+<th>현업 활용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>필수</strong></td>
+<td>CH04 30일 실행계획 근거 정리표(Source Map)</td>
+<td>CH02 리더 기준과 CH03 팀 시스템 기준이 정확한 소스명·근거와 연결되었는가</td>
+<td>실행계획의 근거 확인</td>
+</tr>
+<tr>
+<td><strong>필수</strong></td>
+<td>30일 핵심 실행과제 TOP 3</td>
+<td>실제 업무 장면으로 표현되고 세 개 이하로 좁혀졌는가</td>
+<td>팀 실행 초점 정렬</td>
+</tr>
+<tr>
+<td><strong>필수</strong></td>
+<td>우리 팀 리더십 향상 30일 Action Plan</td>
+<td>현재 상태, 30일 목표, 주차별 행동, 역할, 지표, 리스크가 포함되었는가</td>
+<td>현업 실행 및 주간 점검</td>
+</tr>
+<tr>
+<td>선택</td>
+<td>30일 Action Plan 주간 점검 비서</td>
+<td>한 가지 반복 장면에 집중하고 테스트·수정 후 저장했는가</td>
+<td>현업 반복 점검</td>
+</tr>
+<tr>
+<td>선택</td>
+<td>팀 공유용 원페이지</td>
+<td>리더·팀원·AI 역할과 30일 후 확인할 변화가 쉽게 설명되었는가</td>
+<td>첫 주 회의·킥오프</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="clip-section" id="ch04Clip02Completion">
+<div class="clip-section-title">이번 클립의 완료 기준</div>
+<div class="clip-section-content">
+<div class="table-wrap">
+<table class="comparison-table completion-table">
+<thead>
+<tr>
+<th>확인 항목</th>
+<th>완료 기준</th>
+<th>내 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>핵심 소스 준비</strong></td>
+<td>CH02-3, CH02-4, CH03 핵심 자료를 하나의 CH04 NotebookLM 노트북에 추가했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="sources-ready">
+<legend class="visually-hidden">핵심 소스 준비 상태</legend>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-sources-done" name="ch04c02-sources" type="radio" value="done"/><label for="ch04c02-sources-done">완료</label></span>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-sources-review" name="ch04c02-sources" type="radio" value="needs-review"/><label for="ch04c02-sources-review">보완 필요</label></span>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>근거 정리표</strong></td>
+<td>CH02·CH03 기준과 실제 소스명·인라인 출처가 연결된 30일 실행계획 근거 정리표를 저장했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="source-map">
+<legend class="visually-hidden">근거 정리표 상태</legend>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-map-done" name="ch04c02-map" type="radio" value="done"/><label for="ch04c02-map-done">완료</label></span>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-map-review" name="ch04c02-map" type="radio" value="needs-review"/><label for="ch04c02-map-review">보완 필요</label></span>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>핵심 실행과제</strong></td>
+<td>30일 동안 집중할 실행과제를 세 개 이하로 확정하고 리더·팀원·AI 역할을 구분했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="top-agendas">
+<legend class="visually-hidden">핵심 실행과제 상태</legend>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-agenda-done" name="ch04c02-agenda" type="radio" value="done"/><label for="ch04c02-agenda-done">완료</label></span>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-agenda-review" name="ch04c02-agenda" type="radio" value="needs-review"/><label for="ch04c02-agenda-review">보완 필요</label></span>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>30일 Action Plan</strong></td>
+<td>현재 상태, 30일 목표, 주차별 행동, 역할, 지표, 리스크가 포함된 계획을 Note에 저장했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="action-plan">
+<legend class="visually-hidden">30일 Action Plan 상태</legend>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-plan-done" name="ch04c02-plan" type="radio" value="done"/><label for="ch04c02-plan-done">완료</label></span>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-plan-review" name="ch04c02-plan" type="radio" value="needs-review"/><label for="ch04c02-plan-review">보완 필요</label></span>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>근거·보안 점검</strong></td>
+<td>중요 판단의 인라인 출처를 확인하고, 민감정보와 리더 최종 책임 영역을 분리했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="evidence-safety">
+<legend class="visually-hidden">근거·보안 점검 상태</legend>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-safety-done" name="ch04c02-safety" type="radio" value="done"/><label for="ch04c02-safety-done">완료</label></span>
+<span class="completion-state-option"><input data-completion-status="" id="ch04c02-safety-review" name="ch04c02-safety" type="radio" value="needs-review"/><label for="ch04c02-safety-review">보완 필요</label></span>
+</fieldset>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div aria-live="polite" class="completion-save-panel">
+<div class="completion-save-copy">
+<strong>선택 즉시 자동 저장됩니다</strong>
+<span>필수 Step 1~3만 완료 기준에 포함합니다. 선택 Step 4·5는 별도 산출물 표에서 확인합니다.</span>
+</div>
+<div class="completion-save-actions">
+<span class="completion-summary" data-completion-summary="">완료 0 / 5 · 보완 필요 0 / 5</span>
+<span class="completion-save-message" data-completion-message="">아직 저장된 상태가 없습니다.</span>
+<button class="completion-reset-btn" data-completion-reset="" type="button">상태 초기화</button>
+</div>
+</div>
+<img alt="" onload="(function(marker){
         var section=marker.closest('#ch04Clip02Completion');
         if(!section||section.getAttribute('data-completion-ready')==='true'){return;}
         section.setAttribute('data-completion-ready','true');
@@ -1338,19 +1265,23 @@
         }
 
         restoreState();
-      })(this);">
-    </div>
-  </div>
-
-  <div class="info-block" style="margin-top:18px">
-    <div class="info-block-title">핵심 메시지</div>
-    <div>
-      CH04의 목적은 자료를 많이 분석하거나 문서를 많이 만드는 것이 아닙니다.<br>
-      <strong>CH02의 리더 기준과 CH03의 팀 시스템 기준을 근거로 연결하고,
+      })(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
+</div>
+</div>
+<div class="info-block" style="margin-top:18px">
+<div class="info-block-title">핵심 메시지</div>
+<div>
+      CH04의 목적은 자료를 많이 분석하거나 문서를 많이 만드는 것이 아닙니다.<br/>
+<strong>CH02의 리더 기준과 CH03의 팀 시스템 기준을 근거로 연결하고,
       30일 안에 실제로 실행할 과제를 좁혀 현업 루틴으로 만드는 것</strong>입니다.
       필수 Step 1~3은 NotebookLM에서 진행하고, ChatGPT 비서 프롬프트는 필요할 때 선택적으로 활용합니다.
     </div>
-  </div>
-
-  <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch04-clip01">← NotebookLM 소개 및 접속 방법</a><a class="clip-nav-btn" href="#ch05-clip01">오늘의 핵심 정리: 배움에서 현업 자산으로 →</a></div>
 </div>
+<div class="clip-section"><div class="clip-section-title">현업 적용 Gate</div><div class="clip-section-content"><div class="table-wrap"><table class="comparison-table"><thead><tr><th>확인 질문</th><th>통과 기준</th></tr></thead><tbody>
+<tr><td>리더가 직접 통제할 수 있는 행동인가?</td><td>‘팀원이 바뀌어야 한다’가 아니라 리더의 업무 장면·행동이 명확함</td></tr>
+<tr><td>조직 전체 참고 신호와 우리 팀 근거가 구분되는가?</td><td>출처·근거 수준·확인 필요가 표시됨</td></tr>
+<tr><td>성과와 성장을 함께 설계했는가?</td><td>업무 결과, 팀원 성장, 피드백·Speak-up, 절감 시간 재투자가 연결됨</td></tr>
+<tr><td>AI·팀원·리더 책임과 중단 기준이 있는가?</td><td>승인·Quality Gate·Fallback이 실제 Workflow에 배치됨</td></tr>
+<tr><td>팀원과 수정할 절차가 있는가?</td><td>72시간 팀 대화와 주간 Go/Modify/Hold가 포함됨</td></tr>
+</tbody></table></div></div></div>
+<div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch04-clip01">← NotebookLM 소개 및 접속 방법</a><a class="clip-nav-btn" href="#ch05-clip01">오늘의 핵심 정리: 배움에서 현업 자산으로 →</a></div></div>

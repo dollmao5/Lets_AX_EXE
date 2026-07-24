@@ -7,7 +7,7 @@ source_url: "https://lg.cmdspace.work/axcamp#ch01-clip04"
 
 ~5분
 CH 01
-참고
+개념
 
 # 개념 다지기
 

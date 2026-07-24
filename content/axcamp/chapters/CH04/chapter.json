@@ -1,8 +1,8 @@
 {
   "chapterId": "ch04",
   "chapterNum": "CH 04",
-  "title": "우리 팀의 리더십 향상 실천",
-  "time": "15:40",
+  "title": "우리 팀의 성과·성장역량 향상 실천",
+  "time": "15:30",
   "clips": [
     {
       "route": "#ch04-clip01",
@@ -12,21 +12,9 @@
     },
     {
       "route": "#ch04-clip02",
-      "title": "NotebookLM & AI 비서 활용: 팀 성과 향상 및 피드백 실전",
+      "title": "NotebookLM & AI 비서 활용: 팀 성과·성장역량 향상 및 피드백 실전",
       "type": "실습",
       "folder": "chapters/CH04/ch04-clip02"
-    },
-    {
-      "route": "#ch04-clip04",
-      "title": "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석",
-      "type": "실습",
-      "folder": "chapters/CH04/ch04-clip04"
-    },
-    {
-      "route": "#ch04-clip05",
-      "title": "실습 시트",
-      "type": "개념",
-      "folder": "chapters/CH04/ch04-clip05"
     }
   ]
 }

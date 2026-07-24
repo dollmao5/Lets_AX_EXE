@@ -12,21 +12,33 @@
     },
     {
       "route": "#ch02-clip02",
-      "title": "팀 토론: AI 시대, 리더의 고민과 역할",
-      "type": "토론·실습",
+      "title": "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민",
+      "type": "팀 토론",
       "folder": "chapters/CH02/ch02-clip02"
     },
     {
       "route": "#ch02-clip03",
-      "title": "프롬프팅 기초: 초인공 AI 시대, 변화된 팀 리더의 역할 정의하기",
+      "title": "프롬프팅 기초: AI 시대, 리더 역할·책임 인식",
       "type": "실습",
       "folder": "chapters/CH02/ch02-clip03"
+    },
+    {
+      "route": "#ch02-clip03b",
+      "title": "Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가",
+      "type": "팀 토론",
+      "folder": "chapters/CH02/ch02-clip03b"
     },
     {
       "route": "#ch02-clip04",
       "title": "프롬프팅 활용: 리더의 핵심 역량 및 스킬",
       "type": "실습",
       "folder": "chapters/CH02/ch02-clip04"
+    },
+    {
+      "route": "#ch02-clip05",
+      "title": "CH02 Output Gate: 리더 역할·책임·역량 통합 저장",
+      "type": "통합·저장",
+      "folder": "chapters/CH02/ch02-clip05"
     }
   ]
 }

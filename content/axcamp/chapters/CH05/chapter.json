@@ -2,18 +2,18 @@
   "chapterId": "ch05",
   "chapterNum": "CH 05",
   "title": "오늘의 핵심 요약",
-  "time": "17:00",
+  "time": "16:50",
   "clips": [
     {
       "route": "#ch05-clip01",
       "title": "오늘의 핵심 정리: 배움에서 현업 자산으로",
-      "type": "개요",
+      "type": "정리",
       "folder": "chapters/CH05/ch05-clip01"
     },
     {
       "route": "#ch05-clip02",
       "title": "Wrap-up 및 마무리: Start · Stop · Continue",
-      "type": "실천 · 성찰",
+      "type": "실천·성찰",
       "folder": "chapters/CH05/ch05-clip02"
     }
   ]

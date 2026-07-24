@@ -1,15 +1,17 @@
 ---
 route: "#ch03-clip02"
 chapter: "ch03"
-title: "참고_Gemini 및 Gems 소개"
+title: "참고: Gemini 접속 방법 및 Gems 소개"
 source_url: "https://lg.cmdspace.work/axcamp#ch03-clip02"
 ---
 
-참고 · ~20분
+선택 · ~20분
 CH 03
-플랫폼
+선택 참고
 
-# 참고_Gemini 및 Gems 소개
+# 참고: Gemini 접속 방법 및 Gems 소개
+
+**선택 참고 Clip**입니다. 라이브 필수 8시간에는 포함하지 않으며, 사전·사후 학습 또는 계정 환경 비교가 필요할 때 펼쳐 활용합니다.
 
 본 과정의 주요 실습은 **ChatGPT·GPTs 및 NotebookLM**을 중심으로 진행합니다.
 

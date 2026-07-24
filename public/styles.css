@@ -888,6 +888,18 @@ button.ghost {
   background: #f4f0f8;
 }
 
+.clip-type-badge.cat-discussion {
+  color: #35558d;
+  border-color: #d3ddf2;
+  background: #ecf1fb;
+}
+
+.clip-type-badge.cat-gate {
+  color: #8f3550;
+  border-color: #f0d5dd;
+  background: #fbeef2;
+}
+
 .clip-btn.completed .clip-title::after {
   content: "  ✓";
   color: var(--lg-red);

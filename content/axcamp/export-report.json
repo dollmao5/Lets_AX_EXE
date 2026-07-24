@@ -109,6 +109,16 @@
           "promptCount": 4
         },
         {
+          "route": "#ch02-clip03b",
+          "title": "Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가",
+          "type": "팀 토론",
+          "folder": "chapters/CH02/ch02-clip03b",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 1,
+          "promptCount": 0
+        },
+        {
           "route": "#ch02-clip04",
           "title": "프롬프팅 활용: 리더의 핵심 역량 및 스킬",
           "type": "실습",
@@ -116,6 +126,16 @@
           "linkCount": 0,
           "imageCount": 0,
           "sectionCount": 10,
+          "promptCount": 0
+        },
+        {
+          "route": "#ch02-clip05",
+          "title": "CH02 Output Gate: 리더 역할·책임·역량 통합 저장",
+          "type": "통합·저장",
+          "folder": "chapters/CH02/ch02-clip05",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 1,
           "promptCount": 0
         }
       ]
@@ -134,6 +154,26 @@
           "linkCount": 0,
           "imageCount": 0,
           "sectionCount": 12,
+          "promptCount": 0
+        },
+        {
+          "route": "#ch03-clip01b",
+          "title": "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가",
+          "type": "팀 토론",
+          "folder": "chapters/CH03/ch03-clip01b",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 1,
+          "promptCount": 0
+        },
+        {
+          "route": "#ch03-clip01c",
+          "title": "CH03 통합 저장 Gate: 성장역량·일하는 방식·팀 실험 통합",
+          "type": "통합·저장",
+          "folder": "chapters/CH03/ch03-clip01c",
+          "linkCount": 0,
+          "imageCount": 0,
+          "sectionCount": 1,
           "promptCount": 0
         },
         {
@@ -430,6 +470,19 @@
     },
     {
       "chapterId": "ch02",
+      "route": "#ch02-clip03b",
+      "title": "Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가",
+      "folder": "chapters/CH02/ch02-clip03b",
+      "textLength": 219,
+      "htmlLength": 721,
+      "sectionCount": 1,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "팀 토론"
+    },
+    {
+      "chapterId": "ch02",
       "route": "#ch02-clip04",
       "title": "프롬프팅 활용: 리더의 핵심 역량 및 스킬",
       "folder": "chapters/CH02/ch02-clip04",
@@ -440,6 +493,19 @@
       "linkCount": 0,
       "imageCount": 0,
       "type": "실습"
+    },
+    {
+      "chapterId": "ch02",
+      "route": "#ch02-clip05",
+      "title": "CH02 Output Gate: 리더 역할·책임·역량 통합 저장",
+      "folder": "chapters/CH02/ch02-clip05",
+      "textLength": 216,
+      "htmlLength": 716,
+      "sectionCount": 1,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "통합·저장"
     },
     {
       "chapterId": "ch03",
@@ -453,6 +519,32 @@
       "linkCount": 0,
       "imageCount": 0,
       "type": "실습"
+    },
+    {
+      "chapterId": "ch03",
+      "route": "#ch03-clip01b",
+      "title": "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가",
+      "folder": "chapters/CH03/ch03-clip01b",
+      "textLength": 218,
+      "htmlLength": 720,
+      "sectionCount": 1,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "팀 토론"
+    },
+    {
+      "chapterId": "ch03",
+      "route": "#ch03-clip01c",
+      "title": "CH03 통합 저장 Gate: 성장역량·일하는 방식·팀 실험 통합",
+      "folder": "chapters/CH03/ch03-clip01c",
+      "textLength": 217,
+      "htmlLength": 719,
+      "sectionCount": 1,
+      "promptCount": 0,
+      "linkCount": 0,
+      "imageCount": 0,
+      "type": "통합·저장"
     },
     {
       "chapterId": "ch03",
