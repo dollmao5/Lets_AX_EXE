@@ -36,7 +36,6 @@ const PRACTICE_FILE_MAP = {
   "1iKGcE5A6LldmVDV8evPlreUTT2fcfmGL": `${PRACTICE_ROOT_REL}/CH02-EXAONE_보안AI/03_EXAONE_가상_기밀보고서.md`,
   "1xJtcpem3mt4aWAKx08SfXjR9QxtIPSsO": `${PRACTICE_ROOT_REL}/CH02-EXAONE_보안AI/TB 26-01-03 샤오미 EV 혁신 방정식 - 자동차 산업의 시간과 비용을 재정의하다.pdf`,
   "1h2CfdVLN6Bx4SkUhQW-dL7VZAHfWTnAc": `${PRACTICE_ROOT_REL}/CH02-EXAONE_보안AI/06_EXAONE_3단계_프롬프트.md`,
-  "19wD3WR1MXFO8rBrsk0ll9XFg6qF5kSsg": `${PRACTICE_ROOT_REL}/CH03-01-Gemini_회의분석/meeting-audio.mp3`,
   "1xFco3cSTZApWXSG5iWY04K50GMmFCO9N": `${PRACTICE_ROOT_REL}/CH03-01-Gemini_회의분석/02_회의_맥락_참고자료.md`,
   "1B-zoWWsqVynVUiRqm7lrLcoW68gWQ-86": `${PRACTICE_ROOT_REL}/CH03-01-Gemini_회의분석/07_Gemini_단일흐름_프롬프트.md`,
   "1SQgCgDVWwXBjK93LwaI3m4vRgOuMQop_": `${PRACTICE_ROOT_REL}/CH03-02-Gems_AI어시스턴트/08_Gems_시스템_인스트럭션.md`,
@@ -1315,7 +1314,8 @@ function rewriteVisibleReferences(input, catalog, currentClip = null) {
 
   
 
-  output = output.replace(/#(ch\d{2}-clip\d{2})/gi, (_match, rawKey) => {
+  // [Revision v2] suffix route(ch02-clip03b 등)까지 통째로 매칭한다 — 2자리 고정 시 꼬리가 잘림
+  output = output.replace(/#(ch\d{2}-clip\d{2}[a-z]*)/gi, (_match, rawKey) => {
     const mapped = toVisibleClipKey(catalog, rawKey);
     return mapped ? `#${mapped}` : `#${rawKey}`;
   });
@@ -1373,7 +1373,8 @@ function rewriteCanonicalReferences(input, catalog, currentClip = null) {
 
   
 
-  output = output.replace(/#(ch\d{2}-clip\d{2})/gi, (_match, rawKey) => {
+  // [Revision v2] suffix route(ch02-clip03b 등)까지 통째로 매칭한다 — 2자리 고정 시 꼬리가 잘림
+  output = output.replace(/#(ch\d{2}-clip\d{2}[a-z]*)/gi, (_match, rawKey) => {
     const mapped = toCanonicalClipKey(catalog, rawKey);
     return mapped ? `#${mapped}` : `#${rawKey}`;
   });
@@ -2675,174 +2676,7 @@ async function handleAxTask(req, res, urlObj) {
   });
 }
 
-async function handleSharedAudio(req, res, urlObj) {
-  const user = await resolveUserFromRequest(req, urlObj);
-  if (!user) {
-    return sendJson(res, 401, { ok: false, error: "로그인이 필요합니다." });
-  }
-
-  const course = await resolveActiveCourse(user, urlObj);
-  const catalog = await getCatalog(course);
-  const clipKey = normalizeWs(urlObj.searchParams.get("clipKey")).toLowerCase();
-
-  if (!clipKey) {
-    return sendJson(res, 400, { ok: false, error: "clipKey가 필요합니다." });
-  }
-
-  const clip = resolveCatalogClip(catalog, clipKey);
-  if (!clip) {
-    return sendJson(res, 404, { ok: false, error: "클립을 찾을 수 없습니다." });
-  }
-
-  const sharedDir = path.join(clip.folderAbsolute, "shared-audios");
-
-  if (req.method === "GET") {
-    try {
-      if (!(await pathExists(sharedDir))) {
-        return sendJson(res, 200, { ok: true, audios: [] });
-      }
-      const files = await fs.readdir(sharedDir);
-      const audios = [];
-      for (const file of files) {
-        if (file.endsWith(".json")) continue;
-        const filePath = path.join(sharedDir, file);
-        const metaPath = path.join(sharedDir, `${file}.meta.json`);
-        const stat = await fs.stat(filePath);
-
-        let meta = {};
-        if (await pathExists(metaPath)) {
-          meta = await readJsonFileSafe(metaPath, {});
-        }
-
-        if (stat.isFile()) {
-          audios.push({
-            fileName: file,
-            size: stat.size,
-            sizeLabel: formatByteSize(stat.size),
-            url: `/course-files/${encodeURIComponent(course.courseCode)}/${encodeURIComponent(clip.clipKey)}/shared-audios/${encodeURIComponent(file)}`,
-            uploadedAt: meta.uploadedAt || stat.mtime.toISOString(),
-            uploadedBy: meta.uploadedBy || "",
-            uploadedByDisplay: meta.uploadedByDisplay || meta.uploadedBy || "",
-            teamName: meta.teamName || ""
-          });
-        }
-      }
-      audios.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
-      return sendJson(res, 200, { ok: true, audios });
-    } catch (error) {
-      console.error("Failed to list shared audios:", error);
-      return sendJson(res, 500, { ok: false, error: "오디오 목록을 가져오지 못했습니다." });
-    }
-  }
-
-  if (req.method === "POST") {
-    try {
-      const payload = await readRequestJson(req);
-      const originalName = sanitizeAssetFileName(payload.fileName || "");
-      const ext = path.extname(originalName).toLowerCase();
-      const base64 = String(payload.contentBase64 || "").trim();
-
-      const ALLOWED_AUDIO_EXTENSIONS = new Set([".mp3", ".wav", ".m4a", ".ogg", ".aac"]);
-
-      if (!originalName || !ext) {
-        return sendJson(res, 400, { ok: false, error: "파일 이름이 올바르지 않습니다." });
-      }
-
-      if (!ALLOWED_AUDIO_EXTENSIONS.has(ext)) {
-        return sendJson(res, 400, {
-          ok: false,
-          error: `지원하지 않는 파일 형식입니다. 오디오 파일만 업로드할 수 있습니다. (${ext})`
-        });
-      }
-
-      if (!base64) {
-        return sendJson(res, 400, { ok: false, error: "업로드할 파일 내용이 비어 있습니다." });
-      }
-
-      const content = Buffer.from(base64, "base64");
-      if (!content.length) {
-        return sendJson(res, 400, { ok: false, error: "업로드할 파일 내용이 비어 있습니다." });
-      }
-
-      if (content.length > MAX_ADMIN_ASSET_BYTES) {
-        return sendJson(res, 400, {
-          ok: false,
-          error: `파일 용량은 ${formatByteSize(MAX_ADMIN_ASSET_BYTES)} 이하로 업로드해 주세요.`
-        });
-      }
-
-      await fs.mkdir(sharedDir, { recursive: true });
-
-      const stem = path.basename(originalName, ext) || "audio";
-      let candidateName = `${stem}${ext}`;
-      let targetPath = path.join(sharedDir, candidateName);
-      let suffix = 2;
-
-      while (await pathExists(targetPath)) {
-        candidateName = `${stem}_${suffix}${ext}`;
-        targetPath = path.join(sharedDir, candidateName);
-        suffix++;
-      }
-
-      const uploadedAt = new Date().toISOString();
-      await fs.writeFile(targetPath, content);
-
-      // 업로더 정보를 메타데이터 파일에 저장하여 이후 목록 조회 시 정확한 업로더 표시
-      const metaPath = path.join(sharedDir, `${candidateName}.meta.json`);
-      await fs.writeFile(metaPath, JSON.stringify({
-        uploadedBy: user.accountId,
-        uploadedByDisplay: user.displayName || user.accountId,
-        teamName: user.teamName || "",
-        uploadedAt
-      }, null, 2), "utf8");
-
-      return sendJson(res, 200, {
-        ok: true,
-        audio: {
-          fileName: candidateName,
-          size: content.length,
-          sizeLabel: formatByteSize(content.length),
-          url: `/course-files/${encodeURIComponent(course.courseCode)}/${encodeURIComponent(clip.clipKey)}/shared-audios/${encodeURIComponent(candidateName)}`,
-          uploadedAt,
-          uploadedBy: user.accountId
-        }
-      });
-    } catch (error) {
-      console.error("Failed to upload shared audio:", error);
-      return sendJson(res, 500, { ok: false, error: "오디오 업로드에 실패했습니다." });
-    }
-  }
-
-  if (req.method === "DELETE") {
-    try {
-      const payload = await readRequestJson(req);
-      const fileName = sanitizeAssetFileName(payload.fileName || "");
-      if (!fileName) {
-        return sendJson(res, 400, { ok: false, error: "삭제할 파일명이 필요합니다." });
-      }
-
-      const targetPath = path.join(sharedDir, fileName);
-      if (!(await pathExists(targetPath))) {
-        return sendJson(res, 404, { ok: false, error: "삭제할 파일이 존재하지 않습니다." });
-      }
-
-      await fs.unlink(targetPath);
-
-      // 메타데이터 파일도 함께 삭제 (없어도 에러 무시)
-      const metaPath = path.join(sharedDir, `${fileName}.meta.json`);
-      if (await pathExists(metaPath)) {
-        await fs.unlink(metaPath);
-      }
-
-      return sendJson(res, 200, { ok: true, message: "성공적으로 삭제되었습니다." });
-    } catch (error) {
-      console.error("Failed to delete shared audio:", error);
-      return sendJson(res, 500, { ok: false, error: "파일 삭제에 실패했습니다." });
-    }
-  }
-
-  return sendText(res, 405, "text/plain; charset=utf-8", "Method not allowed");
-}
+// [SECURITY 2026-07-23] 음성 공유 업로드/목록/삭제 핸들러 제거 (Revision v2 보안 조치)
 
 async function handleNotes(req, res, urlObj) {
   const user = await resolveUserFromRequest(req, urlObj);
@@ -3754,12 +3588,7 @@ async function route(req, res) {
     return handleGetClip(req, res, urlObj);
   }
 
-  if (
-    (req.method === "GET" || req.method === "POST" || req.method === "DELETE") &&
-    urlObj.pathname === "/api/shared-audio"
-  ) {
-    return handleSharedAudio(req, res, urlObj);
-  }
+  // [SECURITY 2026-07-23] 음성 공유 API 라우트 제거 (Revision v2 보안 조치)
 
   if (
     (req.method === "GET" || req.method === "POST") &&

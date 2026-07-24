@@ -21,3 +21,19 @@ content/axcamp_repro/links-manifest.json
 content/axcamp_repro/verification-report.json
 content/axcamp_repro/verification-summary.md
 _backup_chapters_original/
+
+# [SECURITY 2026-07-23] 내부자료·음성 원본이 저장소에 들어오지 않도록 차단
+internal_only_DO_NOT_PUBLISH/
+# [SECURITY 2026-07-24] 토큰/키 메모 파일 커밋 차단
+Github_Fine-grained*
+Google?AI?Studio*
+*access_token*
+*api_key*.txt
+*API?key*.txt
+**/raw_audio/
+**/transcripts/
+**/survey_exact/
+**/shared-audios/
+*.m4a
+*.wav
+*.mp3

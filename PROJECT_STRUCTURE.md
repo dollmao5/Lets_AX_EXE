@@ -96,13 +96,14 @@ content/axcamp/
 - `content/axcamp/`: 현재 수업 콘텐츠 원본
 - `scripts/`: 정적 빌드·파생 파일 재생성·린트 도구
 
-## 7) GitHub 토큰 정책
+## 7) Secret 관리 원칙
 
-ch02-clip02(팀 토론 녹음 공유)의 정적 사이트 업로드 경로에 쓰이는 GitHub fine-grained
-토큰은 **이 저장소(Lets_AX_EXE) 한정, contents 권한만** 부여되어 있으며 본문에는
-난독화(문자열 역순 + Base64)되어 삽입돼 있다.
+**브라우저로 전달되는 HTML/JS/정적 빌드에는 어떤 형태의 토큰·API key·인증정보도 넣지 않는다.**
+난독화(Base64, 문자열 역순 등)는 암호화가 아니므로 금지 우회 수단이 될 수 없다.
 
-- **만료일: 2026-12-31** → **2026년 11월 중 갱신 필요**
-- 갱신 절차: ① 신규 fine-grained 토큰 발급 (동일 스코프) → ② ch02-clip02 본문의 난독화
-  문자열 교체 (역순+Base64, `npm run regen:clip -- ch02-clip02` 포함) → ③ 배포 후 업로드
-  동작 확인 → ④ 구 토큰 폐기(revoke)
+- 2026-07-23 보안 조치로 ch02-clip02의 브라우저 업로드 경로와 내장 토큰을 제거했다.
+  과거에 사용된 토큰은 폐기(revoke) 대상이다.
+- 외부 API 연동이 필요한 기능은 서버 측(server.js)에서 처리하고, 자격증명은
+  환경변수 또는 사내 인증 저장소(secret manager)에서 주입한다.
+- GitHub 저장소에는 secret scanning·push protection을 활성화하고,
+  커밋 전 secret 스캔을 습관화한다.
