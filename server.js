@@ -2857,6 +2857,265 @@ async function handleWrapupAdminDelete(req, res, urlObj) {
   await fs.unlink(filePath);
   return sendJson(res, 200, { ok: true, deleted: id });
 }
+/* ---- [Wrapup 2단계] Gemini Round별 요약 ---- */
+const GEMINI_MODEL = normalizeWs(process.env.GEMINI_MODEL) || "gemini-3.5-flash";
+
+async function loadGeminiKey() {
+  const envKey = normalizeWs(process.env.GEMINI_API_KEY || "");
+  if (envKey) return envKey;
+  // 환경변수가 없으면 저장소 폴더의 로컬 키 파일에서 읽는다 (gitignore 보호 파일)
+  try {
+    const files = fsSync
+      .readdirSync(ROOT_DIR)
+      .filter((f) => /^Google AI Studio_API key.*\.txt$/i.test(f));
+    for (const file of files) {
+      const raw = await fs.readFile(path.join(ROOT_DIR, file), "utf8");
+      const match = raw.match(/(AIza[0-9A-Za-z_\-]{30,}|AQ\.[0-9A-Za-z_\-.]{20,})/);
+      if (match) return match[1];
+    }
+  } catch {
+    // ignore
+  }
+  return "";
+}
+
+async function callGemini(apiKey, prompt) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GEMINI_MODEL)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.4, maxOutputTokens: 2048 }
+    })
+  });
+  const data = await response.json().catch(() => null);
+  if (!response.ok) {
+    const message = data?.error?.message || `HTTP ${response.status}`;
+    throw new Error(`Gemini API 오류: ${message}`);
+  }
+  const text = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
+  if (!text.trim()) throw new Error("Gemini 응답이 비어 있습니다.");
+  return text.trim();
+}
+
+const WRAPUP_ROUND_CONTEXT = {
+  round1: {
+    label: "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민 (As-Is 진단)",
+    mainQuestion: "AI가 우리 팀의 일하는 방식에 들어오면서, 무엇이 실제로 달라졌고 어떤 기존 문제가 더 선명하게 드러났습니까?",
+    lens: "실제 업무 장면·긴장·리더 행동·팀원 반응 등 현실 진단 관점"
+  },
+  round2: {
+    label: "Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가 (책임경계 재설계)",
+    mainQuestion: "AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가?",
+    lens: "가짜 일 제거, AI·팀원·리더 역할 분담, 승인·중단 기준, 리더 역할 전환 관점"
+  },
+  round3: {
+    label: "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가 (30일 팀 실험 설계)",
+    mainQuestion: "AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가?",
+    lens: "30일 실험 대상 업무, 팀원 성장 지원, Speak-up, 시간 재투자, 성공 판단 기준 관점"
+  }
+};
+
+const WRAPUP_COMMON_RULES = [
+  "규칙:",
+  "- 실명, 고객명, 회사·조직을 식별할 수 있는 정보는 'OO'으로 바꿔서 표기합니다.",
+  "- 제출물에 없는 내용을 지어내지 않습니다.",
+  "- 각 불릿은 한 문장으로, 교육 현장에서 바로 읽을 수 있게 씁니다.",
+  "- 마크다운 형식으로만 답하고, 다른 설명은 붙이지 않습니다."
+].join("\n");
+
+function wrapupTeamPrompt(round, team, submissions) {
+  const ctx = WRAPUP_ROUND_CONTEXT[round];
+  const bodies = submissions
+    .map((s) => `--- 팀장 ${s.name}의 제출 ---\n${s.markdown}`)
+    .join("\n\n");
+  return [
+    "당신은 리더십 교육 과정에서 팀 토론 내용을 정리해 발표를 돕는 조교입니다.",
+    `토론: ${ctx.label}`,
+    `핵심 질문: ${ctx.mainQuestion}`,
+    `아래는 ${team}조 팀장들이 각자 제출한 논의 내용입니다 (${submissions.length}건).`,
+    "",
+    bodies,
+    "",
+    "위 내용을 통합해 다음 형식의 마크다운으로만 정리하세요:",
+    "### 핵심 논점",
+    "- (3~5개 불릿 — 팀이 실제로 논의한 내용 중심)",
+    "### 발표 포인트",
+    "1. (팀 발표자가 1분 발표에 쓸 첫 번째 포인트)",
+    "2. (두 번째 포인트)",
+    "### 팀 내 관점 차이",
+    "- (제출물 간 시각 차이가 있으면 1~2개, 없으면 '뚜렷한 이견 없음')",
+    "",
+    WRAPUP_COMMON_RULES
+  ].join("\n");
+}
+
+function wrapupCrossPrompt(round, teamBlocks) {
+  const ctx = WRAPUP_ROUND_CONTEXT[round];
+  return [
+    "당신은 리더십 교육의 강사를 돕는 조교입니다. 아래는 팀별 토론 요약입니다.",
+    `토론: ${ctx.label}`,
+    `핵심 질문: ${ctx.mainQuestion}`,
+    "",
+    teamBlocks,
+    "",
+    "전체 팀을 관통하는 분석을 다음 형식의 마크다운으로만 작성하세요:",
+    "### 공통 긴장 TOP 3",
+    "1. (여러 팀에서 반복된 고민·긴장)",
+    "2. ...",
+    "3. ...",
+    "### 팀별로 갈린 관점",
+    "- (팀 간 시각이 달랐던 지점 1~3개, 어느 조가 어떤 입장인지 포함)",
+    "### 강사 마무리 멘트 제안",
+    "- (강사가 Wrap-up에서 쓸 수 있는 2~3문장 멘트 1개)",
+    "",
+    WRAPUP_COMMON_RULES
+  ].join("\n");
+}
+
+function wrapupComparePrompt(round, currentCross, pastBlocks) {
+  const ctx = WRAPUP_ROUND_CONTEXT[round];
+  return [
+    "당신은 리더십 교육의 강사를 돕는 조교입니다. 같은 주제로 여러 차수(기수)의 토론이 진행되었습니다.",
+    `토론: ${ctx.label}`,
+    "",
+    "[이번 차수 교차 분석]",
+    currentCross,
+    "",
+    "[지난 차수 교차 분석]",
+    pastBlocks,
+    "",
+    "다음 형식의 마크다운으로만 작성하세요:",
+    "### 차수가 바뀌어도 반복되는 공통 고민",
+    "- (1~3개)",
+    "### 이번 차수에서 새로 등장한 관점",
+    "- (1~3개, 없으면 '뚜렷한 새 관점 없음')",
+    "",
+    WRAPUP_COMMON_RULES
+  ].join("\n");
+}
+
+function wrapupSummaryFile(cohort, round) {
+  return path.join(wrapupRoundDir(cohort, round), "summary.json");
+}
+
+async function listWrapupCohorts() {
+  if (!(await pathExists(WRAPUP_DIR))) return [];
+  const entries = await fs.readdir(WRAPUP_DIR, { withFileTypes: true });
+  return entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+}
+
+async function handleWrapupSummarize(req, res, urlObj) {
+  const admin = await requireWrapupAdmin(req, res, urlObj);
+  if (!admin) return;
+  const payload = await readRequestJson(req);
+  const config = await readWrapupConfig();
+  const cohort = wrapupSafeSegment(payload.cohort) || config.currentCohort;
+  const round = normalizeWs(payload.round).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return sendJson(res, 400, { ok: false, error: "round는 round1~round3 중 하나여야 합니다." });
+  }
+  const apiKey = await loadGeminiKey();
+  if (!apiKey) {
+    return sendJson(res, 400, {
+      ok: false,
+      error: "Gemini API 키를 찾을 수 없습니다. GEMINI_API_KEY 환경변수 또는 'Google AI Studio_API key*.txt' 파일을 확인해 주세요."
+    });
+  }
+  const submissions = await listWrapupSubmissions(cohort, round);
+  if (!submissions.length) {
+    return sendJson(res, 400, { ok: false, error: "제출된 논의 내용이 없습니다. 교육생 제출 후 다시 실행해 주세요." });
+  }
+
+  // 팀별 요약은 병렬 호출로 대기 시간 단축 (팀 6개 기준 순차 대비 수 배 빠름)
+  const teamJobs = [];
+  for (let t = 1; t <= config.teamCount; t++) {
+    const members = submissions.filter((s) => s.team === t);
+    if (!members.length) continue;
+    teamJobs.push(
+      (async () => {
+        const entry = { team: t, memberCount: members.length, names: members.map((s) => s.name) };
+        try {
+          entry.summary = await callGemini(apiKey, wrapupTeamPrompt(round, t, members));
+        } catch (error) {
+          entry.error = String(error.message || error);
+        }
+        return entry;
+      })()
+    );
+  }
+  const teams = (await Promise.all(teamJobs)).sort((a, b) => a.team - b.team);
+
+  let cross = "";
+  let crossError = "";
+  const okTeams = teams.filter((t) => t.summary);
+  if (okTeams.length >= 2) {
+    const blocks = okTeams.map((t) => `## ${t.team}조 요약\n${t.summary}`).join("\n\n");
+    try {
+      cross = await callGemini(apiKey, wrapupCrossPrompt(round, blocks));
+    } catch (error) {
+      crossError = String(error.message || error);
+    }
+  } else if (okTeams.length === 1) {
+    cross = "(참여 팀이 1개뿐이라 교차 분석을 생략했습니다)";
+  }
+
+  // 차수 비교: 다른 차수의 같은 라운드 교차 분석이 있으면 최근 2개까지 비교
+  let cohortCompare = "";
+  try {
+    const cohorts = (await listWrapupCohorts()).filter((c) => c !== cohort);
+    const pastCrosses = [];
+    for (const past of cohorts.slice(-2)) {
+      const pastSummary = await readJsonFileSafe(wrapupSummaryFile(past, round), null);
+      if (pastSummary?.cross && !String(pastSummary.cross).startsWith("(")) {
+        pastCrosses.push(`[${past}]\n${pastSummary.cross}`);
+      }
+    }
+    if (cross && pastCrosses.length) {
+      cohortCompare = await callGemini(apiKey, wrapupComparePrompt(round, cross, pastCrosses.join("\n\n")));
+    }
+  } catch {
+    // 차수 비교 실패는 치명적이지 않음
+  }
+
+  const summary = {
+    ok: true,
+    round,
+    cohort,
+    model: GEMINI_MODEL,
+    generatedAt: new Date().toISOString(),
+    teamCount: config.teamCount,
+    submissionTotal: submissions.length,
+    teams,
+    cross,
+    crossError: crossError || undefined,
+    cohortCompare: cohortCompare || undefined
+  };
+  await fs.mkdir(wrapupRoundDir(cohort, round), { recursive: true });
+  await fs.writeFile(wrapupSummaryFile(cohort, round), JSON.stringify(summary, null, 2), "utf8");
+  return sendJson(res, 200, summary);
+}
+
+async function handleWrapupSummary(req, res, urlObj) {
+  const config = await readWrapupConfig();
+  const cohort = wrapupSafeSegment(urlObj.searchParams.get("cohort")) || config.currentCohort;
+  const round = normalizeWs(urlObj.searchParams.get("round")).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return sendJson(res, 400, { ok: false, error: "round 파라미터가 필요합니다 (round1~round3)." });
+  }
+  const summary = await readJsonFileSafe(wrapupSummaryFile(cohort, round), null);
+  if (!summary) {
+    return sendJson(res, 404, { ok: false, error: "아직 생성된 요약이 없습니다. 강사가 '요약 생성'을 실행하면 표시됩니다." });
+  }
+  return sendJson(res, 200, summary);
+}
+
+async function handleWrapupCohorts(req, res) {
+  const config = await readWrapupConfig();
+  const cohorts = await listWrapupCohorts();
+  return sendJson(res, 200, { ok: true, current: config.currentCohort, cohorts });
+}
 /* ============ [Wrapup] 끝 ============ */
 
 async function handleNotes(req, res, urlObj) {
@@ -3789,6 +4048,15 @@ async function route(req, res) {
   }
   if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/delete") {
     return handleWrapupAdminDelete(req, res, urlObj);
+  }
+  if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/summarize") {
+    return handleWrapupSummarize(req, res, urlObj);
+  }
+  if (req.method === "GET" && urlObj.pathname === "/api/wrapup/summary") {
+    return handleWrapupSummary(req, res, urlObj);
+  }
+  if (req.method === "GET" && urlObj.pathname === "/api/wrapup/cohorts") {
+    return handleWrapupCohorts(req, res);
   }
 
   if (
