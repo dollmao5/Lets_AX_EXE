@@ -187,7 +187,8 @@ const el = {
   slidePrevBtn: document.getElementById("slidePrevBtn"),
   slideNextBtn: document.getElementById("slideNextBtn"),
   logoutBtn: document.getElementById("logoutBtn"),
-  adminLoginBtn: document.getElementById("adminLoginBtn"),
+  instructorModeBtn: document.getElementById("instructorModeBtn"),
+  adminModeBtn: document.getElementById("adminModeBtn"),
   openWrapupBtn: document.getElementById("openWrapupBtn"),
   continueGuestBtn: document.getElementById("continueGuestBtn"),
   sidebarToggleBtn: document.getElementById("sidebarToggleBtn"),
@@ -2181,8 +2182,13 @@ function renderPublishPanel() {
   }
 }
 
+function isRootAdmin() {
+  return Boolean(state.isAdmin && state.user?.accountId === "root");
+}
+
 function updateEditorVisibility() {
-  const showEditorControls = Boolean(state.isAdmin);
+  // 편집·배포 컨트롤은 관리자(root) 전용 — 강사(승격 계정)는 Wrap-up 기능만 사용
+  const showEditorControls = isRootAdmin();
   el.toggleEditModeBtn.classList.toggle("hidden", !showEditorControls);
   el.saveContentEditorTopBtn?.classList.toggle(
     "hidden",
@@ -3819,6 +3825,8 @@ function renderCurrentUser() {
 
 function applyStaticPublicModeUI() {
   if (!STATIC_MODE) return;
+  el.instructorModeBtn?.classList.remove("hidden");
+  el.adminModeBtn?.classList.remove("hidden");
   el.accountSettingsBtn?.classList.add("hidden");
   el.logoutBtn?.classList.add("hidden");
   el.toggleEditModeBtn?.classList.add("hidden");
@@ -3827,7 +3835,7 @@ function applyStaticPublicModeUI() {
 }
 
 function updateAdminVisibility() {
-  if (state.isAdmin) {
+  if (isRootAdmin()) {
     el.adminSection.classList.remove("hidden");
   } else {
     el.adminSection.classList.add("hidden");
@@ -4263,7 +4271,8 @@ async function saveCurrentClipNote() {
 
 function hydrateSession(result) {
   state.guestMode = false;
-  el.adminLoginBtn?.classList.add("hidden");
+  el.instructorModeBtn?.classList.add("hidden");
+  el.adminModeBtn?.classList.add("hidden");
   el.accountSettingsBtn?.classList.remove("hidden");
   el.logoutBtn?.classList.remove("hidden");
   state.user = result.user || null;
@@ -4413,7 +4422,8 @@ async function onAccountSubmit(event) {
 function applyGuestModeUI() {
   el.accountSettingsBtn?.classList.add("hidden");
   el.logoutBtn?.classList.add("hidden");
-  el.adminLoginBtn?.classList.remove("hidden");
+  el.instructorModeBtn?.classList.remove("hidden");
+  el.adminModeBtn?.classList.remove("hidden");
   el.toggleEditModeBtn?.classList.add("hidden");
   el.toggleSidebarModeBtn?.classList.add("hidden");
   el.togglePublishModeBtn?.classList.add("hidden");
@@ -4831,10 +4841,18 @@ function bindEvents() {
   el.openWrapupBtn?.addEventListener("click", () => {
     window.open("/wrapup", "_blank", "noopener");
   });
-  el.adminLoginBtn?.addEventListener("click", () => {
+  function openModeLogin(prefillId) {
+    if (STATIC_MODE) {
+      alert("강사·관리자 기능은 교육장 서버(강사 PC 주소)로 접속했을 때 사용할 수 있습니다.\n공개 사이트에서는 학습 열람만 가능합니다.");
+      return;
+    }
     showLogin();
     showLoginMode();
-  });
+    if (el.loginAccountId) el.loginAccountId.value = prefillId;
+    el.loginPassword?.focus();
+  }
+  el.instructorModeBtn?.addEventListener("click", () => openModeLogin("instructor"));
+  el.adminModeBtn?.addEventListener("click", () => openModeLogin("root"));
   el.continueGuestBtn?.addEventListener("click", () => {
     enterGuestMode();
   });
