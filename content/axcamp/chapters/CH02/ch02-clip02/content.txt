@@ -120,4 +120,17 @@ ChatGPT복붙형Round 1 잠정 결론의 반론·누락 점검복사
 기록·제출 원칙
 기록 원칙 — Evidence Keeper(기록 담당자)가 합의된 사실·판단·추가 확인 사항만 Team Canvas에 기록하고, CH02_R1_AI시대_우리팀현실진단_팀번호.md로 저장합니다. 실명·평가·보상·징계·고객 식별정보는 기록하지 않습니다.
 
+이번 클립의 완료 기준
+
+실제 업무 장면을 근거로 토론에 참여했다
+Team Canvas에 팀 합의 내용을 기록하고 Markdown으로 저장했다 (기록 담당자)
+'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다
+체크 상태는 현재 브라우저에 자동 저장됩니다.
+
+-1)b.checked=true;});}catch(e){}
+root.querySelector('#r1CheckBox').addEventListener('change',function(){
+var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r1check'));});
+try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
+});
+})(this);">
 다음 클립 연결 — 이 Canvas는 바로 다음 클립(프롬프팅 기초)에서 AI 인터뷰로 나의 리더 역할 프로필을 만들 때 입력자료로 사용합니다.

@@ -1181,7 +1181,7 @@ CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다
         return;
       }
 
-      var storageKey = 'ch03-clip01-gate-status-v2';
+      var storageKey = 'ax_literacy_checklist_status:' + encodeURIComponent((function(){try{return localStorage.getItem('ax_literacy_course_code')||'AXCAMP'}catch(e){return 'AXCAMP'}})()) + ':ch03-clip01:' + encodeURIComponent((function(){try{return localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||'guest'}catch(e){return 'guest'}})());
       var groups = Array.prototype.slice.call(root.querySelectorAll('[data-gate-status]'));
       var totalCount = groups.length;
       var savedAtValue = '';

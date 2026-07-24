@@ -141,4 +141,19 @@ ChatGPT복붙형Round 1 잠정 결론의 반론·누락 점검복사
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
+## 이번 클립의 완료 기준
+
+실제 업무 장면을 근거로 토론에 참여했다
+Team Canvas에 팀 합의 내용을 기록하고 Markdown으로 저장했다 (기록 담당자)
+'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다
+체크 상태는 현재 브라우저에 자동 저장됩니다.
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+
+-1)b.checked=true;});}catch(e){}
+root.querySelector('#r1CheckBox').addEventListener('change',function(){
+var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r1check'));});
+try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
+});
+})(this);">
 **다음 클립 연결** — 이 Canvas는 바로 다음 클립(프롬프팅 기초)에서 AI 인터뷰로 나의 리더 역할 프로필을 만들 때 입력자료로 사용합니다.

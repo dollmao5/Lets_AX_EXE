@@ -327,7 +327,10 @@ function writeStaticJson(key, value) {
 
 function readSidebarCollapsedPreference() {
   try {
-    return localStorage.getItem(STORAGE_SIDEBAR_COLLAPSED_KEY) === "1";
+    const stored = localStorage.getItem(STORAGE_SIDEBAR_COLLAPSED_KEY);
+    // 저장된 선호가 없으면 좁은 화면(모바일)은 기본 접힘 — 본문 압착 방지
+    if (stored === null && window.innerWidth < 900) return true;
+    return stored === "1";
   } catch {
     return false;
   }

@@ -824,7 +824,7 @@
         return;
       }
 
-      var storageKey = 'ch01-clip04-final-check-status-v2';
+      var storageKey = 'ax_literacy_checklist_status:' + encodeURIComponent((function(){try{return localStorage.getItem('ax_literacy_course_code')||'AXCAMP'}catch(e){return 'AXCAMP'}})()) + ':ch01-clip04:' + encodeURIComponent((function(){try{return localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||'guest'}catch(e){return 'guest'}})());
       var inputs = checklist.querySelectorAll('[data-final-check-key]');
       var summaryEl = checklist.querySelector('[data-final-check-summary]');
       var messageEl = checklist.querySelector('[data-final-check-message]');
