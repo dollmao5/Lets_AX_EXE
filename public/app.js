@@ -188,6 +188,7 @@ const el = {
   slideNextBtn: document.getElementById("slideNextBtn"),
   logoutBtn: document.getElementById("logoutBtn"),
   adminLoginBtn: document.getElementById("adminLoginBtn"),
+  openWrapupBtn: document.getElementById("openWrapupBtn"),
   continueGuestBtn: document.getElementById("continueGuestBtn"),
   sidebarToggleBtn: document.getElementById("sidebarToggleBtn"),
   chapterList: document.getElementById("chapterList"),
@@ -3828,6 +3829,7 @@ function updateAdminVisibility() {
   } else {
     el.adminSection.classList.add("hidden");
   }
+  el.openWrapupBtn?.classList.toggle("hidden", !state.isAdmin);
   updateEditorVisibility();
 }
 
@@ -4823,6 +4825,9 @@ function bindEvents() {
   el.logoutBtn.addEventListener("click", onLogout);
 
   // [Wrapup 1단계] 게스트 ↔ 관리자 로그인 전환
+  el.openWrapupBtn?.addEventListener("click", () => {
+    window.open("/wrapup", "_blank", "noopener");
+  });
   el.adminLoginBtn?.addEventListener("click", () => {
     showLogin();
     showLoginMode();

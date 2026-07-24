@@ -2886,7 +2886,7 @@ async function callGemini(apiKey, prompt) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.4, maxOutputTokens: 2048 }
+      generationConfig: { temperature: 0.4, maxOutputTokens: 8192 }
     })
   });
   const data = await response.json().catch(() => null);
@@ -3957,6 +3957,7 @@ async function handlePracticeFile(req, res, urlObj) {
 
 async function handleStatic(req, res, urlObj) {
   let requestPath = urlObj.pathname === "/" ? "/index.html" : urlObj.pathname;
+  if (requestPath === "/wrapup") requestPath = "/wrapup.html"; // [Wrapup 3단계] 보드 페이지
   requestPath = requestPath.replace(/^\/+/, "");
 
   const targetPath = path.resolve(PUBLIC_DIR, requestPath);

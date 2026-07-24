@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Round Wrap-up 보드 | 리더십 향상 with AI</title>
+<style>
+  :root {
+    --brand: #185dcc; --brand-soft: #e8f0ff; --border: #d9e0ec; --bg: #f2f5fb;
+    --text: #1c2742; --muted: #6f7f9a; --card: #ffffff; --danger: #b42318; --ok: #138246;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif; line-height: 1.6; }
+  .wrap { max-width: 1360px; margin: 0 auto; padding: 18px 20px 60px; }
+  header.top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 14px; }
+  header.top h1 { margin: 0; font-size: 1.3rem; }
+  header.top .spacer { flex: 1; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--border);
+    border-radius: 999px; background: #fff; font-size: .92rem; font-weight: 700; }
+  select, button, input { font: inherit; }
+  select { min-height: 40px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff; }
+  button { min-height: 40px; padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px;
+    background: #fff; font-weight: 800; cursor: pointer; }
+  button.primary { border-color: var(--brand); background: var(--brand); color: #fff; }
+  button:disabled { opacity: .5; cursor: default; }
+  .tabs { display: flex; gap: 8px; margin: 6px 0 14px; }
+  .tabs button { border-radius: 12px; padding: 10px 22px; font-size: 1.02rem; }
+  .tabs button.active { border-color: var(--brand); background: var(--brand); color: #fff; }
+  .statusbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px;
+    padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 14px; font-size: .95rem; }
+  .statusbar .muted { color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 14px; }
+  .team-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px;
+    display: flex; flex-direction: column; min-height: 180px; }
+  .team-card h2 { margin: 0 0 4px; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+  .team-card .names { color: var(--muted); font-size: .88rem; margin-bottom: 10px; }
+  .team-card .empty { color: var(--muted); font-size: .95rem; margin: auto 0; text-align: center; padding: 20px 0; }
+  .md { font-size: .97rem; }
+  .md h3 { margin: 12px 0 6px; font-size: 1rem; color: var(--brand); }
+  .md ul, .md ol { margin: 4px 0 10px; padding-left: 22px; }
+  .md li { margin: 4px 0; }
+  .section-card { background: #fff; border: 1px solid var(--border); border-left: 6px solid var(--brand);
+    border-radius: 16px; padding: 18px 22px; margin-top: 16px; }
+  .section-card h2 { margin: 0 0 8px; font-size: 1.1rem; }
+  .admin-box { display: none; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .admin-box.on { display: flex; }
+  .toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); background: #1c2742; color: #fff;
+    padding: 10px 22px; border-radius: 999px; font-size: .95rem; opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 60; }
+  .toast.on { opacity: .95; }
+  /* 발표 모드 */
+  #presentOverlay { position: fixed; inset: 0; background: #101828; color: #fff; z-index: 50; display: none;
+    flex-direction: column; padding: 4vh 6vw; }
+  #presentOverlay.on { display: flex; }
+  #presentOverlay .p-head { display: flex; align-items: center; gap: 14px; margin-bottom: 2vh; }
+  #presentOverlay .p-head h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); }
+  #presentOverlay .p-head .muted { color: #9fb0cc; font-size: 1rem; }
+  #presentOverlay .p-body { flex: 1; overflow: auto; background: rgba(255,255,255,.06); border-radius: 20px;
+    padding: 3vh 3vw; font-size: clamp(1.05rem, 1.6vw, 1.45rem); line-height: 1.75; }
+  #presentOverlay .p-body .md h3 { color: #8fc1ff; font-size: 1.1em; margin: .8em 0 .3em; }
+  #presentOverlay .p-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 2vh; }
+  #presentOverlay .p-foot .hint { color: #9fb0cc; font-size: .95rem; }
+  #presentOverlay button { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25); color: #fff; }
+  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Round Wrap-up 보드</h1>
+    <span class="pill" id="cohortPill">차수 -</span>
+    <span class="spacer"></span>
+    <label for="cohortSelect" class="pill" style="border:none;background:none;">차수 보기</label>
+    <select id="cohortSelect"></select>
+    <button id="refreshBtn">새로고침</button>
+    <button id="presentBtn" class="primary">발표 모드 ▶</button>
+  </header>
+
+  <div class="tabs" id="roundTabs">
+    <button data-round="round1" class="active">Round 1 · 팀 현실과 리더 고민</button>
+    <button data-round="round2">Round 2 · 책임경계</button>
+    <button data-round="round3">Round 3 · 성과와 성장</button>
+  </div>
+
+  <div class="statusbar">
+    <span id="submitStatus" class="muted">제출 현황을 불러오는 중...</span>
+    <span class="spacer" style="flex:1"></span>
+    <span id="summaryMeta" class="muted"></span>
+    <span class="admin-box" id="adminBox">
+      <button id="genBtn" class="primary">요약 생성</button>
+      <button id="cohortBtn">차수 설정</button>
+    </span>
+  </div>
+
+  <div class="grid" id="teamGrid"></div>
+  <div class="section-card" id="crossCard" style="display:none">
+    <h2>교차 분석 — 전체 팀</h2>
+    <div class="md" id="crossBody"></div>
+  </div>
+  <div class="section-card" id="compareCard" style="display:none">
+    <h2>차수 비교</h2>
+    <div class="md" id="compareBody"></div>
+  </div>
+</div>
+
+<div id="presentOverlay">
+  <div class="p-head">
+    <h2 id="pTitle">-</h2>
+    <span class="muted" id="pSub"></span>
+  </div>
+  <div class="p-body"><div class="md" id="pBody"></div></div>
+  <div class="p-foot">
+    <button id="pPrev">← 이전</button>
+    <span class="hint">←/→ 이동 · ESC 종료</span>
+    <button id="pNext">다음 →</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  var state = { round: "round1", cohort: "", current: "", cohorts: [], summary: null, isAdmin: false, slides: [], slideIdx: 0 };
+  var $ = function (id) { return document.getElementById(id); };
+
+  function toast(msg) {
+    var t = $("toast"); t.textContent = msg; t.classList.add("on");
+    setTimeout(function () { t.classList.remove("on"); }, 2600);
+  }
+  function esc(s) {
+    return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  // 간이 마크다운 렌더러 (###, 목록, 굵게만)
+  function md(src) {
+    var lines = esc(src).split(/\r?\n/);
+    var out = []; var mode = "";
+    function close() { if (mode) { out.push(mode === "ul" ? "</ul>" : "</ol>"); mode = ""; } }
+    lines.forEach(function (line) {
+      var l = line.trim();
+      if (!l) { close(); return; }
+      l = l.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      var h = l.match(/^#{2,4}\s+(.*)$/);
+      if (h) { close(); out.push("<h3>" + h[1] + "</h3>"); return; }
+      var num = l.match(/^\d+[.)]\s+(.*)$/);
+      if (num) { if (mode !== "ol") { close(); out.push("<ol>"); mode = "ol"; } out.push("<li>" + num[1] + "</li>"); return; }
+      var bul = l.match(/^[-·]\s+(.*)$/);
+      if (bul) { if (mode !== "ul") { close(); out.push("<ul>"); mode = "ul"; } out.push("<li>" + bul[1] + "</li>"); return; }
+      close(); out.push("<p>" + l + "</p>");
+    });
+    close();
+    return out.join("");
+  }
+  function sessionToken() {
+    try { return localStorage.getItem("ax_literacy_session_token") || ""; } catch (e) { return ""; }
+  }
+  function api(path, options) {
+    options = options || {};
+    options.headers = options.headers || {};
+    var tok = sessionToken();
+    if (tok) options.headers["x-session-token"] = tok;
+    if (options.body && typeof options.body === "object") {
+      options.headers["Content-Type"] = "application/json";
+      options.body = JSON.stringify(options.body);
+    }
+    return fetch(path, options).then(function (r) { return r.json(); });
+  }
+
+  function roundLabel(r) {
+    return { round1: "Round 1 · 팀 현실과 리더 고민", round2: "Round 2 · 책임경계", round3: "Round 3 · 성과와 성장" }[r] || r;
+  }
+
+  async function loadCohorts() {
+    var d = await api("/api/wrapup/cohorts");
+    if (!d.ok) return;
+    state.current = d.current; state.cohorts = d.cohorts.length ? d.cohorts : [d.current];
+    if (!state.cohort) state.cohort = d.current;
+    if (state.cohorts.indexOf(state.cohort) === -1) state.cohorts.push(state.cohort);
+    $("cohortSelect").innerHTML = state.cohorts.map(function (c) {
+      var label = c === d.current ? c + " (현재)" : c;
+      return "<option value=\"" + esc(c) + "\"" + (c === state.cohort ? " selected" : "") + ">" + esc(label) + "</option>";
+    }).join("");
+    $("cohortPill").textContent = "현재 차수: " + d.current;
+  }
+
+  async function loadStatus() {
+    if (state.cohort !== state.current) { $("submitStatus").textContent = "지난 차수 열람 중 (제출 현황은 현재 차수만 표시)"; return; }
+    try {
+      var d = await api("/api/wrapup/status?round=" + state.round);
+      if (!d.ok) throw 0;
+      var parts = d.teams.map(function (t) { return t.team + "조 " + t.count + "명"; });
+      $("submitStatus").textContent = "제출 현황: " + parts.join(" · ") + " (총 " + d.total + "명)";
+    } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; }
+  }
+
+  async function loadSummary() {
+    var grid = $("teamGrid"); grid.innerHTML = "";
+    $("crossCard").style.display = "none"; $("compareCard").style.display = "none";
+    $("summaryMeta").textContent = "";
+    state.summary = null;
+    var d = await api("/api/wrapup/summary?round=" + state.round + "&cohort=" + encodeURIComponent(state.cohort));
+    if (!d.ok) {
+      grid.innerHTML = "<div class=\"team-card\"><div class=\"empty\">" + esc(d.error || "요약이 없습니다.") + "</div></div>";
+      return;
+    }
+    state.summary = d;
+    var when = new Date(d.generatedAt).toLocaleString("ko-KR", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+    $("summaryMeta").textContent = "요약 생성: " + when + " · " + d.model;
+    var byTeam = {};
+    (d.teams || []).forEach(function (t) { byTeam[t.team] = t; });
+    for (var i = 1; i <= (d.teamCount || 6); i++) {
+      var t = byTeam[i];
+      var card = document.createElement("div"); card.className = "team-card";
+      if (!t) {
+        card.innerHTML = "<h2>" + i + "조</h2><div class=\"empty\">제출 없음</div>";
+      } else if (t.error) {
+        card.innerHTML = "<h2>" + i + "조</h2><div class=\"names\">" + esc(t.names.join(", ")) + " (" + t.memberCount + "명)</div>" +
+          "<div class=\"empty\" style=\"color:var(--danger)\">요약 실패: " + esc(t.error) + "</div>";
+      } else {
+        card.innerHTML = "<h2>" + i + "조 <span class=\"pill\" style=\"font-size:.78rem\">" + t.memberCount + "명 제출</span></h2>" +
+          "<div class=\"names\">" + esc(t.names.join(", ")) + "</div>" +
+          "<div class=\"md\">" + md(t.summary) + "</div>";
+      }
+      grid.appendChild(card);
+    }
+    if (d.cross) { $("crossCard").style.display = "block"; $("crossBody").innerHTML = md(d.cross); }
+    if (d.cohortCompare) { $("compareCard").style.display = "block"; $("compareBody").innerHTML = md(d.cohortCompare); }
+  }
+
+  async function refresh() {
+    await loadCohorts();
+    await Promise.all([loadStatus(), loadSummary()]);
+  }
+
+  async function detectAdmin() {
+    if (!sessionToken()) return;
+    try {
+      var d = await api("/api/me");
+      if (d && d.user && d.user.isAdmin) { state.isAdmin = true; $("adminBox").classList.add("on"); }
+    } catch (e) { /* 게스트 */ }
+  }
+
+  /* 발표 모드 */
+  function buildSlides() {
+    var s = state.summary; var slides = [];
+    if (!s) return slides;
+    (s.teams || []).forEach(function (t) {
+      if (t.summary) slides.push({ title: t.team + "조", sub: t.names.join(", ") + " · " + t.memberCount + "명 제출", body: t.summary });
+    });
+    if (s.cross && !String(s.cross).startsWith("(")) slides.push({ title: "교차 분석", sub: "전체 팀 공통 긴장과 차이", body: s.cross });
+    if (s.cohortCompare) slides.push({ title: "차수 비교", sub: "지난 차수와의 비교", body: s.cohortCompare });
+    return slides;
+  }
+  function showSlide(i) {
+    var sl = state.slides[i]; if (!sl) return;
+    state.slideIdx = i;
+    $("pTitle").textContent = roundLabel(state.round) + " — " + sl.title;
+    $("pSub").textContent = sl.sub + " (" + (i + 1) + "/" + state.slides.length + ")";
+    $("pBody").innerHTML = md(sl.body);
+    $("pPrev").disabled = i === 0;
+    $("pNext").disabled = i === state.slides.length - 1;
+  }
+  function openPresent() {
+    state.slides = buildSlides();
+    if (!state.slides.length) { toast("발표할 요약이 없습니다. 먼저 요약을 생성하세요."); return; }
+    $("presentOverlay").classList.add("on");
+    showSlide(0);
+  }
+  function closePresent() { $("presentOverlay").classList.remove("on"); }
+
+  /* 이벤트 */
+  $("roundTabs").addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-round]"); if (!btn) return;
+    state.round = btn.dataset.round;
+    document.querySelectorAll("#roundTabs button").forEach(function (b) { b.classList.toggle("active", b === btn); });
+    refresh();
+  });
+  $("cohortSelect").addEventListener("change", function () { state.cohort = this.value; refresh(); });
+  $("refreshBtn").addEventListener("click", refresh);
+  $("presentBtn").addEventListener("click", openPresent);
+  $("pPrev").addEventListener("click", function () { showSlide(state.slideIdx - 1); });
+  $("pNext").addEventListener("click", function () { showSlide(state.slideIdx + 1); });
+  document.addEventListener("keydown", function (e) {
+    if (!$("presentOverlay").classList.contains("on")) return;
+    if (e.key === "Escape") closePresent();
+    if (e.key === "ArrowLeft") showSlide(Math.max(0, state.slideIdx - 1));
+    if (e.key === "ArrowRight") showSlide(Math.min(state.slides.length - 1, state.slideIdx + 1));
+  });
+  $("genBtn").addEventListener("click", async function () {
+    if (state.cohort !== state.current) { toast("요약 생성은 현재 차수에서만 가능합니다."); return; }
+    if (!confirm(roundLabel(state.round) + " 요약을 생성할까요? (약 30초~1분 소요, 기존 요약을 덮어씁니다)")) return;
+    var btn = this; btn.disabled = true; btn.textContent = "생성 중... (최대 1분)";
+    try {
+      var d = await api("/api/admin/wrapup/summarize", { method: "POST", body: { round: state.round } });
+      if (!d.ok) { toast(d.error || "요약 생성 실패"); }
+      else { toast("요약 생성 완료"); await refresh(); }
+    } catch (e) { toast("서버 오류로 생성에 실패했습니다."); }
+    btn.disabled = false; btn.textContent = "요약 생성";
+  });
+  $("cohortBtn").addEventListener("click", async function () {
+    var name = prompt("현재 차수 이름을 입력하세요 (예: 2026-09-02차수)", state.current);
+    if (!name) return;
+    var d = await api("/api/admin/wrapup/config", { method: "POST", body: { cohort: name } });
+    if (d.ok) { toast("차수 변경: " + d.cohort); state.cohort = d.cohort; await refresh(); }
+    else toast(d.error || "차수 변경 실패");
+  });
+
+  detectAdmin();
+  refresh();
+})();
+</script>
+</body>
+</html>
