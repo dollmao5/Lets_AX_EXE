@@ -38,6 +38,10 @@
    - 요약 생성은 강사 브라우저에서 실행되며 팀 수에 따라 **1~3분** 걸립니다 (AI 혼잡 시 자동 재시도)
 5. 데이터는 제출 즉시 원격 저장소(`Lets_AX_Wrapup_DATA`)에 자동 저장됩니다 — push/pull 불필요 (보드에서 해당 버튼이 숨겨짐)
    - 이후 강사 PC(LAN 방식) 수업에서 이 데이터를 이어 쓰려면: 강사 PC 보드에서 **[불러오기(pull)]** 1회
+6. (관리자만) **원격 본문 편집**: 학습 화면의 **[관리자 모드]** → 관리자 비밀코드 입력 → 기존과 같은 [본문 수정]·[사이드바 수정] 버튼 사용
+   - 저장하면 자동으로 커밋·재배포되어 **약 3~4분 후** 공개 사이트에 반영됩니다 (별도 배포 버튼 불필요)
+   - 자산(이미지 등) 업로드는 강사 PC에서만 가능
+   - 사전 조건: 공개 레포 편집용 PAT가 Worker에 등록되어 있어야 함 (아래 6장 참고)
 
 ## 3. Round 토론 운영 (Round 1·2·3 공통)
 
@@ -74,7 +78,9 @@
 
 - **토큰 관리**: 데이터 저장소 토큰(fine-grained, `Lets_AX_Wrapup_DATA` 한정) 만료 전 갱신 → `node scripts/make-launcher.mjs`로 bat 재생성 → 재배포. 발급 절차: GitHub Settings → Developer settings → Fine-grained tokens (Contents: Read and write만)
 - **Gemini 키 관리**: 키 파일 `Google AI Studio_API key*.txt`를 저장소 폴더에 유지 (gitignore 보호). 교체 시 파일 내용만 갱신. 발급: https://aistudio.google.com → Get API key. **키 교체 후에는 `node scripts/deploy-worker.mjs` 1회 실행** (공개 사이트용 Worker 시크릿도 함께 갱신됨)
-- **Cloudflare Worker 관리 (공개 사이트 제출·보드 백엔드)**: 코드는 `cloudflare/worker.js`, 배포는 `node scripts/deploy-worker.mjs` (계정 정보 `cloudflare*.txt`, 강사 비밀코드 `AXCAMP_instructor_key*.txt` — 모두 gitignore 보호, 코드가 없으면 자동 생성). GitHub PAT·Gemini 키·강사 코드가 Worker 시크릿으로 올라가며, 토큰 갱신 시에도 같은 명령 1회면 됩니다. 주소: https://axcamp-wrapup.dollmao5.workers.dev (무료 플랜, 일 10만 요청)
+- **Cloudflare Worker 관리 (공개 사이트 제출·보드 백엔드)**: 코드는 `cloudflare/worker.js`, 배포는 `node scripts/deploy-worker.mjs` (계정 정보 `cloudflare*.txt`, 강사 비밀코드 `AXCAMP_instructor_key*.txt`, 관리자 비밀코드 `AXCAMP_admin_key*.txt` — 모두 gitignore 보호). GitHub PAT·Gemini 키·강사/관리자 코드가 Worker 시크릿으로 올라가며, 토큰 갱신 시에도 같은 명령 1회면 됩니다. 주소: https://axcamp-wrapup.dollmao5.workers.dev (무료 플랜, 일 10만 요청)
+- **원격 본문 편집용 PAT**: 공개 레포(`Lets_AX_EXE`) 한정 fine-grained PAT (Contents: Read and write) 발급 → 파일명에 `exe`가 들어간 txt로 저장소 폴더에 저장 (예: `Github_Fine-grained_exe-edit_key_YYMMDD.txt`) → `node scripts/deploy-worker.mjs` 실행 시 `PUBLIC_REPO_TOKEN` 시크릿으로 자동 등록. 이 토큰이 없으면 공개 사이트 관리자 본문 편집만 비활성 (다른 기능은 무관)
+- **원격 편집 처리 구조**: 관리자 저장 → Worker가 공개 레포 `.edit-queue/`에 요청 커밋 → GitHub Actions(`apply-edits.yml`)가 server.js 로직으로 적용(md/txt/metadata 재생성 동일) → 적용 커밋 push + Pages 재배포 자동 실행
 - **bat 재생성**: `node scripts/make-launcher.mjs` — 토큰 파일에서 자동 주입, 산출물은 gitignore
 - **환경변수 오버라이드** (선택): `GEMINI_API_KEY`, `GEMINI_MODEL`(기본 gemini-3.5-flash), `WRAPUP_GIT_TOKEN`, `WRAPUP_GIT_REMOTE`
 - **데이터 위치**: `data/wrapup/{차수}/{round}/` — `data/`는 gitignore라 공개 저장소·Pages에 절대 올라가지 않음. 원격 백업은 프라이빗 저장소 `dollmao5/Lets_AX_Wrapup_DATA`
