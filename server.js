@@ -2678,6 +2678,187 @@ async function handleAxTask(req, res, urlObj) {
 
 // [SECURITY 2026-07-23] 음성 공유 업로드/목록/삭제 핸들러 제거 (Revision v2 보안 조치)
 
+/* ============ [Wrapup] Round 팀 토론 개인 제출·차수 관리 (1단계) ============ */
+const WRAPUP_DIR = path.join(DATA_DIR, "wrapup");
+const WRAPUP_CONFIG_FILE = path.join(WRAPUP_DIR, "config.json");
+const WRAPUP_ROUNDS = new Set(["round1", "round2", "round3"]);
+
+function wrapupSafeSegment(input) {
+  // 경로 조작 방지: 한글·영문·숫자·-·_·차수 표기만 허용
+  return normalizeWs(input).replace(/[^0-9A-Za-z가-힣\-_]/g, "_").slice(0, 40);
+}
+
+async function readWrapupConfig() {
+  await fs.mkdir(WRAPUP_DIR, { recursive: true });
+  const fallbackCohort = `${new Date().toISOString().slice(0, 10)}차수`;
+  const config = await readJsonFileSafe(WRAPUP_CONFIG_FILE, null);
+  if (!config) {
+    const initial = { currentCohort: fallbackCohort, teamCount: 6 };
+    await fs.writeFile(WRAPUP_CONFIG_FILE, JSON.stringify(initial, null, 2), "utf8");
+    return initial;
+  }
+  return {
+    currentCohort: wrapupSafeSegment(config.currentCohort) || fallbackCohort,
+    teamCount: Math.min(Math.max(parseInt(config.teamCount, 10) || 6, 1), 20)
+  };
+}
+
+function wrapupRoundDir(cohort, round) {
+  return path.join(WRAPUP_DIR, wrapupSafeSegment(cohort), round);
+}
+
+async function listWrapupSubmissions(cohort, round) {
+  const dir = wrapupRoundDir(cohort, round);
+  if (!(await pathExists(dir))) return [];
+  const files = await fs.readdir(dir);
+  const items = [];
+  for (const file of files) {
+    if (!file.endsWith(".json")) continue;
+    const item = await readJsonFileSafe(path.join(dir, file), null);
+    if (item && item.id) items.push(item);
+  }
+  items.sort((a, b) => (a.team - b.team) || String(a.name).localeCompare(String(b.name), "ko"));
+  return items;
+}
+
+async function handleWrapupConfig(req, res) {
+  const config = await readWrapupConfig();
+  return sendJson(res, 200, { ok: true, cohort: config.currentCohort, teamCount: config.teamCount });
+}
+
+async function handleWrapupSubmit(req, res) {
+  const payload = await readRequestJson(req);
+  const config = await readWrapupConfig();
+
+  const round = normalizeWs(payload.round).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return sendJson(res, 400, { ok: false, error: "round는 round1~round3 중 하나여야 합니다." });
+  }
+  const team = parseInt(payload.team, 10);
+  if (!(team >= 1 && team <= config.teamCount)) {
+    return sendJson(res, 400, { ok: false, error: `팀은 1~${config.teamCount}조 중에서 선택해 주세요.` });
+  }
+  const name = normalizeWs(payload.name);
+  if (name.length < 2 || name.length > 20) {
+    return sendJson(res, 400, { ok: false, error: "이름은 2~20자로 입력해 주세요." });
+  }
+  const markdown = String(payload.markdown || "");
+  if (!markdown.trim()) {
+    return sendJson(res, 400, { ok: false, error: "제출할 작성 내용이 비어 있습니다. Canvas를 작성한 뒤 제출해 주세요." });
+  }
+  if (markdown.length > 200000) {
+    return sendJson(res, 400, { ok: false, error: "제출 내용이 너무 큽니다." });
+  }
+
+  const dir = wrapupRoundDir(config.currentCohort, round);
+  await fs.mkdir(dir, { recursive: true });
+  const id = `${team}조_${wrapupSafeSegment(name)}`;
+  const filePath = path.join(dir, `${id}.json`);
+  const existing = await readJsonFileSafe(filePath, null);
+  const now = new Date().toISOString();
+  const record = {
+    id,
+    team,
+    name,
+    round,
+    cohort: config.currentCohort,
+    markdown,
+    submittedAt: existing?.submittedAt || now,
+    updatedAt: now
+  };
+  await fs.writeFile(filePath, JSON.stringify(record, null, 2), "utf8");
+  return sendJson(res, 200, {
+    ok: true,
+    id,
+    cohort: config.currentCohort,
+    team,
+    name,
+    updatedAt: now,
+    resubmitted: Boolean(existing)
+  });
+}
+
+async function handleWrapupStatus(req, res, urlObj) {
+  const config = await readWrapupConfig();
+  const round = normalizeWs(urlObj.searchParams.get("round")).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return sendJson(res, 400, { ok: false, error: "round 파라미터가 필요합니다 (round1~round3)." });
+  }
+  const items = await listWrapupSubmissions(config.currentCohort, round);
+  const teams = [];
+  for (let t = 1; t <= config.teamCount; t++) {
+    const members = items.filter((s) => s.team === t);
+    teams.push({ team: t, count: members.length, names: members.map((s) => s.name) });
+  }
+  return sendJson(res, 200, {
+    ok: true,
+    cohort: config.currentCohort,
+    round,
+    teamCount: config.teamCount,
+    total: items.length,
+    teams
+  });
+}
+
+async function requireWrapupAdmin(req, res, urlObj) {
+  const user = await resolveUserFromRequest(req, urlObj);
+  if (!user || !user.isAdmin) {
+    sendJson(res, 403, { ok: false, error: "관리자 로그인이 필요합니다." });
+    return null;
+  }
+  return user;
+}
+
+async function handleWrapupAdminConfig(req, res, urlObj) {
+  const admin = await requireWrapupAdmin(req, res, urlObj);
+  if (!admin) return;
+  const payload = await readRequestJson(req);
+  const current = await readWrapupConfig();
+  const next = {
+    currentCohort: payload.cohort !== undefined
+      ? (wrapupSafeSegment(payload.cohort) || current.currentCohort)
+      : current.currentCohort,
+    teamCount: payload.teamCount !== undefined
+      ? Math.min(Math.max(parseInt(payload.teamCount, 10) || current.teamCount, 1), 20)
+      : current.teamCount
+  };
+  await fs.writeFile(WRAPUP_CONFIG_FILE, JSON.stringify(next, null, 2), "utf8");
+  return sendJson(res, 200, { ok: true, cohort: next.currentCohort, teamCount: next.teamCount });
+}
+
+async function handleWrapupAdminList(req, res, urlObj) {
+  const admin = await requireWrapupAdmin(req, res, urlObj);
+  if (!admin) return;
+  const config = await readWrapupConfig();
+  const cohort = wrapupSafeSegment(urlObj.searchParams.get("cohort")) || config.currentCohort;
+  const round = normalizeWs(urlObj.searchParams.get("round")).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return sendJson(res, 400, { ok: false, error: "round 파라미터가 필요합니다 (round1~round3)." });
+  }
+  const items = await listWrapupSubmissions(cohort, round);
+  return sendJson(res, 200, { ok: true, cohort, round, submissions: items });
+}
+
+async function handleWrapupAdminDelete(req, res, urlObj) {
+  const admin = await requireWrapupAdmin(req, res, urlObj);
+  if (!admin) return;
+  const payload = await readRequestJson(req);
+  const config = await readWrapupConfig();
+  const cohort = wrapupSafeSegment(payload.cohort) || config.currentCohort;
+  const round = normalizeWs(payload.round).toLowerCase();
+  const id = wrapupSafeSegment(payload.id ? String(payload.id).replace(/조_/, "조_") : "");
+  if (!WRAPUP_ROUNDS.has(round) || !id) {
+    return sendJson(res, 400, { ok: false, error: "round와 id가 필요합니다." });
+  }
+  const filePath = path.join(wrapupRoundDir(cohort, round), `${id}.json`);
+  if (!(await pathExists(filePath))) {
+    return sendJson(res, 404, { ok: false, error: "해당 제출물을 찾을 수 없습니다." });
+  }
+  await fs.unlink(filePath);
+  return sendJson(res, 200, { ok: true, deleted: id });
+}
+/* ============ [Wrapup] 끝 ============ */
+
 async function handleNotes(req, res, urlObj) {
   const user = await resolveUserFromRequest(req, urlObj);
   if (!user) {
@@ -3589,6 +3770,26 @@ async function route(req, res) {
   }
 
   // [SECURITY 2026-07-23] 음성 공유 API 라우트 제거 (Revision v2 보안 조치)
+
+  // [Wrapup] Round 팀 토론 제출·차수 관리
+  if (req.method === "GET" && urlObj.pathname === "/api/wrapup/config") {
+    return handleWrapupConfig(req, res);
+  }
+  if (req.method === "POST" && urlObj.pathname === "/api/wrapup/submit") {
+    return handleWrapupSubmit(req, res);
+  }
+  if (req.method === "GET" && urlObj.pathname === "/api/wrapup/status") {
+    return handleWrapupStatus(req, res, urlObj);
+  }
+  if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/config") {
+    return handleWrapupAdminConfig(req, res, urlObj);
+  }
+  if (req.method === "GET" && urlObj.pathname === "/api/admin/wrapup/list") {
+    return handleWrapupAdminList(req, res, urlObj);
+  }
+  if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/delete") {
+    return handleWrapupAdminDelete(req, res, urlObj);
+  }
 
   if (
     (req.method === "GET" || req.method === "POST") &&

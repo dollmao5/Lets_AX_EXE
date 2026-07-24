@@ -96,6 +96,7 @@ function lookupStaticDownloadName(url) {
 }
 
 const state = {
+  guestMode: false,
   accountId: "",
   sessionToken: "",
   isAdmin: false,
@@ -186,6 +187,8 @@ const el = {
   slidePrevBtn: document.getElementById("slidePrevBtn"),
   slideNextBtn: document.getElementById("slideNextBtn"),
   logoutBtn: document.getElementById("logoutBtn"),
+  adminLoginBtn: document.getElementById("adminLoginBtn"),
+  continueGuestBtn: document.getElementById("continueGuestBtn"),
   sidebarToggleBtn: document.getElementById("sidebarToggleBtn"),
   chapterList: document.getElementById("chapterList"),
   clipTitle: document.getElementById("clipTitle"),
@@ -778,6 +781,14 @@ async function api(path, options = {}) {
   window.api = api;
   if (STATIC_MODE) {
     return apiStatic(path, options);
+  }
+
+  // [Wrapup 1단계] 게스트 모드: 개인 상태 API는 브라우저 저장 셤으로 처리 (정적 빌드와 동일 UX)
+  if (state.guestMode) {
+    const p = String(path || "");
+    if (p === "/api/progress" || p.startsWith("/api/notes") || p.startsWith("/api/ax-task") || p === "/api/logout") {
+      return apiStatic(path, options);
+    }
   }
 
   const headers = {
@@ -4246,6 +4257,10 @@ async function saveCurrentClipNote() {
 }
 
 function hydrateSession(result) {
+  state.guestMode = false;
+  el.adminLoginBtn?.classList.add("hidden");
+  el.accountSettingsBtn?.classList.remove("hidden");
+  el.logoutBtn?.classList.remove("hidden");
   state.user = result.user || null;
   state.accountId = result.user?.accountId || "";
   state.sessionToken = normalizeWs(result.sessionToken || state.sessionToken);
@@ -4390,6 +4405,35 @@ async function onAccountSubmit(event) {
   }
 }
 
+function applyGuestModeUI() {
+  el.accountSettingsBtn?.classList.add("hidden");
+  el.logoutBtn?.classList.add("hidden");
+  el.adminLoginBtn?.classList.remove("hidden");
+  el.toggleEditModeBtn?.classList.add("hidden");
+  el.toggleSidebarModeBtn?.classList.add("hidden");
+  el.togglePublishModeBtn?.classList.add("hidden");
+  el.adminSection?.classList.add("hidden");
+}
+
+// [Wrapup 1단계] 게스트 모드 — 가입/로그인 없이 학습 화면 진입 (진도·메모는 브라우저 저장)
+async function enterGuestMode() {
+  state.guestMode = true;
+  state.accountId = "guest";
+  state.sessionToken = "";
+  state.user = { accountId: "guest", displayName: "게스트", teamName: "", courseCode: "AXCAMP" };
+  state.isAdmin = false;
+  state.currentCourse = state.courses?.[0] || { courseCode: "AXCAMP", courseName: "AXCAMP" };
+  renderCurrentUser();
+  updateAdminVisibility();
+  applyGuestModeUI();
+  showApp();
+  await loadChaptersAndDefaultClip();
+  try {
+    for (const key of getStaticCompletedClipKeys()) state.completedSet.add(key);
+    renderSidebar();
+  } catch { /* ignore */ }
+}
+
 async function tryAutoLogin() {
   await loadSlideDeckData();
   if (STATIC_MODE) {
@@ -4421,8 +4465,7 @@ async function tryAutoLogin() {
   }
 
   if (!savedToken) {
-    showLogin();
-    showLoginMode();
+    await enterGuestMode();
     return;
   }
 
@@ -4445,8 +4488,7 @@ async function tryAutoLogin() {
     state.sessionToken = "";
     state.user = null;
     state.isAdmin = false;
-    showLogin();
-    showLoginMode();
+    await enterGuestMode();
   }
 }
 
@@ -4657,9 +4699,7 @@ async function onLogout() {
   updateEditorVisibility();
 
   window.location.hash = "";
-  showLogin();
-  showLoginMode();
-  renderCurrentUser();
+  await enterGuestMode();
 }
 
 function bindEvents() {
@@ -4781,6 +4821,15 @@ function bindEvents() {
     loadAdminUsers().catch((error) => setAdminStatus(error.message, true));
   });
   el.logoutBtn.addEventListener("click", onLogout);
+
+  // [Wrapup 1단계] 게스트 ↔ 관리자 로그인 전환
+  el.adminLoginBtn?.addEventListener("click", () => {
+    showLogin();
+    showLoginMode();
+  });
+  el.continueGuestBtn?.addEventListener("click", () => {
+    enterGuestMode();
+  });
 
   el.accountModal.addEventListener("click", (event) => {
     if (event.target === el.accountModal) {
