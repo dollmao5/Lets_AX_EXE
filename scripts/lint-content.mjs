@@ -65,8 +65,8 @@ for (const [clipKey, clipDir] of clipDirs) {
     }
   }
 
-  /* 2. 내부 내비게이션 href */
-  const hrefs = html.match(/href="#ch[0-9]{2}-clip[0-9]{2}"/g) || [];
+  /* 2. 내부 내비게이션 href — suffix route(ch02-clip03b 등) 포함 */
+  const hrefs = html.match(/href="#ch[0-9]{2}-clip[0-9]{2}[a-z]*"/g) || [];
   for (const h of new Set(hrefs)) {
     const anchor = h.slice(6, -1);
     if (!validClipAnchors.has(anchor)) {
@@ -91,9 +91,20 @@ for (const [clipKey, clipDir] of clipDirs) {
     }
   }
 
-  /* 4. 금칙어 (CH00~CH05, 참고 클립 ch03-clip02 제외) */
+  /* 4. 금칙어 (CH00~CH05, 참고 클립 ch03-clip02 제외)
+     — 네비 푸터(clip-nav-footer)는 카탈로그 제목을 그대로 미러하므로 검사에서 제외.
+       (선택 참고 클립 제목의 "Gemini" 등 정당한 링크 라벨까지 차단하지 않기 위함) */
   const chapterNo = Number((clipKey.match(/^ch(\d{2})/) || [])[1]);
   if (chapterNo <= 5 && clipKey !== "ch03-clip02") {
+    let htmlSansNav = html.replace(/<div class="clip-nav-footer"[\s\S]*?<\/div>/g, "");
+    // 공인 참고 클립(ch03-clip02)을 가리키는 제목·시간표 라벨은 금칙어 검사에서 제외
+    const REF_CLIP_LABELS = [
+      "선택 참고: Gemini 및 Gems 소개",
+      "참고_Gemini Overview (Gems 소개)",
+      "참고_Gemini Overview",
+      "Gemini 접속 방법 및 Gems 소개"
+    ];
+    for (const label of REF_CLIP_LABELS) htmlSansNav = htmlSansNav.split(label).join("");
     const banned = [
       [/Gemini/, "Gemini (도구 전환 완료 — 참고 클립 외 금지)"],
       [/전사 텍스트/, "전사 텍스트 (정본 용어: 토론 대화문)"],
@@ -102,7 +113,7 @@ for (const [clipKey, clipDir] of clipDirs) {
       [/AI협업_업무재설계|AI업무재설계/, "유령 산출물(업무재설계) 참조"]
     ];
     for (const [re, label] of banned) {
-      if (re.test(html)) errors.push(`[금칙어] ${rel}: ${label}`);
+      if (re.test(htmlSansNav)) errors.push(`[금칙어] ${rel}: ${label}`);
     }
   }
 }

@@ -176,36 +176,51 @@ async function buildCatalog(sourceRoot) {
     },
     {
       visibleChapterId: "ch01",
-      title: "AI 핵심 개념",
-      time: "08:50",
+      title: "리더를 위한 AI 핵심",
+      time: "08:45",
       sourceChapterIds: ["ch01"],
       clipKeys: ["ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip04"]
     },
     {
       visibleChapterId: "ch02",
-      title: "Gemini 활용 (1)",
-      time: "09:30",
+      title: "리더 역할 및 역량 점검",
+      time: "09:40",
       sourceChapterIds: ["ch02"],
-      clipKeys: ["ch02-clip01", "ch02-clip02", "ch02-clip03", "ch02-clip04"]
+      // [Revision v2] Round 2(ch02-clip03b)·Output Gate(ch02-clip05)는
+      // 명시적 visibleClipKey로 suffix route를 보존한다 (순번 자동 부여 비적용).
+      clipKeys: [
+        "ch02-clip01",
+        "ch02-clip02",
+        "ch02-clip03",
+        { clipKey: "ch02-clip03b", visibleClipKey: "ch02-clip03b" },
+        "ch02-clip04",
+        { clipKey: "ch02-clip05", visibleClipKey: "ch02-clip05" }
+      ]
     },
     {
       visibleChapterId: "ch03",
-      title: "Gemini 활용 (2)",
+      title: "조직(팀) 성장역량과 일하는 방식 점검",
       time: "13:30",
       sourceChapterIds: ["ch03"],
-      clipKeys: ["ch03-clip01", "ch03-clip02"]
+      // [Revision v2] Round 3(ch03-clip01b)·통합 저장 Gate(ch03-clip01c) suffix 보존.
+      clipKeys: [
+        "ch03-clip01",
+        { clipKey: "ch03-clip01b", visibleClipKey: "ch03-clip01b" },
+        { clipKey: "ch03-clip01c", visibleClipKey: "ch03-clip01c" },
+        "ch03-clip02"
+      ]
     },
     {
       visibleChapterId: "ch04",
-      title: "NotebookLM",
-      time: "13:00",
+      title: "우리 팀의 성과·성장역량 향상 실천",
+      time: "15:30",
       sourceChapterIds: ["ch04"],
       clipKeys: ["ch04-clip01", "ch04-clip02"]
     },
     {
       visibleChapterId: "ch05",
-      title: "Key Takeaways & Q/A",
-      time: "17:10",
+      title: "오늘의 핵심 요약",
+      time: "16:50",
       sourceChapterIds: ["ch05"],
       clipKeys: ["ch05-clip01", "ch05-clip02"]
     },
@@ -288,9 +303,15 @@ async function buildCatalog(sourceRoot) {
     }
 
     // 블루프린트에 등록된 클립 목록을 단일 명세(Specs) 리스트로 통합
+    // [Revision v2] 문자열(기존 방식: 순번 자동 부여) 또는
+    // { clipKey, visibleClipKey } 객체(명시적 visible 키 — suffix route 보존)를 허용한다.
     const clipSpecs = [];
-    for (const clipKey of blueprint.clipKeys || []) {
-      clipSpecs.push({ clipKey, synthetic: false });
+    for (const clipKeyOrSpec of blueprint.clipKeys || []) {
+      if (typeof clipKeyOrSpec === "string") {
+        clipSpecs.push({ clipKey: clipKeyOrSpec, synthetic: false });
+      } else if (clipKeyOrSpec && typeof clipKeyOrSpec === "object") {
+        clipSpecs.push({ ...clipKeyOrSpec, synthetic: false });
+      }
     }
     for (const syntheticClip of blueprint.syntheticClips || []) {
       clipSpecs.push({ ...syntheticClip, synthetic: true });
@@ -326,9 +347,16 @@ async function buildCatalog(sourceRoot) {
         const sourceClip = canonicalClipsByKey.get(sourceClipKey);
         if (!sourceClip) continue;
 
-        visibleClipCounter++;
-        const clipSuffix = String(visibleClipCounter).padStart(2, "0");
-        const visibleClipKey = `${visibleChapterId}-clip${clipSuffix}`;
+        // [Revision v2] 명시적 visibleClipKey가 있으면 순번 자동 부여보다 우선한다.
+        // 이때 순번 카운터는 증가시키지 않아 기존 숫자 route가 밀리지 않는다.
+        let visibleClipKey;
+        if (clipSpec.visibleClipKey) {
+          visibleClipKey = normalizeWs(clipSpec.visibleClipKey).toLowerCase();
+        } else {
+          visibleClipCounter++;
+          const clipSuffix = String(visibleClipCounter).padStart(2, "0");
+          visibleClipKey = `${visibleChapterId}-clip${clipSuffix}`;
+        }
 
         const overrideTitle = blueprint.clipTitles?.[clipSpec.clipKey] || clipSpec.title || sourceClip.title;
         clipObj = {
