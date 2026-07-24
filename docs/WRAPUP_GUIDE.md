@@ -24,6 +24,20 @@
 4. 교육생 안내 멘트: **"화이트보드의 주소로 접속하세요"** — 가입·비밀번호 없이 바로 학습 화면이 열립니다
 5. (전일 권장) CH04-1의 NotebookLM 사용한도 표 수치가 실제 계정 화면과 일치하는지 확인 — 다르면 개발담당자에게 갱신 요청
 
+## 2-B. 외부 교육장 — 공개 사이트로 운영 (강사 PC 서버 없이)
+
+> 사내망 밖 교육장이거나 LAN 구성이 어려울 때. 교육생·강사 모두 **인터넷만 되면** 진행 가능합니다.
+
+1. 교육생·강사 공통 접속 주소: **https://dollmao5.github.io/Lets_AX_EXE** (화이트보드에 게시)
+2. 강사: 첫 화면의 **[강사 모드]** 버튼 → Wrap-up 보드가 새 탭으로 열림 → **[강사 로그인]** → 비밀코드 입력
+   - 비밀코드는 개발담당자에게 사내 채널로 수령 (`AX-` 로 시작). **사외 공유 금지**
+3. (권장) 보드의 **[차수 설정]** 으로 오늘 차수 입력, **[차수 코드]** 로 교육생 제출용 코드 설정
+   - 차수 코드를 설정하면 교육생이 첫 제출 때 한 번 코드를 입력합니다 (칠판에 공지) — 외부인 무단 제출 방지
+4. 교육생 제출·제출 현황·요약 생성·발표 모드는 아래 3장과 동일하게 진행
+   - 요약 생성은 강사 브라우저에서 실행되며 팀 수에 따라 **1~3분** 걸립니다 (AI 혼잡 시 자동 재시도)
+5. 데이터는 제출 즉시 원격 저장소(`Lets_AX_Wrapup_DATA`)에 자동 저장됩니다 — push/pull 불필요 (보드에서 해당 버튼이 숨겨짐)
+   - 이후 강사 PC(LAN 방식) 수업에서 이 데이터를 이어 쓰려면: 강사 PC 보드에서 **[불러오기(pull)]** 1회
+
 ## 3. Round 토론 운영 (Round 1·2·3 공통)
 
 | 단계 | 진행 |
@@ -49,7 +63,8 @@
 |---|---|
 | 교육생이 접속 안 됨 | ① 같은 Wi-Fi/네트워크인지 확인 ② 강사 PC Windows 방화벽에서 Node.js 허용 (제어판→방화벽→앱 허용) ③ 주소의 IP를 다시 확인 (bat 창에 표시) |
 | "요약 생성" 실패 | 인터넷 연결 확인 후 재시도. 계속 실패 시: 팀 카드 없이도 수업은 진행 가능 — 팀별 구두 발표로 전환하고 종료 후 개발담당자에게 연락 |
-| 제출 버튼이 비활성 | 교육생이 공개 사이트(github.io)로 접속한 경우입니다 — 화이트보드의 교육장 주소로 다시 접속 안내 |
+| 제출이 안 됨 (공개 사이트) | "차수 코드가 필요합니다" 표시 → 칠판에 공지한 차수 코드 입력 안내. 코드를 모르면 강사가 보드 [차수 코드]에서 확인·재설정 |
+| 요약 생성이 느리거나 일부 팀 실패 (공개 사이트) | AI 무료 등급 혼잡입니다. 1~2분 후 [요약 생성] 재실행 — 성공한 팀 요약은 유지되지 않고 새로 생성되므로 전체 재실행하면 됩니다 |
 | bat 실행 시 내려받기 실패 | 토큰 만료 가능성 → 개발담당자 연락 (기존에 받은 폴더가 있으면 그대로 실행은 가능) |
 | 서버 창을 실수로 닫음 | bat 다시 더블클릭 (데이터는 보존됨) |
 | 잘못된 제출물 삭제 | 개발담당자에게 요청 (관리자 API로 삭제 가능) |
@@ -57,7 +72,8 @@
 ## 6. 개발담당자 관리 항목 (강사 아님)
 
 - **토큰 관리**: 데이터 저장소 토큰(fine-grained, `Lets_AX_Wrapup_DATA` 한정) 만료 전 갱신 → `node scripts/make-launcher.mjs`로 bat 재생성 → 재배포. 발급 절차: GitHub Settings → Developer settings → Fine-grained tokens (Contents: Read and write만)
-- **Gemini 키 관리**: 키 파일 `Google AI Studio_API key*.txt`를 저장소 폴더에 유지 (gitignore 보호). 교체 시 파일 내용만 갱신. 발급: https://aistudio.google.com → Get API key
+- **Gemini 키 관리**: 키 파일 `Google AI Studio_API key*.txt`를 저장소 폴더에 유지 (gitignore 보호). 교체 시 파일 내용만 갱신. 발급: https://aistudio.google.com → Get API key. **키 교체 후에는 `node scripts/deploy-worker.mjs` 1회 실행** (공개 사이트용 Worker 시크릿도 함께 갱신됨)
+- **Cloudflare Worker 관리 (공개 사이트 제출·보드 백엔드)**: 코드는 `cloudflare/worker.js`, 배포는 `node scripts/deploy-worker.mjs` (계정 정보 `cloudflare*.txt`, 강사 비밀코드 `AXCAMP_instructor_key*.txt` — 모두 gitignore 보호, 코드가 없으면 자동 생성). GitHub PAT·Gemini 키·강사 코드가 Worker 시크릿으로 올라가며, 토큰 갱신 시에도 같은 명령 1회면 됩니다. 주소: https://axcamp-wrapup.dollmao5.workers.dev (무료 플랜, 일 10만 요청)
 - **bat 재생성**: `node scripts/make-launcher.mjs` — 토큰 파일에서 자동 주입, 산출물은 gitignore
 - **환경변수 오버라이드** (선택): `GEMINI_API_KEY`, `GEMINI_MODEL`(기본 gemini-3.5-flash), `WRAPUP_GIT_TOKEN`, `WRAPUP_GIT_REMOTE`
 - **데이터 위치**: `data/wrapup/{차수}/{round}/` — `data/`는 gitignore라 공개 저장소·Pages에 절대 올라가지 않음. 원격 백업은 프라이빗 저장소 `dollmao5/Lets_AX_Wrapup_DATA`

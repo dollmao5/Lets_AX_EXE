@@ -21,6 +21,56 @@ const STATIC_PUBLIC_COURSE = Object.freeze({
   courseName: String(STATIC_CONFIG?.courseName || "AXCAMP"),
   launchUrl: STATIC_BASE_PATH || "/"
 });
+
+/* [Wrapup 외부접속] 정적 사이트(GitHub Pages)에서 Round 제출·현황 조회를 살린다.
+   콘텐츠 위젯은 fetch('/api/wrapup/...')를 그대로 쓰고, 여기서 Cloudflare Worker로 중계한다.
+   제출 시 강사가 차수 코드를 설정해 두었으면 최초 1회 입력받아 저장 후 자동 첨부한다. */
+const WRAPUP_REMOTE_API_BASE = "https://axcamp-wrapup.dollmao5.workers.dev";
+const WRAPUP_SESSION_CODE_KEY = "ax_wrapup_session_code";
+if (STATIC_MODE && typeof window !== "undefined" && typeof window.fetch === "function") {
+  const nativeFetch = window.fetch.bind(window);
+  const submitWithSessionCode = async (remoteUrl, init) => {
+    let payload = {};
+    try {
+      payload = JSON.parse(init?.body || "{}");
+    } catch {
+      payload = {};
+    }
+    const send = (code) => {
+      const body = JSON.stringify(code ? { ...payload, code } : payload);
+      return nativeFetch(remoteUrl, { ...init, body });
+    };
+    let savedCode = "";
+    try {
+      savedCode = localStorage.getItem(WRAPUP_SESSION_CODE_KEY) || "";
+    } catch {}
+    let response = await send(savedCode);
+    if (response.status === 401) {
+      const data = await response.clone().json().catch(() => null);
+      if (data?.codeRequired) {
+        const entered = window.prompt("강사가 안내한 차수 코드를 입력해 주세요.", savedCode || "");
+        if (entered === null) return response;
+        const code = entered.trim();
+        try {
+          localStorage.setItem(WRAPUP_SESSION_CODE_KEY, code);
+        } catch {}
+        response = await send(code);
+      }
+    }
+    return response;
+  };
+  window.fetch = function (input, init) {
+    const url = typeof input === "string" ? input : String(input?.url || "");
+    if (!url.startsWith("/api/wrapup/")) {
+      return nativeFetch(input, init);
+    }
+    const remoteUrl = `${WRAPUP_REMOTE_API_BASE}${url}`;
+    if (url === "/api/wrapup/submit" && init?.method === "POST") {
+      return submitWithSessionCode(remoteUrl, init);
+    }
+    return nativeFetch(remoteUrl, init);
+  };
+}
 const QUICK_EDITABLE_TAGS = new Set([
   "div",
   "h1",
@@ -4843,7 +4893,12 @@ function bindEvents() {
   });
   function openModeLogin(prefillId) {
     if (STATIC_MODE) {
-      alert("강사·관리자 기능은 교육장 서버(강사 PC 주소)로 접속했을 때 사용할 수 있습니다.\n공개 사이트에서는 학습 열람만 가능합니다.");
+      // [Wrapup 외부접속] 강사 모드: 공개 사이트에서도 Wrap-up 보드 사용 가능 (보드에서 강사 코드 로그인)
+      if (prefillId === "instructor") {
+        window.open("wrapup.html", "_blank", "noopener");
+        return;
+      }
+      alert("관리자 편집·배포 기능은 강사 PC(교육장 서버)로 접속했을 때 사용할 수 있습니다.\n공개 사이트에서는 학습 열람과 Wrap-up(강사 모드)만 가능합니다.");
       return;
     }
     showLogin();

@@ -73,6 +73,7 @@
     <label for="cohortSelect" class="pill" style="border:none;background:none;">차수 보기</label>
     <select id="cohortSelect"></select>
     <button id="refreshBtn">새로고침</button>
+    <button id="instructorLoginBtn" style="display:none">강사 로그인</button>
     <button id="presentBtn" class="primary">발표 모드 ▶</button>
   </header>
 
@@ -89,6 +90,7 @@
     <span class="admin-box" id="adminBox">
       <button id="genBtn" class="primary">요약 생성</button>
       <button id="cohortBtn">차수 설정</button>
+      <button id="codeBtn" style="display:none">차수 코드</button>
       <button id="pullBtn">불러오기(pull)</button>
       <button id="pushBtn">저장·백업(push)</button>
       <button id="zipBtn">zip 내보내기</button>
@@ -125,6 +127,17 @@
   var state = { round: "round1", cohort: "", current: "", cohorts: [], summary: null, isAdmin: false, slides: [], slideIdx: 0 };
   var $ = function (id) { return document.getElementById(id); };
 
+  /* [Wrapup 외부접속] github.io(정적 사이트)에서는 Cloudflare Worker를 API로 쓴다.
+     강사 인증은 비밀코드(x-wrapup-instructor 헤더), Gemini 요약은 브라우저가 직접 호출한다
+     (Cloudflare 엣지 발신은 Gemini 무료 등급 지역 차단에 걸리므로 브라우저 호출이 정답). */
+  var REMOTE_BASE = "https://axcamp-wrapup.dollmao5.workers.dev";
+  var IS_REMOTE = /\.github\.io$/i.test(location.hostname);
+  var INSTRUCTOR_CODE_KEY = "ax_wrapup_instructor_code";
+  function instructorCode() {
+    try { return localStorage.getItem(INSTRUCTOR_CODE_KEY) || ""; } catch (e) { return ""; }
+  }
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
   function toast(msg) {
     var t = $("toast"); t.textContent = msg; t.classList.add("on");
     setTimeout(function () { t.classList.remove("on"); }, 2600);
@@ -160,11 +173,12 @@
     options.headers = options.headers || {};
     var tok = sessionToken();
     if (tok) options.headers["x-session-token"] = tok;
+    if (IS_REMOTE && instructorCode()) options.headers["x-wrapup-instructor"] = instructorCode();
     if (options.body && typeof options.body === "object") {
       options.headers["Content-Type"] = "application/json";
       options.body = JSON.stringify(options.body);
     }
-    return fetch(path, options).then(function (r) { return r.json(); });
+    return fetch((IS_REMOTE ? REMOTE_BASE : "") + path, options).then(function (r) { return r.json(); });
   }
 
   function roundLabel(r) {
@@ -233,12 +247,218 @@
     await Promise.all([loadStatus(), loadSummary()]);
   }
 
+  function setInstructorUi(on) {
+    state.isAdmin = on;
+    $("adminBox").classList.toggle("on", on);
+    var btn = $("instructorLoginBtn");
+    if (btn) btn.textContent = on ? "강사 로그아웃" : "강사 로그인";
+  }
+
   async function detectAdmin() {
+    if (IS_REMOTE) {
+      // 원격 모드: 세션 로그인 대신 강사 비밀코드 인증. 로컬 전용(git·zip) 버튼은 숨긴다.
+      $("instructorLoginBtn").style.display = "";
+      $("codeBtn").style.display = "";
+      ["pullBtn", "pushBtn", "zipBtn"].forEach(function (id) {
+        var b = $(id); if (b) b.style.display = "none";
+      });
+      if (!instructorCode()) return;
+      try {
+        var v = await api("/api/wrapup/instructor-verify", { method: "POST" });
+        if (v && v.ok) setInstructorUi(true);
+      } catch (e) { /* 미인증 상태 유지 */ }
+      return;
+    }
     if (!sessionToken()) return;
     try {
       var d = await api("/api/me");
       if (d && d.user && d.user.isAdmin) { state.isAdmin = true; $("adminBox").classList.add("on"); }
     } catch (e) { /* 게스트 */ }
+  }
+
+  /* [Wrapup 외부접속] 원격 모드 요약 — 프롬프트는 server.js와 동일 */
+  var ROUND_CONTEXT = {
+    round1: {
+      label: "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민 (As-Is 진단)",
+      mainQuestion: "AI가 우리 팀의 일하는 방식에 들어오면서, 무엇이 실제로 달라졌고 어떤 기존 문제가 더 선명하게 드러났습니까?"
+    },
+    round2: {
+      label: "Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가 (책임경계 재설계)",
+      mainQuestion: "AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가?"
+    },
+    round3: {
+      label: "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가 (30일 팀 실험 설계)",
+      mainQuestion: "AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가?"
+    }
+  };
+  var COMMON_RULES = [
+    "규칙:",
+    "- 실명, 고객명, 회사·조직을 식별할 수 있는 정보는 'OO'으로 바꿔서 표기합니다.",
+    "- 제출물에 없는 내용을 지어내지 않습니다.",
+    "- 각 불릿은 한 문장으로, 교육 현장에서 바로 읽을 수 있게 씁니다.",
+    "- 마크다운 형식으로만 답하고, 다른 설명은 붙이지 않습니다."
+  ].join("\n");
+
+  function teamPrompt(round, team, submissions) {
+    var ctx = ROUND_CONTEXT[round];
+    var bodies = submissions.map(function (s) { return "--- 팀장 " + s.name + "의 제출 ---\n" + s.markdown; }).join("\n\n");
+    return [
+      "당신은 리더십 교육 과정에서 팀 토론 내용을 정리해 발표를 돕는 조교입니다.",
+      "토론: " + ctx.label,
+      "핵심 질문: " + ctx.mainQuestion,
+      "아래는 " + team + "조 팀장들이 각자 제출한 논의 내용입니다 (" + submissions.length + "건).",
+      "", bodies, "",
+      "위 내용을 통합해 다음 형식의 마크다운으로만 정리하세요:",
+      "### 핵심 논점",
+      "- (3~5개 불릿 — 팀이 실제로 논의한 내용 중심)",
+      "### 발표 포인트",
+      "1. (팀 발표자가 1분 발표에 쓸 첫 번째 포인트)",
+      "2. (두 번째 포인트)",
+      "### 팀 내 관점 차이",
+      "- (제출물 간 시각 차이가 있으면 1~2개, 없으면 '뚜렷한 이견 없음')",
+      "", COMMON_RULES
+    ].join("\n");
+  }
+
+  function crossPrompt(round, teamBlocks) {
+    var ctx = ROUND_CONTEXT[round];
+    return [
+      "당신은 리더십 교육의 강사를 돕는 조교입니다. 아래는 팀별 토론 요약입니다.",
+      "토론: " + ctx.label,
+      "핵심 질문: " + ctx.mainQuestion,
+      "", teamBlocks, "",
+      "전체 팀을 관통하는 분석을 다음 형식의 마크다운으로만 작성하세요:",
+      "### 공통 긴장 TOP 3",
+      "1. (여러 팀에서 반복된 고민·긴장)",
+      "2. ...",
+      "3. ...",
+      "### 팀별로 갈린 관점",
+      "- (팀 간 시각이 달랐던 지점 1~3개, 어느 조가 어떤 입장인지 포함)",
+      "### 강사 마무리 멘트 제안",
+      "- (강사가 Wrap-up에서 쓸 수 있는 2~3문장 멘트 1개)",
+      "", COMMON_RULES
+    ].join("\n");
+  }
+
+  function comparePrompt(round, currentCross, pastBlocks) {
+    var ctx = ROUND_CONTEXT[round];
+    return [
+      "당신은 리더십 교육의 강사를 돕는 조교입니다. 같은 주제로 여러 차수(기수)의 토론이 진행되었습니다.",
+      "토론: " + ctx.label,
+      "", "[이번 차수 교차 분석]", currentCross,
+      "", "[지난 차수 교차 분석]", pastBlocks, "",
+      "다음 형식의 마크다운으로만 작성하세요:",
+      "### 차수가 바뀌어도 반복되는 공통 고민",
+      "- (1~3개)",
+      "### 이번 차수에서 새로 등장한 관점",
+      "- (1~3개, 없으면 '뚜렷한 새 관점 없음')",
+      "", COMMON_RULES
+    ].join("\n");
+  }
+
+  // 기본 모델 2회 시도 후 lite 모델 폴백 (무료 등급 503/429 대비 — 실측 기준 필수)
+  async function callGemini(aiCfg, promptText) {
+    var models = [aiCfg.model, aiCfg.model, "gemini-3.5-flash-lite"];
+    var lastErr = "";
+    for (var i = 0; i < models.length; i++) {
+      if (i > 0) await wait(2000);
+      try {
+        var r = await fetch(
+          "https://generativelanguage.googleapis.com/v1beta/models/" + encodeURIComponent(models[i]) +
+          ":generateContent?key=" + encodeURIComponent(aiCfg.key),
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: promptText }] }],
+              generationConfig: { temperature: 0.4, maxOutputTokens: 8192 }
+            })
+          }
+        );
+        var d = await r.json();
+        if (!r.ok) { lastErr = (d && d.error && d.error.message) || ("HTTP " + r.status); continue; }
+        var parts = (d.candidates && d.candidates[0] && d.candidates[0].content && d.candidates[0].content.parts) || [];
+        var text = parts.map(function (p) { return p.text || ""; }).join("").trim();
+        if (text) return { text: text, model: models[i] };
+        lastErr = "빈 응답";
+      } catch (e) { lastErr = String((e && e.message) || e); }
+    }
+    throw new Error("Gemini API 오류: " + lastErr);
+  }
+
+  async function remoteSummarize(btn) {
+    var progress = function (t) { btn.textContent = t; };
+    var aiCfg = await api("/api/admin/wrapup/ai-config", { method: "POST" });
+    if (!aiCfg.ok) { toast(aiCfg.error || "AI 설정을 불러오지 못했습니다."); return; }
+    progress("제출물 수집 중...");
+    var listData = await api("/api/admin/wrapup/list?round=" + state.round);
+    if (!listData.ok) { toast(listData.error || "제출물 조회 실패"); return; }
+    var subs = listData.submissions || [];
+    if (!subs.length) { toast("제출된 논의 내용이 없습니다. 교육생 제출 후 다시 실행해 주세요."); return; }
+    var cfg = await api("/api/wrapup/config");
+    var teamCount = (cfg.ok && cfg.teamCount) || 6;
+
+    var teams = [];
+    var usedModel = aiCfg.model;
+    for (var t = 1; t <= teamCount; t++) {
+      var members = subs.filter(function (s) { return s.team === t; });
+      if (!members.length) continue;
+      progress(t + "조 요약 중...");
+      var entry = { team: t, memberCount: members.length, names: members.map(function (s) { return s.name; }) };
+      try {
+        var out = await callGemini(aiCfg, teamPrompt(state.round, t, members));
+        entry.summary = out.text;
+        usedModel = out.model;
+      } catch (e) { entry.error = String((e && e.message) || e); }
+      teams.push(entry);
+    }
+
+    var okTeams = teams.filter(function (x) { return x.summary; });
+    var cross = "";
+    var crossError = "";
+    if (okTeams.length >= 2) {
+      progress("교차 분석 중...");
+      var blocks = okTeams.map(function (x) { return "## " + x.team + "조 요약\n" + x.summary; }).join("\n\n");
+      try { cross = (await callGemini(aiCfg, crossPrompt(state.round, blocks))).text; }
+      catch (e) { crossError = String((e && e.message) || e); }
+    } else if (okTeams.length === 1) {
+      cross = "(참여 팀이 1개뿐이라 교차 분석을 생략했습니다)";
+    }
+
+    var cohortCompare = "";
+    try {
+      var co = await api("/api/wrapup/cohorts");
+      var past = ((co && co.cohorts) || []).filter(function (c) { return c !== state.current; }).slice(-2);
+      var pastCrosses = [];
+      for (var i = 0; i < past.length; i++) {
+        var ps = await api("/api/wrapup/summary?round=" + state.round + "&cohort=" + encodeURIComponent(past[i]));
+        if (ps.ok && ps.cross && String(ps.cross).indexOf("(") !== 0) pastCrosses.push("[" + past[i] + "]\n" + ps.cross);
+      }
+      if (cross && cross.indexOf("(") !== 0 && pastCrosses.length) {
+        progress("차수 비교 중...");
+        cohortCompare = (await callGemini(aiCfg, comparePrompt(state.round, cross, pastCrosses.join("\n\n")))).text;
+      }
+    } catch (e) { /* 차수 비교 실패는 치명적이지 않음 */ }
+
+    progress("저장 중...");
+    var saved = await api("/api/admin/wrapup/save-summary", {
+      method: "POST",
+      body: {
+        round: state.round,
+        summary: {
+          model: usedModel,
+          teamCount: teamCount,
+          submissionTotal: subs.length,
+          teams: teams,
+          cross: cross,
+          crossError: crossError || undefined,
+          cohortCompare: cohortCompare || undefined
+        }
+      }
+    });
+    if (!saved.ok) { toast(saved.error || "요약 저장에 실패했습니다."); return; }
+    toast("요약 생성 완료");
+    await refresh();
   }
 
   /* 발표 모드 */
@@ -289,14 +509,47 @@
   });
   $("genBtn").addEventListener("click", async function () {
     if (state.cohort !== state.current) { toast("요약 생성은 현재 차수에서만 가능합니다."); return; }
-    if (!confirm(roundLabel(state.round) + " 요약을 생성할까요? (약 30초~1분 소요, 기존 요약을 덮어씁니다)")) return;
-    var btn = this; btn.disabled = true; btn.textContent = "생성 중... (최대 1분)";
+    var etaLabel = IS_REMOTE ? "(팀 수에 따라 1~3분 소요, 기존 요약을 덮어씁니다)" : "(약 30초~1분 소요, 기존 요약을 덮어씁니다)";
+    if (!confirm(roundLabel(state.round) + " 요약을 생성할까요? " + etaLabel)) return;
+    var btn = this; btn.disabled = true; btn.textContent = "생성 중...";
     try {
-      var d = await api("/api/admin/wrapup/summarize", { method: "POST", body: { round: state.round } });
-      if (!d.ok) { toast(d.error || "요약 생성 실패"); }
-      else { toast("요약 생성 완료"); await refresh(); }
+      if (IS_REMOTE) {
+        await remoteSummarize(btn);
+      } else {
+        var d = await api("/api/admin/wrapup/summarize", { method: "POST", body: { round: state.round } });
+        if (!d.ok) { toast(d.error || "요약 생성 실패"); }
+        else { toast("요약 생성 완료"); await refresh(); }
+      }
     } catch (e) { toast("서버 오류로 생성에 실패했습니다."); }
     btn.disabled = false; btn.textContent = "요약 생성";
+  });
+
+  // [Wrapup 외부접속] 강사 로그인(비밀코드) — 원격 모드 전용
+  $("instructorLoginBtn").addEventListener("click", async function () {
+    if (state.isAdmin) {
+      try { localStorage.removeItem(INSTRUCTOR_CODE_KEY); } catch (e) {}
+      setInstructorUi(false);
+      toast("강사 로그아웃 완료");
+      return;
+    }
+    var code = prompt("강사 비밀코드를 입력하세요 (예: AX-XXXXXX)");
+    if (!code) return;
+    try { localStorage.setItem(INSTRUCTOR_CODE_KEY, code.trim()); } catch (e) {}
+    try {
+      var v = await api("/api/wrapup/instructor-verify", { method: "POST" });
+      if (v && v.ok) { setInstructorUi(true); toast("강사 인증 완료"); return; }
+      toast((v && v.error) || "코드가 올바르지 않습니다.");
+    } catch (e) { toast("서버에 연결할 수 없습니다."); }
+    try { localStorage.removeItem(INSTRUCTOR_CODE_KEY); } catch (e) {}
+  });
+
+  // [Wrapup 외부접속] 교육생 제출용 차수 코드 설정/해제 — 원격 모드 전용
+  $("codeBtn").addEventListener("click", async function () {
+    var code = prompt("교육생 제출용 차수 코드를 설정하세요.\n(교육 당일 칠판·화면에 공지 — 빈 값으로 확인하면 코드 없이 제출 허용)", "");
+    if (code === null) return;
+    var d = await api("/api/admin/wrapup/config", { method: "POST", body: { sessionCode: code.trim() } });
+    if (d.ok) toast(d.codeRequired ? "차수 코드 설정 완료 — 교육생에게 코드를 공지하세요" : "차수 코드 해제 — 코드 없이 제출 가능");
+    else toast(d.error || "차수 코드 설정 실패");
   });
   $("cohortBtn").addEventListener("click", async function () {
     var name = prompt("현재 차수 이름을 입력하세요 (예: 2026-09-02차수)", state.current);
