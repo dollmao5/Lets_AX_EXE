@@ -456,25 +456,26 @@ async function publicRepoCommit(env, filePath, obj, message) {
   if (!token) {
     throw new Error("PUBLIC_REPO_TOKEN 시크릿이 없습니다. 공개 레포용 PAT를 발급해 배포 스크립트로 등록해 주세요.");
   }
-  const res = await fetch(`https://api.github.com/repos/${PUBLIC_REPO}/contents/${ghPath([filePath])}`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github+json",
-      "User-Agent": "axcamp-wrapup-worker",
-      "X-GitHub-Api-Version": "2022-11-28"
-    },
-    body: JSON.stringify({
-      message,
-      content: b64encodeUtf8(JSON.stringify(obj, null, 2)),
-      branch: "main"
-    })
-  });
-  if (!res.ok) {
+  const content = b64encodeUtf8(JSON.stringify(obj, null, 2));
+  // 새 파일 생성 전제(큐 파일은 타임스탬프로 고유). 만약 같은 밀리초 충돌(409/422)이면
+  // 접미사를 붙여 다시 시도한다 — 조용히 덮어쓰지 않고 두 편집을 모두 보존한다.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const target = attempt === 0 ? filePath : filePath.replace(/\.json$/, `-${attempt}.json`);
+    const res = await fetch(`https://api.github.com/repos/${PUBLIC_REPO}/contents/${ghPath([target])}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json",
+        "User-Agent": "axcamp-wrapup-worker",
+        "X-GitHub-Api-Version": "2022-11-28"
+      },
+      body: JSON.stringify({ message, content, branch: "main" })
+    });
+    if (res.ok) return res.json();
+    if ((res.status === 409 || res.status === 422) && attempt < 2) continue;
     const detail = await res.text().catch(() => "");
     throw new Error(`편집 큐 저장 실패 (${res.status}) ${detail.slice(0, 120)}`);
   }
-  return res.json();
 }
 
 async function handleAdminEditQueue(request, env, url) {

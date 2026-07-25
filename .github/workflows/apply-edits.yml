@@ -35,13 +35,24 @@ jobs:
 
       - name: Push applied changes
         run: |
-          if git log origin/main..HEAD --oneline | grep -q .; then
-            git push origin main
-            echo "pushed=true" >> "$GITHUB_ENV"
-          else
+          git fetch origin main
+          if [ -z "$(git log origin/main..HEAD --oneline)" ]; then
             echo "적용 커밋 없음 — push 생략"
             echo "pushed=false" >> "$GITHUB_ENV"
+            exit 0
           fi
+          # Worker가 Contents API로 main에 직접 커밋하거나 로컬 Publish가 겹칠 수 있으므로
+          # push 전에 rebase하고, non-fast-forward는 몇 차례 재시도한다 (큐가 멈추지 않도록).
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin main && {
+              echo "pushed=true" >> "$GITHUB_ENV"
+              exit 0
+            }
+            echo "push 재시도 $attempt (원격이 먼저 갱신됨)..."
+            sleep 5
+          done
+          echo "재시도 후에도 push 실패" >&2
+          exit 1
 
       - name: Trigger Pages rebuild
         if: env.pushed == 'true'

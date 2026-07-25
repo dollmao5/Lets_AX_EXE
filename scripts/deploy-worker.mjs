@@ -88,6 +88,9 @@ function loadCredentials() {
     const raw = fs.readFileSync(path.join(ROOT_DIR, adminFile), "utf8");
     adminCode = (raw.match(/:\s*(\S+)/) || [])[1] || raw.trim().split(/\s+/).pop() || "";
   }
+  if (!adminCode) {
+    log("주의: 관리자 코드 파일(AXCAMP_admin_key*.txt)이 없어 ADMIN_CODE를 건너뜁니다 — 공개 사이트 관리자 모드와 원격 본문 편집이 전부 비활성 상태가 됩니다.");
+  }
 
   // 공개 레포(Lets_AX_EXE) 편집용 PAT: 파일명에 exe가 들어간 Github 토큰 파일에서 읽는다
   let publicRepoToken = "";
