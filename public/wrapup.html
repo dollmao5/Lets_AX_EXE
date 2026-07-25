@@ -62,6 +62,12 @@
   #presentOverlay .p-foot .hint { color: #9fb0cc; font-size: .95rem; }
   #presentOverlay button { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25); color: #fff; }
   @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+  /* [학습 Flow] Round 컨텍스트 스트립 */
+  .round-guide { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; margin: -6px 0 14px;
+    padding: 10px 16px; background: #f0fdf4; border: 1.5px solid #16a34a; border-radius: 12px; font-size: .9rem; }
+  .round-guide .rg-item { display: inline-flex; align-items: center; gap: 6px; }
+  .round-guide .rg-label { font-weight: 800; color: #14532d; }
+  .round-guide mark { background: #bbf7d0; color: #14532d; font-weight: 800; padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
   /* [강사 가이드] 사용법 오버레이 */
   #helpOverlay { position: fixed; inset: 0; background: rgba(16, 24, 40, .55); z-index: 55; display: none;
     align-items: flex-start; justify-content: center; padding: 4vh 16px; overflow: auto; }
@@ -104,6 +110,9 @@
     <button data-round="round2">Round 2 · 책임경계</button>
     <button data-round="round3">Round 3 · 성과와 성장</button>
   </div>
+
+  <!-- [학습 Flow] 선택된 Round의 현재 단계·다음 단계 안내 (강사·교육생 공용) -->
+  <div id="roundGuide" class="round-guide"></div>
 
   <div class="statusbar">
     <span id="submitStatus" class="muted">제출 현황을 불러오는 중...</span>
@@ -163,6 +172,18 @@
       <li><span class="when">요약 생성 후</span><span class="btn-name">2차 캔버스 생성</span> — 제출자 전원에게 <strong>개인별 2차 캔버스</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면에서 "이전 Round 2차 캔버스 불러오기"로 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
       <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
     </ol>
+
+    <h3>과정 전체 Flow — 이 보드가 어디에 끼어 있나</h3>
+    <table>
+      <tbody>
+      <tr><td>CH01</td><td>AI 핵심 개념 (강의·퀴즈) — 산출물 없음</td></tr>
+      <tr><td>CH02</td><td>ChatGPT 실습: <strong>Round 1</strong>(이 보드) → 리더 역할 프로필 → <strong>Round 2</strong>(이 보드) → 역량 브리프 → 통합 Gate</td></tr>
+      <tr><td>CH03</td><td>ChatGPT 실습: 팀 진단 2종 → <strong>Round 3</strong>(이 보드) → 통합 Gate</td></tr>
+      <tr><td>CH04</td><td>NotebookLM 실습: CH02·CH03 Gate 통합본 + <strong>R1~3 2차 캔버스 통합본</strong>(이 보드에서 생성)을 소스로 30일 실행계획 작성</td></tr>
+      <tr><td>CH05</td><td>산출물 회수 + Start·Stop·Continue Wrap-up</td></tr>
+      </tbody>
+    </table>
+    <p class="help-sub" style="margin-top:8px;">즉, 이 보드는 <strong>Round 1·2·3 세 번</strong> 쓰이고, 여기서 만든 요약·2차 캔버스가 CH04 실습의 소스로 이어집니다. 탭 아래 녹색 띠에서 현재 단계와 다음 단계를 항상 확인할 수 있습니다.</p>
 
     <h3>버튼 사전 (기타 기능)</h3>
     <table>
@@ -242,6 +263,23 @@
 
   function roundLabel(r) {
     return { round1: "Round 1 · 팀 현실과 리더 고민", round2: "Round 2 · 책임경계", round3: "Round 3 · 성과와 성장" }[r] || r;
+  }
+
+  /* [학습 Flow] Round별 현재 위치·산출물·다음 단계 안내 (탭 전환 시 갱신) */
+  var ROUND_GUIDE = {
+    round1: { where: "CH02-2 클립 (오전 · As-Is 진단)", file: "CH02_R1_AI시대_우리팀현실진단_팀번호.md",
+      next: "요약 생성 → 발표 → 2차 캔버스 생성 → 다음 단계는 CH02-3 리더 역할 프로필(ChatGPT)" },
+    round2: { where: "CH02-3b 클립 (책임경계 재설계)", file: "CH02_R2_AI팀원리더_책임경계_팀번호.md",
+      next: "요약 생성 → 발표 → 2차 캔버스 생성 → 다음 단계는 CH02-4 핵심 역량 브리프(ChatGPT)" },
+    round3: { where: "CH03-1b 클립 (30일 팀 실험 설계)", file: "CH03_R3_30일_AI팀운영실험_팀번호.md",
+      next: "요약 생성 → 발표 → 2차 캔버스 생성 → CH03 통합 Gate → CH04 NotebookLM 실습" }
+  };
+  function renderRoundGuide() {
+    var g = ROUND_GUIDE[state.round]; if (!g) return;
+    $("roundGuide").innerHTML =
+      "<span class=\"rg-item\"><span class=\"rg-label\">📍 지금 단계</span>" + esc(g.where) + "</span>" +
+      "<span class=\"rg-item\"><span class=\"rg-label\">💾 팀 저장 파일</span><mark>" + esc(g.file) + "</mark> + 각자 제출 버튼</span>" +
+      "<span class=\"rg-item\"><span class=\"rg-label\">➡️ 다음</span>" + esc(g.next) + "</span>";
   }
 
   async function loadCohorts() {
@@ -553,6 +591,7 @@
     var btn = e.target.closest("button[data-round]"); if (!btn) return;
     state.round = btn.dataset.round;
     document.querySelectorAll("#roundTabs button").forEach(function (b) { b.classList.toggle("active", b === btn); });
+    renderRoundGuide();
     refresh();
   });
   $("cohortSelect").addEventListener("change", function () { state.cohort = this.value; refresh(); });
@@ -698,6 +737,7 @@
     btn.disabled = false;
   });
 
+  renderRoundGuide();
   detectAdmin();
   refresh();
 })();
