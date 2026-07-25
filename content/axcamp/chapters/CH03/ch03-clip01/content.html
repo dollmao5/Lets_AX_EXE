@@ -459,6 +459,9 @@
     overflow-wrap: anywhere;
     text-align: left;
   }
+
+/* [산출물 강조 2026-07-25] 필수 산출물 저장 배지 — 녹색 형광펜 강화 */
+.output-file-badge { background:#bbf7d0 !important; color:#14532d !important; border:1.5px solid #16a34a !important; font-weight:800 !important; }
 </style>
 <div class="clip-header">
 <div class="clip-badges">
@@ -472,6 +475,11 @@
     기존의 <strong>Step 1. 팀 현황·이슈 인식 → Step 2. 팀 효과성 지표 → Step 3. 조직·인재 행동역량 → CH04 업로드용 종합본</strong> Flow와 단계별 프롬프트를 유지합니다.<br/><br/>
     개인이나 태도를 먼저 탓하지 않고, 목표·역할·업무배분·프로세스·정보·관계·갈등·Speak-up·심리적 안전감·피드백·성장에서 반복되는 장면을 확인해 <strong>구조적 병목 가설, 30일 지표, 리더·팀원·팀 공통 행동</strong>으로 전환합니다.</div>
 <!-- 260622 learning focus: performance + AI -->
+<div class="must-output-box" style="margin:16px 0 20px;padding:16px 20px;border:2px solid #16a34a;border-left-width:8px;border-radius:16px;background:#f0fdf4;">
+<strong style="display:block;margin-bottom:8px;font-size:1.05rem;">✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다</strong>
+<ul style="margin:0;padding-left:20px;"><li style="margin:6px 0;"><mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성과병목과_점검지표_성명.md</mark> — ChatGPT 결과 저장 (개인) → <strong>CH03 통합 Gate와 CH04의 입력</strong></li>
+<li style="margin:6px 0;"><mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH03_우리팀_필요행동역량_성명.md</mark> — ChatGPT 결과 저장 (개인) → <strong>CH03 통합 Gate와 CH04의 입력</strong></li></ul><div style="margin-top:10px;padding-top:8px;border-top:1px dashed #86efac;font-size:.9rem;color:#3f6212;">⏭️ <strong>생략 가능:</strong> 마지막 'CH04 업로드용 종합본' 단계는 생략 가능합니다 — 두 클립 뒤 <strong>CH03 통합 저장 Gate</strong>가 Round 3 결과까지 포함해 자동 통합하며, CH04 필수 입력은 Gate의 통합본입니다.</div>
+</div>
 <div class="clip-section">
 <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
 <div class="clip-section-content">
@@ -1060,9 +1068,10 @@ CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다
 </div>
 </div>
 <div class="clip-section">
-<div class="clip-section-title">CH04 업로드용 종합본 Markdown 저장 <span style="color:var(--text-secondary);font-size:.9em">권장 · 10분</span></div>
+<div class="clip-section-title">CH04 업로드용 중간 종합본 <span style="display:inline-block;background:#eef0f4;color:#667085;border-radius:999px;padding:2px 12px;font-size:.72em;font-weight:800;vertical-align:middle;">선택 · 생략 가능</span></div>
 <div class="clip-section-content">
-<p>CH04에서 소스 연결 시간을 줄이기 위해 두 개의 필수 산출물을 하나의 종합 Markdown으로 저장합니다. 개별 파일을 유지하되, 아래 종합본을 함께 확보하는 것을 권장합니다.</p>
+<div style="margin:0 0 12px;padding:12px 16px;border-left:5px solid #94a3b8;background:#f8fafc;border-radius:10px;font-size:.95rem;">⏭️ <strong>이 단계는 생략해도 됩니다.</strong> 뒤에 나오는 <strong>CH03 통합 저장 Gate</strong>가 이 클립의 두 필수 산출물과 Round 3 실험서까지 하나로 통합해 주며, CH04에 올릴 필수 파일은 Gate의 <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량과_AI협업_종합본_성명.md</mark> 입니다. ChatGPT 안에서 중간 정리본을 따로 만들고 싶을 때만 진행하세요.</div>
+<p>두 개의 필수 산출물을 하나의 종합 Markdown으로 미리 합쳐 두는 선택 단계입니다.</p>
 <div class="prompt-block">
 <div class="prompt-header">
 <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 권장 저장. CH03 우리 팀 성과구조와 행동역량 종합본</span>
@@ -1123,7 +1132,7 @@ CH02에서 리더 개인의 역할과 핵심 역량은 이미 정리했습니다
 </div>
 <div class="tip-block">
 <div class="tip-block-title">저장 원칙</div>
-<div class="tip-block-content">종합본은 CH04의 권장 입력입니다. 통합본 생성이 어려우면 두 개의 필수 산출물을 그대로 업로드해도 됩니다. 기준 수치나 조직 정책이 자료에 없으면 임의로 만들지 않고 “리더 확인 필요”로 표시합니다.</div>
+<div class="tip-block-content">CH04 필수 입력은 <strong>CH03 통합 저장 Gate의 통합본</strong>입니다. 이 중간 종합본은 만들지 않아도 되며, 만들 경우에도 기준 수치나 조직 정책이 자료에 없으면 임의로 만들지 않고 “리더 확인 필요”로 표시합니다.</div>
 </div>
 </div>
 </div>

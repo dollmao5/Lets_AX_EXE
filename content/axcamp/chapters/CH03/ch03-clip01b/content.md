@@ -24,6 +24,12 @@ source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01b"
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
+**✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다**
+
+- CH03_R3_30일_AI팀운영실험_팀번호.md — 기록 담당자가 [Markdown 다운로드]로 저장 (팀당 1개) → **다음 클립 CH03 통합 Gate의 입력 → CH04**
+
+- 🙋 **각자** **[내 논의 내용 제출]** 버튼 클릭 — Wrap-up 발표·개인별 2차 캔버스·CH04 통합본 다운로드에 반영
+
 ## Round 3의 핵심 질문
 
 **AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가?**
@@ -109,6 +115,8 @@ Round 2에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개
 복귀 후 72시간 내 첫 행동
 
 초기화브라우저 저장Markdown 다운로드
+
+💾 저장 파일명 확인: CH03_R3_30일_AI팀운영실험_팀번호.md
 
 입력 내용은 현재 브라우저에 자동 저장됩니다.
 
