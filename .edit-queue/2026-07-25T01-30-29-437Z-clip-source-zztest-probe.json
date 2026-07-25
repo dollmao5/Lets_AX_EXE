@@ -1,0 +1,8 @@
+{
+  "type": "clip-source",
+  "clipKey": "zztest-probe",
+  "payload": {
+    "contentHtml": "<section>E2E 파이프라인 검증용 (존재하지 않는 클립 → 적용 단계에서 거부됨)</section>"
+  },
+  "requestedAt": "2026-07-25T01:30:29.437Z"
+}
