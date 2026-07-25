@@ -62,6 +62,28 @@
   #presentOverlay .p-foot .hint { color: #9fb0cc; font-size: .95rem; }
   #presentOverlay button { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25); color: #fff; }
   @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+  /* [강사 가이드] 사용법 오버레이 */
+  #helpOverlay { position: fixed; inset: 0; background: rgba(16, 24, 40, .55); z-index: 55; display: none;
+    align-items: flex-start; justify-content: center; padding: 4vh 16px; overflow: auto; }
+  #helpOverlay.on { display: flex; }
+  #helpOverlay .help-card { background: #fff; border-radius: 20px; max-width: 880px; width: 100%;
+    padding: 26px 30px 30px; box-shadow: 0 20px 60px rgba(16,24,40,.3); }
+  #helpOverlay .help-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  #helpOverlay .help-head h2 { margin: 0; font-size: 1.25rem; flex: 1; }
+  #helpOverlay .help-sub { color: var(--muted); font-size: .93rem; margin: 0 0 16px; }
+  #helpOverlay h3 { margin: 20px 0 8px; font-size: 1.05rem; color: var(--brand); }
+  #helpOverlay ol.help-flow { margin: 0; padding-left: 24px; }
+  #helpOverlay ol.help-flow > li { margin: 10px 0; }
+  #helpOverlay ol.help-flow .when { display: inline-block; font-size: .82rem; font-weight: 800; color: #0f7b6c;
+    background: #e7f6f2; border-radius: 999px; padding: 1px 10px; margin-right: 6px; }
+  #helpOverlay table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+  #helpOverlay th, #helpOverlay td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; vertical-align: top; }
+  #helpOverlay th { background: var(--brand-soft); white-space: nowrap; }
+  #helpOverlay td:first-child { white-space: nowrap; font-weight: 800; }
+  #helpOverlay .btn-name { display: inline-block; border: 1px solid var(--border); border-radius: 999px;
+    padding: 1px 12px; background: #f7f9fd; font-weight: 800; font-size: .88rem; }
+  #helpOverlay .help-tip { margin-top: 14px; padding: 12px 16px; border-left: 5px solid #0f7b6c; background: #f4faf8;
+    border-radius: 10px; font-size: .93rem; }
 </style>
 </head>
 <body>
@@ -88,6 +110,7 @@
     <span class="spacer" style="flex:1"></span>
     <span id="summaryMeta" class="muted"></span>
     <span class="admin-box" id="adminBox">
+      <button id="helpBtn" title="보드 사용법 안내">사용법 ❓</button>
       <button id="genBtn" class="primary">요약 생성</button>
       <button id="canvas2Btn">2차 캔버스 생성</button>
       <button id="cohortBtn">차수 설정</button>
@@ -119,6 +142,41 @@
     <button id="pPrev">← 이전</button>
     <span class="hint">←/→ 이동 · ESC 종료</span>
     <button id="pNext">다음 →</button>
+  </div>
+</div>
+<!-- [강사 가이드] 보드 사용법 오버레이 — 강사가 버튼 역할·활용 시점을 바로 확인 -->
+<div id="helpOverlay">
+  <div class="help-card">
+    <div class="help-head">
+      <h2>📖 Wrap-up 보드 사용법 (강사용)</h2>
+      <button id="helpCloseBtn">닫기 ✕</button>
+    </div>
+    <p class="help-sub">각 버튼의 역할과 누르는 시점을 교육 흐름 순서로 정리했습니다. ESC 또는 바깥 클릭으로 닫힙니다.</p>
+
+    <h3>오늘 하루 흐름 (이 순서대로만 누르면 됩니다)</h3>
+    <ol class="help-flow">
+      <li><span class="when">교육 시작 전</span><span class="btn-name">차수 설정</span> — 오늘 차수 이름을 등록합니다 (예: 2026-09-02차수). 오늘의 모든 제출·요약이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
+      <li data-help-mode="remote"><span class="when">교육 시작 전 · 선택</span><span class="btn-name">차수 코드</span> — 공개 사이트라 아무나 제출할 수 있으므로, 제출용 코드를 정해 칠판·화면에 공지합니다. 외부인 제출을 막는 자물쇠입니다. 빈 값으로 저장하면 코드 없이 제출 가능.</li>
+      <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1조 4명 · 2조 3명…"</strong>이 올라갑니다. <span class="btn-name">새로고침</span>으로 갱신하며 늦는 팀만 독려하세요.</li>
+      <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 30초~수분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동, ESC 종료). 마지막 교차 분석 슬라이드로 강사 Wrap-up.</li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">2차 캔버스 생성</span> — 제출자 전원에게 <strong>개인별 2차 캔버스</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면에서 "이전 Round 2차 캔버스 불러오기"로 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
+      <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
+    </ol>
+
+    <h3>버튼 사전 (기타 기능)</h3>
+    <table>
+      <tbody>
+      <tr><td>차수 보기 (드롭다운)</td><td>지난 차수를 읽기 전용으로 열람 — "지난 기수 팀장들은 이런 고민을 했습니다" 소개용. 차수가 쌓이면 요약에 차수 비교가 자동 포함됩니다.</td></tr>
+      <tr><td>Round 1·2·3 탭</td><td>보고 있는 라운드 전환. 제출 현황·요약·생성 버튼 모두 선택된 탭 기준으로 동작합니다.</td></tr>
+      <tr data-help-mode="local"><td>불러오기(pull)</td><td>다른 PC에서 저장한 누적 차수 데이터를 이 PC로 가져옵니다. 새 강사 PC로 바꿨을 때 처음 1회.</td></tr>
+      <tr data-help-mode="local"><td>zip 내보내기</td><td>전체 데이터를 zip 파일로 다운로드 (로컬 보관용 백업).</td></tr>
+      <tr data-help-mode="remote"><td>강사 로그인/로그아웃</td><td>강사·관리자 비밀코드로 인증하면 이 관리 버튼들이 나타납니다. 로그아웃하면 일반 열람 화면으로 돌아갑니다.</td></tr>
+      <tr><td>발표 모드 ▶</td><td>요약을 슬라이드로 크게 표시 (팀 카드 → 교차 분석 → 차수 비교 순).</td></tr>
+      </tbody>
+    </table>
+
+    <div class="help-tip">💡 <strong>기억할 것은 한 줄입니다:</strong> 차수 설정 → (토론·제출) → 요약 생성 → 발표 모드 → 2차 캔버스 생성<span data-help-mode="local"> → 저장·백업</span>. 문제가 생기면 새로고침 후 재시도, 그래도 안 되면 팀별 구두 발표로 전환하고 수업을 계속 진행하세요.</div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -523,6 +581,18 @@
       }
     } catch (e) { toast("서버 오류로 생성에 실패했습니다."); }
     btn.disabled = false; btn.textContent = "요약 생성";
+  });
+
+  /* [강사 가이드] 사용법 오버레이 — 실행 모드에 해당하는 항목만 표시 */
+  document.querySelectorAll("#helpOverlay [data-help-mode]").forEach(function (el) {
+    var mode = el.getAttribute("data-help-mode");
+    if ((mode === "remote") !== IS_REMOTE) el.style.display = "none";
+  });
+  $("helpBtn").addEventListener("click", function () { $("helpOverlay").classList.add("on"); });
+  $("helpCloseBtn").addEventListener("click", function () { $("helpOverlay").classList.remove("on"); });
+  $("helpOverlay").addEventListener("click", function (e) { if (e.target === this) this.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && $("helpOverlay").classList.contains("on")) $("helpOverlay").classList.remove("on");
   });
 
   /* [Wrapup 5단계] 개인별 2차 캔버스 일괄 생성 — 강사 전용 결정형 병합 (AI 호출 없음).
