@@ -543,23 +543,25 @@ export default {
     }
 
     try {
+      // 핸들러는 반드시 await 한다 — `return handler(...)`로 반환하면 async reject가
+      // 이 try/catch를 건너뛰고 Cloudflare 런타임 예외(1101)로 새어 나간다.
       if (request.method === "GET" && (p === "/" || p === "/api/health")) {
         return json(request, 200, { ok: true, service: "axcamp-wrapup", time: new Date().toISOString() });
       }
-      if (request.method === "GET" && p === "/api/wrapup/config") return handleConfig(request, env);
-      if (request.method === "POST" && p === "/api/wrapup/submit") return handleSubmit(request, env);
-      if (request.method === "GET" && p === "/api/wrapup/status") return handleStatus(request, env, url);
-      if (request.method === "GET" && p === "/api/wrapup/cohorts") return handleCohorts(request, env);
-      if (request.method === "GET" && p === "/api/wrapup/summary") return handleSummaryGet(request, env, url);
+      if (request.method === "GET" && p === "/api/wrapup/config") return await handleConfig(request, env);
+      if (request.method === "POST" && p === "/api/wrapup/submit") return await handleSubmit(request, env);
+      if (request.method === "GET" && p === "/api/wrapup/status") return await handleStatus(request, env, url);
+      if (request.method === "GET" && p === "/api/wrapup/cohorts") return await handleCohorts(request, env);
+      if (request.method === "GET" && p === "/api/wrapup/summary") return await handleSummaryGet(request, env, url);
       if (request.method === "POST" && p === "/api/wrapup/instructor-verify") return handleInstructorVerify(request, env);
-      if (request.method === "POST" && p === "/api/admin/wrapup/config") return handleAdminConfig(request, env);
-      if (request.method === "GET" && p === "/api/admin/wrapup/list") return handleAdminList(request, env, url);
-      if (request.method === "POST" && p === "/api/admin/wrapup/delete") return handleAdminDelete(request, env);
+      if (request.method === "POST" && p === "/api/admin/wrapup/config") return await handleAdminConfig(request, env);
+      if (request.method === "GET" && p === "/api/admin/wrapup/list") return await handleAdminList(request, env, url);
+      if (request.method === "POST" && p === "/api/admin/wrapup/delete") return await handleAdminDelete(request, env);
       if (request.method === "POST" && (p.startsWith("/api/admin/clip-source/") || p.startsWith("/api/admin/sidebar-source/"))) {
-        return handleAdminEditQueue(request, env, url);
+        return await handleAdminEditQueue(request, env, url);
       }
       if (request.method === "POST" && p === "/api/admin/wrapup/ai-config") return handleAiConfig(request, env);
-      if (request.method === "POST" && p === "/api/admin/wrapup/save-summary") return handleSaveSummary(request, env);
+      if (request.method === "POST" && p === "/api/admin/wrapup/save-summary") return await handleSaveSummary(request, env);
       return json(request, 404, { ok: false, error: "알 수 없는 경로입니다." });
     } catch (error) {
       return json(request, 500, { ok: false, error: String((error && error.message) || error).slice(0, 300) });
