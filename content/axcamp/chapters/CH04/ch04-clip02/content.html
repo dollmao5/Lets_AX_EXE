@@ -756,9 +756,54 @@
 <div class="clip-section"><div class="clip-section-title">Revision 핵심 소스 세 묶음</div><div class="clip-section-content"><div class="resource-grid">
 <article class="resource-card"><strong>필수 1. CH02 리더 역할·책임·역량 통합본</strong><p><code>CH02_리더역할_책임경계_통합본_성명.md</code><br/>리더 행동·책임·역량 기준을 제공합니다.</p></article>
 <article class="resource-card"><strong>필수 2. CH03 성장역량·AI 협업 종합본</strong><p><code>CH03_우리팀_성장역량과_AI협업_종합본_성명.md</code><br/>병목 가설·지표·행동역량·Round 3 실험을 제공합니다.</p></article>
-<article class="resource-card"><strong>필수 3. Round 1~3 Team Canvas</strong><p>실제 장면, 팀 잠정 판단, 책임경계, 실험 가설을 확인하는 경험 근거입니다.</p></article>
+<article class="resource-card"><strong>필수 3. Round 1~3 Team Canvas</strong><p><code>CH04_R1-3_팀토론 2차캔버스_성명.md</code><br/>실제 장면, 팀 잠정 판단, 책임경계, 실험 가설을 확인하는 경험 근거입니다. 아래 다운로드 상자에서 개인화 통합본(내 작성 우선 + 팀 합의)을 받아 이 소스로 업로드합니다.</p></article>
 <article class="resource-card optional-card"><strong>선택. LG Way 서베이·실/팀장 기대행동·내부 제도</strong><p>조직 기준과의 정합성을 확인하되, 조직 전체 점수를 우리 팀 Baseline으로 사용하지 않습니다.</p></article>
-</div></div></div>
+</div></div></div><div class="canvas2-bundle-box" data-canvas2-bundle="1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #7b3ff0;border-radius:16px;background:#f8f5ff;">
+<strong style="display:block;margin-bottom:6px;">📦 Round 1~3 팀 토론 2차 캔버스 통합본 다운로드 — CH04 NotebookLM '필수 3' 소스</strong>
+<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">조+이름을 입력하면 Round 1~3 개인별 2차 캔버스(내 결론 우선 + 팀 공통 합의)가 목차 포함 한 파일로 합쳐집니다. NotebookLM 노트북에 '필수 3' 소스로 업로드하세요.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
+<label style="font-weight:700;">팀</label><select data-c2b-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
+<label style="font-weight:700;">이름</label><input data-c2b-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
+<button type="button" data-c2b-download style="min-height:40px;padding:8px 18px;border:1px solid #7b3ff0;border-radius:999px;background:#7b3ff0;color:#fff;font:inherit;font-weight:800;cursor:pointer;">통합본 다운로드</button>
+</div>
+<p data-c2b-status style="margin:0;font-size:.92rem;color:var(--text-secondary,#667085);">파일명: CH04_R1-3_팀토론 2차캔버스_성명.md — 개인 작성(우선) + 팀 합의가 합쳐진 개인화 파일입니다.</p>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
+var box=px.closest('[data-canvas2-bundle]');
+if(!box||box.dataset.c2bReady==='1')return;
+box.dataset.c2bReady='1';
+var sel=box.querySelector('[data-c2b-team]');
+var nameEl=box.querySelector('[data-c2b-name]');
+var btn=box.querySelector('[data-c2b-download]');
+var statusEl=box.querySelector('[data-c2b-status]');
+function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
+function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=h;}
+fillTeams(6);
+try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
+fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
+btn.addEventListener('click',function(){
+var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
+if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
+btn.disabled=true;setStatus('Round 1~3 통합본을 만드는 중...',false);
+fetch('/api/wrapup/canvas2-bundle?team='+team+'&amp;name='+encodeURIComponent(name))
+.then(function(r){return r.json();})
+.then(function(d){
+btn.disabled=false;
+if(!d.ok){setStatus(d.error||'통합본을 만들지 못했습니다.',true);return;}
+var blob=new Blob([d.markdown],{type:'text/markdown;charset=utf-8'});
+var a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download=d.filename;
+document.body.appendChild(a);a.click();a.remove();
+setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
+var note=missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'';
+try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
+setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 업로드하세요.',false);
+})
+.catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 각 Round에서 받아 둔 2차 캔버스 .md 파일을 직접 업로드해 주세요.',true);});
+});
+})(this);"></div>
+
 <div class="clip-section"><div class="clip-section-title">1일 과정 운영: 필수 60분 + 선택 20분</div><div class="clip-section-content"><div class="table-wrap"><table class="comparison-table"><thead><tr><th>구분</th><th>활동</th><th>완료 기준</th></tr></thead><tbody>
 <tr><td><strong>필수 15분</strong></td><td>Step 1. 자료 업로드·Source Map·해석 경계</td><td>조직 전체 참고 신호와 우리 팀 근거, 사실·해석·가설을 구분함</td></tr>
 <tr><td><strong>필수 18분</strong></td><td>Step 2. 실행 후보 비교·TOP 3 이하 선정</td><td>리더가 통제할 수 있고 30일 안에 검증 가능한 과제로 좁힘</td></tr>
