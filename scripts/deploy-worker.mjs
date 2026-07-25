@@ -92,13 +92,20 @@ function loadCredentials() {
     log("주의: 관리자 코드 파일(AXCAMP_admin_key*.txt)이 없어 ADMIN_CODE를 건너뜁니다 — 공개 사이트 관리자 모드와 원격 본문 편집이 전부 비활성 상태가 됩니다.");
   }
 
-  // 공개 레포(Lets_AX_EXE) 편집용 PAT: 파일명에 exe가 들어간 Github 토큰 파일에서 읽는다
+  // 공개 레포(Lets_AX_EXE) 편집용 PAT: 전용 파일(Github*exe*.txt)을 우선하고,
+  // 없으면 Lets_AX_EXE_*Token* 파일(범용 토큰)을 대체로 사용한다.
   let publicRepoToken = "";
-  const pubFile = fs.readdirSync(ROOT_DIR).find(
-    (f) => /^Github.*exe.*\.txt$/i.test(f)
-  );
-  if (pubFile) {
-    publicRepoToken = (fs.readFileSync(path.join(ROOT_DIR, pubFile), "utf8").match(/github_pat_[A-Za-z0-9_]+/) || [])[0] || "";
+  const pubCandidates = [/^Github.*exe.*\.txt$/i, /^Lets_AX_EXE.*Token.*\.txt$/i];
+  const files = fs.readdirSync(ROOT_DIR);
+  for (const pattern of pubCandidates) {
+    const pubFile = files.find((f) => pattern.test(f));
+    if (pubFile) {
+      publicRepoToken = (fs.readFileSync(path.join(ROOT_DIR, pubFile), "utf8").match(/github_pat_[A-Za-z0-9_]+|ghp_[A-Za-z0-9]+/) || [])[0] || "";
+      if (publicRepoToken) {
+        log(`공개 레포 편집용 PAT: ${pubFile} 사용`);
+        break;
+      }
+    }
   }
 
   return { accountId, cfToken, githubToken, geminiKey, instructorCode, adminCode, publicRepoToken };
