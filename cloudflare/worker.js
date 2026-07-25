@@ -444,6 +444,206 @@ async function handleSaveSummary(request, env) {
   return json(request, 200, record);
 }
 
+/* ---------- [Wrapup 5단계] 개인별 2차 캔버스 (server.js와 동일한 결정형 병합) ----------
+   원칙: AI 호출 없이 개인 제출 원문(우선·전문 보존)과 팀 요약(참고)을 고정 템플릿으로 합친다.
+   생성·저장(POST)은 강사 전용이며 서브요청 한도(50/요청) 때문에 팀 단위로 호출한다.
+   조회(GET)는 저장본이 없거나 구버전이면 즉석 병합으로 항상 응답한다 (저장하지 않음). */
+
+const WRAPUP_ROUND_SEQ = ["round1", "round2", "round3"];
+
+const WRAPUP_ROUND_LABELS = {
+  round1: "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민 (As-Is 진단)",
+  round2: "Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가 (책임경계 재설계)",
+  round3: "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가 (30일 팀 실험 설계)"
+};
+
+// 팀 요약 마크다운을 '합의(핵심 논점·발표 포인트)'와 '팀 내 관점 차이'로 분리 (server.js 동일)
+function splitWrapupTeamSummary(summaryMd) {
+  const text = String(summaryMd || "").trim();
+  if (!text) return { consensus: "", diff: "" };
+  const marker = text.search(/#{2,4}\s*팀 내 관점 차이[^\n]*/);
+  if (marker === -1) return { consensus: text, diff: "" };
+  return {
+    consensus: text.slice(0, marker).trim(),
+    diff: text.slice(marker).replace(/^#{2,4}\s*팀 내 관점 차이[^\n]*\n?/, "").trim()
+  };
+}
+
+function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
+  const label = WRAPUP_ROUND_LABELS[round];
+  const { consensus, diff } = splitWrapupTeamSummary(teamEntry && teamEntry.summary);
+  const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사가 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
+  return [
+    `# ${label} · 2차 캔버스 — ${submission.name} (${submission.team}조)`,
+    "",
+    "> **문서 구성 안내** — ① 나의 결론(개인 작성 원문·우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이 순서입니다.",
+    "> 직군·직무·근속·경험에 따른 개인 작성 내용이 우선이며, 팀 합의는 참고 계층입니다.",
+    `> 원본 제출: ${submission.updatedAt || "-"} · 팀 요약 기준: ${(summaryMeta && summaryMeta.generatedAt) || "미생성"}`,
+    "",
+    "## 🙋 나의 결론 (직무·경험 기반 · 우선)",
+    "",
+    String(submission.markdown || "").trim(),
+    "",
+    "## 🤝 팀 공통 합의 (참고)",
+    "",
+    consensus || pendingNote,
+    "",
+    "## ⚠️ 팀 내 관점 차이 (내 입장과 대비해 확인)",
+    "",
+    diff || (consensus ? "_(요약에서 뚜렷한 이견이 정리되지 않았습니다.)_" : pendingNote),
+    "",
+    "## ▶️ 다음 Round 준비 메모",
+    "",
+    "- (다음 실습에서 이어서 작성)",
+    ""
+  ].join("\n");
+}
+
+function buildCanvas2Record(cohort, round, submission, summary) {
+  const teamEntry =
+    (summary && Array.isArray(summary.teams) && summary.teams.find((t) => t.team === submission.team)) || null;
+  return {
+    id: submission.id,
+    team: submission.team,
+    name: submission.name,
+    round,
+    cohort,
+    markdown: buildCanvas2Markdown(round, submission, teamEntry, summary),
+    method: "template",
+    sourceUpdatedAt: submission.updatedAt || null,
+    summaryGeneratedAt: (summary && summary.generatedAt) || null,
+    generatedAt: new Date().toISOString()
+  };
+}
+
+// 저장본이 최신이면 그대로, 아니면 즉석 병합 (저장하지 않음). 제출물 없으면 null.
+async function getWrapupCanvas2(env, cohort, round, team, name) {
+  const id = `${team}조_${wrapupSafeSegment(name)}`;
+  const submissionFound = await ghReadJson(env, `${cohort}/${round}/${id}.json`);
+  const submission = submissionFound && submissionFound.json;
+  if (!submission || !submission.id) return null;
+  const summaryFound = await ghReadJson(env, `${cohort}/${round}/summary.json`);
+  const summary = summaryFound && summaryFound.json;
+  const storedFound = await ghReadJson(env, `${cohort}/${round}/canvas2/${id}.json`);
+  const stored = storedFound && storedFound.json;
+  const fresh = stored &&
+    stored.sourceUpdatedAt === (submission.updatedAt || null) &&
+    stored.summaryGeneratedAt === ((summary && summary.generatedAt) || null);
+  if (fresh) return { record: stored, stored: true };
+  return { record: buildCanvas2Record(cohort, round, submission, summary), stored: false };
+}
+
+async function handleCanvas2Get(request, env, url) {
+  const { config } = await readConfig(env);
+  const cohort = wrapupSafeSegment(url.searchParams.get("cohort")) || config.currentCohort;
+  const round = normalizeWs(url.searchParams.get("round")).toLowerCase();
+  const team = parseInt(url.searchParams.get("team"), 10);
+  const name = normalizeWs(url.searchParams.get("name"));
+  if (!WRAPUP_ROUNDS.has(round) || !(team >= 1) || name.length < 2) {
+    return json(request, 400, { ok: false, error: "round, team, name 파라미터가 필요합니다." });
+  }
+  const result = await getWrapupCanvas2(env, cohort, round, team, name);
+  if (!result) {
+    return json(request, 404, { ok: false, error: "해당 라운드의 제출물이 없습니다. 먼저 Team Canvas를 제출해 주세요." });
+  }
+  return json(request, 200, { ok: true, stored: result.stored, canvas2: result.record });
+}
+
+// R1~3 2차 캔버스를 한 사람 기준으로 통합 — CH04 NotebookLM 업로드용 (자동 목차 포함)
+async function handleCanvas2Bundle(request, env, url) {
+  const { config } = await readConfig(env);
+  const cohort = wrapupSafeSegment(url.searchParams.get("cohort")) || config.currentCohort;
+  const team = parseInt(url.searchParams.get("team"), 10);
+  const name = normalizeWs(url.searchParams.get("name"));
+  if (!(team >= 1) || name.length < 2) {
+    return json(request, 400, { ok: false, error: "team, name 파라미터가 필요합니다." });
+  }
+  const parts = [];
+  const included = {};
+  for (const round of WRAPUP_ROUND_SEQ) {
+    const result = await getWrapupCanvas2(env, cohort, round, team, name);
+    included[round] = Boolean(result);
+    if (result) parts.push(result.record.markdown.trim());
+  }
+  if (parts.length === 0) {
+    return json(request, 404, { ok: false, error: "제출된 라운드가 없습니다. Round 1~3 Team Canvas를 먼저 제출해 주세요." });
+  }
+  const toc = WRAPUP_ROUND_SEQ.map((round) =>
+    included[round] ? `- ${WRAPUP_ROUND_LABELS[round]}` : `- ${WRAPUP_ROUND_LABELS[round]} — (미제출)`
+  ).join("\n");
+  const markdown = [
+    `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}조)`,
+    "",
+    "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 Team Canvas' 소스로 업로드하는 개인화 파일입니다.",
+    "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
+    "",
+    "## 목차",
+    "",
+    toc,
+    "",
+    "---",
+    "",
+    parts.join("\n\n---\n\n"),
+    ""
+  ].join("\n");
+  const filename = `CH04_R1-3_팀토론2차캔버스_${wrapupSafeSegment(name)}.md`;
+  return json(request, 200, { ok: true, cohort, team, name, included, filename, markdown });
+}
+
+// 강사 전용: 지정한 팀의 2차 캔버스를 일괄 생성·저장. team 필수(서브요청 한도).
+// 보드 UI가 1조부터 teamCount조까지 순차 호출한다. 결정형이라 재실행 안전.
+async function handleCanvas2Generate(request, env) {
+  const deny = requireInstructor(request, env);
+  if (deny) return deny;
+  const payload = await request.json().catch(() => ({}));
+  const { config } = await readConfig(env);
+  const cohort = wrapupSafeSegment(payload.cohort) || config.currentCohort;
+  const round = normalizeWs(payload.round).toLowerCase();
+  const team = parseInt(payload.team, 10);
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return json(request, 400, { ok: false, error: "round는 round1~round3 중 하나여야 합니다." });
+  }
+  if (!(team >= 1 && team <= config.teamCount)) {
+    return json(request, 400, { ok: false, error: "team 파라미터가 필요합니다 (Worker는 팀 단위로 생성합니다)." });
+  }
+  const entries = await ghListDir(env, `${cohort}/${round}`);
+  const summaryFound = await ghReadJson(env, `${cohort}/${round}/summary.json`);
+  const summary = summaryFound && summaryFound.json;
+  // 기존 canvas2 파일 sha를 목록 한 번으로 확보 — 개별 sha 조회를 아껴 서브요청 한도를 지킨다
+  const storedEntries = await ghListDir(env, `${cohort}/${round}/canvas2`);
+  const storedSha = new Map(storedEntries.filter((e) => e.type === "file").map((e) => [e.name, e.sha]));
+  const generated = [];
+  for (const e of entries) {
+    const parsed = e.type === "file" ? parseSubmissionFilename(e.name) : null;
+    if (!parsed || parsed.team !== team) continue;
+    const found = await ghReadJson(env, `${cohort}/${round}/${e.name}`);
+    const submission = found && found.json;
+    if (!submission || !submission.id) continue;
+    const record = buildCanvas2Record(cohort, round, submission, summary);
+    const fileName = `${record.id}.json`;
+    await ghWriteJson(
+      env,
+      `${cohort}/${round}/canvas2/${fileName}`,
+      record,
+      `wrapup canvas2 ${record.id} (${round})`,
+      storedSha.has(fileName) ? storedSha.get(fileName) : null
+    );
+    generated.push({ id: record.id, team: record.team, name: record.name });
+  }
+  if (generated.length === 0) {
+    return json(request, 404, { ok: false, error: `${team}조에 제출물이 없습니다.` });
+  }
+  return json(request, 200, {
+    ok: true,
+    cohort,
+    round,
+    team,
+    count: generated.length,
+    summaryUsed: Boolean(summary),
+    generated
+  });
+}
+
 /* ---------- [원격 관리자] 본문·사이드바 편집 큐 ----------
    관리자 코드 인증 시 편집 내용을 공개 레포(Lets_AX_EXE)의 .edit-queue/에 커밋한다.
    → GitHub Actions(apply-edits.yml)가 server.js 로직 그대로 적용(md/txt/metadata 재생성 포함)
@@ -554,6 +754,9 @@ export default {
       if (request.method === "GET" && p === "/api/wrapup/status") return await handleStatus(request, env, url);
       if (request.method === "GET" && p === "/api/wrapup/cohorts") return await handleCohorts(request, env);
       if (request.method === "GET" && p === "/api/wrapup/summary") return await handleSummaryGet(request, env, url);
+      if (request.method === "GET" && p === "/api/wrapup/canvas2") return await handleCanvas2Get(request, env, url);
+      if (request.method === "GET" && p === "/api/wrapup/canvas2-bundle") return await handleCanvas2Bundle(request, env, url);
+      if (request.method === "POST" && p === "/api/admin/wrapup/canvas2") return await handleCanvas2Generate(request, env);
       if (request.method === "POST" && p === "/api/wrapup/instructor-verify") return handleInstructorVerify(request, env);
       if (request.method === "POST" && p === "/api/admin/wrapup/config") return await handleAdminConfig(request, env);
       if (request.method === "GET" && p === "/api/admin/wrapup/list") return await handleAdminList(request, env, url);

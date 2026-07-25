@@ -3116,6 +3116,182 @@ async function handleWrapupCohorts(req, res) {
   const cohorts = await listWrapupCohorts();
   return sendJson(res, 200, { ok: true, current: config.currentCohort, cohorts });
 }
+
+/* ---- [Wrapup 5단계] 개인별 2차 캔버스 (팀 합의 + 개인 원문 결정형 병합) ---- */
+// 원칙: AI 호출 없이 개인 제출 원문(우선·전문 보존)과 팀 요약(참고)을 고정 템플릿으로 합친다.
+// 생성·저장(POST)은 강사 전용, 조회(GET)는 저장본이 없거나 구버전이면 즉석 병합으로 항상 응답한다.
+const WRAPUP_ROUND_SEQ = ["round1", "round2", "round3"];
+
+function wrapupCanvas2Dir(cohort, round) {
+  return path.join(wrapupRoundDir(cohort, round), "canvas2");
+}
+
+// 팀 요약 마크다운을 '합의(핵심 논점·발표 포인트)'와 '팀 내 관점 차이'로 분리
+function splitWrapupTeamSummary(summaryMd) {
+  const text = String(summaryMd || "").trim();
+  if (!text) return { consensus: "", diff: "" };
+  const marker = text.search(/#{2,4}\s*팀 내 관점 차이[^\n]*/);
+  if (marker === -1) return { consensus: text, diff: "" };
+  return {
+    consensus: text.slice(0, marker).trim(),
+    diff: text.slice(marker).replace(/^#{2,4}\s*팀 내 관점 차이[^\n]*\n?/, "").trim()
+  };
+}
+
+function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
+  const ctx = WRAPUP_ROUND_CONTEXT[round];
+  const { consensus, diff } = splitWrapupTeamSummary(teamEntry?.summary);
+  const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사가 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
+  return [
+    `# ${ctx.label} · 2차 캔버스 — ${submission.name} (${submission.team}조)`,
+    "",
+    "> **문서 구성 안내** — ① 나의 결론(개인 작성 원문·우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이 순서입니다.",
+    "> 직군·직무·근속·경험에 따른 개인 작성 내용이 우선이며, 팀 합의는 참고 계층입니다.",
+    `> 원본 제출: ${submission.updatedAt || "-"} · 팀 요약 기준: ${summaryMeta?.generatedAt || "미생성"}`,
+    "",
+    "## 🙋 나의 결론 (직무·경험 기반 · 우선)",
+    "",
+    String(submission.markdown || "").trim(),
+    "",
+    "## 🤝 팀 공통 합의 (참고)",
+    "",
+    consensus || pendingNote,
+    "",
+    "## ⚠️ 팀 내 관점 차이 (내 입장과 대비해 확인)",
+    "",
+    diff || (consensus ? "_(요약에서 뚜렷한 이견이 정리되지 않았습니다.)_" : pendingNote),
+    "",
+    "## ▶️ 다음 Round 준비 메모",
+    "",
+    "- (다음 실습에서 이어서 작성)",
+    ""
+  ].join("\n");
+}
+
+function buildCanvas2Record(cohort, round, submission, summary) {
+  const teamEntry = summary?.teams?.find?.((t) => t.team === submission.team) || null;
+  return {
+    id: submission.id,
+    team: submission.team,
+    name: submission.name,
+    round,
+    cohort,
+    markdown: buildCanvas2Markdown(round, submission, teamEntry, summary),
+    method: "template",
+    sourceUpdatedAt: submission.updatedAt || null,
+    summaryGeneratedAt: summary?.generatedAt || null,
+    generatedAt: new Date().toISOString()
+  };
+}
+
+// 저장본이 최신이면 그대로, 없거나 원본 제출·팀 요약보다 오래됐으면 즉석 병합(저장하지 않음)
+async function getWrapupCanvas2(cohort, round, team, name) {
+  const id = `${team}조_${wrapupSafeSegment(name)}`;
+  const submission = await readJsonFileSafe(path.join(wrapupRoundDir(cohort, round), `${id}.json`), null);
+  if (!submission || !submission.id) return null;
+  const summary = await readJsonFileSafe(wrapupSummaryFile(cohort, round), null);
+  const stored = await readJsonFileSafe(path.join(wrapupCanvas2Dir(cohort, round), `${id}.json`), null);
+  const fresh = stored &&
+    stored.sourceUpdatedAt === (submission.updatedAt || null) &&
+    stored.summaryGeneratedAt === (summary?.generatedAt || null);
+  if (fresh) return { record: stored, stored: true };
+  return { record: buildCanvas2Record(cohort, round, submission, summary), stored: false };
+}
+
+async function handleWrapupCanvas2Get(req, res, urlObj) {
+  const config = await readWrapupConfig();
+  const cohort = wrapupSafeSegment(urlObj.searchParams.get("cohort")) || config.currentCohort;
+  const round = normalizeWs(urlObj.searchParams.get("round")).toLowerCase();
+  const team = parseInt(urlObj.searchParams.get("team"), 10);
+  const name = normalizeWs(urlObj.searchParams.get("name"));
+  if (!WRAPUP_ROUNDS.has(round) || !(team >= 1) || name.length < 2) {
+    return sendJson(res, 400, { ok: false, error: "round, team, name 파라미터가 필요합니다." });
+  }
+  const result = await getWrapupCanvas2(cohort, round, team, name);
+  if (!result) {
+    return sendJson(res, 404, { ok: false, error: "해당 라운드의 제출물이 없습니다. 먼저 Team Canvas를 제출해 주세요." });
+  }
+  return sendJson(res, 200, { ok: true, stored: result.stored, canvas2: result.record });
+}
+
+// R1~3 2차 캔버스를 한 사람 기준으로 통합 — CH04 NotebookLM 업로드용 (자동 목차 포함)
+async function handleWrapupCanvas2Bundle(req, res, urlObj) {
+  const config = await readWrapupConfig();
+  const cohort = wrapupSafeSegment(urlObj.searchParams.get("cohort")) || config.currentCohort;
+  const team = parseInt(urlObj.searchParams.get("team"), 10);
+  const name = normalizeWs(urlObj.searchParams.get("name"));
+  if (!(team >= 1) || name.length < 2) {
+    return sendJson(res, 400, { ok: false, error: "team, name 파라미터가 필요합니다." });
+  }
+  const parts = [];
+  const included = {};
+  for (const round of WRAPUP_ROUND_SEQ) {
+    const result = await getWrapupCanvas2(cohort, round, team, name);
+    included[round] = Boolean(result);
+    if (result) parts.push(result.record.markdown.trim());
+  }
+  if (parts.length === 0) {
+    return sendJson(res, 404, { ok: false, error: "제출된 라운드가 없습니다. Round 1~3 Team Canvas를 먼저 제출해 주세요." });
+  }
+  const toc = WRAPUP_ROUND_SEQ.map((round) => {
+    const label = WRAPUP_ROUND_CONTEXT[round].label;
+    return included[round] ? `- ${label}` : `- ${label} — (미제출)`;
+  }).join("\n");
+  const markdown = [
+    `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}조)`,
+    "",
+    "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 Team Canvas' 소스로 업로드하는 개인화 파일입니다.",
+    "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
+    "",
+    "## 목차",
+    "",
+    toc,
+    "",
+    "---",
+    "",
+    parts.join("\n\n---\n\n"),
+    ""
+  ].join("\n");
+  const filename = `CH04_R1-3_팀토론2차캔버스_${wrapupSafeSegment(name)}.md`;
+  return sendJson(res, 200, { ok: true, cohort, team, name, included, filename, markdown });
+}
+
+// 강사 전용: 해당 라운드 전 제출자의 2차 캔버스를 일괄 생성·저장 (결정형이라 재실행 안전)
+async function handleWrapupCanvas2Generate(req, res, urlObj) {
+  const admin = await requireWrapupAdmin(req, res, urlObj);
+  if (!admin) return;
+  const payload = await readRequestJson(req);
+  const config = await readWrapupConfig();
+  const cohort = wrapupSafeSegment(payload.cohort) || config.currentCohort;
+  const round = normalizeWs(payload.round).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return sendJson(res, 400, { ok: false, error: "round는 round1~round3 중 하나여야 합니다." });
+  }
+  // team이 오면 그 팀만 생성 (Worker 쪽은 서브요청 한도 때문에 팀 단위 호출 — 파리티 유지)
+  const teamFilter = payload.team !== undefined ? parseInt(payload.team, 10) : null;
+  let submissions = await listWrapupSubmissions(cohort, round);
+  if (teamFilter) submissions = submissions.filter((s) => s.team === teamFilter);
+  if (submissions.length === 0) {
+    return sendJson(res, 404, { ok: false, error: teamFilter ? `${teamFilter}조에 제출물이 없습니다.` : "해당 라운드에 제출물이 없습니다." });
+  }
+  const summary = await readJsonFileSafe(wrapupSummaryFile(cohort, round), null);
+  const dir = wrapupCanvas2Dir(cohort, round);
+  await fs.mkdir(dir, { recursive: true });
+  const generated = [];
+  for (const submission of submissions) {
+    const record = buildCanvas2Record(cohort, round, submission, summary);
+    await fs.writeFile(path.join(dir, `${record.id}.json`), JSON.stringify(record, null, 2), "utf8");
+    generated.push({ id: record.id, team: record.team, name: record.name });
+  }
+  return sendJson(res, 200, {
+    ok: true,
+    cohort,
+    round,
+    count: generated.length,
+    summaryUsed: Boolean(summary),
+    generated
+  });
+}
 /* ---- [Wrapup 4단계] 프라이빗 저장소 동기화 + zip 내보내기 ---- */
 const WRAPUP_GIT_REMOTE_PLAIN = normalizeWs(process.env.WRAPUP_GIT_REMOTE) ||
   "https://github.com/dollmao5/Lets_AX_Wrapup_DATA.git";
@@ -4190,6 +4366,16 @@ async function route(req, res) {
   }
   if (req.method === "GET" && urlObj.pathname === "/api/wrapup/cohorts") {
     return handleWrapupCohorts(req, res);
+  }
+  // [Wrapup 5단계] 개인별 2차 캔버스 (조회는 즉석 병합 폴백, 일괄 생성은 강사 전용)
+  if (req.method === "GET" && urlObj.pathname === "/api/wrapup/canvas2") {
+    return handleWrapupCanvas2Get(req, res, urlObj);
+  }
+  if (req.method === "GET" && urlObj.pathname === "/api/wrapup/canvas2-bundle") {
+    return handleWrapupCanvas2Bundle(req, res, urlObj);
+  }
+  if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/canvas2") {
+    return handleWrapupCanvas2Generate(req, res, urlObj);
   }
   if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/sync") {
     return handleWrapupSync(req, res, urlObj);
