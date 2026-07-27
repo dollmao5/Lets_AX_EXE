@@ -562,8 +562,8 @@
       "핵심 질문: " + ctx.mainQuestion,
       "", teamBlocks, "",
       "전체 팀을 관통하는 분석을 다음 형식의 마크다운으로만 작성하세요:",
-      "### 공통 긴장 TOP 3",
-      "1. (여러 팀에서 반복된 고민·긴장)",
+      "### 공통 이슈 TOP 3",
+      "1. (여러 팀에서 반복된 고민·이슈)",
       "2. ...",
       "3. ...",
       "### 팀별로 갈린 관점",
@@ -702,7 +702,7 @@
     (s.teams || []).forEach(function (t) {
       if (t.summary) slides.push({ title: t.team + "조", sub: t.names.join(", ") + " · " + t.memberCount + "명 제출", body: t.summary });
     });
-    if (s.cross && !String(s.cross).startsWith("(")) slides.push({ title: "교차 분석", sub: "전체 팀 공통 긴장과 차이", body: s.cross });
+    if (s.cross && !String(s.cross).startsWith("(")) slides.push({ title: "교차 분석", sub: "전체 팀 공통 이슈과 차이", body: s.cross });
     if (s.cohortCompare) slides.push({ title: "차수 비교", sub: "지난 차수와의 비교", body: s.cohortCompare });
     return slides;
   }
