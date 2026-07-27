@@ -24,13 +24,13 @@ source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01b"
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
-🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
+🎬 생각 열기 — 실제 사례와 데이터 (펼치기)
 
 📰 Klarna — AI 고객 상담 전면 도입 사례 (디지털투데이 2025.5)
 
 - 2023년 OpenAI와 협력해 고객 상담에 AI 전면 도입 — 응대 시간 **11분 → 2분**, 문의 **230만 건** 처리, **“풀타임 700명분”**이라고 발표
 
-이 사례의 **2년 후 전개와 결말**은 수업 임팩트를 위해 여기 싣지 않습니다 — 강사는 Wrap-up 보드 **[도입 훅 🎬]**에서 확인하세요. 교육생 여러분은 토론이 끝난 뒤 아래 기사 원문으로 결말을 확인해 보세요.
+이 사례의 **2년 후 전개와 결말**은 수업에서 함께 확인합니다 — 토론이 끝난 뒤 아래 기사 원문으로 확인해 보세요.
 
 [기사 원문 보기 (토론 후 열람 권장) →](https://www.digitaltoday.co.kr/news/articleView.html?idxno=565637)
 
