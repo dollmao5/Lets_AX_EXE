@@ -117,17 +117,19 @@ slotImg.addEventListener('click',function(){modal.style.display='flex';document.
 modal.addEventListener('click',function(e){var t=e.target;if(t.hasAttribute('data-modal-backdrop')||t.hasAttribute('data-modal-close'))close();});
 if(!document.__roundImgEscWired){document.__roundImgEscWired=true;document.addEventListener('keydown',function(e){if(e.key==='Escape'){var ms=document.querySelectorAll('.round-img-modal');for(var i=0;i<ms.length;i++){if(ms[i].style.display!=='none'){ms[i].style.display='none';document.body.style.overflow='';}}}});}
 })(this);"></div></div>
-<!-- [ENRICHMENT 2026-07-25] 생각 열기 블록(이야기체 사례). 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 (scripts/remove-enrichment.mjs 사용 가능) -->
+<!-- [ENRICHMENT 2026-07-25] 생각 열기 블록(이야기체 사례·결말 포함). 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 (scripts/remove-enrichment.mjs 사용 가능) -->
 <details style="margin:14px 0 18px;border:2px solid #4f46e5;border-left-width:8px;border-radius:16px;background:#eef2ff;">
 <summary style="cursor:pointer;padding:13px 20px;font-weight:800;font-size:1rem;color:#312e81;">🎬 생각 열기 — 실제 사례와 데이터 (펼치기)</summary>
 <div style="padding:0 20px 14px;">
 
-<div style="margin:10px 0 6px;font-weight:800;color:#312e81;">📰 Klarna — “AI가 상담사 700명분의 일을 대신합니다” (디지털투데이 2025.5)</div>
+<div style="margin:10px 0 6px;font-weight:800;color:#312e81;">📰 Klarna — “AI가 상담사 700명분의 일을 대신합니다”, 그 2년 후 (디지털투데이 2025.5)</div>
 <div style="display:flex;gap:10px;margin:6px 0;"><span style="flex-shrink:0;min-width:86px;font-weight:800;color:#4f46e5;">상황</span><span>글로벌 결제 기업 Klarna(클라르나)는 2023년, 고객 상담 업무를 AI로 <strong>전면 교체</strong>했습니다. 세계에서 가장 앞서간 사례로 꼽혔습니다.</span></div>
-<div style="display:flex;gap:10px;margin:6px 0;"><span style="flex-shrink:0;min-width:86px;font-weight:800;color:#4f46e5;">발표 성과</span><span>응대 시간 <strong>11분 → 2분</strong> · 문의 <strong>230만 건</strong> 처리 · <strong>“풀타임 상담사 700명분의 일을 AI가 한다”</strong>고 대대적으로 발표했습니다.</span></div>
-<div style="display:flex;gap:10px;margin:6px 0;"><span style="flex-shrink:0;min-width:86px;font-weight:800;color:#4f46e5;">우리 팀이라면</span><span>“AI로 몇 명분을 줄였다” — 어디서나 성공담처럼 들리는 이야기입니다. 이 발표만 보면 완벽한 성공입니다. <strong>정말 그랬을까요?</strong></span></div>
-<div style="margin:8px 0;padding:8px 12px;border-left:4px solid #dc2626;background:#fef2f2;border-radius:8px;font-size:.9rem;">이 사례의 <strong>2년 후 전개와 결말</strong>은 수업에서 함께 확인합니다 — 토론이 끝난 뒤 아래 기사 원문으로 확인해 보세요.</div>
-<div style="font-size:.88rem;margin-top:4px;"><a href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=565637" target="_blank" rel="noopener">기사 원문 보기 (토론 후 열람 권장) →</a></div>
+<div style="display:flex;gap:10px;margin:6px 0;"><span style="flex-shrink:0;min-width:86px;font-weight:800;color:#4f46e5;">발표 성과</span><span>응대 시간 <strong>11분 → 2분</strong> · 문의 <strong>230만 건</strong> 처리 · <strong>“풀타임 상담사 700명분의 일을 AI가 한다”</strong> — 대대적인 성공 발표였습니다.</span></div>
+<div style="display:flex;gap:10px;margin:6px 0;"><span style="flex-shrink:0;min-width:86px;font-weight:800;color:#4f46e5;">2년 후</span><span>그런데 서비스 <strong>품질이 떨어지기 시작</strong>했고, 2025년 Klarna는 방향을 바꿔 <strong>인간 상담사를 다시 뽑기 시작</strong>했습니다. “고객이 원하면 언제든 사람과 연결되도록 하겠다”는 것입니다. CEO는 이렇게 인정했습니다 — <strong>“AI 활용이 비용 절감에만 집중되면서 서비스 품질이 희생됐다.”</strong></span></div>
+<div style="display:flex;gap:10px;margin:6px 0;"><span style="flex-shrink:0;min-width:86px;font-weight:800;color:#4f46e5;">우리 팀이라면</span><span>속도와 건수만 보면 완벽한 성공이었습니다. <strong>품질과 성장을 보는 지표가 없었던 것</strong>이 문제였습니다. 그래서 이번 토론은 '전면 도입'이 아니라 — <strong>30일짜리 작은 실험</strong>을 설계합니다: 어떤 업무 흐름부터, 무슨 지표로, 어떤 기준(Quality Gate)에서 멈출지.</span></div>
+<div style="font-size:.88rem;margin-top:4px;"><a href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=565637" target="_blank" rel="noopener">기사 원문 보기 →</a></div>
+
+<div style="margin-top:12px;padding-top:8px;border-top:1px dashed #a5b4fc;font-size:.88rem;color:#3730a3;">🎯 <strong>왜 이 자료인가:</strong> 성과 지표만으로는 팀의 성장을 지킬 수 없습니다 — 성과와 성장을 함께 높이는 실험 설계가 이번 토론의 주제입니다.</div>
 </div>
 </details>
 <!-- [ENRICHMENT END] -->
