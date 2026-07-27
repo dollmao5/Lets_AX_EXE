@@ -215,72 +215,41 @@
       <tr data-help-mode="local"><td>zip 내보내기</td><td>전체 데이터를 zip 파일로 다운로드 (로컬 보관용 백업).</td></tr>
       <tr data-help-mode="remote"><td>강사 로그인/로그아웃</td><td>강사·관리자 비밀코드로 인증하면 이 관리 버튼들이 나타납니다. 로그아웃하면 일반 열람 화면으로 돌아갑니다.</td></tr>
       <tr><td>발표 모드 ▶</td><td>요약을 슬라이드로 크게 표시 (팀 카드 → 교차 분석 → 차수 비교 순).</td></tr>
-      <tr><td>도입·마무리 🎬</td><td>클립별 도입 시나리오·핵심 수치·Round 마무리 멘트·D-1 체크리스트 (강사 전용 콘텐츠).</td></tr>
+      <tr><td>도입·마무리 🎬</td><td>Round 1~3 팀 토론 도입·마무리 멘트 + 그 외 클립 학습 Flow·필수 산출물 가이드 + D-1 체크리스트 (강사 전용).</td></tr>
       </tbody>
     </table>
 
     <div class="help-tip">💡 <strong>기억할 것은 한 줄입니다:</strong> 차수 설정 → (토론·제출) → 요약 생성 → 발표 모드 → 2차 캔버스 생성<span data-help-mode="local"> → 저장·백업</span>. 문제가 생기면 새로고침 후 재시도, 그래도 안 되면 팀별 구두 발표로 전환하고 수업을 계속 진행하세요.</div>
   </div>
 </div>
-<!-- [ENRICHMENT 2026-07-25] 강사용 도입 훅 오버레이 — 클립별 진행 시나리오·핵심 수치·D-1 체크리스트. 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 -->
+<!-- [ENRICHMENT 2026-07-25] 강사용 도입·마무리 오버레이 — Round 1~3 도입·마무리 멘트 + 그 외 클립 학습 Flow·산출물 가이드 + D-1 체크리스트. 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 -->
 <div id="hookOverlay">
   <div class="help-card">
     <div class="help-head">
       <h2>🎬 클립별 도입·마무리 (강사용)</h2>
       <button id="hookCloseBtn" title="닫기">닫기 ✕</button>
     </div>
-    <p class="help-sub">각 클립 시작 전 2~3분 환기용 도입 시나리오와 <strong>Round 토론 후 마무리 멘트(발표 후 1분)</strong>입니다. 교육생 화면의 접이식 <strong>"🎬 생각 열기"</strong> 블록에는 사례 요약·수치·출처가 있고, <strong>진행 멘트·퀴즈 오프닝은 여기에만</strong> 있습니다.</p>
+    <p class="help-sub"><strong>Round 1~3 팀 토론</strong>은 도입·마무리 멘트(진행 순서 포함), <strong>그 외 클립</strong>은 학습 Flow와 필수 산출물 가이드입니다. 교육생 화면의 "🎬 생각 열기" 블록에는 사례 요약·출처만 있고, 진행 멘트는 여기에만 있습니다.</p>
 
-    <h3>공통 원칙 3가지</h3>
+    <h3>Round 팀 토론 진행 원칙</h3>
     <ol class="help-flow">
       <li><strong>수치·사건만 던지고, 해석과 답은 팀에 맡깁니다.</strong> 훅이 답의 예시가 되면 토론이 좁아집니다.</li>
-      <li><strong>퀴즈 정답(시계 읽기 50.1% 등)과 Klarna 결말은 미리 말하지 않습니다.</strong> R3 블록의 결말은 <strong>공개 코드 "ai"</strong>로 잠겨 있습니다 — 훅으로 반전을 공개한 뒤 코드를 안내하면 교육생이 블록에서 결말 요약을 다시 볼 수 있습니다.</li>
-      <li><strong>훅은 2~3분입니다.</strong> 길어지면 실습 시간을 잠식합니다 — Round 훅은 팀들이 역할을 정하는 첫 3분과 병행하세요.</li>
+      <li><strong>퀴즈 정답과 Klarna 결말은 미리 말하지 않습니다.</strong> R3 블록의 결말은 <strong>공개 코드 "ai"</strong>로 잠겨 있습니다 — 훅으로 반전을 공개한 뒤 코드를 안내하세요.</li>
+      <li><strong>도입 훅은 2~3분, 팀들이 역할을 정하는 첫 3분과 병행</strong>하고, 마무리 멘트는 발표 직후 1분입니다.</li>
     </ol>
 
     <h3>D-1 체크리스트 (교육 전날)</h3>
     <ul class="hook-check">
-      <li><strong>[1순위] 교육장 네트워크 테스트</strong> — 강의장 PC에서 ①유튜브(아래 KBS 링크) ②뉴스 사이트(서울경제·디지털투데이) ③quizn.show 가 열리는지 확인.</li>
+      <li><strong>[1순위] 교육장 네트워크 테스트</strong> — 강의장 PC에서 ①유튜브(KBS 영상) ②뉴스 사이트(서울경제·디지털투데이) ③quizn.show 가 열리는지 확인.</li>
       <li><strong>QuizN 보드 초기화</strong> — PIN 1071341 보드의 이전 차수 게시글·참여 기록을 운영자 계정에서 삭제.</li>
-      <li><strong>도입 자료 링크 전체 클릭 확인</strong> — 각 클립의 🎬 블록을 펼쳐 링크가 모두 열리는지 확인.</li>
+      <li><strong>생각 열기 링크 전체 클릭 확인</strong> — 각 클립의 🎬 블록을 펼쳐 링크가 모두 열리는지 확인.</li>
       <li><strong>NotebookLM 확인</strong> — 공식 도움말에서 사용한도 변경 여부 + 교육 계정 화면 명칭(NotebookLM/Gemini Notebook) 확인.</li>
       <li><strong>Wrap-up 보드 차수 설정</strong> — 새 차수 생성·차수 코드 공지 준비.</li>
     </ul>
-    <div class="hook-warn"><strong>유튜브 차단 시 폴백 (1-2):</strong> 영상 대신 구두로 — "KBS 제작진이 상용 AI로 여행 에이전트를 만들었습니다. 일정·경비·목적만 정해주니 에이전트가 스스로 호텔 사이트를 검색하고 예약까지 실행했습니다. 사람이 한 일은 목표 한 줄이 전부였습니다."</div>
+    <div class="hook-warn"><strong>유튜브 차단 시 폴백 (1-2 생각 열기 영상):</strong> 영상 대신 구두로 — "KBS 제작진이 상용 AI로 여행 에이전트를 만들었습니다. 일정·경비·목적만 정해주니 에이전트가 스스로 호텔 사이트를 검색하고 예약까지 실행했습니다. 사람이 한 일은 목표 한 줄이 전부였습니다."</div>
 
-    <h3>클립별 시나리오</h3>
-
-    <details><summary>1-1 AI 트렌드 — LG 엑사원 + Stanford 채택 속도 (약 2분)</summary><div class="hook-body">
-      <ol>
-        <li><strong>퀴즈 오프닝:</strong> "42만 개 후보물질에서 신약 소재를 찾는 데 얼마나 걸릴까요?" (손들게 하기) → "우리 그룹 AI는 <strong>하루</strong> 걸렸습니다. 탈모 신소재 '람시딜' — 상용화 준비 중입니다."</li>
-        <li><strong>확장:</strong> "남의 얘기가 아닙니다. 생성형 AI는 3년 만에 인구 <strong>53%</strong>가 채택했습니다 — PC·인터넷보다 빠릅니다. 기업 채택률은 <strong>88%</strong>입니다." (Stanford AI Index 2026)</li>
-        <li><strong>브리지:</strong> "LG는 이미 시작했습니다. 오늘은 팀장인 여러분 차례입니다."</li>
-      </ol>
-      <div class="hook-warn">시계 읽기 50.1% 수치는 여기서 쓰지 마세요 — 2-4 도입 전용입니다 (반복 방지).</div>
-    </div></details>
-
-    <details><summary>1-2 Agentic AI — KBS 구간 시청 (구간① 3분 필수 · 구간② 4분 선택)</summary><div class="hook-body">
-      <ol>
-        <li>클립의 🎬 블록을 펼쳐 <strong>구간 ① (5:16~8:19)</strong> 재생 — 종료 지점에서 자동 정지됩니다.</li>
-        <li><strong>정지 후 브리지:</strong> "방금 사람이 한 일은 '목표 한 줄 정해주기'뿐이었습니다. 지시를 기다리는 Assistant와, 목표를 받아 계획·실행하는 Agent — 오늘 이 클립에서 그 전환을 다룹니다."</li>
-        <li>시간 여유 시 <strong>구간 ② (9:38~13:45)</strong> 여행 에이전트 시연 추가 재생.</li>
-      </ol>
-      <div class="hook-tip">임베드가 안 되면 블록 안의 링크(타임스탬프)로 열고 8:19 / 13:45에서 수동 정지. 유튜브 자체가 차단이면 위 폴백 멘트로 구두 진행.</div>
-    </div></details>
-
-    <details><summary>1-3 개념 다지기 — 훅 없음 (선택 심화 존재만 안내)</summary><div class="hook-body">
-      시간 여유가 있을 때 한 줄만: "이 클립에 <strong>📚 선택 심화 영상(8분)</strong>이 있습니다 — AI가 왜 그럴듯한 거짓말을 하는지 원리가 궁금한 분은 쉬는 시간에 보세요."
-    </div></details>
-
-    <details><summary>1-4 리더십·리터러시 — MS Work Trend Index 수치 (약 1분)</summary><div class="hook-body">
-      <ol>
-        <li>"31개국 31,000명 조사에서 리더의 <strong>82%</strong>가 '올해가 전략·운영을 재검토할 결정적 시점'이라고 답했습니다."</li>
-        <li>"사람+AI 하이브리드로 일하는 조직(Frontier Firm)의 리더는 <strong>71%</strong>가 '우리 회사는 번영 중'이라고 답했습니다 — 전체 평균은 <strong>39%</strong>. 이미 2배 격차입니다."</li>
-        <li><strong>브리지:</strong> "AI에 '매우 익숙'한 비율은 리더 <strong>67%</strong> vs 직원 <strong>40%</strong> — 팀의 리터러시를 끌어올리는 병목이자 지렛대가 바로 팀장입니다. 그래서 먼저 내 수준을 진단합니다."</li>
-      </ol>
-    </div></details>
-
-    <details><summary>R1 (2-2) — 워크슬롭 → MIT 95% (약 3분, 역할 정하기와 병행)</summary><div class="hook-body">
+    <h3>Round 1~3 팀 토론 — 도입·마무리</h3>
+<details><summary>R1 (2-2) — 워크슬롭 → MIT 95% (약 3분, 역할 정하기와 병행)</summary><div class="hook-body">
       <ol>
         <li><strong>워크슬롭 (공감 유도):</strong> "AI 쓰면 빨라진다 — 85%가 그렇다고 답했습니다. 그런데 같은 조사에서, 절감한 시간의 <strong>37%</strong>를 뭐에 썼을까요? … 동료의 AI 산출물을 고치는 데 썼습니다. 최근 한 달 내 <strong>40%</strong>가 저품질 AI 산출물 때문에 업무가 지연됐고, 건당 평균 <strong>1시간 56분</strong>이 들었습니다. 내가 빨라진 만큼 옆 사람이 느려지는 팀 — 우리 팀은 아닐까요?"</li>
         <li><strong>MIT (데이터 + 반전):</strong> "기업 차원에서는 더 큽니다. 생성형 AI를 도입한 기업의 <strong>95%</strong>가 실질 성과를 못 냈습니다. 원인은 AI 성능이 아니라 <strong>'일하는 방식'</strong>이었습니다. 그리고 성공한 5%의 공통점 — <strong>현장 관리자, 바로 여러분 같은 팀장에게 권한을 준 회사</strong>였습니다."</li>
@@ -297,8 +266,7 @@
         <div style="margin-top:6px;font-size:.87rem;color:#b91c1c;">⚠️ 여기서 해결책을 언급하지 않기 — 해결은 R2·R3의 몫입니다.</div>
       </div>
     </div></details>
-
-    <details><summary>R2 (2-3b) — 에어캐나다 → 가짜 판례 (약 2분 30초)</summary><div class="hook-body">
+<details><summary>R2 (2-3b) — 에어캐나다 → 가짜 판례 (약 2분 30초)</summary><div class="hook-body">
       <ol>
         <li><strong>에어캐나다 (조직 책임):</strong> "장례식 항공권을 사려던 고객에게 챗봇이 '사후 환급 가능'이라고 잘못 안내했습니다. 회사는 거절하며 법정에서 이렇게 항변했습니다 — '챗봇은 별개의 법적 실체다.' 법원의 답: <strong>'챗봇도 회사 웹사이트의 일부다. 책임은 동일하다.'</strong> 배상 판결."</li>
         <li><strong>가짜 판례 (개인 책임):</strong> "뉴욕의 변호사 2명이 ChatGPT로 의견서를 썼는데, 인용한 판례 일부가 <strong>존재하지 않는 가짜</strong>였습니다. 각 5,000달러 벌금. 판사의 말이 핵심입니다 — <strong>'AI 활용 자체는 부적절하지 않다. 단, 정확성을 보장하는 문지기 역할은 변호사에게 있다.'</strong>"</li>
@@ -314,26 +282,7 @@
         </ol>
       </div>
     </div></details>
-
-    <details><summary>2-4 핵심 역량 — 시계 퀴즈 → BCG 실험 → 켄타우로스 (약 2분 30초)</summary><div class="hook-body">
-      <ol>
-        <li><strong>퀴즈:</strong> "수학올림피아드 금메달급 AI가, 아날로그 시계 읽기 정답률은 몇 %일까요?" → "<strong>50.1%</strong>입니다. 반타작." (Stanford AI Index 2026)</li>
-        <li><strong>수치:</strong> "웃긴 얘기가 아닙니다. BCG 컨설턴트 758명 실험 — AI가 잘하는 일에 쓰면 품질 <strong>+40%</strong>, 속도 <strong>+25%</strong>. 그런데 못하는 일에 맡기면 정답률이 오히려 <strong>19%p 하락</strong>했습니다. 문제는, 어느 쪽인지 겉보기로 알 수 없다는 것." (출처: HBS Working Paper — 블록에 링크)</li>
-        <li><strong>개념 (30초):</strong> "잘 쓰는 사람은 두 부류였습니다 — 일을 나눠 위임하는 <strong>켄타우로스</strong>, 업무 흐름에 촘촘히 통합하는 <strong>사이보그</strong>."</li>
-        <li><strong>브리지:</strong> "경계를 미리 알 수 없다면 방법은 하나 — 프롬프트에 맥락·기준·검증을 넣어 일을 <strong>'위임 구조'</strong>로 설계하는 겁니다. 지금부터 실습합니다."</li>
-      </ol>
-    </div></details>
-
-    <details><summary>3-1 팀 진단 — 혼자+AI vs 팀 퀴즈 → "구성보다 방식" (약 2분)</summary><div class="hook-body">
-      <ol>
-        <li><strong>퀴즈:</strong> "AI를 쓴 '혼자'와 AI 없는 '2인 팀'이 붙으면 누가 이길까요?" → "P&amp;G 전문가 776명 실험 — <strong>혼자+AI가 이겼습니다</strong>. 그럼 팀은 필요 없을까요? 아니요. <strong>최고 성과는 팀+AI</strong>였습니다. AI 효과가 가장 커지는 곳은 개인의 손이 아니라 팀의 일하는 방식 안입니다. 그래서 오후에는 관점을 팀으로 넓힙니다."</li>
-        <li><strong>re:Work 한 문장:</strong> "구글이 180개 팀을 연구한 결론 — 팀 성과를 가르는 건 <strong>'누가 있느냐(구성)'가 아니라 '어떻게 일하느냐(방식)'</strong>였습니다. 그래서 이 진단은 사람을 탓하지 않고, 6개 렌즈로 우리 팀의 '방식'을 봅니다."</li>
-      </ol>
-      <div class="hook-warn">"혼자+AI 승"에서 끊으면 팀 무용론으로 오해됩니다 — 반드시 "최고는 팀+AI"까지 말하세요. 직군 사일로·감정 발견은 먼저 꺼내지 않습니다(교육생 현업 팀은 동일 직군).</div>
-      <div class="hook-tip">예상 Q&amp;A: "AI가 관점 다양성도 주나요?" → "P&amp;G 실험에서 R&amp;D 전문가의 답에 시장 관점이, 영업 전문가의 답에 기술 관점이 들어오기 시작했습니다 — 우리 팀에 없는 관점을 보충하는 효과가 관찰됐습니다." / 심리적 안전감 관련 질문 → "AI 사용 그룹은 불안·좌절이 줄고 에너지가 늘었다는 감정 측정 결과도 있습니다."</div>
-    </div></details>
-
-    <details><summary>R3 (3-1b) — Klarna 반전 (약 2분 · 블록 결말은 공개 코드 "ai"로 잠금)</summary><div class="hook-body">
+<details><summary>R3 (3-1b) — Klarna 반전 (약 2분 · 블록 결말은 공개 코드 "ai"로 잠금)</summary><div class="hook-body">
       <ol>
         <li><strong>성공담처럼 시작:</strong> "AI로 풀타임 <strong>700명분</strong>의 상담 업무를 대체한 회사가 있습니다. 응대 시간 <strong>11분 → 2분</strong>, 문의 <strong>230만 건</strong> 처리. 성공 사례 맞죠?"</li>
         <li><strong>반전:</strong> "2년 뒤, 이 회사(Klarna)는 <strong>인간 상담사를 다시 뽑기 시작</strong>했습니다. CEO의 말입니다 — '비용 절감에만 집중하면서 서비스 품질이 희생됐다.'"</li>
@@ -352,12 +301,39 @@
       </div>
     </div></details>
 
-    <details><summary>4-1 NotebookLM — 훅 없음 (D-1 체크만)</summary><div class="hook-body">
-      사례형 훅 없이 바로 진행합니다. 수업 직전 확인 3가지: ①공식 도움말에서 사용한도 변경 여부 ②교육 계정 화면 명칭(NotebookLM/<strong>Gemini Notebook</strong> — 리브랜딩 진행 중, 교육생이 물으면 "같은 도구"라고 안내) ③시연 화면 사전 점검.
-      <div class="hook-tip">시연 실패 대비 백업 영상(한국어): "노트북LM 신기능 200% 활용법" youtube.com/watch?v=JCnVnkXN9ao</div>
+    <h3>그 외 클립 — 학습 Flow · 필수 산출물 가이드</h3>
+
+    <details><summary>CH00~CH01 (08:30~09:30) — 과정 안내·AI 핵심 강의·진단</summary><div class="hook-body">
+      <div style="margin:8px 0;"><strong>CH00 오늘의 여정 (15분)</strong> — 과정 목표 · 3Round 토론 Track · 팀 역할 · 산출물 저장 규칙 안내. <em>산출물 없음.</em></div>
+      <div style="margin:8px 0;"><strong>1-1 AI 트렌드 (12분)</strong> — AI 진화 4단계 → 리더 시사점 5가지. 🎬 생각 열기(LG 엑사원·Stanford)로 환기 가능. <em>산출물 없음.</em></div>
+      <div style="margin:8px 0;"><strong>1-2 Agentic AI (12분)</strong> — Assistant→Agentic 로드맵 3단계. 🎬 생각 열기의 <strong>KBS 구간 ①(약 3분) 시청 권장</strong>, 구간 ②는 시간 여유 시. <em>산출물 없음.</em></div>
+      <div style="margin:8px 0;"><strong>1-3 개념 다지기 (5분)</strong> — 핵심 용어를 팀 비유·인포그래픽으로 정리. 시간 여유 시 📚 선택 심화 영상(8분) 존재만 안내. <em>산출물 없음.</em></div>
+      <div style="margin:8px 0;"><strong>1-4 리더십·리터러시 진단 (15분)</strong> — 변화 체감 → 오해·진실 퀴즈(QuizN · 정답 공개 코드 <strong>ai</strong>) → 리터러시 10문항 자가진단 → <strong>개인 학습 초점 메모 = CH02-3 첫 입력</strong>. <em>파일 산출물 없음(웹 진단).</em></div>
     </div></details>
 
-    <div class="hook-tip" style="margin-top:16px">💡 하루 서사 한 줄: R1 "우리만 그런 게 아니다"(진단) → R2 "문지기는 사람"(경계) → 2-4 "경계를 모르면 위임 구조로"(스킬) → R3 "지표 없는 성공의 반전"(실험) → 4-2 근거 기반 30일 계획으로 수렴.</div>
+    <details><summary>CH02 (09:40~12:30) — ChatGPT 실습 · 리더 역할·역량</summary><div class="hook-body">
+      <div style="margin:8px 0;"><strong>2-1 ChatGPT Overview (20분)</strong> — 전체 기능 Tour → Deep Research 데모 → GPT 제작·Preview 라이브. <em>산출물 없음.</em></div>
+      <div style="margin:8px 0;"><strong>2-2 Round 1 (30분)</strong> — 위 <strong>Round 1 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark> + 각자 제출 버튼.</div>
+      <div style="margin:8px 0;"><strong>2-3 리더 역할·책임 (35분)</strong> — 대화형 인터뷰 Step 1~4 (권장 8+10+8+9분). 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_AI시대_리더역할_성명.md</mark></div>
+      <div style="margin:8px 0;"><strong>2-3b Round 2 (30분)</strong> — 위 <strong>Round 2 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R2_AI팀원리더_책임경계_팀번호.md</mark> + 각자 제출 버튼.</div>
+      <div style="margin:8px 0;"><strong>2-4 핵심 역량 (40분)</strong> — Round Canvas·리더 프로필·기대행동 교차분석 4단계. 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_핵심역량과_성과관리실행안_성명.md</mark></div>
+      <div style="margin:8px 0;"><strong>2-5 통합 저장 Gate (15분)</strong> — 산출물 회수 체크 → 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_리더역할_책임경계_통합본_성명.md</mark> = <strong>CH04 필수 1 소스</strong>. 점심 전 저장 위치 확인.</div>
+    </div></details>
+
+    <details><summary>CH03 (13:30~15:20) — 팀 성장역량 진단 · 30일 실험</summary><div class="hook-body">
+      <div style="margin:8px 0;"><strong>3-1 팀 진단 (60분)</strong> — 6개 진단 렌즈·근거 수준 4단계, Step 1~3 (권장 20+15+15+검증 10분). 필수 2종: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성과병목과_점검지표_성명.md</mark> · <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_필요행동역량_성명.md</mark></div>
+      <div style="margin:8px 0;"><strong>3-1b Round 3 (35분)</strong> — 위 <strong>Round 3 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_R3_30일_AI팀운영실험_팀번호.md</mark> + 각자 제출 버튼.</div>
+      <div style="margin:8px 0;"><strong>3-1c 통합 저장 Gate (15분)</strong> — 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량과_AI협업_종합본_성명.md</mark> = <strong>CH04 필수 2 소스</strong>. 휴식 중 NotebookLM 업로드 파일 3종(CH02 통합본·CH03 종합본·2차 캔버스) 최종 확인.</div>
+    </div></details>
+
+    <details><summary>CH04~CH05 (15:30~17:30) — NotebookLM 실습 · 정리</summary><div class="hook-body">
+      <div style="margin:8px 0;"><strong>4-1 NotebookLM Overview (20분)</strong> — 사용한도 기준표 · 소스 기반 답변·인라인 출처 · Studio 기능 Tour. <em>산출물 없음.</em> 화면 명칭이 <strong>Gemini Notebook</strong>으로 보일 수 있음(같은 도구) — 교육생 질문 대비.</div>
+      <div style="margin:8px 0;"><strong>4-2 30일 실행계획 (60분)</strong> — Step 1 Source Map(15분) → Step 2 TOP 3(18분) → Step 3 30일 Action Plan(27분). 필수 3종: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_30일실행계획_근거정리표_성명.md</mark> · <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_우리팀_30일_핵심실행과제_TOP3_성명.md</mark> · <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_우리팀_성과향상_30일실행계획_성명.md</mark> (입력 소스에 2차 캔버스 통합본 포함)</div>
+      <div style="margin:8px 0;"><strong>5-1 정리정돈 (20분)</strong> — 필수 산출물 8종 회수표 작성 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_현업적용_산출물회수표_성명.md</mark> — 특히 CH04 30일 실행계획 저장 위치 확인.</div>
+      <div style="margin:8px 0;"><strong>5-2 Start·Stop·Continue (20분)</strong> — SSC 행동계약 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_나의_30일리더실천계획_성명.md</mark> · 72시간 팀 대화 · 30일 점검일 확정으로 과정 마무리.</div>
+    </div></details>
+
+    <div class="hook-tip" style="margin-top:16px">💡 하루 서사 한 줄: R1 "우리만 그런 게 아니다"(진단) → R2 "문지기는 사람"(경계) → R3 "지표 없는 성공의 반전"(실험) → CH04 근거 기반 30일 계획으로 수렴.</div>
   </div>
 </div>
 <!-- [ENRICHMENT END] -->
