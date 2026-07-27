@@ -34,7 +34,7 @@ CH 02
 
 [연구 요약 보기 (영어) →](https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/)
 
-[원 논문 (수치 출처) →](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)
+[원 논문 — Dell'Acqua 외, HBS Working Paper 24-013 (2023) →](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)
 
 🎯 **연결 포인트:** 경계를 미리 알 수 없다면 — 프롬프트를 **'업무 위임 구조'**로 설계하는 것이 이 클립의 실습입니다. 퀴즈형 오프닝은 **[도입 훅 🎬]** 참조.
 
