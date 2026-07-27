@@ -285,6 +285,16 @@ async function handleSubmit(request, env) {
     updatedAt: now
   };
   await ghWriteJson(env, filePath, record, `wrapup submit ${id} (${round})`, existing ? existing.sha : null);
+
+  /* [팀 대표 파일] 기록 담당이 ☑ 팀 대표(합의본) 체크로 제출하면 팀 단위로도 저장 (서버와 동일 동작) */
+  const teamRep = payload.teamRep === true || payload.teamRep === "true";
+  if (teamRep) {
+    const repPath = `${config.currentCohort}/${round}/teamfile/${team}.json`;
+    const repExisting = await ghReadJson(env, repPath);
+    const repRecord = { team, round, cohort: config.currentCohort, name, markdown, updatedAt: now };
+    await ghWriteJson(env, repPath, repRecord, `wrapup teamfile ${team} (${round})`, repExisting ? repExisting.sha : null);
+  }
+
   return json(request, 200, {
     ok: true,
     id,
@@ -292,6 +302,7 @@ async function handleSubmit(request, env) {
     team,
     name,
     updatedAt: now,
+    teamRep,
     resubmitted: Boolean(existing)
   });
 }
@@ -312,14 +323,47 @@ async function handleStatus(request, env, url) {
     const members = items.filter((s) => s.team === t);
     teams.push({ team: t, count: members.length, names: members.map((s) => s.name) });
   }
+  /* [팀 대표 파일] 팀 대표(합의본) 제출 여부 — 강사 확인용 */
+  let teamReps = [];
+  try {
+    const repEntries = await ghListDir(env, `${config.currentCohort}/${round}/teamfile`);
+    teamReps = repEntries
+      .filter((e) => e.type === "file" && e.name.endsWith(".json"))
+      .map((e) => parseInt(e.name, 10))
+      .filter((n) => n >= 1)
+      .sort((a, b) => a - b);
+  } catch (e) { teamReps = []; }
   return json(request, 200, {
     ok: true,
     cohort: config.currentCohort,
     round,
     teamCount: config.teamCount,
     total: items.length,
-    teams
+    teams,
+    teamReps
   });
+}
+
+/* [팀 대표 파일] 팀 합의본 조회 — 교육생이 다음 실습에서 조 번호로 불러와 사용 */
+async function handleTeamFile(request, env, url) {
+  const { config } = await readConfig(env);
+  const round = normalizeWs(url.searchParams.get("round")).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return json(request, 400, { ok: false, error: "round 파라미터가 필요합니다 (round1~round3)." });
+  }
+  const team = parseInt(url.searchParams.get("team"), 10);
+  if (!(team >= 1 && team <= config.teamCount)) {
+    return json(request, 400, { ok: false, error: `팀은 1~${config.teamCount}조 중에서 선택해 주세요.` });
+  }
+  const found = await ghReadJson(env, `${config.currentCohort}/${round}/teamfile/${team}.json`);
+  if (!found || !found.json) {
+    return json(request, 200, {
+      ok: false,
+      notFound: true,
+      error: "아직 이 팀의 팀 대표(합의본) 제출이 없습니다. 기록 담당이 제출 시 ☑ 팀 대표 체크를 했는지 확인해 주세요."
+    });
+  }
+  return json(request, 200, { ok: true, record: found.json });
 }
 
 async function handleCohorts(request, env) {
@@ -751,6 +795,7 @@ export default {
       }
       if (request.method === "GET" && p === "/api/wrapup/config") return await handleConfig(request, env);
       if (request.method === "POST" && p === "/api/wrapup/submit") return await handleSubmit(request, env);
+      if (request.method === "GET" && p === "/api/wrapup/team-file") return await handleTeamFile(request, env, url);
       if (request.method === "GET" && p === "/api/wrapup/status") return await handleStatus(request, env, url);
       if (request.method === "GET" && p === "/api/wrapup/cohorts") return await handleCohorts(request, env);
       if (request.method === "GET" && p === "/api/wrapup/summary") return await handleSummaryGet(request, env, url);

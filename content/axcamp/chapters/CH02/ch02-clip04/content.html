@@ -707,8 +707,58 @@
 <div class="must-output-box" style="margin:16px 0 20px;padding:16px 20px;border:2px solid #16a34a;border-left-width:8px;border-radius:16px;background:#f0fdf4;">
 <strong style="display:block;margin-bottom:8px;font-size:1.05rem;">✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다</strong>
 <ul style="margin:0;padding-left:20px;"><li style="margin:6px 0;"><mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH02_나의_핵심역량과_성과관리실행안_성명.md</mark> — ChatGPT 결과를 저장 (핵심 역량·스킬 프로필 포함, 개인) → <strong>CH02-5 통합 Gate와 CH03 진단의 입력</strong></li>
-<li style="margin:6px 0;">📎 시작 전 준비: Round 1·2 팀 파일 2개 + 팀장 기대행동 문서를 ChatGPT에 업로드</li></ul><div style="margin-top:10px;padding-top:8px;border-top:1px dashed #86efac;font-size:.9rem;color:#3f6212;">⏭️ <strong>생략 가능:</strong> Deep Research·프로토타입 비서 프롬프트는 확장 활동입니다 — CH04에서 다시 다루므로 지금은 건너뛰어도 됩니다.</div>
+<li style="margin:6px 0;">📎 시작 전 준비: Round 1·2 팀 파일 2개(아래 ‘📥 팀 대표 파일 불러오기’에서 각자 다운로드) + 팀장 기대행동 문서를 ChatGPT에 업로드</li></ul><div style="margin-top:10px;padding-top:8px;border-top:1px dashed #86efac;font-size:.9rem;color:#3f6212;">⏭️ <strong>생략 가능:</strong> Deep Research·프로토타입 비서 프롬프트는 확장 활동입니다 — CH04에서 다시 다루므로 지금은 건너뛰어도 됩니다.</div>
 </div>
+<!-- [팀 대표 파일 2026-07-25] R1·R2 팀 합의본 불러오기 — 기록 담당의 ☑ 팀 대표 제출을 각자 내려받아 ChatGPT에 업로드 -->
+<div style="margin:16px 0 20px;padding:16px 20px;border:2px solid #185dcc;border-left-width:8px;border-radius:16px;background:#eff6ff;">
+<strong style="display:block;margin-bottom:8px;">📥 팀 대표 파일 불러오기 — Round 1·2 팀 합의본을 각자 내려받아 ChatGPT에 업로드합니다</strong>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;">
+<label for="tf24-team" style="font-weight:700;">팀</label>
+<select id="tf24-team" style="min-height:38px;padding:6px 10px;border:1px solid #93c5fd;border-radius:10px;font:inherit;"></select>
+<button type="button" data-tf-load style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#185dcc;color:#fff;font:inherit;font-weight:800;cursor:pointer;">불러오기</button>
+<button type="button" data-tf-dl="round1" disabled style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#fff;color:#185dcc;font:inherit;font-weight:800;cursor:pointer;">R1 다운로드</button>
+<button type="button" data-tf-dl="round2" disabled style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#fff;color:#185dcc;font:inherit;font-weight:800;cursor:pointer;">R2 다운로드</button>
+</div>
+<p data-tf-status style="margin:0;font-size:.92rem;color:#1e40af;">조를 선택하고 [불러오기]를 누르세요. 기록 담당이 ☑ 팀 대표 체크로 제출한 합의본을 가져옵니다.</p>
+</div>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
+var root=px.closest('section');
+if(!root||root.dataset.tf24Ready==='1')return;
+root.dataset.tf24Ready='1';
+var sel=root.querySelector('#tf24-team');
+var loadBtn=root.querySelector('[data-tf-load]');
+var statusEl=root.querySelector('[data-tf-status]');
+var files={round1:null,round2:null};
+var NAMES={round1:'CH02_R1_AI시대_우리팀현실진단_',round2:'CH02_R2_AI팀원리더_책임경계_'};
+function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'#1e40af';}
+function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=html;}
+fillTeams(6);
+fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok)fillTeams(d.teamCount||6);}).catch(function(e){});
+try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);}}catch(e){}
+var dls=root.querySelectorAll('[data-tf-dl]');
+function setDl(round,on){for(var i=0;i&lt;dls.length;i++){if(dls[i].getAttribute('data-tf-dl')===round)dls[i].disabled=on?false:true;}}
+loadBtn.addEventListener('click',function(){
+  var team=sel.value;
+  setStatus(team+'조 합의본을 불러오는 중...');
+  ['round1','round2'].forEach(function(rd){
+    fetch('/api/wrapup/team-file?round='+rd+'&amp;team='+team).then(function(r){return r.json();}).then(function(d){
+      if(d.ok){files[rd]=d.record?d.record.markdown:'';setDl(rd,true);setStatus(team+'조 합의본을 불러왔습니다 — 아래 다운로드 버튼으로 저장하세요.');}
+      else{files[rd]=null;setDl(rd,false);setStatus((rd==='round1'?'R1':'R2')+': '+(d.error||'불러오기 실패'),true);}
+    }).catch(function(e){setStatus('서버에 연결하지 못했습니다. 기록 담당의 [Markdown 다운로드] 백업 파일을 직접 받아 사용하세요.',true);});
+  });
+});
+for(var i=0;i&lt;dls.length;i++){
+  dls[i].addEventListener('click',function(){
+    var rd=this.getAttribute('data-tf-dl');
+    if(!files[rd])return;
+    var blob=new Blob([files[rd]],{type:'text/markdown'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=NAMES[rd]+sel.value+'조.md';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+  });
+}
+})(this);">
 <div class="clip-section">
 <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
 <div class="clip-section-content">

@@ -2767,6 +2767,17 @@ async function handleWrapupSubmit(req, res) {
     updatedAt: now
   };
   await fs.writeFile(filePath, JSON.stringify(record, null, 2), "utf8");
+
+  /* [팀 대표 파일] 기록 담당이 ☑ 팀 대표(합의본) 체크로 제출하면 팀 단위로도 저장 —
+     팀원들이 다음 실습에서 /api/wrapup/team-file 로 불러와 사용 (파일 공유 불필요) */
+  const teamRep = payload.teamRep === true || payload.teamRep === "true";
+  if (teamRep) {
+    const repDir = path.join(dir, "teamfile");
+    await fs.mkdir(repDir, { recursive: true });
+    const repRecord = { team, round, cohort: config.currentCohort, name, markdown, updatedAt: now };
+    await fs.writeFile(path.join(repDir, `${team}.json`), JSON.stringify(repRecord, null, 2), "utf8");
+  }
+
   return sendJson(res, 200, {
     ok: true,
     id,
@@ -2774,6 +2785,7 @@ async function handleWrapupSubmit(req, res) {
     team,
     name,
     updatedAt: now,
+    teamRep,
     resubmitted: Boolean(existing)
   });
 }
@@ -2790,14 +2802,49 @@ async function handleWrapupStatus(req, res, urlObj) {
     const members = items.filter((s) => s.team === t);
     teams.push({ team: t, count: members.length, names: members.map((s) => s.name) });
   }
+  /* [팀 대표 파일] 제출 현황에 팀 대표(합의본) 제출 여부 포함 — 강사가 발표 전 6/6 확인용 */
+  let teamReps = [];
+  const repDir = path.join(wrapupRoundDir(config.currentCohort, round), "teamfile");
+  if (await pathExists(repDir)) {
+    const repFiles = await fs.readdir(repDir);
+    teamReps = repFiles
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => parseInt(f, 10))
+      .filter((n) => n >= 1)
+      .sort((a, b) => a - b);
+  }
   return sendJson(res, 200, {
     ok: true,
     cohort: config.currentCohort,
     round,
     teamCount: config.teamCount,
     total: items.length,
-    teams
+    teams,
+    teamReps
   });
+}
+
+/* [팀 대표 파일] 팀 합의본 조회 — 교육생이 다음 실습(CH02-4 등)에서 조 번호로 불러와 사용 */
+async function handleWrapupTeamFile(req, res, urlObj) {
+  const config = await readWrapupConfig();
+  const round = normalizeWs(urlObj.searchParams.get("round")).toLowerCase();
+  if (!WRAPUP_ROUNDS.has(round)) {
+    return sendJson(res, 400, { ok: false, error: "round 파라미터가 필요합니다 (round1~round3)." });
+  }
+  const team = parseInt(urlObj.searchParams.get("team"), 10);
+  if (!(team >= 1 && team <= config.teamCount)) {
+    return sendJson(res, 400, { ok: false, error: `팀은 1~${config.teamCount}조 중에서 선택해 주세요.` });
+  }
+  const filePath = path.join(wrapupRoundDir(config.currentCohort, round), "teamfile", `${team}.json`);
+  const record = await readJsonFileSafe(filePath, null);
+  if (!record) {
+    return sendJson(res, 200, {
+      ok: false,
+      notFound: true,
+      error: "아직 이 팀의 팀 대표(합의본) 제출이 없습니다. 기록 담당이 제출 시 ☑ 팀 대표 체크를 했는지 확인해 주세요."
+    });
+  }
+  return sendJson(res, 200, { ok: true, record });
 }
 
 async function requireWrapupAdmin(req, res, urlObj) {
@@ -4348,6 +4395,9 @@ async function route(req, res) {
   }
   if (req.method === "GET" && urlObj.pathname === "/api/wrapup/status") {
     return handleWrapupStatus(req, res, urlObj);
+  }
+  if (req.method === "GET" && urlObj.pathname === "/api/wrapup/team-file") {
+    return handleWrapupTeamFile(req, res, urlObj);
   }
   if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/config") {
     return handleWrapupAdminConfig(req, res, urlObj);
