@@ -1001,7 +1001,8 @@ async function apiStatic(path, options = {}) {
   const method = String(options.method || "GET").toUpperCase();
 
   const fetchJson = async (url) => {
-    const response = await fetch(resolveRuntimeUrl(url));
+    // cache:"no-cache" — 서버(ETag) 재검증 강제: 배포 갱신 직후에도 낡은 JSON을 쓰지 않게 함 (변경 없으면 304라 비용 낮음)
+    const response = await fetch(resolveRuntimeUrl(url), { cache: "no-cache" });
     let data = {};
     try {
       data = await response.json();
