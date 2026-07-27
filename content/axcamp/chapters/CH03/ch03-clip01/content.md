@@ -19,13 +19,23 @@ CH 03
 
 🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
 
-- **“The Cybernetic Teammate” (Ethan Mollick · 영어)** — P&G 전문가 776명 현장 실험 — 개인·팀·AI 조합의 성과 비교
-[https://www.oneusefulthing.org/p/the-cybernetic-teammate](https://www.oneusefulthing.org/p/the-cybernetic-teammate)
+🧪 사례 1 — “The Cybernetic Teammate”: P&G 전문가 776명 무작위 실험 (Ethan Mollick)
 
-- **Google re:Work — Project Aristotle (영어 가이드)** — Step 2에서 사용하는 팀 효과성 5요인 프레임의 원전
-[https://rework.withgoogle.com/intl/en/guides/understand-team-effectiveness](https://rework.withgoogle.com/intl/en/guides/understand-team-effectiveness)
+- AI를 쓴 **혼자**(+0.37SD)가 AI 없는 **2인 팀**(+0.24SD)을 능가 — 그러나 **최고 성과는 팀+AI**(+0.39SD)
 
-진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 **[도입 훅 🎬]** 버튼에 있습니다.
+- 시사점: AI 효과가 가장 커지는 곳은 개인의 손이 아니라 **팀의 일하는 방식 안**
+
+[원문 보기 (영어) →](https://www.oneusefulthing.org/p/the-cybernetic-teammate)
+
+🧭 사례 2 — Google re:Work: Project Aristotle (180개 팀 연구)
+
+- 결론: 팀 성과를 가르는 건 **'누가 있느냐(구성)'가 아니라 '어떻게 일하느냐(방식)'**
+
+- Step 2에서 사용하는 **팀 효과성 5요인**(1순위 심리적 안전감)의 원전
+
+[가이드 원문 보기 (영어) →](https://rework.withgoogle.com/intl/en/guides/understand-team-effectiveness)
+
+🎯 **연결 포인트:** 그래서 이 진단은 사람을 탓하지 않고 **6개 렌즈로 '방식'**을 봅니다. 진행 멘트·주의점은 **[도입 훅 🎬]** 참조.
 
 **✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다**
 

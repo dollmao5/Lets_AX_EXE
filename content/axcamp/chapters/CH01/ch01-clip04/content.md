@@ -25,10 +25,17 @@ CH 01
 
 🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
 
-- **Microsoft Work Trend Index 2025 — “The Year the Frontier Firm Is Born” (영어 리포트)** — 31개국 직장인 31,000명 조사 — 리더·조직 관련 수치 인용용
-[https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born](https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born)
+📊 Microsoft Work Trend Index 2025 — “The Year the Frontier Firm Is Born” (31개국 직장인 31,000명 조사)
 
-진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 **[도입 훅 🎬]** 버튼에 있습니다.
+- 리더 **82%** — “올해가 전략·운영을 재검토할 결정적 시점”
+
+- 사람+AI 하이브리드 조직(Frontier Firm)의 리더 **71%**가 “회사가 번영 중” — 전체 평균 **39%**의 약 2배
+
+- AI 에이전트에 “매우 익숙”: 리더 **67%** vs 직원 **40%** — 팀 리터러시의 병목이자 지렛대는 리더
+
+[리포트 원문 보기 (영어) →](https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born)
+
+🎯 **연결 포인트:** “준비된 리더와 조직의 격차가 이미 2배 — 그래서 먼저 내 수준을 진단합니다.” 진행 멘트는 **[도입 훅 🎬]** 참조.
 
 ## 이번 클립의 흐름
 

@@ -26,13 +26,25 @@ AI 활용 아이디어를 일반론으로 나열하는 시간이 아닙니다. *
 
 🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
 
-- **“AI 땜에 일이 늘고 있다? AI 생산성의 역설” (디지털투데이 · 한국어 기사)** — 워크슬롭(Workslop) 현상과 실측 조사
-[https://www.digitaltoday.co.kr/news/articleView.html?idxno=621895](https://www.digitaltoday.co.kr/news/articleView.html?idxno=621895)
+📰 사례 1 — 워크슬롭(Workslop): “AI 때문에 일이 늘고 있다” (디지털투데이 2026.1.19)
 
-- **“MIT 보고서: 기업 생성형 AI 프로젝트 실패율 95%” (포춘코리아 · 한국어 기사)** — 실패 원인과 성공 기업의 공통점 분석
-[https://www.fortunekorea.co.kr/news/articleView.html?idxno=49533](https://www.fortunekorea.co.kr/news/articleView.html?idxno=49533)
+- 직원 **85%**가 AI로 시간 절감 체감(주당 1~7시간) — 그러나 **절감분의 37%는 동료 AI 산출물 재작업**에 재소모
 
-진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 **[도입 훅 🎬]** 버튼에 있습니다.
+- 최근 한 달 내 **40%**가 저품질 AI 산출물로 업무 지연 — 건당 평균 **1시간 56분**
+
+- AI에서 실질적 긍정 결과를 얻은 사람은 **14%**
+
+[기사 원문 보기 →](https://www.digitaltoday.co.kr/news/articleView.html?idxno=621895)
+
+📰 사례 2 — MIT: 기업 생성형 AI 프로젝트 95% 실패 (포춘코리아)
+
+- 도입 기업 **95%**가 실질 손익 성과 없음 — 원인은 모델 성능이 아니라 **'일하는 방식'**
+
+- 성공 5%의 공통점: 중앙 조직이 아닌 **현장 관리자에게 권한 위임** (외부 파트너 활용 성공률 67% vs 자체 개발 33%)
+
+[기사 원문 보기 →](https://www.fortunekorea.co.kr/news/articleView.html?idxno=49533)
+
+🎯 **연결 포인트:** “우리만 그런 게 아니다” — 솔직한 As-Is 진단을 여는 안전판. **진행 원칙(수치만 던지고 답은 팀에)**은 **[도입 훅 🎬]** 참조.
 
 **✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다**
 

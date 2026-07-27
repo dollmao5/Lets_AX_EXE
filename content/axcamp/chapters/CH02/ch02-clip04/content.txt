@@ -16,13 +16,17 @@ CH 02
 
 🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
 
-- “Navigating the Jagged Technological Frontier” (하버드 경영대학원 AI Institute · 영어 요약) — BCG 컨설턴트 758명 현장 실험 — AI 위임의 경계에 대한 대표 연구
-https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/
+📊 하버드×BCG “Jagged Frontier” — BCG 컨설턴트 758명 현장 실험
 
-- 원 논문 (HBS Working Paper — 수치 출처) — 세부 수치 인용 시 출처
-https://www.hbs.edu/faculty/Pages/item.aspx?num=64700
+- AI가 잘하는 일(경계 안)에 쓰면: 품질 +40% · 속도 +25% · 완료량 +12%
+- 못하는 일(경계 밖)에 맡기면: 정답률이 오히려 19%p 하락 — 문제는 경계가 겉보기로 구분되지 않는다는 것
+- 잘 쓰는 두 패턴: 켄타우로스(일을 나눠 위임) vs 사이보그(업무 흐름에 통합)
 
-진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 [도입 훅 🎬] 버튼에 있습니다.
+연구 요약 보기 (영어) →
+
+원 논문 (수치 출처) →
+
+🎯 연결 포인트: 경계를 미리 알 수 없다면 — 프롬프트를 '업무 위임 구조'로 설계하는 것이 이 클립의 실습입니다. 퀴즈형 오프닝은 [도입 훅 🎬] 참조.
 
 ✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다
 - CH02_나의_핵심역량과_성과관리실행안_성명.md — ChatGPT 결과를 저장 (핵심 역량·스킬 프로필 포함, 개인) → CH02-5 통합 Gate와 CH03 진단의 입력
