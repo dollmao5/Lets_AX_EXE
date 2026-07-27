@@ -104,7 +104,10 @@ for (const [clipKey, clipDir] of clipDirs) {
       "참고_Gemini Overview",
       "Gemini 접속 방법 및 Gems 소개"
     ];
-    for (const label of REF_CLIP_LABELS) htmlSansNav = htmlSansNav.split(label).join("");
+    /* NotebookLM의 공식 리브랜딩 명칭 "Gemini Notebook"은 챗봇 Gemini와 무관한 별개 제품명 — 금칙어 예외
+       (ch04-clip01 리브랜딩 각주·공식 도움말 링크 라벨에서 사용) */
+    const ALLOWED_PHRASES = ["Gemini Notebook"];
+    for (const label of [...REF_CLIP_LABELS, ...ALLOWED_PHRASES]) htmlSansNav = htmlSansNav.split(label).join("");
     const banned = [
       [/Gemini/, "Gemini (도구 전환 완료 — 참고 클립 외 금지)"],
       [/전사 텍스트/, "전사 텍스트 (정본 용어: 토론 대화문)"],
