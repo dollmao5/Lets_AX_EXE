@@ -140,7 +140,7 @@
     <span id="summaryMeta" class="muted"></span>
     <span class="admin-box" id="adminBox">
       <button id="helpBtn" title="보드 사용법 안내">사용법 ❓</button>
-      <!-- [ENRICHMENT 2026-07-25] 도입 훅 버튼. 복구: 이 줄 삭제 --><button id="hookBtn" title="클립별 도입 훅 시나리오 (강사용)">도입 훅 🎬</button><!-- [ENRICHMENT END] -->
+      <!-- [ENRICHMENT 2026-07-25] 도입 훅 버튼. 복구: 이 줄 삭제 --><button id="hookBtn" title="클립별 도입·마무리 시나리오 (강사용)">도입·마무리 🎬</button><!-- [ENRICHMENT END] -->
       <button id="genBtn" class="primary">요약 생성</button>
       <button id="canvas2Btn">2차 캔버스 생성</button>
       <button id="cohortBtn">차수 설정</button>
@@ -215,6 +215,7 @@
       <tr data-help-mode="local"><td>zip 내보내기</td><td>전체 데이터를 zip 파일로 다운로드 (로컬 보관용 백업).</td></tr>
       <tr data-help-mode="remote"><td>강사 로그인/로그아웃</td><td>강사·관리자 비밀코드로 인증하면 이 관리 버튼들이 나타납니다. 로그아웃하면 일반 열람 화면으로 돌아갑니다.</td></tr>
       <tr><td>발표 모드 ▶</td><td>요약을 슬라이드로 크게 표시 (팀 카드 → 교차 분석 → 차수 비교 순).</td></tr>
+      <tr><td>도입·마무리 🎬</td><td>클립별 도입 시나리오·핵심 수치·Round 마무리 멘트·D-1 체크리스트 (강사 전용 콘텐츠).</td></tr>
       </tbody>
     </table>
 
@@ -225,10 +226,10 @@
 <div id="hookOverlay">
   <div class="help-card">
     <div class="help-head">
-      <h2>🎬 클립별 도입 훅 (강사용)</h2>
+      <h2>🎬 클립별 도입·마무리 (강사용)</h2>
       <button id="hookCloseBtn" title="닫기">닫기 ✕</button>
     </div>
-    <p class="help-sub">각 클립 시작 전 2~3분 환기용 시나리오입니다. 교육생 화면의 접이식 <strong>"🎬 생각 열기"</strong> 블록에는 사례 요약·수치·출처가 있고, <strong>진행 멘트·퀴즈 오프닝은 여기에만</strong> 있습니다.</p>
+    <p class="help-sub">각 클립 시작 전 2~3분 환기용 도입 시나리오와 <strong>Round 토론 후 마무리 멘트(발표 후 1분)</strong>입니다. 교육생 화면의 접이식 <strong>"🎬 생각 열기"</strong> 블록에는 사례 요약·수치·출처가 있고, <strong>진행 멘트·퀴즈 오프닝은 여기에만</strong> 있습니다.</p>
 
     <h3>공통 원칙 3가지</h3>
     <ol class="help-flow">
@@ -286,6 +287,15 @@
         <li><strong>브리지:</strong> "그래서 첫 토론이 '우리 팀의 현재 상태 진단'입니다. 솔직하게 — 전 세계가 이 정도면, 우리 팀 얘기를 꺼내도 안전합니다."</li>
       </ol>
       <div class="hook-tip">이 훅의 목적은 Speak-up 안전감("우리만 그런 게 아니다")입니다. 수치만 던지고, "일이 늘어난 장면" 같은 답 예시는 주지 마세요 — 보조 질문 2번만 복제되어 토론이 좁아집니다.</div>
+      <div style="margin-top:10px;padding:10px 14px;border-left:4px solid #4f46e5;background:#eef2ff;border-radius:8px;font-size:.92rem;">
+        <strong>🔚 마무리 멘트 (발표 후 1분)</strong>
+        <ol style="margin:6px 0 0;padding-left:20px;">
+          <li><em>(발표 모드 화면을 보며)</em> "여러 팀에서 공통으로 나온 단어가 보입니다 — ○○, ○○. 우리 팀만의 문제가 아니었죠." <em>(실제 발표에서 나온 키워드로 채우기)</em></li>
+          <li>"오늘 나온 이야기들은 <strong>능력의 문제가 아니라 구조의 문제</strong>입니다. 성과를 못 낸 95%의 기업들이 건너뛴 게 바로 이 진단입니다 — 여러분은 방금 그걸 했습니다."</li>
+          <li>"이 Canvas는 다음 실습의 입력입니다. 팀의 현실을 정리했으니, 이제 그 현실에서 '리더인 나'는 무엇을 직접 책임질지로 넘어갑니다."</li>
+        </ol>
+        <div style="margin-top:6px;font-size:.87rem;color:#b91c1c;">⚠️ 여기서 해결책을 언급하지 않기 — 해결은 R2·R3의 몫입니다.</div>
+      </div>
     </div></details>
 
     <details><summary>R2 (2-3b) — 에어캐나다 → 가짜 판례 (약 2분 30초)</summary><div class="hook-body">
@@ -295,6 +305,14 @@
         <li><strong>브리지:</strong> "써라, 단 검증하라 — AI에게 일은 맡겨도 <strong>책임은 맡길 수 없습니다</strong>. 그 경계선을 지금 팀별로 그어봅니다."</li>
       </ol>
       <div class="hook-tip">최신 사례가 필요하면 예비: 딜로이트가 호주 정부 보고서에 AI 환각 인용을 넣었다가 용역비를 환불한 사건(2025, etnews.com/20251008000017). 가짜 판례는 2023년 사건입니다 — '원조 판례'로 소개하세요.</div>
+      <div style="margin-top:10px;padding:10px 14px;border-left:4px solid #4f46e5;background:#eef2ff;border-radius:8px;font-size:.92rem;">
+        <strong>🔚 마무리 멘트 (발표 후 1분)</strong>
+        <ol style="margin:6px 0 0;padding-left:20px;">
+          <li><em>(팀 카드를 비교하며)</em> "재미있는 게, 같은 업무인데 팀마다 경계선이 다릅니다. 틀린 게 아니라 — <strong>책임경계에는 정답이 없고, 팀의 맥락이 기준</strong>이라는 뜻입니다."</li>
+          <li>"다만 오전에 본 판례를 기억하세요. 어느 선을 긋든 변하지 않는 것 — <strong>AI에게 일은 맡겨도 책임은 맡길 수 없습니다.</strong> 오늘 그은 선은 '임시선'입니다. 현업에서 팀원들과 다시 그어야 진짜 선이 됩니다."</li>
+          <li>"이 책임경계표는 바로 다음 실습에서 여러분의 핵심 역량 브리프를 만드는 입력입니다."</li>
+        </ol>
+      </div>
     </div></details>
 
     <details><summary>2-4 핵심 역량 — 시계 퀴즈 → BCG 실험 → 켄타우로스 (약 2분 30초)</summary><div class="hook-body">
@@ -324,6 +342,14 @@
       </ol>
       <div class="hook-warn">과장 금지: 재고용 인원 규모는 기사에 없습니다 — "방향 전환 + 재고용 시작"까지만 말하세요.</div>
       <div class="hook-tip">성공 대비 예비: JP모건 — 작게 검증 → 8주 주기 개선 → 확산 (aitimes.kr/news/articleView.html?idxno=31935). 30일 실험 설계의 모범 패턴.</div>
+      <div style="margin-top:10px;padding:10px 14px;border-left:4px solid #4f46e5;background:#eef2ff;border-radius:8px;font-size:.92rem;">
+        <strong>🔚 마무리 멘트 (발표 후 1분)</strong>
+        <ol style="margin:6px 0 0;padding-left:20px;">
+          <li><em>(발표 후)</em> "모든 팀이 지표와 <strong>중단 기준(Quality Gate)</strong>을 정했습니다 — 오늘 본 Klarna에게 없던 게 바로 그것입니다."</li>
+          <li>"전면 도입이 아니라 실험입니다. 30일 뒤에는 <strong>느낌이 아니라 증거로</strong> 판단합니다."</li>
+          <li>"이 실험서는 다음 Gate에서 통합돼 오후 NotebookLM의 핵심 소스가 됩니다 — 남은 오후는 이 실험을 '실행 가능한 30일 계획'으로 완성하는 시간입니다."</li>
+        </ol>
+      </div>
     </div></details>
 
     <details><summary>4-1 NotebookLM — 훅 없음 (D-1 체크만)</summary><div class="hook-body">
