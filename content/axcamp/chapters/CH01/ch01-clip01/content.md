@@ -38,7 +38,9 @@ CH 01
 
 - 미국 AI 투자 **2,859억 달러**(2025) — 2위 중국의 23배
 
-[리포트 원문 보기 (영어) →](https://hai.stanford.edu/ai-index/2026-ai-index-report)
+[리포트 원문 보기 (영어) →](https://hai.stanford.edu/ai-index/2026-ai-index-report) · [[한글 번역 보기]](https://hai-stanford-edu.translate.goog/ai-index/2026-ai-index-report?_x_tr_sl=en&_x_tr_tl=ko&_x_tr_hl=ko)
+
+🌐 영어 페이지는 크롬·엣지에서 **우클릭 → "한국어(으)로 번역"**을 누르면 한글로 볼 수 있습니다.
 
 🎯 **연결 포인트:** "LG는 이미 시작했습니다 — 오늘은 팀장인 여러분 차례입니다." 퀴즈형 오프닝 등 진행 멘트는 강사용 Wrap-up 보드의 **[도입 훅 🎬]**에 있습니다.
 
