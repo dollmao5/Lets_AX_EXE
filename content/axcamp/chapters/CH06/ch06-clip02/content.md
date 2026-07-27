@@ -1,8 +1,8 @@
 ---
-route: "#CH06-clip02"
+route: "#ch06-clip02"
 chapter: "ch06"
 title: "에이전틱 AI 도구 소개"
-source_url: "https://lg.cmdspace.work/axcamp#CH06-clip02"
+source_url: "https://lg.cmdspace.work/axcamp#ch06-clip02"
 exported_at: "2026-02-28T01:54:15.955Z"
 ---
 
@@ -12,7 +12,7 @@ CH 06
 
 # 에이전틱 AI 도구 소개
 
-현재 주요 에이전틱 AI 도구 4종의 특징을 비교하고, 오늘 시연에서 사용할 도구를 소개합니다.
+현재 주요 에이전틱 AI 도구 4종의 특징을 비교하고, 본 라이브러리의 시연 사례에서 사용한 도구를 소개합니다.
 
 ## 4가지 주요 에이전틱 AI 도구
 
@@ -70,9 +70,9 @@ Slack, DB, 파일, 브라우저
 
 USB 포트가 어떤 기기든 연결할 수 있듯, MCP는 어떤 AI 도구든 외부 시스템과 연결할 수 있게 합니다. 2024년 11월 출시 후 6개월 만에 다운로드 80배 성장을 기록했습니다.
 
-## 오늘 시연에서 사용할 도구 — Hi-D Code (Cline)
+## 시연 사례에서 사용한 도구 — Antigravity
 
-중 오늘 시연에서는 **Hi-D Code (Cline)** 를 사용합니다.
+위 4종 중 시연 사례에서는 **Antigravity**를 사용했습니다.
 
 선택 이유
 
@@ -90,7 +90,7 @@ USB 포트가 어떤 기기든 연결할 수 있듯, MCP는 어떤 AI 도구든 
 
 - **스킬:** 워크플로우 저장 및 재사용
 
-- **Hi-D Code (Qwen-Coder-3.5):** 최신 AI 모델 탑재
+- **모델 선택:** 최신 AI 모델 탑재
 
 ### 핵심 메시지
 

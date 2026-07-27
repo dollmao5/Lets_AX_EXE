@@ -130,7 +130,7 @@
         },
         {
           "route": "#ch02-clip05",
-          "title": "CH02 Output Gate: 리더 역할·책임·역량 통합 저장",
+          "title": "CH02 통합 저장 Gate: 리더 역할·책임·역량 통합 저장",
           "type": "통합·저장",
           "folder": "chapters/CH02/ch02-clip05",
           "linkCount": 0,
@@ -178,7 +178,7 @@
         },
         {
           "route": "#ch03-clip02",
-          "title": "참고_Gemini 및 Gems 소개",
+          "title": "참고: Gemini 접속 방법 및 Gems 소개",
           "type": "참고",
           "folder": "chapters/CH03/ch03-clip02",
           "linkCount": 0,
@@ -206,7 +206,7 @@
         },
         {
           "route": "#ch04-clip02",
-          "title": "NotebookLM & AI 비서 활용: 팀 성과 향상 및 피드백 실전",
+          "title": "NotebookLM & AI 비서 활용: 팀 성과·성장역량 향상 및 피드백 실천",
           "type": "실습",
           "folder": "chapters/CH04/ch04-clip02",
           "linkCount": 0,
@@ -224,7 +224,7 @@
       "clips": [
         {
           "route": "#ch05-clip01",
-          "title": "오늘의 핵심 정리: 배움에서 현업 자산으로",
+          "title": "정리정돈: 배움에서 현업 자산으로",
           "type": "개요",
           "folder": "chapters/CH05/ch05-clip01",
           "linkCount": 0,
@@ -234,7 +234,7 @@
         },
         {
           "route": "#ch05-clip02",
-          "title": "Wrap-up 및 마무리: Start · Stop · Continue",
+          "title": "마무리: Start · Stop · Continue",
           "type": "실천 · 성찰",
           "folder": "chapters/CH05/ch05-clip02",
           "linkCount": 0,
@@ -497,7 +497,7 @@
     {
       "chapterId": "ch02",
       "route": "#ch02-clip05",
-      "title": "CH02 Output Gate: 리더 역할·책임·역량 통합 저장",
+      "title": "CH02 통합 저장 Gate: 리더 역할·책임·역량 통합 저장",
       "folder": "chapters/CH02/ch02-clip05",
       "textLength": 216,
       "htmlLength": 716,
@@ -549,7 +549,7 @@
     {
       "chapterId": "ch03",
       "route": "#ch03-clip02",
-      "title": "참고_Gemini 및 Gems 소개",
+      "title": "참고: Gemini 접속 방법 및 Gems 소개",
       "folder": "chapters/CH03/ch03-clip02",
       "textLength": 3343,
       "htmlLength": 8772,
@@ -575,7 +575,7 @@
     {
       "chapterId": "ch04",
       "route": "#ch04-clip02",
-      "title": "NotebookLM & AI 비서 활용: 팀 성과 향상 및 피드백 실전",
+      "title": "NotebookLM & AI 비서 활용: 팀 성과·성장역량 향상 및 피드백 실천",
       "folder": "chapters/CH04/ch04-clip02",
       "textLength": 9704,
       "htmlLength": 44110,
@@ -588,7 +588,7 @@
     {
       "chapterId": "ch05",
       "route": "#ch05-clip01",
-      "title": "오늘의 핵심 정리: 배움에서 현업 자산으로",
+      "title": "정리정돈: 배움에서 현업 자산으로",
       "folder": "chapters/CH05/ch05-clip01",
       "textLength": 2476,
       "htmlLength": 24654,
@@ -601,7 +601,7 @@
     {
       "chapterId": "ch05",
       "route": "#ch05-clip02",
-      "title": "Wrap-up 및 마무리: Start · Stop · Continue",
+      "title": "마무리: Start · Stop · Continue",
       "folder": "chapters/CH05/ch05-clip02",
       "textLength": 2606,
       "htmlLength": 38757,

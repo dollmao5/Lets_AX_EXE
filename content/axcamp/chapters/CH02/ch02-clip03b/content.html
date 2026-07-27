@@ -435,6 +435,26 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
   });
   restore();
 })(this.closest(&#x27;section&#x27;));">
-  <div class="rev-note"><strong>다음 클립 연결</strong> — 이 책임경계표는 바로 다음 클립(프롬프팅 활용)에서 리더 핵심 역량과 성과관리 실행 브리프를 만들 때 입력자료로 사용합니다.</div>
+  <div class="clip-section"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
+<div class="info-block" id="r2CheckBox">
+<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r2check="talk" style="margin-top:5px;width:18px;height:18px;"> <span>없앨 일과 사람이 끝까지 책임질 일을 실제 업무 기준으로 토론했다</span></label>
+<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r2check="canvas" style="margin-top:5px;width:18px;height:18px;"> <span>Team Canvas의 책임경계표를 기록하고 Markdown으로 저장했다 (기록 담당자)</span></label>
+<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r2check="submit" style="margin-top:5px;width:18px;height:18px;"> <span>'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다</span></label>
+<p style="margin:8px 0 0;font-size:.88rem;color:var(--text-secondary,#667085);">체크 상태는 현재 브라우저에 자동 저장됩니다.</p>
+</div>
+</div></div>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
+var root=px.closest('section');
+if(!root||root.dataset.r2CheckReady==='1')return;
+root.dataset.r2CheckReady='1';
+var KEY='ax_wrapup_r2_check';
+var boxes=root.querySelectorAll('[data-r2check]');
+try{var saved=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b){if(saved.indexOf(b.getAttribute('data-r2check'))>-1)b.checked=true;});}catch(e){}
+root.querySelector('#r2CheckBox').addEventListener('change',function(){
+  var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r2check'));});
+  try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
+});
+})(this);">
+<div class="rev-note"><strong>다음 클립 연결</strong> — 이 책임경계표는 바로 다음 클립(프롬프팅 활용)에서 리더 핵심 역량과 성과관리 실행 브리프를 만들 때 입력자료로 사용합니다.</div>
   <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip03">← 프롬프팅 기초: AI 시대, 리더 역할·책임 인식</a><a class="clip-nav-btn" href="#ch02-clip04">프롬프팅 활용: 리더의 핵심 역량 및 스킬 →</a></div>
 </section>

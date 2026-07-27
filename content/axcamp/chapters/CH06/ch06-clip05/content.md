@@ -1,8 +1,8 @@
 ---
-route: "#CH06-clip05"
+route: "#ch06-clip05"
 chapter: "ch06"
 title: "HTML + PPT 동시 출력 심화"
-source_url: "https://lg.cmdspace.work/axcamp#CH06-clip05"
+source_url: "https://lg.cmdspace.work/axcamp#ch06-clip05"
 exported_at: "2026-02-28T01:54:19.347Z"
 ---
 
@@ -23,9 +23,9 @@ CH 06
 
 • LG 브랜드 컬러가 적용된 실전 수준의 산출물을 만듭니다
 
-## Step 3: HTML + PPT 동시 출력 프롬프트
+## 실습: HTML + PPT 동시 출력 프롬프트
 
-이어서 **같은 대화**에서 입력합니다 (새 대화를 열지 마세요):
+분석 결과가 이미 있는 **같은 대화**에 이어서 입력합니다 (새 대화를 열지 마세요):
 
 HTML + PPT 동시 생성복사
 

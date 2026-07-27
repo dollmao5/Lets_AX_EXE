@@ -1,8 +1,8 @@
 ---
-route: "#ch01-clip04"
+route: "#ch01-clip03"
 chapter: "ch01"
 title: "개념 다지기"
-source_url: "https://lg.cmdspace.work/axcamp#ch01-clip04"
+source_url: "https://lg.cmdspace.work/axcamp#ch01-clip03"
 ---
 
 ~5분
@@ -86,3 +86,7 @@ NotebookLM Infographic
 ### 이번 클립의 연결
 
 **필수 파일 산출물은 없습니다.** 멀티모달·RAG·MCP·Agentic AI 중 익숙하지 않은 용어를 표시하고, 다음 진단에서 자신의 AI 활용 출발점을 확인합니다.
+
+### 이번 클립의 핵심 메시지
+
+용어를 전부 외울 필요는 없습니다. **AI를 팀의 역할로 비유해 이해했다면 이 클립의 목표는 달성**입니다. 인포그래픽은 수업 중 언제든 다시 열어 참조하세요.

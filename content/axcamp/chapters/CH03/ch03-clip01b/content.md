@@ -62,8 +62,8 @@ source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01b"
 
 ③ **나머지 전원** — 일반론 대신 **최근의 실제 업무 장면**을 근거로 말합니다. 다른 사람 발언 중에는 반박·해결책 제시를 잠시 미루고, 각 단계의 규칙을 따릅니다.
 
-| 시간 | 활동 |
-| --- | --- |
+| 시간 | 활동 | 운영 규칙 |
+| --- | --- | --- |
 | 3분 | 30일 실험 기준 설명 | 한 개 Workflow·리더 행동·팀 행동·증거로 범위를 제한합니다. |
 | 15분 | 팀 운영 실험서 설계 | 성과·성장·피드백·Speak-up·Quality Gate를 연결합니다. |
 | 7분 | 팀 간 Peer Challenge | 다른 팀이 근거·책임·지표·중단 기준을 질문합니다. |
@@ -176,6 +176,22 @@ ChatGPT복붙형30일 실험의 Go·Modify·Hold 점검복사
 **2. 근거** 이를 보여주는 Fact 또는 사례는 이것입니다.
 **3. 판단** 우리가 시험할 책임경계·리더 행동·팀 행동은 이것입니다.
 **4. 남은 질문** 아직 팀원·조직과 확인해야 할 것은 이것입니다.
+
+## 이번 클립의 완료 기준
+
+한 개 Workflow·리더 행동·팀 행동·증거·중단 기준으로 좁혀 토론했다
+Team Canvas의 30일 팀 운영 실험서를 Markdown으로 저장했다 (기록 담당자)
+'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다
+체크 상태는 현재 브라우저에 자동 저장됩니다.
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+
+-1)b.checked=true;});}catch(e){}
+root.querySelector('#r3CheckBox').addEventListener('change',function(){
+var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r3check'));});
+try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
+});
+})(this);">
 
 ## 다음 단계: CH03 통합 저장 Gate
 

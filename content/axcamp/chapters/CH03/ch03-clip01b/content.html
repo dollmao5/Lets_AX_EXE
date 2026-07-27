@@ -139,7 +139,7 @@ if(!document.__roundImgEscWired){document.__roundImgEscWired=true;document.addEv
 ③ <strong>나머지 전원</strong> — 일반론 대신 <strong>최근의 실제 업무 장면</strong>을 근거로 말합니다. 다른 사람 발언 중에는 반박·해결책 제시를 잠시 미루고, 각 단계의 규칙을 따릅니다.
 </div>
 </div>
-<div class="table-wrap"><table class="comparison-table"><thead><tr><th>시간</th><th>활동</th></tr></thead><tbody><tr><td>3분</td><td>30일 실험 기준 설명</td><td>한 개 Workflow·리더 행동·팀 행동·증거로 범위를 제한합니다.</td></tr><tr><td>15분</td><td>팀 운영 실험서 설계</td><td>성과·성장·피드백·Speak-up·Quality Gate를 연결합니다.</td></tr><tr><td>7분</td><td>팀 간 Peer Challenge</td><td>다른 팀이 근거·책임·지표·중단 기준을 질문합니다.</td></tr><tr><td>5분</td><td>실험서 수정</td><td>수용·기각 이유를 기록하고 범위를 축소·보완합니다.</td></tr><tr><td>5분</td><td>Commitment Pitch</td><td>60~90초로 현장 장면·가설·행동·증거를 발표합니다.</td></tr></tbody></table></div></div></div><div class="clip-section"><div class="clip-section-title">Team Canvas · 30일 AI 협업 팀 운영 실험서</div><div class="clip-section-content">
+<div class="table-wrap"><table class="comparison-table"><thead><tr><th>시간</th><th>활동</th><th>운영 규칙</th></tr></thead><tbody><tr><td>3분</td><td>30일 실험 기준 설명</td><td>한 개 Workflow·리더 행동·팀 행동·증거로 범위를 제한합니다.</td></tr><tr><td>15분</td><td>팀 운영 실험서 설계</td><td>성과·성장·피드백·Speak-up·Quality Gate를 연결합니다.</td></tr><tr><td>7분</td><td>팀 간 Peer Challenge</td><td>다른 팀이 근거·책임·지표·중단 기준을 질문합니다.</td></tr><tr><td>5분</td><td>실험서 수정</td><td>수용·기각 이유를 기록하고 범위를 축소·보완합니다.</td></tr><tr><td>5분</td><td>Commitment Pitch</td><td>60~90초로 현장 장면·가설·행동·증거를 발표합니다.</td></tr></tbody></table></div></div></div><div class="clip-section"><div class="clip-section-title">Team Canvas · 30일 AI 협업 팀 운영 실험서</div><div class="clip-section-content">
 <div class="info-block" style="margin-bottom:14px;">
 <div class="info-block-title">왜 Team Canvas(팀 기록표)를 쓰나요?</div>
 <div>
@@ -374,6 +374,26 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
 
 결과를 Go / Modify / Hold 중 하나로 판정하고, 판정 근거와 반드시 수정할 질문 최대 3개만 제시해 주세요.</div>
 </div></div></div><div class="clip-section"><div class="clip-section-title">Evidence Pitch 네 문장</div><div class="clip-section-content"><div class="rev-note"><strong>1. 현장 장면</strong> 우리 팀에서는 무엇이 반복됩니다.<br/><strong>2. 근거</strong> 이를 보여주는 Fact 또는 사례는 이것입니다.<br/><strong>3. 판단</strong> 우리가 시험할 책임경계·리더 행동·팀 행동은 이것입니다.<br/><strong>4. 남은 질문</strong> 아직 팀원·조직과 확인해야 할 것은 이것입니다.</div></div></div>
+<div class="clip-section"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
+<div class="info-block" id="r3CheckBox">
+<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r3check="talk" style="margin-top:5px;width:18px;height:18px;"> <span>한 개 Workflow·리더 행동·팀 행동·증거·중단 기준으로 좁혀 토론했다</span></label>
+<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r3check="canvas" style="margin-top:5px;width:18px;height:18px;"> <span>Team Canvas의 30일 팀 운영 실험서를 Markdown으로 저장했다 (기록 담당자)</span></label>
+<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r3check="submit" style="margin-top:5px;width:18px;height:18px;"> <span>'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다</span></label>
+<p style="margin:8px 0 0;font-size:.88rem;color:var(--text-secondary,#667085);">체크 상태는 현재 브라우저에 자동 저장됩니다.</p>
+</div>
+</div></div>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
+var root=px.closest('section');
+if(!root||root.dataset.r3CheckReady==='1')return;
+root.dataset.r3CheckReady='1';
+var KEY='ax_wrapup_r3_check';
+var boxes=root.querySelectorAll('[data-r3check]');
+try{var saved=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b){if(saved.indexOf(b.getAttribute('data-r3check'))>-1)b.checked=true;});}catch(e){}
+root.querySelector('#r3CheckBox').addEventListener('change',function(){
+  var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r3check'));});
+  try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
+});
+})(this);">
 <div class="clip-section"><div class="clip-section-title">다음 단계: CH03 통합 저장 Gate</div><div class="clip-section-content"><div class="tip-block"><div class="tip-block-title">Round 3 실험서만으로 CH04에 가지 않습니다</div><div class="tip-block-content">CH03-1의 구조적 병목 가설·효과성 지표·행동역량과 Round 3 실험서를 다음 Clip에서 하나의 근거 중심 Markdown으로 통합합니다.</div></div></div></div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" aria-hidden="true" style="display:none" onload="(function(root){
   if(!root||root.dataset.revBound===&#x27;1&#x27;){return;}

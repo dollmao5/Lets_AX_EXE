@@ -168,4 +168,19 @@ ChatGPT복붙형책임 공백과 과도한 AI 위임 점검복사
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
+## 이번 클립의 완료 기준
+
+없앨 일과 사람이 끝까지 책임질 일을 실제 업무 기준으로 토론했다
+Team Canvas의 책임경계표를 기록하고 Markdown으로 저장했다 (기록 담당자)
+'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다
+체크 상태는 현재 브라우저에 자동 저장됩니다.
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+
+-1)b.checked=true;});}catch(e){}
+root.querySelector('#r2CheckBox').addEventListener('change',function(){
+var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r2check'));});
+try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
+});
+})(this);">
 **다음 클립 연결** — 이 책임경계표는 바로 다음 클립(프롬프팅 활용)에서 리더 핵심 역량과 성과관리 실행 브리프를 만들 때 입력자료로 사용합니다.

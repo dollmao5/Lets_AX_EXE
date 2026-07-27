@@ -63,7 +63,6 @@ Level 1 · 입문
 
 ChatGPT
 NotebookLM
-ChatGPT
 
 **팀장이 확인할 것:** 충분한 맥락을 주었는가? 사실·누락·품질을 직접 검토했는가?
 
