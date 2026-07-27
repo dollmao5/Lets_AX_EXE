@@ -22,6 +22,16 @@ CH 02
 자료를 넣고, 역할을 부여하고, 분석 기준과 출력 형식을 지정한 뒤,
 성공한 분석 흐름은 선택 확장에서 **프로토타입 비서 프롬프트**로 저장·테스트하고, CH04에서 운영형 AI 비서로 고도화합니다.
 
+🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
+
+- **“Navigating the Jagged Technological Frontier” (하버드 경영대학원 AI Institute · 영어 요약)** — BCG 컨설턴트 758명 현장 실험 — AI 위임의 경계에 대한 대표 연구
+[https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/](https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/)
+
+- **원 논문 (HBS Working Paper — 수치 출처)** — 세부 수치 인용 시 출처
+[https://www.hbs.edu/faculty/Pages/item.aspx?num=64700](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)
+
+진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 **[도입 훅 🎬]** 버튼에 있습니다.
+
 **✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다**
 
 - CH02_나의_핵심역량과_성과관리실행안_성명.md — ChatGPT 결과를 저장 (핵심 역량·스킬 프로필 포함, 개인) → **CH02-5 통합 Gate와 CH03 진단의 입력**

@@ -24,6 +24,16 @@ Round 1의 고민을 곧바로 일반적인 해결책으로 바꾸지 않습니�
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
+🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
+
+- **에어캐나다 챗봇 판례 해설 (GeekNews · 한국어)** — AI 고객 응대와 기업 책임에 대한 실제 판결
+[https://news.hada.io/topic?id=13415](https://news.hada.io/topic?id=13415)
+
+- **“챗GPT 가짜 판례 제시 변호사 벌금형” (법률신문 · 한국어 기사)** — AI 활용과 검증 책임에 대한 법원의 판단
+[https://www.lawtimes.co.kr/news/188679](https://www.lawtimes.co.kr/news/188679)
+
+진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 **[도입 훅 🎬]** 버튼에 있습니다.
+
 **✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다**
 
 - CH02_R2_AI팀원리더_책임경계_팀번호.md — 기록 담당자가 [Markdown 다운로드]로 저장 (팀당 1개) → **다음 클립 CH02-4(핵심 역량·성과관리 브리프)의 필수 입력**

@@ -10,6 +10,16 @@ CH 03
 
 개인이나 태도를 먼저 탓하지 않고, 목표·역할·업무배분·프로세스·정보·관계·갈등·Speak-up·심리적 안전감·피드백·성장에서 반복되는 장면을 확인해 구조적 병목 가설, 30일 지표, 리더·팀원·팀 공통 행동으로 전환합니다.
 
+🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
+
+- “The Cybernetic Teammate” (Ethan Mollick · 영어) — P&G 전문가 776명 현장 실험 — 개인·팀·AI 조합의 성과 비교
+https://www.oneusefulthing.org/p/the-cybernetic-teammate
+
+- Google re:Work — Project Aristotle (영어 가이드) — Step 2에서 사용하는 팀 효과성 5요인 프레임의 원전
+https://rework.withgoogle.com/intl/en/guides/understand-team-effectiveness
+
+진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 [도입 훅 🎬] 버튼에 있습니다.
+
 ✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다
 - CH03_우리팀_성과병목과_점검지표_성명.md — ChatGPT 결과 저장 (개인) → CH03 통합 Gate와 CH04의 입력
 

@@ -18,6 +18,16 @@ CH 01
 핵심은 새로운 기술 이름을 외우는 것이 아닙니다.
 **AI가 더 많은 일을 실행할수록 팀장은 무엇을 맡기고, 어디에서 검증하며, 누가 승인하고 최종 책임질지를 더 정교하게 설계해야 합니다.**
 
+🎬 강사 도입 자료 — 수업 전 2~3분 환기용 (펼치기)
+
+- **LG 엑사원 산업 적용 사례 (서울경제 · 한국어 기사)** — 신소재·금융 등 그룹 내 실제 적용 사례
+[https://www.sedaily.com/article/20065125](https://www.sedaily.com/article/20065125)
+
+- **Stanford AI Index 2026 (영어 리포트)** — AI 채택 속도·기업 활용 통계의 공식 출처 (수치 인용용)
+[https://hai.stanford.edu/ai-index/2026-ai-index-report](https://hai.stanford.edu/ai-index/2026-ai-index-report)
+
+진행 멘트·핵심 수치·폴백 안내는 강사용 Wrap-up 보드의 **[도입 훅 🎬]** 버튼에 있습니다.
+
 ## 이번 클립에서 함께 배우는 두 가지
 
 AI 트렌드 이해
