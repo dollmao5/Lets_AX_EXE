@@ -56,7 +56,7 @@ CH 02
 R1 다운로드
 R2 다운로드
 
-조를 선택하고 [불러오기]를 누르세요. 기록 담당이 ☑ 팀 대표 체크로 제출한 합의본을 가져옵니다.
+팀을 선택하고 [불러오기]를 누르세요. 기록 담당이 ☑ 팀 대표 체크로 제출한 합의본을 가져옵니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 

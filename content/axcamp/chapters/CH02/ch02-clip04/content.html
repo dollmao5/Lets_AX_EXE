@@ -719,7 +719,7 @@
 <button type="button" data-tf-dl="round1" disabled style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#fff;color:#185dcc;font:inherit;font-weight:800;cursor:pointer;">R1 다운로드</button>
 <button type="button" data-tf-dl="round2" disabled style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#fff;color:#185dcc;font:inherit;font-weight:800;cursor:pointer;">R2 다운로드</button>
 </div>
-<p data-tf-status style="margin:0;font-size:.92rem;color:#1e40af;">조를 선택하고 [불러오기]를 누르세요. 기록 담당이 ☑ 팀 대표 체크로 제출한 합의본을 가져옵니다.</p>
+<p data-tf-status style="margin:0;font-size:.92rem;color:#1e40af;">팀을 선택하고 [불러오기]를 누르세요. 기록 담당이 ☑ 팀 대표 체크로 제출한 합의본을 가져옵니다.</p>
 </div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
 var root=px.closest('section');
@@ -731,7 +731,7 @@ var statusEl=root.querySelector('[data-tf-status]');
 var files={round1:null,round2:null};
 var NAMES={round1:'CH02_R1_AI시대_우리팀현실진단_',round2:'CH02_R2_AI팀원리더_책임경계_'};
 function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'#1e40af';}
-function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=html;}
+function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=html;}
 fillTeams(6);
 fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok)fillTeams(d.teamCount||6);}).catch(function(e){});
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);}}catch(e){}
@@ -739,10 +739,10 @@ var dls=root.querySelectorAll('[data-tf-dl]');
 function setDl(round,on){for(var i=0;i&lt;dls.length;i++){if(dls[i].getAttribute('data-tf-dl')===round)dls[i].disabled=on?false:true;}}
 loadBtn.addEventListener('click',function(){
   var team=sel.value;
-  setStatus(team+'조 합의본을 불러오는 중...');
+  setStatus(team+'팀 합의본을 불러오는 중...');
   ['round1','round2'].forEach(function(rd){
     fetch('/api/wrapup/team-file?round='+rd+'&amp;team='+team).then(function(r){return r.json();}).then(function(d){
-      if(d.ok){files[rd]=d.record?d.record.markdown:'';setDl(rd,true);setStatus(team+'조 합의본을 불러왔습니다 — 아래 다운로드 버튼으로 저장하세요.');}
+      if(d.ok){files[rd]=d.record?d.record.markdown:'';setDl(rd,true);setStatus(team+'팀 합의본을 불러왔습니다 — 아래 다운로드 버튼으로 저장하세요.');}
       else{files[rd]=null;setDl(rd,false);setStatus((rd==='round1'?'R1':'R2')+': '+(d.error||'불러오기 실패'),true);}
     }).catch(function(e){setStatus('서버에 연결하지 못했습니다. 기록 담당의 [Markdown 다운로드] 백업 파일을 직접 받아 사용하세요.',true);});
   });
@@ -754,7 +754,7 @@ for(var i=0;i&lt;dls.length;i++){
     var blob=new Blob([files[rd]],{type:'text/markdown'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob);
-    a.download=NAMES[rd]+sel.value+'조.md';
+    a.download=NAMES[rd]+sel.value+'팀.md';
     document.body.appendChild(a);a.click();document.body.removeChild(a);
   });
 }

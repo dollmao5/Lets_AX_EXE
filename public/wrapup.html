@@ -187,7 +187,7 @@
     <ol class="help-flow">
       <li><span class="when">교육 시작 전</span><span class="btn-name">차수 설정</span> — 오늘 차수 이름을 등록합니다 (예: 2026-09-02차수). 오늘의 모든 제출·요약이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
       <li data-help-mode="remote"><span class="when">교육 시작 전 · 선택</span><span class="btn-name">차수 코드</span> — 공개 사이트라 아무나 제출할 수 있으므로, 제출용 코드를 정해 칠판·화면에 공지합니다. 외부인 제출을 막는 자물쇠입니다. 빈 값으로 저장하면 코드 없이 제출 가능.</li>
-      <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1조 4명 · 2조 3명…"</strong>이 올라갑니다. <span class="btn-name">새로고침</span>으로 갱신하며 늦는 팀만 독려하세요.</li>
+      <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1팀 4명 · 2팀 3명…"</strong>이 올라갑니다. <span class="btn-name">새로고침</span>으로 갱신하며 늦는 팀만 독려하세요.</li>
       <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 30초~수분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
       <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동, ESC 종료). 마지막 교차 분석 슬라이드로 강사 Wrap-up.</li>
       <li><span class="when">요약 생성 후</span><span class="btn-name">2차 캔버스 생성</span> — 제출자 전원에게 <strong>개인별 2차 캔버스</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면에서 "이전 Round 2차 캔버스 불러오기"로 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
@@ -437,9 +437,9 @@
     try {
       var d = await api("/api/wrapup/status?round=" + state.round);
       if (!d.ok) throw 0;
-      var parts = d.teams.map(function (t) { return t.team + "조 " + t.count + "명"; });
+      var parts = d.teams.map(function (t) { return t.team + "팀 " + t.count + "명"; });
       $("submitStatus").textContent = "제출 현황: " + parts.join(" · ") + " (총 " + d.total + "명)"
-        + (Array.isArray(d.teamReps) ? " · 팀 대표 " + d.teamReps.length + "/" + d.teamCount + "조" : "");
+        + (Array.isArray(d.teamReps) ? " · 팀 대표 " + d.teamReps.length + "/" + d.teamCount + "팀" : "");
     } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; }
   }
 
@@ -462,12 +462,12 @@
       var t = byTeam[i];
       var card = document.createElement("div"); card.className = "team-card";
       if (!t) {
-        card.innerHTML = "<h2>" + i + "조</h2><div class=\"empty\">제출 없음</div>";
+        card.innerHTML = "<h2>" + i + "팀</h2><div class=\"empty\">제출 없음</div>";
       } else if (t.error) {
-        card.innerHTML = "<h2>" + i + "조</h2><div class=\"names\">" + esc(t.names.join(", ")) + " (" + t.memberCount + "명)</div>" +
+        card.innerHTML = "<h2>" + i + "팀</h2><div class=\"names\">" + esc(t.names.join(", ")) + " (" + t.memberCount + "명)</div>" +
           "<div class=\"empty\" style=\"color:var(--danger)\">요약 실패: " + esc(t.error) + "</div>";
       } else {
-        card.innerHTML = "<h2>" + i + "조 <span class=\"pill\" style=\"font-size:.78rem\">" + t.memberCount + "명 제출</span></h2>" +
+        card.innerHTML = "<h2>" + i + "팀 <span class=\"pill\" style=\"font-size:.78rem\">" + t.memberCount + "명 제출</span></h2>" +
           "<div class=\"names\">" + esc(t.names.join(", ")) + "</div>" +
           "<div class=\"md\">" + md(t.summary) + "</div>";
       }
@@ -541,7 +541,7 @@
       "당신은 리더십 교육 과정에서 팀 토론 내용을 정리해 발표를 돕는 조교입니다.",
       "토론: " + ctx.label,
       "핵심 질문: " + ctx.mainQuestion,
-      "아래는 " + team + "조 팀장들이 각자 제출한 논의 내용입니다 (" + submissions.length + "건).",
+      "아래는 " + team + "팀 팀장들이 각자 제출한 논의 내용입니다 (" + submissions.length + "건).",
       "", bodies, "",
       "위 내용을 통합해 다음 형식의 마크다운으로만 정리하세요:",
       "### 핵심 논점",
@@ -568,7 +568,7 @@
       "2. ...",
       "3. ...",
       "### 팀별로 갈린 관점",
-      "- (팀 간 시각이 달랐던 지점 1~3개, 어느 조가 어떤 입장인지 포함)",
+      "- (팀 간 시각이 달랐던 지점 1~3개, 어느 팀이 어떤 입장인지 포함)",
       "### 강사 마무리 멘트 제안",
       "- (강사가 Wrap-up에서 쓸 수 있는 2~3문장 멘트 1개)",
       "", COMMON_RULES
@@ -638,7 +638,7 @@
     for (var t = 1; t <= teamCount; t++) {
       var members = subs.filter(function (s) { return s.team === t; });
       if (!members.length) continue;
-      progress(t + "조 요약 중...");
+      progress(t + "팀 요약 중...");
       var entry = { team: t, memberCount: members.length, names: members.map(function (s) { return s.name; }) };
       try {
         var out = await callGemini(aiCfg, teamPrompt(state.round, t, members));
@@ -653,7 +653,7 @@
     var crossError = "";
     if (okTeams.length >= 2) {
       progress("교차 분석 중...");
-      var blocks = okTeams.map(function (x) { return "## " + x.team + "조 요약\n" + x.summary; }).join("\n\n");
+      var blocks = okTeams.map(function (x) { return "## " + x.team + "팀 요약\n" + x.summary; }).join("\n\n");
       try { cross = (await callGemini(aiCfg, crossPrompt(state.round, blocks))).text; }
       catch (e) { crossError = String((e && e.message) || e); }
     } else if (okTeams.length === 1) {
@@ -701,7 +701,7 @@
     var s = state.summary; var slides = [];
     if (!s) return slides;
     (s.teams || []).forEach(function (t) {
-      if (t.summary) slides.push({ title: t.team + "조", sub: t.names.join(", ") + " · " + t.memberCount + "명 제출", body: t.summary });
+      if (t.summary) slides.push({ title: t.team + "팀", sub: t.names.join(", ") + " · " + t.memberCount + "명 제출", body: t.summary });
     });
     if (s.cross && !String(s.cross).startsWith("(")) slides.push({ title: "교차 분석", sub: "전체 팀 공통 이슈과 차이", body: s.cross });
     if (s.cohortCompare) slides.push({ title: "차수 비교", sub: "지난 차수와의 비교", body: s.cohortCompare });
@@ -792,15 +792,15 @@
     try {
       var total = 0; var teamsDone = [];
       if (IS_REMOTE) {
-        // Worker는 GitHub API 서브요청 한도 때문에 팀 단위로 생성한다 — 1조부터 순차 호출
+        // Worker는 GitHub API 서브요청 한도 때문에 팀 단위로 생성한다 — 1팀부터 순차 호출
         var cfg = await api("/api/wrapup/config");
         var teamCount = (cfg && cfg.teamCount) || 6;
         for (var t = 1; t <= teamCount; t++) {
-          btn.textContent = "생성 중... " + t + "/" + teamCount + "조";
+          btn.textContent = "생성 중... " + t + "/" + teamCount + "팀";
           var d = await api("/api/admin/wrapup/canvas2", { method: "POST", body: { round: state.round, team: t } });
-          if (d.ok) { total += d.count; teamsDone.push(t + "조 " + d.count + "명"); }
+          if (d.ok) { total += d.count; teamsDone.push(t + "팀 " + d.count + "명"); }
           // 제출 없는 팀(404)은 건너뛴다. 그 외 오류는 알리고 계속 진행.
-          else if (d.error && d.error.indexOf("제출물이 없습니다") === -1) toast(t + "조: " + d.error);
+          else if (d.error && d.error.indexOf("제출물이 없습니다") === -1) toast(t + "팀: " + d.error);
         }
       } else {
         btn.textContent = "생성 중...";

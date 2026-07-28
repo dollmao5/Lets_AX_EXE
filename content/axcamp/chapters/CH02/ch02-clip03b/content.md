@@ -134,7 +134,7 @@ Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
-조/팀명
+팀명
 
 대표 업무와 고객·사업 가치
 

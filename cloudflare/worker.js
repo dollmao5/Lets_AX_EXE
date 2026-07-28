@@ -245,7 +245,7 @@ async function handleSubmit(request, env) {
   }
   const team = parseInt(payload.team, 10);
   if (!(team >= 1 && team <= config.teamCount)) {
-    return json(request, 400, { ok: false, error: `팀은 1~${config.teamCount}조 중에서 선택해 주세요.` });
+    return json(request, 400, { ok: false, error: `팀은 1~${config.teamCount}팀 중에서 선택해 주세요.` });
   }
   const name = normalizeWs(payload.name);
   if (name.length < 2 || name.length > 20) {
@@ -353,7 +353,7 @@ async function handleTeamFile(request, env, url) {
   }
   const team = parseInt(url.searchParams.get("team"), 10);
   if (!(team >= 1 && team <= config.teamCount)) {
-    return json(request, 400, { ok: false, error: `팀은 1~${config.teamCount}조 중에서 선택해 주세요.` });
+    return json(request, 400, { ok: false, error: `팀은 1~${config.teamCount}팀 중에서 선택해 주세요.` });
   }
   const found = await ghReadJson(env, `${config.currentCohort}/${round}/teamfile/${team}.json`);
   if (!found || !found.json) {
@@ -518,7 +518,7 @@ function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
   const { consensus, diff } = splitWrapupTeamSummary(teamEntry && teamEntry.summary);
   const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사가 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
   return [
-    `# ${label} · 2차 캔버스 — ${submission.name} (${submission.team}조)`,
+    `# ${label} · 2차 캔버스 — ${submission.name} (${submission.team}팀)`,
     "",
     "> **문서 구성 안내** — ① 나의 결론(개인 작성 원문·우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이 순서입니다.",
     "> 직군·직무·근속·경험에 따른 개인 작성 내용이 우선이며, 팀 합의는 참고 계층입니다.",
@@ -616,7 +616,7 @@ async function handleCanvas2Bundle(request, env, url) {
     included[round] ? `- ${WRAPUP_ROUND_LABELS[round]}` : `- ${WRAPUP_ROUND_LABELS[round]} — (미제출)`
   ).join("\n");
   const markdown = [
-    `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}조)`,
+    `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}팀)`,
     "",
     "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 Team Canvas' 소스로 업로드하는 개인화 파일입니다.",
     "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
@@ -635,7 +635,7 @@ async function handleCanvas2Bundle(request, env, url) {
 }
 
 // 강사 전용: 지정한 팀의 2차 캔버스를 일괄 생성·저장. team 필수(서브요청 한도).
-// 보드 UI가 1조부터 teamCount조까지 순차 호출한다. 결정형이라 재실행 안전.
+// 보드 UI가 1팀부터 teamCount팀까지 순차 호출한다. 결정형이라 재실행 안전.
 async function handleCanvas2Generate(request, env) {
   const deny = requireInstructor(request, env);
   if (deny) return deny;
@@ -675,7 +675,7 @@ async function handleCanvas2Generate(request, env) {
     generated.push({ id: record.id, team: record.team, name: record.name });
   }
   if (generated.length === 0) {
-    return json(request, 404, { ok: false, error: `${team}조에 제출물이 없습니다.` });
+    return json(request, 404, { ok: false, error: `${team}팀에 제출물이 없습니다.` });
   }
   return json(request, 200, {
     ok: true,

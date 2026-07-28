@@ -2736,7 +2736,7 @@ async function handleWrapupSubmit(req, res) {
   }
   const team = parseInt(payload.team, 10);
   if (!(team >= 1 && team <= config.teamCount)) {
-    return sendJson(res, 400, { ok: false, error: `팀은 1~${config.teamCount}조 중에서 선택해 주세요.` });
+    return sendJson(res, 400, { ok: false, error: `팀은 1~${config.teamCount}팀 중에서 선택해 주세요.` });
   }
   const name = normalizeWs(payload.name);
   if (name.length < 2 || name.length > 20) {
@@ -2833,7 +2833,7 @@ async function handleWrapupTeamFile(req, res, urlObj) {
   }
   const team = parseInt(urlObj.searchParams.get("team"), 10);
   if (!(team >= 1 && team <= config.teamCount)) {
-    return sendJson(res, 400, { ok: false, error: `팀은 1~${config.teamCount}조 중에서 선택해 주세요.` });
+    return sendJson(res, 400, { ok: false, error: `팀은 1~${config.teamCount}팀 중에서 선택해 주세요.` });
   }
   const filePath = path.join(wrapupRoundDir(config.currentCohort, round), "teamfile", `${team}.json`);
   const record = await readJsonFileSafe(filePath, null);
@@ -2981,7 +2981,7 @@ function wrapupTeamPrompt(round, team, submissions) {
     "당신은 리더십 교육 과정에서 팀 토론 내용을 정리해 발표를 돕는 조교입니다.",
     `토론: ${ctx.label}`,
     `핵심 질문: ${ctx.mainQuestion}`,
-    `아래는 ${team}조 팀장들이 각자 제출한 논의 내용입니다 (${submissions.length}건).`,
+    `아래는 ${team}팀 팀장들이 각자 제출한 논의 내용입니다 (${submissions.length}건).`,
     "",
     bodies,
     "",
@@ -3013,7 +3013,7 @@ function wrapupCrossPrompt(round, teamBlocks) {
     "2. ...",
     "3. ...",
     "### 팀별로 갈린 관점",
-    "- (팀 간 시각이 달랐던 지점 1~3개, 어느 조가 어떤 입장인지 포함)",
+    "- (팀 간 시각이 달랐던 지점 1~3개, 어느 팀이 어떤 입장인지 포함)",
     "### 강사 마무리 멘트 제안",
     "- (강사가 Wrap-up에서 쓸 수 있는 2~3문장 멘트 1개)",
     "",
@@ -3098,7 +3098,7 @@ async function handleWrapupSummarize(req, res, urlObj) {
   let crossError = "";
   const okTeams = teams.filter((t) => t.summary);
   if (okTeams.length >= 2) {
-    const blocks = okTeams.map((t) => `## ${t.team}조 요약\n${t.summary}`).join("\n\n");
+    const blocks = okTeams.map((t) => `## ${t.team}팀 요약\n${t.summary}`).join("\n\n");
     try {
       cross = await callGemini(apiKey, wrapupCrossPrompt(round, blocks));
     } catch (error) {
@@ -3190,7 +3190,7 @@ function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
   const { consensus, diff } = splitWrapupTeamSummary(teamEntry?.summary);
   const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사가 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
   return [
-    `# ${ctx.label} · 2차 캔버스 — ${submission.name} (${submission.team}조)`,
+    `# ${ctx.label} · 2차 캔버스 — ${submission.name} (${submission.team}팀)`,
     "",
     "> **문서 구성 안내** — ① 나의 결론(개인 작성 원문·우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이 순서입니다.",
     "> 직군·직무·근속·경험에 따른 개인 작성 내용이 우선이며, 팀 합의는 참고 계층입니다.",
@@ -3285,7 +3285,7 @@ async function handleWrapupCanvas2Bundle(req, res, urlObj) {
     return included[round] ? `- ${label}` : `- ${label} — (미제출)`;
   }).join("\n");
   const markdown = [
-    `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}조)`,
+    `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}팀)`,
     "",
     "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 Team Canvas' 소스로 업로드하는 개인화 파일입니다.",
     "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
@@ -3319,7 +3319,7 @@ async function handleWrapupCanvas2Generate(req, res, urlObj) {
   let submissions = await listWrapupSubmissions(cohort, round);
   if (teamFilter) submissions = submissions.filter((s) => s.team === teamFilter);
   if (submissions.length === 0) {
-    return sendJson(res, 404, { ok: false, error: teamFilter ? `${teamFilter}조에 제출물이 없습니다.` : "해당 라운드에 제출물이 없습니다." });
+    return sendJson(res, 404, { ok: false, error: teamFilter ? `${teamFilter}팀에 제출물이 없습니다.` : "해당 라운드에 제출물이 없습니다." });
   }
   const summary = await readJsonFileSafe(wrapupSummaryFile(cohort, round), null);
   const dir = wrapupCanvas2Dir(cohort, round);

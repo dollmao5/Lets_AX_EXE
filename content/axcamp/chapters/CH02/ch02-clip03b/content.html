@@ -198,7 +198,7 @@ var dlBtn=box.querySelector('[data-c2p-download]');
 var statusEl=box.querySelector('[data-c2p-status]');
 var bodyEl=box.querySelector('[data-c2p-body]');
 function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
-function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=h;}
+function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=h;}
 fillTeams(6);
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
 fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
@@ -214,7 +214,7 @@ if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.d
 bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'조 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영'),false);
+setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영'),false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
 });
@@ -235,7 +235,7 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 });
 })(this);"></div>
 <div class="rev-form"><div class="rev-form-grid">
-<div class="rev-field"><label for="r2-fld-teamName">조/팀명</label><input type="text" data-md-label="조/팀명" data-md-section="기본 정보" data-rev-field="teamName" id="r2-fld-teamName" placeholder="예: 1조"/></div>
+<div class="rev-field"><label for="r2-fld-teamName">팀명</label><input type="text" data-md-label="팀명" data-md-section="기본 정보" data-rev-field="teamName" id="r2-fld-teamName" placeholder="예: 1팀"/></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-representativeWork">대표 업무와 고객·사업 가치</label><textarea data-md-label="대표 업무와 고객·사업 가치" data-md-section="1. 일의 본질" data-rev-field="representativeWork" id="r2-fld-representativeWork" placeholder="선택한 대표 업무 1개와, 이 업무가 고객·사업에 제공해야 할 본질적 가치" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-removeWork">① 없애거나 단순화할 '가짜 일'</label><textarea data-md-label="없애거나 단순화할 가짜 일" data-md-section="2. 업무 재설계" data-rev-field="removeWork" id="r2-fld-removeWork" placeholder="관행 때문에 유지되는 저부가가치 활동 — 없앨 것 / 단순화할 것으로 나눠 기록" style="min-height:150px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-aiWork">② AI가 할 일 (자동화 / 보조 구분)</label><textarea data-md-label="AI가 할 일(자동화/보조)" data-md-section="3. 책임 경계" data-rev-field="aiWork" id="r2-fld-aiWork" placeholder="자동화: 사람 개입 없이 AI가 처리 / 보조: AI 초안 → 사람 확인" style="min-height:150px"></textarea></div>
@@ -404,13 +404,13 @@ var statusEl=root.querySelector('[data-wrapup-status]');
 var teamsEl=root.querySelector('[data-wrapup-teams]');
 var repEl=root.querySelector('[data-wrapup-teamrep]');function isRep(){return repEl?repEl.checked===true:false;}
 function setStatus(msg,isErr){statusEl.textContent=msg;statusEl.style.color=isErr?'#c00000':'var(--text-secondary,#667085)';}
-function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=html;}
+function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=html;}
 fillTeams(6);
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
 function refreshTeams(){
   fetch('/api/wrapup/status?round='+ROUND).then(function(r){return r.json();}).then(function(d){
     if(!d.ok)return;
-    var parts=d.teams.map(function(t){return t.team+'조 '+t.count+'명';});
+    var parts=d.teams.map(function(t){return t.team+'팀 '+t.count+'명';});
     teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명 · 새로고침 시 갱신)';
   }).catch(function(){});
 }
@@ -456,7 +456,7 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
     if(!d.ok){setStatus(d.error||'제출에 실패했습니다.',true);return;}
     try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
     var when=new Date(d.updatedAt).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-    setStatus('제출 완료 · '+team+'조 '+name+' · '+when+(d.resubmitted?' (재제출로 갱신됨)':''),false);
+    setStatus('제출 완료 · '+team+'팀 '+name+' · '+when+(d.resubmitted?' (재제출로 갱신됨)':''),false);
     refreshTeams();
   })
   .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});

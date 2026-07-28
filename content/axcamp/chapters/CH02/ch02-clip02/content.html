@@ -170,7 +170,7 @@ Team Canvas는 토론의 발언 전체가 아니라 <strong>팀이 합의한 결
 </div>
 </div>
 <div class="rev-form"><div class="rev-form-grid">
-<div class="rev-field"><label for="r1-fld-teamName">조/팀명</label><input type="text" data-md-label="조/팀명" data-md-section="기본 정보" data-rev-field="teamName" id="r1-fld-teamName" placeholder="예: 1조"/></div>
+<div class="rev-field"><label for="r1-fld-teamName">팀명</label><input type="text" data-md-label="팀명" data-md-section="기본 정보" data-rev-field="teamName" id="r1-fld-teamName" placeholder="예: 1팀"/></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-scene">① AI로 달라진 실제 업무 장면</label><textarea data-md-label="AI로 달라진 실제 업무 장면" data-md-section="1. 실제 장면" data-rev-field="scene" id="r1-fld-scene" placeholder="최근 3개월 안의 장면을 구체적으로 — 어떤 업무에서, 속도·품질·역할이 어떻게 달라졌는지" style="min-height:150px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-extraWork">② AI가 오히려 일을 늘린 장면</label><textarea data-md-label="AI가 오히려 일을 늘린 장면" data-md-section="1. 실제 장면" data-rev-field="extraWork" id="r1-fld-extraWork" placeholder="검토·재작업·형식 맞추기 등 AI 때문에 늘어난 일과 그 이유" style="min-height:150px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-trustContext">③ AI 결과를 신뢰하기 어려운 현장 맥락</label><textarea data-md-label="AI 결과를 신뢰하기 어려운 현장 맥락" data-md-section="2. 신뢰와 판단" data-rev-field="trustContext" id="r1-fld-trustContext" placeholder="어떤 업무·상황에서 AI 결과를 그대로 쓰기 어려운지, 판단이 어려운 이유" style="min-height:150px"></textarea></div>
@@ -340,13 +340,13 @@ var statusEl=root.querySelector('[data-wrapup-status]');
 var teamsEl=root.querySelector('[data-wrapup-teams]');
 var repEl=root.querySelector('[data-wrapup-teamrep]');function isRep(){return repEl?repEl.checked===true:false;}
 function setStatus(msg,isErr){statusEl.textContent=msg;statusEl.style.color=isErr?'#c00000':'var(--text-secondary,#667085)';}
-function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=html;}
+function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=html;}
 fillTeams(6);
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
 function refreshTeams(){
   fetch('/api/wrapup/status?round='+ROUND).then(function(r){return r.json();}).then(function(d){
     if(!d.ok)return;
-    var parts=d.teams.map(function(t){return t.team+'조 '+t.count+'명';});
+    var parts=d.teams.map(function(t){return t.team+'팀 '+t.count+'명';});
     teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명 · 새로고침 시 갱신)';
   }).catch(function(){});
 }
@@ -392,7 +392,7 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
     if(!d.ok){setStatus(d.error||'제출에 실패했습니다.',true);return;}
     try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
     var when=new Date(d.updatedAt).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-    setStatus('제출 완료 · '+team+'조 '+name+' · '+when+(d.resubmitted?' (재제출로 갱신됨)':''),false);
+    setStatus('제출 완료 · '+team+'팀 '+name+' · '+when+(d.resubmitted?' (재제출로 갱신됨)':''),false);
     refreshTeams();
   })
   .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});
