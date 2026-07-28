@@ -222,4 +222,6 @@ Workflow·역할·성장·Speak-up·Quality Gate
 
 3**AI는 근거 연결과 초안을 돕고 리더가 결정합니다**품질·보안·공정성·고객 신뢰·사람에 대한 피드백 책임은 리더에게 남습니다.
 
+💡 **현업 활용 Tip 리마인드:** 현업에서 프롬프트를 자주 쓰게 되면 **프롬프트 생성기**(AIPRM 등)가 작성 시간을 줄여줍니다. 도구 소개·사용 경로·보안 주의사항은 [CH02-4의 「💡 현업 활용 Tip — 프롬프트 생성기」](#ch02-clip04)에서 다시 볼 수 있습니다.
+
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)

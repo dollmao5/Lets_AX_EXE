@@ -28,7 +28,8 @@ const BLOCK_RANGE = /[ \t]*\/\* \[ENRICHMENT[\s\S]*?\[ENRICHMENT END\] \*\/\r?\n
 const ENRICHED_CLIPS = [
   "ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip04",
   "ch02-clip02", "ch02-clip03b", "ch02-clip04",
-  "ch03-clip01", "ch03-clip01b", "ch04-clip01"
+  "ch03-clip01", "ch03-clip01b", "ch04-clip01",
+  "ch05-clip01"
 ];
 
 function log(m) { process.stdout.write(`[remove-enrichment] ${m}\n`); }
