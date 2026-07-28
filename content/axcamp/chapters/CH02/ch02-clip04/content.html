@@ -673,6 +673,11 @@
 
 /* [산출물 강조 2026-07-25] 필수 산출물 저장 배지 — 녹색 형광펜 강화 */
 .output-file-badge { background:#bbf7d0 !important; color:#14532d !important; border:1.5px solid #16a34a !important; font-weight:800 !important; }
+
+.ch02-clip04-revised .tf24-panel { margin: 16px 0 20px; }
+.ch02-clip04-revised .tf24-panel .tf24-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 8px; }
+.ch02-clip04-revised .tf24-panel select { min-height: 38px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 12px; font: inherit; background: #fff; }
+.ch02-clip04-revised .tf24-panel button[disabled] { opacity: .45; cursor: not-allowed; }
 </style>
 <div class="clip-header">
 <div class="clip-badges">
@@ -712,16 +717,17 @@
 <li style="margin:6px 0;">📎 시작 전 준비: Round 1·2 팀 파일 2개(아래 ‘📥 팀 대표 파일 불러오기’에서 각자 다운로드) + 팀장 기대행동 문서를 ChatGPT에 업로드</li></ul><div style="margin-top:10px;padding-top:8px;border-top:1px dashed #86efac;font-size:.9rem;color:#3f6212;">⏭️ <strong>생략 가능:</strong> Deep Research·프로토타입 비서 프롬프트는 확장 활동입니다 — CH04에서 다시 다루므로 지금은 건너뛰어도 됩니다.</div>
 </div>
 <!-- [팀 대표 파일 2026-07-25] R1·R2 팀 합의본 불러오기 — 기록 담당의 ☑ 팀 대표 제출을 각자 내려받아 ChatGPT에 업로드 -->
-<div style="margin:16px 0 20px;padding:16px 20px;border:2px solid #185dcc;border-left-width:8px;border-radius:16px;background:#eff6ff;">
-<strong style="display:block;margin-bottom:8px;">📥 팀 대표 파일 불러오기 — Round 1·2 팀 합의본을 각자 내려받아 ChatGPT에 업로드합니다</strong>
-<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;">
+<div class="resource-card tf24-panel">
+<strong>📥 팀 대표 파일 불러오기</strong>
+<p style="margin:6px 0 0;">Round 1·2 팀 합의본을 각자 내려받아 ChatGPT에 업로드합니다.</p>
+<div class="tf24-row">
 <label for="tf24-team" style="font-weight:700;">팀</label>
-<select id="tf24-team" style="min-height:38px;padding:6px 10px;border:1px solid #93c5fd;border-radius:10px;font:inherit;"></select>
-<button type="button" data-tf-load style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#185dcc;color:#fff;font:inherit;font-weight:800;cursor:pointer;">불러오기</button>
-<button type="button" data-tf-dl="round1" disabled style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#fff;color:#185dcc;font:inherit;font-weight:800;cursor:pointer;">R1 다운로드</button>
-<button type="button" data-tf-dl="round2" disabled style="min-height:38px;padding:8px 16px;border:1px solid #185dcc;border-radius:999px;background:#fff;color:#185dcc;font:inherit;font-weight:800;cursor:pointer;">R2 다운로드</button>
+<select id="tf24-team"></select>
+<button type="button" data-tf-load class="slide-briefing-link">불러오기</button>
+<button type="button" data-tf-dl="round1" disabled class="slide-briefing-link">R1 다운로드</button>
+<button type="button" data-tf-dl="round2" disabled class="slide-briefing-link">R2 다운로드</button>
 </div>
-<p data-tf-status style="margin:0;font-size:.92rem;color:#1e40af;">팀을 선택하고 [불러오기]를 누르세요. 기록 담당이 ☑ 팀 대표 체크로 제출한 합의본을 가져옵니다.</p>
+<p data-tf-status style="margin:0;font-size:.92rem;color:var(--text-secondary);">팀을 선택하고 [불러오기]를 누르세요. 기록 담당이 ☑ 팀 대표 체크로 제출한 합의본을 가져옵니다.</p>
 </div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
 var root=px.closest('section');
