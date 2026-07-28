@@ -498,7 +498,7 @@ const WRAPUP_ROUND_SEQ = ["round1", "round2", "round3"];
 const WRAPUP_ROUND_LABELS = {
   round1: "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민 (As-Is 진단)",
   round2: "Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가 (책임경계 재설계)",
-  round3: "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가 (30일 팀 실험 설계)"
+  round3: "Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가 (30일 시범 운영 설계)"
 };
 
 // 팀 요약 마크다운을 '합의(핵심 논점·발표 포인트)'와 '팀 내 관점 차이'로 분리 (server.js 동일)
