@@ -182,88 +182,7 @@ Team Canvas는 토론의 발언 전체가 아니라 <strong>팀이 합의한 결
 <div class="rev-actions"><button class="rev-btn" data-rev-action="reset" type="button">초기화</button><button class="rev-btn" data-rev-action="save" type="button">브라우저 저장</button><button class="rev-btn primary" data-rev-action="download" type="button">Markdown 다운로드</button></div>
 <div style="margin-top:10px;font-weight:800;">💾 저장 파일명 확인: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark></div>
 <div class="rev-status" data-rev-status="">입력 내용은 현재 브라우저에 자동 저장됩니다.</div>
-<div class="wrapup-submit-box" style="margin-top:14px;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid var(--brand,#185dcc);border-radius:16px;background:#fff;">
-<strong style="display:block;margin-bottom:8px;">내 논의 내용 제출 — 팀 Wrap-up(요약·발표)에 반영됩니다</strong>
-<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
-<label for="w1-wrapup-team" style="font-weight:700;">팀</label>
-<select id="w1-wrapup-team" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
-<label for="w1-wrapup-name" style="font-weight:700;">이름</label>
-<input id="w1-wrapup-name" type="text" placeholder="이름 또는 닉네임" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
-<label style="display:flex;gap:6px;align-items:center;font-weight:700;white-space:nowrap;"><input type="checkbox" data-wrapup-teamrep style="width:17px;height:17px;"> 팀 대표(합의본)로도 저장</label>
-<button type="button" data-wrapup-submit style="min-height:40px;padding:8px 18px;border:1px solid var(--brand,#185dcc);border-radius:999px;background:var(--brand,#185dcc);color:#fff;font:inherit;font-weight:800;cursor:pointer;">제출</button>
-</div>
-<p data-wrapup-status style="margin:0 0 6px;font-size:.92rem;color:var(--text-secondary,#667085);">Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.</p>
-<p data-wrapup-teams style="margin:0;font-size:.92rem;color:var(--text-secondary,#667085);"></p>
-</div>
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
-var root=px.closest('section');
-if(!root||root.dataset.wrapupReady==='1')return;
-root.dataset.wrapupReady='1';
-var ROUND='round1';
-var sel=root.querySelector('#w1-wrapup-team');
-var nameEl=root.querySelector('#w1-wrapup-name');
-var btn=root.querySelector('[data-wrapup-submit]');
-var statusEl=root.querySelector('[data-wrapup-status]');
-var teamsEl=root.querySelector('[data-wrapup-teams]');
-var repEl=root.querySelector('[data-wrapup-teamrep]');function isRep(){return repEl?repEl.checked===true:false;}
-function setStatus(msg,isErr){statusEl.textContent=msg;statusEl.style.color=isErr?'#c00000':'var(--text-secondary,#667085)';}
-function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=html;}
-fillTeams(6);
-try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
-function refreshTeams(){
-  fetch('/api/wrapup/status?round='+ROUND).then(function(r){return r.json();}).then(function(d){
-    if(!d.ok)return;
-    var parts=d.teams.map(function(t){return t.team+'조 '+t.count+'명';});
-    teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명)';
-  }).catch(function(){});
-}
-fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){
-  if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}
-  refreshTeams();
-}).catch(function(){
-  btn.disabled=true;btn.style.opacity='.5';
-  setStatus('제출 기능은 교육장 서버 접속 시에만 사용할 수 있습니다.',false);
-});
-function buildMarkdown(){
-  var title=root.getAttribute('data-md-title')||'Round 토론 정리';
-  var fields=root.querySelectorAll('[data-rev-field]');
-  var sections=[];var map={};
-  fields.forEach(function(el){
-    var label=el.getAttribute('data-md-label')||'';
-    var section=el.getAttribute('data-md-section')||'기타';
-    var value=(el.value||'').trim();
-    if(!label)return;
-    if(!map[section]){map[section]=[];sections.push(section);}
-    map[section].push({label:label,value:value||'(미작성)'});
-  });
-  var lines=['# '+title,''];
-  sections.forEach(function(sec){
-    lines.push('## '+sec);
-    map[sec].forEach(function(f){lines.push('- **'+f.label+'**: '+f.value.replace(/\n/g,' / '));});
-    lines.push('');
-  });
-  return lines.join('\n');
-}
-btn.addEventListener('click',function(){
-  var team=parseInt(sel.value,10);
-  var name=(nameEl.value||'').trim();
-  if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
-  var md=buildMarkdown();
-  if(md.indexOf('(미작성)')&gt;-1&amp;&amp;md.split('(미작성)').length-1&gt;=root.querySelectorAll('[data-rev-field]').length){setStatus('Canvas가 비어 있습니다. 작성 후 제출해 주세요.',true);return;}
-  btn.disabled=true;setStatus('제출 중...',false);
-  fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({round:ROUND,team:team,name:name,markdown:md,teamRep:isRep()})})
-  .then(function(r){return r.json();})
-  .then(function(d){
-    btn.disabled=false;
-    if(!d.ok){setStatus(d.error||'제출에 실패했습니다.',true);return;}
-    try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-    var when=new Date(d.updatedAt).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-    setStatus('제출 완료 · '+team+'조 '+name+' · '+when+(d.resubmitted?' (재제출로 갱신됨)':''),false);
-    refreshTeams();
-  })
-  .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});
-});
-})(this);"></div></div></div><div class="clip-section"><div class="clip-section-title">AI Challenge · 팀 잠정 결론 뒤에만 실행</div><div class="clip-section-content">
+</div></div></div><div class="clip-section"><div class="clip-section-title">AI Challenge · 팀 잠정 결론 뒤에만 실행</div><div class="clip-section-content">
 <div class="info-block" style="margin-bottom:14px;">
 <div class="info-block-title">왜 AI Challenge(AI 반론 점검)를 하나요?</div>
 <div>
@@ -396,7 +315,90 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
   });
   restore();
 })(this.closest(&#x27;section&#x27;));">
-  <div class="clip-section"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
+  <div class="wrapup-submit-box" style="margin-top:14px;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid var(--brand,#185dcc);border-radius:16px;background:#fff;">
+<strong style="display:block;margin-bottom:8px;">내 논의 내용 제출 — 팀 Wrap-up(요약·발표)에 반영됩니다</strong>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
+<label for="w1-wrapup-team" style="font-weight:700;">팀</label>
+<select id="w1-wrapup-team" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
+<label for="w1-wrapup-name" style="font-weight:700;">이름</label>
+<input id="w1-wrapup-name" type="text" placeholder="이름 또는 닉네임" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
+<label style="display:flex;gap:6px;align-items:center;font-weight:700;white-space:nowrap;"><input type="checkbox" data-wrapup-teamrep style="width:17px;height:17px;"> 팀 대표(합의본)로도 저장</label>
+<button type="button" data-wrapup-submit style="min-height:40px;padding:8px 18px;border:1px solid var(--brand,#185dcc);border-radius:999px;background:var(--brand,#185dcc);color:#fff;font:inherit;font-weight:800;cursor:pointer;">제출</button>
+</div>
+<p data-wrapup-status style="margin:0 0 6px;font-size:.92rem;color:var(--text-secondary,#667085);">Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.</p>
+<p data-wrapup-teams style="margin:0;font-size:.92rem;color:var(--text-secondary,#667085);"></p>
+</div>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
+var root=px.closest('section');
+if(!root||root.dataset.wrapupReady==='1')return;
+root.dataset.wrapupReady='1';
+var ROUND='round1';
+var sel=root.querySelector('#w1-wrapup-team');
+var nameEl=root.querySelector('#w1-wrapup-name');
+var btn=root.querySelector('[data-wrapup-submit]');
+var statusEl=root.querySelector('[data-wrapup-status]');
+var teamsEl=root.querySelector('[data-wrapup-teams]');
+var repEl=root.querySelector('[data-wrapup-teamrep]');function isRep(){return repEl?repEl.checked===true:false;}
+function setStatus(msg,isErr){statusEl.textContent=msg;statusEl.style.color=isErr?'#c00000':'var(--text-secondary,#667085)';}
+function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'조&lt;/option&gt;';}sel.innerHTML=html;}
+fillTeams(6);
+try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
+function refreshTeams(){
+  fetch('/api/wrapup/status?round='+ROUND).then(function(r){return r.json();}).then(function(d){
+    if(!d.ok)return;
+    var parts=d.teams.map(function(t){return t.team+'조 '+t.count+'명';});
+    teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명)';
+  }).catch(function(){});
+}
+fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){
+  if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}
+  refreshTeams();
+}).catch(function(){
+  btn.disabled=true;btn.style.opacity='.5';
+  setStatus('제출 기능은 교육장 서버 접속 시에만 사용할 수 있습니다.',false);
+});
+function buildMarkdown(){
+  var title=root.getAttribute('data-md-title')||'Round 토론 정리';
+  var fields=root.querySelectorAll('[data-rev-field]');
+  var sections=[];var map={};
+  fields.forEach(function(el){
+    var label=el.getAttribute('data-md-label')||'';
+    var section=el.getAttribute('data-md-section')||'기타';
+    var value=(el.value||'').trim();
+    if(!label)return;
+    if(!map[section]){map[section]=[];sections.push(section);}
+    map[section].push({label:label,value:value||'(미작성)'});
+  });
+  var lines=['# '+title,''];
+  sections.forEach(function(sec){
+    lines.push('## '+sec);
+    map[sec].forEach(function(f){lines.push('- **'+f.label+'**: '+f.value.replace(/\n/g,' / '));});
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+btn.addEventListener('click',function(){
+  var team=parseInt(sel.value,10);
+  var name=(nameEl.value||'').trim();
+  if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
+  var md=buildMarkdown();
+  if(md.indexOf('(미작성)')&gt;-1&amp;&amp;md.split('(미작성)').length-1&gt;=root.querySelectorAll('[data-rev-field]').length){setStatus('Canvas가 비어 있습니다. 작성 후 제출해 주세요.',true);return;}
+  btn.disabled=true;setStatus('제출 중...',false);
+  if(isRep()){if(!window.confirm('팀 대표(합의본)로도 저장을 체크했습니다.\n이미 저장된 팀 합의본이 있으면 이 제출로 덮어써집니다.\n기록 담당자만 체크해야 합니다 — 계속할까요?'))return;}
+fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({round:ROUND,team:team,name:name,markdown:md,teamRep:isRep()})})
+  .then(function(r){return r.json();})
+  .then(function(d){
+    btn.disabled=false;
+    if(!d.ok){setStatus(d.error||'제출에 실패했습니다.',true);return;}
+    try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
+    var when=new Date(d.updatedAt).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+    setStatus('제출 완료 · '+team+'조 '+name+' · '+when+(d.resubmitted?' (재제출로 갱신됨)':''),false);
+    refreshTeams();
+  })
+  .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});
+});
+})(this);">
+<div class="clip-section"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
 <div class="info-block" id="r1CheckBox">
 <label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r1check="talk" style="margin-top:5px;width:18px;height:18px;"> <span>실제 업무 장면을 근거로 토론에 참여했다</span></label>
 <label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r1check="canvas" style="margin-top:5px;width:18px;height:18px;"> <span>Team Canvas에 팀 합의 내용을 기록하고 ☑ 팀 대표(합의본) 체크로 제출했다 (기록 담당자)</span></label>

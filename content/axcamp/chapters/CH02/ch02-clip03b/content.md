@@ -155,19 +155,6 @@ Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개
 
 입력 내용은 현재 브라우저에 자동 저장됩니다.
 
-**내 논의 내용 제출 — 팀 Wrap-up(요약·발표)에 반영됩니다**
-
-팀
-
-이름
-
-팀 대표(합의본)로도 저장
-제출
-
-Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.
-
-![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
-
 ## AI Challenger Review
 
 ### 왜 AI Challenge(AI 반론 점검)를 하나요?
@@ -192,6 +179,19 @@ ChatGPT복붙형책임 공백과 과도한 AI 위임 점검복사
 5. 승인·중단·Escalation·Fallback이 작동하지 않을 예외상황
 
 결론을 다시 써주지 말고, 반드시 수정이 필요한 질문을 우선순위 순으로 최대 5개 제시해 주세요.
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+
+**내 논의 내용 제출 — 팀 Wrap-up(요약·발표)에 반영됩니다**
+
+팀
+
+이름
+
+팀 대표(합의본)로도 저장
+제출
+
+Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 

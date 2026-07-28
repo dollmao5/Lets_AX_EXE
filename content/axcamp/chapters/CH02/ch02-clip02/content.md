@@ -126,19 +126,6 @@ AI Challenge 반영: 수용·기각 결정과 추가 확인할 Fact
 
 입력 내용은 현재 브라우저에 자동 저장됩니다.
 
-**내 논의 내용 제출 — 팀 Wrap-up(요약·발표)에 반영됩니다**
-
-팀
-
-이름
-
-팀 대표(합의본)로도 저장
-제출
-
-Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.
-
-![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
-
 ## AI Challenge · 팀 잠정 결론 뒤에만 실행
 
 ### 왜 AI Challenge(AI 반론 점검)를 하나요?
@@ -169,6 +156,19 @@ ChatGPT복붙형Round 1 잠정 결론의 반론·누락 점검복사
 ## 기록·제출 원칙
 
 **기록 원칙** — Evidence Keeper(기록 담당자)가 합의된 사실·판단·추가 확인 사항만 Team Canvas에 기록하고, `CH02_R1_AI시대_우리팀현실진단_팀번호.md`로 저장합니다. 실명·평가·보상·징계·고객 식별정보는 기록하지 않습니다.
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+
+**내 논의 내용 제출 — 팀 Wrap-up(요약·발표)에 반영됩니다**
+
+팀
+
+이름
+
+팀 대표(합의본)로도 저장
+제출
+
+Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
