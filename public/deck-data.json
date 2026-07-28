@@ -963,18 +963,18 @@
   "business-prompting-workshop": {
     "id": "business-prompting-workshop",
     "previewStyle": "immersive",
-    "kicker": "NotebookLM Infographic",
-    "title": "비즈니스 프롬프트 업무 위임 가이드",
-    "subtitle": "비즈니스 프롬프트 4종과 회의 분석 흐름을 한 장에 압축한 실습용 인포그래픽",
-    "downloadUrl": "__BASE__/assets/notebooklm/ch02-structured-prompting/business-prompting-workshop-infographic.png",
-    "downloadFilename": "business-prompting-workshop-infographic.png",
+    "kicker": "Practice Summary Infographic",
+    "title": "프롬프팅 활용: 리더의 핵심 역량 및 스킬",
+    "subtitle": "CH02-4 실습 전체 — 핵심 내용 4가지, Revision 필수 3단계, 선택 확장을 한 장에 압축한 실습 요약 인포그래픽",
+    "downloadUrl": "__BASE__/assets/chatgpt/ch02/ch02-clip04-practice-summary.png",
+    "downloadFilename": "ch02-clip04-practice-summary.png",
     "downloadLabel": "다운로드",
     "slides": [
       {
         "eyebrow": "01 / Infographic",
-        "title": "비즈니스 프롬프트를 실무 업무로 바꾸는 구조",
-        "imageSrc": "__BASE__/assets/notebooklm/ch02-structured-prompting/business-prompting-workshop-infographic.png",
-        "imageAlt": "비즈니스 프롬프트의 세 가지 활용 사례와 데이터 기반 워크플로우 및 작성 원칙을 요약한 인포그래픽입니다."
+        "title": "CH02-4 실습 요약 — 핵심 내용과 Revision 3단계",
+        "imageSrc": "__BASE__/assets/chatgpt/ch02/ch02-clip04-practice-summary.png",
+        "imageAlt": "CH02-4 실습 요약 인포그래픽 — 핵심 메시지·입력 자료·필수 산출물·운영 시간, Revision 필수 3단계(근거 연결·팀장 기대행동 교차검증·핵심역량 실행 브리프), 선택 확장과 권장 저장 파일명."
       }
     ]
   },
