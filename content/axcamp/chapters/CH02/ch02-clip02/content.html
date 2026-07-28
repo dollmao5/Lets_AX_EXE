@@ -347,7 +347,7 @@ function refreshTeams(){
   fetch('/api/wrapup/status?round='+ROUND).then(function(r){return r.json();}).then(function(d){
     if(!d.ok)return;
     var parts=d.teams.map(function(t){return t.team+'조 '+t.count+'명';});
-    teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명)';
+    teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명 · 새로고침 시 갱신)';
   }).catch(function(){});
 }
 fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){

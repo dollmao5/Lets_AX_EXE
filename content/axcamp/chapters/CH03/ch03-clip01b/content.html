@@ -247,6 +247,7 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-qualityGate">안전장치: 인간 승인·검증 지점 · 중단·예외 기준과 Fallback</label><textarea data-md-label="승인·검증 지점과 중단 기준" data-md-section="4. 품질과 책임" data-rev-field="qualityGate" id="r3-fld-qualityGate" placeholder="어디서 사람이 확인하는지 / 어떤 문제가 생기면 즉시 중단·개입하고 어떻게 되돌리는지" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-timeReinvest">⑤ 절감 시간 재투자: 누구의 성장과 어떤 고부가가치 업무에</label><textarea data-md-label="절감 시간 재투자 계획" data-md-section="5. 시간 재투자" data-rev-field="timeReinvest" id="r3-fld-timeReinvest" placeholder="AI로 줄어든 시간을 어디에 쓸지 — 대상(누구)과 업무(무엇)를 구체적으로" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-metric">⑥ 30일 성공 판단: 정량 지표 1개 · 정성 증거 1개</label><textarea data-md-label="정량 지표·정성 증거" data-md-section="6. 성공 판단" data-rev-field="metric" id="r3-fld-metric" placeholder="숫자로 확인할 지표 1개 + 행동·분위기 변화로 확인할 증거 1개" style="min-height:120px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-aiReview">AI 반론 점검 반영: 수용·기각 결정과 이유</label><textarea data-md-label="AI 반론 점검 반영(수용·기각과 이유)" data-md-section="6. 성공 판단" data-rev-field="aiReview" id="r3-fld-aiReview" placeholder="AI가 제시한 반론·누락·위험 중 실험서에 수용한 것과 기각한 것, 그 이유" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-first72">복귀 후 72시간 내 첫 행동</label><textarea data-md-label="복귀 후 72시간 내 첫 행동" data-md-section="6. 성공 판단" data-rev-field="first72" id="r3-fld-first72" placeholder="현업 복귀 후 3일 안에 실행할 첫 행동 — 작고 구체적으로" style="min-height:100px"></textarea></div>
 </div>
 <div class="rev-actions"><button class="rev-btn" data-rev-action="reset" type="button">초기화</button><button class="rev-btn" data-rev-action="save" type="button">브라우저 저장</button><button class="rev-btn primary" data-rev-action="download" type="button">Markdown 다운로드</button></div>
@@ -354,7 +355,7 @@ function refreshTeams(){
   fetch('/api/wrapup/status?round='+ROUND).then(function(r){return r.json();}).then(function(d){
     if(!d.ok)return;
     var parts=d.teams.map(function(t){return t.team+'조 '+t.count+'명';});
-    teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명)';
+    teamsEl.textContent='['+d.cohort+'] 팀별 제출 현황: '+parts.join(' · ')+' (총 '+d.total+'명 · 새로고침 시 갱신)';
   }).catch(function(){});
 }
 fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){
