@@ -98,7 +98,7 @@ AAI Operator & Timekeeper
 
 팀의 잠정 결론 이후에만 AI Challenge 프롬프트를 실행하고 시간을 관리합니다.
 
-발표는 Evidence Pitch 네 문장으로 제한합니다
+발표는 ‘네 문장 결론 발표’로 제한합니다
 ① 현장 장면 ② 이를 보여주는 Fact·사례 ③ 팀의 잠정 판단 ④ 아직 확인해야 할 질문. 팀 수가 많으면 Gallery Walk 후 상위 이슈만 공유합니다.
 
 3Round 팀 토론 Track: As-Is → Reframe → To-Be

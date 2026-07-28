@@ -75,8 +75,8 @@ AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가?
 3분	대표 업무와 고객·사업 가치 선택
 12분	제거·단순화·AI 자동화·AI 보조·팀원 판단·리더 책임 분류
 5분	승인·중단·Escalation·Fallback 설계
-5분	AI Challenger Review
-5분	수정·Evidence Pitch
+5분	AI Challenger Review (AI 반론 점검) — 기록 담당이 아래 섹션의 프롬프트를 ChatGPT에 실행, 팀이 수용·기각 결정
+5분	수정·네 문장 결론 발표
 
 책임경계 분류 프레임
 업무 단계	제거·단순화	AI 자동화	AI 보조	팀원 판단	리더 최종 책임
