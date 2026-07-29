@@ -41,7 +41,7 @@ CH03 · Re-design
 
 우리 팀의 어떤 일하는 방식을 바꿀 것인가?
 
-팀 병목 가설·지표·행동역량을 정의하고 Round 3에서 성과·성장 실험을 설계했습니다.
+팀 병목 가설·지표·행동역량을 정의하고 Round 3에서 성과·성장 시범 운영을 설계했습니다.
 
 CH04 · Execute
 근거 통합과 30일 Action Plan
@@ -159,7 +159,7 @@ CH02. Round 1·2와 Output Gate
 파일명·저장 위치 메모
 
 CH03. 팀 성장역량과 AI 협업
-팀 진단·실험 회수
+팀 진단·시범 운영 회수
 
 - Round 3 30일 AI 협업 시범 운영안
 Workflow·역할·성장·Speak-up·Quality Gate
