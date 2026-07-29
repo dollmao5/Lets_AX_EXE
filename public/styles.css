@@ -6267,3 +6267,17 @@ details.prompt-collapse[open] > summary::before { content: "▾ "; }
   overflow-wrap: anywhere;
 }
 
+/* 260729 가독성 2차 확산: 전 클립 tip/info 무채색 톤다운 — 색 강조는 필수 산출물 박스·생각 열기·구간 배너만 유지 */
+.tip-block,
+.info-block {
+  background: #fbfcfe !important;
+  border: 1px solid #dbe4f3 !important;
+  border-left: 4px solid #b9c8e0 !important;
+  box-shadow: none !important;
+}
+
+.tip-block-title,
+.info-block-title {
+  color: #3c4a63 !important;
+}
+

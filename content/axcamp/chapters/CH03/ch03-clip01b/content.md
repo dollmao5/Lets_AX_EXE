@@ -11,6 +11,8 @@ source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01b"
 
 거창한 AX 과제를 만드는 시간이 아닙니다. **한 개의 실제 Workflow, 한 개의 리더 행동, 한 개의 팀 행동, 정량·정성 증거와 중단 기준**을 30일 동안 시험하도록 설계합니다. AI 도입으로 확보한 시간과 역량을 팀원의 성장·고부가가치 업무·Speak-up에 재투자합니다.
 
+❶ 도입 — 핵심 질문 확인
+
 ## 토론 몰입 이미지
 
 ![하락하는 성과 그래프와 쌓여 가는 업무 더미 앞에서 팀원들이 「성과도 성장도 왜 제자리일까」, 「배울 시간도 없어요」라는 불안을 나누는 장면 — 30일 AI 협업 팀 실험이 필요한 이유를 환기](/course-files/AXCAMP/ch03-clip01b/assets/round3/round3-discussion-hero.webp)
@@ -71,6 +73,8 @@ source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01b"
 - **30일 뒤 무엇을 보고** 팀의 성과와 성장이 높아졌다고 판단할 수 있습니까?
 
 **가이드** 모든 질문을 다 답하려 하지 말고, 선택한 Workflow에 직접 영향을 주는 질문을 중심으로 실험의 행동·지표·Quality Gate를 구체화합니다.
+
+❷ 토론 — 시범 운영안 설계·AI Challenge
 
 ## 35분 진행 순서
 
@@ -168,7 +172,9 @@ AI Challenge는 **팀이 먼저 내린 결론을 AI에게 일부러 반박시켜
 
 ③ 이 연습 자체가 **AI를 정답 기계가 아니라 검증 파트너로 쓰는 태도**를 기르는 훈련이며, 현업에서 AI 결과를 다룰 때 그대로 적용되는 습관입니다.
 
-ChatGPT복붙형30일 시범 운영의 Go·Modify·Hold 점검📎 입력 · 30일 시범 운영안 초안 붙여넣기복사
+ChatGPT복붙형30일 시범 운영의 Go·Modify·Hold 점검복사
+
+📎 입력 · 30일 시범 운영안 초안 붙여넣기
 
 아래는 우리 팀의 30일 AI 협업 시범 운영안 초안입니다.
 당신은 시범 운영의 실패 가능성을 점검하는 동료 리더입니다.
@@ -202,6 +208,8 @@ ChatGPT복붙형30일 시범 운영의 Go·Modify·Hold 점검📎 입력 · 30�
 Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+
+❸ 제출·마무리 — 팀 대표 제출과 다음 단계
 
 ## 이번 클립의 완료 기준
 

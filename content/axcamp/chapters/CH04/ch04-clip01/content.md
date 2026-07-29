@@ -30,6 +30,8 @@ NotebookLM은 사용자가 넣은 자료를 중심으로 답변하고 소스 기
 
 🎯 **참고:** 수업 직전 위 도움말에서 사용한도와 화면 표기를 다시 확인하면 좋습니다.
 
+❶ 개요 — NotebookLM의 역할과 소스
+
 ## 이번 클립의 역할
 
 |
@@ -165,6 +167,8 @@ Flashcard·Quiz, Slide Deck, Infographic 등 소스 기반 산출물 위치를 �
 회사·학교 계정은 조직 라이선스와 관리자 설정에 따라 기능 제공 범위와 데이터 처리 방식이 달라질 수 있습니다.
 또한 Studio 산출물과 채팅 답변은 AI 생성 결과이므로, 중요한 내용은 반드시 소스 원문과 조직 기준으로 다시 확인합니다.
 
+❷ 화면 익히기 — 소스·채팅·Studio 패널
+
 ## 실제 NotebookLM 작업 화면으로 보기
 
 ![NotebookLM 실제 작업 화면](/assets/notebooklm/ch03-notebooklm/screens/notebooklm-grounded-research-ui.png)
@@ -219,6 +223,8 @@ Studio는 **“정리된 결과물을 만드는 곳”**, 채팅은
 **“그 결과의 근거를 파고들며 검증하는 곳”**입니다.
 둘을 함께 써야 NotebookLM의 장점이 살아납니다.
 
+❸ 시작 — 노트북 생성과 체크리스트
+
 ## 바로 시작하기
 
 - **[notebooklm.google.com](https://notebooklm.google.com)**에 접속해 새 노트북 생성 위치를 확인합니다.
@@ -256,6 +262,8 @@ Studio는 **“정리된 결과물을 만드는 곳”**, 채팅은
 - 선택: 사내 성과관리·팀장 기대행동 자료
 
 - 선택: Deep Research 결과 또는 외부 리서치 메모
+
+❹ 마무리 — 완료 기준 확인
 
 ## 이번 클립의 완료 기준
 
