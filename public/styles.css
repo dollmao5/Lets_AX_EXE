@@ -1725,6 +1725,9 @@ button.ghost {
 
 .clip-section-content {
   color: var(--text-body);
+  /* 260729 가독성 1차: 본문 크기·행간 상향 (팀장 시인성 피드백) */
+  font-size: 1.03rem;
+  line-height: 1.68;
 }
 
 .comparison-table {
@@ -1748,7 +1751,9 @@ button.ghost {
 }
 
 .comparison-table td {
-  padding: 9px 11px;
+  /* 260729 가독성 1차: 셀 여백·글자 확대 */
+  padding: 12px 13px;
+  font-size: 0.98rem;
   border-bottom: 1px solid #e6eefb;
   vertical-align: top;
 }
@@ -6176,5 +6181,89 @@ button.ghost {
   object-fit: cover !important;
   object-position: bottom center !important;
   transform: scale(1.05) translateZ(0) !important;
+}
+
+/* ── 260729 가독성 1차 컴포넌트: 구간 배너·참고 접이식·프롬프트 접기·입력 줄 (2-4 선적용 → 확산 예정) ── */
+.phase-banner {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 36px 0 14px;
+  padding: 13px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1d3a6e, #2b5cab);
+  color: #ffffff;
+  font-size: 1.14rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.phase-banner .phase-sub {
+  font-size: 0.94rem;
+  font-weight: 600;
+  opacity: 0.88;
+}
+
+details.ref-collapse {
+  margin: 16px 0;
+  border: 1px solid #dbe4f3;
+  border-radius: 14px;
+  background: #fbfcfe;
+}
+
+details.ref-collapse > summary {
+  cursor: pointer;
+  padding: 13px 18px;
+  font-weight: 800;
+  font-size: 1.02rem;
+  color: #3c4a63;
+  list-style: none;
+}
+
+details.ref-collapse > summary::-webkit-details-marker { display: none; }
+details.ref-collapse > summary::before { content: "▸ "; color: #8aa0c4; }
+details.ref-collapse[open] > summary::before { content: "▾ "; }
+
+details.ref-collapse > summary .ref-hint {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #8aa0c4;
+  margin-left: 8px;
+}
+
+details.ref-collapse > .clip-section { margin-top: 0; }
+details.ref-collapse > .clip-section > .clip-section-title { display: none; }
+
+details.prompt-collapse {
+  border: 1px dashed #c9d6ec;
+  border-radius: 10px;
+  margin-top: 6px;
+  background: #fbfdff;
+}
+
+details.prompt-collapse > summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #4a5b78;
+  list-style: none;
+}
+
+details.prompt-collapse > summary::-webkit-details-marker { display: none; }
+details.prompt-collapse > summary::before { content: "▸ "; }
+details.prompt-collapse[open] > summary::before { content: "▾ "; }
+
+.prompt-inputs-line {
+  display: block;
+  margin: 8px 0 4px;
+  padding: 9px 13px;
+  border: 1px solid #bfdcf3;
+  border-radius: 10px;
+  background: #eef7ff;
+  color: #0b5394;
+  font-size: 0.94rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
