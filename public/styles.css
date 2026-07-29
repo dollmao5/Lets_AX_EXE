@@ -6281,3 +6281,54 @@ details.prompt-collapse[open] > summary::before { content: "▾ "; }
   color: #3c4a63 !important;
 }
 
+/* ── 260729 호버 확대: 단계·프로세스·구성 카드와 인터랙션 요소 전반 (0-1 여정 카드와 동일한 리프트 패턴) ── */
+.flow-card,
+.resource-card,
+.output-card,
+.check-card,
+.feature-card,
+.principle-card,
+.artifact-card,
+.web-guide-card,
+.journey-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.flow-card:hover,
+.resource-card:hover,
+.output-card:hover,
+.check-card:hover,
+.feature-card:hover,
+.principle-card:hover,
+.artifact-card:hover,
+.web-guide-card:hover,
+.journey-card:hover {
+  border-color: var(--brand, #2b5cab) !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 접이식 제목 줄 — 클릭 가능함을 배경 하이라이트로 안내 */
+details.ref-collapse > summary,
+details.prompt-collapse > summary,
+.optional-details > summary {
+  transition: background-color 0.15s ease;
+}
+
+details.ref-collapse > summary:hover { background: #eef3fb; border-radius: 14px; }
+details.prompt-collapse > summary:hover { background: #e9f2fd; border-radius: 10px; }
+.optional-details > summary:hover { background: #f1f5fb; }
+
+/* 표 행 하이라이트 — 긴 표에서 현재 읽는 행 추적 */
+.comparison-table tbody tr { transition: background-color 0.12s ease; }
+.comparison-table tbody tr:hover td { background: #f2f7ff !important; }
+
+/* 체크리스트 행 — 체크 가능 영역 안내 */
+.readiness-item,
+.artifact-check {
+  transition: background-color 0.15s ease;
+}
+
+.readiness-item:hover,
+.artifact-check:hover { background: #f2f7ff; border-radius: 10px; }
+
