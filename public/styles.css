@@ -6375,12 +6375,14 @@ mark.file-hl-in {
   border: none !important;
   font-weight: 800 !important;
 }
-/* 저장 배지는 전용 줄 전체 폭 사용 — 좁은 칸에서 두 줄로 꺾이지 않게 (260730) */
+/* 저장 배지는 전용 줄 전체 폭 사용 — 좁은 칸에서 두 줄로 꺾이지 않게 (260730)
+   order:3으로 제목+복사 버튼을 첫 줄에 유지하고 배지는 그 아래 줄에 배치 */
 .prompt-header .output-file-badge {
   flex: 1 1 100% !important;
   max-width: 100% !important;
   margin-left: 0 !important;
   justify-content: flex-start !important;
   text-align: left !important;
+  order: 3;
 }
 
