@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Round Wrap-up 보드 | 리더십 향상 with AI</title>
+<title>팀 토론 Round Wrap-up 보드 | 리더십 향상 with AI</title>
 <style>
   :root {
     --brand: #185dcc; --brand-soft: #e8f0ff; --border: #d9e0ec; --bg: #f2f5fb;
@@ -116,7 +116,7 @@
 <body>
 <div class="wrap">
   <header class="top">
-    <h1>Round Wrap-up 보드</h1>
+    <h1>팀 토론 Round Wrap-up 보드</h1>
     <span class="pill" id="cohortPill">차수 -</span>
     <span class="spacer"></span>
     <label for="cohortSelect" class="pill" style="border:none;background:none;">차수 보기</label>
@@ -134,6 +134,8 @@
 
   <!-- [학습 Flow] 선택된 Round의 현재 단계·다음 단계 안내 (강사·교육생 공용) -->
   <div id="roundGuide" class="round-guide"></div>
+  <!-- [260801 신입 강사] 하루 진행 순서 한 줄 스트립 -->
+  <div class="muted" style="margin:2px 0 6px;font-size:.86rem;">🧭 진행 순서: <strong>차수 설정</strong> → 토론·제출 확인 → <strong>요약 생성</strong> → 발표 모드 → <strong>2차 캔버스 생성</strong><span style="opacity:.75"> · 관리 버튼(차수 설정·요약 생성 등)은 강사 로그인 후 표시됩니다 · 막히면 [사용법 ❓]와 [도입·마무리 🎬]를 여세요</span></div>
 
   <div class="statusbar">
     <span id="submitStatus" class="muted">제출 현황을 불러오는 중...</span>
@@ -221,7 +223,24 @@
       </tbody>
     </table>
 
-    <div class="help-tip">💡 <strong>기억할 것은 한 줄입니다:</strong> 차수 설정 → (토론·제출) → 요약 생성 → 발표 모드 → 2차 캔버스 생성<span data-help-mode="local"> → 저장·백업</span>. 문제가 생기면 새로고침 후 재시도, 그래도 안 되면 팀별 구두 발표로 전환하고 수업을 계속 진행하세요.</div>
+    <details style="border:1px solid #fca5a5;border-radius:12px;margin:12px 0 8px;background:#fff7f7;"><summary style="cursor:pointer;padding:10px 14px;font-weight:800;color:#b42318;">⚠ 문제 발생 시 (비상 대응 모음)</summary><div style="padding:0 16px 12px;">
+<ul style="margin:8px 0;padding-left:18px;line-height:1.7;">
+<li><strong>제출 숫자가 안 올라감</strong> — [새로고침] 클릭 → 차수 이름·차수 코드가 교육생 화면 안내와 일치하는지 확인합니다.</li>
+<li><strong>요약 생성 실패·지연</strong> — 한 번 더 실행합니다(재실행 안전). AI 호출이 막히면 자동으로 간이(lite) 요약으로 대체됩니다.</li>
+<li><strong>보드·서버 전체 장애</strong> — 교육생에게 각자 캔버스의 [Markdown 다운로드] 백업 저장을 안내하고, 팀별 구두 발표로 전환해 수업을 계속 진행합니다.</li>
+<li><strong>팀 대표 파일이 없는 팀</strong> — 그 팀 기록 담당이 다시 제출하면서 <strong>"☑ 팀 대표(합의본)로도 저장"</strong>을 체크하면 됩니다.</li>
+<li><strong>시간 부족</strong> — 생략 순서: 2-4 선택 활동(Deep Research·비서) → 4-2 Step 4·5. 필수 산출물은 줄이지 않습니다.</li>
+</ul></div></details>
+<details style="border:1px solid #e2e8f0;border-radius:12px;margin:8px 0 12px;background:#fafaff;"><summary style="cursor:pointer;padding:10px 14px;font-weight:800;">📚 과정 용어 미니 사전 (신입 강사용)</summary><div style="padding:0 16px 12px;">
+<table style="width:100%;border-collapse:collapse;font-size:.92rem;"><tbody>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Team Canvas (1차)</td><td style="padding:6px 8px;">Round 토론 중 교육생이 클립 화면에서 작성·제출하는 팀 기록표.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">2차 캔버스</td><td style="padding:6px 8px;">제출본(개인 원문 우선)과 팀 합의 요약을 합쳐 이 보드가 만들어 주는 개인별 문서 — CH04 NotebookLM 소스로 사용.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">통합 저장 Gate</td><td style="padding:6px 8px;">2-5·3-1c — 실습 결과를 파일 1개로 통합 저장하는 클립. 여기서 만든 통합본 2개가 CH04 필수 소스.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">통합본 vs 중간통합본</td><td style="padding:6px 8px;">통합본=Gate 필수 산출물(CH02·CH03 각 1개). 중간통합본=3-1의 선택 저장본으로 회수 필수 아님.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">팀 대표 파일</td><td style="padding:6px 8px;">기록 담당이 제출 시 "팀 대표로도 저장"을 체크해 자동 공유되는 팀 합의본(R1·R2·R3).</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">AI Challenge</td><td style="padding:6px 8px;">사람이 먼저 결론 → AI에게 반론만 요청 → 수용·기각은 팀이 결정하는 검증 단계 (Human First).</td></tr>
+</tbody></table></div></details>
+<div class="help-tip">💡 <strong>기억할 것은 한 줄입니다:</strong> 차수 설정 → (토론·제출) → 요약 생성 → 발표 모드 → 2차 캔버스 생성<span data-help-mode="local"> → 저장·백업</span>. 문제가 생기면 새로고침 후 재시도, 그래도 안 되면 팀별 구두 발표로 전환하고 수업을 계속 진행하세요.</div>
   </div>
 </div>
 <!-- [ENRICHMENT 2026-07-25] 강사용 도입·마무리 오버레이 — Round 1~3 도입·마무리 멘트 + 그 외 클립 학습 Flow·산출물 가이드 + D-1 체크리스트. 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 -->
@@ -240,7 +259,8 @@
       <li><strong>도입 훅은 2~3분, 팀들이 역할을 정하는 첫 3분과 병행</strong>하고, 마무리 멘트는 발표 직후 1분입니다.</li>
     </ol>
 
-    <div style="margin:8px 0 14px;padding:10px 14px;border:1px solid #f59e0b;border-radius:10px;background:#fffbeb;">⏱ <strong>시간 부족 시 생략 순서:</strong> 2-4 선택 활동(Deep Research·비서) → 4-2 Step 4·5 — 필수 산출물은 그대로 유지합니다.</div>
+    <div style="margin:8px 0 6px;padding:10px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#f8fafc;">🎨 <strong>클립 화면 색 멘트 규칙:</strong> <span style="background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:0 6px;font-weight:800;">노란 카드</span>=오늘의 결론(핵심 메시지) · <span style="background:#f0fdf4;border:1px solid #86efac;border-radius:6px;padding:0 6px;font-weight:800;">초록 구역</span>=완료 기준·필수 산출물(체크하고 넘어가기) · <span style="background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:0 6px;font-weight:800;">파란 카드</span>=다음 단계 예고 — "노란 카드 보세요"처럼 색으로 지시하면 교육생이 빨리 따라옵니다.</div>
+<div style="margin:8px 0 14px;padding:10px 14px;border:1px solid #f59e0b;border-radius:10px;background:#fffbeb;">⏱ <strong>시간 부족 시 생략 순서:</strong> 2-4 선택 활동(Deep Research·비서) → 4-2 Step 4·5 — 필수 산출물은 그대로 유지합니다.</div>
 <h3>D-1 체크리스트 (교육 전날)</h3>
     <ul class="hook-check">
       <li><strong>[1순위] 교육장 네트워크 테스트</strong> — 강의장 PC에서 ①유튜브(KBS 영상) ②뉴스 사이트(서울경제·디지털투데이) ③quizn.show 가 열리는지 확인.</li>
