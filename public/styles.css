@@ -6524,3 +6524,56 @@ label:has(> input[data-r3check]:checked) {
   background: #f2f7ff;
 }
 
+/* ── 260731 핵심 메시지 강조 카드: 전 클립 공통 앰버 톤 배경으로 통일·강조
+   (1-1의 final-message 커스텀 카드도 동일 톤으로 정렬) ── */
+.info-block.key-message {
+  background: #fffbeb !important;
+  border: 1.5px solid #fcd34d !important;
+  border-left: 8px solid #f59e0b !important;
+}
+.info-block.key-message .info-block-title {
+  color: #92400e !important;
+}
+.final-message {
+  background: #fffbeb !important;
+  border: 1.5px solid #fcd34d !important;
+  border-left: 8px solid #f59e0b !important;
+}
+.final-message > strong {
+  color: #92400e;
+}
+
+/* ── 260731 완료 기준 초록 강조: 클립 상단 '필수 산출물'(초록)과 호응 —
+   시작(만들 것)–끝(확인할 것)을 같은 색 계열로 연결 ── */
+.clip-section.done-criteria {
+  padding: 6px 18px 14px;
+  border: 1.5px solid #86efac;
+  border-left: 8px solid #16a34a;
+  border-radius: 16px;
+  background: #f0fdf4;
+}
+.clip-section.done-criteria > .clip-section-title {
+  color: #14532d !important;
+}
+.tip-block.done-criteria,
+.rev-note.done-criteria {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 8px solid #16a34a !important;
+}
+.tip-block.done-criteria .tip-block-title {
+  color: #14532d !important;
+}
+
+/* ── 260731 다음 단계 연결 카드: 클립 전환 멘트 지점 블루 강조 ── */
+.tip-block.next-step-card,
+.info-block.next-step-card {
+  background: #eff6ff !important;
+  border: 1.5px solid #93c5fd !important;
+  border-left: 8px solid #2b5cab !important;
+}
+.next-step-card .tip-block-title,
+.next-step-card .info-block-title {
+  color: #1d3a6e !important;
+}
+

@@ -402,7 +402,7 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
   .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});
 });
 })(this);">
-<div class="clip-section"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
+<div class="clip-section done-criteria"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
 <div class="info-block" id="r1CheckBox">
 <label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r1check="talk" style="margin-top:5px;width:18px;height:18px;"> <span>실제 업무 장면을 근거로 토론에 참여했다</span></label>
 <label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r1check="canvas" style="margin-top:5px;width:18px;height:18px;"> <span>Team Canvas에 팀 합의 내용을 기록하고 ☑ 팀 대표(합의본) 체크로 제출했다 (기록 담당자)</span></label>

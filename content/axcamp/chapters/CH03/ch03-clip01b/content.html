@@ -410,7 +410,7 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
 });
 })(this);">
 <div class="phase-banner">❸ 제출·마무리 <span class="phase-sub">— 팀 대표 제출과 다음 단계</span></div>
-<div class="clip-section"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
+<div class="clip-section done-criteria"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
 <div class="info-block" id="r3CheckBox">
 <label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r3check="talk" style="margin-top:5px;width:18px;height:18px;"> <span>한 개 Workflow·리더 행동·팀 행동·증거·중단 기준으로 좁혀 토론했다</span></label>
 <label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r3check="canvas" style="margin-top:5px;width:18px;height:18px;"> <span>Team Canvas의 30일 팀 시범 운영안을 ☑ 팀 대표(합의본) 체크로 제출했다 (기록 담당자)</span></label>
@@ -430,7 +430,7 @@ root.querySelector('#r3CheckBox').addEventListener('change',function(){
   try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
 });
 })(this);">
-<div class="clip-section"><div class="clip-section-title">다음 단계: CH03 통합 저장 Gate</div><div class="clip-section-content"><div class="tip-block"><div class="tip-block-title">Round 3 시범 운영안만으로 CH04에 가지 않습니다</div><div class="tip-block-content">CH03-1의 구조적 병목 가설·성장역량 지표·행동역량과 Round 3 시범 운영안을 다음 Clip에서 하나의 근거 중심 Markdown으로 통합합니다.</div></div></div></div>
+<div class="clip-section"><div class="clip-section-title">다음 단계: CH03 통합 저장 Gate</div><div class="clip-section-content"><div class="tip-block next-step-card"><div class="tip-block-title">Round 3 시범 운영안만으로 CH04에 가지 않습니다</div><div class="tip-block-content">CH03-1의 구조적 병목 가설·성장역량 지표·행동역량과 Round 3 시범 운영안을 다음 Clip에서 하나의 근거 중심 Markdown으로 통합합니다.</div></div></div></div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" aria-hidden="true" style="display:none" onload="(function(root){
   if(!root||root.dataset.revBound===&#x27;1&#x27;){return;}
   root.dataset.revBound=&#x27;1&#x27;;
