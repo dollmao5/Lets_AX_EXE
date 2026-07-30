@@ -6375,4 +6375,12 @@ mark.file-hl-in {
   border: none !important;
   font-weight: 800 !important;
 }
+/* 저장 배지는 전용 줄 전체 폭 사용 — 좁은 칸에서 두 줄로 꺾이지 않게 (260730) */
+.prompt-header .output-file-badge {
+  flex: 1 1 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
 

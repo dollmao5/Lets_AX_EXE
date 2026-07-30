@@ -231,6 +231,6 @@ try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
 
 ### Round 3 시범 운영안만으로 CH04에 가지 않습니다
 
-CH03-1의 구조적 병목 가설·효과성 지표·행동역량과 Round 3 시범 운영안을 다음 Clip에서 하나의 근거 중심 Markdown으로 통합합니다.
+CH03-1의 구조적 병목 가설·성장역량 지표·행동역량과 Round 3 시범 운영안을 다음 Clip에서 하나의 근거 중심 Markdown으로 통합합니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
