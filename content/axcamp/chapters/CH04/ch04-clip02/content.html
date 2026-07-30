@@ -588,7 +588,7 @@
   }
 
 /* [산출물 강조 2026-07-25] 필수 산출물 저장 배지 — 녹색 형광펜 강화 */
-.output-file-badge { background:#bbf7d0 !important; color:#14532d !important; border:1.5px solid #16a34a !important; font-weight:800 !important; }
+.output-file-badge { background:#bbf7d0 !important; color:#14532d !important; border:none !important; font-weight:800 !important; }
 </style>
 <div class="clip-header">
 <div class="clip-badges">
@@ -868,7 +868,7 @@ setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 
 
 <button class="copy-btn" onclick="copyPrompt(this,'ch04-core-step1')" type="button">복사</button>
 </div>
-<div class="prompt-inputs-line" title="NotebookLM 소스에 CH02_리더역할_책임경계_통합본_성명.md · CH03_우리팀_성장역량과_AI협업_종합본_성명.md · Round 1~3 팀 파일을 업로드하고 선택했는지 확인한 뒤 실행합니다.">📎 입력 · CH02_리더역할_책임경계_통합본_성명.md + CH03_우리팀_성장역량과_AI협업_종합본_성명.md + R1~R3 팀 파일 (NotebookLM 소스 선택)</div>
+<div class="prompt-inputs-line" title="NotebookLM 소스에 CH02_리더역할_책임경계_통합본_성명.md · CH03_우리팀_성장역량과_AI협업_종합본_성명.md · Round 1~3 팀 파일을 업로드하고 선택했는지 확인한 뒤 실행합니다.">📎 입력 <span class="req-chip">필수</span> · <mark class="file-hl-in">CH02_리더역할_책임경계_통합본_성명.md</mark> + <mark class="file-hl-in">CH03_우리팀_성장역량과_AI협업_종합본_성명.md</mark> + <mark class="file-hl-in">R1~R3 팀 파일</mark> (모두 NotebookLM 소스로 업로드·선택)</div>
 <details class="prompt-collapse"><summary>프롬프트 전체 보기 (24줄) — 접힌 상태에서도 [복사]는 전체를 복사합니다</summary><div class="prompt-content" id="ch04-core-step1">당신은 NotebookLM 안에서 선택된 소스만 사용하는 근거 통합 분석가입니다.
 
 [선택할 핵심 소스]
@@ -936,7 +936,7 @@ setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 
 <div class="prompt-block">
 <div class="prompt-header">
 <span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge">NotebookLM 채팅</span> 실습 3. 우리 팀 리더십 향상 30일 Action Plan</span>
-<span class="output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일 · CH04_우리팀_성과성장향상_30일실행계획_성명.md</span>
+<span class="output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일(필수) · CH04_우리팀_성과성장향상_30일실행계획_성명.md</span>
 <button class="copy-btn" onclick="copyPrompt(this,'ch04-core-step3')" type="button">복사</button>
 </div>
 <details class="prompt-collapse"><summary>프롬프트 전체 보기 (31줄) — 접힌 상태에서도 [복사]는 전체를 복사합니다</summary><div class="prompt-content" id="ch04-core-step3">앞 단계 결과를 모두 모아 「우리 팀 성과·성장역량 향상 30일 실행계획」을 하나의 Markdown 문서로 작성해 주세요.

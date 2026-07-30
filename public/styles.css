@@ -6332,3 +6332,47 @@ details.prompt-collapse > summary:hover { background: #e9f2fd; border-radius: 10
 .readiness-item:hover,
 .artifact-check:hover { background: #f2f7ff; border-radius: 10px; }
 
+/* ── 260730 입력·저장 파일 하이라이트: 필수/선택 명확화 ──────────────
+   입력 줄(.prompt-inputs-line)의 파일·대상은 노랑 형광펜(mark.file-hl-in),
+   필수/선택 여부는 칩(.req-chip/.opt-chip)으로 표기.
+   저장 배지(.output-file-badge)는 전 클립 공통 초록 필 강조. */
+mark.file-hl-in {
+  background: #fef08a !important;
+  color: #713f12 !important;
+  font-weight: 800 !important;
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+.req-chip {
+  display: inline-block;
+  margin: 0 4px 0 2px;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: #16a34a !important;
+  color: #fff !important;
+  font-size: 0.85em;
+  font-weight: 800 !important;
+  line-height: 1.5;
+  vertical-align: baseline;
+}
+.opt-chip {
+  display: inline-block;
+  margin: 0 4px 0 2px;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px dashed #94a3b8;
+  font-size: 0.85em;
+  font-weight: 800 !important;
+  line-height: 1.5;
+  vertical-align: baseline;
+}
+.prompt-inputs-line { font-weight: 700; }
+.output-file-badge {
+  background: #bbf7d0 !important;
+  color: #14532d !important;
+  border: none !important;
+  font-weight: 800 !important;
+}
+
