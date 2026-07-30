@@ -3381,6 +3381,18 @@ function showCopyButtonState(button, copied, label) {
     button.dataset.defaultHtml = button.innerHTML;
   }
 
+  // 260731 복사 성공 시 체크 팝 애니메이션
+  if (copied) {
+    button.classList.remove("copy-pop");
+    void button.offsetWidth;
+    button.classList.add("copy-pop");
+    button.addEventListener(
+      "animationend",
+      () => button.classList.remove("copy-pop"),
+      { once: true }
+    );
+  }
+
   const isResourceCard = button.classList.contains("ref-link-item");
   if (label && isResourceCard) {
     const title = document.createElement("strong");
@@ -3623,6 +3635,63 @@ function renderSidebar() {
 
   el.chapterList.appendChild(fragment);
   updateProgressBadge();
+  setupScrollSpy();
+}
+
+/* 260731 스크롤 스파이 목차: 현재 클립의 구간(❶~❹ phase-banner) 미니 목차를
+   좌측 목차의 활성 클립 아래에 표시하고, 스크롤 위치에 따라 현재 구간을 하이라이트.
+   구간 클릭 시 해당 위치로 부드럽게 이동. 배너가 2개 미만인 클립에는 표시하지 않음. */
+let scrollSpyState = { banners: [], items: [], scroller: null };
+
+function handleScrollSpy() {
+  const { banners, items, scroller } = scrollSpyState;
+  if (!banners.length || !scroller) return;
+  const line = scroller.getBoundingClientRect().top + 90;
+  let current = 0;
+  banners.forEach((banner, i) => {
+    if (banner.getBoundingClientRect().top <= line) current = i;
+  });
+  items.forEach((item, i) => item.classList.toggle("current", i === current));
+}
+
+function teardownScrollSpy() {
+  document.querySelectorAll(".scrollspy-list").forEach((node) => node.remove());
+  if (scrollSpyState.scroller) {
+    scrollSpyState.scroller.removeEventListener("scroll", handleScrollSpy);
+  }
+  scrollSpyState = { banners: [], items: [], scroller: null };
+}
+
+function setupScrollSpy() {
+  teardownScrollSpy();
+  const banners = Array.from(
+    el.clipBody?.querySelectorAll(".phase-banner") || []
+  );
+  if (banners.length < 2) return;
+  const activeBtn = el.chapterList?.querySelector(".clip-btn.active");
+  if (!activeBtn) return;
+  const list = document.createElement("div");
+  list.className = "scrollspy-list";
+  const items = banners.map((banner) => {
+    const clone = banner.cloneNode(true);
+    clone.querySelectorAll(".phase-sub").forEach((sub) => sub.remove());
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "scrollspy-item";
+    item.textContent = clone.textContent.trim();
+    item.addEventListener("click", () =>
+      banner.scrollIntoView({ behavior: "smooth", block: "start" })
+    );
+    list.appendChild(item);
+    return item;
+  });
+  activeBtn.insertAdjacentElement("afterend", list);
+  const scroller = document.querySelector(".content-area");
+  scrollSpyState = { banners, items, scroller };
+  if (scroller) {
+    scroller.addEventListener("scroll", handleScrollSpy, { passive: true });
+  }
+  handleScrollSpy();
 }
 
 function renderClipHeader(clip) {
@@ -3770,6 +3839,95 @@ function wireClipInteractions() {
   wireSlideDeckTriggers(el.clipBody);
 }
 
+/* 260731 읽기 진행률 바 + '맨 위로' 플로팅 버튼: 콘텐츠 영역 스크롤에 연동 */
+let readingAidsUpdate = null;
+
+function setupReadingAids() {
+  if (readingAidsUpdate) {
+    readingAidsUpdate();
+    return;
+  }
+  const scroller = document.querySelector(".content-area");
+  if (!scroller) return;
+  const bar = document.createElement("div");
+  bar.id = "readingProgressBar";
+  document.body.appendChild(bar);
+  const topBtn = document.createElement("button");
+  topBtn.id = "backToTopBtn";
+  topBtn.type = "button";
+  topBtn.title = "맨 위로";
+  topBtn.textContent = "↑";
+  topBtn.addEventListener("click", () =>
+    scroller.scrollTo({ top: 0, behavior: "smooth" })
+  );
+  document.body.appendChild(topBtn);
+  const update = () => {
+    const max = scroller.scrollHeight - scroller.clientHeight;
+    const ratio = max > 0 ? scroller.scrollTop / max : 0;
+    bar.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
+    topBtn.classList.toggle("visible", scroller.scrollTop > 400);
+  };
+  scroller.addEventListener("scroll", update, { passive: true });
+  readingAidsUpdate = update;
+  update();
+}
+
+/* 260731 체크리스트 완료 카운터: 체크박스 2개 이상인 섹션 제목에 "n/m 완료" 칩 표시.
+   CH00처럼 자체 카운터([data-ready-summary])가 있는 섹션은 건너뜀. */
+let checklistCounterBound = false;
+
+function updateChecklistCounters() {
+  if (!el.clipBody) return;
+  el.clipBody.querySelectorAll(".clip-section").forEach((section) => {
+    if (section.querySelector("[data-ready-summary]")) return;
+    const title = section.querySelector(".clip-section-title");
+    const boxes = section.querySelectorAll('input[type="checkbox"]');
+    let chip = title ? title.querySelector(".checklist-counter") : null;
+    if (!title || boxes.length < 2) {
+      if (chip) chip.remove();
+      return;
+    }
+    const done = Array.from(boxes).filter((box) => box.checked).length;
+    if (!chip) {
+      chip = document.createElement("span");
+      chip.className = "checklist-counter";
+      title.appendChild(chip);
+    }
+    chip.textContent =
+      done === boxes.length
+        ? `✅ ${done}/${boxes.length} 완료`
+        : `${done}/${boxes.length} 완료`;
+    chip.classList.toggle("done", done === boxes.length);
+  });
+}
+
+function setupChecklistCounters() {
+  if (!checklistCounterBound && el.clipBody) {
+    el.clipBody.addEventListener("change", (event) => {
+      if (event.target && event.target.matches('input[type="checkbox"]')) {
+        updateChecklistCounters();
+      }
+    });
+    checklistCounterBound = true;
+  }
+  updateChecklistCounters();
+  setTimeout(updateChecklistCounters, 800); // 클립 내장 스크립트의 저장값 복원 반영
+}
+
+function flashClipArrival() {
+  const target =
+    el.clipBody?.querySelector(".clip-header") || el.clipBody?.firstElementChild;
+  if (!target) return;
+  target.classList.remove("clip-arrival-flash");
+  void target.offsetWidth; // 연속 이동 시에도 애니메이션이 재시작되도록 리플로우 강제
+  target.classList.add("clip-arrival-flash");
+  target.addEventListener(
+    "animationend",
+    () => target.classList.remove("clip-arrival-flash"),
+    { once: true }
+  );
+}
+
 async function openClip(clipKey, updateHash = false) {
   const normalized = normalizeClipKey(clipKey);
   if (!normalized) return;
@@ -3811,6 +3969,9 @@ async function openClip(clipKey, updateHash = false) {
 
   renderClipHeader(clip);
   renderClipBodyContent(visibleContentHtml);
+  flashClipArrival();
+  setupChecklistCounters();
+  setupReadingAids();
   updateMarkCompleteButton();
   renderSidebar();
 

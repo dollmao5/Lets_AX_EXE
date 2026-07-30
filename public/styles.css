@@ -6221,8 +6221,14 @@ details.ref-collapse > summary {
 }
 
 details.ref-collapse > summary::-webkit-details-marker { display: none; }
-details.ref-collapse > summary::before { content: "▸ "; color: #8aa0c4; }
-details.ref-collapse[open] > summary::before { content: "▾ "; }
+details.ref-collapse > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 7px;
+  color: #8aa0c4;
+  transition: transform 0.18s ease; /* 260731 화살표 회전 */
+}
+details.ref-collapse[open] > summary::before { transform: rotate(90deg); }
 
 details.ref-collapse > summary .ref-hint {
   font-size: 0.88rem;
@@ -6251,8 +6257,13 @@ details.prompt-collapse > summary {
 }
 
 details.prompt-collapse > summary::-webkit-details-marker { display: none; }
-details.prompt-collapse > summary::before { content: "▸ "; }
-details.prompt-collapse[open] > summary::before { content: "▾ "; }
+details.prompt-collapse > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 7px;
+  transition: transform 0.18s ease; /* 260731 화살표 회전 */
+}
+details.prompt-collapse[open] > summary::before { transform: rotate(90deg); }
 
 .prompt-inputs-line {
   display: block;
@@ -6384,5 +6395,132 @@ mark.file-hl-in {
   justify-content: flex-start !important;
   text-align: left !important;
   order: 3;
+}
+
+/* ── 260731 클립 도착 플래시: 목차·링크로 이동해 새 클립이 열리면
+   상단 제목 영역이 노랗게 반짝였다가 사라져 "도착 지점"을 표시 ── */
+@keyframes clip-arrival-flash {
+  0% {
+    background-color: rgba(254, 240, 138, 0.95);
+    box-shadow: 0 0 0 8px rgba(254, 240, 138, 0.95);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+.clip-arrival-flash {
+  animation: clip-arrival-flash 1.6s ease-out 1;
+  border-radius: 12px;
+}
+
+/* ── 260731 스크롤 스파이 목차: 활성 클립 아래 구간 미니 목차 + 현재 구간 하이라이트 ── */
+.scrollspy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 2px 8px 8px 26px;
+  padding-left: 10px;
+  border-left: 2px solid #dbe4f0;
+}
+.scrollspy-item {
+  border: 0;
+  background: none;
+  text-align: left;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.86rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+.scrollspy-item:hover {
+  background: #f2f7ff;
+  color: #1d3a6e;
+}
+.scrollspy-item.current {
+  background: #e8f0fe;
+  color: #1d3a6e;
+  font-weight: 800;
+}
+.scrollspy-item.current::before {
+  content: "▸ ";
+}
+
+/* ── 260731 체크리스트 완료 카운터: 섹션 제목에 "n/m 완료" 칩,
+   체크된 항목은 취소선·흐림 처리 (CH00은 자체 카운터 보유로 제외) ── */
+.checklist-counter {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #eef2f7;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 800;
+  vertical-align: middle;
+}
+.checklist-counter.done {
+  background: #bbf7d0;
+  color: #14532d;
+}
+.artifact-check:has(input:checked),
+label:has(> input[data-r1check]:checked),
+label:has(> input[data-r2check]:checked),
+label:has(> input[data-r3check]:checked) {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+/* ── 260731 복사 버튼 체크 팝 애니메이션 ── */
+@keyframes copy-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.copy-pop {
+  animation: copy-pop 0.32s ease-out 1;
+}
+
+/* ── 260731 읽기 진행률 바: 콘텐츠 스크롤 진행도를 화면 최상단 얇은 막대로 표시 ── */
+#readingProgressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, #2b5cab, #4f8ae8);
+  z-index: 900;
+  pointer-events: none;
+  transition: width 0.1s linear;
+}
+
+/* ── 260731 '맨 위로' 플로팅 버튼: 400px 이상 스크롤 시 우하단 표시 ── */
+#backToTopBtn {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 900;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid #d5deeb;
+  background: #ffffff;
+  color: #1d3a6e;
+  font-size: 1.15rem;
+  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.15s ease;
+}
+#backToTopBtn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+#backToTopBtn:hover {
+  background: #f2f7ff;
 }
 
