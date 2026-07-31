@@ -6318,6 +6318,73 @@ details.prompt-collapse[open] > summary::before { transform: rotate(90deg); }
   background: #f2f7ff !important;
 }
 
+/* ── 260731 호버 배경 하이라이트 확대 2차: 전 클립 콘텐츠 카드 계열 일괄 ── */
+.rev-card,
+.insight-card,
+.trend-card,
+.axis-card,
+.tour-card,
+.transition-card,
+.core-card,
+.shock-card,
+.focus-card,
+.leader-card,
+.step-card,
+.stage-card,
+.learning-card,
+.result-card,
+.completion-card,
+.import-card,
+.ssc-guide-card,
+.ssc-plan-card,
+.course-meta-card,
+.instructor-card,
+.support-card,
+.gpt-link-card,
+.optional-action-card,
+.file-card,
+.gate-status-summary-card,
+.style-matrix-card,
+.style-codebook-card,
+.style-code-example-card,
+.style-brand-reference-card,
+.style-matrix-column-card {
+  transition: background-color 0.15s ease;
+}
+
+.rev-card:hover,
+.insight-card:hover,
+.trend-card:hover,
+.axis-card:hover,
+.tour-card:hover,
+.transition-card:hover,
+.core-card:hover,
+.shock-card:hover,
+.focus-card:hover,
+.leader-card:hover,
+.step-card:hover,
+.stage-card:hover,
+.learning-card:hover,
+.result-card:hover,
+.completion-card:hover,
+.import-card:hover,
+.ssc-guide-card:hover,
+.ssc-plan-card:hover,
+.course-meta-card:hover,
+.instructor-card:hover,
+.support-card:hover,
+.gpt-link-card:hover,
+.optional-action-card:hover,
+.file-card:hover,
+.gate-status-summary-card:hover,
+.style-matrix-card:hover,
+.style-codebook-card:hover,
+.style-code-example-card:hover,
+.style-brand-reference-card:hover,
+.style-matrix-column-card:hover {
+  background: #f2f7ff !important;
+}
+
 /* 접이식 제목 줄 — 클릭 가능함을 배경 하이라이트로 안내 */
 details.ref-collapse > summary,
 details.prompt-collapse > summary,
@@ -6533,14 +6600,7 @@ label:has(> input[data-r3check]:checked) {
 .info-block.key-message .info-block-title {
   color: #92400e !important;
 }
-.final-message {
-  background: #fffbeb !important;
-  border: 1.5px solid #fcd34d !important;
-  border-left: 8px solid #f59e0b !important;
-}
-.final-message > strong {
-  color: #92400e;
-}
+/* (1-1 final-message 커스텀 카드는 표준 key-message로 전환되어 전용 규칙 제거 — 260731) */
 
 /* ── 260731 web-guide 카드 컴포넌트 전역 승격 — 팀 토론 역할 카드가 CH00→2-2로 이동하며
    CH00 스코프 밖에서도 동일 렌더링 (CH00 자체 스코프 규칙이 우선 적용되므로 CH00은 무영향) ── */
