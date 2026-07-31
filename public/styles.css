@@ -6542,6 +6542,63 @@ label:has(> input[data-r3check]:checked) {
   color: #92400e;
 }
 
+/* ── 260731 web-guide 카드 컴포넌트 전역 승격 — 팀 토론 역할 카드가 CH00→2-2로 이동하며
+   CH00 스코프 밖에서도 동일 렌더링 (CH00 자체 스코프 규칙이 우선 적용되므로 CH00은 무영향) ── */
+.web-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 12px 0 18px;
+}
+.web-guide-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #e4e7ec;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ffffff, #f8f9fb);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+.web-guide-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.web-guide-card h3 {
+  margin: 0;
+  color: #172033;
+  font-size: 1.06rem;
+  line-height: 1.42;
+}
+.web-guide-card p {
+  margin: 0 0 12px;
+  color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.56;
+}
+.web-guide-card .icon-shell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 14px;
+  background: #e8f0fe;
+  color: var(--brand, #2b5cab);
+  font-weight: 900;
+}
+.web-guide-card .icon-shell svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+@media (max-width: 900px) {
+  .web-guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── 260731 완료 기준 초록 강조: 클립 상단 '필수 산출물'(초록)과 호응 —
    시작(만들 것)–끝(확인할 것)을 같은 색 계열로 연결 ── */
 .clip-section.done-criteria {
