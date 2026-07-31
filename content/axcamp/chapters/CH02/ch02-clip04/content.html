@@ -819,7 +819,7 @@
 <tr>
 <td><strong>CH02-4</strong></td>
 <td>학습팀 토론 대화문, CH02-3 리더 역할 프로필, 팀장 기대행동 문서를 분석해 리더 핵심 역량·스킬을 「나의 핵심역량과 스킬」 문서로 만듭니다.</td>
-<td>CH03의 조직/팀 진단과 CH04 Action Plan 수립의 입력 단서로 활용합니다.</td>
+<td>CH03의 조직/팀 진단과 CH04 30일 실행계획 수립의 입력 단서로 활용합니다.</td>
 </tr>
 <tr>
 <td><strong>CH03</strong></td>
@@ -828,7 +828,7 @@
 </tr>
 <tr>
 <td><strong>CH04</strong></td>
-<td>CH02 리더 산출물과 CH03 팀 시스템 산출물을 NotebookLM에 통합하고 최종 Action Plan과 운영형 AI 비서를 구축합니다.</td>
+<td>CH02 리더 산출물과 CH03 팀 시스템 산출물을 NotebookLM에 통합하고 최종 실행계획과 운영형 AI 비서를 구축합니다.</td>
 <td>CH02-4의 프로토타입 비서 프롬프트와 테스트 로그를 성과관리 운영형 비서로 고도화합니다.</td>
 </tr>
 </tbody>
@@ -927,7 +927,7 @@ for(var i=0;i&lt;dls.length;i++){
 </div>
 </div>
 
-<div class="phase-banner">❸ 실습 <span class="phase-sub">— A 근거 연결 → B 교차검증 → C 핵심역량과 스킬 작성</span></div>
+<div class="phase-banner">❸ 실습 <span class="phase-sub">— A 근거 연결 → B 교차검증 → C 나의 핵심역량과 스킬 작성</span></div>
 <div class="clip-section"><div class="clip-section-title">Revision 필수 경로: Round Canvas를 활용한 3단계</div><div class="clip-section-content">
 <div class="info-block"><div class="info-block-title">분석에 사용할 입력 자료</div><div><strong>Round 1 현실·공통 이슈 지도 + CH02-3 리더 역할 프로필 + Round 2 책임경계표 + 실·팀장 기대행동</strong>을 같은 ChatGPT 대화에서 연결합니다. 팀 파일 없이 토론 대화문만 있는 경우에도 아래 A 프롬프트가 회의록 구조화부터 처리합니다.<br>Round Canvas 파일이 없는 경우에는, 토론에서 기억나는 핵심 이슈 2~3가지를 직접 요약해 붙여넣고 진행합니다.</div></div>
 <div class="upload-menu-figure">
@@ -961,7 +961,7 @@ closeBtn.addEventListener('click',closeModal);
 modal.addEventListener('click',function(event){if(event.target===modal){closeModal();}});
 document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;event.key==='Escape'){closeModal();}});
 })(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
-<div class="practice-flow-grid"><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step A. 근거 연결</div><span class="flow-time-badge">필수 · 10분</span></div><div class="flow-card-body">Round 1·2와 개인 프로필의 공통점·차이·누락·가설을 구분합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step B. 팀장 기대행동 교차검증</div><span class="flow-time-badge">필수 · 12분</span></div><div class="flow-card-body">내부 팀장 기대행동을 실제 업무 장면의 관찰 행동으로 변환합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step C. 핵심역량과 스킬</div><span class="flow-time-badge">필수 · 18분</span></div><div class="flow-card-body">역량명, 적용 장면, 리더 행동, 30일 후보, CH03 확인 질문을 저장합니다.</div></article></div>
+<div class="practice-flow-grid"><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step A. 근거 연결</div><span class="flow-time-badge">필수 · 10분</span></div><div class="flow-card-body">Round 1·2와 개인 프로필의 공통점·차이·누락·가설을 구분합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step B. 팀장 기대행동 교차검증</div><span class="flow-time-badge">필수 · 12분</span></div><div class="flow-card-body">내부 팀장 기대행동을 실제 업무 장면의 관찰 행동으로 변환합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step C. 나의 핵심역량과 스킬</div><span class="flow-time-badge">필수 · 18분</span></div><div class="flow-card-body">역량명, 적용 장면, 리더 행동, 30일 후보, CH03 확인 질문을 저장합니다.</div></article></div>
 <div class="prompt-block"><div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge">복붙형</span> A. Round 1·2와 개인 리더 역할의 근거 연결</span><button class="slide-briefing-link" data-doclink-btn="ch02-4-core-a" onclick="copyResourceLink(this,'https://drive.google.com/file/d/11Nm5kKmZk16Fj57ZJgYDRUc7gw3fBKdX/view?usp=drive_link')" type="button" title="보강용으로 첨부할 팀 토론 대화문(샘플) 링크를 복사합니다.">팀 토론 대화문 링크 복사</button><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-core-a')">복사</button></div>
 <div class="prompt-inputs-line" title="CH02_R1_AI시대_우리팀현실진단_팀번호.md · CH02_나의_AI시대_리더역할_성명.md · CH02_R2_AI팀원리더_책임경계_팀번호.md 3개 파일을 첨부(또는 내용 붙여넣기)한 뒤 실행합니다. 팀 토론이 짧았다면 팀 토론 대화문(샘플)을 보강용으로 함께 첨부할 수 있습니다.">📎 입력 <span class="req-chip">필수</span> · <mark class="file-hl-in">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark> + <mark class="file-hl-in">CH02_나의_AI시대_리더역할_성명.md</mark> + <mark class="file-hl-in">CH02_R2_AI팀원리더_책임경계_팀번호.md</mark> <span class="opt-chip">선택</span> 팀 토론 대화문(보강용)</div><details class="prompt-collapse"><summary>프롬프트 전체 보기 (21줄) — 접힌 상태에서도 [복사]는 전체를 복사합니다</summary><div class="prompt-content" id="ch02-4-core-a">당신은 팀장 리더십 과정의 성과관리 분석 파트너입니다.
 
@@ -1067,7 +1067,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 
 ## 8. CH03·CH04 적용 계획
 - CH03 조직/팀 진단에서 확인할 것:
-- CH04 Action Plan 후보:
+- CH04 30일 실행계획 후보:
 - 30일 안에 시험할 리더 행동:
 
 조건:
@@ -1095,7 +1095,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 
 ## 4. CH03·CH04 연결
 - CH03에서 추가 진단할 질문 3개
-- CH04 Action Plan 후보 3개
+- CH04 30일 실행계획 후보 3개
 - 첫 주에 실행할 최소 행동 1개
 
 조건:
@@ -1167,7 +1167,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 
 ## 6. 다음 단계
 - CH03에서 진단할 조직/팀 이슈:
-- CH04 Action Plan 후보:
+- CH04 30일 실행계획 후보:
 - 다음 대화에서 확인할 질문:
 
 [자동 분기 B: 메뉴 1 · 1:1 면담]
@@ -1393,7 +1393,7 @@ if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(
 <tr>
 <td>다음 단계 연결 기준</td>
 <td>Context 제공 및 확장</td>
-<td>CH03 진단과 CH04 Action Plan으로 자연스럽게 연결</td>
+<td>CH03 진단과 CH04 30일 실행계획으로 자연스럽게 연결</td>
 </tr>
 <tr>
 <td>웰컴 메뉴와 자동 분기</td>
@@ -1460,7 +1460,7 @@ if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(
 <td><strong>필수</strong></td>
 <td>「나의 핵심역량과 스킬」 Markdown 저장본</td>
 <td>핵심 이슈, AI/리더 역할, 30일 리더 행동 후보, CH03·CH04 연결 메모가 재사용 가능한 Markdown으로 저장되었는가</td>
-<td>CH03 조직/팀 진단 및 CH04 Action Plan 입력자료</td>
+<td>CH03 조직/팀 진단 및 CH04 30일 실행계획 입력자료</td>
 </tr>
 <tr>
 <td>선택</td>
@@ -1554,8 +1554,8 @@ if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(
 <div>좋은 프롬프트는 질문이 아니라 <strong>업무 위임서</strong>입니다.
         이 클립에서는 자료를 넣고, 역할을 부여하고, 분석 기준과 출력 형식을 지정해
         <strong>리더 핵심 역량·스킬 프로필</strong>과 <strong>「나의 핵심역량과 스킬」 Markdown 저장본</strong>을 완성합니다.
-        이 결과는 CH03의 조직/팀 진단과 CH04의 Action Plan 수립에 재사용하며,
+        이 결과는 CH03의 조직/팀 진단과 CH04의 30일 실행계획 수립에 재사용하며,
         선택 확장에서는 Deep Research를 실행하고 <strong>프로토타입 성과관리 비서 프롬프트를 저장·테스트</strong>해 CH04 선택 활동의 운영형 AI 비서 구축 기반을 확보합니다.</div>
 </div>
-<div class="clip-section"><div class="clip-section-title">CH02 완료 전 Output Gate</div><div class="clip-section-content"><div class="tip-block"><div class="tip-block-title">필수 산출물을 하나의 통합본으로 저장합니다</div><div class="tip-block-content">리더 역할 프로필과 핵심역량과 스킬을 확인한 뒤 다음 Clip의 <strong>CH02 Output Gate</strong>에서 Round 1·2 결과, AI–리더 책임경계, 핵심 역량, CH03 확인 질문을 통합 저장합니다.</div></div></div></div>
+<div class="clip-section"><div class="clip-section-title">CH02 완료 전 Output Gate</div><div class="clip-section-content"><div class="tip-block"><div class="tip-block-title">필수 산출물을 하나의 통합본으로 저장합니다</div><div class="tip-block-content">리더 역할 프로필과 나의 핵심역량과 스킬을 확인한 뒤 다음 Clip의 <strong>CH02 Output Gate</strong>에서 Round 1·2 결과, AI–리더 책임경계, 핵심 역량, CH03 확인 질문을 통합 저장합니다.</div></div></div></div>
 <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip03b">← Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가</a><a class="clip-nav-btn" href="#ch02-clip05">CH02 Output Gate: 리더 역할·책임·역량 통합 저장 →</a></div></div>

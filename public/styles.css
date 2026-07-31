@@ -6292,7 +6292,8 @@ details.prompt-collapse[open] > summary::before { transform: rotate(90deg); }
   color: #3c4a63 !important;
 }
 
-/* ── 260729 호버 확대: 단계·프로세스·구성 카드와 인터랙션 요소 전반 (0-1 여정 카드와 동일한 리프트 패턴) ── */
+/* ── 260729 호버 확대 → 260731 개정: 리프트·그림자 대신 옅은 배경 하이라이트만 —
+   드래그 복사를 방해하지 않고, 표 행·접이식·체크리스트 호버와 같은 문법으로 통일 ── */
 .flow-card,
 .resource-card,
 .output-card,
@@ -6302,7 +6303,7 @@ details.prompt-collapse[open] > summary::before { transform: rotate(90deg); }
 .artifact-card,
 .web-guide-card,
 .journey-card {
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  transition: background-color 0.15s ease;
 }
 
 .flow-card:hover,
@@ -6314,9 +6315,7 @@ details.prompt-collapse[open] > summary::before { transform: rotate(90deg); }
 .artifact-card:hover,
 .web-guide-card:hover,
 .journey-card:hover {
-  border-color: var(--brand, #2b5cab) !important;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10) !important;
-  transform: translateY(-2px) !important;
+  background: #f2f7ff !important;
 }
 
 /* 접이식 제목 줄 — 클릭 가능함을 배경 하이라이트로 안내 */

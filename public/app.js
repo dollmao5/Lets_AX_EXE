@@ -5274,6 +5274,21 @@ function bindEvents() {
     }
   });
 
+  // 260731 텍스트 드래그 복사 보호: 접이식 제목(summary)·체크리스트(label) 위에서
+  // 드래그 선택을 마치면 클릭으로 처리되어 토글되며 선택이 풀리는 문제 방지 —
+  // 선택된 텍스트가 있을 때는 토글하지 않는다.
+  document.addEventListener(
+    "click",
+    (event) => {
+      const selection = window.getSelection();
+      if (!selection || selection.isCollapsed) return;
+      if (event.target.closest("summary, label")) {
+        event.preventDefault();
+      }
+    },
+    true
+  );
+
   state.taskPanelOpen = false;
   state.notePanelOpen = false;
   setSidebarCollapsed(readSidebarCollapsedPreference(), { persist: false });

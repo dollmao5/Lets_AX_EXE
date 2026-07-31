@@ -264,9 +264,8 @@
 
     .CH00-clip01-revised .journey-link:hover .journey-card,
     .CH00-clip01-revised .journey-link:focus-visible .journey-card {
-      border-color: var(--brand);
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.10);
-      transform: translateY(-2px);
+      background: #f2f7ff; /* 260731 배경 하이라이트만 — 전역 카드 호버와 통일 */
+      /* 260731 translateY 제거 — 드래그 복사 보호 */
     }
 
     .CH00-clip01-revised .journey-link:focus-visible {
@@ -274,7 +273,7 @@
     }
 
     .CH00-clip01-revised .journey-card {
-      transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+      transition: background-color 0.15s ease;
     }
 
     /* 강사 소개 */
@@ -938,19 +937,9 @@
 <h1 class="clip-title" data-keep-title="">리더십 향상 with AI: 오늘의 여정과 학습 준비</h1>
 </div>
 <div class="clip-overview">
-    본 과정은 <strong>초인공 AI 시대, 변화하는 리더의 역할/역량을 이해하고, AI를 활용하여 리더십 향상을 위한 우리 조직(팀)의 역량 및 Workflow를 점검한 뒤, 30일 안에 실행할 Action Plan을 수립해보는 하루</strong>입니다.<br/>
+    본 과정은 <strong>초인공 AI 시대, 변화하는 리더의 역할/역량을 이해하고, AI를 활용하여 리더십 향상을 위한 우리 조직(팀)의 역량 및 Workflow를 점검한 뒤, 30일 실행계획(Action Plan)을 수립해보는 하루</strong>입니다.<br/>
 </div>
-<div class="info-block" style="margin:14px 0 4px;">
-<div class="info-block-title">오늘 화면 읽는 법 — 색 규칙과 핵심 용어</div>
-<div style="margin:4px 0 10px;">🎨 <span style="background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:0 6px;font-weight:800;">노란 카드</span> = 그 클립의 결론(핵심 메시지) · <span style="background:#f0fdf4;border:1px solid #86efac;border-radius:6px;padding:0 6px;font-weight:800;">초록 구역</span> = 체크하고 넘어갈 완료 기준·필수 산출물 · <span style="background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:0 6px;font-weight:800;">파란 카드</span> = 다음 단계 예고</div>
-<div style="font-weight:800;margin-bottom:4px;">📚 오늘 계속 나오는 용어 4개</div>
-<ul style="margin:0;padding-left:20px;line-height:1.75;">
-<li><strong>Workflow(업무 흐름)</strong> — 일이 흘러가는 단계와 순서 (예: 초안 작성 → 검토 → 승인 → 공유)</li>
-<li><strong>Speak-up(스픽업)</strong> — 반대 의견·문제·AI 오류를 불이익 걱정 없이 말하는 것</li>
-<li><strong>Fallback(폴백)</strong> — AI·자동화에 문제가 생겼을 때 되돌아갈 안전 경로 (예: 사람이 수동으로 처리)</li>
-<li><strong>Quality Gate(품질 관문)</strong> — 다음 단계로 넘어가기 전, 사람이 결과를 확인·승인하는 지점</li>
-</ul>
-</div>
+
 <div class="phase-banner">❶ 과정 소개 <span class="phase-sub">— 오늘의 목표·여정·팀 역할·시간표</span></div>
 <div class="clip-section">
 <div class="clip-section-title">과정 한눈에 보기</div>
@@ -968,7 +957,7 @@
 <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
 </span>
 <strong>운영 일정</strong>
-<span>총 16차수 (파주 14차수, 구미 2차수)<br/>
+<span>총 3차수 (파주, 8~9월 중) *추후 확대 운영 검토<br/>
                 1일 8hr · 08:30~17:30<br/></span>
 </div>
 <div class="course-meta-card">
@@ -983,7 +972,7 @@
 <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
 </span>
 <strong>최종 도착점</strong>
-<span>우리 팀의 리더십 향상 30일 Action Plan</span>
+<span>우리 팀의 성과·성장역량 향상 30일 실행계획</span>
 </div>
 </div>
 </div>
@@ -993,7 +982,7 @@
 <div class="clip-section-content">
 <p class="section-lead">각 챕터의 결과물이 다음 챕터의 입력자료가 됩니다. 좋은 답변을 한 번 얻는 것보다 <strong>산출물을 구조화해 저장하고 다시 연결하는 것</strong>이 중요합니다.</p>
 <div class="journey-grid">
-<a class="journey-link" href="#ch01-clip01">
+<div class="journey-link">
 <article class="journey-card">
 <div class="journey-card-head"><span class="journey-code">CH01</span><span class="mini-label">이해·진단</span></div>
 <h3>AI 핵심 개념과 출발점</h3>
@@ -1001,42 +990,42 @@
 <div class="journey-output"><strong>Output</strong><br/>개인 학습 초점과 리더십 출발점</div>
 <div style="margin-top:8px;padding-top:7px;border-top:1px dashed #c9d6ec;font-size:.92rem;color:#3c4a63;">✅ 끝나면: 나의 AI 활용 출발점과 오늘의 학습 초점을 확인합니다</div>
 </article>
-</a>
-<a class="journey-link" href="#ch02-clip01">
+</div>
+<div class="journey-link">
 <article class="journey-card">
 <div class="journey-card-head"><span class="journey-code">CH02</span><span class="mini-label">ChatGPT</span></div>
 <h3>리더 역할·책임·역량</h3>
-<p>토론과 ChatGPT 대화를 통해 AI와 리더의 역할 분담, 리더 역할 프로필, 「나의 핵심역량과 스킬」을 만듭니다.</p>
-<div class="journey-output"><strong>Output</strong><br/>리더 역할 프로필 · 핵심역량과 스킬</div>
+<p>토론과 구조화된 프롬프트 기반의 ChatGPT 대화를 통해 AI와 리더의 역할 분담, 리더 역할 프로필, 「나의 핵심역량과 스킬」을 만듭니다.</p>
+<div class="journey-output"><strong>Output</strong><br/>리더 역할 프로필 · 나의 핵심역량과 스킬</div>
 <div style="margin-top:8px;padding-top:7px;border-top:1px dashed #c9d6ec;font-size:.92rem;color:#3c4a63;">✅ 끝나면: 성과관리 장면별로 AI가 지원할 일과 리더가 직접 판단·책임질 일의 경계를 정합니다</div>
 </article>
-</a>
-<a class="journey-link" href="#ch03-clip01">
+</div>
+<div class="journey-link">
 <article class="journey-card">
 <div class="journey-card-head"><span class="journey-code">CH03</span><span class="mini-label">팀 시스템</span></div>
 <h3>우리 팀 일하는 방식·성장역량 점검</h3>
 <p>팀의 일하는 방식과 성장역량 지표를 점검하고 대표 업무를 AI 협업 구조로 재설계합니다.</p>
-<div class="journey-output"><strong>Output</strong><br/>성장역량 점검지표 · 행동역량 · 시범 운영</div>
+<div class="journey-output"><strong>Output</strong><br/>성장역량 점검지표 · 행동역량 · AI 협업 시범 운영안</div>
 <div style="margin-top:8px;padding-top:7px;border-top:1px dashed #c9d6ec;font-size:.92rem;color:#3c4a63;">✅ 끝나면: 팀 성과 이슈를 구조적으로 확인하고, 비효율 업무 방식을 AI 협업 구조로 재설계합니다</div>
 </article>
-</a>
-<a class="journey-link" href="#ch04-clip01">
+</div>
+<div class="journey-link">
 <article class="journey-card">
 <div class="journey-card-head"><span class="journey-code">CH04</span><span class="mini-label">NotebookLM</span></div>
 <h3>산출물 통합과 30일 실행계획</h3>
-<p>앞선 결과를 하나의 소스 묶음으로 연결하고 실행과제 TOP 3과 30일 Action Plan을 확정합니다.</p>
+<p>앞선 결과를 하나의 소스 묶음으로 연결하고 실행과제 TOP 3과 30일 실행계획을 확정합니다.</p>
 <div class="journey-output"><strong>Output</strong><br/>성과·성장역량 향상 30일 실행계획 (근거 정리표·TOP 3 포함)</div>
-<div style="margin-top:8px;padding-top:7px;border-top:1px dashed #c9d6ec;font-size:.92rem;color:#3c4a63;">✅ 끝나면: 실행과제 TOP 3과 주차별 30일 Action Plan을 완성합니다</div>
+<div style="margin-top:8px;padding-top:7px;border-top:1px dashed #c9d6ec;font-size:.92rem;color:#3c4a63;">✅ 끝나면: 실행과제 TOP 3과 주차별 30일 실행계획을 완성합니다</div>
 </article>
-</a>
+</div>
 </div>
 </div>
 </div><div class="clip-section" id="threeRoundTrack"><div class="clip-section-title">3Round 팀 토론 Track: As-Is → Reframe → To-Be</div><div class="clip-section-content">
 <div aria-label="3Round 팀 토론 Track" class="journey-grid">
 <article class="journey-card"><div class="journey-card-head"><span class="journey-code">ROUND 1 · AS-IS</span><span class="mini-label">CH02-2</span></div><h3>현실과 공통 이슈을 사실로 봅니다</h3><p>AI가 들어오며 실제로 달라진 업무 장면과 더 선명해진 리더십 문제를 확인합니다.</p><div class="journey-output"><strong>Output</strong> · 우리 팀 현실·공통 이슈 지도</div></article>
 <article class="journey-card"><div class="journey-card-head"><span class="journey-code">ROUND 2 · REFRAME</span><span class="mini-label">CH02-3b</span></div><h3>일의 본질과 책임 경계를 다시 그립니다</h3><p>없앨 일·단순화할 일·AI 자동화·AI 보조·사람 판단·리더 책임을 구분합니다.</p><div class="journey-output"><strong>Output</strong> · AI–팀원–리더 책임경계표</div></article>
-<article class="journey-card"><div class="journey-card-head"><span class="journey-code">ROUND 3 · TO-BE</span><span class="mini-label">CH03-1b</span></div><h3>30일 팀 시범 운영으로 전환합니다</h3><p>성과·성장·피드백·Speak-up을 함께 높일 한 개의 Workflow 시범 운영을 설계합니다.</p><div class="journey-output"><strong>Output</strong> · 30일 AI 협업 시범 운영안</div></article>
-<article class="journey-card"><div class="journey-card-head"><span class="journey-code">INTEGRATE</span><span class="mini-label">CH04</span></div><h3>근거를 연결해 Action Plan으로 통합합니다</h3><p>리더 개인 기준, 팀 진단, Round Canvas를 Source Map과 30일 계획으로 연결합니다.</p><div class="journey-output"><strong>Output</strong> · 30일 성장역량 Action Plan</div></article>
+<article class="journey-card"><div class="journey-card-head"><span class="journey-code">ROUND 3 · TO-BE</span><span class="mini-label">CH03-1b</span></div><h3>30일 팀 시범 운영으로 전환합니다</h3><p>성과·성장·피드백·Speak-up을 함께 높일 한 개의 Workflow 시범 운영을 설계합니다.</p><div class="journey-output"><strong>Output</strong> · AI 협업 시범 운영안</div></article>
+<article class="journey-card"><div class="journey-card-head"><span class="journey-code">INTEGRATE</span><span class="mini-label">CH04</span></div><h3>근거를 연결해 30일 실행계획으로 통합합니다</h3><p>리더 개인 기준, 팀 진단, Round Canvas를 Source Map과 30일 계획으로 연결합니다.</p><div class="journey-output"><strong>Output</strong> · 30일 실행계획</div></article>
 </div>
 <div class="info-block"><div class="info-block-title">토론에서 AI를 쓰는 순서</div><div><strong>Human First → AI Challenge → Leader Decide</strong>를 공통 원칙으로 사용합니다. 개인이 먼저 생각하고, 팀이 경험과 근거를 말해 잠정 결론을 만든 뒤, AI에게는 반론·누락·위험만 요청합니다. 수용·기각과 최종 판단은 리더가 책임집니다.</div></div>
 </div></div>
@@ -1106,7 +1095,7 @@
 <th>형태</th>
 </tr>
 </thead>
-<tbody><tr><td class="col-time">08:30~08:45</td><td class="col-ch">CH00<span class="col-ch-title">과정 안내</span></td><td class="col-session">오늘의 여정과 학습 준비</td><td>과정 목표 · 3Round 토론 Track · 팀 역할 · 웹페이지 사용법 · 실습 준비 점검</td><td class="col-type">개요</td></tr><tr><td class="col-time" rowspan="4">08:45~09:30</td><td class="col-ch" rowspan="4">CH01<span class="col-ch-title">리더를 위한 AI 핵심</span></td><td class="col-session">AI 트렌드</td><td rowspan="4">AI 트렌드부터 개념 다지기까지 강의 진행 후, AI-Friendly 리더십·AI 리터러시 진단을 실시합니다.</td><td class="col-type" rowspan="4">강의·진단</td></tr><tr><td class="col-session">Assistant에서 Agentic AI로</td></tr><tr><td class="col-session">개념 다지기</td></tr><tr><td class="col-session">AI-Friendly 리더십 &amp; AI 리터러시</td></tr><tr class="schedule-break"><td class="col-time">09:30~09:40</td><td colspan="4">휴식 · ChatGPT 로그인 및 학습팀 좌석·역할 배정 최종 확인</td></tr><tr><td class="col-time">09:40~10:00</td><td class="col-ch" rowspan="6">CH02<span class="col-ch-title">리더 역할 및 역량 점검</span></td><td class="col-session">ChatGPT Overview</td><td>전체 기능 Tour · Deep Research 상세 · GPT 제작·테스트</td><td class="col-type">플랫폼·실습</td></tr><tr><td class="col-time">10:00~10:30</td><td class="col-session">팀토론_① AI, 팀 현실과 리더 고민</td><td>AI 시대, 우리 팀의 현실과 리더의 고민</td><td class="col-type">팀 토론</td></tr><tr><td class="col-time">10:30~11:05</td><td class="col-session">AI 시대, 리더 역할·책임 인식</td><td>기존 대화형 프롬프팅 Flow로 개인 리더 역할·책임 기준 정리</td><td class="col-type">필수 실습</td></tr><tr><td class="col-time">11:05~11:35</td><td class="col-session">팀토론_② AI와 리더의 책임경계</td><td>AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가</td><td class="col-type">팀 토론</td></tr><tr><td class="col-time">11:35~12:15</td><td class="col-session">리더의 핵심 역량 및 스킬</td><td>Round Canvas·리더 프로필·팀장 기대행동 교차분석 및 「나의 핵심역량과 스킬」 작성</td><td class="col-type">필수 실습</td></tr><tr><td class="col-time">12:15~12:30</td><td class="col-session">CH02 통합 저장 Gate</td><td>CH02 산출물 점검·통합·Markdown 저장</td><td class="col-type">저장 Gate</td></tr><tr class="schedule-lunch"><td class="col-time">12:30~13:30</td><td colspan="4">점심 식사 · 오전 산출물을 브라우저와 로컬 폴더에 저장한 뒤 자리를 비웁니다.</td></tr><tr><td class="col-time">13:30~14:30</td><td class="col-ch" rowspan="4">CH03<span class="col-ch-title">조직(팀) 성장역량 점검</span></td><td class="col-session">조직(팀) 성장역량과 일하는 방식 점검</td><td>기존 팀 현황 → 성장역량 지표 → 행동역량 대화형 실습</td><td class="col-type">필수 실습</td></tr><tr><td class="col-time">14:30~15:05</td><td class="col-session">팀토론_③ 팀 성과와 성장 with AI</td><td>AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가</td><td class="col-type">팀 토론</td></tr><tr><td class="col-time">15:05~15:20</td><td class="col-session">CH03 통합 저장 Gate</td><td>CH03 진단·Round 3 시범 운영안을 CH04 소스로 통합</td><td class="col-type">저장 Gate</td></tr><tr><td class="col-time">선택</td><td class="col-session">참고_Gemini Overview</td><td>Gemini 접속 방법 및 Gems 소개</td><td class="col-type">참고</td></tr><tr class="schedule-break"><td class="col-time">15:20~15:30</td><td colspan="4">휴식 · NotebookLM 업로드 파일 최종 확인</td></tr><tr><td class="col-time">15:30~15:50</td><td class="col-ch" rowspan="2">CH04<span class="col-ch-title">우리 팀의 성과·성장역량 향상</span></td><td class="col-session">NotebookLM Overview</td><td>고정 사용한도 · 전체 Studio 기능 Tour · 소스·채팅·출처 확인</td><td class="col-type">플랫폼</td></tr><tr><td class="col-time">15:50~16:50</td><td class="col-session">팀 성과·성장역량 향상 및 피드백 실천</td><td>Source Map → TOP 3 → 30일 Action Plan · AI 비서 선택 실습</td><td class="col-type">통합 실습</td></tr><tr><td class="col-time">16:50~17:10</td><td class="col-ch" rowspan="2">CH05<span class="col-ch-title">오늘의 핵심 요약</span></td><td class="col-session">정리정돈: 배움에서 현업 자산으로</td><td>산출물 회수 · 근거·파일명·현업 적용 초점 정리</td><td class="col-type">정리</td></tr><tr><td class="col-time">17:10~17:30</td><td class="col-session">마무리: Start · Stop · Continue</td><td>72시간 첫 행동 · 팀 대화 · 30일 점검일 확정</td><td class="col-type">실천·성찰</td></tr><tr><td class="col-time">참고자료</td><td class="col-ch">CH06<span class="col-ch-title">참고자료 라이브러리</span></td><td class="col-session">에이전틱 AI란 외 10개 참고 클립</td><td>필요할 때 찾아보는 참고자료 라이브러리</td><td class="col-type">참고</td></tr></tbody>
+<tbody><tr><td class="col-time">08:30~08:45</td><td class="col-ch">CH00<span class="col-ch-title">과정 안내</span></td><td class="col-session">오늘의 여정과 학습 준비</td><td>과정 목표 · 3Round 토론 Track · 팀 역할 · 웹페이지 사용법 · 실습 준비 점검</td><td class="col-type">개요</td></tr><tr><td class="col-time" rowspan="4">08:45~09:30</td><td class="col-ch" rowspan="4">CH01<span class="col-ch-title">리더를 위한 AI 핵심</span></td><td class="col-session">AI 트렌드</td><td rowspan="4">AI 트렌드부터 개념 다지기까지 강의 진행 후, AI-Friendly 리더십·AI 리터러시 진단을 실시합니다.</td><td class="col-type" rowspan="4">강의·진단</td></tr><tr><td class="col-session">Assistant에서 Agentic AI로</td></tr><tr><td class="col-session">개념 다지기</td></tr><tr><td class="col-session">AI-Friendly 리더십 &amp; AI 리터러시</td></tr><tr class="schedule-break"><td class="col-time">09:30~09:40</td><td colspan="4">휴식 · ChatGPT 로그인 및 학습팀 좌석·역할 배정 최종 확인</td></tr><tr><td class="col-time">09:40~10:00</td><td class="col-ch" rowspan="6">CH02<span class="col-ch-title">리더 역할 및 역량 점검</span></td><td class="col-session">ChatGPT Overview</td><td>전체 기능 Tour · Deep Research 상세 · GPT 제작·테스트</td><td class="col-type">플랫폼·실습</td></tr><tr><td class="col-time">10:00~10:30</td><td class="col-session">팀토론_① AI, 팀 현실과 리더 고민</td><td>AI 시대, 우리 팀의 현실과 리더의 고민</td><td class="col-type">팀 토론</td></tr><tr><td class="col-time">10:30~11:05</td><td class="col-session">AI 시대, 리더 역할·책임 인식</td><td>기존 대화형 프롬프팅 Flow로 개인 리더 역할·책임 기준 정리</td><td class="col-type">필수 실습</td></tr><tr><td class="col-time">11:05~11:35</td><td class="col-session">팀토론_② AI와 리더의 책임경계</td><td>AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가</td><td class="col-type">팀 토론</td></tr><tr><td class="col-time">11:35~12:15</td><td class="col-session">리더의 핵심 역량 및 스킬</td><td>Round Canvas·리더 프로필·팀장 기대행동 교차분석 및 「나의 핵심역량과 스킬」 작성</td><td class="col-type">필수 실습</td></tr><tr><td class="col-time">12:15~12:30</td><td class="col-session">CH02 통합 저장 Gate</td><td>CH02 산출물 점검·통합·Markdown 저장</td><td class="col-type">저장 Gate</td></tr><tr class="schedule-lunch"><td class="col-time">12:30~13:30</td><td colspan="4">점심 식사 · 오전 산출물을 브라우저와 로컬 폴더에 저장한 뒤 자리를 비웁니다.</td></tr><tr><td class="col-time">13:30~14:30</td><td class="col-ch" rowspan="4">CH03<span class="col-ch-title">조직(팀) 성장역량 점검</span></td><td class="col-session">조직(팀) 성장역량과 일하는 방식 점검</td><td>기존 팀 현황 → 성장역량 지표 → 행동역량 대화형 실습</td><td class="col-type">필수 실습</td></tr><tr><td class="col-time">14:30~15:05</td><td class="col-session">팀토론_③ 팀 성과와 성장 with AI</td><td>AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가</td><td class="col-type">팀 토론</td></tr><tr><td class="col-time">15:05~15:20</td><td class="col-session">CH03 통합 저장 Gate</td><td>CH03 진단·Round 3 AI 협업 시범 운영안을 CH04 소스로 통합</td><td class="col-type">저장 Gate</td></tr><tr><td class="col-time">선택</td><td class="col-session">참고_Gemini Overview</td><td>Gemini 접속 방법 및 Gems 소개</td><td class="col-type">참고</td></tr><tr class="schedule-break"><td class="col-time">15:20~15:30</td><td colspan="4">휴식 · NotebookLM 업로드 파일 최종 확인</td></tr><tr><td class="col-time">15:30~15:50</td><td class="col-ch" rowspan="2">CH04<span class="col-ch-title">우리 팀의 성과·성장역량 향상</span></td><td class="col-session">NotebookLM Overview</td><td>고정 사용한도 · 전체 Studio 기능 Tour · 소스·채팅·출처 확인</td><td class="col-type">플랫폼</td></tr><tr><td class="col-time">15:50~16:50</td><td class="col-session">팀 성과·성장역량 향상 및 피드백 실천</td><td>Source Map → TOP 3 → 30일 실행계획 · AI 비서 선택 실습</td><td class="col-type">통합 실습</td></tr><tr><td class="col-time">16:50~17:10</td><td class="col-ch" rowspan="2">CH05<span class="col-ch-title">오늘의 핵심 요약</span></td><td class="col-session">정리정돈: 배움에서 현업 자산으로</td><td>산출물 회수 · 근거·파일명·현업 적용 초점 정리</td><td class="col-type">정리</td></tr><tr><td class="col-time">17:10~17:30</td><td class="col-session">마무리: Start · Stop · Continue</td><td>72시간 첫 행동 · 팀 대화 · 30일 점검일 확정</td><td class="col-type">실천·성찰</td></tr><tr><td class="col-time">참고자료</td><td class="col-ch">CH06<span class="col-ch-title">참고자료 라이브러리</span></td><td class="col-session">에이전틱 AI란 외 10개 참고 클립</td><td>필요할 때 찾아보는 참고자료 라이브러리</td><td class="col-type">참고</td></tr></tbody>
 </table>
 </div>
 </div>
@@ -1162,7 +1151,7 @@
 <div class="clip-section">
 <div class="clip-section-title">웹페이지 주요 사용법</div>
 <div class="clip-section-content">
-<p class="section-lead">수업 중에는 아래 다섯 가지 기능만 익히면 됩니다. 각 클립의 안내 순서와 지정 도구를 그대로 따라갑니다.</p>
+<p class="section-lead">수업 중에는 아래 여섯 가지 기능만 익히면 됩니다. 각 클립의 안내 순서와 지정 도구를 그대로 따라갑니다.</p>
 <div class="web-guide-grid">
 <article class="web-guide-card">
 <div class="web-guide-card-head">
@@ -1214,6 +1203,16 @@
 <p>각 클립의 <strong>완료 / 보완 필요</strong> 상태를 선택합니다. 운영 환경에 따라 계정 또는 현재 브라우저에 자동 저장됩니다.</p>
 <div class="ui-demo-row"><span class="ui-demo-button primary">완료</span><span class="ui-demo-button">보완 필요</span></div>
 </article>
+<article class="web-guide-card">
+<div class="web-guide-card-head">
+<span aria-hidden="true" class="icon-shell">
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 1 0 18"></path><circle cx="9" cy="9" r="1"></circle><circle cx="14" cy="8" r="1"></circle><circle cx="15" cy="13" r="1"></circle></svg>
+</span>
+<h3>6. 화면 색 읽기</h3>
+</div>
+<p><span style="background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:0 6px;font-weight:800;">노란 카드</span>는 그 클립의 결론(핵심 메시지), <span style="background:#f0fdf4;border:1px solid #86efac;border-radius:6px;padding:0 6px;font-weight:800;">초록 구역</span>은 체크하고 넘어갈 완료 기준·필수 산출물, <span style="background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:0 6px;font-weight:800;">파란 카드</span>는 다음 단계 예고입니다.</p>
+<div class="ui-demo-row"><span class="ui-demo-chip">🟡 결론</span><span class="ui-demo-chip">🟢 완료 기준</span><span class="ui-demo-chip">🔵 다음 단계</span></div>
+</article>
 
 </div>
 <div class="info-block">
@@ -1226,6 +1225,15 @@
 </div>
 </div>
 <div class="clip-section">
+<details class="ref-collapse"><summary>📚 오늘 계속 나오는 핵심 용어 4개 — Workflow·Speak-up·Fallback·Quality Gate<span class="ref-hint">필요할 때 펼치기</span></summary>
+<div style="padding:6px 18px 14px;">
+<ul style="margin:0;padding-left:20px;line-height:1.75;">
+<li><strong>Workflow(업무 흐름)</strong> — 일이 흘러가는 단계와 순서 (예: 초안 작성 → 검토 → 승인 → 공유)</li>
+<li><strong>Speak-up(스픽업)</strong> — 반대 의견·문제·AI 오류를 불이익 걱정 없이 말하는 것</li>
+<li><strong>Fallback(폴백)</strong> — AI·자동화에 문제가 생겼을 때 되돌아갈 안전 경로 (예: 사람이 수동으로 처리)</li>
+<li><strong>Quality Gate(품질 관문)</strong> — 다음 단계로 넘어가기 전, 사람이 결과를 확인·승인하는 지점</li>
+</ul>
+</div></details>
 <div class="clip-section-title">오늘의 학습 Flow 한눈에 — 무엇을 만들고, 어디에 쓰나</div>
 <div class="clip-section-content">
 <p class="section-lead">오늘 하루는 <strong>앞 실습의 산출물이 다음 실습의 입력</strong>이 되는 릴레이 구조입니다. 녹색 파일만 제때 저장하면 길을 잃지 않습니다.</p>
@@ -1269,12 +1277,12 @@
 <div class="file-card"><strong>CH03 중간 통합본 <span class="mini-label optional">생략 가능 · Gate 통합본으로 대체</span></strong><span class="file-name">CH03_우리팀_성장역량_중간통합본_성명.md</span></div>
 
 
-<div class="file-card"><strong>CH04 우리 팀 리더십 향상 30일 실행계획</strong><span class="file-name">CH04_우리팀_성과성장향상_30일실행계획_성명.md</span></div>
+<div class="file-card"><strong>CH04 우리 팀 성과·성장역량 향상 30일 실행계획</strong><span class="file-name">CH04_우리팀_성과성장향상_30일실행계획_성명.md</span></div>
 <div class="file-card"><strong>CH05 현업 적용 산출물 회수표</strong><span class="file-name">CH05_현업적용_산출물회수표_성명.md</span></div>
 <div class="file-card"><strong>CH05 나의 30일 리더 실천계획</strong><span class="file-name">CH05_나의_30일리더실천계획_성명.md</span></div>
 <div class="file-card"><strong>Round 1 팀 현실·공통 이슈 지도</strong><span class="file-name">CH02_R1_AI시대_우리팀현실진단_팀번호.md</span></div>
 <div class="file-card"><strong>Round 2 책임경계 및 업무 재설계표</strong><span class="file-name">CH02_R2_AI팀원리더_책임경계_팀번호.md</span></div>
-<div class="file-card"><strong>Round 3 30일 팀 시범 운영안</strong><span class="file-name">CH03_R3_30일_AI협업_시범운영안_팀번호.md</span></div>
+<div class="file-card"><strong>Round 3 AI 협업 시범 운영안</strong><span class="file-name">CH03_R3_30일_AI협업_시범운영안_팀번호.md</span></div>
 <div class="file-card"><strong>CH02 리더 역할·책임 통합본</strong><span class="file-name">CH02_리더역할_책임경계_통합본_성명.md</span></div>
 <div class="file-card"><strong>CH03 성장역량·AI 협업 통합본</strong><span class="file-name">CH03_우리팀_성장역량과_AI협업_통합본_성명.md</span></div></div>
 -->
