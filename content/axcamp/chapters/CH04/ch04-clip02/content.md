@@ -507,7 +507,7 @@ CH02·CH03 기준과 실제 소스명·인라인 출처가 연결된 30일 실�
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
 
-### 핵심 메시지
+### 이번 클립의 핵심 메시지
 
 CH04의 목적은 자료를 많이 분석하거나 문서를 많이 만드는 것이 아닙니다.
 

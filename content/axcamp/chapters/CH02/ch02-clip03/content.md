@@ -440,7 +440,7 @@ AI와 리더 역할 분담표 상태
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
 
-### 핵심 메시지
+### 이번 클립의 핵심 메시지
 
 AI 시대의 팀 리더는 AI를 잘 쓰는 사람이 아니라,
 **AI와 사람이 각각 맡아야 할 일을 구분하고, 성과와 성장을 위한 판단 기준을 세우는 사람**입니다.
