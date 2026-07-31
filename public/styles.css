@@ -6599,6 +6599,36 @@ label:has(> input[data-r3check]:checked) {
   }
 }
 
+/* ── 260731 접힌 콘텐츠 시인성: '펼칠 내용이 있다'를 한눈에 —
+   접이식 전용 색(옅은 보라)+점선 테두리+펼치기 칩. 다른 강조색(앰버·초록·블루)과 겹치지 않음 ── */
+.clip-body details > summary {
+  background: #f5f3ff !important;
+  border: 1.5px dashed #a78bfa !important;
+  border-radius: 12px;
+}
+.clip-body details[open] > summary {
+  background: #ede9fe !important;
+  border-style: solid !important;
+}
+.clip-body details > summary::after {
+  content: "▾ 펼치기";
+  float: right;
+  margin-left: 12px;
+  font-size: 0.85em;
+  font-weight: 800;
+  color: #7c3aed;
+  white-space: nowrap;
+}
+.clip-body details[open] > summary::after {
+  content: "▴ 접기";
+}
+.clip-body details > summary:has(.ref-hint)::after {
+  content: none; /* 자체 힌트(ref-hint)가 있는 접이식은 칩 중복 방지 */
+}
+.clip-body details.ref-collapse > summary .ref-hint {
+  color: #7c3aed;
+}
+
 /* ── 260731 완료 기준 초록 강조: 클립 상단 '필수 산출물'(초록)과 호응 —
    시작(만들 것)–끝(확인할 것)을 같은 색 계열로 연결 ── */
 .clip-section.done-criteria {
