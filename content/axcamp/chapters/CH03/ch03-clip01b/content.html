@@ -434,14 +434,14 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 <div class="rev-form"><div class="rev-form-grid">
 <div class="rev-field"><label for="r3-fld-teamName">팀명</label><select data-md-label="팀명" data-md-section="기본 정보" data-rev-field="teamName" id="r3-fld-teamName"><option value="">팀 선택</option><option value="1팀">1팀</option><option value="2팀">2팀</option><option value="3팀">3팀</option><option value="4팀">4팀</option><option value="5팀">5팀</option><option value="6팀">6팀</option></select></div>
 <div class="rev-field"><label for="r3-fld-day30">30일 점검일</label><input type="date" data-md-label="30일 점검일" data-md-section="기본 정보" data-rev-field="day30" id="r3-fld-day30"/></div>
-<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-workScene">① 실험 초점: 바꿀 업무 장면 1개 · 현재 문제와 근거 · 30일 변화 가설</label><textarea data-md-label="바꿀 업무 장면·현재 문제·30일 가설" data-md-section="1. 실험 초점" data-rev-field="workScene" id="r3-fld-workScene" placeholder="업무 장면 1개만 선택 → 지금 무엇이 문제인지(근거 포함) → 30일 뒤 어떻게 달라진다고 가정하는지" style="min-height:150px"></textarea></div>
-<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-roleDesign">④ 역할 설계: AI가 지원할 역할 · 팀원 행동 · 리더가 먼저 바꿀 행동 1개 · 팀 공통 행동 1개</label><textarea data-md-label="AI·팀원·리더·팀 공통 역할" data-md-section="2. 역할 설계" data-rev-field="roleDesign" id="r3-fld-roleDesign" placeholder="AI는 무엇을 지원하고, 팀원은 무엇에 참여하며, 리더는 무엇을 먼저 보여주고, 팀 전체가 함께할 행동 1가지" style="min-height:150px"></textarea></div>
-<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-growthSupport">② 성장 지원: 수준차 지원·코칭 방식 · 1:1에서 AI 지원/리더 직접 전달</label><textarea data-md-label="수준차 지원·코칭·1:1 운영" data-md-section="3. 사람과 성장" data-rev-field="growthSupport" id="r3-fld-growthSupport" placeholder="활용 수준이 다른 팀원별 지원 방법 / 1:1 피드백에서 AI가 돕는 것과 리더가 직접 말할 것" style="min-height:150px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-workScene">① 실험 초점: 바꿀 업무 장면 1개 · 현재 문제와 근거 · 30일 변화 가설</label><textarea data-md-label="바꿀 업무 장면·현재 문제·30일 가설" data-md-section="1. 실험 초점" data-rev-field="workScene" id="r3-fld-workScene" placeholder="업무 장면 1개만 선택 → 지금 무엇이 문제인지(근거 포함) → 30일 뒤 어떻게 달라진다고 가정하는지" style="min-height:120px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-roleDesign">④ 역할 설계: AI가 지원할 역할 · 팀원 행동 · 리더가 먼저 바꿀 행동 1개 · 팀 공통 행동 1개</label><textarea data-md-label="AI·팀원·리더·팀 공통 역할" data-md-section="2. 역할 설계" data-rev-field="roleDesign" id="r3-fld-roleDesign" placeholder="AI는 무엇을 지원하고, 팀원은 무엇에 참여하며, 리더는 무엇을 먼저 보여주고, 팀 전체가 함께할 행동 1가지" style="min-height:120px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-growthSupport">② 성장 지원: 수준차 지원·코칭 방식 · 1:1에서 AI 지원/리더 직접 전달</label><textarea data-md-label="수준차 지원·코칭·1:1 운영" data-md-section="3. 사람과 성장" data-rev-field="growthSupport" id="r3-fld-growthSupport" placeholder="활용 수준이 다른 팀원별 지원 방법 / 1:1 피드백에서 AI가 돕는 것과 리더가 직접 말할 것" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-speakupRule">③ Speak-up(안심하고 문제를 말하기) 규칙: 반대 의견·오류 제기를 성장 기회로 만드는 방법</label><textarea data-md-label="Speak-up 운영 규칙" data-md-section="3. 사람과 성장" data-rev-field="speakupRule" id="r3-fld-speakupRule" placeholder="주저하는 구성원이 안전하게 문제를 제기하게 하는 팀 규칙과, 제기된 의견을 다루는 방식" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-qualityGate">안전장치: 인간 승인·검증 지점 · 중단·예외 기준과 Fallback</label><textarea data-md-label="승인·검증 지점과 중단 기준" data-md-section="4. 품질과 책임" data-rev-field="qualityGate" id="r3-fld-qualityGate" placeholder="어디서 사람이 확인하는지 / 어떤 문제가 생기면 즉시 중단·개입하고 어떻게 되돌리는지" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-timeReinvest">⑤ 절감 시간 재투자: 누구의 성장과 어떤 고부가가치 업무에</label><textarea data-md-label="절감 시간 재투자 계획" data-md-section="5. 시간 재투자" data-rev-field="timeReinvest" id="r3-fld-timeReinvest" placeholder="AI로 줄어든 시간을 어디에 쓸지 — 대상(누구)과 업무(무엇)를 구체적으로" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-metric">⑥ 30일 성공 판단: 정량 지표 1개 · 정성 증거 1개</label><textarea data-md-label="정량 지표·정성 증거" data-md-section="6. 성공 판단" data-rev-field="metric" id="r3-fld-metric" placeholder="숫자로 확인할 지표 1개 + 행동·분위기 변화로 확인할 증거 1개" style="min-height:120px"></textarea></div>
-<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-aiReview">AI 반론 점검 반영: 수용·기각 결정과 이유 <span style="color:#1e3a8a;font-weight:800;">📣 강사님 진행에 따라 작성</span></label><textarea data-md-label="AI 반론 점검 반영(수용·기각과 이유)" data-md-section="6. 성공 판단" data-rev-field="aiReview" id="r3-fld-aiReview" placeholder="예) 수용 — ‘지표가 30일 내 측정 불가’ 반론 인정 → 주간 측정형 지표로 교체 / 기각 — 범위 과다 지적은 이미 1개 Workflow로 축소함(이유)" style="min-height:120px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-aiReview">AI 반론 점검 반영: 수용·기각 결정과 이유 <span style="color:#1e3a8a;font-weight:800;">📣 강사님 진행에 따라 작성</span></label><textarea data-md-label="AI 반론 점검 반영(수용·기각과 이유)" data-md-section="6. 성공 판단" data-rev-field="aiReview" id="r3-fld-aiReview" placeholder="예) 수용 — ‘지표가 30일 내 측정 불가’ 반론 인정 → 주간 측정형 지표로 교체 / 기각 — 범위 과다 지적은 이미 1개 Workflow로 축소함(이유)" style="min-height:100px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-first72">복귀 후 72시간 내 첫 행동</label><textarea data-md-label="복귀 후 72시간 내 첫 행동" data-md-section="6. 성공 판단" data-rev-field="first72" id="r3-fld-first72" placeholder="현업 복귀 후 3일 안에 실행할 첫 행동 — 작고 구체적으로" style="min-height:100px"></textarea></div>
 </div>
 <div class="rev-actions"><button class="rev-btn primary" data-rev-action="copy-conclusion" type="button">📋 Canvas 복사 — AI Challenge용</button><button class="rev-btn" data-rev-action="reset" type="button">초기화</button><button class="rev-btn" data-rev-action="save" type="button">브라우저 저장</button><button class="rev-btn" data-rev-action="download" type="button">Markdown 다운로드(백업)</button></div>
@@ -492,15 +492,15 @@ setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 
 .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 각 Round에서 받아 둔 2차 캔버스 .md 파일을 직접 업로드해 주세요.',true);});
 });
 })(this);"></div>
-</div></div><div class="clip-section ai-challenge" id="r3AreaAiChallenge"><div class="clip-section-title">AI Challenge</div><div class="clip-section-content">
-<div class="rev-note" style="margin-bottom:12px;"><strong>수용/기각이란?</strong> AI 반론 하나하나에 대해 — <strong>수용</strong>=반론이 맞다고 보고 결론을 고치거나 조건을 붙임 · <strong>기각</strong>=우리 팀의 실제 상황과 달라 반영하지 않음(단, 기각 이유를 Canvas에 남깁니다).</div>
+</div></div><div class="clip-section ai-challenge" id="r3AreaAiChallenge"><div class="clip-section-title">AI Challenge · 시범 운영안 점검</div><div class="clip-section-content">
 <div class="info-block" style="margin-bottom:14px;">
 <div class="info-block-title">왜 AI Challenge(AI 반론 점검)를 하나요?</div>
 <div>
-AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박시켜 보는 검증 단계</strong>입니다. AI에게 정답을 묻는 활동이 아닙니다.<br>
-① 비슷한 경험을 가진 팀장들끼리 토론하면 놓치는 가정과 위험이 생깁니다 — AI의 반론으로 <strong>사각지대를 빠르게 점검</strong>합니다.<br>
-② 순서가 핵심입니다: <strong>사람이 먼저 결론(Human First) → AI는 반론만(AI Challenge) → 수용·기각은 리더와 팀이 결정(Leader Decide)</strong>.<br>
-③ 이 연습 자체가 <strong>AI를 정답 기계가 아니라 검증 파트너로 쓰는 태도</strong>를 기르는 훈련이며, 현업에서 AI 결과를 다룰 때 그대로 적용되는 습관입니다.
+AI Challenge는 <strong>팀의 30일 시범 운영안을 AI에게 일부러 반박시켜, 실행 가능성·지표·중단 기준의 빈틈을 점검하는 검증 단계</strong>입니다 — AI에게 정답을 묻는 활동이 아닙니다.<br>
+① <strong>순서</strong>: 사람이 먼저 결론(Human First) → AI는 반론만(AI Challenge) → 수용·기각은 리더와 팀이 결정(Leader Decide)<br>
+② <strong>방법</strong>: 팀 전원이 <strong>[📋 Canvas 복사]</strong> 버튼으로 각자 실행 → 가장 뼈아픈 반론 1개씩 공유 → 팀이 수용·기각 결정<br>
+③ <strong>수용/기각</strong>: 수용 = 반론이 맞다 → 시범 운영안에 반영 · 기각 = 우리 팀 상황과 다름 → 반영하지 않되 이유를 Canvas에 기록<br>
+이 연습은 현업에서 AI를 <strong>정답 기계가 아니라 검증 파트너</strong>로 쓰는 습관이 됩니다.
 </div>
 </div>
 <details class="ref-collapse"><summary>AI Challenge 프롬프트<span class="ref-hint">참고 · 펼쳐 보기</span></summary>
@@ -523,7 +523,7 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
 </div>
 </div>
 </details></div></div><div class="clip-section"><div class="clip-section-title">발표 네 문장 가이드</div><div class="clip-section-content"><div class="rev-note"><strong>① 무슨 일이 있었나? (장면)</strong> “우리 팀에서는 ___가 반복된다”<br/><strong>② 무엇으로 아는가? (근거)</strong> “실제로 ___이었다 — 숫자·사례”<br/><strong>③ 그래서 무엇을 시험하나? (판단)</strong> “우리가 시험할 책임경계·리더 행동·팀 행동은 ___이다”<br/><strong>④ 더 확인할 것은? (남은 질문)</strong> “아직 팀원·조직과 ___를 확인해야 한다”<br/><span style="color:var(--text-secondary,#667085);">— 네 칸의 빈칸만 채우면 발표용 네 문장이 완성됩니다.</span></div></div></div>
-<div class="wrapup-submit-box" id="r3AreaSubmit" style="margin-top:14px;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid var(--brand,#185dcc);border-radius:16px;background:#fff;">
+<div class="wrapup-submit-box" id="r3AreaSubmit" style="margin-top:14px;padding:16px 18px;border:1px solid #86efac;border-left:6px solid #16a34a;border-radius:16px;background:#f0fdf4;">
 <strong style="display:block;margin-bottom:8px;">내 논의 내용 제출 — 팀 Wrap-up(요약·발표)에 반영됩니다</strong>
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
 <label for="w3-wrapup-team" style="font-weight:700;">팀</label>
