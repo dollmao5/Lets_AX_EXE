@@ -1264,7 +1264,7 @@
         var key=item.getAttribute('data-c501-artifact');
         item.checked=Boolean(savedArtifacts[key]);
       });
-      if(saveMessageEl){saveMessageEl.textContent=saved.updatedAt?'저장된 내용 불러옴 · '+formatTime(saved.updatedAt):'저장된 내용을 불러왔습니다.';}
+      if(saveMessageEl){saveMessageEl.textContent=saved.updatedAt?'저장된 내용 불러옴 · '+formatTime(saved.updatedAt):'이 브라우저에 자동 저장된 이전 작성 내용을 불러왔습니다.';}
       updateUI();
     }
 

@@ -366,7 +366,7 @@ if(!document.__roundImgEscWired){document.__roundImgEscWired=true;document.addEv
 <div>
 Team Canvas는 토론의 발언 전체가 아니라 <strong>내 논의 내용과 팀이 합의한 결론을 남기는 개인 기록표</strong>입니다.<br>
 ① 내 논의 내용과 팀이 합의한 사실·판단·추가 확인 사항만 적으므로, 토론이 끝나는 순간 <strong>나의 결론 문서가 바로 완성</strong>됩니다.<br>
-② 입력 내용은 현재 브라우저에 <strong>자동 저장</strong>되며, 작성이 끝나면 <strong>[내 논의 내용 제출] 버튼으로 제출</strong>합니다. [Markdown 다운로드]는 서버 장애 시 백업용입니다.<br>
+② 입력 내용은 현재 브라우저에 <strong>자동 저장</strong>되며, 작성이 끝나면 <strong>[내 논의 내용 제출] 버튼으로 제출</strong>합니다. AI Challenge 입력은 <strong>[📋 Canvas 복사]</strong> 버튼으로 복사해 붙여넣습니다. [Markdown 다운로드]는 서버 장애 시 백업용입니다.<br>
 ③ 제출 내용은 <strong>나의 2차 캔버스로 통합되어 CH03 통합 저장 Gate와 CH04 실습의 입력자료</strong>가 됩니다 — Canvas가 부실하면 이후 AI 분석의 품질도 그대로 낮아집니다. 토론이 '말하고 끝나는 활동'이 아니라 <strong>'실습 재료를 만드는 활동'</strong>이 되는 이유입니다.
 </div>
 </div>
@@ -444,7 +444,7 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-aiReview">AI 반론 점검 반영: 수용·기각 결정과 이유 <span style="color:#1e3a8a;font-weight:800;">📣 강사님 진행에 따라 작성</span></label><textarea data-md-label="AI 반론 점검 반영(수용·기각과 이유)" data-md-section="6. 성공 판단" data-rev-field="aiReview" id="r3-fld-aiReview" placeholder="예) 수용 — ‘지표가 30일 내 측정 불가’ 반론 인정 → 주간 측정형 지표로 교체 / 기각 — 범위 과다 지적은 이미 1개 Workflow로 축소함(이유)" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r3-fld-first72">복귀 후 72시간 내 첫 행동</label><textarea data-md-label="복귀 후 72시간 내 첫 행동" data-md-section="6. 성공 판단" data-rev-field="first72" id="r3-fld-first72" placeholder="현업 복귀 후 3일 안에 실행할 첫 행동 — 작고 구체적으로" style="min-height:100px"></textarea></div>
 </div>
-<div class="rev-actions"><button class="rev-btn" data-rev-action="reset" type="button">초기화</button><button class="rev-btn" data-rev-action="save" type="button">브라우저 저장</button><button class="rev-btn primary" data-rev-action="download" type="button">Markdown 다운로드</button></div>
+<div class="rev-actions"><button class="rev-btn primary" data-rev-action="copy-conclusion" type="button">📋 Canvas 복사 — AI Challenge용</button><button class="rev-btn" data-rev-action="reset" type="button">초기화</button><button class="rev-btn" data-rev-action="save" type="button">브라우저 저장</button><button class="rev-btn" data-rev-action="download" type="button">Markdown 다운로드(백업)</button></div>
 <div style="margin-top:10px;font-weight:800;">💾 백업 다운로드 파일명 확인: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH03_R3_30일_AI협업_시범운영안_팀번호.md</mark></div>
 <div class="rev-status" data-rev-status="">입력 내용은 현재 브라우저에 자동 저장됩니다.</div>
 </div><div class="canvas2-bundle-box" data-canvas2-bundle="1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #7b3ff0;border-radius:16px;background:#f8f5ff;">
@@ -505,7 +505,7 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
 </div>
 <div class="prompt-block">
 <div class="prompt-header"><span class="prompt-label"><span class="tool-badge">ChatGPT</span><span class="prompt-mode-badge">복붙형</span>30일 시범 운영의 Go·Modify·Hold 점검</span><button class="copy-btn" onclick="copyPrompt(this,'ch03-r3-challenge')" type="button">복사</button></div>
-<div class="prompt-inputs-line" title="Team Canvas에 정리한 AI 협업 시범 운영안 초안을 이 프롬프트 아래에 붙여넣고 실행합니다.">📎 입력 <span class="req-chip">필수</span> · <mark class="file-hl-in">30일 시범 운영안 초안</mark> 붙여넣기</div>
+<div class="prompt-inputs-line" title="Team Canvas의 [📋 Canvas 복사] 버튼으로 복사한 시범 운영안 초안을 이 프롬프트 아래에 붙여넣고 실행합니다.">📎 입력 <span class="req-chip">필수</span> · <mark class="file-hl-in">30일 시범 운영안 초안</mark> 붙여넣기 — Canvas의 <strong>[📋 Canvas 복사]</strong> 버튼 사용</div>
 <div class="prompt-content" id="ch03-r3-challenge">아래는 우리 팀의 AI 협업 시범 운영안 초안입니다.
 당신은 시범 운영의 실패 가능성을 점검하는 동료 리더입니다.
 
@@ -863,7 +863,7 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
         var k=f.getAttribute(&#x27;data-rev-field&#x27;);
         if(Object.prototype.hasOwnProperty.call(obj,k)){f.value=obj[k]||&#x27;&#x27;;}
       });
-      if(status){status.textContent=&#x27;저장된 내용을 불러왔습니다.&#x27;;}
+      if(status){status.textContent=&#x27;이 브라우저에 자동 저장된 이전 작성 내용을 불러왔습니다.&#x27;;}
     }catch(e){}
   }
   function save(show){
@@ -923,6 +923,11 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
     var act=b.getAttribute(&#x27;data-rev-action&#x27;);
     if(act===&#x27;save&#x27;){save(true);}
     if(act===&#x27;download&#x27;){download();}
+    if(act===&#x27;copy-conclusion&#x27;){
+      var txt=buildMarkdown();
+      if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){if(status){status.textContent=&#x27;Canvas 내용을 복사했습니다 — AI Challenge 프롬프트 아래에 붙여넣으세요.&#x27;;}},function(){if(status){status.textContent=&#x27;복사에 실패했습니다 — 내용을 드래그해 복사해 주세요.&#x27;;}});}
+      else{if(status){status.textContent=&#x27;이 브라우저는 복사를 지원하지 않습니다 — 내용을 드래그해 복사해 주세요.&#x27;;}}
+    }
     if(act===&#x27;reset&#x27;&amp;&amp;confirm(&#x27;이 클립에 저장된 입력을 초기화하시겠습니까?&#x27;)){
       fields.forEach(function(f){f.value=&#x27;&#x27;;});
       try{localStorage.removeItem(storageKey);}catch(ignore){}
