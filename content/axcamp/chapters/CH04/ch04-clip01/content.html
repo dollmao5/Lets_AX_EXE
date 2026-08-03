@@ -324,7 +324,189 @@
         padding: 12px;
       }
     }
-  </style>
+  
+/* 완료 기준 상태 선택·자동 저장 */
+    .ch04-clip01-revised .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .ch04-clip01-revised .completion-table {
+      min-width: 980px !important;
+    }
+
+    .ch04-clip01-revised .completion-status-cell {
+      min-width: 300px;
+    }
+
+    .ch04-clip01-revised .completion-state-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .ch04-clip01-revised .completion-state-option {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .ch04-clip01-revised .completion-state-option input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .ch04-clip01-revised .completion-state-option label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font-size: 0.98rem !important;
+      font-weight: 850;
+      line-height: 1.25 !important;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+    }
+
+    .ch04-clip01-revised .completion-state-option label::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border: 2px solid #9aa3af;
+      border-radius: 5px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .ch04-clip01-revised .completion-state-option label:hover {
+      border-color: var(--brand);
+      transform: translateY(-1px);
+    }
+
+    .ch04-clip01-revised .completion-state-option input:focus-visible + label {
+      outline: 4px solid rgba(165, 0, 52, 0.18);
+      outline-offset: 2px;
+    }
+
+    .ch04-clip01-revised .completion-state-option input:checked + label {
+      border-color: var(--brand);
+      background: #fff7f9;
+      color: var(--text-heading);
+      box-shadow: 0 3px 10px rgba(165, 0, 52, 0.10);
+    }
+
+    .ch04-clip01-revised .completion-state-option input:checked + label::before {
+      border-color: var(--brand);
+      background: var(--brand);
+      box-shadow: inset 0 0 0 4px #fff;
+    }
+
+    .ch04-clip01-revised .completion-save-panel {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg-offwhite);
+    }
+
+    .ch04-clip01-revised .completion-save-copy {
+      min-width: 240px;
+      flex: 1 1 420px;
+    }
+
+    .ch04-clip01-revised .completion-save-copy strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--text-heading);
+      font-size: 1rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .ch04-clip01-revised .completion-save-copy span,
+    .ch04-clip01-revised .completion-save-message,
+    .ch04-clip01-revised .completion-summary {
+      color: var(--text-secondary);
+      font-size: 0.96rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .ch04-clip01-revised .completion-save-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .ch04-clip01-revised .completion-reset-btn {
+      min-height: 42px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font: inherit;
+      font-size: 0.94rem !important;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .ch04-clip01-revised .completion-reset-btn:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    .ch04-clip01-revised .completion-reset-btn:focus-visible {
+      outline: 4px solid rgba(165, 0, 52, 0.18);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 680px) {
+      .ch04-clip01-revised .completion-save-panel,
+      .ch04-clip01-revised .completion-save-actions {
+        align-items: stretch;
+      }
+
+      .ch04-clip01-revised .completion-save-actions,
+      .ch04-clip01-revised .completion-reset-btn {
+        width: 100%;
+      }
+
+      .ch04-clip01-revised .optional-details summary {
+        align-items: flex-start;
+      }
+    }
+.ch04-clip01-revised .table-wrap { overflow-x: auto; }
+
+</style>
 <div class="clip-header">
 <div class="clip-badges">
 <span class="clip-badge time">~20분</span>
@@ -652,45 +834,257 @@
 </div>
 </div>
 <div class="phase-banner">❹ 마무리 <span class="phase-sub">— 완료 기준 확인</span></div>
-<div class="clip-section done-criteria">
+<div class="clip-section done-criteria" id="ch04Clip01CompletionSection">
 <div class="clip-section-title">이번 클립의 완료 기준</div>
 <div class="clip-section-content">
 <div class="table-wrap">
-<table class="comparison-table">
+<table class="comparison-table completion-table">
 <thead>
 <tr>
 <th>확인 항목</th>
 <th>완료 기준</th>
+<th>내 상태</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>NotebookLM 접속</strong></td>
 <td>NotebookLM에 로그인하고 새 노트북 생성 위치를 확인했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="notebooklm-access">
+<legend class="visually-hidden">NotebookLM 접속 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-notebooklm-access-done" name="ch04c01-notebooklm-access" type="radio" value="done"/>
+<label for="ch04c01-notebooklm-access-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-notebooklm-access-review" name="ch04c01-notebooklm-access" type="radio" value="needs-review"/>
+<label for="ch04c01-notebooklm-access-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
 </tr>
 <tr>
 <td><strong>소스 패널</strong></td>
 <td>소스를 추가하고 질문에 포함할 자료를 선택하는 위치를 확인했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="source-panel">
+<legend class="visually-hidden">소스 패널 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-source-panel-done" name="ch04c01-source-panel" type="radio" value="done"/>
+<label for="ch04c01-source-panel-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-source-panel-review" name="ch04c01-source-panel" type="radio" value="needs-review"/>
+<label for="ch04c01-source-panel-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
 </tr>
 <tr>
 <td><strong>채팅 패널</strong></td>
 <td>소스 기반 답변과 인라인 출처를 확인하는 방식을 이해했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="chat-panel">
+<legend class="visually-hidden">채팅 패널 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-chat-panel-done" name="ch04c01-chat-panel" type="radio" value="done"/>
+<label for="ch04c01-chat-panel-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-chat-panel-review" name="ch04c01-chat-panel" type="radio" value="needs-review"/>
+<label for="ch04c01-chat-panel-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
 </tr>
 <tr>
 <td><strong>Studio 패널</strong></td>
 <td>계정에서 제공되는 소스 기반 산출물 생성 위치를 확인했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="studio-panel">
+<legend class="visually-hidden">Studio 패널 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-studio-panel-done" name="ch04c01-studio-panel" type="radio" value="done"/>
+<label for="ch04c01-studio-panel-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-studio-panel-review" name="ch04c01-studio-panel" type="radio" value="needs-review"/>
+<label for="ch04c01-studio-panel-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
 </tr>
 <tr>
 <td><strong>후속 자료 준비</strong></td>
 <td>CH02·CH03 산출물을 하나의 CH04 노트북에 묶어 사용할 이유를 이해했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="follow-up-assets">
+<legend class="visually-hidden">후속 자료 준비 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-follow-up-assets-done" name="ch04c01-follow-up-assets" type="radio" value="done"/>
+<label for="ch04c01-follow-up-assets-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-follow-up-assets-review" name="ch04c01-follow-up-assets" type="radio" value="needs-review"/>
+<label for="ch04c01-follow-up-assets-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
 </tr>
 <tr>
 <td><strong>민감정보 원칙</strong></td>
 <td>평가·보상·징계·개인정보는 익명화하거나 입력하지 않는 원칙을 확인했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="sensitive-info">
+<legend class="visually-hidden">민감정보 원칙 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-sensitive-info-done" name="ch04c01-sensitive-info" type="radio" value="done"/>
+<label for="ch04c01-sensitive-info-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch04c01-sensitive-info-review" name="ch04c01-sensitive-info" type="radio" value="needs-review"/>
+<label for="ch04c01-sensitive-info-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
 </tr>
 </tbody>
 </table>
 </div>
+<div class="completion-save-panel">
+<div class="completion-save-copy">
+<strong>선택 즉시 자동 저장됩니다.</strong>
+<span>현재 브라우저의 로그인 계정을 기준으로 저장되며, 다시 접속하면 선택 상태를 불러옵니다.</span>
+</div>
+<div class="completion-save-actions">
+<span class="completion-summary" data-completion-summary="">완료 0 / 6 · 보완 필요 0 / 6</span>
+<span aria-live="polite" class="completion-save-message" data-completion-save-message="" role="status">아직 저장된 상태가 없습니다.</span>
+<button class="completion-reset-btn" data-completion-reset="" type="button">상태 초기화</button>
+</div>
+</div>
+<!-- 동적 HTML 주입 환경에서도 완료 기준 상태를 복원하고 자동 저장합니다. -->
+<img alt="" onload="(function(loader){
+      var root=loader.closest('.ch04-clip01-revised');
+      if(!root||root.getAttribute('data-completion-status-ready')==='true'){return;}
+      root.setAttribute('data-completion-status-ready','true');
+
+      var section=root.querySelector('#ch04Clip01CompletionSection');
+      if(!section){return;}
+      var controls=section.querySelectorAll('[data-completion-status]');
+      var groups=section.querySelectorAll('[data-completion-item]');
+      var messageEl=section.querySelector('[data-completion-save-message]');
+      var summaryEl=section.querySelector('[data-completion-summary]');
+      var resetBtn=section.querySelector('[data-completion-reset]');
+      var courseCode='AXCAMP';
+      var accountId='public';
+      try{
+        courseCode=localStorage.getItem('ax_literacy_course_code')||courseCode;
+        accountId=localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||accountId;
+      }catch(ignore){}
+      var storageKey='ax_literacy_checklist_status:'+encodeURIComponent(courseCode)+':ch04-clip01:'+encodeURIComponent(accountId);
+
+      function formatSavedTime(value){
+        if(!value){return '';}
+        var date=new Date(value);
+        if(Number.isNaN(date.getTime())){return '';}
+        return date.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      }
+
+      function readState(){
+        try{
+          var raw=localStorage.getItem(storageKey);
+          if(!raw){return null;}
+          var parsed=JSON.parse(raw);
+          return parsed&amp;&amp;typeof parsed==='object'?parsed:null;
+        }catch(error){
+          return null;
+        }
+      }
+
+      function collectItems(){
+        var items={};
+        for(var i=0;i&lt;groups.length;i+=1){
+          var group=groups[i];
+          var key=group.getAttribute('data-completion-item');
+          var checked=group.querySelector('[data-completion-status]:checked');
+          if(key&amp;&amp;checked){items[key]=checked.value;}
+        }
+        return items;
+      }
+
+      function updateSummary(items){
+        var done=0;
+        var review=0;
+        var keys=Object.keys(items||{});
+        for(var i=0;i&lt;keys.length;i+=1){
+          if(items[keys[i]]==='done'){done+=1;}
+          if(items[keys[i]]==='needs-review'){review+=1;}
+        }
+        if(summaryEl){summaryEl.textContent='완료 '+done+' / '+groups.length+' · 보완 필요 '+review+' / '+groups.length;}
+      }
+
+      function findGroup(key){
+        for(var i=0;i&lt;groups.length;i+=1){
+          if(groups[i].getAttribute('data-completion-item')===key){return groups[i];}
+        }
+        return null;
+      }
+
+      function restoreState(){
+        var saved=readState();
+        var items=saved&amp;&amp;saved.items?saved.items:{};
+        var keys=Object.keys(items);
+        for(var i=0;i&lt;keys.length;i+=1){
+          var key=keys[i];
+          var value=items[key];
+          var group=findGroup(key);
+          if(!group){continue;}
+          var inputs=group.querySelectorAll('[data-completion-status]');
+          for(var j=0;j&lt;inputs.length;j+=1){
+            if(inputs[j].value===value){inputs[j].checked=true;break;}
+          }
+        }
+        updateSummary(items);
+        if(messageEl){
+          if(saved&amp;&amp;saved.updatedAt){
+            messageEl.textContent='저장된 상태 불러옴 · '+formatSavedTime(saved.updatedAt);
+          }else{
+            messageEl.textContent='아직 저장된 상태가 없습니다.';
+          }
+        }
+      }
+
+      function saveState(){
+        var items=collectItems();
+        var payload={version:1,clipKey:'ch04-clip01',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};
+        try{
+          localStorage.setItem(storageKey,JSON.stringify(payload));
+          updateSummary(items);
+          if(messageEl){messageEl.textContent='자동 저장 완료 · '+formatSavedTime(payload.updatedAt);}
+        }catch(error){
+          updateSummary(items);
+          if(messageEl){messageEl.textContent='상태는 선택되었지만 브라우저 저장에 실패했습니다.';}
+        }
+      }
+
+      section.addEventListener('change',function(event){
+        if(event.target&amp;&amp;event.target.matches('[data-completion-status]')){saveState();}
+      });
+
+      if(resetBtn){
+        resetBtn.addEventListener('click',function(){
+          if(!window.confirm('저장된 완료 기준 상태를 모두 초기화하시겠습니까?')){return;}
+          for(var i=0;i&lt;controls.length;i+=1){controls[i].checked=false;}
+          try{localStorage.removeItem(storageKey);}catch(ignore){}
+          updateSummary({});
+          if(messageEl){messageEl.textContent='저장된 상태를 초기화했습니다.';}
+        });
+      }
+
+      restoreState();
+    })(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
+
 </div>
 </div>
 <div class="info-block key-message" style="margin-top:18px">
@@ -746,4 +1140,5 @@
     modal.addEventListener('click',function(event){if(event.target===modal){closeModal();}});
     document.addEventListener('keydown',function(event){if(event.key==='Escape'&amp;&amp;modal.classList.contains('is-open')){closeModal();}});
   })(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
+<div class="clip-section"><div class="clip-section-title">다음 단계 연결</div><div class="clip-section-content"><div class="tip-block next-step-card"><div class="tip-block-title">산출물 3종을 준비해 실전 활용으로 이동합니다</div><div class="tip-block-content">다음 클립에서 NotebookLM에 CH02·CH03 산출물을 업로드해 소스 기반 진단과 30일 실행계획 수립을 진행합니다. 업로드할 파일 3개(CH02 통합본·CH03 통합본·2차 캔버스)를 미리 확인하세요.</div></div></div></div>
 <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch03-clip01c">← CH03 통합 저장 Gate: 성장역량·일하는 방식·팀 실험 통합</a><a class="clip-nav-btn" href="#ch03-clip02">선택 참고: Gemini 및 Gems 소개</a><a class="clip-nav-btn" href="#ch04-clip02">NotebookLM &amp; AI 비서 활용: 팀 성과·성장역량 향상 및 피드백 실전 →</a></div></div>

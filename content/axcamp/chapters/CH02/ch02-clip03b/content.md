@@ -211,17 +211,58 @@ Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세
 
 ## 이번 클립의 완료 기준
 
-없앨 일과 사람이 끝까지 책임질 일을 실제 업무 기준으로 토론했다
-Team Canvas의 책임경계표를 기록하고 ☑ 팀 대표(합의본) 체크로 제출했다 (기록 담당자)
-'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다
-체크 상태는 현재 브라우저에 자동 저장됩니다.
+|
+확인 항목 |
+완료 기준 |
+내 상태 |
 
-![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+|
+**팀 토론 참여** |
+없앨 일과 사람이 끝까지 책임질 일을 실제 업무 기준으로 토론했다. |
 
--1)b.checked=true;});}catch(e){}
-root.querySelector('#r2CheckBox').addEventListener('change',function(){
-var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r2check'));});
-try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
-});
-})(this);">
-**다음 클립 연결** — 이 책임경계표는 바로 다음 클립(프롬프팅 활용)에서 리더 「나의 핵심역량과 스킬」을 만들 때 입력자료로 사용합니다.
+팀 토론 참여 상태
+
+완료
+
+보완 필요
+
+|
+
+|
+**Team Canvas 기록·제출** |
+Team Canvas의 책임경계표를 기록하고 ☑ 팀 대표(합의본) 체크로 제출했다. (기록 담당자) |
+
+Team Canvas 기록·제출 상태
+
+완료
+
+보완 필요
+
+|
+
+|
+**내 논의 내용 제출** |
+'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다. |
+
+내 논의 내용 제출 상태
+
+완료
+
+보완 필요
+
+|
+
+**선택 즉시 자동 저장됩니다.**
+현재 브라우저의 로그인 계정을 기준으로 저장되며, 다시 접속하면 선택 상태를 불러옵니다.
+
+완료 0 / 3 · 보완 필요 0 / 3
+아직 저장된 상태가 없습니다.
+상태 초기화
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
+
+## 다음 단계 연결
+
+### 저장 후 프롬프팅 활용으로 이동합니다
+
+이 책임경계표는 바로 다음 클립(프롬프팅 활용)에서 리더 「나의 핵심역량과 스킬」을 만들 때 입력자료로 사용합니다.

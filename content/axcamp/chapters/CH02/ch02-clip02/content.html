@@ -87,6 +87,186 @@
 .rev-ch02_clip02 .discussion-visual-placeholder code{padding:6px 10px;border-radius:9px;background:#fff;color:var(--rev-muted,var(--text-secondary,#667085));font-size:.92rem!important;}
 .rev-ch02_clip02 .visual-slot-kicker{display:inline-flex;padding:5px 10px;border-radius:999px;background:var(--rev-brand-soft,rgba(165,0,52,.07));color:var(--rev-brand,var(--brand,#a50034));font-weight:900;font-size:.92rem!important;}
 .rev-ch02_clip02 .discussion-visual-slot figcaption{padding:12px 16px;border-top:1px dashed var(--rev-border,var(--border,#e4e7ec));color:var(--rev-muted,var(--text-secondary,#667085));font-size:.95rem!important;line-height:1.5!important;}
+
+/* 완료 기준 상태 선택·자동 저장 */
+    .rev-ch02_clip02 .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .rev-ch02_clip02 .completion-table {
+      min-width: 980px !important;
+    }
+
+    .rev-ch02_clip02 .completion-status-cell {
+      min-width: 300px;
+    }
+
+    .rev-ch02_clip02 .completion-state-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .rev-ch02_clip02 .completion-state-option {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .rev-ch02_clip02 .completion-state-option input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .rev-ch02_clip02 .completion-state-option label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font-size: 0.98rem !important;
+      font-weight: 850;
+      line-height: 1.25 !important;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+    }
+
+    .rev-ch02_clip02 .completion-state-option label::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border: 2px solid #9aa3af;
+      border-radius: 5px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .rev-ch02_clip02 .completion-state-option label:hover {
+      border-color: var(--brand);
+      transform: translateY(-1px);
+    }
+
+    .rev-ch02_clip02 .completion-state-option input:focus-visible + label {
+      outline: 4px solid rgba(165, 0, 52, 0.18);
+      outline-offset: 2px;
+    }
+
+    .rev-ch02_clip02 .completion-state-option input:checked + label {
+      border-color: var(--brand);
+      background: #fff7f9;
+      color: var(--text-heading);
+      box-shadow: 0 3px 10px rgba(165, 0, 52, 0.10);
+    }
+
+    .rev-ch02_clip02 .completion-state-option input:checked + label::before {
+      border-color: var(--brand);
+      background: var(--brand);
+      box-shadow: inset 0 0 0 4px #fff;
+    }
+
+    .rev-ch02_clip02 .completion-save-panel {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg-offwhite);
+    }
+
+    .rev-ch02_clip02 .completion-save-copy {
+      min-width: 240px;
+      flex: 1 1 420px;
+    }
+
+    .rev-ch02_clip02 .completion-save-copy strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--text-heading);
+      font-size: 1rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .rev-ch02_clip02 .completion-save-copy span,
+    .rev-ch02_clip02 .completion-save-message,
+    .rev-ch02_clip02 .completion-summary {
+      color: var(--text-secondary);
+      font-size: 0.96rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .rev-ch02_clip02 .completion-save-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .rev-ch02_clip02 .completion-reset-btn {
+      min-height: 42px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-body);
+      font: inherit;
+      font-size: 0.94rem !important;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .rev-ch02_clip02 .completion-reset-btn:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    .rev-ch02_clip02 .completion-reset-btn:focus-visible {
+      outline: 4px solid rgba(165, 0, 52, 0.18);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 680px) {
+      .rev-ch02_clip02 .completion-save-panel,
+      .rev-ch02_clip02 .completion-save-actions {
+        align-items: stretch;
+      }
+
+      .rev-ch02_clip02 .completion-save-actions,
+      .rev-ch02_clip02 .completion-reset-btn {
+        width: 100%;
+      }
+
+      .rev-ch02_clip02 .optional-details summary {
+        align-items: flex-start;
+      }
+    }
 </style>
 <div class="clip-header"><div class="clip-badges"><span class="clip-badge time">~30분</span><span class="clip-badge chapter">CH 02</span><span class="clip-badge">팀 토론 · Round 1</span></div><h1 class="clip-title" data-keep-title="">Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민</h1></div>
 <div class="clip-overview">AI 활용 아이디어를 일반론으로 나열하는 시간이 아닙니다. <strong>AI가 팀에 들어오며 실제로 달라진 업무 장면과, 원래 있었지만 더 선명해진 리더십·업무의 문제와 고민</strong>을 확인합니다. 사람의 경험과 근거로 잠정 결론을 만든 뒤 AI에게 반론·누락만 요청하고, 1페이지 Team Canvas를 저장합니다.</div><div class="phase-banner">❶ 도입 <span class="phase-sub">— 핵심 질문 확인</span></div>
@@ -408,26 +588,204 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
   .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});
 });
 })(this);">
-<div class="clip-section done-criteria"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
-<div class="info-block" id="r1CheckBox">
-<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r1check="talk" style="margin-top:5px;width:18px;height:18px;"> <span>실제 업무 장면을 근거로 토론에 참여했다</span></label>
-<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r1check="canvas" style="margin-top:5px;width:18px;height:18px;"> <span>Team Canvas에 팀 합의 내용을 기록하고 ☑ 팀 대표(합의본) 체크로 제출했다 (기록 담당자)</span></label>
-<label style="display:flex;gap:10px;align-items:flex-start;margin:6px 0;cursor:pointer;"><input type="checkbox" data-r1check="submit" style="margin-top:5px;width:18px;height:18px;"> <span>'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다</span></label>
-<p style="margin:8px 0 0;font-size:.92rem;color:var(--text-secondary,#667085);">체크 상태는 현재 브라우저에 자동 저장됩니다.</p>
+<div class="clip-section done-criteria" id="ch02Clip02CompletionSection"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
+<div class="table-wrap">
+<table class="comparison-table completion-table">
+<thead>
+<tr>
+<th>확인 항목</th>
+<th>완료 기준</th>
+<th>내 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>팀 토론 참여</strong></td>
+<td>실제 업무 장면을 근거로 토론에 참여했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="discussion-talk">
+<legend class="visually-hidden">팀 토론 참여 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch02c02-discussion-talk-done" name="ch02c02-discussion-talk" type="radio" value="done"/>
+<label for="ch02c02-discussion-talk-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch02c02-discussion-talk-review" name="ch02c02-discussion-talk" type="radio" value="needs-review"/>
+<label for="ch02c02-discussion-talk-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>Team Canvas 기록·제출</strong></td>
+<td>Team Canvas에 팀 합의 내용을 기록하고 ☑ 팀 대표(합의본) 체크로 제출했다. (기록 담당자)</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="team-canvas">
+<legend class="visually-hidden">Team Canvas 기록·제출 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch02c02-team-canvas-done" name="ch02c02-team-canvas" type="radio" value="done"/>
+<label for="ch02c02-team-canvas-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch02c02-team-canvas-review" name="ch02c02-team-canvas" type="radio" value="needs-review"/>
+<label for="ch02c02-team-canvas-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
+</tr>
+<tr>
+<td><strong>내 논의 내용 제출</strong></td>
+<td>'내 논의 내용 제출' 버튼으로 내 논의 내용을 제출했다.</td>
+<td class="completion-status-cell">
+<fieldset class="completion-state-group" data-completion-item="my-submission">
+<legend class="visually-hidden">내 논의 내용 제출 상태</legend>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch02c02-my-submission-done" name="ch02c02-my-submission" type="radio" value="done"/>
+<label for="ch02c02-my-submission-done">완료</label>
+</span>
+<span class="completion-state-option">
+<input data-completion-status="" id="ch02c02-my-submission-review" name="ch02c02-my-submission" type="radio" value="needs-review"/>
+<label for="ch02c02-my-submission-review">보완 필요</label>
+</span>
+</fieldset>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
+<div class="completion-save-panel">
+<div class="completion-save-copy">
+<strong>선택 즉시 자동 저장됩니다.</strong>
+<span>현재 브라우저의 로그인 계정을 기준으로 저장되며, 다시 접속하면 선택 상태를 불러옵니다.</span>
+</div>
+<div class="completion-save-actions">
+<span class="completion-summary" data-completion-summary="">완료 0 / 3 · 보완 필요 0 / 3</span>
+<span aria-live="polite" class="completion-save-message" data-completion-save-message="" role="status">아직 저장된 상태가 없습니다.</span>
+<button class="completion-reset-btn" data-completion-reset="" type="button">상태 초기화</button>
+</div>
+</div>
+<!-- 동적 HTML 주입 환경에서도 완료 기준 상태를 복원하고 자동 저장합니다. -->
+<img alt="" onload="(function(loader){
+      var root=loader.closest('.rev-ch02_clip02');
+      if(!root||root.getAttribute('data-completion-status-ready')==='true'){return;}
+      root.setAttribute('data-completion-status-ready','true');
+
+      var section=root.querySelector('#ch02Clip02CompletionSection');
+      if(!section){return;}
+      var controls=section.querySelectorAll('[data-completion-status]');
+      var groups=section.querySelectorAll('[data-completion-item]');
+      var messageEl=section.querySelector('[data-completion-save-message]');
+      var summaryEl=section.querySelector('[data-completion-summary]');
+      var resetBtn=section.querySelector('[data-completion-reset]');
+      var courseCode='AXCAMP';
+      var accountId='public';
+      try{
+        courseCode=localStorage.getItem('ax_literacy_course_code')||courseCode;
+        accountId=localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||accountId;
+      }catch(ignore){}
+      var storageKey='ax_literacy_checklist_status:'+encodeURIComponent(courseCode)+':ch02-clip02:'+encodeURIComponent(accountId);
+
+      function formatSavedTime(value){
+        if(!value){return '';}
+        var date=new Date(value);
+        if(Number.isNaN(date.getTime())){return '';}
+        return date.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      }
+
+      function readState(){
+        try{
+          var raw=localStorage.getItem(storageKey);
+          if(!raw){return null;}
+          var parsed=JSON.parse(raw);
+          return parsed&amp;&amp;typeof parsed==='object'?parsed:null;
+        }catch(error){
+          return null;
+        }
+      }
+
+      function collectItems(){
+        var items={};
+        for(var i=0;i&lt;groups.length;i+=1){
+          var group=groups[i];
+          var key=group.getAttribute('data-completion-item');
+          var checked=group.querySelector('[data-completion-status]:checked');
+          if(key&amp;&amp;checked){items[key]=checked.value;}
+        }
+        return items;
+      }
+
+      function updateSummary(items){
+        var done=0;
+        var review=0;
+        var keys=Object.keys(items||{});
+        for(var i=0;i&lt;keys.length;i+=1){
+          if(items[keys[i]]==='done'){done+=1;}
+          if(items[keys[i]]==='needs-review'){review+=1;}
+        }
+        if(summaryEl){summaryEl.textContent='완료 '+done+' / '+groups.length+' · 보완 필요 '+review+' / '+groups.length;}
+      }
+
+      function findGroup(key){
+        for(var i=0;i&lt;groups.length;i+=1){
+          if(groups[i].getAttribute('data-completion-item')===key){return groups[i];}
+        }
+        return null;
+      }
+
+      function restoreState(){
+        var saved=readState();
+        var items=saved&amp;&amp;saved.items?saved.items:{};
+        var keys=Object.keys(items);
+        for(var i=0;i&lt;keys.length;i+=1){
+          var key=keys[i];
+          var value=items[key];
+          var group=findGroup(key);
+          if(!group){continue;}
+          var inputs=group.querySelectorAll('[data-completion-status]');
+          for(var j=0;j&lt;inputs.length;j+=1){
+            if(inputs[j].value===value){inputs[j].checked=true;break;}
+          }
+        }
+        updateSummary(items);
+        if(messageEl){
+          if(saved&amp;&amp;saved.updatedAt){
+            messageEl.textContent='저장된 상태 불러옴 · '+formatSavedTime(saved.updatedAt);
+          }else{
+            messageEl.textContent='아직 저장된 상태가 없습니다.';
+          }
+        }
+      }
+
+      function saveState(){
+        var items=collectItems();
+        var payload={version:1,clipKey:'ch02-clip02',courseCode:courseCode,accountId:accountId,items:items,updatedAt:new Date().toISOString()};
+        try{
+          localStorage.setItem(storageKey,JSON.stringify(payload));
+          updateSummary(items);
+          if(messageEl){messageEl.textContent='자동 저장 완료 · '+formatSavedTime(payload.updatedAt);}
+        }catch(error){
+          updateSummary(items);
+          if(messageEl){messageEl.textContent='상태는 선택되었지만 브라우저 저장에 실패했습니다.';}
+        }
+      }
+
+      section.addEventListener('change',function(event){
+        if(event.target&amp;&amp;event.target.matches('[data-completion-status]')){saveState();}
+      });
+
+      if(resetBtn){
+        resetBtn.addEventListener('click',function(){
+          if(!window.confirm('저장된 완료 기준 상태를 모두 초기화하시겠습니까?')){return;}
+          for(var i=0;i&lt;controls.length;i+=1){controls[i].checked=false;}
+          try{localStorage.removeItem(storageKey);}catch(ignore){}
+          updateSummary({});
+          if(messageEl){messageEl.textContent='저장된 상태를 초기화했습니다.';}
+        });
+      }
+
+      restoreState();
+    })(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
 </div></div>
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
-var root=px.closest('section');
-if(!root||root.dataset.r1CheckReady==='1')return;
-root.dataset.r1CheckReady='1';
-var KEY='ax_wrapup_r1_check';
-var boxes=root.querySelectorAll('[data-r1check]');
-try{var saved=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b){if(saved.indexOf(b.getAttribute('data-r1check'))>-1)b.checked=true;});}catch(e){}
-root.querySelector('#r1CheckBox').addEventListener('change',function(){
-  var on=[];boxes.forEach(function(b){if(b.checked)on.push(b.getAttribute('data-r1check'));});
-  try{localStorage.setItem(KEY,JSON.stringify(on));}catch(e){}
-});
-})(this);">
-<div class="rev-note"><strong>다음 클립 연결</strong> — 이 Canvas는 바로 다음 클립(프롬프팅 기초)에서 AI 인터뷰로 나의 리더 역할 프로필을 만들 때 입력자료로 사용합니다.</div>
+<div class="clip-section"><div class="clip-section-title">다음 단계 연결</div><div class="clip-section-content"><div class="tip-block next-step-card"><div class="tip-block-title">저장 후 프롬프팅 기초로 이동합니다</div><div class="tip-block-content">이 Canvas는 바로 다음 클립(프롬프팅 기초)에서 AI 인터뷰로 나의 리더 역할 프로필을 만들 때 입력자료로 사용합니다.</div></div></div></div>
   <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch02-clip01">← ChatGPT Overview: 실습 환경 세팅과 핵심 기능 이해</a><a class="clip-nav-btn" href="#ch02-clip03">프롬프팅 기초: AI 시대, 리더 역할·책임 인식 →</a></div>
 </section>
