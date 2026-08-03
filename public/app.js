@@ -4954,6 +4954,28 @@ function onInsertContentEmbed() {
   setContentEmbedStatus("외부 임베드 HTML을 편집기에 삽입했습니다.");
 }
 
+/* [260731] 라운드 진행 도식(round-flow) 단계 칩 클릭 → 해당 구역으로 스크롤 이동.
+   해시 라우팅과 충돌하지 않도록 앵커 링크 대신 JS 스크롤을 사용합니다. */
+function scrollToRoundFlowTarget(step) {
+  const targetId = step?.getAttribute?.("data-rf-target");
+  if (!targetId) return;
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  const isField = target.tagName === "INPUT" || target.tagName === "TEXTAREA";
+  target.scrollIntoView({ behavior: "smooth", block: isField ? "center" : "start" });
+}
+document.addEventListener("click", (event) => {
+  const step = event.target?.closest?.(".rf-step[data-rf-target]");
+  if (step) scrollToRoundFlowTarget(step);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const step = event.target?.closest?.(".rf-step[data-rf-target]");
+  if (!step) return;
+  event.preventDefault();
+  scrollToRoundFlowTarget(step);
+});
+
 function onClearContentEmbed() {
   if (el.contentEmbedUrlInput) el.contentEmbedUrlInput.value = "";
   if (el.contentEmbedTitleInput) el.contentEmbedTitleInput.value = "";

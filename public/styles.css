@@ -6770,6 +6770,71 @@ label:has(> input[data-r3check]:checked) {
   color: #4c1d95 !important;
 }
 
+/* ── 260731 라운드 진행 도식(round-flow): R1·R2·R3 팀 토론 단계 스텝퍼 — 표 위 요약 층
+   기본=회색 / rf-ai=AI 반론 점검(보라, ai-challenge 계열) / rf-submit=제출(초록, done-criteria 계열) ── */
+.round-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 6px;
+  margin: 4px 0 18px;
+}
+.round-flow .rf-step {
+  flex: 1 1 150px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border, #e4e7ec);
+  border-top: 4px solid #94a3b8;
+  border-radius: 14px;
+  background: var(--bg-offwhite, #f8f9fb);
+}
+.round-flow .rf-head { display: flex; align-items: baseline; gap: 6px; }
+.round-flow .rf-head .rf-name { flex: 1 1 auto; }
+.round-flow .rf-num { font-weight: 900; color: #475569; }
+.round-flow .rf-time { margin-left: auto; font-size: .85rem !important; font-weight: 800; color: #64748b; white-space: nowrap; }
+.round-flow .rf-name { font-weight: 850; color: var(--text-heading, #172033); font-size: .97rem !important; line-height: 1.32 !important; word-break: keep-all; }
+.round-flow .rf-who { margin-top: auto; align-self: flex-start; font-size: .8rem !important; font-weight: 800; padding: 2px 9px; border-radius: 999px; background: #e2e8f0; color: #334155; white-space: nowrap; }
+.round-flow .rf-arrow { align-self: center; font-weight: 900; color: #94a3b8; flex: 0 0 auto; }
+.round-flow .rf-step.rf-ai { border-color: #c4b5fd; border-top-color: #7c3aed; background: #f5f3ff; }
+.round-flow .rf-step.rf-ai .rf-num, .round-flow .rf-step.rf-ai .rf-time { color: #6d28d9; }
+.round-flow .rf-step.rf-ai .rf-who { background: #ede9fe; color: #5b21b6; }
+.round-flow .rf-step.rf-submit { border-color: #86efac; border-top-color: #16a34a; background: #f0fdf4; }
+.round-flow .rf-step.rf-submit .rf-num, .round-flow .rf-step.rf-submit .rf-time { color: #15803d; }
+.round-flow .rf-step.rf-submit .rf-who { background: #dcfce7; color: #14532d; }
+/* 제출 후 강사 진행 구간(요약 생성→발표) — next-step-card 블루 계열, 점선으로 토론 30분 밖임을 구분 */
+.round-flow .rf-step.rf-wrap { border: 1.5px dashed #93c5fd; border-top: 4px solid #2b5cab; background: #eff6ff; }
+.round-flow .rf-step.rf-wrap .rf-num, .round-flow .rf-step.rf-wrap .rf-time { color: #1d4ed8; }
+.round-flow .rf-step.rf-wrap .rf-who { background: #dbeafe; color: #1e3a8a; }
+/* 진행 주체 구분: 📣 강사 가이드 배지(파랑 계열) — 배지 없는 단계는 팀 자체 진행 */
+.round-flow .rf-lead { margin-top: 4px; align-self: flex-start; font-size: .8rem !important; font-weight: 800; padding: 2px 9px; border-radius: 999px; background: #dbeafe; color: #1e3a8a; white-space: nowrap; }
+/* 배지 2개를 한 줄로: 주체(전원 실행)=왼쪽, 📣 강사 가이드=박스 오른쪽 */
+.round-flow .rf-badges { margin-top: auto; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.round-flow .rf-badges .rf-who, .round-flow .rf-badges .rf-lead { margin-top: 0; align-self: auto; }
+.round-flow .rf-badges .rf-lead { margin-left: auto; }
+.round-flow .rf-step[data-rf-target] { cursor: pointer; }
+.round-flow .rf-step[data-rf-target]:hover { filter: brightness(.96); }
+.round-flow .rf-step[data-rf-target]:focus-visible { outline: 3px solid rgba(43, 92, 171, .45); outline-offset: 2px; }
+.round-flow .rf-caption { flex-basis: 100%; margin-top: 2px; font-size: .89rem !important; color: var(--text-secondary, #667085); }
+@media (max-width: 680px) {
+  .round-flow { flex-direction: column; }
+  .round-flow .rf-step { min-width: 0; }
+  .round-flow .rf-arrow { align-self: flex-start; margin-left: 20px; transform: rotate(90deg); }
+}
+
+/* ── 260803 라운드 진행 표(round-schedule): 시간·활동·진행 주체 열은 내용 폭에 맞춰 한 줄 고정,
+   운영 규칙 열이 남은 폭을 사용 (좁은 화면에서는 줄바꿈 허용) ── */
+table.round-schedule { width: 100%; }
+.round-schedule th:nth-child(1), .round-schedule td:nth-child(1) { white-space: nowrap; width: 1%; }
+.round-schedule th:nth-child(2), .round-schedule td:nth-child(2) { white-space: nowrap; width: 20%; }
+.round-schedule th:nth-child(3), .round-schedule td:nth-child(3) { white-space: nowrap; width: 17%; }
+.round-schedule th:nth-child(-n+3), .round-schedule td:nth-child(-n+3) { text-align: center; }
+@media (max-width: 680px) {
+  .round-schedule th:nth-child(-n+3), .round-schedule td:nth-child(-n+3) { white-space: normal; }
+}
+
 /* ── 260731 다음 단계 연결 카드: 클립 전환 멘트 지점 블루 강조 ── */
 .tip-block.next-step-card,
 .info-block.next-step-card {
