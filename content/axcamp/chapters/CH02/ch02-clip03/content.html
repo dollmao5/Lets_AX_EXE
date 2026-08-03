@@ -614,8 +614,8 @@
       본인의 팀 상황, 리더로서의 고민, AI에 대한 기대와 우려를 자연스럽게 말하는 것이 좋습니다.
     </p>
 <div class="canvas2-prev-box" data-canvas2-prev="round1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #0f7b6c;border-radius:16px;background:#f4faf8;">
-<strong style="display:block;margin-bottom:6px;">📌 Round 1 내 2차 캔버스 불러오기 — 팀 합의 + 내 작성(우선)</strong>
-<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개인별 2차 캔버스입니다. 이 클립의 ChatGPT 실습에서 아래 프롬프트의 입력자료로 활용하세요.<br><strong>사용 순서</strong> ① 팀·이름 입력 → [불러오기] ② [복사] 또는 [.md 다운로드] ③ ChatGPT에 붙여넣기·첨부</p>
+<strong style="display:block;margin-bottom:6px;">📌 Round 1 내 토론 정리본 불러오기 — 팀 합의 + 내 작성(우선)</strong>
+<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개인별 토론 정리본입니다. 이 클립의 ChatGPT 실습에서 아래 프롬프트의 입력자료로 활용하세요.<br><strong>사용 순서</strong> ① 팀·이름 입력 → [불러오기] ② [복사] 또는 [.md 다운로드] ③ ChatGPT에 붙여넣기·첨부</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
 <label style="font-weight:700;">팀</label><select data-c2p-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
 <label style="font-weight:700;">이름</label><input data-c2p-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
@@ -645,7 +645,7 @@ fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d)
 loadBtn.addEventListener('click',function(){
 var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
 if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
-loadBtn.disabled=true;setStatus(LABEL+' 2차 캔버스를 불러오는 중...',false);
+loadBtn.disabled=true;setStatus(LABEL+' 토론 정리본을 불러오는 중...',false);
 fetch('/api/wrapup/canvas2?round='+PREV+'&amp;team='+team+'&amp;name='+encodeURIComponent(name))
 .then(function(r){return r.json();})
 .then(function(d){
@@ -654,7 +654,7 @@ if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.d
 bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ⚠ 아직 ChatGPT에 연결되지 않았습니다. [복사]해서 붙여넣거나 [.md 다운로드] 후 첨부하세요.',false);
+setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ⚠ 아직 ChatGPT에 연결되지 않았습니다. [복사]해서 붙여넣거나 [.md 다운로드] 후 첨부하세요.',false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
 });
@@ -669,7 +669,7 @@ var name=(nameEl.value||'').trim()||'이름';
 var blob=new Blob([bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
 var a=document.createElement('a');
 a.href=URL.createObjectURL(blob);
-a.download=LABEL.replace(' ','')+'_2차캔버스_'+name+'.md';
+a.download=LABEL.replace(' ','')+'_토론정리본_'+name+'.md';
 document.body.appendChild(a);a.click();a.remove();
 setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 });
@@ -679,7 +679,7 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 <span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 1-1. 리더 역할 대화 시작 템플릿</span>
 <span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 33줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 33줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step1-1')">복사</button></span>
 </div>
-<div class="prompt-inputs-line" title="위 ‘Round 1 내 2차 캔버스 불러오기’에서 복사한 내용을 프롬프트 아래에 붙여넣으면 팀 상황·실제 장면을 다시 설명하지 않아도 되어 실습이 3~5분 짧아집니다. 없이 시작해도 됩니다.">📎 입력 <span class="opt-chip">권장</span> · <mark class="file-hl-in">나의 R1 2차 캔버스</mark> 붙여넣기</div>
+<div class="prompt-inputs-line" title="위 ‘Round 1 내 토론 정리본 불러오기’에서 복사한 내용을 프롬프트 아래에 붙여넣으면 팀 상황·실제 장면을 다시 설명하지 않아도 되어 실습이 3~5분 짧아집니다. 없이 시작해도 됩니다.">📎 입력 <span class="opt-chip">권장</span> · <mark class="file-hl-in">나의 R1 토론 정리본</mark> 붙여넣기</div>
 <!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-3-step1-1">당신은 실/팀장 리더십 향상 과정에서 나의 AI 리더십 코치이자 인터뷰어입니다.
 
 나는 지금 “초인공 AI 시대, 팀 리더의 역할”을 정리하려고 합니다.

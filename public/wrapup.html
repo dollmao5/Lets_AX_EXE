@@ -137,7 +137,7 @@
   <!-- [학습 Flow] 선택된 Round의 현재 단계·다음 단계 안내 (강사·교육생 공용) -->
   <div id="roundGuide" class="round-guide"></div>
   <!-- [260801 신입 강사] 하루 진행 순서 한 줄 스트립 -->
-  <div class="muted" style="margin:2px 0 6px;font-size:.86rem;">🧭 진행 순서: <strong>차수 설정</strong> → 토론·제출 확인 → <strong>요약 생성</strong> → 발표 모드 → <strong>2차 캔버스 생성</strong><span style="opacity:.75"> · 관리 버튼(차수 설정·요약 생성 등)은 강사 로그인 후 표시됩니다 · 막히면 [사용법 ❓]와 [도입·마무리 🎬]를 여세요</span></div>
+  <div class="muted" style="margin:2px 0 6px;font-size:.86rem;">🧭 진행 순서: <strong>차수 설정</strong> → 토론·제출 확인 → <strong>요약 생성</strong> → 발표 모드 → <strong>토론 정리본 생성</strong><span style="opacity:.75"> · 관리 버튼(차수 설정·요약 생성 등)은 강사 로그인 후 표시됩니다 · 막히면 [사용법 ❓]와 [도입·마무리 🎬]를 여세요</span></div>
 
   <div class="statusbar">
     <span id="submitStatus" class="muted">제출 현황을 불러오는 중...</span>
@@ -148,7 +148,7 @@
       <button id="helpBtn" title="보드 사용법 안내">사용법 ❓</button>
       <!-- [ENRICHMENT 2026-07-25] 도입 훅 버튼. 복구: 이 줄 삭제 --><button id="hookBtn" title="클립별 도입·마무리 시나리오 (강사용)">도입·마무리 🎬</button><!-- [ENRICHMENT END] -->
       <button id="genBtn" class="primary">요약 생성</button>
-      <button id="canvas2Btn">2차 캔버스 생성</button>
+      <button id="canvas2Btn">토론 정리본 생성</button>
       <button id="cohortBtn">차수 설정</button>
       <button id="codeBtn" style="display:none">차수 코드</button>
       <button id="pullBtn">불러오기(pull)</button>
@@ -199,7 +199,7 @@
       <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1팀 4명 · 2팀 3명…"</strong>이 올라갑니다. 제출 현황은 30초마다 자동 갱신됩니다(즉시 확인은 <span class="btn-name">새로고침</span>). 늦는 팀만 독려하세요.</li>
       <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 30초~수분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
       <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동, ESC 종료). 마지막 교차 분석 슬라이드로 강사 Wrap-up.</li>
-      <li><span class="when">요약 생성 후</span><span class="btn-name">2차 캔버스 생성</span> — 제출자 전원에게 <strong>개인별 2차 캔버스</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면에서 "이전 Round 2차 캔버스 불러오기"로 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면에서 "이전 Round 토론 정리본 불러오기"로 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
       <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
     </ol>
 
@@ -209,11 +209,11 @@
       <tr><td>CH01</td><td>AI 핵심 개념 (강의·퀴즈) — 산출물 없음</td></tr>
       <tr><td>CH02</td><td>ChatGPT 실습: <strong>Round 1</strong>(이 보드) → 리더 역할 프로필 → <strong>Round 2</strong>(이 보드) → 역량 브리프 → 통합 Gate</td></tr>
       <tr><td>CH03</td><td>ChatGPT 실습: 팀 진단 2종 → <strong>Round 3</strong>(이 보드) → 통합 Gate</td></tr>
-      <tr><td>CH04</td><td>NotebookLM 실습: CH02·CH03 Gate 통합본 + <strong>R1~3 2차 캔버스 통합본</strong>(이 보드에서 생성)을 소스로 30일 실행계획 작성</td></tr>
+      <tr><td>CH04</td><td>NotebookLM 실습: CH02·CH03 Gate 통합본 + <strong>R1~3 토론 정리본 통합본</strong>(이 보드에서 생성)을 소스로 30일 실행계획 작성</td></tr>
       <tr><td>CH05</td><td>산출물 회수 + Start·Stop·Continue Wrap-up</td></tr>
       </tbody>
     </table>
-    <p class="help-sub" style="margin-top:8px;">즉, 이 보드는 <strong>Round 1·2·3 세 번</strong> 쓰이고, 여기서 만든 요약·2차 캔버스가 CH04 실습의 소스로 이어집니다. 탭 아래 녹색 띠에서 현재 단계와 다음 단계를 항상 확인할 수 있습니다.</p>
+    <p class="help-sub" style="margin-top:8px;">즉, 이 보드는 <strong>Round 1·2·3 세 번</strong> 쓰이고, 여기서 만든 요약·토론 정리본이 CH04 실습의 소스로 이어집니다. 탭 아래 녹색 띠에서 현재 단계와 다음 단계를 항상 확인할 수 있습니다.</p>
 
     <h3>버튼 사전 (기타 기능)</h3>
     <table>
@@ -233,23 +233,23 @@
 <li><strong>제출 숫자가 안 올라감</strong> — [새로고침] 클릭 → 차수 이름·차수 코드가 교육생 화면 안내와 일치하는지 확인합니다.</li>
 <li><strong>요약 생성 실패·지연</strong> — 한 번 더 실행합니다(재실행 안전). AI 호출이 막히면 자동으로 간이(lite) 요약으로 대체됩니다.</li>
 <li><strong>보드·서버 전체 장애</strong> — 교육생에게 각자 캔버스의 [Markdown 다운로드] 백업 저장을 안내하고, 팀별 구두 발표로 전환해 수업을 계속 진행합니다.</li>
-<li><strong>2차 캔버스에 팀 합의가 비어 있는 경우</strong> — 해당 라운드에서 <strong>[요약 생성]</strong>을 실행하면 팀 요약이 개인별 2차 캔버스에 반영됩니다.</li>
+<li><strong>토론 정리본에 팀 합의가 비어 있는 경우</strong> — 해당 라운드에서 <strong>[요약 생성]</strong>을 실행하면 팀 요약이 개인별 토론 정리본에 반영됩니다.</li>
 <li><strong>시간 부족</strong> — 생략 순서: 2-4 선택 활동(Deep Research·비서) → 4-2 Step 4·5. 필수 산출물은 줄이지 않습니다.</li>
 </ul></div></details>
 <details style="border:1px solid #e2e8f0;border-radius:12px;margin:8px 0 12px;background:#fafaff;"><summary style="cursor:pointer;padding:10px 14px;font-weight:800;">📚 과정 용어 미니 사전 (신입 강사용)</summary><div style="padding:0 16px 12px;">
 <table style="width:100%;border-collapse:collapse;font-size:.92rem;"><tbody>
-<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Team Canvas (1차)</td><td style="padding:6px 8px;">Round 토론 중 교육생이 클립 화면에서 작성·제출하는 팀 기록표.</td></tr>
-<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">2차 캔버스</td><td style="padding:6px 8px;">제출본(개인 원문 우선)과 팀 합의 요약을 합쳐 이 보드가 만들어 주는 개인별 문서 — CH04 NotebookLM 소스로 사용.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Team Canvas</td><td style="padding:6px 8px;">Round 토론 중 교육생이 클립 화면에서 작성·제출하는 팀 기록표.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">토론 정리본 (구 2차 캔버스)</td><td style="padding:6px 8px;">제출본(개인 원문 우선)과 팀 합의 요약을 합쳐 이 보드가 만들어 주는 개인별 문서 — CH04 NotebookLM 소스로 사용.</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">통합 저장 Gate</td><td style="padding:6px 8px;">2-5·3-1c — 실습 결과를 파일 1개로 통합 저장하는 클립. 여기서 만든 통합본 2개가 CH04 필수 소스.</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">통합본 vs 중간통합본</td><td style="padding:6px 8px;">통합본=Gate 필수 산출물(CH02·CH03 각 1개). 중간통합본=3-1의 선택 저장본으로 회수 필수 아님.</td></tr>
-<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">팀 대표 파일 (구 방식)</td><td style="padding:6px 8px;">이전 방식의 팀 합의본 공유 기능 — 현재는 전원 제출 + [요약 생성] → 개인별 2차 캔버스로 대체되었습니다.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">팀 대표 파일 (구 방식)</td><td style="padding:6px 8px;">이전 방식의 팀 합의본 공유 기능 — 현재는 전원 제출 + [요약 생성] → 개인별 토론 정리본으로 대체되었습니다.</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">AI Challenge</td><td style="padding:6px 8px;">사람이 먼저 결론 → AI에게 반론만 요청 → 수용·기각은 팀이 결정하는 검증 단계 (Human First).</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Workflow</td><td style="padding:6px 8px;">일이 흘러가는 단계와 순서 (예: 초안 작성 → 검토 → 승인 → 공유).</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Speak-up</td><td style="padding:6px 8px;">반대 의견·문제·AI 오류를 불이익 걱정 없이 말하는 것.</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Fallback</td><td style="padding:6px 8px;">AI·자동화에 문제가 생겼을 때 되돌아갈 안전 경로 (예: 사람이 수동 처리).</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Quality Gate</td><td style="padding:6px 8px;">다음 단계로 넘어가기 전, 사람이 결과를 확인·승인하는 지점.</td></tr>
 </tbody></table></div></details>
-<div class="help-tip">💡 <strong>기억할 것은 한 줄입니다:</strong> 차수 설정 → (토론·제출) → 요약 생성 → 발표 모드 → 2차 캔버스 생성<span data-help-mode="local"> → 저장·백업</span>. 문제가 생기면 새로고침 후 재시도, 그래도 안 되면 팀별 구두 발표로 전환하고 수업을 계속 진행하세요.</div>
+<div class="help-tip">💡 <strong>기억할 것은 한 줄입니다:</strong> 차수 설정 → (토론·제출) → 요약 생성 → 발표 모드 → 토론 정리본 생성<span data-help-mode="local"> → 저장·백업</span>. 문제가 생기면 새로고침 후 재시도, 그래도 안 되면 팀별 구두 발표로 전환하고 수업을 계속 진행하세요.</div>
   </div>
 </div>
 <!-- [ENRICHMENT 2026-07-25] 강사용 도입·마무리 오버레이 — Round 1~3 도입·마무리 멘트 + 그 외 클립 학습 Flow·산출물 가이드 + D-1 체크리스트. 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 -->
@@ -303,7 +303,7 @@
         <ol style="margin:6px 0 0;padding-left:20px;">
           <li><em>(발표 모드 화면을 보며)</em> "여러 팀에서 공통으로 나온 단어가 보입니다 — ○○, ○○. 우리 팀만의 문제가 아니었죠." <em>(실제 발표에서 나온 키워드로 채우기)</em></li>
           <li>"오늘 나온 이야기들은 <strong>능력의 문제가 아니라 구조의 문제</strong>입니다. 성과를 못 낸 95%의 기업들이 건너뛴 게 바로 이 진단입니다 — 여러분은 방금 그걸 했습니다."</li>
-          <li>"이 Canvas는 방금 생성한 팀 요약과 합쳐져 <strong>'나의 2차 캔버스'</strong>로 다음 실습의 입력이 됩니다. 팀의 현실을 정리했으니, 이제 그 현실에서 '리더인 나'는 무엇을 직접 책임질지로 넘어갑니다."</li>
+          <li>"이 Canvas는 방금 생성한 팀 요약과 합쳐져 <strong>'나의 토론 정리본'</strong>로 다음 실습의 입력이 됩니다. 팀의 현실을 정리했으니, 이제 그 현실에서 '리더인 나'는 무엇을 직접 책임질지로 넘어갑니다."</li>
         </ol>
         <div style="margin-top:6px;font-size:.87rem;color:#b91c1c;">⚠️ 여기서 해결책을 언급하지 않기 — 해결은 R2·R3의 몫입니다.</div>
       </div>
@@ -329,7 +329,7 @@
         <ol style="margin:6px 0 0;padding-left:20px;">
           <li><em>(팀 카드를 비교하며)</em> "재미있는 게, 같은 업무인데 팀마다 경계선이 다릅니다. 틀린 게 아니라 — <strong>책임경계에는 정답이 없고, 팀의 맥락이 기준</strong>이라는 뜻입니다."</li>
           <li>"다만 오전에 본 판례를 기억하세요. 어느 선을 긋든 변하지 않는 것 — <strong>AI에게 일은 맡겨도 책임은 맡길 수 없습니다.</strong> 오늘 그은 선은 '임시선'입니다. 현업에서 팀원들과 다시 그어야 진짜 선이 됩니다."</li>
-          <li>"이 책임경계표는 팀 요약과 합쳐진 <strong>'나의 2차 캔버스'</strong>로, 바로 다음 실습에서 여러분의 핵심 역량 브리프를 만드는 입력이 됩니다."</li>
+          <li>"이 책임경계표는 팀 요약과 합쳐진 <strong>'나의 토론 정리본'</strong>로, 바로 다음 실습에서 여러분의 핵심 역량 브리프를 만드는 입력이 됩니다."</li>
         </ol>
       </div>
     </div></details>
@@ -374,22 +374,22 @@
 
     <details><summary>CH02 (09:40~12:30) — ChatGPT 실습 · 리더 역할·역량</summary><div class="hook-body">
       <div style="margin:8px 0;"><strong>2-1 ChatGPT Overview (20분)</strong> — 실습 환경 세팅: 접속 → 화면 확인 → 핵심 기능 확인. <em>산출물 없음.</em></div>
-      <div style="margin:8px 0;"><strong>2-2 Round 1 (30분)</strong> — 위 <strong>Round 1 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 2차 캔버스에 반영되어 2-3 실습·Round 2 입력자료가 됩니다.</div>
+      <div style="margin:8px 0;"><strong>2-2 Round 1 (30분)</strong> — 위 <strong>Round 1 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 토론 정리본에 반영되어 2-3 실습·Round 2 입력자료가 됩니다.</div>
       <div style="margin:8px 0;"><strong>2-3 리더 역할·책임 (35분)</strong> — 대화형 인터뷰 Step 1~4 (권장 8+10+8+9분). 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_AI시대_리더역할_성명.md</mark></div>
-      <div style="margin:8px 0;"><strong>2-3b Round 2 (30분)</strong> — 위 <strong>Round 2 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R2_AI팀원리더_책임경계_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 2차 캔버스에 반영되어 2-4 실습 입력자료가 됩니다.</div>
-      <div style="margin:8px 0;"><strong>2-4 핵심 역량 (40분)</strong> — 2차 캔버스·리더 프로필·팀장 기대행동 교차분석 3단계. R1·R2 입력은 클립의 '📌 내 2차 캔버스 불러오기'에서 각자 복사·다운로드. 필수:<mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_핵심역량과_스킬_성명.md</mark></div>
+      <div style="margin:8px 0;"><strong>2-3b Round 2 (30분)</strong> — 위 <strong>Round 2 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R2_AI팀원리더_책임경계_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 토론 정리본에 반영되어 2-4 실습 입력자료가 됩니다.</div>
+      <div style="margin:8px 0;"><strong>2-4 핵심 역량 (40분)</strong> — 토론 정리본·리더 프로필·팀장 기대행동 교차분석 3단계. R1·R2 입력은 클립의 '📌 내 토론 정리본 불러오기'에서 각자 복사·다운로드. 필수:<mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_핵심역량과_스킬_성명.md</mark></div>
       <div style="margin:8px 0;"><strong>2-5 통합 저장 Gate (15분)</strong> — 산출물 회수 체크 → 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_리더역할_책임경계_통합본_성명.md</mark> = <strong>CH04 필수 1 소스</strong>. 점심 전 저장 위치 확인.</div>
     </div></details>
 
     <details><summary>CH03 (13:30~15:20) — 팀 성장역량 진단 · 30일 시범 운영</summary><div class="hook-body">
       <div style="margin:8px 0;"><strong>3-1 팀 진단 (60분)</strong> — 6개 진단 렌즈·근거 수준 4단계, Step 1~3 (권장 20+15+15+검증 10분). 필수 2종: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량_점검지표_성명.md</mark> · <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_필요행동역량_성명.md</mark></div>
-      <div style="margin:8px 0;"><strong>3-1b Round 3 (35분)</strong> — 위 <strong>Round 3 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_R3_30일_AI협업_시범운영안_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 2차 캔버스에 반영되어 CH04 통합본 소스가 됩니다.</div>
-      <div style="margin:8px 0;"><strong>3-1c 통합 저장 Gate (15분)</strong> — 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량과_AI협업_통합본_성명.md</mark> = <strong>CH04 필수 2 소스</strong>. 휴식 중 NotebookLM 업로드 파일 3종(CH02 통합본·CH03 통합본·2차 캔버스) 최종 확인.</div>
+      <div style="margin:8px 0;"><strong>3-1b Round 3 (35분)</strong> — 위 <strong>Round 3 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_R3_30일_AI협업_시범운영안_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 토론 정리본에 반영되어 CH04 통합본 소스가 됩니다.</div>
+      <div style="margin:8px 0;"><strong>3-1c 통합 저장 Gate (15분)</strong> — 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량과_AI협업_통합본_성명.md</mark> = <strong>CH04 필수 2 소스</strong>. 휴식 중 NotebookLM 업로드 파일 3종(CH02 통합본·CH03 통합본·토론 정리본) 최종 확인.</div>
     </div></details>
 
     <details><summary>CH04~CH05 (15:30~17:30) — NotebookLM 실습 · 정리</summary><div class="hook-body">
       <div style="margin:8px 0;"><strong>4-1 NotebookLM Overview (20분)</strong> — 사용한도 기준표 · 소스 기반 답변·인라인 출처 · Studio 기능 Tour. <em>산출물 없음.</em> 화면 명칭이 <strong>Gemini Notebook</strong>으로 보일 수 있음(같은 도구) — 교육생 질문 대비.</div>
-      <div style="margin:8px 0;"><strong>4-2 30일 실행계획 (60분)</strong> — Step 1 Source Map(15분) → Step 2 TOP 3(18분) → Step 3 30일 실행계획(27분). 필수 1종(통합): <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_우리팀_성과성장향상_30일실행계획_성명.md</mark> — 1부 근거 정리표 · 2부 TOP 3 포함. (입력 소스에 2차 캔버스 통합본 포함)</div>
+      <div style="margin:8px 0;"><strong>4-2 30일 실행계획 (60분)</strong> — Step 1 Source Map(15분) → Step 2 TOP 3(18분) → Step 3 30일 실행계획(27분). 필수 1종(통합): <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_우리팀_성과성장향상_30일실행계획_성명.md</mark> — 1부 근거 정리표 · 2부 TOP 3 포함. (입력 소스에 토론 정리본 통합본 포함)</div>
       <div style="margin:8px 0;"><strong>5-1 정리정돈 (20분)</strong> — 필수 산출물 8종 회수표 작성 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_현업적용_산출물회수표_성명.md</mark> — 특히 CH04 30일 실행계획 저장 위치 확인.</div>
       <div style="margin:8px 0;"><strong>5-2 Start·Stop·Continue (20분)</strong> — SSC 행동계약 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_나의_30일리더실천계획_성명.md</mark> · 72시간 팀 대화 · 30일 점검일 확정으로 과정 마무리.</div>
     </div></details>
@@ -466,11 +466,11 @@
   /* [학습 Flow] Round별 현재 위치·산출물·다음 단계 안내 (탭 전환 시 갱신) */
   var ROUND_GUIDE = {
     round1: { where: "CH02-2 클립 (오전 · As-Is 진단)", file: "CH02_R1_AI시대_우리팀현실진단_팀번호.md",
-      next: "요약 생성 → 발표 → 2차 캔버스 생성 → 다음 단계는 CH02-3 리더 역할 프로필(ChatGPT)" },
+      next: "요약 생성 → 발표 → 토론 정리본 생성 → 다음 단계는 CH02-3 리더 역할 프로필(ChatGPT)" },
     round2: { where: "CH02-3b 클립 (책임경계 재설계)", file: "CH02_R2_AI팀원리더_책임경계_팀번호.md",
-      next: "요약 생성 → 발표 → 2차 캔버스 생성 → 다음 단계는 CH02-4 핵심 역량 브리프(ChatGPT)" },
+      next: "요약 생성 → 발표 → 토론 정리본 생성 → 다음 단계는 CH02-4 핵심 역량 브리프(ChatGPT)" },
     round3: { where: "CH03-1b 클립 (30일 시범 운영 설계)", file: "CH03_R3_30일_AI협업_시범운영안_팀번호.md",
-      next: "요약 생성 → 발표 → 2차 캔버스 생성 → CH03 통합 Gate → CH04 NotebookLM 실습" }
+      next: "요약 생성 → 발표 → 토론 정리본 생성 → CH03 통합 Gate → CH04 NotebookLM 실습" }
   };
   function renderRoundGuide() {
     var g = ROUND_GUIDE[state.round]; if (!g) return;
@@ -506,7 +506,7 @@
     } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; }
   }
 
-  /* [260803] 요약·2차 캔버스 버튼 상태 표시 — 이미 생성됐음을 라벨로 알려 중복 실행 혼동 방지
+  /* [260803] 요약·토론 정리본 버튼 상태 표시 — 이미 생성됐음을 라벨로 알려 중복 실행 혼동 방지
      (재실행은 갱신 처리라 안전하지만, 완료 여부가 버튼에 남아야 불필요한 반복 클릭이 줄어든다) */
   state.canvas2Done = state.canvas2Done || {};
   function updateGenButtons() {
@@ -520,7 +520,7 @@
       }
     }
     if (c && !c.disabled) {
-      c.textContent = state.canvas2Done[state.round] ? "2차 캔버스 생성 완료 ✓ (재실행 시 갱신)" : "2차 캔버스 생성";
+      c.textContent = state.canvas2Done[state.round] ? "토론 정리본 생성 완료 ✓ (재실행 시 갱신)" : "토론 정리본 생성";
     }
   }
 
@@ -927,14 +927,14 @@
     if (e.key === "Escape" && $("helpOverlay").classList.contains("on")) $("helpOverlay").classList.remove("on");
   });
 
-  /* [Wrapup 5단계] 개인별 2차 캔버스 일괄 생성 — 강사 전용 결정형 병합 (AI 호출 없음).
+  /* [Wrapup 5단계] 개인별 토론 정리본 일괄 생성 — 강사 전용 결정형 병합 (AI 호출 없음).
      팀 요약(summary.json)과 개인 제출 원문을 고정 템플릿으로 합쳐 canvas2/에 저장한다.
      요약 생성 후 실행을 권장하지만, 미생성 상태여도 개인 원문만으로 만들어지고
      교육생 조회는 즉석 병합 폴백이 있어 수업이 멈추지 않는다. 재실행 안전(같은 입력=같은 결과). */
   $("canvas2Btn").addEventListener("click", async function () {
-    if (state.cohort !== state.current) { toast("2차 캔버스 생성은 현재 차수에서만 가능합니다."); return; }
+    if (state.cohort !== state.current) { toast("토론 정리본 생성은 현재 차수에서만 가능합니다."); return; }
     var note = state.summary ? "" : "\n※ 아직 이 라운드의 팀 요약이 없어 '팀 공통 합의'는 비어 있게 됩니다. 요약 생성 후 다시 실행하면 반영됩니다.";
-    if (!confirm(roundLabel(state.round) + " 제출자 전원의 개인별 2차 캔버스를 생성할까요?\n(팀 합의 + 개인 원문 병합 — AI 호출 없이 즉시)" + note)) return;
+    if (!confirm(roundLabel(state.round) + " 제출자 전원의 개인별 토론 정리본을 생성할까요?\n(팀 합의 + 개인 원문 병합 — AI 호출 없이 즉시)" + note)) return;
     var btn = this; btn.disabled = true;
     try {
       var total = 0; var teamsDone = [];
@@ -953,12 +953,12 @@
         btn.textContent = "생성 중...";
         var r = await api("/api/admin/wrapup/canvas2", { method: "POST", body: { round: state.round } });
         if (r.ok) { total = r.count; teamsDone.push("전체"); }
-        else toast(r.error || "2차 캔버스 생성 실패");
+        else toast(r.error || "토론 정리본 생성 실패");
       }
-      if (total > 0) { state.canvas2Done[state.round] = true; toast("2차 캔버스 생성 완료: 총 " + total + "명 (" + teamsDone.join(" · ") + ")"); }
+      if (total > 0) { state.canvas2Done[state.round] = true; toast("토론 정리본 생성 완료: 총 " + total + "명 (" + teamsDone.join(" · ") + ")"); }
       else if (teamsDone.length === 0) toast("생성할 제출물이 없습니다.");
-    } catch (e) { toast("서버 오류로 2차 캔버스 생성에 실패했습니다."); }
-    btn.disabled = false; btn.textContent = "2차 캔버스 생성";
+    } catch (e) { toast("서버 오류로 토론 정리본 생성에 실패했습니다."); }
+    btn.disabled = false; btn.textContent = "토론 정리본 생성";
     updateGenButtons();
   });
 
