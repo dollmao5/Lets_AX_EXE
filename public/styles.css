@@ -6758,6 +6758,18 @@ label:has(> input[data-r3check]:checked) {
   color: #14532d !important;
 }
 
+/* ── 260731 AI Challenge 섹션: AI 반론 점검 지점 바이올렛 강조 (2-2·2-3b·3-1b) ── */
+.clip-section.ai-challenge {
+  padding: 6px 18px 14px;
+  border: 1.5px solid #c4b5fd;
+  border-left: 8px solid #7c3aed;
+  border-radius: 16px;
+  background: #f5f3ff;
+}
+.clip-section.ai-challenge > .clip-section-title {
+  color: #4c1d95 !important;
+}
+
 /* ── 260731 다음 단계 연결 카드: 클립 전환 멘트 지점 블루 강조 ── */
 .tip-block.next-step-card,
 .info-block.next-step-card {

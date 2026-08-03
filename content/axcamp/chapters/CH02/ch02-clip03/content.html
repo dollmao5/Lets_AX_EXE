@@ -605,12 +605,73 @@
       처음부터 정답을 쓰려고 하면 대화가 딱딱해집니다.
       본인의 팀 상황, 리더로서의 고민, AI에 대한 기대와 우려를 자연스럽게 말하는 것이 좋습니다.
     </p>
+<div class="canvas2-prev-box" data-canvas2-prev="round1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #0f7b6c;border-radius:16px;background:#f4faf8;">
+<strong style="display:block;margin-bottom:6px;">📌 Round 1 내 2차 캔버스 불러오기 — 팀 합의 + 내 작성(우선)</strong>
+<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개인별 2차 캔버스입니다. 이 클립의 ChatGPT 실습에서 아래 프롬프트의 입력자료로 활용하세요 (복사 버튼으로 붙여넣기).</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
+<label style="font-weight:700;">팀</label><select data-c2p-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
+<label style="font-weight:700;">이름</label><input data-c2p-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
+<button type="button" data-c2p-load style="min-height:40px;padding:8px 18px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;">불러오기</button>
+<button type="button" data-c2p-copy style="min-height:40px;padding:8px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
+<button type="button" data-c2p-download style="min-height:40px;padding:8px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
+</div>
+<p data-c2p-status style="margin:0 0 8px;font-size:.92rem;color:var(--text-secondary,#667085);">팀·이름 입력 후 불러오기를 누르세요. (Round 1 제출자만 조회됩니다)</p>
+<pre data-c2p-body style="display:none;margin:0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:340px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
+var box=px.closest('[data-canvas2-prev]');
+if(!box||box.dataset.c2pReady==='1')return;
+box.dataset.c2pReady='1';
+var PREV='round1';var LABEL='Round 1';
+var sel=box.querySelector('[data-c2p-team]');
+var nameEl=box.querySelector('[data-c2p-name]');
+var loadBtn=box.querySelector('[data-c2p-load]');
+var copyBtn=box.querySelector('[data-c2p-copy]');
+var dlBtn=box.querySelector('[data-c2p-download]');
+var statusEl=box.querySelector('[data-c2p-status]');
+var bodyEl=box.querySelector('[data-c2p-body]');
+function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
+function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=h;}
+fillTeams(6);
+try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
+fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
+loadBtn.addEventListener('click',function(){
+var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
+if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
+loadBtn.disabled=true;setStatus(LABEL+' 2차 캔버스를 불러오는 중...',false);
+fetch('/api/wrapup/canvas2?round='+PREV+'&amp;team='+team+'&amp;name='+encodeURIComponent(name))
+.then(function(r){return r.json();})
+.then(function(d){
+loadBtn.disabled=false;
+if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
+bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
+copyBtn.style.display='';dlBtn.style.display='';
+try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
+setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영'),false);
+})
+.catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
+});
+copyBtn.addEventListener('click',function(){
+var text=bodyEl.textContent||'';
+function done(ok){setStatus(ok?'복사 완료 — ChatGPT 실습에 붙여넣어 활용하세요.':'복사에 실패했습니다. 내용을 드래그해 복사해 주세요.',!ok);}
+if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(false);});}
+else{done(false);}
+});
+dlBtn.addEventListener('click',function(){
+var name=(nameEl.value||'').trim()||'이름';
+var blob=new Blob([bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
+var a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download=LABEL.replace(' ','')+'_2차캔버스_'+name+'.md';
+document.body.appendChild(a);a.click();a.remove();
+setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+});
+})(this);"></div>
 <div class="prompt-block">
 <div class="prompt-header">
 <span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 실습 1-1. 리더 역할 대화 시작 템플릿</span>
 <button class="copy-btn" onclick="copyPrompt(this,'ch02-3-step1-1')">복사</button>
 </div>
-<div class="prompt-inputs-line" title="Round 1 팀 대표 파일(CH02_R1_AI시대_우리팀현실진단_팀번호.md)을 첨부하면 팀 상황·실제 장면을 다시 설명하지 않아도 되어 실습이 3~5분 짧아집니다. 없이 시작해도 됩니다.">📎 입력 <span class="opt-chip">권장</span> · <mark class="file-hl-in">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark></div>
+<div class="prompt-inputs-line" title="위 ‘Round 1 내 2차 캔버스 불러오기’에서 복사한 내용을 프롬프트 아래에 붙여넣으면 팀 상황·실제 장면을 다시 설명하지 않아도 되어 실습이 3~5분 짧아집니다. 없이 시작해도 됩니다.">📎 입력 <span class="opt-chip">권장</span> · <mark class="file-hl-in">나의 R1 2차 캔버스</mark> 붙여넣기</div>
 <details class="prompt-collapse"><summary>프롬프트 전체 보기 (33줄) — 접힌 상태에서도 [복사]는 전체를 복사합니다</summary><div class="prompt-content" id="ch02-3-step1-1">당신은 실/팀장 리더십 향상 과정에서 나의 AI 리더십 코치이자 인터뷰어입니다.
 
 나는 지금 “초인공 AI 시대, 팀 리더의 역할”을 정리하려고 합니다.

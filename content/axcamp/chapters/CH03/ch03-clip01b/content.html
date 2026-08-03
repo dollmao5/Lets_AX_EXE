@@ -345,12 +345,12 @@ if(!document.__roundImgEscWired){document.__roundImgEscWired=true;document.addEv
 <div class="info-block" style="margin-bottom:14px;">
 <div class="info-block-title">팀 토론, 이렇게 진행하세요 (개인별 역할과 진행 방법)</div>
 <div>
-【준비 · 1분】 <strong>진행자 1명</strong>(시간·단계 진행, 보조 질문 중 우리 팀 2~3개 선택)과 <strong>기록 담당(Evidence Keeper) 1명</strong>(팀 합의 기록·AI Challenge 실행)을 정합니다. 전원 자기 화면의 Team Canvas를 엽니다.<br>
-【토론 · 35분】 핵심 질문을 중심으로 아래 표의 단계를 따릅니다. 전원이 <strong>실제 업무 장면</strong>을 근거로 발언하며 <strong>자기 Canvas에 본인 내용</strong>을 기록하고, 기록 담당은 <strong>팀 합의 내용</strong>을 자기 Canvas에 정리합니다. 잠정 결론 직후 <strong>AI Challenge</strong>로 검증해 결론을 확정합니다.<br>
-【마무리 · 1분】 <strong>전원 [내 논의 내용 제출]</strong> 버튼을 누릅니다. 기록 담당은 제출 시 <strong>☑ 팀 대표(합의본)로도 저장</strong>을 체크합니다 — 파일 다운로드·공유 없이 팀 대표 파일이 자동 공유되어, 팀원들이 다음 실습에서 불러와 사용합니다. [Markdown 다운로드]는 서버 장애 시 백업용입니다. R1~3의 나의 2차 캔버스는 <strong>CH04에서 통합본 다운로드 한 번</strong>으로 NotebookLM 소스로 사용합니다.
+【준비 · 1분】 <strong>진행자 1명</strong>(시간·단계 진행, 보조 질문 중 우리 팀 2~3개 선택)을 정합니다. 전원 자기 화면의 Team Canvas를 엽니다.<br>
+【토론 · 35분】 핵심 질문을 중심으로 아래 표의 단계를 따릅니다. 전원이 <strong>실제 업무 장면</strong>을 근거로 발언하며 <strong>자기 Canvas에 본인 내용과 팀 합의 내용</strong>을 기록합니다. 팀 잠정 결론 직후 <strong>전원이 AI Challenge</strong>를 실행해 반론을 점검하고, 추가 논의를 Canvas에 반영해 결론을 확정합니다.<br>
+【마무리 · 1분】 <strong>전원 [내 논의 내용 제출]</strong> 버튼을 누릅니다. 전원 제출 후 강사가 Wrap-up 보드에서 팀 요약을 생성하면 <strong>나의 2차 캔버스(내 작성 + 팀 합의 요약)</strong>가 완성됩니다. [Markdown 다운로드]는 서버 장애 시 백업용입니다. R1~3의 나의 2차 캔버스는 <strong>CH04에서 통합본 다운로드 한 번</strong>으로 NotebookLM 소스로 사용합니다.
 </div>
 </div>
-<div class="table-wrap"><table class="comparison-table"><thead><tr><th>시간</th><th>활동</th><th>운영 규칙</th></tr></thead><tbody><tr><td>3분</td><td>30일 시범 운영 기준 설명</td><td>한 개 Workflow·리더 행동·팀 행동·증거로 범위를 제한합니다.</td></tr><tr><td>15분</td><td>팀 시범 운영안 설계</td><td>성과·성장·피드백·Speak-up·Quality Gate를 연결합니다.</td></tr><tr><td>7분</td><td>팀 간 상호 점검<br>(Peer Challenge)</td><td>다른 팀이 근거·책임·지표·중단 기준을 질문합니다.</td></tr><tr><td>5분</td><td>시범 운영안 수정</td><td>상호 점검과 <strong>AI 반론 점검</strong>(기록 담당이 아래 AI Challenge 섹션의 프롬프트 실행) 결과의 수용·기각 이유를 기록하고 범위를 축소·보완합니다.</td></tr><tr><td>5분</td><td>실행 다짐 발표</td><td>60~90초, <strong>‘장면 → 근거 → 판단 → 남은 질문’ 네 문장</strong>으로 발표합니다 (아래 발표 네 문장 가이드 참조).</td></tr></tbody></table></div></div></div><div class="clip-section"><div class="clip-section-title">Team Canvas · AI 협업 시범 운영안</div><div class="clip-section-content">
+<div class="table-wrap"><table class="comparison-table"><thead><tr><th>시간</th><th>활동</th><th>운영 규칙</th></tr></thead><tbody><tr><td>3분</td><td>30일 시범 운영 기준 설명</td><td>한 개 Workflow·리더 행동·팀 행동·증거로 범위를 제한합니다.</td></tr><tr><td>15분</td><td>팀 시범 운영안 설계</td><td>성과·성장·피드백·Speak-up·Quality Gate를 연결합니다.</td></tr><tr><td>7분</td><td>팀 간 상호 점검<br>(Peer Challenge)</td><td>다른 팀이 근거·책임·지표·중단 기준을 질문합니다.</td></tr><tr><td>5분</td><td>시범 운영안 수정</td><td>상호 점검과 <strong>AI 반론 점검</strong>(<strong>팀 전원</strong>이 아래 AI Challenge 섹션의 프롬프트를 각자 실행하고 가장 뼈아픈 반론 1개씩 공유) 결과의 수용·기각 이유를 기록하고 범위를 축소·보완합니다.</td></tr><tr><td>5분</td><td>실행 다짐 기록·제출</td><td><strong>‘장면 → 근거 → 판단 → 남은 질문’ 네 문장</strong>으로 실행 다짐을 Canvas에 기록하고 전원 제출합니다 (아래 네 문장 가이드 참조). 팀 발표는 강사가 생성한 팀 요약으로 진행합니다.</td></tr></tbody></table></div></div></div><div class="clip-section"><div class="clip-section-title">Team Canvas · AI 협업 시범 운영안</div><div class="clip-section-content">
 <div class="info-block" style="margin-bottom:14px;">
 <div class="info-block-title">왜 Team Canvas(팀 기록표)를 쓰나요?</div>
 <div>
@@ -482,7 +482,7 @@ setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 
 .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 각 Round에서 받아 둔 2차 캔버스 .md 파일을 직접 업로드해 주세요.',true);});
 });
 })(this);"></div>
-</div></div><div class="clip-section"><div class="clip-section-title">AI Challenge</div><div class="clip-section-content">
+</div></div><div class="clip-section ai-challenge"><div class="clip-section-title">AI Challenge</div><div class="clip-section-content">
 <div class="info-block" style="margin-bottom:14px;">
 <div class="info-block-title">왜 AI Challenge(AI 반론 점검)를 하나요?</div>
 <div>
@@ -515,7 +515,8 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
 <select id="w3-wrapup-team" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
 <label for="w3-wrapup-name" style="font-weight:700;">이름</label>
 <input id="w3-wrapup-name" type="text" placeholder="이름 또는 닉네임" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
-<label style="display:flex;gap:6px;align-items:center;font-weight:700;white-space:nowrap;"><input type="checkbox" data-wrapup-teamrep style="width:17px;height:17px;"> 팀 대표(합의본)로도 저장</label>
+<!-- [HIDDEN 260731] 신방식: 팀 대표(합의본) 체크 숨김 — 팀 합의는 강사 요약→2차 캔버스로 대체. 복구: 아래 label의 display:none을 display:flex로 -->
+<label style="display:none;gap:6px;align-items:center;font-weight:700;white-space:nowrap;"><input type="checkbox" data-wrapup-teamrep style="width:17px;height:17px;"> 팀 대표(합의본)로도 저장</label>
 <button type="button" data-wrapup-submit style="min-height:40px;padding:8px 18px;border:1px solid var(--brand,#185dcc);border-radius:999px;background:var(--brand,#185dcc);color:#fff;font:inherit;font-weight:800;cursor:pointer;">제출</button>
 </div>
 <p data-wrapup-status style="margin:0 0 6px;font-size:.92rem;color:var(--text-secondary,#667085);">Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세요. 재제출하면 내 제출물이 갱신됩니다.</p>
@@ -591,7 +592,7 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
   .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});
 });
 })(this);">
-<div class="phase-banner">❸ 제출·마무리 <span class="phase-sub">— 팀 대표 제출과 다음 단계</span></div>
+<div class="phase-banner">❸ 제출·마무리 <span class="phase-sub">— 전원 제출과 다음 단계</span></div>
 <div class="clip-section done-criteria" id="ch03Clip01bCompletionSection"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
 <div class="table-wrap">
 <table class="comparison-table completion-table">
@@ -621,11 +622,11 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
 </td>
 </tr>
 <tr>
-<td><strong>Team Canvas 기록·제출</strong></td>
-<td>Team Canvas의 AI 협업 시범 운영안을 ☑ 팀 대표(합의본) 체크로 제출했다. (기록 담당자)</td>
+<td><strong>Team Canvas 기록</strong></td>
+<td>Team Canvas에 내 논의 내용과 팀 합의(시범 운영안·AI Challenge 반영)를 기록했다.</td>
 <td class="completion-status-cell">
 <fieldset class="completion-state-group" data-completion-item="team-canvas">
-<legend class="visually-hidden">Team Canvas 기록·제출 상태</legend>
+<legend class="visually-hidden">Team Canvas 기록 상태</legend>
 <span class="completion-state-option">
 <input data-completion-status="" id="ch03c01b-team-canvas-done" name="ch03c01b-team-canvas" type="radio" value="done"/>
 <label for="ch03c01b-team-canvas-done">완료</label>
@@ -790,6 +791,10 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
       restoreState();
     })(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
 </div></div>
+<div class="info-block key-message" style="margin-top:18px">
+<div class="info-block-title">이번 클립의 핵심 메시지</div>
+<div>Round 3의 목적은 거창한 혁신안이 아니라, <strong>30일 안에 실제로 시범 운영할 수 있는 한 개의 Workflow로 좁히는 것</strong>입니다.<br/>리더 행동·팀 행동·확인할 증거·중단 기준까지 정해야 실행 가능한 운영안이 됩니다. AI Challenge로 반론을 점검해 확정한 시범 운영안은 CH03-1의 진단 결과와 함께 통합 저장 Gate를 거쳐 CH04 30일 실행계획의 핵심 입력자료가 됩니다.</div>
+</div>
 <div class="clip-section"><div class="clip-section-title">다음 단계 연결</div><div class="clip-section-content"><div class="tip-block next-step-card"><div class="tip-block-title">Round 3 AI 협업 시범 운영안만으로 CH04에 가지 않습니다</div><div class="tip-block-content">CH03-1의 구조적 병목 가설·성장역량 지표·행동역량과 Round 3 AI 협업 시범 운영안을 다음 Clip에서 하나의 근거 중심 Markdown으로 통합합니다.</div></div></div></div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" aria-hidden="true" style="display:none" onload="(function(root){
   if(!root||root.dataset.revBound===&#x27;1&#x27;){return;}
