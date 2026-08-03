@@ -343,7 +343,7 @@ NotebookLM 로그인새 노트북 생성 위치와 소스·채팅·Studio 패널
 
 리더 최종 책임AI 결과는 초안과 분석 보조이며, 최종 판단·피드백·전달 책임은 리더에게 있음을 확인했습니다.
 
-Round Canvas 저장 준비팀별 기록 담당과 조·팀 번호를 정하고, 각 Round에서 Markdown 파일을 내려받을 위치를 확인했습니다.
+Team Canvas 저장 준비조·팀 번호를 확인하고, 각 Round에서 내가 작성한 Team Canvas를 Markdown으로 내려받을 위치를 확인했습니다.
 
 준비 완료 0 / 8
 

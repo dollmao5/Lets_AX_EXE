@@ -3287,7 +3287,7 @@ async function handleWrapupCanvas2Bundle(req, res, urlObj) {
   const markdown = [
     `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}팀)`,
     "",
-    "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 Team Canvas' 소스로 업로드하는 개인화 파일입니다.",
+    "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 2차 캔버스 통합본' 소스로 업로드하는 개인화 파일입니다.",
     "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
     "",
     "## 목차",
