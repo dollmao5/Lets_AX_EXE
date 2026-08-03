@@ -6824,6 +6824,12 @@ label:has(> input[data-r3check]:checked) {
   .round-flow .rf-arrow { align-self: flex-start; margin-left: 20px; transform: rotate(90deg); }
 }
 
+/* ── 260803 완료 기준 표: 확인 항목·상태 셀 세로 가운데 정렬 (클립 로컬 vertical-align:top 오버라이드) ── */
+.clip-section.done-criteria .completion-table th,
+.clip-section.done-criteria .completion-table td {
+  vertical-align: middle !important;
+}
+
 /* ── 260803 라운드 진행 표(round-schedule): 시간·활동·진행 주체 열은 내용 폭에 맞춰 한 줄 고정,
    운영 규칙 열이 남은 폭을 사용 (좁은 화면에서는 줄바꿈 허용) ── */
 table.round-schedule { width: 100%; }
