@@ -238,7 +238,7 @@ ChatGPT복붙형Round 1 잠정 결론의 반론·누락 점검복사
 
 ## 기록·제출 원칙
 
-**기록 원칙** — 실명·평가·보상·징계·고객 식별정보는 기록하지 않습니다. (백업 다운로드 파일명: `CH02_R1_AI시대_우리팀현실진단_팀번호.md`)
+**기록 원칙** — 실명·평가·보상·징계·고객 식별정보는 기록하지 않습니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 

@@ -548,10 +548,20 @@ var btn=root.querySelector('[data-wrapup-submit]');
 var statusEl=root.querySelector('[data-wrapup-status]');
 var teamsEl=root.querySelector('[data-wrapup-teams]');
 var repEl=root.querySelector('[data-wrapup-teamrep]');function isRep(){return repEl?repEl.checked===true:false;}
-function setStatus(msg,isErr){statusEl.textContent=msg;statusEl.style.color=isErr?'#c00000':'var(--text-secondary,#667085)';}
+function setStatus(msg,isErr){statusEl.textContent=msg;statusEl.style.color=isErr?'#c00000':'var(--text-secondary,#667085)';statusEl.style.background='';statusEl.style.border='';statusEl.style.padding='';statusEl.style.borderRadius='';statusEl.style.fontWeight='';}
+function setSuccess(msg){statusEl.textContent=msg;statusEl.style.color='#14532d';statusEl.style.background='#f0fdf4';statusEl.style.border='1.5px solid #86efac';statusEl.style.padding='10px 14px';statusEl.style.borderRadius='12px';statusEl.style.fontWeight='800';}
 function fillTeams(count){var html='';for(var t=1;t&lt;=count;t++){html+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=html;}
 fillTeams(6);
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
+/* [260803] Canvas 팀명 → 제출 팀 동기화 + 이전 라운드 팀 자동 승계(ax_wrapup_identity) — 팀 오선택 방지 */
+var canvasTeam=root.querySelector('[data-rev-field=teamName]');
+function teamNum(v){var m=String(v||'').match(/\d+/);return m?m[0]:'';}
+function syncFromCanvas(){var n=teamNum(canvasTeam&amp;&amp;canvasTeam.value);if(n){sel.value=n;}}
+function prefillTeam(){
+if(!canvasTeam||teamNum(canvasTeam.value))return;
+try{var idn=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(idn&amp;&amp;idn.team){canvasTeam.value=String(idn.team)+'팀';canvasTeam.dispatchEvent(new Event('change',{bubbles:true}));}}catch(e){}
+}
+if(canvasTeam){canvasTeam.addEventListener('change',syncFromCanvas);prefillTeam();syncFromCanvas();setTimeout(function(){prefillTeam();syncFromCanvas();},400);}
 function refreshTeams(){
   fetch('/api/wrapup/status?round='+ROUND).then(function(r){return r.json();}).then(function(d){
     if(!d.ok)return;
@@ -601,7 +611,8 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
     if(!d.ok){setStatus(d.error||'제출에 실패했습니다.',true);return;}
     try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
     var when=new Date(d.updatedAt).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-    setStatus('제출 완료 · '+team+'팀 '+name+' · '+when+(d.resubmitted?' (재제출로 갱신됨)':''),false);
+    setSuccess('✅ 제출 완료 · '+team+'팀 '+name+' · '+when+(d.resubmitted?' — 재제출로 갱신되었습니다':'')+' · 강사님 Wrap-up 보드(팀 요약·발표)와 나의 2차 캔버스에 반영됩니다. 수정했다면 다시 제출하면 갱신됩니다.');
+    btn.textContent='제출 완료 ✓ (수정 시 재제출)';
     refreshTeams();
   })
   .catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 교육장 서버 접속 상태를 확인해 주세요.',true);});

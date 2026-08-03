@@ -54,10 +54,12 @@
     flex-direction: column; padding: 4vh 6vw; }
   #presentOverlay.on { display: flex; }
   #presentOverlay .p-head { display: flex; align-items: center; gap: 14px; margin-bottom: 2vh; }
-  #presentOverlay .p-head h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); }
-  #presentOverlay .p-head .muted { color: #9fb0cc; font-size: 1rem; }
+  #presentOverlay .p-head h2 { margin: 0; font-size: clamp(1.9rem, 3.4vw, 3rem); }
+  #presentOverlay .p-head .muted { color: #9fb0cc; font-size: clamp(1.05rem, 1.6vw, 1.5rem); }
   #presentOverlay .p-body { flex: 1; overflow: auto; background: rgba(255,255,255,.06); border-radius: 20px;
-    padding: 3vh 3vw; font-size: clamp(1.05rem, 1.6vw, 1.45rem); line-height: 1.75; }
+    padding: 3vh 3vw; font-size: 35px; line-height: 1.6; }
+  /* [260803] 보드 공용 .md의 고정 폰트(.97rem)가 발표 확대를 무효화하지 않도록 상속 강제 */
+  #presentOverlay .p-body .md { font-size: inherit; }
   #presentOverlay .p-body .md h3 { color: #8fc1ff; font-size: 1.1em; margin: .8em 0 .3em; }
   #presentOverlay .p-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 2vh; }
   #presentOverlay .p-foot .hint { color: #9fb0cc; font-size: .95rem; }
@@ -171,6 +173,9 @@
     <h2 id="pTitle">-</h2>
     <span class="muted" id="pSub"></span>
   </div>
+  <!-- [260803] 미리보기 안내 + 팀 점프 바: 강사가 원하는 팀만 골라 발표, 요약 생성 전엔 샘플 미리보기 -->
+  <div id="pPreviewNote" style="display:none;margin:8px 24px 0;padding:8px 14px;border-left:4px solid #d97706;background:#fffbeb;color:#92400e;border-radius:8px;font-weight:800;">🧪 미리보기 — 샘플 데이터입니다. 실제 수업에서는 제출 마감 후 [요약 생성]을 실행하면 팀별 요약이 이 화면에 표시됩니다.</div>
+  <div id="pJump" style="display:flex;flex-wrap:wrap;gap:6px;padding:8px 24px 0;"></div>
   <div class="p-body"><div class="md" id="pBody"></div></div>
   <div class="p-foot">
     <button id="pPrev">← 이전</button>
@@ -501,6 +506,24 @@
     } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; }
   }
 
+  /* [260803] 요약·2차 캔버스 버튼 상태 표시 — 이미 생성됐음을 라벨로 알려 중복 실행 혼동 방지
+     (재실행은 갱신 처리라 안전하지만, 완료 여부가 버튼에 남아야 불필요한 반복 클릭이 줄어든다) */
+  state.canvas2Done = state.canvas2Done || {};
+  function updateGenButtons() {
+    var g = $("genBtn"), c = $("canvas2Btn");
+    if (g && !g.disabled) {
+      if (state.summary && state.summary.generatedAt) {
+        var w = new Date(state.summary.generatedAt).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+        g.textContent = "요약 생성 완료 ✓ " + w + " (재실행 시 갱신)";
+      } else {
+        g.textContent = "요약 생성";
+      }
+    }
+    if (c && !c.disabled) {
+      c.textContent = state.canvas2Done[state.round] ? "2차 캔버스 생성 완료 ✓ (재실행 시 갱신)" : "2차 캔버스 생성";
+    }
+  }
+
   async function loadSummary() {
     var grid = $("teamGrid"); grid.innerHTML = "";
     $("crossCard").style.display = "none"; $("compareCard").style.display = "none";
@@ -509,11 +532,13 @@
     var d = await api("/api/wrapup/summary?round=" + state.round + "&cohort=" + encodeURIComponent(state.cohort));
     if (!d.ok) {
       grid.innerHTML = "<div class=\"team-card\"><div class=\"empty\">" + esc(d.error || "요약이 없습니다.") + "</div></div>";
+      updateGenButtons();
       return;
     }
     state.summary = d;
     var when = new Date(d.generatedAt).toLocaleString("ko-KR", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
     $("summaryMeta").textContent = "요약 생성: " + when + " · " + d.model;
+    updateGenButtons();
     var byTeam = {};
     (d.teams || []).forEach(function (t) { byTeam[t.team] = t; });
     for (var i = 1; i <= (d.teamCount || 6); i++) {
@@ -765,18 +790,74 @@
     if (s.cohortCompare) slides.push({ title: "차수 비교", sub: "지난 차수와의 비교", body: s.cohortCompare });
     return slides;
   }
+  /* [260803] 요약 생성 전 미리보기용 샘플 슬라이드 — 신입 강사가 발표 화면 구성을 미리 확인 */
+  function buildSampleSlides() {
+    var body = "### 팀 공통 합의\n- (샘플) AI 산출물 검토 기준이 없어 재작업이 반복된다\n- (샘플) 핵심 이슈 TOP 2: 품질 기준 부재 · 검토 시간 증가\n\n### 팀 내 관점 차이\n- (샘플) 위임 범위에 대한 온도 차 — 초안까지 vs 최종안까지\n\n### 남은 질문\n- (샘플) 검토 기준은 누가 정하는가";
+    return [
+      { title: "1팀", sub: "(샘플) 홍길동, 김민준 외 · 5명 제출", body: body },
+      { title: "2팀", sub: "(샘플) 이서연, 박지훈 외 · 6명 제출", body: body },
+      { title: "교차 분석", sub: "(샘플) 전체 팀 공통 이슈와 차이", body: "### 공통\n- (샘플) 두 팀 모두 '검토 기준 부재'를 1순위로 지목\n\n### 차이\n- (샘플) 1팀은 속도 관점, 2팀은 품질 관점에서 접근" }
+    ];
+  }
+  /* [260803] 팀 점프 바 — 참석 팀 수(4~6팀)와 무관하게 실제 슬라이드 기준으로 버튼 생성, 클릭 시 해당 팀으로 즉시 이동 */
+  function renderJump() {
+    var j = $("pJump"); if (!j) return;
+    j.innerHTML = "";
+    state.slides.forEach(function (sl, idx) {
+      var b = document.createElement("button");
+      b.textContent = sl.title;
+      b.style.cssText = "padding:6px 14px;border-radius:999px;border:1px solid " + (idx === state.slideIdx ? "#185dcc" : "#d0d7e2") + ";background:" + (idx === state.slideIdx ? "#185dcc" : "#fff") + ";color:" + (idx === state.slideIdx ? "#fff" : "#334155") + ";cursor:pointer;font-weight:800;";
+      b.addEventListener("click", function () { showSlide(idx); });
+      j.appendChild(b);
+    });
+  }
+  /* [260803] 발표 첫 화면: 제출한 전체 팀 개요 — 팀 카드를 클릭하면 해당 팀 발표로 이동 */
+  function buildOverviewSlide(slides) {
+    var teams = slides.map(function (sl, idx) { return { sl: sl, idx: idx }; })
+      .filter(function (x) { return /팀$/.test(x.sl.title); });
+    if (!teams.length) return null;
+    var html = "<div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:18px;\">";
+    teams.forEach(function (x) {
+      html += "<button data-goto=\"" + (x.idx + 1) + "\" style=\"min-height:150px;padding:20px 22px;border:1.5px solid #d0d7e2;border-radius:18px;background:#fff;cursor:pointer;text-align:left;font:inherit;line-height:1.4;\">" +
+        "<div style=\"color:#172033;font-size:2.2rem;font-weight:900;margin-bottom:8px;\">" + esc(x.sl.title) + "</div>" +
+        "<div style=\"color:#475569;font-size:1.25rem;\">" + esc(x.sl.sub) + "</div>" +
+        "<div style=\"margin-top:10px;color:#185dcc;font-size:1.35rem;font-weight:800;\">발표 보기 →</div></button>";
+    });
+    html += "</div>";
+    return { title: "전체 팀 (" + teams.length + "팀 제출)", sub: "제출한 " + teams.length + "개 팀 — 카드를 클릭하면 해당 팀 발표로 이동합니다", html: html };
+  }
   function showSlide(i) {
     var sl = state.slides[i]; if (!sl) return;
     state.slideIdx = i;
-    $("pTitle").textContent = roundLabel(state.round) + " — " + sl.title;
+    $("pTitle").textContent = (state.presentPreview ? "[미리보기 · 샘플] " : "") + roundLabel(state.round) + " — " + sl.title;
     $("pSub").textContent = sl.sub + " (" + (i + 1) + "/" + state.slides.length + ")";
-    $("pBody").innerHTML = md(sl.body);
+    if (sl.html) { $("pBody").innerHTML = sl.html; } else { $("pBody").innerHTML = md(sl.body); }
     $("pPrev").disabled = i === 0;
     $("pNext").disabled = i === state.slides.length - 1;
+    renderJump();
   }
-  function openPresent() {
+  async function openPresent() {
     state.slides = buildSlides();
-    if (!state.slides.length) { toast("발표할 요약이 없습니다. 먼저 요약을 생성하세요."); return; }
+    state.presentPreview = false;
+    if (!state.slides.length) {
+      /* [260803] 요약 생성 전 미리보기 — 실제 제출 현황(팀·인원)을 반영하고 본문만 샘플로 표시 */
+      state.presentPreview = true;
+      var sample = buildSampleSlides();
+      state.slides = sample;
+      try {
+        var st = await api("/api/wrapup/status?round=" + state.round);
+        if (st.ok && st.teams && st.teams.length) {
+          state.slides = st.teams.map(function (t) {
+            return { title: t.team + "팀", sub: "실제 제출 " + t.count + "명 · 요약 생성 전 (본문은 샘플)", body: sample[0].body };
+          });
+          state.slides.push(sample[sample.length - 1]);
+        }
+      } catch (e) { /* 상태 조회 실패 시 고정 샘플 유지 */ }
+      toast("아직 요약이 없어 미리보기로 엽니다 — 팀 구성은 실제 제출 현황, 본문은 샘플입니다.");
+    }
+    var ov = buildOverviewSlide(state.slides);
+    if (ov) state.slides = [ov].concat(state.slides);
+    var note = $("pPreviewNote"); if (note) note.style.display = state.presentPreview ? "" : "none";
     $("presentOverlay").classList.add("on");
     showSlide(0);
   }
@@ -796,6 +877,10 @@
     if (document.visibilityState === "visible" && state.cohort === state.current) { loadStatus(); }
   }, 30000);
   $("presentBtn").addEventListener("click", openPresent);
+  $("pBody").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-goto]"); if (!b) return;
+    showSlide(parseInt(b.getAttribute("data-goto"), 10));
+  });
   $("pPrev").addEventListener("click", function () { showSlide(state.slideIdx - 1); });
   $("pNext").addEventListener("click", function () { showSlide(state.slideIdx + 1); });
   document.addEventListener("keydown", function (e) {
@@ -819,6 +904,7 @@
       }
     } catch (e) { toast("서버 오류로 생성에 실패했습니다."); }
     btn.disabled = false; btn.textContent = "요약 생성";
+    updateGenButtons();
   });
 
   /* [강사 가이드] 사용법 오버레이 — 실행 모드에 해당하는 항목만 표시 */
@@ -869,10 +955,11 @@
         if (r.ok) { total = r.count; teamsDone.push("전체"); }
         else toast(r.error || "2차 캔버스 생성 실패");
       }
-      if (total > 0) toast("2차 캔버스 생성 완료: 총 " + total + "명 (" + teamsDone.join(" · ") + ")");
+      if (total > 0) { state.canvas2Done[state.round] = true; toast("2차 캔버스 생성 완료: 총 " + total + "명 (" + teamsDone.join(" · ") + ")"); }
       else if (teamsDone.length === 0) toast("생성할 제출물이 없습니다.");
     } catch (e) { toast("서버 오류로 2차 캔버스 생성에 실패했습니다."); }
     btn.disabled = false; btn.textContent = "2차 캔버스 생성";
+    updateGenButtons();
   });
 
   // [Wrapup 외부접속] 강사 로그인(비밀코드) — 원격 모드 전용
