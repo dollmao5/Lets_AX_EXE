@@ -786,6 +786,7 @@
 <div class="output-card">
 <strong>필수 2. 「나의 핵심역량과 스킬」 Markdown 저장본</strong>
 <p>핵심 이슈, AI와 리더 역할 분담, 30일 리더 행동 후보, CH03·CH04 연결 메모를 후속 실습에 재입력할 수 있는 형식으로 저장합니다.</p>
+<span class="file-name">CH02_나의_핵심역량과_스킬_성명.md</span>
 </div>
 <div class="output-card optional-card">
 <strong>선택. Deep Research 질문·프로토타입 비서 프롬프트·테스트 로그</strong>
@@ -800,7 +801,7 @@
 <div class="clip-section-content">
 
 <div class="tip-block">
-<div class="tip-block-title">55분 공식 운영 기준</div>
+<div class="tip-block-title">40분 공식 운영 기준</div>
 <div class="tip-block-content"><strong>필수 실습 40분</strong>으로 운영하며, 결과 검증·Markdown 저장과 CH03 전환 준비는 다음 클립 CH02 통합 저장 Gate(15분)에서 이어집니다. Deep Research와 프로토타입 비서 프롬프트는 공식 40분의 필수 완료 기준에 포함하지 않으며, 시간 여유가 있거나 수업 후 진행하는 선택 확장 활동입니다.</div>
 </div>
 </div>
@@ -877,40 +878,57 @@
 </div>
 <!-- [HIDDEN 260731] 신방식: 팀 대표 파일 패널 숨김(display:none) — 입력은 아래 R1·R2 내 2차 캔버스 패널로 대체. 복구: tf24-panel의 display:none 제거 + 이 아래 canvas2 패널 2개 삭제 -->
 <!-- [팀 대표 파일 2026-07-25] R1·R2 팀 합의본 불러오기 — 기록 담당의 ☑ 팀 대표 제출을 각자 내려받아 ChatGPT에 업로드 -->
-<div class="canvas2-prev-box" data-canvas2-prev="round1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #0f7b6c;border-radius:16px;background:#f4faf8;">
-<strong style="display:block;margin-bottom:6px;">📌 Round 1 내 2차 캔버스 불러오기 — 팀 합의 + 내 작성(우선)</strong>
-<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개인별 2차 캔버스입니다. 이 클립의 교차분석 실습에서 프롬프트 입력자료로 활용하세요 (복사 또는 .md 다운로드).</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
-<label style="font-weight:700;">팀</label><select data-c2p-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
-<label style="font-weight:700;">이름</label><input data-c2p-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
-<button type="button" data-c2p-load style="min-height:40px;padding:8px 18px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;">불러오기</button>
-<button type="button" data-c2p-copy style="min-height:40px;padding:8px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
-<button type="button" data-c2p-download style="min-height:40px;padding:8px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
+<div class="canvas2-multi-box" data-canvas2-multi="" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #0f7b6c;border-radius:16px;background:#f4faf8;">
+<strong style="display:block;margin-bottom:6px;">📌 Round 1과 Round 2의 2차 캔버스 불러오기 — 팀 합의 + 내 작성(우선)</strong>
+<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">2차 캔버스는 <strong>내가 제출한 내용(우선)</strong>과 <strong>팀 공통 합의</strong> — 팀원 전원의 제출물에서 공통 결론을 강사님이 [요약 생성]으로 정리한 것 — 를 합친 개인별 문서입니다. 이 클립의 교차분석 실습에서 프롬프트 입력자료로 활용하세요.<br><strong>사용 순서</strong> ① 팀·이름 입력(한 번) → ② [Round 1 불러오기]·[Round 2 불러오기] → ③ 각 [복사] 또는 [.md 다운로드] → ④ ChatGPT에 붙여넣기·첨부</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+<label style="font-weight:700;">팀</label><select data-c2m-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
+<label style="font-weight:700;">이름</label><input data-c2m-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
+<button type="button" data-c2m-load="round1" style="min-height:40px;padding:8px 16px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;">Round 1 불러오기</button>
+<button type="button" data-c2m-load="round2" style="min-height:40px;padding:8px 16px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;">Round 2 불러오기</button>
 </div>
-<p data-c2p-status style="margin:0 0 8px;font-size:.92rem;color:var(--text-secondary,#667085);">팀·이름 입력 후 불러오기를 누르세요. (Round 1 제출자만 조회됩니다)</p>
-<pre data-c2p-body style="display:none;margin:0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:340px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+<div data-c2m-round="round1" style="margin-top:10px;padding-top:10px;border-top:1px dashed #a7d3c9;">
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+<strong style="min-width:76px;">Round 1</strong>
+<span data-c2m-status style="font-size:.92rem;color:var(--text-secondary,#667085);">아직 불러오지 않았습니다.</span>
+<button type="button" data-c2m-copy style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
+<button type="button" data-c2m-download style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
+</div>
+<pre data-c2m-body style="display:none;margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+</div>
+<div data-c2m-round="round2" style="margin-top:10px;padding-top:10px;border-top:1px dashed #a7d3c9;">
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+<strong style="min-width:76px;">Round 2</strong>
+<span data-c2m-status style="font-size:.92rem;color:var(--text-secondary,#667085);">아직 불러오지 않았습니다.</span>
+<button type="button" data-c2m-copy style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
+<button type="button" data-c2m-download style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
+</div>
+<pre data-c2m-body style="display:none;margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+</div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
-var box=px.closest('[data-canvas2-prev]');
-if(!box||box.dataset.c2pReady==='1')return;
-box.dataset.c2pReady='1';
-var PREV='round1';var LABEL='Round 1';
-var sel=box.querySelector('[data-c2p-team]');
-var nameEl=box.querySelector('[data-c2p-name]');
-var loadBtn=box.querySelector('[data-c2p-load]');
-var copyBtn=box.querySelector('[data-c2p-copy]');
-var dlBtn=box.querySelector('[data-c2p-download]');
-var statusEl=box.querySelector('[data-c2p-status]');
-var bodyEl=box.querySelector('[data-c2p-body]');
-function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
+var box=px.closest('[data-canvas2-multi]');
+if(!box||box.dataset.c2mReady==='1')return;
+box.dataset.c2mReady='1';
+var sel=box.querySelector('[data-c2m-team]');
+var nameEl=box.querySelector('[data-c2m-name]');
 function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=h;}
 fillTeams(6);
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
 fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
+box.querySelectorAll('[data-c2m-load]').forEach(function(loadBtn){
+var ROUND=loadBtn.getAttribute('data-c2m-load');
+var LABEL=ROUND==='round1'?'Round 1':'Round 2';
+var row=box.querySelector('[data-c2m-round=&quot;'+ROUND+'&quot;]');
+var copyBtn=row.querySelector('[data-c2m-copy]');
+var dlBtn=row.querySelector('[data-c2m-download]');
+var statusEl=row.querySelector('[data-c2m-status]');
+var bodyEl=row.querySelector('[data-c2m-body]');
+function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
 loadBtn.addEventListener('click',function(){
 var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
-if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
+if(!name||name.length&lt;2){setStatus('위의 이름 칸에 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
 loadBtn.disabled=true;setStatus(LABEL+' 2차 캔버스를 불러오는 중...',false);
-fetch('/api/wrapup/canvas2?round='+PREV+'&amp;team='+team+'&amp;name='+encodeURIComponent(name))
+fetch('/api/wrapup/canvas2?round='+ROUND+'&amp;team='+team+'&amp;name='+encodeURIComponent(name))
 .then(function(r){return r.json();})
 .then(function(d){
 loadBtn.disabled=false;
@@ -918,87 +936,25 @@ if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.d
 bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영'),false);
+setStatus('불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ⚠ 아직 ChatGPT에 연결되지 않았습니다. [복사] 또는 [.md 다운로드] 후 첨부하세요.',false);
 })
-.catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
+.catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다.',true);});
 });
 copyBtn.addEventListener('click',function(){
 var text=bodyEl.textContent||'';
-function done(ok){setStatus(ok?'복사 완료 — ChatGPT 실습에 붙여넣어 활용하세요.':'복사에 실패했습니다. 내용을 드래그해 복사해 주세요.',!ok);}
-if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(false);});}
-else{done(false);}
+function done(ok){setStatus(ok?LABEL+' 내용 복사 완료 — ChatGPT에 붙여넣으세요.':'복사 실패 — 내용을 드래그해 복사해 주세요.',!ok);}
+if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(false);});}else{done(false);}
 });
 dlBtn.addEventListener('click',function(){
 var name=(nameEl.value||'').trim()||'이름';
 var blob=new Blob([bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
-var a=document.createElement('a');
-a.href=URL.createObjectURL(blob);
+var a=document.createElement('a');a.href=URL.createObjectURL(blob);
 a.download=LABEL.replace(' ','')+'_2차캔버스_'+name+'.md';
 document.body.appendChild(a);a.click();a.remove();
-setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 });
-})(this);"></div>
-<div class="canvas2-prev-box" data-canvas2-prev="round2" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #0f7b6c;border-radius:16px;background:#f4faf8;">
-<strong style="display:block;margin-bottom:6px;">📌 Round 2 내 2차 캔버스 불러오기 — 팀 합의 + 내 작성(우선)</strong>
-<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 2에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개인별 2차 캔버스입니다. 이 클립의 교차분석 실습에서 프롬프트 입력자료로 활용하세요 (복사 또는 .md 다운로드).</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
-<label style="font-weight:700;">팀</label><select data-c2p-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
-<label style="font-weight:700;">이름</label><input data-c2p-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
-<button type="button" data-c2p-load style="min-height:40px;padding:8px 18px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;">불러오기</button>
-<button type="button" data-c2p-copy style="min-height:40px;padding:8px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
-<button type="button" data-c2p-download style="min-height:40px;padding:8px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
+});
+})(this);">
 </div>
-<p data-c2p-status style="margin:0 0 8px;font-size:.92rem;color:var(--text-secondary,#667085);">팀·이름 입력 후 불러오기를 누르세요. (Round 2 제출자만 조회됩니다)</p>
-<pre data-c2p-body style="display:none;margin:0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:340px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
-var box=px.closest('[data-canvas2-prev]');
-if(!box||box.dataset.c2pReady==='1')return;
-box.dataset.c2pReady='1';
-var PREV='round2';var LABEL='Round 2';
-var sel=box.querySelector('[data-c2p-team]');
-var nameEl=box.querySelector('[data-c2p-name]');
-var loadBtn=box.querySelector('[data-c2p-load]');
-var copyBtn=box.querySelector('[data-c2p-copy]');
-var dlBtn=box.querySelector('[data-c2p-download]');
-var statusEl=box.querySelector('[data-c2p-status]');
-var bodyEl=box.querySelector('[data-c2p-body]');
-function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
-function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=h;}
-fillTeams(6);
-try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
-fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
-loadBtn.addEventListener('click',function(){
-var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
-if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
-loadBtn.disabled=true;setStatus(LABEL+' 2차 캔버스를 불러오는 중...',false);
-fetch('/api/wrapup/canvas2?round='+PREV+'&amp;team='+team+'&amp;name='+encodeURIComponent(name))
-.then(function(r){return r.json();})
-.then(function(d){
-loadBtn.disabled=false;
-if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
-bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
-copyBtn.style.display='';dlBtn.style.display='';
-try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영'),false);
-})
-.catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
-});
-copyBtn.addEventListener('click',function(){
-var text=bodyEl.textContent||'';
-function done(ok){setStatus(ok?'복사 완료 — ChatGPT 실습에 붙여넣어 활용하세요.':'복사에 실패했습니다. 내용을 드래그해 복사해 주세요.',!ok);}
-if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(false);});}
-else{done(false);}
-});
-dlBtn.addEventListener('click',function(){
-var name=(nameEl.value||'').trim()||'이름';
-var blob=new Blob([bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
-var a=document.createElement('a');
-a.href=URL.createObjectURL(blob);
-a.download=LABEL.replace(' ','')+'_2차캔버스_'+name+'.md';
-document.body.appendChild(a);a.click();a.remove();
-setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
-});
-})(this);"></div>
 <div class="resource-card tf24-panel" style="display:none">
 <strong>📥 <span style="background:linear-gradient(transparent 55%, #fde047 55%);padding:0 2px;">팀 대표 파일 불러오기 — 전원 필수</span></strong>
 <p style="margin:6px 0 0;">기록 담당이 제출한 <b>Round 1·2 팀 합의본</b>을 <b>팀원 각자가</b> 내려받는 곳입니다. 메신저로 파일을 주고받을 필요가 없습니다.</p>

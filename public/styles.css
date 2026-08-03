@@ -6824,6 +6824,20 @@ label:has(> input[data-r3check]:checked) {
   .round-flow .rf-arrow { align-self: flex-start; margin-left: 20px; transform: rotate(90deg); }
 }
 
+/* ── 260803 output-card 파일명 배지 전역 승격 — '이번 클립의 도착점' 카드 공통 (4-2 로컬 스타일 기준) ── */
+.output-card .file-name {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e4e7ec);
+  background: #fff;
+  color: var(--text-secondary, #667085);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .92rem !important;
+  word-break: break-all;
+}
+
 /* ── 260803 완료 기준 표: 확인 항목·상태 셀 세로 가운데 정렬 (클립 로컬 vertical-align:top 오버라이드) ── */
 .clip-section.done-criteria .completion-table th,
 .clip-section.done-criteria .completion-table td {

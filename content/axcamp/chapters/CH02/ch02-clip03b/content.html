@@ -370,7 +370,7 @@ Team Canvas는 토론의 발언 전체가 아니라 <strong>내 논의 내용과
 </div>
 <div class="canvas2-prev-box" data-canvas2-prev="round1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #0f7b6c;border-radius:16px;background:#f4faf8;">
 <strong style="display:block;margin-bottom:6px;">📌 Round 1 내 2차 캔버스 불러오기 — 팀 합의 + 내 작성(우선)</strong>
-<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개인별 2차 캔버스입니다. Round 2 토론과 ChatGPT 실습의 참고 자료로 활용하세요 (복사 버튼으로 붙여넣기).</p>
+<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개인별 2차 캔버스입니다. Round 2 토론과 ChatGPT 실습의 참고 자료로 활용하세요.<br><strong>사용 순서</strong> ① 팀·이름 입력 → [불러오기] ② [복사] 또는 [.md 다운로드] ③ ChatGPT에 붙여넣기·첨부</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
 <label style="font-weight:700;">팀</label><select data-c2p-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
 <label style="font-weight:700;">이름</label><input data-c2p-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
@@ -409,7 +409,7 @@ if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.d
 bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영'),false);
+setStatus(LABEL+' 2차 캔버스 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ⚠ 아직 ChatGPT에 연결되지 않았습니다. [복사]해서 붙여넣거나 [.md 다운로드] 후 첨부하세요.',false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
 });
