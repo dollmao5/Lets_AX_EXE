@@ -960,6 +960,21 @@
       }
     ]
   },
+  "chatgpt-upload-menu-ch02-4": {
+    "id": "chatgpt-upload-menu-ch02-4",
+    "kicker": "ChatGPT Practice",
+    "title": "파일 업로드 메뉴",
+    "subtitle": "실습 자료를 같은 대화에 붙이는 파일 첨부 화면",
+    "slides": [
+      {
+        "eyebrow": "01 / Upload",
+        "title": "파일 업로드 메뉴",
+        "imageSrc": "__BASE__/assets/chatgpt/ch02/chatgpt-upload-menu.png",
+        "imageAlt": "ChatGPT 입력창의 파일 업로드 메뉴",
+        "summary": "회의 자료와 맥락 자료는 모두 입력창 왼쪽의 파일 업로드 메뉴(+)에서 붙입니다. R1·R2 토론 정리본과 팀장 기대행동 문서를 같은 대화에 추가하세요."
+      }
+    ]
+  },
   "business-prompting-workshop": {
     "id": "business-prompting-workshop",
     "previewStyle": "immersive",

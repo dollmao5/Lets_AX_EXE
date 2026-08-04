@@ -6867,3 +6867,19 @@ table.round-schedule { width: 100%; }
   color: #1d3a6e !important;
 }
 
+
+/* ── 260804 프롬프트 도구·창 안내 배지(tool-badge) 전역 — 클립 로컬 정의가 있으면 그것이 우선 ── */
+.prompt-label .tool-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 9px;
+  border: 1px solid var(--border, #e4e7ec);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-heading, #172033);
+  font-size: .85rem;
+  line-height: 1.2;
+  font-weight: 800;
+  white-space: nowrap;
+}

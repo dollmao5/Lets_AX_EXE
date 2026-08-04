@@ -682,7 +682,23 @@
 /* [가독성 1차 2026-07-29] 강조 위계 정리 — tip/info 무채색 톤다운 (색 유지: 필수 산출물 박스·생각 열기·구간 배너) */
 .ch02-clip04-revised .tip-block:not(.next-step-card), .ch02-clip04-revised .info-block:not(.key-message) { background: #fbfcfe !important; border: 1px solid #dbe4f3 !important; border-left: 4px solid #b9c8e0 !important; box-shadow: none !important; }
 .ch02-clip04-revised .tip-block:not(.next-step-card) .tip-block-title, .ch02-clip04-revised .info-block:not(.key-message) .info-block-title { color: #3c4a63 !important; }
-</style>
+
+    /* [260804] 입력 자료 + 업로드 메뉴 이미지 가로 이분할 (4-1 screen-grid 방식) */
+    .ch02-clip04-revised .input-media-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .ch02-clip04-revised .input-media-grid .info-block { margin: 0; }
+    /* [260804] Step 카드 좌열 이동 — 왼쪽 열 안에서는 세로 1열 */
+    .ch02-clip04-revised .input-media-grid .practice-flow-grid { grid-template-columns: 1fr; margin: 14px 0 0; }
+    .ch02-clip04-revised .input-media-grid .flow-card { min-height: 0; }
+    .ch02-clip04-revised .input-media-grid .slide-preview-gallery { margin: 0; }
+    @media (max-width: 880px) {
+      .ch02-clip04-revised .input-media-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 <div class="clip-header">
 <div class="clip-badges">
 <span class="clip-badge time">필수 ~40분 · 선택 ~20분</span>
@@ -762,7 +778,7 @@
 <div>
 <h2 class="slide-briefing-title">비즈니스 프롬프트를 업무 위임 구조로 바꾸는 법</h2>
 <p class="slide-briefing-desc">
-            Round 1·2 Team Canvas 연결·누락 점검, 팀장 기대행동 자료 교차검증,
+            Round 1·2 나의 토론 정리본 연결·누락 점검, 팀장 기대행동 자료 교차검증,
             최종 「나의 핵심역량과 스킬」 작성까지 하나의 워크플로로 정리한 인포그래픽입니다.
             CH02-4에서는 최종 운영형 AI 비서를 완성하는 것이 아니라,
             선택 확장에서 <strong>프로토타입 비서 프롬프트를 저장·테스트</strong>하고, CH04에서 운영형 AI 비서로 고도화할 기준을 확보합니다.
@@ -1012,40 +1028,14 @@ for(var i=0;i&lt;dls.length;i++){
 
 <div class="phase-banner">❸ 실습 <span class="phase-sub">— A 근거 연결 → B 교차검증 → C 나의 핵심역량과 스킬 작성</span></div>
 <div class="clip-section"><div class="clip-section-title">실습 필수 경로: 토론 정리본을 활용한 3단계</div><div class="clip-section-content">
-<div class="info-block"><div class="info-block-title">분석에 사용할 입력 자료</div><div><strong>Round 1 현실·공통 이슈 + CH02-3 리더 역할 프로필 + Round 2 책임경계표 + 실·팀장 기대행동</strong>을 같은 ChatGPT 대화에서 연결합니다. 팀 파일 없이 토론 대화문만 있는 경우에도 아래 A 프롬프트가 회의록 구조화부터 처리합니다.<br>토론 정리본 파일이 없는 경우에는, 토론에서 기억나는 핵심 이슈 2~3가지를 직접 요약해 붙여넣고 진행합니다.</div></div>
-<div class="upload-menu-figure">
-<button aria-controls="ch02Clip04UploadImageModal" aria-haspopup="dialog" class="upload-menu-image-button" data-upload-menu-open="" type="button">
-<img alt="ChatGPT 파일 업로드 메뉴" loading="lazy" src="/assets/chatgpt/ch02/chatgpt-upload-menu.png"/>
-<span class="visually-hidden">ChatGPT 파일 업로드 메뉴 이미지를 팝업으로 확대해서 보기</span>
-</button>
-<div class="upload-menu-caption">회의 자료와 맥락 자료는 모두 입력창 왼쪽의 파일 업로드 메뉴에서 붙입니다. 핵심은 <strong>같은 대화창을 유지하면서 단계별로 깊이를 더하는 것</strong>입니다.<br/><span class="upload-menu-zoom-hint">이미지를 클릭하거나 Enter 키를 누르면 크게 볼 수 있습니다.</span></div>
+<div class="input-media-grid">
+<div><div class="info-block"><div class="info-block-title">분석에 사용할 입력 자료</div><div><strong>Round 1 현실·공통 이슈 + CH02-3 리더 역할 프로필 + Round 2 책임경계표 + 실·팀장 기대행동</strong>을 같은 ChatGPT 대화에서 연결합니다.<br>팀 파일 없이 토론 대화문만 있는 경우에도 아래 A 프롬프트가 회의록 구조화부터 처리합니다.<br>토론 정리본 파일이 없는 경우에는, 토론에서 기억나는 핵심 이슈 2~3가지를 직접 요약해 붙여넣고 진행합니다.</div></div>
+<div class="practice-flow-grid"><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step A. 근거 연결</div><span class="flow-time-badge">필수 · 10분</span></div><div class="flow-card-body">Round 1·2와 개인 프로필의 공통점·차이·누락·가설을 구분합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step B. 팀장 기대행동 교차검증</div><span class="flow-time-badge">필수 · 12분</span></div><div class="flow-card-body">내부 팀장 기대행동을 실제 업무 장면의 관찰 행동으로 변환합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step C. 나의 핵심역량과 스킬</div><span class="flow-time-badge">필수 · 18분</span></div><div class="flow-card-body">역량명, 적용 장면, 리더 행동, 30일 후보, CH03 확인 질문을 저장합니다.</div></article></div></div>
+<div><div class="slide-preview-gallery" data-slide-deck-preview="chatgpt-upload-menu-ch02-4"></div>
+<p style="margin:12px 2px 0;color:var(--text-secondary)">이미지를 클릭하면 크게 볼 수 있습니다. 핵심은 <strong>같은 대화창을 유지하면서 단계별로 깊이를 더하는 것</strong>입니다.</p></div>
 </div>
-<div aria-labelledby="ch02Clip04UploadImageModalTitle" aria-modal="true" class="image-lightbox" hidden="" id="ch02Clip04UploadImageModal" role="dialog">
-<div class="image-lightbox-dialog" role="document">
-<button aria-label="확대 이미지 닫기" class="image-lightbox-close" data-upload-menu-close="" type="button">×</button>
-<h2 class="visually-hidden" id="ch02Clip04UploadImageModalTitle">ChatGPT 파일 업로드 메뉴 확대 이미지</h2>
-<img alt="ChatGPT 입력창의 파일 업로드 메뉴 확대 화면" src="/assets/chatgpt/ch02/chatgpt-upload-menu.png"/>
-<p class="image-lightbox-caption">ChatGPT 입력창 왼쪽의 파일 첨부 메뉴에서 Round 1·2 Team Canvas, 팀장 기대행동 문서, CH02-3 리더 역할 프로필을 같은 대화에 추가합니다.</p>
-</div>
-</div>
-<img alt="" onload="(function(loader){
-var root=loader.closest('.ch02-clip04-revised');
-if(!root||root.getAttribute('data-upload-image-modal-ready')==='true'){return;}
-root.setAttribute('data-upload-image-modal-ready','true');
-var openBtn=root.querySelector('[data-upload-menu-open]');
-var modal=root.querySelector('#ch02Clip04UploadImageModal');
-var closeBtn=modal?modal.querySelector('[data-upload-menu-close]'):null;
-if(!openBtn||!modal||!closeBtn){return;}
-var lastFocus=null;var previousOverflow='';
-function openModal(){lastFocus=document.activeElement;previousOverflow=document.body.style.overflow;modal.hidden=false;document.body.style.overflow='hidden';closeBtn.focus();}
-function closeModal(){modal.hidden=true;document.body.style.overflow=previousOverflow||'';if(lastFocus&amp;&amp;typeof lastFocus.focus==='function'){lastFocus.focus();}}
-openBtn.addEventListener('click',openModal);
-closeBtn.addEventListener('click',closeModal);
-modal.addEventListener('click',function(event){if(event.target===modal){closeModal();}});
-document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;event.key==='Escape'){closeModal();}});
-})(this);" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="display:none"/>
-<div class="practice-flow-grid"><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step A. 근거 연결</div><span class="flow-time-badge">필수 · 10분</span></div><div class="flow-card-body">Round 1·2와 개인 프로필의 공통점·차이·누락·가설을 구분합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step B. 팀장 기대행동 교차검증</div><span class="flow-time-badge">필수 · 12분</span></div><div class="flow-card-body">내부 팀장 기대행동을 실제 업무 장면의 관찰 행동으로 변환합니다.</div></article><article class="flow-card"><div class="flow-card-head"><div class="flow-card-title">Step C. 나의 핵심역량과 스킬</div><span class="flow-time-badge">필수 · 18분</span></div><div class="flow-card-body">역량명, 적용 장면, 리더 행동, 30일 후보, CH03 확인 질문을 저장합니다.</div></article></div>
-<div class="prompt-block"><div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge">복붙형</span> A. Round 1·2와 개인 리더 역할의 근거 연결</span><button class="slide-briefing-link" data-doclink-btn="ch02-4-core-a" onclick="copyResourceLink(this,'https://drive.google.com/file/d/11Nm5kKmZk16Fj57ZJgYDRUc7gw3fBKdX/view?usp=drive_link')" type="button" title="보강용으로 첨부할 팀 토론 대화문(샘플) 링크를 복사합니다.">팀 토론 대화문 링크 복사</button><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 21줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 21줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-core-a')">복사</button></span></div>
+
+<div class="prompt-block"><div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge">복붙형</span> <span class="tool-badge" title="ChatGPT에서 새 대화를 열고 시작합니다.">ChatGPT 새 대화</span> A. Round 1·2와 개인 리더 역할의 근거 연결</span><button class="slide-briefing-link" data-doclink-btn="ch02-4-core-a" onclick="copyResourceLink(this,'https://drive.google.com/file/d/11Nm5kKmZk16Fj57ZJgYDRUc7gw3fBKdX/view?usp=drive_link')" type="button" title="보강용으로 첨부할 팀 토론 대화문(샘플) 링크를 복사합니다.">팀 토론 대화문 링크 복사</button><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 21줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 21줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-core-a')">복사</button></span></div>
 <div class="prompt-inputs-line" title="나의 R1 토론 정리본 · CH02_나의_AI시대_리더역할_성명.md · 나의 R2 토론 정리본 — 3개를 첨부(또는 내용 붙여넣기)한 뒤 실행합니다. 팀 토론이 짧았다면 팀 토론 대화문(샘플)을 보강용으로 함께 첨부할 수 있습니다.">📎 입력 <span class="req-chip">필수</span> · <mark class="file-hl-in">나의 R1 토론 정리본</mark> + <mark class="file-hl-in">CH02_나의_AI시대_리더역할_성명.md</mark> + <mark class="file-hl-in">나의 R2 토론 정리본</mark> <span class="opt-chip">선택</span> 팀 토론 대화문(보강용)</div><!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-core-a">당신은 팀장 리더십 과정의 성과관리 분석 파트너입니다.
 
 먼저 아래 자료를 순서대로 읽어 주세요.
@@ -1067,7 +1057,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 [입력 유형별 규칙]
 - 팀 파일 3종을 1차 근거로 사용하고, 팀 토론 대화문은 팀 자료에 없는 관점·사례를 보강하는 참고로만 사용해 주세요. 대화문에서 가져온 내용은 표에 ‘참고 사례(대화문)’로 구분 표시합니다.
 - 팀 파일 없이 토론 대화문만 첨부한 경우: 먼저 회의록 형태(핵심 내용·리더의 고민·확인 필요 사항)로 구조화한 뒤 같은 분석을 수행해 주세요.</div></div></div>
-<div class="prompt-block"><div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge">이어서형</span> B. 실·팀장 기대행동과 관찰 행동 교차검증</span><button class="slide-briefing-link" data-doclink-btn="ch02-4-core-b" onclick="copyResourceLink(this,'https://docs.google.com/document/d/1Xf-OarZruVAIUxdUIq3AwUvB-Hab_D6B6JT4gShaMc0/edit?usp=drive_link')" type="button" title="첨부할 「2026 실/팀장 기대행동」 문서 링크를 복사합니다.">팀장 기대행동 링크 복사</button><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-core-b')">복사</button></div>
+<div class="prompt-block"><div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge">이어서형</span> <span class="tool-badge" title="앞 단계와 같은 ChatGPT 대화창에서 이어서 진행합니다.">같은 ChatGPT 대화</span> B. 실·팀장 기대행동과 관찰 행동 교차검증</span><button class="slide-briefing-link" data-doclink-btn="ch02-4-core-b" onclick="copyResourceLink(this,'https://docs.google.com/document/d/1Xf-OarZruVAIUxdUIq3AwUvB-Hab_D6B6JT4gShaMc0/edit?usp=drive_link')" type="button" title="첨부할 「2026 실/팀장 기대행동」 문서 링크를 복사합니다.">팀장 기대행동 링크 복사</button><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-core-b')">복사</button></div>
 <div class="prompt-inputs-line" title="실습 자료의 「2026 실/팀장 기대행동」 문서를 같은 대화에 첨부한 뒤 실행합니다.">📎 입력 <span class="req-chip">필수</span> · <mark class="file-hl-in">팀장 기대행동 문서</mark> 첨부</div><div class="prompt-content" id="ch02-4-core-b">같은 대화에서 계속 진행합니다. 별도로 첨부한 「2026 실/팀장 기대행동」을 조직 기준으로 사용해 주세요. 첨부된 기대행동 문서가 보이지 않으면 진행하지 말고 첨부를 요청해 주세요.
 
 앞 단계의 근거 연결표와 팀장 기대행동을 비교하여 다음을 작성해 주세요.
@@ -1078,7 +1068,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 5. 조직 기준과 비교했을 때 확인이 필요한 공백
 
 문항번호보다 행동 내용을 기준으로 매핑하고, 대외비 원문을 장문으로 재수록하지 마세요.</div></div>
-<div class="prompt-block"><div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge">이어서형</span> C. 「나의 핵심역량과 스킬」</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-core-c')">복사</button></div><div class="prompt-content" id="ch02-4-core-c">앞 단계 결과를 바탕으로 「나의 핵심역량과 스킬」을 Markdown 코드블록(```)으로 작성해 주세요.
+<div class="prompt-block"><div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge">이어서형</span> <span class="tool-badge" title="앞 단계와 같은 ChatGPT 대화창에서 이어서 진행합니다.">같은 ChatGPT 대화</span> C. 「나의 핵심역량과 스킬」</span><span class="output-file-badge" title="이 단계 완료 후 아래 파일명으로 저장합니다.">저장 파일(필수) · CH02_나의_핵심역량과_스킬_성명.md</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-core-c')">복사</button></div><div class="prompt-content" id="ch02-4-core-c">앞 단계 결과를 바탕으로 「나의 핵심역량과 스킬」을 Markdown 코드블록(```)으로 작성해 주세요.
 
 [필수 구성]
 1. 핵심 이슈 TOP 3와 근거 수준
@@ -1111,7 +1101,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 <summary><span>선택 5A. Deep Research 조사 설계 및 실행</span><span class="test-badge">권장 8분</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> 5A-1. 성과관리 이슈를 Deep Research 질문으로 전환</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 47줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 47줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-dr-design')">복사</button></span></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="AI가 질문하면 팀장이 답하며 결과를 함께 구체화합니다.">대화형</span> <span class="tool-badge" title="앞 단계와 같은 ChatGPT 대화창에서 이어서 진행합니다.">같은 ChatGPT 대화</span> 5A-1. 성과관리 이슈를 Deep Research 질문으로 전환</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 47줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 47줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-dr-design')">복사</button></span></div>
 <!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-dr-design">지금까지 분석한 성과관리 핵심 이슈 중 하나를 Deep Research로 조사하려고 합니다.
 
 바로 조사 문장을 작성하지 말고, 먼저 나에게 다음 질문을 해 주세요.
@@ -1161,7 +1151,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 - 평가·보상·징계·개인정보 관련 내용은 조직 기준 및 리더 최종 검토 영역으로 분리해 주세요.</div></div>
 </div>
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 5A-2. Deep Research 결과 검증 및 실행 연결</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 23줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 23줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-dr-review')">복사</button></span></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge" title="앞 단계와 같은 ChatGPT 대화창에서 이어서 진행합니다.">같은 ChatGPT 대화</span> 5A-2. Deep Research 결과 검증 및 실행 연결</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 23줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 23줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-dr-review')">복사</button></span></div>
 <!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-dr-review">완료된 Deep Research 보고서를 우리 팀에 적용하기 전에 근거와 실행 가능성을 검토해 주세요.
 
 ## 1. 근거 감사표
@@ -1198,7 +1188,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 <tr><td>4</td><td>테스트 결과로 지침 1회 수정</td><td>수정 후 같은 채팅에서 다시 테스트하고 저장</td></tr>
 </tbody></table></div>
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> 팀 성과관리 분석 자동화 비서 역할 지침</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 77줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 77줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-performance-instruction')">복사</button></span></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> <span class="tool-badge" title="ChatGPT에서 새 대화를 열고 시작합니다.">ChatGPT 새 대화</span> 팀 성과관리 분석 자동화 비서 역할 지침</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 77줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 77줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-performance-instruction')">복사</button></span></div>
 <!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-gem-performance-instruction">당신은 팀장의 성과관리를 돕는 AI 보좌관입니다.
 
 [웰컴 안내]
@@ -1283,7 +1273,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 <summary><span>선택 5B-2. 리더십 이슈 심층 리서치 보조 비서 만들기</span><span class="test-badge">대안 비서</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> 리더십 이슈 심층 리서치 보조 비서 역할 지침</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 33줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 33줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-research-instruction')">복사</button></span></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> <span class="tool-badge" title="ChatGPT에서 새 대화를 열고 시작합니다.">ChatGPT 새 대화</span> 리더십 이슈 심층 리서치 보조 비서 역할 지침</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 33줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 33줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-research-instruction')">복사</button></span></div>
 <!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-gem-research-instruction">당신은 팀장의 리더십 강화와 리더십 향상을 돕는 심층 리서치 보조 AI입니다.
 
 [웰컴 안내]
@@ -1324,7 +1314,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 <summary><span>비서 테스트 1. 다음 주 팀원 1:1 면담</span><span class="test-badge">수업 중 권장</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> 테스트 1 · 1:1 면담 가이드라인</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 21줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 21줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-1')">복사</button></span></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> <span class="tool-badge" title="비서 역할 지침을 넣은 그 대화에서 이어서 실행합니다.">같은 비서 대화</span> 테스트 1 · 1:1 면담 가이드라인</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 21줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 21줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-1')">복사</button></span></div>
 <!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-gem-test-1">방금 도출된 나의 리더십 프로필과 Speak-up 약속을 바탕으로 1:1 면담 가이드라인을 준비하려고 합니다.
 
 먼저 “어떤 팀원과 면담을 진행하시겠습니까?”라고 질문해 주세요.
@@ -1353,7 +1343,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 <summary><span>비서 테스트 2. 팀 주간회의 오프닝</span><span class="test-badge">수업 중 권장</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> 테스트 2 · 주간회의 오프닝 스피치</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-2')">복사</button></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> <span class="tool-badge" title="비서 역할 지침을 넣은 그 대화에서 이어서 실행합니다.">같은 비서 대화</span> 테스트 2 · 주간회의 오프닝 스피치</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-2')">복사</button></div>
 <div class="prompt-content" id="ch02-4-gem-test-2">방금 정리한 리더십 프로필과 AI와 리더의 역할 분담 내용을 바탕으로, 다음 주 주간회의에서 “AI를 도구로 삼아 일하는 방식을 바꾸는 방향”을 설명하려고 합니다.
 
 먼저 다음 질문을 해 주세요.
@@ -1376,7 +1366,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 <summary><span>비서 테스트 3. Deep Research로 연결</span><span class="test-badge">추가 테스트</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> 테스트 3 · 피드백·저성과자 코칭 리서치 설계</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-3')">복사</button></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="비서 또는 기능이 의도대로 작동하는지 예시로 시험합니다.">테스트형</span> <span class="tool-badge" title="비서 역할 지침을 넣은 그 대화에서 이어서 실행합니다.">같은 비서 대화</span> 테스트 3 · 피드백·저성과자 코칭 리서치 설계</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-3')">복사</button></div>
 <div class="prompt-content" id="ch02-4-gem-test-3">지금까지 대화한 성과관리 이슈를 바탕으로, 우리 팀에 가장 시급한 피드백 및 저성과자 코칭 역량 강화를 위한 Deep Research를 준비하려고 합니다.
 
 먼저 다음 질문을 해 주세요.
@@ -1400,7 +1390,7 @@ document.addEventListener('keydown',function(event){if(!modal.hidden&amp;&amp;ev
 <summary><span>비서 테스트 결과 평가 및 지침 개선</span><span class="test-badge">마무리</span></summary>
 <div class="optional-subdetails-body">
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> 테스트 로그·비서 역할 지침 수정 요청</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 24줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 24줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-review')">복사</button></span></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="앞 단계와 같은 대화창에서 맥락을 이어 진행합니다.">이어서형</span> <span class="tool-badge" title="비서 역할 지침을 넣은 그 대화에서 이어서 실행합니다.">같은 비서 대화</span> 테스트 로그·비서 역할 지침 수정 요청</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 24줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 24줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-gem-test-review')">복사</button></span></div>
 <!-- [HIDDEN 260803] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-gem-test-review">방금 실행한 비서 테스트 결과를 평가하고 역할 지침을 보완해 주세요.
 
 ## 1. 테스트 로그
