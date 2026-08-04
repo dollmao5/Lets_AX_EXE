@@ -910,7 +910,10 @@
 <button type="button" data-c2m-copy style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
 <button type="button" data-c2m-download style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
 </div>
-<pre data-c2m-body style="display:none;margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+<details data-c2m-view style="display:none;margin:8px 0 0;">
+<summary style="cursor:pointer;font-size:.92rem;font-weight:800;color:#0f7b6c;">📄 미리보기 — 펼치기 / 접기</summary>
+<pre data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+</details>
 </div>
 <div data-c2m-round="round2" style="margin-top:10px;padding-top:10px;border-top:1px dashed #a7d3c9;">
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
@@ -919,7 +922,10 @@
 <button type="button" data-c2m-copy style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
 <button type="button" data-c2m-download style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
 </div>
-<pre data-c2m-body style="display:none;margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+<details data-c2m-view style="display:none;margin:8px 0 0;">
+<summary style="cursor:pointer;font-size:.92rem;font-weight:800;color:#0f7b6c;">📄 미리보기 — 펼치기 / 접기</summary>
+<pre data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+</details>
 </div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
 var box=px.closest('[data-canvas2-multi]');
@@ -939,6 +945,7 @@ var copyBtn=row.querySelector('[data-c2m-copy]');
 var dlBtn=row.querySelector('[data-c2m-download]');
 var statusEl=row.querySelector('[data-c2m-status]');
 var bodyEl=row.querySelector('[data-c2m-body]');
+var viewEl=row.querySelector('[data-c2m-view]');
 function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
 loadBtn.addEventListener('click',function(){
 var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
@@ -948,8 +955,8 @@ fetch('/api/wrapup/canvas2?round='+ROUND+'&amp;team='+team+'&amp;name='+encodeUR
 .then(function(r){return r.json();})
 .then(function(d){
 loadBtn.disabled=false;
-if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
-bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
+if(!d.ok){viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
+bodyEl.textContent=d.canvas2.markdown;viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
 setStatus('불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ⚠ 아직 ChatGPT에 연결되지 않았습니다. [복사] 또는 [.md 다운로드] 후 첨부하세요.',false);

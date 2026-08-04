@@ -181,10 +181,14 @@ Round 2 불러오기
 복사
 .md 다운로드
 
+📄 미리보기 — 펼치기 / 접기
+
 **Round 2**
 아직 불러오지 않았습니다.
 복사
 .md 다운로드
+
+📄 미리보기 — 펼치기 / 접기
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
