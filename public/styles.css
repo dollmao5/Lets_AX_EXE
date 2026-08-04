@@ -6883,3 +6883,13 @@ table.round-schedule { width: 100%; }
   font-weight: 800;
   white-space: nowrap;
 }
+
+/* ── 260804 역할 카드 2개 구성(기록 담당 숨김)용 — 두 카드가 가로 폭을 꽉 채움 ── */
+.web-guide-grid.two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .web-guide-grid.two-col {
+    grid-template-columns: 1fr;
+  }
+}

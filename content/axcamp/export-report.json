@@ -90,8 +90,8 @@
         },
         {
           "route": "#ch02-clip02",
-          "title": "팀 토론: AI 시대, 리더의 고민과 역할",
-          "type": "토론·실습",
+          "title": "팀토론_① AI시대, 팀 현실과 리더 고민",
+          "type": "개념",
           "folder": "chapters/CH02/ch02-clip02",
           "linkCount": 0,
           "imageCount": 0,
@@ -445,7 +445,7 @@
     {
       "chapterId": "ch02",
       "route": "#ch02-clip02",
-      "title": "팀 토론: AI 시대, 리더의 고민과 역할",
+      "title": "팀토론_① AI시대, 팀 현실과 리더 고민",
       "folder": "chapters/CH02/ch02-clip02",
       "textLength": 3464,
       "htmlLength": 47821,
@@ -453,7 +453,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "토론·실습"
+      "type": "개념"
     },
     {
       "chapterId": "ch02",

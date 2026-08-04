@@ -189,7 +189,7 @@ AI Challenger Review는 팀이 그은 책임경계(잠정 결론)를 AI에게 �
 
 AI Challenge 프롬프트참고 · 펼쳐 보기
 
-ChatGPT 새 대화복붙형책임 공백과 과도한 AI 위임 점검복사
+복붙형ChatGPT 새 대화책임 공백과 과도한 AI 위임 점검복사
 
 📎 입력 필수 · 책임경계표 잠정 결론 붙여넣기 — Canvas의 [📋 Canvas 복사] 버튼 사용
 
