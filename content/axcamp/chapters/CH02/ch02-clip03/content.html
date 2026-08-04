@@ -624,7 +624,10 @@
 <button type="button" data-c2p-download style="min-height:40px;padding:8px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
 </div>
 <p data-c2p-status style="margin:0 0 8px;font-size:.92rem;color:var(--text-secondary,#667085);">팀·이름 입력 후 불러오기를 누르세요. (Round 1 제출자만 조회됩니다)</p>
-<pre data-c2p-body style="display:none;margin:0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:340px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+<details data-c2p-view style="display:none;margin:8px 0 0;">
+<summary style="cursor:pointer;font-size:.92rem;font-weight:800;color:#0f7b6c;">📄 미리보기 — 펼치기 / 접기</summary>
+<pre data-c2p-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:340px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+</details>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
 var box=px.closest('[data-canvas2-prev]');
 if(!box||box.dataset.c2pReady==='1')return;
@@ -637,6 +640,7 @@ var copyBtn=box.querySelector('[data-c2p-copy]');
 var dlBtn=box.querySelector('[data-c2p-download]');
 var statusEl=box.querySelector('[data-c2p-status]');
 var bodyEl=box.querySelector('[data-c2p-body]');
+var viewEl=box.querySelector('[data-c2p-view]');
 function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
 function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=h;}
 fillTeams(6);
@@ -650,8 +654,8 @@ fetch('/api/wrapup/canvas2?round='+PREV+'&amp;team='+team+'&amp;name='+encodeURI
 .then(function(r){return r.json();})
 .then(function(d){
 loadBtn.disabled=false;
-if(!d.ok){bodyEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
-bodyEl.textContent=d.canvas2.markdown;bodyEl.style.display='block';
+if(!d.ok){viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
+bodyEl.textContent=d.canvas2.markdown;viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
 setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ⚠ 아직 ChatGPT에 연결되지 않았습니다. [복사]해서 붙여넣거나 [.md 다운로드] 후 첨부하세요.',false);
