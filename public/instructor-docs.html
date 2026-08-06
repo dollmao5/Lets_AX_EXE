@@ -75,6 +75,7 @@
       <button data-doc="cohort-guide" class="active">자료 1 · 차수 전환 강사 가이드</button>
       <button data-doc="network-allowlist">자료 2 · 사내망 해제 요청 사이트 목록</button>
       <button data-doc="apply-guide">자료 3 · 과정 신청 안내문</button>
+      <button data-doc="exec-appeal">자료 4 · 임원/담당 사전 안내문</button>
     </div>
     <div class="viewer">
       <div class="viewer-bar">
@@ -96,7 +97,8 @@
   var DESC = {
     "cohort-guide": "교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지",
     "network-allowlist": "IT/보안 부서 요청용 — 실습 도메인 허용 목록과 SSL 검사 예외 요청 안내",
-    "apply-guide": "과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림 파악용"
+    "apply-guide": "과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림 파악용",
+    "exec-appeal": "임원/담당 대상 — 산하 팀장 참여 독려 요청과 과정 개요 요약 (8/5 신청 안내문 발송 안내 포함)"
   };
   function savedCode() { try { return localStorage.getItem(CODE_KEY) || ""; } catch (e) { return ""; } }
   function open(ok) {
