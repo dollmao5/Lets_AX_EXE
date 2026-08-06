@@ -240,6 +240,7 @@ const el = {
   instructorModeBtn: document.getElementById("instructorModeBtn"),
   adminModeBtn: document.getElementById("adminModeBtn"),
   openWrapupBtn: document.getElementById("openWrapupBtn"),
+  instructorDocsBtn: document.getElementById("instructorDocsBtn"),
   continueGuestBtn: document.getElementById("continueGuestBtn"),
   sidebarToggleBtn: document.getElementById("sidebarToggleBtn"),
   chapterList: document.getElementById("chapterList"),
@@ -4172,6 +4173,7 @@ function updateAdminVisibility() {
     el.adminSection.classList.add("hidden");
   }
   el.openWrapupBtn?.classList.toggle("hidden", !state.isAdmin);
+  el.instructorDocsBtn?.classList.toggle("hidden", !state.isAdmin);
   updateEditorVisibility();
 }
 
@@ -5220,6 +5222,10 @@ function bindEvents() {
   el.logoutBtn.addEventListener("click", onLogout);
 
   // [Wrapup 1단계] 게스트 ↔ 관리자 로그인 전환
+  // [강사 자료실] 관리자 인증 후에만 버튼 노출 — 문서 자체는 공개판(instructor-docs-files/)
+  el.instructorDocsBtn?.addEventListener("click", () => {
+    window.open(STATIC_MODE ? "instructor-docs.html" : "/instructor-docs.html", "_blank", "noopener");
+  });
   el.openWrapupBtn?.addEventListener("click", () => {
     window.open(STATIC_MODE ? "wrapup.html" : "/wrapup", "_blank", "noopener");
   });

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>강사 자료실 — 리더십 향상 with AI</title>
+<style>
+  :root { --heading:#1d3a6e; --accent:#2b5cab; --line:#d7dfec; }
+  body { font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; max-width:760px; margin:40px auto; padding:0 20px; color:#1f2937; line-height:1.6; background:#f8fafc; }
+  h1 { color:var(--heading); font-size:1.35rem; border-bottom:3px solid var(--accent); padding-bottom:10px; }
+  .meta { color:#6b7280; font-size:.9rem; margin-top:-4px; }
+  .gate, .card { background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:18px 20px; margin:16px 0; }
+  .gate input { font-size:1rem; padding:8px 12px; border:1.5px solid var(--line); border-radius:8px; width:220px; }
+  .gate button { font-size:1rem; padding:8px 18px; margin-left:8px; border:none; border-radius:8px; background:var(--accent); color:#fff; font-weight:700; cursor:pointer; }
+  .gate .err { color:#b91c1c; font-size:.92rem; margin:8px 0 0; min-height:1.2em; }
+  .card { display:block; text-decoration:none; color:inherit; border-left:8px solid var(--accent); }
+  .card:hover { background:#eff6ff; }
+  .card strong { color:var(--heading); font-size:1.05rem; }
+  .card p { margin:6px 0 0; font-size:.93rem; color:#475569; }
+  .hidden { display:none; }
+  .foot { text-align:center; color:#6b7280; font-size:.88rem; margin-top:28px; }
+</style>
+</head>
+<body>
+<h1>📚 강사 자료실</h1>
+<p class="meta">「리더십 향상 with AI」 과정 — 강사·운영 담당자용 자료 (열람용 공개판)</p>
+
+<div id="gate" class="gate">
+  <p style="margin:0 0 10px;"><strong>강사 코드 또는 관리자 코드</strong>를 입력해 주세요. (Wrap-up 보드에서 이미 로그인했다면 자동으로 열립니다)</p>
+  <input id="codeInput" type="password" placeholder="코드 입력" autocomplete="off">
+  <button id="enterBtn">입장</button>
+  <p id="gateErr" class="err"></p>
+</div>
+
+<div id="docs" class="hidden">
+  <a class="card" href="instructor-docs-files/cohort-guide.html" target="_blank" rel="noopener">
+    <strong>1. 차수 전환 강사 가이드</strong>
+    <p>교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지. 강사 PC가 바뀌어도 이 문서 하나로 준비 완료.</p>
+  </a>
+  <a class="card" href="instructor-docs-files/network-allowlist.html" target="_blank" rel="noopener">
+    <strong>2. 사내망 보안/네트워크 해제 요청 사이트 목록</strong>
+    <p>IT/보안 부서 요청용 — 실습 도메인 허용 목록과 SSL 검사(HTTPS 복호화) 예외 요청 안내.</p>
+  </a>
+  <a class="card" href="instructor-docs-files/apply-guide.html" target="_blank" rel="noopener">
+    <strong>3. 과정 신청 안내문</strong>
+    <p>과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림을 파악할 때 참고.</p>
+  </a>
+  <p style="font-size:.88rem;color:#6b7280;margin-top:14px;">※ 자료는 열람용 공개판입니다. 문의·최신본 요청은 리더십개발팀 담당자에게 연락해 주세요.</p>
+</div>
+
+<p class="foot">📞 문의: HRD담당 / 리더십개발팀</p>
+
+<script>
+(function () {
+  var REMOTE_BASE = "https://axcamp-wrapup.dollmao5.workers.dev";
+  var CODE_KEY = "ax_wrapup_instructor_code"; /* Wrap-up 보드와 공유 — 보드 로그인 시 자동 인증 */
+  function savedCode() { try { return localStorage.getItem(CODE_KEY) || ""; } catch (e) { return ""; } }
+  function open(ok) {
+    document.getElementById("gate").classList.toggle("hidden", ok);
+    document.getElementById("docs").classList.toggle("hidden", !ok);
+  }
+  function verify(code, silent) {
+    if (!code) { if (!silent) showErr("코드를 입력해 주세요."); return; }
+    fetch(REMOTE_BASE + "/api/wrapup/instructor-verify", {
+      method: "POST",
+      headers: { "x-wrapup-instructor": code }
+    }).then(function (r) { return r.json(); }).then(function (v) {
+      if (v && v.ok) {
+        try { localStorage.setItem(CODE_KEY, code); } catch (e) {}
+        open(true);
+      } else if (!silent) {
+        showErr((v && v.error) || "코드가 올바르지 않습니다.");
+      }
+    }).catch(function () {
+      if (!silent) showErr("인증 서버에 연결할 수 없습니다. 네트워크 상태를 확인해 주세요.");
+    });
+  }
+  function showErr(msg) { document.getElementById("gateErr").textContent = msg; }
+  document.getElementById("enterBtn").addEventListener("click", function () {
+    verify(document.getElementById("codeInput").value.trim(), false);
+  });
+  document.getElementById("codeInput").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") verify(this.value.trim(), false);
+  });
+  if (savedCode()) verify(savedCode(), true); /* 보드에서 이미 인증한 경우 자동 입장 */
+})();
+</script>
+</body>
+</html>

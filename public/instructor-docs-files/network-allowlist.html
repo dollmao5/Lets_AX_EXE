@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<title>사내망 보안/네트워크 해제 요청 사이트 목록 — 리더십 향상 with AI</title>
+<style>
+  :root { --heading:#1d3a6e; --accent:#2b5cab; --line:#d7dfec; }
+  body { font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; max-width:940px; margin:32px auto; padding:0 20px; color:#1f2937; line-height:1.6; }
+  h1 { color:var(--heading); font-size:1.4rem; border-bottom:3px solid var(--accent); padding-bottom:10px; }
+  h2 { color:var(--heading); font-size:1.1rem; margin-top:30px; border-left:6px solid var(--accent); padding-left:10px; }
+  .meta { color:#6b7280; font-size:.9rem; margin-top:-6px; }
+  table { border-collapse:collapse; width:100%; margin:12px 0; font-size:.92rem; }
+  th, td { border:1px solid var(--line); padding:7px 9px; text-align:left; vertical-align:top; }
+  th { background:#eff6ff; color:var(--heading); white-space:nowrap; }
+  td:first-child { white-space:nowrap; font-weight:700; }
+  code { background:#f3f4f6; padding:1px 5px; border-radius:5px; font-size:.92em; }
+  .box { border:1.5px solid #93c5fd; border-left:8px solid var(--accent); border-radius:12px; background:#eff6ff; padding:12px 16px; margin:12px 0; }
+  .note { color:#6b7280; font-size:.88rem; }
+  mark { background:#fef08a; padding:1px 6px; border-radius:5px; font-weight:700; }
+  @media print { body { margin:10mm auto; } h2 { break-after:avoid; } table { break-inside:avoid; } }
+</style>
+
+<h1>「리더십 향상 with AI」 과정 — 사내망 보안/네트워크 해제 요청 사이트 목록</h1>
+<p class="meta">수강 신청 안내문에서 분리 · IT/보안 부서 요청용 · 2026-08-04 작성 · 2026-08-06 SSL 검사 관련 추가</p>
+
+<h2>1. 해제 요청 도메인 목록</h2>
+<table>
+  <tr><th>구분</th><th>서비스</th><th>도메인</th><th>용도</th><th>비고</th></tr>
+  <tr><td>필수</td><td>ChatGPT</td><td><code>chatgpt.com</code>, <code>openai.com</code>, <code>auth.openai.com</code> 및 하위 도메인</td><td>CH02~CH04 핵심 실습</td><td><strong>로그인 + 파일 업로드(첨부) 허용</strong> 필요 — DLP/프록시의 업로드 차단 예외 처리</td></tr>
+  <tr><td>필수</td><td>Google 로그인</td><td><code>accounts.google.com</code></td><td>Gemini·NotebookLM 인증</td><td>개인 Google 계정 권장</td></tr>
+  <tr><td>필수</td><td>Gemini</td><td><code>gemini.google.com</code></td><td>CH03 참고 실습(리서치·Gems)</td><td>로그인 필요</td></tr>
+  <tr><td>필수</td><td>NotebookLM</td><td><code>notebooklm.google.com</code></td><td>CH04 통합 실습</td><td><strong>파일 업로드 허용</strong> 필요. 사내 Workspace 계정은 관리자 정책으로 차단될 수 있어 개인 계정 권장</td></tr>
+  <tr><td>필수</td><td>Google Drive</td><td><code>drive.google.com</code></td><td>실습 자료 다운로드(팀 토론 대화문 샘플, 기대행동 문서 등)</td><td>다운로드 허용</td></tr>
+  <tr><td>필수</td><td>학습 포털</td><td><code>dollmao5.github.io</code></td><td>과정 콘텐츠 열람</td><td>교육장 내 강사 서버(사내 LAN, 포트 4071) 사용 시에도 백업 접속용으로 해제 권장</td></tr>
+  <tr><td>필수</td><td>과정 운영 서버</td><td><code>axcamp-wrapup.dollmao5.workers.dev</code></td><td>팀 토론 제출·토론 정리본 불러오기</td><td>Cloudflare Workers — HTTPS POST 허용</td></tr>
+  <tr><td>필수 (강사 PC)</td><td>Gemini API</td><td><code>generativelanguage.googleapis.com</code></td><td>강사 Wrap-up 보드 팀 요약 생성</td><td>강사 PC만이라도 반드시 허용</td></tr>
+  <tr><td>권장</td><td>퀴즈</td><td><code>quizn.show</code></td><td>개념 확인 퀴즈</td><td></td></tr>
+  <tr><td>권장</td><td>YouTube</td><td><code>youtube.com</code>, <code>youtu.be</code>, <code>youtube-nocookie.com</code></td><td>도입 영상 시청</td><td>임베드 재생 허용</td></tr>
+  <tr><td>선택</td><td>구글 번역 프록시</td><td><code>*.translate.goog</code></td><td>영문 참고 연구자료 한글 보기</td><td>HBS·스탠퍼드 자료 등</td></tr>
+  <tr><td>선택</td><td>참고 링크</td><td><code>hbs.edu</code>, <code>mckinsey.com</code>, <code>bcg.com</code>, <code>anthropic.com</code> 등</td><td>클립 내 근거 기사·연구 열람</td><td>차단돼도 실습 진행에는 지장 없음</td></tr>
+</table>
+
+<h2>2. 추가 요청: SSL 검사(HTTPS 복호화) 예외 및 인증서 폐기 확인 (2026-08-06)</h2>
+
+<p><strong>증상</strong> — 교육·운영 PC에서 브라우저는 위 사이트에 접속되지만, Windows 표준 TLS를 쓰는 도구(curl, Node.js 등)는
+<code>CRYPT_E_NO_REVOCATION_CHECK</code> 오류로 연결이 거부됩니다.</p>
+
+<p><strong>원인 (2026-08-06 실측)</strong> — 사내망 SSL 검사 장비가 HTTPS를 복호화한 뒤 사내 CA로 재서명하는데,
+이때 재발급되는 인증서에 <strong>폐기 확인 정보(CRL 배포 지점·OCSP 주소)가 포함되어 있지 않습니다.</strong>
+Windows(schannel)는 인증서의 폐기 여부를 확인하지 못하면 연결을 거부하므로 접속이 실패합니다.</p>
+
+<div class="box">
+  <strong>요청 (택 1)</strong>
+  <ol style="margin:8px 0 0;">
+    <li><mark>(권장)</mark> 위 표의 <strong>필수</strong> 도메인들을 SSL 검사(복호화) <strong>예외 목록</strong>에 추가
+      — 원본 인증서가 그대로 전달되어 폐기 확인이 정상 동작하며, 파일 업로드 등 실습 기능 오작동 예방에도 도움이 됩니다.</li>
+    <li>(대안) SSL 검사 장비가 재발급하는 인증서에 사내 CA의 CRL/OCSP 주소를 포함하도록 설정하고,
+      해당 사내 폐기 확인 서버로의 접근을 허용</li>
+  </ol>
+</div>
+
+<p><strong>참고 — 1번 적용 시 함께 허용 필요한 공인 CA 폐기 확인 도메인</strong> (OCSP/CRL은 HTTP 80 포트 사용이 일반적)</p>
+<table>
+  <tr><th>CA (해당 서비스)</th><th>폐기 확인 도메인</th></tr>
+  <tr><td>DigiCert (GitHub 계열)</td><td><code>ocsp.digicert.com</code>, <code>crl3.digicert.com</code>, <code>crl4.digicert.com</code></td></tr>
+  <tr><td>Google Trust Services (Google·Cloudflare 계열)</td><td><code>ocsp.pki.goog</code>, <code>crls.pki.goog</code>, <code>c.pki.goog</code></td></tr>
+  <tr><td>Let's Encrypt</td><td><code>*.o.lencr.org</code></td></tr>
+  <tr><td>Sectigo</td><td><code>ocsp.sectigo.com</code>, <code>crl.sectigo.com</code></td></tr>
+</table>
+<p class="note">※ 대표 공인 CA 기준이며, 실제 필요한 주소는 각 서비스 인증서의 AIA/CRL 확장에 따릅니다.
+현재는 SSL 검사로 재서명된 인증서만 관측되어 원본 CA를 특정할 수 없으므로, CA 4계열을 포괄 기재했습니다.</p>
+
+<div class="box" style="text-align:center;margin-top:24px;">
+  <strong>📞 요청 관련 문의: HRD담당 / 리더십개발팀</strong>
+</div>

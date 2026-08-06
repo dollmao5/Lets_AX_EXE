@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<title>차수 전환 강사 가이드 — 리더십 향상 with AI</title>
+<style>
+  :root { --heading:#1d3a6e; --accent:#2b5cab; --line:#d7dfec; }
+  body { font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; max-width:860px; margin:32px auto; padding:0 20px; color:#1f2937; line-height:1.65; }
+  h1 { color:var(--heading); font-size:1.5rem; border-bottom:3px solid var(--accent); padding-bottom:10px; }
+  h2 { color:var(--heading); font-size:1.12rem; margin-top:28px; border-left:6px solid var(--accent); padding-left:10px; }
+  .meta { color:#6b7280; font-size:.9rem; margin-top:-6px; }
+  table { border-collapse:collapse; width:100%; margin:10px 0; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:#eff6ff; color:var(--heading); white-space:nowrap; }
+  th:first-child, td:first-child { white-space:nowrap; }
+  ol li, ul li { margin:6px 0; }
+  .box { border:1.5px solid #93c5fd; border-left:8px solid var(--accent); border-radius:12px; background:#eff6ff; padding:12px 16px; margin:12px 0; }
+  .oneline { font-weight:800; color:var(--heading); }
+  code { background:#f3f4f6; padding:1px 6px; border-radius:5px; font-size:.92em; }
+  mark { background:#fef08a; padding:1px 6px; border-radius:5px; font-weight:700; }
+  .btn { display:inline-block; background:#eff6ff; border:1px solid var(--accent); color:var(--heading); border-radius:8px; padding:0 8px; font-weight:800; font-size:.92em; white-space:nowrap; }
+  @media print { body { margin:10mm auto; } }
+</style>
+
+<h1>「리더십 향상 with AI」 차수 전환 강사 가이드</h1>
+<p class="meta">차수마다 강사·PC가 바뀌어도 이 문서 하나로 준비 완료 · 2026-08-06 · 운영: HRD담당/리더십개발팀</p>
+
+<h2>0. 시스템 한눈에 보기</h2>
+<ul>
+  <li>강사·교육생 모두 <strong>개인 PC 브라우저</strong>로 접속합니다. 설치할 프로그램은 없습니다.
+    <ul>
+      <li>교육생(학습 포털): <code>https://dollmao5.github.io/Lets_AX_EXE</code></li>
+      <li>강사(Wrap-up 보드): <code>https://dollmao5.github.io/Lets_AX_EXE/wrapup.html</code></li>
+    </ul>
+  </li>
+  <li>팀 제출·요약·토론 정리본은 모두 <strong>원격 저장소에 자동 저장</strong>됩니다. 강사 PC에는 아무것도 남지 않으며, PC가 바뀌어도 데이터는 그대로입니다.</li>
+  <li>강사가 새 PC에서 입력할 것은 <mark>강사 비밀코드 1회</mark>뿐입니다. (AI 요약용 키는 자동 공급 — 입력 불필요)</li>
+</ul>
+
+<h2>1. 교육 전날까지 (사전 준비)</h2>
+<table>
+  <tr><th>확인</th><th>내용</th></tr>
+  <tr><td>① 접속 확인</td><td>강사 PC 브라우저에서 위 두 주소가 열리는지 확인 (사내망이면 <code>dollmao5.github.io</code> · <code>axcamp-wrapup.dollmao5.workers.dev</code> 허용 필요)</td></tr>
+  <tr><td>② 사내망 예외 요청</td><td>사내망 PC로 진행하는 차수라면 IT/보안 부서에 실습 도메인 허용과 <strong>SSL 검사(HTTPS 복호화) 예외</strong>를 함께 요청합니다 — 요청용 도메인 목록·요청 문구는 별도 문서 <a href="network-allowlist.html">「사내망 해제 요청 사이트 목록」</a> 참조 (운영 담당자가 대행 가능). SSL 검사 예외가 없으면 브라우저 접속은 되어도 파일 업로드 등 일부 기능이 오작동할 수 있습니다</td></tr>
+  <tr><td>③ 비밀코드 수령</td><td>운영 담당자에게 <strong>강사 비밀코드</strong>를 전달받습니다</td></tr>
+  <tr><td>④ (선택) 리허설</td><td>리허설이 필요하면 임시 차수 이름(예: <code>rehearsal</code>)으로 아래 2번 절차를 미리 연습합니다. 당일 아침 실제 차수로 전환하면 리허설 데이터와 섞이지 않습니다</td></tr>
+</table>
+
+<h2>2. 교육 당일 아침 — 차수 전환 절차 (보드에서, 하루 1회)</h2>
+<ol>
+  <li><strong>강사 로그인</strong> — <code>wrapup.html</code> 접속 → 강사 비밀코드 입력 (새 PC당 1회. 이후 관리 버튼이 나타납니다)</li>
+  <li><span class="btn">차수 설정</span> — 오늘 차수 이름 등록 (예: <code>2026-08-21차수</code>). 오늘의 모든 제출·요약·토론 정리본이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
+  <li><span class="btn">차수 코드</span> (선택) — 두 가지 중 선택:
+    <ul>
+      <li><strong>코드 설정</strong>: 칠판·화면에 코드를 공지 → 교육생은 최초 제출 시 1회 입력 (외부인 제출 차단)</li>
+      <li><strong>빈 값으로 저장</strong>: 교육생은 아무 코드 입력 없이 제출 (무입력 운영)</li>
+    </ul>
+  </li>
+  <li><strong>반영 확인</strong> — 교육생 화면에서 테스트 제출 1건 → 보드 <span class="btn">새로고침</span>으로 제출 숫자가 오르는지 확인</li>
+</ol>
+
+<h2>3. 수업 중 (라운드 운영 요약)</h2>
+<div class="box"><span class="oneline">기억할 것은 한 줄: 차수 설정 → (토론·제출 확인) → [요약 생성] → 발표 모드 → [토론 정리본 생성]</span></div>
+<ul>
+  <li><strong>[요약 생성]은 라운드(R1·R2·R3)마다 필수</strong>입니다 — 여기서 만든 요약·토론 정리본이 다음 라운드와 CH04 NotebookLM 실습의 소스가 됩니다.</li>
+  <li>자세한 버튼별 사용법은 보드 상단 <span class="btn">사용법 ❓</span> 와 <span class="btn">도입·마무리 🎬</span> 에 있습니다.</li>
+</ul>
+
+<h2>4. 교육 종료 후</h2>
+<ul>
+  <li><strong>강사는 할 일이 없습니다.</strong> 데이터는 이미 원격 저장소에 저장되어 있습니다.</li>
+  <li>자료 회수는 운영 담당자가 합니다: 개발 PC 로컬 보드에서 <span class="btn">불러오기(pull)</span> → <span class="btn">zip 내보내기</span> 두 클릭.</li>
+</ul>
+
+<h2>5. 문제가 생기면</h2>
+<table>
+  <tr><th>증상</th><th>조치</th></tr>
+  <tr><td>제출 숫자가 안 올라감</td><td>보드 [새로고침] → 차수 이름·차수 코드가 교육생 안내와 일치하는지 확인</td></tr>
+  <tr><td>요약 생성 실패·지연</td><td>한 번 더 실행 (재실행 안전). AI 호출이 막히면 자동으로 간이(lite) 요약으로 대체됨</td></tr>
+  <tr><td>보드·사이트 전체 장애</td><td>교육생에게 각자 캔버스의 [Markdown 다운로드] 백업을 안내하고, 팀별 구두 발표로 전환해 수업 계속 진행</td></tr>
+  <tr><td>강사 PC 교체(수업 중 포함)</td><td>새 PC에서 비밀코드만 다시 입력 — 데이터·설정은 그대로 이어짐</td></tr>
+</table>
+
+<div class="box" style="text-align:center;margin-top:24px;">
+  <strong>📞 이외 강의 준비 및 교육 운영 관련 문의는 리더십개발팀 담당자에게 연락해 주세요</strong>
+</div>

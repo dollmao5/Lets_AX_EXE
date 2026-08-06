@@ -154,6 +154,7 @@
       <button id="pullBtn">불러오기(pull)</button>
       <button id="pushBtn">저장·백업(push)</button>
       <button id="zipBtn">zip 내보내기</button>
+      <button id="docsBtn" style="display:none">강사 자료실 📚</button>
     </span>
   </div>
 
@@ -571,6 +572,8 @@
     $("adminBox").classList.toggle("on", on);
     var btn = $("instructorLoginBtn");
     if (btn) btn.textContent = on ? "강사 로그아웃" : "강사 로그인";
+    var db = $("docsBtn");
+    if (db) db.style.display = on ? "" : "none";
   }
 
   async function detectAdmin() {
@@ -591,7 +594,7 @@
     if (!sessionToken()) return;
     try {
       var d = await api("/api/me");
-      if (d && d.user && d.user.isAdmin) { state.isAdmin = true; $("adminBox").classList.add("on"); }
+      if (d && d.user && d.user.isAdmin) { state.isAdmin = true; $("adminBox").classList.add("on"); var db = $("docsBtn"); if (db) db.style.display = ""; }
     } catch (e) { /* 게스트 */ }
   }
 
@@ -983,6 +986,9 @@
   });
 
   // [Wrapup 외부접속] 교육생 제출용 차수 코드 설정/해제 — 원격 모드 전용
+  $("docsBtn").addEventListener("click", function () {
+    window.open("instructor-docs.html", "_blank", "noopener");
+  });
   $("codeBtn").addEventListener("click", async function () {
     var code = prompt("교육생 제출용 차수 코드를 설정하세요.\n(교육 당일 칠판·화면에 공지 — 빈 값으로 확인하면 코드 없이 제출 허용)", "");
     if (code === null) return;
