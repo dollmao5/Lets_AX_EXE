@@ -212,7 +212,7 @@ async function buildCatalog(sourceRoot) {
     },
     {
       visibleChapterId: "ch04",
-      title: "우리 팀의 성과·성장역량 향상 실천",
+      title: "우리 팀의 성장역량 향상 실천",
       time: "15:30",
       sourceChapterIds: ["ch04"],
       clipKeys: ["ch04-clip01", "ch04-clip02"]
