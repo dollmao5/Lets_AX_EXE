@@ -6,55 +6,98 @@
 <meta name="robots" content="noindex">
 <title>강사 자료실 — 리더십 향상 with AI</title>
 <style>
-  :root { --heading:#1d3a6e; --accent:#2b5cab; --line:#d7dfec; }
-  body { font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; max-width:760px; margin:40px auto; padding:0 20px; color:#1f2937; line-height:1.6; background:#f8fafc; }
-  h1 { color:var(--heading); font-size:1.35rem; border-bottom:3px solid var(--accent); padding-bottom:10px; }
-  .meta { color:#6b7280; font-size:.9rem; margin-top:-4px; }
-  .gate, .card { background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:18px 20px; margin:16px 0; }
-  .gate input { font-size:1rem; padding:8px 12px; border:1.5px solid var(--line); border-radius:8px; width:220px; }
-  .gate button { font-size:1rem; padding:8px 18px; margin-left:8px; border:none; border-radius:8px; background:var(--accent); color:#fff; font-weight:700; cursor:pointer; }
-  .gate .err { color:#b91c1c; font-size:.92rem; margin:8px 0 0; min-height:1.2em; }
-  .card { display:block; text-decoration:none; color:inherit; border-left:8px solid var(--accent); }
-  .card:hover { background:#eff6ff; }
-  .card strong { color:var(--heading); font-size:1.05rem; }
-  .card p { margin:6px 0 0; font-size:.93rem; color:#475569; }
-  .hidden { display:none; }
-  .foot { text-align:center; color:#6b7280; font-size:.88rem; margin-top:28px; }
+  /* Wrap-up 보드와 동일한 디자인 토큰 — 단일 과정 룩앤필 */
+  :root {
+    --brand: #185dcc; --brand-soft: #e8f0ff; --border: #d9e0ec; --bg: #f2f5fb;
+    --text: #1c2742; --muted: #6f7f9a; --card: #ffffff; --danger: #b42318;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif; line-height: 1.6;
+    word-break: keep-all; overflow-wrap: break-word; }
+  .wrap { max-width: 1360px; margin: 0 auto; padding: 18px 20px 60px; }
+  header.top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 14px; }
+  header.top h1 { margin: 0; font-size: 1.3rem; }
+  header.top .spacer { flex: 1; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--border);
+    border-radius: 999px; background: #fff; font-size: .92rem; font-weight: 700; }
+  a.pill { text-decoration: none; color: var(--text); cursor: pointer; }
+  a.pill:hover { border-color: var(--brand); color: var(--brand); }
+  button { font: inherit; min-height: 40px; padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px;
+    background: #fff; font-weight: 800; cursor: pointer; }
+  button.primary { border-color: var(--brand); background: var(--brand); color: #fff; }
+  input { font: inherit; }
+
+  /* 인증 카드 — 보드 section-card 문법 */
+  .section-card { background: var(--card); border: 1px solid var(--border); border-left: 6px solid var(--brand);
+    border-radius: 16px; padding: 18px 22px; margin-top: 16px; }
+  .section-card h2 { margin: 0 0 8px; font-size: 1.1rem; }
+  .gate input { min-height: 40px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff; width: 230px; }
+  .gate .err { color: var(--danger); font-size: .92rem; margin: 8px 0 0; min-height: 1.2em; }
+
+  /* 탭 — 보드 탭과 동일 */
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 14px; }
+  .tabs button { border-radius: 12px; padding: 10px 22px; font-size: 1.02rem; }
+  .tabs button.active { border-color: var(--brand); background: var(--brand); color: #fff; }
+
+  /* 문서 뷰어 — 보드 카드 문법 */
+  .viewer { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .viewer-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    padding: 10px 16px; background: var(--brand-soft); border-bottom: 1px solid var(--border);
+    font-size: .92rem; color: var(--muted); }
+  .viewer-bar a { color: var(--brand); font-weight: 800; text-decoration: none; white-space: nowrap; }
+  .viewer-bar a:hover { text-decoration: underline; }
+  .viewer iframe { display: block; width: 100%; height: calc(100vh - 150px); min-height: 560px; border: none; background: #fff; }
+  .hidden { display: none; }
+  .foot { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 24px; }
 </style>
 </head>
 <body>
-<h1>📚 강사 자료실</h1>
-<p class="meta">「리더십 향상 with AI」 과정 — 강사·운영 담당자용 자료 (열람용 공개판)</p>
+<div class="wrap">
 
-<div id="gate" class="gate">
-  <p style="margin:0 0 10px;"><strong>강사 코드 또는 관리자 코드</strong>를 입력해 주세요. (Wrap-up 보드에서 이미 로그인했다면 자동으로 열립니다)</p>
-  <input id="codeInput" type="password" placeholder="코드 입력" autocomplete="off">
-  <button id="enterBtn">입장</button>
-  <p id="gateErr" class="err"></p>
+  <header class="top">
+    <h1>📚 강사 자료실</h1>
+    <span class="pill">리더십 향상 with AI · 강사/운영 자료</span>
+    <span class="spacer"></span>
+    <a class="pill" href="wrapup.html">↩️ Wrap-up 보드로</a>
+  </header>
+
+  <div id="gate" class="section-card gate">
+    <h2>🔑 입장 확인</h2>
+    <p style="margin:0 0 10px;"><strong>강사 코드 또는 관리자 코드</strong>를 입력해 주세요. (Wrap-up 보드에서 이미 로그인했다면 자동으로 열립니다)<br>코드를 모르시면 리더십개발팀 담당자에게 문의해 주세요.</p>
+    <input id="codeInput" type="password" placeholder="코드 입력" autocomplete="off">
+    <button id="enterBtn" class="primary">입장</button>
+    <p id="gateErr" class="err"></p>
+  </div>
+
+  <div id="docs" class="hidden">
+    <div class="tabs" id="tabBar">
+      <button data-doc="cohort-guide" class="active">자료 1 · 차수 전환 강사 가이드</button>
+      <button data-doc="network-allowlist">자료 2 · 사내망 해제 요청 사이트 목록</button>
+      <button data-doc="apply-guide">자료 3 · 과정 신청 안내문</button>
+    </div>
+    <div class="viewer">
+      <div class="viewer-bar">
+        <span id="docDesc">교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지</span>
+        <a id="openNewBtn" href="instructor-docs-files/cohort-guide.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+      </div>
+      <iframe id="docFrame" src="instructor-docs-files/cohort-guide.html" title="문서 보기"></iframe>
+    </div>
+    <p style="font-size:.9rem;color:var(--muted);margin-top:10px;">※ 자료는 열람용 공개판입니다. 문의·최신본 요청은 리더십개발팀 담당자에게 연락해 주세요.</p>
+  </div>
+
+  <p class="foot">📞 문의: HRD담당 / 리더십개발팀</p>
+
 </div>
-
-<div id="docs" class="hidden">
-  <a class="card" href="instructor-docs-files/cohort-guide.html" target="_blank" rel="noopener">
-    <strong>1. 차수 전환 강사 가이드</strong>
-    <p>교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지. 강사 PC가 바뀌어도 이 문서 하나로 준비 완료.</p>
-  </a>
-  <a class="card" href="instructor-docs-files/network-allowlist.html" target="_blank" rel="noopener">
-    <strong>2. 사내망 보안/네트워크 해제 요청 사이트 목록</strong>
-    <p>IT/보안 부서 요청용 — 실습 도메인 허용 목록과 SSL 검사(HTTPS 복호화) 예외 요청 안내.</p>
-  </a>
-  <a class="card" href="instructor-docs-files/apply-guide.html" target="_blank" rel="noopener">
-    <strong>3. 과정 신청 안내문</strong>
-    <p>과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림을 파악할 때 참고.</p>
-  </a>
-  <p style="font-size:.88rem;color:#6b7280;margin-top:14px;">※ 자료는 열람용 공개판입니다. 문의·최신본 요청은 리더십개발팀 담당자에게 연락해 주세요.</p>
-</div>
-
-<p class="foot">📞 문의: HRD담당 / 리더십개발팀</p>
-
 <script>
 (function () {
   var REMOTE_BASE = "https://axcamp-wrapup.dollmao5.workers.dev";
   var CODE_KEY = "ax_wrapup_instructor_code"; /* Wrap-up 보드와 공유 — 보드 로그인 시 자동 인증 */
+  var DESC = {
+    "cohort-guide": "교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지",
+    "network-allowlist": "IT/보안 부서 요청용 — 실습 도메인 허용 목록과 SSL 검사 예외 요청 안내",
+    "apply-guide": "과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림 파악용"
+  };
   function savedCode() { try { return localStorage.getItem(CODE_KEY) || ""; } catch (e) { return ""; } }
   function open(ok) {
     document.getElementById("gate").classList.toggle("hidden", ok);
@@ -82,6 +125,25 @@
   });
   document.getElementById("codeInput").addEventListener("keydown", function (e) {
     if (e.key === "Enter") verify(this.value.trim(), false);
+  });
+  /* 문서별 본문 폭을 1080px로 통일 — 탭 전환 시 화면 폭 출렁임 방지 (신청안내문은 파일 무수정, 뷰어 표시만 보정) */
+  document.getElementById("docFrame").addEventListener("load", function () {
+    try {
+      var b = this.contentDocument && this.contentDocument.body;
+      if (b) { b.style.maxWidth = "1080px"; b.style.wordBreak = "keep-all"; b.style.overflowWrap = "break-word"; }
+    } catch (e) { /* 표시 보정 실패해도 열람에는 지장 없음 */ }
+  });
+  /* 탭 전환 — 문서 3종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
+  document.getElementById("tabBar").addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-doc]");
+    if (!btn) return;
+    var doc = btn.getAttribute("data-doc");
+    var url = "instructor-docs-files/" + doc + ".html";
+    this.querySelectorAll("button").forEach(function (b) { b.classList.toggle("active", b === btn); });
+    var frame = document.getElementById("docFrame");
+    if (frame.getAttribute("src") !== url) frame.setAttribute("src", url);
+    document.getElementById("openNewBtn").setAttribute("href", url);
+    document.getElementById("docDesc").textContent = DESC[doc] || "";
   });
   if (savedCode()) verify(savedCode(), true); /* 보드에서 이미 인증한 경우 자동 입장 */
 })();
