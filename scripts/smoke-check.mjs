@@ -101,12 +101,12 @@ for (const clipKey of clipKeys) {
 }
 if (clipKeys.length && !clipFailures) ok(`클립 스냅샷 ${clipKeys.length}개 모두 contentHtml 정상`);
 
-// 6. deck-data.json: 덱 18종 + slides 구조 (2026-07-23 보안 조치로 1종 제거)
+// 6. deck-data.json: 덱 19종 + slides 구조 (2026-07-23 보안 조치로 1종 제거, 2026-08-04 ch02-4 업로드 메뉴 덱 1종 추가)
 const deckData = readJson("deck-data.json");
 if (deckData) {
   const deckIds = Object.keys(deckData);
-  if (deckIds.length !== 18) fail(`deck-data.json 덱 수 ${deckIds.length} (기대 18)`);
-  else ok("덱 18종 존재");
+  if (deckIds.length !== 19) fail(`deck-data.json 덱 수 ${deckIds.length} (기대 19)`);
+  else ok("덱 19종 존재");
   const broken = deckIds.filter(
     (id) => !Array.isArray(deckData[id]?.slides) || !deckData[id].slides.length
   );
