@@ -1,7 +1,7 @@
 ---
 route: "#ch06-clip05"
 chapter: "ch06"
-title: "HTML + PPT 동시 출력 심화"
+title: "HTML + PPT 동시 출력"
 source_url: "https://lg.cmdspace.work/axcamp#ch06-clip05"
 exported_at: "2026-02-28T01:54:19.347Z"
 ---
@@ -9,7 +9,7 @@ exported_at: "2026-02-28T01:54:19.347Z"
 CH 06
 참고
 
-# HTML + PPT 동시 출력 심화
+# HTML + PPT 동시 출력
 
 이 섹션은 **심화/선택** 자료입니다. 시간 여유가 있을 때 참고하세요.
 

@@ -1,7 +1,7 @@
 ---
 route: "#CH06-clip04"
 chapter: "ch06"
-title: "듀얼 출력의 원리 심화"
+title: "듀얼 출력의 원리"
 source_url: "https://lg.cmdspace.work/axcamp#CH06-clip04"
 exported_at: "2026-02-28T01:54:18.217Z"
 ---
@@ -9,7 +9,7 @@ exported_at: "2026-02-28T01:54:18.217Z"
 CH 06
 참고
 
-# 듀얼 출력의 원리 심화
+# 듀얼 출력의 원리
 
 이 섹션은 **심화/선택** 자료입니다. 시간 여유가 있을 때 참고하세요.
 

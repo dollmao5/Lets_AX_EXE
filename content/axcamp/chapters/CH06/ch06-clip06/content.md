@@ -1,7 +1,7 @@
 ---
 route: "#CH06-clip06"
 chapter: "ch06"
-title: "스킬(Skill)이란 심화"
+title: "스킬(Skill)이란"
 source_url: "https://lg.cmdspace.work/axcamp#CH06-clip06"
 exported_at: "2026-02-28T01:54:20.486Z"
 ---
@@ -9,7 +9,7 @@ exported_at: "2026-02-28T01:54:20.486Z"
 CH 06
 참고
 
-# 스킬(Skill)이란 심화
+# 스킬(Skill)이란
 
 이 섹션은 **심화/선택** 자료입니다. 시간 여유가 있을 때 참고하세요.
 

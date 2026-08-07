@@ -1,7 +1,7 @@
 ---
 route: "#ch06-clip07"
 chapter: "ch06"
-title: "스킬 저장 & 재사용 심화"
+title: "스킬 저장 & 재사용"
 source_url: "https://lg.cmdspace.work/axcamp#ch06-clip07"
 exported_at: "2026-02-28T01:54:21.618Z"
 ---
@@ -9,7 +9,7 @@ exported_at: "2026-02-28T01:54:21.618Z"
 CH 06
 참고
 
-# 스킬 저장 & 재사용 심화
+# 스킬 저장 & 재사용
 
 이 섹션은 **심화/선택** 자료입니다. 시간 여유가 있을 때 참고하세요.
 
