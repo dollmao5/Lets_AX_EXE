@@ -1508,6 +1508,58 @@ function renderClipBodyContent(contentHtml, options = {}) {
   }
   enhanceClipBody();
   wireClipInteractions();
+  applyWrapupIdentityPrefill();
+}
+
+/* [260807] 팀·이름 공통 프리필 — R1 제출 시 저장되는 ax_wrapup_identity를 통합 Gate(2-5·3-1c)·
+   CH05 회수표/실천계획·정리본/통합본 패널의 빈 성명·팀 칸에 자동 반영해, 교육생이 매 클립마다
+   이름을 다시 입력하지 않도록 한다. 반대로 이 칸들에 새로 입력한 성명도 저장해 이후 클립에 승계. */
+function applyWrapupIdentityPrefill() {
+  const NAME_SELECTOR = [
+    'input[data-rev-field="name"]',
+    'input[data-c501-field="participantName"]',
+    'input[data-c502-field="participantName"]',
+    "input[data-c2m-name]",
+    "input[data-c2b-name]"
+  ].join(",");
+  const TEAM_SELECTOR = "select[data-c2m-team],select[data-c2b-team]";
+
+  const readIdentity = () => {
+    try { return JSON.parse(localStorage.getItem("ax_wrapup_identity") || "null") || null; } catch (err) { return null; }
+  };
+  const fill = () => {
+    const identity = readIdentity();
+    if (!identity || !el.clipBody) return;
+    el.clipBody.querySelectorAll(NAME_SELECTOR).forEach((input) => {
+      if (identity.name && !String(input.value || "").trim()) {
+        input.value = identity.name;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+    el.clipBody.querySelectorAll(TEAM_SELECTOR).forEach((select) => {
+      if (identity.team && !select.value) {
+        select.value = String(identity.team);
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+  };
+  // 클립 자체 복원 스크립트(각자 storageKey 복원, 400ms 지연 프리필 포함)보다 뒤에, 빈 칸만 채운다
+  setTimeout(fill, 600);
+  setTimeout(fill, 1500);
+
+  if (!el.clipBody || el.clipBody.dataset.identityCaptureWired === "1") return;
+  el.clipBody.dataset.identityCaptureWired = "1";
+  el.clipBody.addEventListener("change", (ev) => {
+    const target = ev.target;
+    if (!target || typeof target.matches !== "function" || !target.matches(NAME_SELECTOR)) return;
+    const name = String(target.value || "").trim();
+    if (!name) return;
+    const identity = readIdentity() || {};
+    if (identity.name === name) return;
+    identity.name = name;
+    try { localStorage.setItem("ax_wrapup_identity", JSON.stringify(identity)); } catch (err) { /* 저장 실패해도 진행에는 지장 없음 */ }
+  });
 }
 
 function openInlineQuickEditor(target, offset, lineNumber, options = {}) {
