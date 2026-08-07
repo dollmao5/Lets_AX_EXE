@@ -658,7 +658,7 @@ if(!d.ok){viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.d
 bodyEl.textContent=d.canvas2.markdown;viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ⚠ 아직 ChatGPT에 연결되지 않았습니다. [복사]해서 붙여넣거나 [.md 다운로드] 후 첨부하세요.',false);
+setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
 });
