@@ -72,7 +72,7 @@
 
   <div id="docs" class="hidden">
     <div class="tabs" id="tabBar">
-      <button data-doc="cohort-guide" class="active">자료 1 · 차수 전환 강사 가이드</button>
+      <button data-doc="cohort-guide" class="active">자료 1 · 강사 사전 가이드</button>
       <button data-doc="network-allowlist">자료 2 · 사내망 해제 요청 사이트 목록</button>
       <button data-doc="apply-guide">자료 3 · 과정 신청 안내문</button>
       <button data-doc="exec-appeal">자료 4 · 임원/담당 사전 안내문</button>
@@ -135,7 +135,7 @@
       if (b) { b.style.maxWidth = "1080px"; b.style.wordBreak = "keep-all"; b.style.overflowWrap = "break-word"; }
     } catch (e) { /* 표시 보정 실패해도 열람에는 지장 없음 */ }
   });
-  /* 탭 전환 — 문서 3종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
+  /* 탭 전환 — 문서 4종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
   document.getElementById("tabBar").addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-doc]");
     if (!btn) return;

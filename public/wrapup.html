@@ -195,12 +195,12 @@
 
     <h3>오늘 하루 흐름 (이 순서대로만 누르면 됩니다)</h3>
     <ol class="help-flow">
-      <li><span class="when">교육 시작 전</span><span class="btn-name">차수 설정</span> — 오늘 차수 이름을 등록합니다 (예: 2026-09-02차수). 오늘의 모든 제출·요약이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
+      <li><span class="when">교육 시작 전</span><span class="btn-name">차수 설정</span> — 오늘 차수 이름을 등록합니다 (예: 2026-09-03차수). 오늘의 모든 제출·요약이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
       <li data-help-mode="remote"><span class="when">교육 시작 전 · 선택</span><span class="btn-name">차수 코드</span> — 공개 사이트라 아무나 제출할 수 있으므로, 제출용 코드를 정해 칠판·화면에 공지합니다. 외부인 제출을 막는 자물쇠입니다. 빈 값으로 저장하면 코드 없이 제출 가능.</li>
       <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1팀 4명 · 2팀 3명…"</strong>이 올라갑니다. 제출 현황은 30초마다 자동 갱신됩니다(즉시 확인은 <span class="btn-name">새로고침</span>). 늦는 팀만 독려하세요.</li>
       <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 30초~수분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
       <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동, ESC 종료). 마지막 교차 분석 슬라이드로 강사 Wrap-up.</li>
-      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면에서 "이전 Round 토론 정리본 불러오기"로 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1·2 내 토론 정리본 불러오기" 패널에서 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
       <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
     </ol>
 
@@ -226,6 +226,9 @@
       <tr data-help-mode="remote"><td>강사 로그인/로그아웃</td><td>강사·관리자 비밀코드로 인증하면 이 관리 버튼들이 나타납니다. 로그아웃하면 일반 열람 화면으로 돌아갑니다.</td></tr>
       <tr><td>발표 모드 ▶</td><td>요약을 슬라이드로 크게 표시 (팀 카드 → 교차 분석 → 차수 비교 순).</td></tr>
       <tr><td>도입·마무리 🎬</td><td>Round 1~3 팀 토론 도입·마무리 멘트 + 그 외 클립 학습 Flow·필수 산출물 가이드 + D-1 체크리스트 (강사 전용).</td></tr>
+      <tr><td>새로고침</td><td>제출 현황·요약 표시를 즉시 갱신합니다 (30초마다 자동 갱신되므로 급할 때만).</td></tr>
+      <tr data-help-mode="remote"><td>차수 코드</td><td>교육생 제출 보호 코드를 설정/해제합니다 — 빈 값으로 저장하면 코드 없이 제출 가능 (위 하루 흐름 ① 참고).</td></tr>
+      <tr><td>강사 자료실 📚</td><td>강사 사전 가이드·사내망 해제 요청 목록·안내문 문서를 새 탭에서 열람합니다 (강사·관리자 인증 시 표시).</td></tr>
       </tbody>
     </table>
 
@@ -305,7 +308,7 @@
         <ol style="margin:6px 0 0;padding-left:20px;">
           <li><em>(발표 모드 화면을 보며)</em> "여러 팀에서 공통으로 나온 단어가 보입니다 — ○○, ○○. 우리 팀만의 문제가 아니었죠." <em>(실제 발표에서 나온 키워드로 채우기)</em></li>
           <li>"오늘 나온 이야기들은 <strong>능력의 문제가 아니라 구조의 문제</strong>입니다. 성과를 못 낸 95%의 기업들이 건너뛴 게 바로 이 진단입니다 — 여러분은 방금 그걸 했습니다."</li>
-          <li>"이 Canvas는 방금 생성한 팀 요약과 합쳐져 <strong>'나의 토론 정리본'</strong>로 다음 실습의 입력이 됩니다. 팀의 현실을 정리했으니, 이제 그 현실에서 '리더인 나'는 무엇을 직접 책임질지로 넘어갑니다."</li>
+          <li>"이 Canvas는 방금 생성한 팀 요약과 합쳐져 <strong>'나의 토론 정리본'</strong>으로 다음 실습의 입력이 됩니다. 팀의 현실을 정리했으니, 이제 그 현실에서 '리더인 나'는 무엇을 직접 책임질지로 넘어갑니다."</li>
         </ol>
         <div style="margin-top:6px;font-size:.87rem;color:#b91c1c;">⚠️ 여기서 해결책을 언급하지 않기 — 해결은 R2·R3의 몫입니다.</div>
       </div>
@@ -331,7 +334,7 @@
         <ol style="margin:6px 0 0;padding-left:20px;">
           <li><em>(팀 카드를 비교하며)</em> "재미있는 게, 같은 업무인데 팀마다 경계선이 다릅니다. 틀린 게 아니라 — <strong>책임경계에는 정답이 없고, 팀의 맥락이 기준</strong>이라는 뜻입니다."</li>
           <li>"다만 오전에 본 판례를 기억하세요. 어느 선을 긋든 변하지 않는 것 — <strong>AI에게 일은 맡겨도 책임은 맡길 수 없습니다.</strong> 오늘 그은 선은 '임시선'입니다. 현업에서 팀원들과 다시 그어야 진짜 선이 됩니다."</li>
-          <li>"이 책임경계표는 팀 요약과 합쳐진 <strong>'나의 토론 정리본'</strong>로, 바로 다음 실습에서 여러분의 핵심 역량 브리프를 만드는 입력이 됩니다."</li>
+          <li>"이 책임경계표는 팀 요약과 합쳐진 <strong>'나의 토론 정리본'</strong>으로, 바로 다음 실습에서 여러분의 핵심 역량 브리프를 만드는 입력이 됩니다."</li>
         </ol>
       </div>
     </div></details>
@@ -379,7 +382,7 @@
       <div style="margin:8px 0;"><strong>2-2 Round 1 (30분)</strong> — 위 <strong>Round 1 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 토론 정리본에 반영되어 2-3 실습·Round 2 입력자료가 됩니다.</div>
       <div style="margin:8px 0;"><strong>2-3 리더 역할·책임 (35분)</strong> — 대화형 인터뷰 Step 1~4 (권장 8+10+8+9분). 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_AI시대_리더역할_성명.md</mark></div>
       <div style="margin:8px 0;"><strong>2-3b Round 2 (30분)</strong> — 위 <strong>Round 2 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_R2_AI팀원리더_책임경계_팀번호.md</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약이 개인별 토론 정리본에 반영되어 2-4 실습 입력자료가 됩니다.</div>
-      <div style="margin:8px 0;"><strong>2-4 핵심 역량 (40분)</strong> — 토론 정리본·리더 프로필·팀장 기대행동 교차분석 3단계. R1·R2 입력은 클립의 '📌 내 토론 정리본 불러오기'에서 각자 복사·다운로드. 필수:<mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_핵심역량과_스킬_성명.md</mark></div>
+      <div style="margin:8px 0;"><strong>2-4 핵심 역량 (40분)</strong> — 토론 정리본·리더 프로필·팀장 기대행동 교차분석 3단계. R1·R2 입력은 클립의 '📌 Round 1과 Round 2의 토론 정리본 불러오기'에서 각자 복사·다운로드. 필수:<mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_나의_핵심역량과_스킬_성명.md</mark></div>
       <div style="margin:8px 0;"><strong>2-5 통합 저장 Gate (15분)</strong> — 산출물 회수 체크 → 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH02_리더역할_책임경계_통합본_성명.md</mark> = <strong>CH04 필수 1 소스</strong>. 점심 전 저장 위치 확인.</div>
     </div></details>
 
@@ -790,13 +793,13 @@
     (s.teams || []).forEach(function (t) {
       if (t.summary) slides.push({ title: t.team + "팀", sub: t.names.join(", ") + " · " + t.memberCount + "명 제출", body: t.summary });
     });
-    if (s.cross && !String(s.cross).startsWith("(")) slides.push({ title: "교차 분석", sub: "전체 팀 공통 이슈과 차이", body: s.cross });
+    if (s.cross && !String(s.cross).startsWith("(")) slides.push({ title: "교차 분석", sub: "전체 팀 공통 이슈와 차이", body: s.cross });
     if (s.cohortCompare) slides.push({ title: "차수 비교", sub: "지난 차수와의 비교", body: s.cohortCompare });
     return slides;
   }
   /* [260803] 요약 생성 전 미리보기용 샘플 슬라이드 — 신입 강사가 발표 화면 구성을 미리 확인 */
   function buildSampleSlides() {
-    var body = "### 팀 공통 합의\n- (샘플) AI 산출물 검토 기준이 없어 재작업이 반복된다\n- (샘플) 핵심 이슈 TOP 2: 품질 기준 부재 · 검토 시간 증가\n\n### 팀 내 관점 차이\n- (샘플) 위임 범위에 대한 온도 차 — 초안까지 vs 최종안까지\n\n### 남은 질문\n- (샘플) 검토 기준은 누가 정하는가";
+    var body = "### 핵심 논점\n- (샘플) AI 산출물 검토 기준이 없어 재작업이 반복된다\n- (샘플) 핵심 이슈 TOP 2: 품질 기준 부재 · 검토 시간 증가\n\n### 발표 포인트\n- (샘플) 검토 기준을 먼저 세운 뒤 위임 범위를 넓히기\n\n### 팀 내 관점 차이\n- (샘플) 위임 범위에 대한 온도 차 — 초안까지 vs 최종안까지";
     return [
       { title: "1팀", sub: "(샘플) 홍길동, 김민준 외 · 5명 제출", body: body },
       { title: "2팀", sub: "(샘플) 이서연, 박지훈 외 · 6명 제출", body: body },
@@ -997,7 +1000,7 @@
     else toast(d.error || "차수 코드 설정 실패");
   });
   $("cohortBtn").addEventListener("click", async function () {
-    var name = prompt("현재 차수 이름을 입력하세요 (예: 2026-09-02차수)", state.current);
+    var name = prompt("현재 차수 이름을 입력하세요 (예: 2026-09-03차수)", state.current);
     if (!name) return;
     var d = await api("/api/admin/wrapup/config", { method: "POST", body: { cohort: name } });
     if (d.ok) { toast("차수 변경: " + d.cohort); state.cohort = d.cohort; await refresh(); }

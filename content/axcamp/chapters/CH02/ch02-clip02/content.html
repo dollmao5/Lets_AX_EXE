@@ -487,7 +487,7 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
     var prefix=who&amp;&amp;safe(who.value)?fileSafe(who.value)+&#x27;_&#x27;:&#x27;&#x27;;
     var a=document.createElement(&#x27;a&#x27;);
     var objectUrl=&#x27;&#x27;;
-    a.download=prefix+nameRoot+&#x27;.md&#x27;;
+    a.download=(prefix?nameRoot.replace(/_(팀번호|성명)$/,&#x27;&#x27;)+&#x27;_&#x27;+prefix.slice(0,-1):nameRoot)+&#x27;.md&#x27;;
     if(window.URL&amp;&amp;typeof URL.createObjectURL===&#x27;function&#x27;){
       var blob=new Blob([buildMarkdown()],{type:&#x27;text/markdown;charset=utf-8&#x27;});
       objectUrl=URL.createObjectURL(blob);

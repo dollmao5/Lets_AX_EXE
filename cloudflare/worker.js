@@ -488,7 +488,7 @@ async function handleSaveSummary(request, env) {
   return json(request, 200, record);
 }
 
-/* ---------- [Wrapup 5단계] 개인별 2차 캔버스 (server.js와 동일한 결정형 병합) ----------
+/* ---------- [Wrapup 5단계] 개인별 토론 정리본 (server.js와 동일한 결정형 병합) ----------
    원칙: AI 호출 없이 개인 제출 원문(우선·전문 보존)과 팀 요약(참고)을 고정 템플릿으로 합친다.
    생성·저장(POST)은 강사 전용이며 서브요청 한도(50/요청) 때문에 팀 단위로 호출한다.
    조회(GET)는 저장본이 없거나 구버전이면 즉석 병합으로 항상 응답한다 (저장하지 않음). */
@@ -518,7 +518,7 @@ function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
   const { consensus, diff } = splitWrapupTeamSummary(teamEntry && teamEntry.summary);
   const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사가 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
   return [
-    `# ${label} · 2차 캔버스 — ${submission.name} (${submission.team}팀)`,
+    `# ${label} · 토론 정리본 — ${submission.name} (${submission.team}팀)`,
     "",
     "> **문서 구성 안내** — ① 나의 결론(개인 작성 원문·우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이 순서입니다.",
     "> 직군·직무·근속·경험에 따른 개인 작성 내용이 우선이며, 팀 합의는 참고 계층입니다.",
@@ -593,7 +593,7 @@ async function handleCanvas2Get(request, env, url) {
   return json(request, 200, { ok: true, stored: result.stored, canvas2: result.record });
 }
 
-// R1~3 2차 캔버스를 한 사람 기준으로 통합 — CH04 NotebookLM 업로드용 (자동 목차 포함)
+// R1~3 토론 정리본을 한 사람 기준으로 통합 — CH04 NotebookLM 업로드용 (자동 목차 포함)
 async function handleCanvas2Bundle(request, env, url) {
   const { config } = await readConfig(env);
   const cohort = wrapupSafeSegment(url.searchParams.get("cohort")) || config.currentCohort;
@@ -616,9 +616,9 @@ async function handleCanvas2Bundle(request, env, url) {
     included[round] ? `- ${WRAPUP_ROUND_LABELS[round]}` : `- ${WRAPUP_ROUND_LABELS[round]} — (미제출)`
   ).join("\n");
   const markdown = [
-    `# Round 1~3 팀 토론 2차 캔버스 통합본 — ${name} (${team}팀)`,
+    `# Round 1~3 팀 토론 정리본 통합본 — ${name} (${team}팀)`,
     "",
-    "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 Team Canvas' 소스로 업로드하는 개인화 파일입니다.",
+    "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 팀 토론 정리본 통합본' 소스로 업로드하는 개인화 파일입니다.",
     "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
     "",
     "## 목차",
@@ -630,11 +630,11 @@ async function handleCanvas2Bundle(request, env, url) {
     parts.join("\n\n---\n\n"),
     ""
   ].join("\n");
-  const filename = `CH04_R1-3_팀토론2차캔버스_${wrapupSafeSegment(name)}.md`;
+  const filename = `CH04_R1-3_팀토론정리본_${wrapupSafeSegment(name)}.md`;
   return json(request, 200, { ok: true, cohort, team, name, included, filename, markdown });
 }
 
-// 강사 전용: 지정한 팀의 2차 캔버스를 일괄 생성·저장. team 필수(서브요청 한도).
+// 강사 전용: 지정한 팀의 토론 정리본을 일괄 생성·저장. team 필수(서브요청 한도).
 // 보드 UI가 1팀부터 teamCount팀까지 순차 호출한다. 결정형이라 재실행 안전.
 async function handleCanvas2Generate(request, env) {
   const deny = requireInstructor(request, env);
