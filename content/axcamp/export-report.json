@@ -282,7 +282,7 @@
         },
         {
           "route": "#ch06-clip04",
-          "title": "듀얼 출력의 원리 심화",
+          "title": "듀얼 출력의 원리",
           "type": "개념",
           "folder": "chapters/CH06/ch06-clip04",
           "linkCount": 0,
@@ -292,7 +292,7 @@
         },
         {
           "route": "#ch06-clip05",
-          "title": "HTML + PPT 동시 출력 심화",
+          "title": "HTML + PPT 동시 출력",
           "type": "개념",
           "folder": "chapters/CH06/ch06-clip05",
           "linkCount": 0,
@@ -302,7 +302,7 @@
         },
         {
           "route": "#ch06-clip06",
-          "title": "스킬(Skill)이란 심화",
+          "title": "스킬(Skill)이란",
           "type": "개념",
           "folder": "chapters/CH06/ch06-clip06",
           "linkCount": 0,
@@ -312,7 +312,7 @@
         },
         {
           "route": "#ch06-clip07",
-          "title": "스킬 저장 & 재사용 심화",
+          "title": "스킬 저장 & 재사용",
           "type": "개념",
           "folder": "chapters/CH06/ch06-clip07",
           "linkCount": 0,
@@ -653,7 +653,7 @@
     {
       "chapterId": "ch06",
       "route": "#ch06-clip04",
-      "title": "듀얼 출력의 원리 심화",
+      "title": "듀얼 출력의 원리",
       "folder": "chapters/CH06/ch06-clip04",
       "textLength": 753,
       "htmlLength": 3913,
@@ -666,7 +666,7 @@
     {
       "chapterId": "ch06",
       "route": "#ch06-clip05",
-      "title": "HTML + PPT 동시 출력 심화",
+      "title": "HTML + PPT 동시 출력",
       "folder": "chapters/CH06/ch06-clip05",
       "textLength": 1000,
       "htmlLength": 3311,
@@ -679,7 +679,7 @@
     {
       "chapterId": "ch06",
       "route": "#ch06-clip06",
-      "title": "스킬(Skill)이란 심화",
+      "title": "스킬(Skill)이란",
       "folder": "chapters/CH06/ch06-clip06",
       "textLength": 793,
       "htmlLength": 3719,
@@ -692,7 +692,7 @@
     {
       "chapterId": "ch06",
       "route": "#ch06-clip07",
-      "title": "스킬 저장 & 재사용 심화",
+      "title": "스킬 저장 & 재사용",
       "folder": "chapters/CH06/ch06-clip07",
       "textLength": 475,
       "htmlLength": 1882,
