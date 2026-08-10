@@ -72,7 +72,20 @@
     border: 1.5px solid var(--blue-border); border-left: 8px solid var(--indigo);
     border-radius: 12px; background: var(--blue-bg); font-weight: 800; color: var(--indigo-dark);
   }
-  @media print { body { margin: 8mm auto; } h2 { break-after: avoid; } table, .req-box { break-inside: avoid; } }
+  .copy-block {
+    margin: 8px 0 6px; padding: 14px 18px;
+    border: 1.5px solid var(--border); border-left: 8px solid var(--indigo);
+    border-radius: 12px; background: var(--offwhite);
+    font-family: Consolas, "Malgun Gothic", monospace; font-size: .92rem; line-height: 1.7;
+    white-space: pre; overflow-x: auto;
+  }
+  .mini-copy {
+    margin-left: 8px; padding: 4px 14px; border: 1.5px solid var(--blue-border); border-radius: 999px;
+    background: var(--blue-bg); color: var(--indigo-dark); font-weight: 800; font-size: .85rem;
+    cursor: pointer; vertical-align: middle;
+  }
+  .mini-copy:hover { background: #dbeafe; }
+  @media print { body { margin: 8mm auto; } h2 { break-after: avoid; } table, .req-box, .copy-block { break-inside: avoid; } .mini-copy { display: none; } }
 </style>
 </head>
 <body>
@@ -110,6 +123,67 @@
   <tr><td><span class="badge b-opt">선택</span></td><td>교육생</td><td class="svc">🔗 참고 링크</td><td><code>hbs.edu</code>, <code>mckinsey.com</code>, <code>bcg.com</code>, <code>anthropic.com</code>, <code>github.com</code>(CH06 참고자료) 등</td><td>클립 내 근거 기사·연구·참고자료 열람</td><td>차단돼도 실습 진행에는 지장 없음</td></tr>
 </table>
 <p class="note">※ 운영 모드 참고 — <strong>공개 사이트 모드</strong>(github.io 접속)는 위 공통 2종이 전원 필수입니다. <strong>강사 PC LAN 모드</strong>(교육생이 강사 PC 주소로 접속)는 교육생의 github.io·workers.dev 의존이 없어지지만, 두 모드를 모두 대비해 표 그대로 신청하는 것을 권장합니다.</p>
+
+<h2>📋 1-B. 붙여넣기용 목록 (복사해서 사용)</h2>
+
+<p><strong>① 해제 신청서 기재용 — 도메인만, 한 줄에 하나</strong> <button class="mini-copy" data-copy="listDomains">📋 복사</button></p>
+<pre class="copy-block" id="listDomains">chatgpt.com
+openai.com
+auth.openai.com
+cdn.oaistatic.com
+*.oaiusercontent.com
+accounts.google.com
+notebooklm.google.com
+docs.google.com
+*.googleusercontent.com
+quizn.show
+dollmao5.github.io
+axcamp-wrapup.dollmao5.workers.dev
+generativelanguage.googleapis.com
+github.com
+gemini.google.com
+youtube.com
+youtu.be
+youtube-nocookie.com
+drive.google.com
+*.translate.goog</pre>
+<p class="note">※ 필수(1~14행) → 권장(15~19행) → 선택(20행) 순. 개발담당 PC 한정 4종(<code>api.github.com</code>, <code>api.cloudflare.com</code>, <code>aistudio.google.com</code>, <code>nodejs.org</code>)과 선택 참고 링크는 별도 신청 시에만 추가하세요.</p>
+
+<p><strong>② 해제 후 접속 점검용 — 브라우저 주소창에 붙여넣어 한 줄씩 확인</strong> <button class="mini-copy" data-copy="listCheck">📋 복사</button></p>
+<pre class="copy-block" id="listCheck">https://dollmao5.github.io/Lets_AX_EXE/
+https://axcamp-wrapup.dollmao5.workers.dev/api/wrapup/config
+https://chatgpt.com
+https://auth.openai.com
+https://accounts.google.com
+https://notebooklm.google.com
+https://docs.google.com
+https://quizn.show
+https://generativelanguage.googleapis.com
+https://github.com
+https://gemini.google.com
+https://www.youtube.com
+https://drive.google.com</pre>
+<p class="note">※ 점검 기준 — 각 주소가 <strong>화면 또는 JSON 응답</strong>을 보여주면 통과입니다 (운영 서버·Gemini API는 짧은 JSON 문구가 정상). 인증서 오류·차단 안내 페이지가 뜨면 해당 도메인을 IT에 재확인 요청하세요.
+와일드카드 도메인(<code>*.oaiusercontent.com</code> 등)은 주소창 단독 점검이 불가하므로 ChatGPT 파일 첨부 실습으로 확인합니다.
+강사 PC의 <strong>프로그램 방식 점검</strong>(SSL 검사 예외 확인)은 명령 프롬프트에서 <code>curl https://generativelanguage.googleapis.com</code> 실행 — 오류 없이 JSON이 나오면 통과.</p>
+
+<script>
+document.querySelectorAll(".mini-copy").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var el = document.getElementById(btn.getAttribute("data-copy"));
+    if (!el) return;
+    var done = function () { btn.textContent = "✅ 복사됨"; setTimeout(function () { btn.textContent = "📋 복사"; }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.textContent).then(done);
+    } else {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand("copy"); done(); } catch (e) {}
+      s.removeAllRanges();
+    }
+  });
+});
+</script>
 
 <h2>🛡️ 2. 추가 요청: SSL 검사(HTTPS 복호화) 예외 및 인증서 폐기 확인 <span style="font-size:.85rem;color:var(--muted);font-weight:400;">(2026-08-06 · 2026-08-10 실측 보강)</span></h2>
 
