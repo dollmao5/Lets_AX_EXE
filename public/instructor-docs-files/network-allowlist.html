@@ -84,35 +84,47 @@
   <circle cx="170" cy="22" r="5" fill="#fde047"/><circle cx="28" cy="26" r="4" fill="#fde047"/>
 </svg>
 <h1>🔐 「리더십 향상 with AI」과정 - 사내망 해제 요청 사이트 목록</h1>
-<div class="hero-tags"><span>🛠️ IT/보안 부서 요청용</span><span>🌐 실습 도메인 12종</span><span>🛡️ SSL 검사 예외 포함</span></div>
+<div class="hero-tags"><span>🛠️ IT/보안 부서 요청용</span><span>🌐 실습 도메인 14종</span><span>🛡️ SSL 검사 예외 포함</span></div>
 </div>
-<p class="meta">수강 신청 안내문에서 분리 · 2026-08-04 작성 · 2026-08-06 SSL 검사 관련 추가</p>
+<p class="meta">수강 신청 안내문에서 분리 · 2026-08-04 작성 · 2026-08-06 SSL 검사 관련 추가 · 2026-08-10 도메인 보완(Docs·ChatGPT 보조·강사 PC)·SSL 실측 보강</p>
 
 <h2>🌐 1. 해제 요청 도메인 목록</h2>
 <table>
   <tr><th>구분</th><th>서비스</th><th>도메인</th><th>용도</th><th>비고</th></tr>
-  <tr><td><span class="badge b-must">필수</span></td><td class="svc">🤖 ChatGPT</td><td><code>chatgpt.com</code>, <code>openai.com</code>, <code>auth.openai.com</code> 및 하위 도메인</td><td>CH02~CH04 핵심 실습</td><td><mark><strong>로그인 + 파일 업로드(첨부) 허용</strong></mark> 필요 — DLP/프록시의 업로드 차단 예외 처리</td></tr>
+  <tr><td><span class="badge b-must">필수</span></td><td class="svc">🤖 ChatGPT</td><td><code>chatgpt.com</code>, <code>openai.com</code>, <code>auth.openai.com</code>, <code>cdn.oaistatic.com</code>, <code>*.oaiusercontent.com</code> 및 하위 도메인</td><td>CH02~CH04 핵심 실습</td><td><mark><strong>로그인 + 파일 업로드(첨부) 허용</strong></mark> 필요 — DLP/프록시의 업로드 차단 예외 처리. <code>oaistatic</code>/<code>oaiusercontent</code>는 화면 자산·첨부 파일 전용 별도 도메인</td></tr>
   <tr><td><span class="badge b-must">필수</span></td><td class="svc">🔑 Google 로그인</td><td><code>accounts.google.com</code></td><td>Gemini·NotebookLM 인증</td><td>개인 Google 계정 권장</td></tr>
   <tr><td><span class="badge b-must">필수</span></td><td class="svc">✨ Gemini</td><td><code>gemini.google.com</code></td><td>CH03 참고 실습(리서치·Gems)</td><td>로그인 필요</td></tr>
   <tr><td><span class="badge b-must">필수</span></td><td class="svc">📓 NotebookLM</td><td><code>notebooklm.google.com</code></td><td>CH04 통합 실습</td><td><mark><strong>파일 업로드 허용</strong></mark> 필요. 사내 Workspace 계정은 관리자 정책으로 차단될 수 있어 개인 계정 권장</td></tr>
-  <tr><td><span class="badge b-must">필수</span></td><td class="svc">📁 Google Drive</td><td><code>drive.google.com</code></td><td>실습 자료 다운로드(팀 토론 대화문 샘플, 기대행동 문서 등)</td><td>다운로드 허용</td></tr>
+  <tr><td><span class="badge b-must">필수</span></td><td class="svc">📄 Google Docs</td><td><code>docs.google.com</code>, <code>*.googleusercontent.com</code></td><td>CH02-4 「팀장 기대행동 문서」 열람</td><td>실습 필수 입력 자료 — 문서 열람·다운로드 허용 (<code>googleusercontent</code>는 Docs/Drive 콘텐츠 전송 호스트)</td></tr>
+  <tr><td><span class="badge b-rec">권장</span></td><td class="svc">📁 Google Drive</td><td><code>drive.google.com</code></td><td>예비 자료 공유 경로</td><td>2026-08-10부터 필수 실습 파일(팀 토론 대화문 샘플 등)은 학습 포털에서 직접 제공되어 Drive 의존 없음 — 예비 경로로만 유지</td></tr>
   <tr><td><span class="badge b-must">필수</span></td><td class="svc">🎓 학습 포털</td><td><code>dollmao5.github.io</code></td><td>과정 콘텐츠 열람</td><td>교육은 이 주소로 진행되므로 필수 해제</td></tr>
   <tr><td><span class="badge b-must">필수</span></td><td class="svc">⚙️ 과정 운영 서버</td><td><code>axcamp-wrapup.dollmao5.workers.dev</code></td><td>팀 토론 제출·토론 정리본 불러오기</td><td>Cloudflare Workers — <mark><strong>HTTPS POST 허용</strong></mark></td></tr>
-  <tr><td><span class="badge b-must">필수</span><br><span class="note">(강사 PC)</span></td><td class="svc">🧠 Gemini API</td><td><code>generativelanguage.googleapis.com</code></td><td>강사 Wrap-up 보드 팀 요약 생성</td><td><strong>강사 PC만이라도 반드시 허용</strong></td></tr>
+  <tr><td><span class="badge b-must">필수</span><br><span class="note">(강사 PC)</span></td><td class="svc">🧠 Gemini API</td><td><code>generativelanguage.googleapis.com</code></td><td>강사 Wrap-up 보드 팀 요약 생성</td><td><strong>강사 PC만이라도 반드시 허용</strong> — 이 호출은 프로그램(Node.js) 방식이라 <mark><strong>아래 2번 SSL 검사 예외까지 함께</strong></mark> 적용돼야 동작</td></tr>
+  <tr><td><span class="badge b-must">필수</span><br><span class="note">(강사 PC)</span></td><td class="svc">💻 GitHub</td><td><code>github.com</code></td><td>강사 PC(bat) 모드 — 과정 앱·차수 데이터 git 동기화</td><td>bat 실행 시 <code>git clone/pull/push</code>(HTTPS) 사용. 공개 사이트만 쓰는 차수는 불필요</td></tr>
   <tr><td><span class="badge b-rec">권장</span></td><td class="svc">❓ 퀴즈</td><td><code>quizn.show</code></td><td>개념 확인 퀴즈</td><td></td></tr>
   <tr><td><span class="badge b-rec">권장</span></td><td class="svc">▶️ YouTube</td><td><code>youtube.com</code>, <code>youtu.be</code>, <code>youtube-nocookie.com</code></td><td>도입 영상 시청</td><td>임베드 재생 허용</td></tr>
   <tr><td><span class="badge b-opt">선택</span></td><td class="svc">🌐 구글 번역 프록시</td><td><code>*.translate.goog</code></td><td>영문 참고 연구자료 한글 보기</td><td>HBS·스탠퍼드 자료 등</td></tr>
   <tr><td><span class="badge b-opt">선택</span></td><td class="svc">🔗 참고 링크</td><td><code>hbs.edu</code>, <code>mckinsey.com</code>, <code>bcg.com</code>, <code>anthropic.com</code> 등</td><td>클립 내 근거 기사·연구 열람</td><td>차단돼도 실습 진행에는 지장 없음</td></tr>
 </table>
 
-<h2>🛡️ 2. 추가 요청: SSL 검사(HTTPS 복호화) 예외 및 인증서 폐기 확인 <span style="font-size:.85rem;color:var(--muted);font-weight:400;">(2026-08-06)</span></h2>
+<h2>🛡️ 2. 추가 요청: SSL 검사(HTTPS 복호화) 예외 및 인증서 폐기 확인 <span style="font-size:.85rem;color:var(--muted);font-weight:400;">(2026-08-06 · 2026-08-10 실측 보강)</span></h2>
 
-<p><strong>🔎 증상</strong> — 교육·운영 PC에서 브라우저는 위 사이트에 접속되지만, Windows 표준 TLS를 쓰는 도구(curl, Node.js 등)는
-<code>CRYPT_E_NO_REVOCATION_CHECK</code> 오류로 연결이 거부됩니다.</p>
+<p><strong>🔎 증상</strong> — 교육·운영 PC에서 브라우저는 위 사이트에 접속되지만, 프로그램 방식의 HTTPS 도구는 연결이 거부됩니다.
+도구 계열에 따라 오류가 다릅니다:</p>
+<ul>
+  <li><strong>Windows 표준 TLS(schannel) 계열</strong> — curl 등: <code>CRYPT_E_NO_REVOCATION_CHECK</code> 오류</li>
+  <li><strong>OpenSSL 계열</strong> — Node.js 등: <code>UNABLE_TO_VERIFY_LEAF_SIGNATURE</code> 오류
+    (강사 Wrap-up 보드의 <mark><strong>팀 요약 생성이 이 방식</strong></mark>이라, 예외 처리 없이는 교육장에서 요약 생성이 실패합니다)</li>
+</ul>
 
-<p><strong>🧩 원인 (2026-08-06 실측)</strong> — 사내망 SSL 검사 장비가 HTTPS를 복호화한 뒤 사내 CA로 재서명하는데,
-이때 재발급되는 인증서에 <strong>폐기 확인 정보(CRL 배포 지점·OCSP 주소)가 포함되어 있지 않습니다.</strong>
-Windows(schannel)는 인증서의 폐기 여부를 확인하지 못하면 연결을 거부하므로 접속이 실패합니다.</p>
+<p><strong>🧩 원인 (2026-08-06 실측 · 2026-08-10 보강)</strong> — 사내망 SSL 검사 장비가 HTTPS를 복호화한 뒤 사내 CA로 재서명하는데,
+재발급 인증서에 세 가지 결함이 실측으로 확인되었습니다:</p>
+<ol>
+  <li><strong>폐기 확인 정보(CRL 배포 지점·OCSP 주소) 누락</strong> — Windows(schannel)는 폐기 여부를 확인하지 못하면 연결을 거부 (2026-08-06)</li>
+  <li><strong>중간 인증서 체인 미전달</strong> — 재서명된 서버 인증서만 전달되고 발급 CA 체인이 빠져 있어, OpenSSL 계열 도구가 신뢰 경로를 구성하지 못함 (2026-08-10)</li>
+  <li><strong>사내 CA 키 강도 미달</strong> — 사내 CA를 수동으로 신뢰시켜도 최신 TLS 라이브러리가 <code>CA certificate key too weak</code>로 거부 — 현행 보안 기준(RSA 2048bit·SHA-256 이상) 미달 (2026-08-10)</li>
+</ol>
+<p class="note">※ 2·3번은 예외 처리 대신 우회하려면 각 도구의 보안 기준을 인위적으로 낮춰야 하므로(보안상 부적절), 아래 1번 <strong>예외 목록 방식</strong>이 유일하게 안전한 해결책입니다.</p>
 
 <div class="req-box">
   <strong>📌 요청 (택 1)</strong>
