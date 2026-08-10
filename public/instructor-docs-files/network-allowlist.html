@@ -158,8 +158,8 @@
 <summary>📋 ① 해제 신청서 기재용 — 도메인 20개 <span class="fold-hint">펼치기 ▾</span></summary>
 <div class="fold-body">
 <p class="note">줄마다 <strong>누가 · 무슨 용도 · 왜 필요한지</strong>를 함께 표기했습니다.
-[복사]는 <strong>도메인만</strong> 복사되므로 신청서에 그대로 붙여넣으면 됩니다.
-<button class="mini-copy" data-copy="listDomains">📋 전체 복사 (도메인 20개)</button></p>
+줄별 [복사]는 <strong>도메인만</strong>, [전체 복사]는 <strong>도메인 + 구분·대상·용도 설명까지</strong> 함께 복사됩니다 (엑셀 붙여넣기 시 2열로 정렬).
+<button class="mini-copy" data-copy="listDomains" data-mode="with-notes">📋 전체 복사 (도메인 20개 + 설명)</button></p>
 <div class="copy-list" id="listDomains">
   <div class="copy-row"><code>chatgpt.com</code><button class="row-copy" data-text="chatgpt.com">복사</button><span class="row-note"><span class="badge b-must">필수</span> 교육생 · ChatGPT 실습 화면 — CH02~CH04 핵심 실습의 본체</span></div>
   <div class="copy-row"><code>openai.com</code><button class="row-copy" data-text="openai.com">복사</button><span class="row-note"><span class="badge b-must">필수</span> 교육생 · ChatGPT 운영사 기반 도메인 — 세션·연동 요청이 이곳으로 감</span></div>
@@ -233,13 +233,33 @@
   document.querySelectorAll(".row-copy").forEach(function (btn) {
     btn.addEventListener("click", function () { copyText(btn.getAttribute("data-text"), btn, "✅"); });
   });
-  /* 전체 복사 — ①은 도메인만 모아서 복사 */
+  /* 전체 복사 — data-mode="with-notes"면 도메인 + 구분·대상·용도 설명까지 (탭 구분: 엑셀 2열 정렬) */
   document.querySelectorAll(".mini-copy").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var list = document.getElementById(btn.getAttribute("data-copy"));
       if (!list) return;
+      var withNotes = btn.getAttribute("data-mode") === "with-notes";
       var lines = [];
-      list.querySelectorAll(".row-copy").forEach(function (b) { lines.push(b.getAttribute("data-text")); });
+      list.querySelectorAll(".copy-row").forEach(function (row) {
+        var b = row.querySelector(".row-copy");
+        if (!b) return;
+        var domain = b.getAttribute("data-text");
+        if (!withNotes) { lines.push(domain); return; }
+        var noteEl = row.querySelector(".row-note");
+        var note = "";
+        if (noteEl) {
+          var badgeEl = noteEl.querySelector(".badge");
+          var badgeText = badgeEl ? badgeEl.textContent.trim() : "";
+          var rest = noteEl.textContent.replace(/\s+/g, " ").trim();
+          if (badgeText && rest.indexOf(badgeText) === 0) {
+            rest = rest.slice(badgeText.length).trim();
+            note = badgeText + " · " + rest;   /* "필수 · 교육생 · 용도…" */
+          } else {
+            note = rest;
+          }
+        }
+        lines.push(note ? domain + "\t" + note : domain);
+      });
       copyText(lines.join("\n"), btn, "✅ 복사됨");
     });
   });
