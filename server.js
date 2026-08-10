@@ -44,19 +44,38 @@ const PRACTICE_FILE_MAP = {
   "1rUUUqSBenQZAUnM-53nKHajIX9sA_azI": `${PRACTICE_ROOT_REL}/CH04-NotebookLM_멀티소스리서치/global-powers-of-luxury-goods-2026.pdf`,
   "1MzJFg7xjyU5tiaulI-DyKBUYPxkQMZMA": `${PRACTICE_ROOT_REL}/CH04-NotebookLM_멀티소스리서치/09_NotebookLM_프롬프트.md`,
   "1gvjUkRlvncW_qN2t59e_f83tW9rA2Ddr": `${PRACTICE_ROOT_REL}/CH04-NotebookLM_멀티소스리서치/lg-logo-red.png`,
-  "1PH3gO05x64ANRdLktbKBl0GoZJ7XZ_9Q": `${PRACTICE_ROOT_REL}/CH06-바이브코딩_리서치앱/10_바이브코딩_리서치앱_프롬프트.md`
+  "1PH3gO05x64ANRdLktbKBl0GoZJ7XZ_9Q": `${PRACTICE_ROOT_REL}/CH06-바이브코딩_리서치앱/10_바이브코딩_리서치앱_프롬프트.md`,
+  // 260810: CH02-4 팀 토론 대화문(샘플) 로컬화 — 본문 href의 Drive URL이 이 키로 자동 치환됨(rewritePracticeDriveUrls)
+  "11Nm5kKmZk16Fj57ZJgYDRUc7gw3fBKdX": `${PRACTICE_ROOT_REL}/CH02-04-팀토론_대화문/팀_토론_대화문_샘플.pdf`
 };
 
 const HOST = "0.0.0.0";
 const PORT = Number(process.env.PORT || 4071);
 const EXCLUDED_CLIP_KEYS = new Set([]);
 
-// [HIDDEN_CHAPTERS] CH04(Google AI Studio & Vibe Coding), CH05(Hi-D Code) 숨김 처리 중
-// 복구 방법: server.js의 visibleBlueprints 배열에서 아래 주석 처리된 블록을 되살리세요.
 // 이 Set은 숨겨진 챕터/클립의 canonical 키 목록으로, 해시 직접 접근 시 안전 처리에 사용됩니다.
+// (구 visibleBlueprints 배열은 폐기됨 — 목차는 export-report.json + visible-catalog-overrides.json이 단일 원천)
 const HIDDEN_CHAPTER_CLIP_KEYS = new Set([]);
 const SKIP_TITLE_KEYWORDS = new Set(["개념", "실습", "참고", "개요", "플랫폼", "심화"]);
-const ALLOWED_SECTION_TYPES = new Set(["개념", "실습", "플랫폼", "설정", "참고", "개요", "토론", "퀴즈"]);
+const ALLOWED_SECTION_TYPES = new Set([
+  "개념",
+  "실습",
+  "플랫폼",
+  "설정",
+  "참고",
+  "개요",
+  "토론",
+  "퀴즈",
+  "팀 토론",
+  "통합·저장",
+  "실천·성찰"
+]);
+// 소스(chapter.json/export-report)의 변형 표기를 허용 타입으로 흡수한다.
+const SECTION_TYPE_ALIASES = new Map([
+  ["팀토론", "팀 토론"],
+  ["통합 실습", "실습"],
+  ["플랫폼·실습", "플랫폼"]
+]);
 const ALLOWED_BLOCK_KINDS = new Set([
   "overview",
   "markdown",
@@ -447,13 +466,24 @@ function makeBuilderId(prefix) {
   return `${prefix}-${crypto.randomBytes(6).toString("hex")}`;
 }
 
+function canonicalizeSectionType(type) {
+  let value = normalizeWs(type);
+  if (!value) return "";
+  // "실천 · 성찰" → "실천·성찰", "팀 토론 · Round 1" → "팀 토론·Round 1"
+  value = value.replace(/\s*·\s*/g, "·");
+  // "팀 토론·Round 1" 같은 라운드 접미어 제거
+  value = value.replace(/·Round\s*\d+$/i, "");
+  if (SECTION_TYPE_ALIASES.has(value)) return SECTION_TYPE_ALIASES.get(value);
+  return value;
+}
+
 function normalizeSectionType(type) {
-  const value = normalizeWs(type);
+  const value = canonicalizeSectionType(type);
   return ALLOWED_SECTION_TYPES.has(value) ? value : "개념";
 }
 
 function normalizeSidebarClipType(type, fallback = "개념") {
-  const value = normalizeWs(type);
+  const value = canonicalizeSectionType(type);
   if (ALLOWED_SECTION_TYPES.has(value)) return value;
   return normalizeWs(fallback) || "개념";
 }
@@ -1448,6 +1478,7 @@ function extractHtmlAttribute(tagHtml, attrName) {
 
 function stripMetadataNoiseHtml(html) {
   return String(html || "")
+    .replace(/<!--[\s\S]*?-->/g, " ")
     .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, " ")
     .replace(
       /<span[^>]*class=["'][^"']*glossary-tooltip[^"']*["'][^>]*>[\s\S]*?<\/span>/gi,
@@ -2841,10 +2872,21 @@ async function handleWrapupTeamFile(req, res, urlObj) {
     return sendJson(res, 200, {
       ok: false,
       notFound: true,
-      error: "아직 이 팀의 팀 대표(합의본) 제출이 없습니다. 기록 담당이 제출 시 ☑ 팀 대표 체크를 했는지 확인해 주세요."
+      error: "팀 합의본 파일이 없습니다. 현재는 전원이 각자 제출하는 방식입니다 — 토론 정리본 불러오기를 이용해 주세요."
     });
   }
   return sendJson(res, 200, { ok: true, record });
+}
+
+/* [강사 자료실] 로컬 모드 인증 — Worker(원격)와 동일 계약(ok:true/false).
+   관리자 세션이면 통과, 아니면 WRAPUP_INSTRUCTOR_CODE 환경변수와 헤더 코드 대조. */
+async function handleWrapupInstructorVerify(req, res, urlObj) {
+  const user = await resolveUserFromRequest(req, urlObj);
+  if (user?.isAdmin) return sendJson(res, 200, { ok: true, via: "session" });
+  const given = normalizeWs(req.headers["x-wrapup-instructor"] || "");
+  const localCode = normalizeWs(process.env.WRAPUP_INSTRUCTOR_CODE || "");
+  if (localCode && given === localCode) return sendJson(res, 200, { ok: true, via: "code" });
+  return sendJson(res, 200, { ok: false, error: "관리자 로그인 후 이용해 주세요 (로컬 모드는 코드 대신 관리자 세션으로 입장합니다)." });
 }
 
 async function requireWrapupAdmin(req, res, urlObj) {
@@ -2906,6 +2948,7 @@ async function handleWrapupAdminDelete(req, res, urlObj) {
 }
 /* ---- [Wrapup 2단계] Gemini Round별 요약 ---- */
 const GEMINI_MODEL = normalizeWs(process.env.GEMINI_MODEL) || "gemini-3.5-flash";
+const GEMINI_LITE_MODEL = normalizeWs(process.env.GEMINI_LITE_MODEL) || "gemini-3.5-flash-lite";
 
 async function loadGeminiKey() {
   const envKey = normalizeWs(process.env.GEMINI_API_KEY || "");
@@ -2926,8 +2969,8 @@ async function loadGeminiKey() {
   return "";
 }
 
-async function callGemini(apiKey, prompt) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GEMINI_MODEL)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+async function callGeminiOnce(apiKey, model, prompt) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -2944,6 +2987,38 @@ async function callGemini(apiKey, prompt) {
   const text = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
   if (!text.trim()) throw new Error("Gemini 응답이 비어 있습니다.");
   return text.trim();
+}
+
+// 원격(wrapup.html)과 동일한 폴백 정책: 기본 모델 2회 → lite 1회, 시도 사이 2초 대기.
+// 무료 등급 429(할당 초과)에서도 요약이 끝까지 진행되도록 보장한다.
+async function callGemini(apiKey, prompt) {
+  const attempts = [GEMINI_MODEL, GEMINI_MODEL, GEMINI_LITE_MODEL];
+  let lastError = null;
+  for (let i = 0; i < attempts.length; i++) {
+    try {
+      return await callGeminiOnce(apiKey, attempts[i], prompt);
+    } catch (error) {
+      lastError = error;
+      if (i < attempts.length - 1) {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      }
+    }
+  }
+  throw lastError || new Error("Gemini 호출에 실패했습니다.");
+}
+
+// 동시 호출 수를 제한하며 작업 목록을 실행한다 (무료 등급 분당 할당 보호)
+async function runWithConcurrency(jobs, limit) {
+  const results = new Array(jobs.length);
+  let next = 0;
+  const workers = Array.from({ length: Math.min(limit, jobs.length) }, async () => {
+    while (next < jobs.length) {
+      const index = next++;
+      results[index] = await jobs[index]();
+    }
+  });
+  await Promise.all(workers);
+  return results;
 }
 
 const WRAPUP_ROUND_CONTEXT = {
@@ -3075,24 +3150,22 @@ async function handleWrapupSummarize(req, res, urlObj) {
     return sendJson(res, 400, { ok: false, error: "제출된 논의 내용이 없습니다. 교육생 제출 후 다시 실행해 주세요." });
   }
 
-  // 팀별 요약은 병렬 호출로 대기 시간 단축 (팀 6개 기준 순차 대비 수 배 빠름)
+  // 팀별 요약은 동시 3개로 제한해 병렬 실행 (전체 동시 호출은 무료 등급 429를 자초)
   const teamJobs = [];
   for (let t = 1; t <= config.teamCount; t++) {
     const members = submissions.filter((s) => s.team === t);
     if (!members.length) continue;
-    teamJobs.push(
-      (async () => {
-        const entry = { team: t, memberCount: members.length, names: members.map((s) => s.name) };
-        try {
-          entry.summary = await callGemini(apiKey, wrapupTeamPrompt(round, t, members));
-        } catch (error) {
-          entry.error = String(error.message || error);
-        }
-        return entry;
-      })()
-    );
+    teamJobs.push(async () => {
+      const entry = { team: t, memberCount: members.length, names: members.map((s) => s.name) };
+      try {
+        entry.summary = await callGemini(apiKey, wrapupTeamPrompt(round, t, members));
+      } catch (error) {
+        entry.error = String(error.message || error);
+      }
+      return entry;
+    });
   }
-  const teams = (await Promise.all(teamJobs)).sort((a, b) => a.team - b.team);
+  const teams = (await runWithConcurrency(teamJobs, 3)).sort((a, b) => a.team - b.team);
 
   let cross = "";
   let crossError = "";
@@ -4399,6 +4472,9 @@ async function route(req, res) {
   if (req.method === "GET" && urlObj.pathname === "/api/wrapup/team-file") {
     return handleWrapupTeamFile(req, res, urlObj);
   }
+  if (req.method === "POST" && urlObj.pathname === "/api/wrapup/instructor-verify") {
+    return handleWrapupInstructorVerify(req, res, urlObj);
+  }
   if (req.method === "POST" && urlObj.pathname === "/api/admin/wrapup/config") {
     return handleWrapupAdminConfig(req, res, urlObj);
   }
@@ -4573,5 +4649,7 @@ if (require.main === module) {
 module.exports = {
   stripHtmlToText,
   buildMarkdownDocument,
-  buildMetadataFromHtml
+  buildMetadataFromHtml,
+  PRACTICE_FILE_MAP,
+  PRACTICE_ROOT_REL
 };

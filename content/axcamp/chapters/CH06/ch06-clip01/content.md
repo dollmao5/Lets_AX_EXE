@@ -1,8 +1,8 @@
 ---
-route: "#CH06-clip01"
+route: "#ch06-clip01"
 chapter: "ch06"
 title: "에이전틱 AI란"
-source_url: "https://lg.cmdspace.work/axcamp#CH06-clip01"
+source_url: "https://lg.cmdspace.work/axcamp#ch06-clip01"
 exported_at: "2026-02-28T01:54:14.823Z"
 ---
 

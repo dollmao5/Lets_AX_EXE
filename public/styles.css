@@ -18,7 +18,7 @@
   --text-body: #223350;
   --text-heading: #101d38;
   --text-secondary: #516180;
-  --text-muted: #6f7f9a;
+  --text-muted: #5b6b86; /* 260810: #6f7f9a(대비 4.05:1, AA 미달) → 5.2:1로 상향 */
 
   --brand: #185dcc;
   --brand-light: #e8f0ff;
@@ -6892,4 +6892,93 @@ table.round-schedule { width: 100%; }
   .web-guide-grid.two-col {
     grid-template-columns: 1fr;
   }
+}
+
+/* ============================================================
+   260810 시인성·가독성 증분 개선 (감사 Top5 승인분)
+   ① CH06 폰트 하한선 ② 표 가독성 ③ 사이드바 ④ 프롬프트 블록
+   원복: 이 블록 전체 삭제 + :root --text-muted를 #6f7f9a로 되돌리면 이전과 동일
+   ============================================================ */
+
+/* ① CH06(참고자료 라이브러리) — 유일하게 클립 스코프 스타일이 없어 본문 16.5px + 11~13px 인라인이 방치됨.
+      app.js가 #clipBody[data-clip-key]를 세팅한다 (openClip). */
+#clipBody[data-clip-key^="ch06"] .clip-section-content {
+  font-size: 18px;
+  line-height: 1.72;
+  word-break: keep-all;
+}
+#clipBody[data-clip-key^="ch06"] [style*="font-size:0.7"],
+#clipBody[data-clip-key^="ch06"] [style*="font-size: 0.7"],
+#clipBody[data-clip-key^="ch06"] [style*="font-size:0.8"],
+#clipBody[data-clip-key^="ch06"] [style*="font-size: 0.8"],
+#clipBody[data-clip-key^="ch06"] [style*="font-size:.7"],
+#clipBody[data-clip-key^="ch06"] [style*="font-size:.8"] {
+  font-size: 0.95rem !important; /* 인라인 11~13px 하한선 (프로젝션 판독 보장) */
+}
+
+/* ② 표 — 전역 .table-wrap 승격(기존엔 클립 스코프에만 존재해 CH06 표가 가로 보호 없음) */
+.table-wrap {
+  width: 100%;
+  margin: 12px 0 18px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.table-wrap > table {
+  min-width: 760px;
+  width: 100%;
+  margin: 0 !important;
+}
+/* 헤더가 본문 셀보다 작던 위계 역전 해소 + 긴 표에서 헤더 고정 */
+.comparison-table {
+  font-size: 1rem;
+}
+.comparison-table thead th {
+  font-size: 1rem;
+  background: #e3edfd;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+/* zebra #fbfdff(흰색과 1% 차이 → 사실상 안 보임)를 식별 가능한 수준으로 */
+.comparison-table tbody tr:nth-child(even) td {
+  background: #f4f8ff;
+}
+.comparison-table tbody tr:hover td {
+  background: #eaf2ff; /* zebra보다 뒤에 선언해 행 호버 하이라이트 유지 */
+}
+
+/* ③ 사이드바 — 강사가 스크린으로 "지금 이 클립"을 지목하는 동선 */
+.clip-btn .clip-title { font-size: 0.94rem; }
+.chapter-label { font-size: 1rem; }
+.clip-type-badge { font-size: 0.72rem; }
+.chapter-time { color: #6b727c; }   /* 3.6:1 → 4.6:1 */
+.chapter-chevron { color: #666c74; }
+.clip-btn:hover { background: #eef3fb; } /* 기존 #f7f8fa는 흰색과 1.5% 차이로 피드백이 안 보임 */
+
+/* ④ 실습 프롬프트 블록 — 스코프 없는 클립(CH06 등)도 동일한 모노스페이스 규격으로 */
+.prompt-content,
+.prompt-inline-content {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+  font-size: 0.97rem;
+  line-height: 1.62;
+}
+/* 24곳에서 사용 중이나 정의가 없던 클래스 — "프롬프트 N줄 · 복사만 하면 됩니다" 안내 칩 */
+.prompt-lines-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #2a4a7c;
+  font-size: 0.9rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.copy-btn,
+.prompt-inline-copy {
+  min-height: 40px;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem;
 }

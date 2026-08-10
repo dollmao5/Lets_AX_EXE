@@ -1,53 +1,45 @@
-# AX Camp Reproduction Pack
+# AX Camp Content Source Tree
 
-- Source: `https://lg.cmdspace.work/axcamp`
-- Exported source snapshot: `2026-02-28T01:54:59.030Z`
-- Canonical source catalog: `10 chapters / 44 clips`
-- Current runtime catalog: `8 visible chapters / 35 visible clips`
+- 현행 과정: **팀장 리더십 향상 with AI** (1일 과정)
+- 현행 카탈로그: **7 chapters / 30 clips** (CH00~CH06)
+- 카탈로그 원천: `export-report.json` + `visible-catalog-overrides.json` (2026-08-10 감사로 현행화)
 
-## 핵심 설명
+> 구(舊) 문서 안내: 이 README의 이전 버전은 원본 export(10챕터/44클립, EXAONE·Google AI Studio 체계)를
+> 설명했으나, 해당 체계는 폐기되었습니다. 과거 매핑이 필요하면 git 이력을 참고하세요.
 
-이 폴더는 원본 export를 보존하는 canonical source tree다.
+## 현행 챕터 구성
 
-- `chapters/CH02`의 EXAONE 콘텐츠는 폴더상으로 남아 있다.
-- 하지만 현재 웹앱 런타임에서는 `CH02` 클립 4개를 제외한다.
-- 그 뒤로는 `CH05`와 `CH06`이 합쳐져 `CH04`로 보이고, `CH07`과 `CH08`은 `CH07` 참고자료 라이브러리로 묶인다.
-- `CH09`는 `CH06` Key Takeaways & Q/A로 보인다.
-
-즉, 이 폴더의 번호와 실제 웹페이지에 보이는 챕터 번호는 일부 다를 수 있다.
-
-## 현재 매핑
-
-| canonical source | title | visible runtime |
+| 챕터 | 제목 (chapter.json 기준) | 클립 수 |
 | --- | --- | --- |
-| `CH00` | 오늘의 여정 | `CH00` |
-| `CH01` | AI 핵심 개념 | `CH01` |
-| `CH02` | EXAONE | hidden |
-| `CH03` | Gemini & ChatGPT | `CH02` |
-| `CH04` | NotebookLM | `CH03` |
-| `CH05` + `CH06` | Google AI Studio & Vibe Coding | `CH04` |
-| `generated/hid-code/ch05-clip01` | Hi-D Code | `CH05` |
-| `CH09` | Key Takeaways & Q/A | `CH06` |
-| `CH07` + `CH08` | 참고자료 라이브러리 / Agentic AI | `CH07` |
+| `CH00` | 과정 안내 | 1 |
+| `CH01` | 리더를 위한 AI 핵심 | 4 |
+| `CH02` | 리더 역할 및 역량 점검 | 6 |
+| `CH03` | 조직(팀) 성장역량과 일하는 방식 점검 | 4 |
+| `CH04` | 우리 팀의 성장역량 향상 실천 | 2 |
+| `CH05` | 오늘의 핵심 요약 | 2 |
+| `CH06` | 참고자료 라이브러리 | 11 |
+
+- 사이드바 표시 제목은 `visible-catalog-overrides.json`의 짧은 제목, 본문 헤더는 원본 긴 제목을 유지한다 (KEEP-ORIGINAL-TITLE 원칙).
+- 클립 폴더 id와 화면 route id는 다를 수 있으며(canonical/visible 매핑) 이는 의도된 설계다.
 
 ## Structure
 
-- `chapters/CHxx/...`: canonical clip-by-clip exports
-- `export-report.json`: canonical chapter catalog
-- `visible-catalog-overrides.json`: runtime visible chapter / clip 제목 보정
-- `[공유용] LG 리더십 향상 with AI 실습자료/`: source practice files
+- `chapters/CHxx/...`: canonical clip-by-clip sources (`chapter.json` + 클립 폴더)
+- `export-report.json`: chapter/clip catalog (제목·순서·시간 — 계량치는 2026-02-28 스냅샷이라 낡음)
+- `visible-catalog-overrides.json`: runtime visible chapter/clip 제목·타입 보정
+- `deliverables.json`: 산출물 파일명 원장 — 본문 파일명과 글자 단위 일치, `npm run lint:content`가 검사
+- `[공유용] LG 리더십 향상 with AI 실습자료/`: source practice files (`server.js`의 `PRACTICE_FILE_MAP`으로 배포)
 - `practice_zips/`: bundled practice archives
 - `generated/`: source tree 안에서 합쳐 쓰는 보조 생성 클립
 - `survey/`: linked survey assets
 
 ## Per Clip Files
 
-- `content.md`: markdown snapshot
-- `content.html`: runtime source body
-- `content.txt`: plain text snapshot
+- `content.html`: runtime source body (정본)
+- `content.md` / `content.txt`: content.html에서 재생성되는 파생 스냅샷 (`npm run regen:clip -- --all`)
 - `metadata.json`: links, images, sections, prompts metadata
 - `assets/`: root 편집기에서 업로드한 클립 전용 이미지/PDF/오디오/동영상 자료
-- `screenshot.png`: exported representative screenshot
+- `screenshot.png`: exported representative screenshot (일부 클립에는 없음)
 
 ## Root 편집기 동기화
 

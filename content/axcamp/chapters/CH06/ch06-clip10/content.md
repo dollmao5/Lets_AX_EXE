@@ -1,8 +1,8 @@
 ---
-route: "#CH06-clip10"
+route: "#ch06-clip10"
 chapter: "ch06"
 title: "추가 읽을거리"
-source_url: "https://lg.cmdspace.work/axcamp#CH06-clip10"
+source_url: "https://lg.cmdspace.work/axcamp#ch06-clip10"
 exported_at: "2026-02-28T01:54:26.154Z"
 ---
 

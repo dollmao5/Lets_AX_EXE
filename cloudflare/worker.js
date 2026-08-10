@@ -360,7 +360,7 @@ async function handleTeamFile(request, env, url) {
     return json(request, 200, {
       ok: false,
       notFound: true,
-      error: "아직 이 팀의 팀 대표(합의본) 제출이 없습니다. 기록 담당이 제출 시 ☑ 팀 대표 체크를 했는지 확인해 주세요."
+      error: "팀 합의본 파일이 없습니다. 현재는 전원이 각자 제출하는 방식입니다 — 토론 정리본 불러오기를 이용해 주세요."
     });
   }
   return json(request, 200, { ok: true, record: found.json });

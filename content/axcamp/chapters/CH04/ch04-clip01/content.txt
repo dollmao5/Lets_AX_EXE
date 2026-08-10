@@ -166,8 +166,6 @@ Flashcard·Quiz, Slide Deck, Infographic 등 소스 기반 산출물 위치를 �
 
 실제 NotebookLM 작업 화면으로 보기
 
--->
-
 왼쪽은 소스 목록, 가운데는 출처가 달린 채팅, 오른쪽은 Studio 패널입니다.
 NotebookLM은 읽기, 질문, 검증, 산출물 생성을 한 화면에서 이어가도록 돕습니다.
 

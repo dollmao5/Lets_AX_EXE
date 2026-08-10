@@ -415,7 +415,7 @@ if(!d.ok){viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.d
 bodyEl.textContent=d.canvas2.markdown;viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
+setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
 });
@@ -607,7 +607,7 @@ btn.addEventListener('click',function(){
   var md=buildMarkdown();
   if(md.indexOf('(미작성)')&gt;-1&amp;&amp;md.split('(미작성)').length-1&gt;=root.querySelectorAll('[data-rev-field]').length){setStatus('Canvas가 비어 있습니다. 작성 후 제출해 주세요.',true);return;}
   btn.disabled=true;setStatus('제출 중...',false);
-  if(isRep()){if(!window.confirm('팀 대표(합의본)로도 저장을 체크했습니다.\n이미 저장된 팀 합의본이 있으면 이 제출로 덮어써집니다.\n기록 담당자만 체크해야 합니다 — 계속할까요?'))return;}
+  if(isRep()){if(!window.confirm('팀 대표(합의본)로도 저장을 체크했습니다.\n이미 저장된 팀 합의본이 있으면 이 제출로 덮어써집니다.\n현재는 전원이 각자 제출하는 방식입니다 — 계속할까요?'))return;}
 fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({round:ROUND,team:team,name:name,markdown:md,teamRep:isRep()})})
   .then(function(r){return r.json();})
   .then(function(d){

@@ -1,31 +1,25 @@
-# AX Camp All Chapters (Compiled)
+# AX Camp All Chapters (현행 목차)
 
-## CH 00 오늘의 여정
-- Compiled file: chapters/CH00/chapter_compiled.md
+> 이 문서의 이전 버전은 존재하지 않는 `chapter_compiled.md` 파일과 폐기된 10챕터 체계를 나열했습니다 (2026-08-10 현행화).
+> 챕터별 실제 정본은 `chapters/CHxx/chapter.json`과 각 클립 폴더의 `content.html`/`content.md`입니다.
 
-## CH 01 AI 핵심 개념
-- Compiled file: chapters/CH01/chapter_compiled.md
+## CH 00 과정 안내 (1 클립)
+- Source: `chapters/CH00/chapter.json`
 
-## CH 02 EXAONE
-- Compiled file: chapters/CH02/chapter_compiled.md
+## CH 01 리더를 위한 AI 핵심 (4 클립)
+- Source: `chapters/CH01/chapter.json`
 
-## CH 03 Gemini
-- Compiled file: chapters/CH03/chapter_compiled.md
+## CH 02 리더 역할 및 역량 점검 (6 클립)
+- Source: `chapters/CH02/chapter.json`
 
-## CH 04 NotebookLM
-- Compiled file: chapters/CH04/chapter_compiled.md
+## CH 03 조직(팀) 성장역량과 일하는 방식 점검 (4 클립)
+- Source: `chapters/CH03/chapter.json`
 
-## CH 05 환경 설정
-- Compiled file: chapters/CH05/chapter_compiled.md
+## CH 04 우리 팀의 성장역량 향상 실천 (2 클립)
+- Source: `chapters/CH04/chapter.json`
 
-## CH 06 Vibe Coding
-- Compiled file: chapters/CH06/chapter_compiled.md
+## CH 05 오늘의 핵심 요약 (2 클립)
+- Source: `chapters/CH05/chapter.json`
 
-## CH 07 Agentic AI
-- Compiled file: chapters/CH07/chapter_compiled.md
-
-## CH 08 참고자료 라이브러리
-- Compiled file: chapters/CH08/chapter_compiled.md
-
-## CH 09 Key Takeaways & Q/A
-- Compiled file: chapters/CH09/chapter_compiled.md
+## CH 06 참고자료 라이브러리 (11 클립)
+- Source: `chapters/CH06/chapter.json`

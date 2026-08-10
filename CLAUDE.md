@@ -25,7 +25,7 @@ There is **no test suite, linter, or bundler** — the front end is served as-is
 Raw `http` server. Request dispatch is a flat if-chain in the main handler (search `urlObj.pathname ===` around line ~3685). Key API groups:
 - Auth/account: `/api/signup`, `/api/login`, `/api/logout`, `/api/me`, `/api/account`, `/api/password-*`
 - Catalog/content: `/api/courses`, `/api/chapters`, `/api/clips/:key`
-- Learner state: `/api/progress`, `/api/ax-task`, `/api/notes`, `/api/shared-audio`
+- Learner state: `/api/progress`, `/api/ax-task`, `/api/notes`
 - Admin editing (require `isAdmin`): `/api/admin/users`, `/api/admin/clip-source/*`, `/api/admin/sidebar-source/*`, `/api/admin/clip-assets/*`, `/api/admin/publish[-status]`
 - Static files: `/course-files/:courseCode/:clipKey/*` (per-clip assets), `/practice-files/:key` (via `PRACTICE_FILE_MAP`), and `public/` fallthrough.
 

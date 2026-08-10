@@ -1,6 +1,6 @@
 ---
 chapter: "ch05"
-title: "Key Takeaways & Q/A"
+title: "오늘의 핵심 요약"
 ---
 
-# Key Takeaways & Q/A
+# 오늘의 핵심 요약

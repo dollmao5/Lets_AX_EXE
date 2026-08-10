@@ -1,6 +1,6 @@
 ---
 chapter: "ch04"
-title: "NotebookLM"
+title: "우리 팀의 성장역량 향상 실천"
 ---
 
-# NotebookLM
+# 우리 팀의 성장역량 향상 실천

@@ -69,24 +69,6 @@
       "title": "웹 스타일 프롬프트 가이드",
       "type": "개념",
       "folder": "chapters/CH06/ch06-clip11"
-    },
-    {
-      "route": "#ch06-clip12",
-      "title": "Copilot 참고자료",
-      "type": "개념",
-      "folder": "chapters/CH06/ch06-clip12"
-    },
-    {
-      "route": "#ch06-clip13",
-      "title": "실습용 컨텍스트 파일",
-      "type": "개념",
-      "folder": "chapters/CH06/ch06-clip13"
-    },
-    {
-      "route": "#ch06-clip14",
-      "title": "AI Readiness 분석",
-      "type": "개념",
-      "folder": "chapters/CH06/ch06-clip14"
     }
   ]
 }

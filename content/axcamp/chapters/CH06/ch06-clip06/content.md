@@ -1,8 +1,8 @@
 ---
-route: "#CH06-clip06"
+route: "#ch06-clip06"
 chapter: "ch06"
 title: "스킬(Skill)이란"
-source_url: "https://lg.cmdspace.work/axcamp#CH06-clip06"
+source_url: "https://lg.cmdspace.work/axcamp#ch06-clip06"
 exported_at: "2026-02-28T01:54:20.486Z"
 ---
 
@@ -48,7 +48,7 @@ Antigravity의 **스킬**은 자주 사용하는 프롬프트 + 워크플로우�
 
 ### 스킬 활용의 핵심 — "한 번 만들면 계속 쓴다"
 
-이번 실습에서 만든 스킬은 실제 업무에서 바로 활용 가능합니다:
+스킬을 만들어 두면 실제 업무에서 바로 활용할 수 있습니다:
 
 • **매주 월요일**: 주간 보고서 → 스킬 실행 → 3종 보고서 자동 생성
 

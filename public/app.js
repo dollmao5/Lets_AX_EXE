@@ -424,99 +424,25 @@ function normalizeClipKey(input) {
   return key;
 }
 
-const CLIENT_CATALOG_BLUEPRINTS = [
-  {
-    chapterId: "ch00",
-    chapterCode: "CH00",
-    chapterNum: "CH 00",
-    title: "과정 안내",
-    time: "08:30",
-    clips: [
-      { clipKey: "ch00-clip01", title: "오늘의 시간표", type: "개요" }
-      // [HIDDEN] 자사 생성형 AI 서비스 현황 복구 시 아래 줄의 주석을 해제하세요:
-      // { clipKey: "ch00-clip02", title: "자사 생성형 AI 서비스 현황", type: "개요" }
-    ]
-  },
-  {
-    chapterId: "ch01",
-    chapterCode: "CH01",
-    chapterNum: "CH 01",
-    title: "AI 핵심 개념",
-    time: "08:50",
-    clips: [
-      { clipKey: "ch01-clip01", title: "AI 트렌드", type: "참고" },
-      { clipKey: "ch01-clip02", title: "Assistant에서 Agentic AI로", type: "개념" },
-      { clipKey: "ch01-clip03", title: "기술 활용 로드맵", type: "개념" },
-      { clipKey: "ch01-clip04", title: "개념 다지기", type: "참고" }
-    ]
-  },
-  {
-    chapterId: "ch02",
-    chapterCode: "CH02",
-    chapterNum: "CH 02",
-    title: "Gemini 활용 (1)",
-    time: "09:30",
-    clips: [
-      { clipKey: "ch02-clip01", title: "Gemini 소개 및 접속 방법", type: "플랫폼" },
-      { clipKey: "ch02-clip02", title: "ice breaking: Ai-Friendly 리더십", type: "참고" },
-      { clipKey: "ch02-clip03", title: "프롬프팅 기초: 리더의 역할", type: "실습" },
-      { clipKey: "ch02-clip04", title: "비지니스 프롬프팅: 핵심 역량&스킬", type: "실습" }
-    ]
-  },
-  {
-    chapterId: "ch03",
-    chapterCode: "CH03",
-    chapterNum: "CH 03",
-    title: "Gemini 활용 (2) - AI 시대, 성과 창출을 위한 조직(팀) 역량 점검",
-    time: "13:30",
-    clips: [
-      { clipKey: "ch03-clip01", title: "[실습] 조직 역량 점검 및 Workflow 재설계 (4단계)", type: "실습" }
-    ]
-  },
-  {
-    chapterId: "ch04",
-    chapterCode: "CH04",
-    chapterNum: "CH 04",
-    title: "NotebookLM",
-    time: "13:00",
-    clips: [
-      { clipKey: "ch04-clip01", title: "NotebookLM 소개 및 문서 기반 AI 연구 도우미", type: "플랫폼" },
-      { clipKey: "ch04-clip02", title: "문서 기반 AI 리서치: CIQO와 LG 스타일 브리핑", type: "실습" },
-      { clipKey: "ch04-clip04", title: "ChatGPT 및 GPTs 소개", type: "플랫폼" }
-      // [HIDDEN] ch04-clip05 = 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석 — 노출 제외 중
-      // 복구 시: 아래 주석을 해제하고 server.js의 ch04-clip03도 함께 복구하세요.
-      // { clipKey: "ch04-clip05", title: "기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석", type: "실습" }
-    ]
-  }
-  // ============================================================
-  // [HIDDEN] CH05: Google AI Studio — 현재 노출 제외 중 (복구 시 아래 주석 해제)
-  // {
-  //   chapterId: "ch05",
-  //   chapterCode: "CH05",
-  //   chapterNum: "CH 05",
-  //   title: "Google AI Studio",
-  //   time: "14:10",
-  //   clips: [
-  //     { clipKey: "ch05-clip01", title: "Google AI Studio 소개 및 접속 방법", type: "설정" },
-  //     { clipKey: "ch05-clip02", title: "바이브 코딩이란", type: "개념" },
-  //     { clipKey: "ch05-clip03", title: "바이브 코딩으로 웹앱 제작하기", type: "실습" }
-  //   ]
-  // }
-  // ============================================================
-];
+// [폐기됨 2026-08-10] CLIENT_CATALOG_BLUEPRINTS / buildClientVisibleCatalog / needsClientCatalogPatch 제거.
+// 현행 목차는 서버(export-report.json + visible-catalog-overrides.json)가 단일 원천이며,
+// 클라이언트 블루프린트는 구(舊) 과정(Gemini 활용/NotebookLM/AI Studio 체계)의 잔재였습니다.
+// 복구가 필요하면 git 이력(이 커밋 이전)을 참고하세요.
 
 // [HIDDEN] 화면에서 제외된 클립 키 목록 (해시 직접 접근 시 안전 리다이렉트에 사용)
-// 복구 시: 해당 clipKey 항목을 이 Set에서 삭제하고, CLIENT_CATALOG_BLUEPRINTS에 다시 추가하세요.
+// 주의: 여기 키는 전부 "현행 카탈로그에 존재하지 않는" 키여야 합니다 (knownClipKeys가 우선하므로
+// 현행 키를 넣어도 동작은 안 하지만 논리 모순이 됩니다).
 const HIDDEN_CLIP_KEYS_REDIRECT_SET = new Set([
+  // [HIDDEN] ch00-clip02: 자사 생성형 AI 서비스 현황 (overrides에서 제외됨, 복구는 git 이력 참고)
+  "ch00-clip02",
   // [HIDDEN] ch04-clip05: 기업 분석 코스: 열린 주제로 해보는 NotebookLM 분석
   "ch04-clip05",
-  // [HIDDEN] ch05-clip01~03: Google AI Studio & Vibe Coding (canonical 포함)
-  "ch05-clip01", "ch05-clip02", "ch05-clip03",
-  "ch06-clip01-hidcode", "ch06-clip01-hidcode"
+  // [HIDDEN] 구 과정 Google AI Studio & Vibe Coding의 잔여 키 (현행 ch05-clip01/02와 무관)
+  "ch05-clip03",
+  "ch06-clip01-hidcode"
 ]);
 
-// '오늘의 핵심 정리' 챕터 ID — 숨겨진 클립 해시 접근 시 이 챕터의 첫 클립으로 리다이렉트합니다.
-// 서버 visibleBlueprints 기준 ch07 (Key Takeaways & Q/A)
+// 숨겨진 클립 해시 접근 시 이 챕터('오늘의 핵심 요약', CH05)의 첫 클립으로 리다이렉트합니다.
 const HIDDEN_REDIRECT_TARGET_CHAPTER_ID = "ch05";
 
 const CLIENT_RUNTIME_CLIP_OVERRIDE_URLS = {};
@@ -551,13 +477,6 @@ async function applyRuntimeClipOverride(clipKey, payload) {
   } catch {
     return payload;
   }
-}
-
-function cloneChapter(chapter) {
-  return {
-    ...chapter,
-    clips: Array.isArray(chapter?.clips) ? chapter.clips.map((clip) => ({ ...clip })) : []
-  };
 }
 
 function flattenVisibleClips(chapters = state.chapters) {
@@ -619,75 +538,6 @@ function rewriteClipNavFooter(doc, clipKey) {
     footers[index].remove();
   }
   lastFooter.outerHTML = footerHtml;
-}
-
-function buildClientVisibleCatalog(rawChapters) {
-  const chapters = Array.isArray(rawChapters) ? rawChapters : [];
-  const chapterMap = new Map(
-    chapters.map((chapter) => [normalizeWs(chapter.chapterId).toLowerCase(), cloneChapter(chapter)])
-  );
-  const clipMap = new Map();
-
-  for (const chapter of chapters) {
-    for (const clip of chapter.clips || []) {
-      clipMap.set(normalizeClipKey(clip.clipKey), { ...clip });
-    }
-  }
-
-  const customChapterIds = new Set(
-    CLIENT_CATALOG_BLUEPRINTS.map((chapter) => normalizeWs(chapter.chapterId).toLowerCase())
-  );
-  const nextChapters = [];
-
-  for (const blueprint of CLIENT_CATALOG_BLUEPRINTS) {
-    const baseChapter = chapterMap.get(normalizeWs(blueprint.chapterId).toLowerCase()) || {};
-    const clips = blueprint.clips
-      .map((clipBlueprint) => {
-        const baseClip = clipMap.get(normalizeClipKey(clipBlueprint.clipKey));
-        if (!baseClip) return null;
-        return {
-          ...baseClip,
-          clipKey: clipBlueprint.clipKey,
-          title: clipBlueprint.title || baseClip.title,
-          type: clipBlueprint.type || baseClip.type,
-          chapterId: blueprint.chapterId,
-          chapterCode: blueprint.chapterCode || baseChapter.chapterCode || baseClip.chapterCode,
-          chapterNum: blueprint.chapterNum || baseChapter.chapterNum || baseClip.chapterNum,
-          chapterTitle: blueprint.title || baseChapter.title || baseClip.chapterTitle,
-          chapterTime: blueprint.time || baseChapter.time || baseClip.chapterTime || ""
-        };
-      })
-      .filter(Boolean);
-
-    nextChapters.push({
-      ...baseChapter,
-      chapterId: blueprint.chapterId,
-      chapterCode: blueprint.chapterCode || baseChapter.chapterCode,
-      chapterNum: blueprint.chapterNum || baseChapter.chapterNum,
-      title: blueprint.title || baseChapter.title,
-      time: blueprint.time || baseChapter.time || "",
-      clips
-    });
-  }
-
-  for (const chapter of chapters) {
-    if (customChapterIds.has(normalizeWs(chapter.chapterId).toLowerCase())) continue;
-    const clonedChapter = cloneChapter(chapter);
-    if (normalizeWs(clonedChapter.chapterId).toLowerCase() === "ch07") {
-      clonedChapter.clips = (clonedChapter.clips || []).filter((clip) => {
-        const title = normalizeWs(clip?.title);
-        return !["Copilot 참고자료", "실습용 컨텍스트 파일", "AI Readiness 분석"].includes(title);
-      });
-    }
-    nextChapters.push(clonedChapter);
-  }
-
-  return nextChapters;
-}
-
-function needsClientCatalogPatch(rawChapters) {
-  // 서버가 이미 완성된 완벽한 목차 카탈로그를 내려주므로, 클라이언트 오버라이드를 비활성화하고 서버의 원천 데이터를 100% 신뢰합니다.
-  return false;
 }
 
 function applyClientClipDisplay(clip, sidebarClip) {
@@ -4006,6 +3856,8 @@ async function openClip(clipKey, updateHash = false) {
   const visibleContentHtml = rewriteClientClipHtml(normalized, sourceContentHtml);
 
   state.currentClipKey = normalized;
+  // CSS 챕터 스코프용 (예: CH06 가독성 하한선 — styles.css 260810 블록)
+  if (el.clipBody) el.clipBody.dataset.clipKey = normalized;
   state.currentChapterId = clip.chapterId || "";
   state.currentChapterNum = clip.chapterNum || "";
   state.currentChapterTitle = clip.chapterTitle || "";
@@ -4047,10 +3899,9 @@ async function openClip(clipKey, updateHash = false) {
 async function loadChaptersAndDefaultClip() {
   const data = await api("/api/chapters");
   const rawChapters = data.chapters || [];
-  state.catalogPatched = needsClientCatalogPatch(rawChapters);
-  state.chapters = state.catalogPatched
-    ? buildClientVisibleCatalog(rawChapters)
-    : rawChapters;
+  // 목차는 서버 카탈로그를 100% 신뢰한다 (구 클라이언트 블루프린트 패치는 2026-08-10 폐기)
+  state.catalogPatched = false;
+  state.chapters = rawChapters;
   state.clipMap = new Map();
   state.completedSet = new Set();
 

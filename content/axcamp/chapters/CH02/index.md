@@ -1,6 +1,6 @@
 ---
 chapter: "ch02"
-title: "Gemini 활용 (1)"
+title: "리더 역할 및 역량 점검"
 ---
 
-# Gemini 활용 (1)
+# 리더 역할 및 역량 점검

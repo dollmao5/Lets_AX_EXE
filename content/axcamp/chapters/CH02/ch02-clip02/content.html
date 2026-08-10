@@ -608,7 +608,7 @@ btn.addEventListener('click',function(){
   var md=buildMarkdown();
   if(md.indexOf('(미작성)')&gt;-1&amp;&amp;md.split('(미작성)').length-1&gt;=root.querySelectorAll('[data-rev-field]').length){setStatus('Canvas가 비어 있습니다. 작성 후 제출해 주세요.',true);return;}
   btn.disabled=true;setStatus('제출 중...',false);
-  if(isRep()){if(!window.confirm('팀 대표(합의본)로도 저장을 체크했습니다.\n이미 저장된 팀 합의본이 있으면 이 제출로 덮어써집니다.\n기록 담당자만 체크해야 합니다 — 계속할까요?'))return;}
+  if(isRep()){if(!window.confirm('팀 대표(합의본)로도 저장을 체크했습니다.\n이미 저장된 팀 합의본이 있으면 이 제출로 덮어써집니다.\n현재는 전원이 각자 제출하는 방식입니다 — 계속할까요?'))return;}
 fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({round:ROUND,team:team,name:name,markdown:md,teamRep:isRep()})})
   .then(function(r){return r.json();})
   .then(function(d){

@@ -1,6 +1,6 @@
 ---
 chapter: "ch01"
-title: "AI 핵심 개념"
+title: "리더를 위한 AI 핵심"
 ---
 
-# AI 핵심 개념
+# 리더를 위한 AI 핵심

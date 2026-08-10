@@ -1,8 +1,8 @@
 ---
-route: "#CH06-clip11"
+route: "#ch06-clip11"
 chapter: "ch06"
 title: "웹 스타일 프롬프트 가이드"
-source_url: "https://lg.cmdspace.work/axcamp#CH06-clip11"
+source_url: "https://lg.cmdspace.work/axcamp#ch06-clip11"
 ---
 
 CH 06

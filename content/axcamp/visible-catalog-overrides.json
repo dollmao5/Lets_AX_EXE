@@ -34,10 +34,6 @@
       "title": "오늘의 여정과 학습 준비",
       "type": "개요"
     },
-    "ch00-clip02": {
-      "title": "자사 생성형 AI 서비스 현황",
-      "type": "개요"
-    },
     "ch01-clip01": {
       "title": "AI 트렌드",
       "type": "개념"
@@ -56,7 +52,7 @@
     },
     "ch02-clip02": {
       "title": "팀토론_① AI시대, 팀 현실과 리더 고민",
-      "type": "개념"
+      "type": "팀 토론"
     },
     "ch02-clip03": {
       "title": "AI 시대, 리더 역할·책임 인식",
@@ -64,7 +60,7 @@
     },
     "ch02-clip03b": {
       "title": "팀토론_② AI와 리더의 책임경계",
-      "type": "개념"
+      "type": "팀 토론"
     },
     "ch02-clip04": {
       "title": "리더의 핵심 역량 및 스킬",
@@ -72,7 +68,7 @@
     },
     "ch02-clip05": {
       "title": "CH02 통합 저장 Gate",
-      "type": "개념"
+      "type": "통합·저장"
     },
     "ch03-clip01": {
       "title": "조직(팀) 성장역량과 일하는 방식 점검",
@@ -80,11 +76,11 @@
     },
     "ch03-clip01b": {
       "title": "팀토론_③ 팀 성과와 성장 with AI",
-      "type": "개념"
+      "type": "팀 토론"
     },
     "ch03-clip01c": {
       "title": "CH03 통합 저장 Gate",
-      "type": "개념"
+      "type": "통합·저장"
     },
     "ch03-clip02": {
       "title": "참고_Gemini Overview",
@@ -100,11 +96,11 @@
     },
     "ch05-clip01": {
       "title": "정리정돈: 배움에서 현업 자산으로",
-      "type": "개념"
+      "type": "실천·성찰"
     },
     "ch05-clip02": {
       "title": "마무리: Start · Stop · Continue",
-      "type": "개념"
+      "type": "실천·성찰"
     },
     "ch06-clip09": {
       "title": "Tool Pantry (MCP & CLI)",

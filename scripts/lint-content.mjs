@@ -8,8 +8,11 @@
  *  3. 이미지 src 실존 (/assets/, /course-files/) — 깨진 이미지 검출
  *  4. 금칙어 — CH00~CH05 본문의 잔존 구(舊) 표현 (참고 클립 ch03-clip02 제외)
  *  5. 파생 파일 신선도 (경고만) — content.html ↔ md/txt/metadata 동기화 여부
+ *  6. chapter.json 유령 클립 — 선언된 folder가 실제로 존재하는지 (260810 감사 재발 방지)
+ *  7. visible-catalog-overrides.json stale 키 — 존재하지 않는 클립/챕터 오버라이드
+ *  8. PRACTICE_FILE_MAP 실존 — server.js 실습파일 매핑이 디스크와 일치하는지
  *
- * 종료 코드: 오류(1~4) 발견 시 1, 아니면 0 (5번 신선도는 경고로만 출력)
+ * 종료 코드: 오류 발견 시 1, 아니면 0 (신선도는 경고로만 출력)
  * 사용법: npm run lint:content
  */
 import fs from "node:fs";
@@ -55,8 +58,8 @@ for (const [clipKey, clipDir] of clipDirs) {
   const rawHtml = fs.readFileSync(path.join(clipDir, "content.html"), "utf8");
   const html = stripComments(rawHtml); // [HIDDEN] 주석 블록은 검사 제외
 
-  /* 1. 산출물 파일명 ↔ 원장 */
-  const mentions = html.match(/(CH[0-9]{2}_[A-Za-z가-힣0-9_]+\.(?:md|txt)|[0-9]+조_[A-Za-z가-힣0-9_]+\.(?:m4a|txt|mp3|wav))/g) || [];
+  /* 1. 산출물 파일명 ↔ 원장 (260810: 하이픈 포함 — CH04_R1-3_… 검사 사각지대 해소) */
+  const mentions = html.match(/(CH[0-9]{2}_[A-Za-z가-힣0-9_\-]+\.(?:md|txt)|[0-9]+조_[A-Za-z가-힣0-9_\-]+\.(?:m4a|txt|mp3|wav))/g) || [];
   for (const m of new Set(mentions)) {
     // 팀 파일은 조 번호를 1조 기준으로 정규화해 대조
     const normalized = m.replace(/^[0-9]+조_/, "1조_");
@@ -152,6 +155,58 @@ try {
   }
 } catch (e) {
   warnings.push(`[신선도] 검사 실패(무시됨): ${e.message}`);
+}
+
+/* 6. chapter.json 유령 클립 — 선언 folder가 실제 폴더로 존재해야 함 */
+for (const chapter of fs.readdirSync(CHAPTERS_DIR)) {
+  const chapterJsonPath = path.join(CHAPTERS_DIR, chapter, "chapter.json");
+  if (!fs.existsSync(chapterJsonPath)) continue;
+  try {
+    const chapterJson = JSON.parse(fs.readFileSync(chapterJsonPath, "utf8"));
+    for (const clip of chapterJson.clips || []) {
+      const folder = String(clip.folder || "");
+      if (folder && !fs.existsSync(path.join(ROOT, "content", "axcamp", folder))) {
+        errors.push(`[유령클립] ${chapter}/chapter.json: 폴더 없는 클립 선언 "${clip.route || folder}"`);
+      }
+    }
+  } catch (e) {
+    errors.push(`[유령클립] ${chapter}/chapter.json 파싱 실패: ${e.message}`);
+  }
+}
+
+/* 7. overrides stale 키 */
+try {
+  const overrides = JSON.parse(
+    fs.readFileSync(path.join(ROOT, "content", "axcamp", "visible-catalog-overrides.json"), "utf8")
+  );
+  const chapterIds = new Set(
+    fs.readdirSync(CHAPTERS_DIR).filter((d) => fs.statSync(path.join(CHAPTERS_DIR, d)).isDirectory())
+      .map((d) => d.toLowerCase())
+  );
+  for (const key of Object.keys(overrides.chapters || {})) {
+    if (!chapterIds.has(key.toLowerCase())) {
+      errors.push(`[오버라이드] 존재하지 않는 챕터 키 "${key}" (visible-catalog-overrides.json)`);
+    }
+  }
+  for (const key of Object.keys(overrides.clips || {})) {
+    if (!clipDirs.has(key.toLowerCase())) {
+      errors.push(`[오버라이드] 존재하지 않는 클립 키 "${key}" (visible-catalog-overrides.json)`);
+    }
+  }
+} catch (e) {
+  warnings.push(`[오버라이드] 검사 실패(무시됨): ${e.message}`);
+}
+
+/* 8. PRACTICE_FILE_MAP 실존 */
+try {
+  const { PRACTICE_FILE_MAP } = require("../server.js");
+  for (const [key, rel] of Object.entries(PRACTICE_FILE_MAP || {})) {
+    if (!fs.existsSync(path.join(ROOT, "content", "axcamp", rel))) {
+      errors.push(`[실습파일] PRACTICE_FILE_MAP "${key}" → 파일 없음: ${rel}`);
+    }
+  }
+} catch (e) {
+  warnings.push(`[실습파일] 검사 실패(무시됨): ${e.message}`);
 }
 
 /* ---------- 결과 ---------- */

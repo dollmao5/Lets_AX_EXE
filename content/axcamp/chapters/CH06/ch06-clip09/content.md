@@ -1,7 +1,7 @@
 ---
 route: "#ch06-clip09"
 chapter: "ch06"
-title: "Tool Pantry ( MCP & CLI )"
+title: "Tool Pantry (MCP & CLI)"
 source_url: "https://lg.cmdspace.work/axcamp#ch06-clip09"
 exported_at: "2026-02-28T01:54:23.887Z"
 ---

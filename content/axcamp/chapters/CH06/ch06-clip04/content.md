@@ -1,8 +1,8 @@
 ---
-route: "#CH06-clip04"
+route: "#ch06-clip04"
 chapter: "ch06"
 title: "듀얼 출력의 원리"
-source_url: "https://lg.cmdspace.work/axcamp#CH06-clip04"
+source_url: "https://lg.cmdspace.work/axcamp#ch06-clip04"
 exported_at: "2026-02-28T01:54:18.217Z"
 ---
 

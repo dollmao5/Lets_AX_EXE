@@ -1,5 +1,6 @@
 {
   "startedAt": "2026-02-28T01:53:00.023Z",
+  "note": "제목·시간·순서는 2026-08-10 감사로 현행화됨. htmlLength/textLength 등 계량치는 2026-02-28 스냅샷이라 낡음 — 실측 기준은 각 클립의 content.html/chapter.json.",
   "baseUrl": "https://lg.cmdspace.work/axcamp",
   "login": {
     "name": "테스트20",
@@ -90,7 +91,7 @@
         },
         {
           "route": "#ch02-clip02",
-          "title": "팀토론_① AI시대, 팀 현실과 리더 고민",
+          "title": "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민",
           "type": "개념",
           "folder": "chapters/CH02/ch02-clip02",
           "linkCount": 0,
@@ -100,7 +101,7 @@
         },
         {
           "route": "#ch02-clip03",
-          "title": "프롬프팅 기초: 초인공 AI 시대, 변화된 팀 리더의 역할 정의하기",
+          "title": "프롬프팅 기초: AI 시대, 리더 역할·책임 인식",
           "type": "실습",
           "folder": "chapters/CH02/ch02-clip03",
           "linkCount": 0,
@@ -143,12 +144,12 @@
     {
       "chapterId": "CH03",
       "chapterNum": "CH 03",
-      "title": "조직(팀) 역량 점검",
+      "title": "조직(팀) 성장역량과 일하는 방식 점검",
       "time": "13:30",
       "clips": [
         {
           "route": "#ch03-clip01",
-          "title": "조직 역량 점검 및 Workflow 재설계",
+          "title": "조직(팀) 성장역량과 일하는 방식 점검",
           "type": "실습",
           "folder": "chapters/CH03/ch03-clip01",
           "linkCount": 0,
@@ -192,7 +193,7 @@
       "chapterId": "CH04",
       "chapterNum": "CH 04",
       "title": "우리 팀의 성장역량 향상 실천",
-      "time": "15:40",
+      "time": "15:30",
       "clips": [
         {
           "route": "#ch04-clip01",
@@ -220,7 +221,7 @@
       "chapterId": "CH05",
       "chapterNum": "CH 05",
       "title": "오늘의 핵심 요약",
-      "time": "17:00",
+      "time": "16:50",
       "clips": [
         {
           "route": "#ch05-clip01",
@@ -397,7 +398,7 @@
       "folder": "chapters/CH01/ch01-clip02",
       "textLength": 1305,
       "htmlLength": 3913,
-      "sectionCount": 0,
+      "sectionCount": 4,
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
@@ -445,7 +446,7 @@
     {
       "chapterId": "ch02",
       "route": "#ch02-clip02",
-      "title": "팀토론_① AI시대, 팀 현실과 리더 고민",
+      "title": "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민",
       "folder": "chapters/CH02/ch02-clip02",
       "textLength": 3464,
       "htmlLength": 47821,
@@ -458,7 +459,7 @@
     {
       "chapterId": "ch02",
       "route": "#ch02-clip03",
-      "title": "프롬프팅 기초: 초인공 AI 시대, 변화된 팀 리더의 역할 정의하기",
+      "title": "프롬프팅 기초: AI 시대, 리더 역할·책임 인식",
       "folder": "chapters/CH02/ch02-clip03",
       "textLength": 7546,
       "htmlLength": 36577,
@@ -510,7 +511,7 @@
     {
       "chapterId": "ch03",
       "route": "#ch03-clip01",
-      "title": "조직 역량 점검 및 Workflow 재설계",
+      "title": "조직(팀) 성장역량과 일하는 방식 점검",
       "folder": "chapters/CH03/ch03-clip01",
       "textLength": 11982,
       "htmlLength": 29438,

@@ -105,21 +105,31 @@
     document.getElementById("gate").classList.toggle("hidden", ok);
     document.getElementById("docs").classList.toggle("hidden", !ok);
   }
+  var IS_PAGES = /\.github\.io$/i.test(location.hostname);
+  function verifyAt(base, code) {
+    var opts = { method: "POST", headers: {} };
+    if (code) opts.headers["x-wrapup-instructor"] = code;
+    if (!base) opts.credentials = "include"; /* 로컬 서버는 세션 쿠키(관리자 로그인)로도 통과 */
+    return fetch(base + "/api/wrapup/instructor-verify", opts).then(function (r) { return r.json(); });
+  }
   function verify(code, silent) {
-    if (!code) { if (!silent) showErr("코드를 입력해 주세요."); return; }
-    fetch(REMOTE_BASE + "/api/wrapup/instructor-verify", {
-      method: "POST",
-      headers: { "x-wrapup-instructor": code }
-    }).then(function (r) { return r.json(); }).then(function (v) {
-      if (v && v.ok) {
-        try { localStorage.setItem(CODE_KEY, code); } catch (e) {}
-        open(true);
-      } else if (!silent) {
-        showErr((v && v.error) || "코드가 올바르지 않습니다.");
+    if (!code && IS_PAGES) { if (!silent) showErr("코드를 입력해 주세요."); return; }
+    /* 로컬(같은 출처) 서버 우선 → 실패 시 Worker 폴백. 사내망에서 Worker가 막혀도 로컬 관리자는 입장 가능 */
+    var bases = IS_PAGES ? [REMOTE_BASE] : ["", REMOTE_BASE];
+    (function tryNext(i, lastErr) {
+      if (i >= bases.length) {
+        if (!silent) showErr(lastErr || "인증 서버에 연결할 수 없습니다. Wrap-up 보드에서 [강사 로그인] 후 다시 열거나, 로컬 모드에서는 관리자 로그인 후 이용해 주세요.");
+        return;
       }
-    }).catch(function () {
-      if (!silent) showErr("인증 서버에 연결할 수 없습니다. 네트워크 상태를 확인해 주세요.");
-    });
+      verifyAt(bases[i], code).then(function (v) {
+        if (v && v.ok) {
+          if (code) { try { localStorage.setItem(CODE_KEY, code); } catch (e) {} }
+          open(true);
+        } else {
+          tryNext(i + 1, (v && v.error) || "코드가 올바르지 않습니다.");
+        }
+      }).catch(function () { tryNext(i + 1, lastErr); });
+    })(0, "");
   }
   function showErr(msg) { document.getElementById("gateErr").textContent = msg; }
   document.getElementById("enterBtn").addEventListener("click", function () {
@@ -148,6 +158,7 @@
     document.getElementById("docDesc").textContent = DESC[doc] || "";
   });
   if (savedCode()) verify(savedCode(), true); /* 보드에서 이미 인증한 경우 자동 입장 */
+  else if (!IS_PAGES) verify("", true); /* 로컬 모드 — 관리자 세션이면 코드 없이 자동 입장 */
 })();
 </script>
 </body>
