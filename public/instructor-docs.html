@@ -76,6 +76,9 @@
       <button data-doc="network-allowlist">자료 2 · 사내망 해제 요청 사이트 목록</button>
       <button data-doc="apply-guide">자료 3 · 과정 신청 안내문</button>
       <button data-doc="exec-appeal">자료 4 · 임원/담당 사전 안내문</button>
+      <button data-doc="participant-guide">자료 5 · 1차수 과정참가 안내문</button>
+      <button data-doc="participant-guide-2">자료 6 · 2차수 과정참가 안내문</button>
+      <button data-doc="participant-guide-3">자료 7 · 3차수 과정참가 안내문</button>
     </div>
     <div class="viewer">
       <div class="viewer-bar">
@@ -98,7 +101,10 @@
     "cohort-guide": "교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지",
     "network-allowlist": "IT/보안 부서 요청용 — 실습 도메인 허용 목록과 SSL 검사 예외 요청 안내",
     "apply-guide": "과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림 파악용",
-    "exec-appeal": "임원/담당 대상 — 산하 팀장 참여 독려 요청과 과정 개요 요약 (8/5 신청 안내문 발송 안내 포함)"
+    "exec-appeal": "임원/담당 대상 — 산하 팀장 참여 독려 요청과 과정 개요 요약 (8/5 신청 안내문 발송 안내 포함)",
+    "participant-guide": "1차수(8/21 금) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
+    "participant-guide-2": "2차수(9/3 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
+    "participant-guide-3": "3차수(9/10 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내"
   };
   function savedCode() { try { return localStorage.getItem(CODE_KEY) || ""; } catch (e) { return ""; } }
   function open(ok) {
@@ -145,7 +151,7 @@
       if (b) { b.style.maxWidth = "1080px"; b.style.wordBreak = "keep-all"; b.style.overflowWrap = "break-word"; }
     } catch (e) { /* 표시 보정 실패해도 열람에는 지장 없음 */ }
   });
-  /* 탭 전환 — 문서 4종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
+  /* 탭 전환 — 문서 7종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
   document.getElementById("tabBar").addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-doc]");
     if (!btn) return;
