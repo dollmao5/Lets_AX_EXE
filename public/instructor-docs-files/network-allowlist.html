@@ -113,7 +113,20 @@
   details.fold[open] > summary .fold-hint { visibility: hidden; }
   .fold-hint { float: right; font-weight: 700; font-size: .85rem; color: var(--muted); }
   .fold-body { padding: 4px 18px 14px; }
-  @media print { body { margin: 8mm auto; } h2 { break-after: avoid; } table, .req-box, .copy-list { break-inside: avoid; } .mini-copy, .row-copy, .fold-hint { display: none; } }
+  /* 읽는 법 배너 — 강사 오독(현재 장애로 오해) 방지 */
+  .reader-guide {
+    margin: 14px 0 6px; padding: 16px 20px;
+    border: 1.5px solid #fdba74; border-left: 8px solid #ea580c; border-radius: 12px;
+    background: #fff7ed;
+  }
+  .reader-guide .rg-title { margin: 0 0 8px; font-weight: 800; color: #9a3412; font-size: 1.02rem; }
+  .reader-guide ul { margin: 0; padding-left: 20px; }
+  .reader-guide li { margin: 5px 0; }
+  .status-line {
+    margin: 10px 0 0; padding: 8px 14px; border-radius: 8px;
+    background: #fff; border: 1px dashed #fdba74; font-size: .95rem;
+  }
+  @media print { body { margin: 8mm auto; } h2 { break-after: avoid; } table, .req-box, .copy-list, .reader-guide { break-inside: avoid; } .mini-copy, .row-copy, .fold-hint { display: none; } }
 </style>
 </head>
 <body>
@@ -128,6 +141,30 @@
 <div class="hero-tags"><span>🛠️ IT/보안 부서 요청용</span><span>🌐 실습 도메인 15종</span><span>👥 대상별(공통·교육생·강사·개발담당) 구분</span><span>🛡️ SSL 검사 예외 포함</span></div>
 </div>
 <p class="meta">수강 신청 안내문에서 분리 · 2026-08-04 작성 · 2026-08-06 SSL 검사 관련 추가 · 2026-08-10 도메인 보완·SSL 실측 보강·대상별 재구성(필수→권장→선택)</p>
+
+<div class="reader-guide">
+<p class="rg-title">📌 이 문서는 IT/보안 부서 제출용 기술 문서입니다 — 강사님이 조치하실 일은 없습니다.</p>
+<ul>
+<li>아래에 나오는 <strong>'오류·실패·연결 거부'는 지금 수업에 장애가 있다는 뜻이 아닙니다.</strong> 교육 당일 문제가 생기지 않도록 <strong>미리 예방하려고 IT에 요청해 둔 내용</strong>입니다.</li>
+<li>강사님은 교육 전날 바로 아래 <strong>[강사용 3분 사전 점검]</strong>만 해보시면 됩니다 — 모두 정상이면 그대로 진행하시고, <strong>안 열리는 항목이 있을 때만</strong> 담당자에게 연락해 주세요.</li>
+</ul>
+<p class="status-line"><strong>진행 상태:</strong> ⏳ IT/보안 부서 신청 준비 중 <span style="color:var(--muted);">(이 줄은 리더십개발팀 담당자가 갱신합니다 — "✅ 적용 완료"로 바뀌면 신경 쓰실 것이 없습니다)</span></p>
+</div>
+
+<details class="fold">
+<summary>🧑‍🏫 강사용 3분 사전 점검 — 교육 전날 강의장(강사) PC 브라우저에서 4개만 열어보기 <span class="fold-hint">펼치기 ▾</span></summary>
+<div class="fold-body">
+<p class="note">줄마다 [복사]를 눌러 브라우저 주소창에 붙여넣고 열리는지 확인합니다. <strong>4개 모두 정상이면 수업 진행에 문제가 없습니다.</strong></p>
+<div class="copy-list">
+  <div class="copy-row"><code>https://dollmao5.github.io/Lets_AX_EXE/</code><button class="row-copy" data-text="https://dollmao5.github.io/Lets_AX_EXE/">복사</button><span class="row-note">학습 포털 첫 화면이 뜨면 정상</span></div>
+  <div class="copy-row"><code>https://chatgpt.com</code><button class="row-copy" data-text="https://chatgpt.com">복사</button><span class="row-note">ChatGPT 화면이 뜨면 정상</span></div>
+  <div class="copy-row"><code>https://notebooklm.google.com</code><button class="row-copy" data-text="https://notebooklm.google.com">복사</button><span class="row-note">NotebookLM 화면(또는 로그인 유도)이면 정상</span></div>
+  <div class="copy-row"><code>https://axcamp-wrapup.dollmao5.workers.dev/api/wrapup/config</code><button class="row-copy" data-text="https://axcamp-wrapup.dollmao5.workers.dev/api/wrapup/config">복사</button><span class="row-note">짧은 JSON 문구가 보이면 정상 (팀 토론 제출·Wrap-up 보드 서버)</span></div>
+</div>
+<p class="note">※ 차단 안내 페이지나 인증서 오류가 뜨는 항목이 있으면 <strong>그때만</strong> 리더십개발팀 담당자에게 연락해 주세요.
+Wrap-up 보드의 <strong>[요약 생성]</strong>까지 미리 확인하고 싶으시면 보드에 강사 로그인 후 테스트 차수에서 한 번 눌러보시면 됩니다.</p>
+</div>
+</details>
 
 <h2>🌐 1. 해제 요청 도메인 목록</h2>
 <p class="note">※ <strong>대상 구분</strong> — <strong>공통</strong>: 교육생·강사 전원 / <strong>교육생</strong>: 실습 PC 전체 / <strong>강사</strong>: 강사 PC 1대 / <strong>개발담당</strong>: 과정 개발·운영 PC(교육 당일 불필요).
@@ -281,6 +318,11 @@
 
 <h2>🛡️ 2. 추가 요청: SSL 검사(HTTPS 복호화) 예외 및 인증서 폐기 확인 <span style="font-size:.85rem;color:var(--muted);font-weight:400;">(2026-08-06 · 2026-08-10 실측 보강)</span></h2>
 
+<p class="note">요지 — 브라우저 접속은 정상이지만, <strong>프로그램 방식 HTTPS 호출</strong>(강사 Wrap-up 보드의 팀 요약 생성 등)이 사내 SSL 검사에 막히므로 예외 적용을 요청합니다. 상세 근거는 아래 접이식(IT 담당자용)에 있습니다.</p>
+
+<details class="fold">
+<summary>🔧 기술 상세 (IT 담당자용) — 증상·원인 실측 내역 <span class="fold-hint">펼치기 ▾</span></summary>
+<div class="fold-body">
 <p><strong>🔎 증상</strong> — 교육·운영 PC에서 브라우저는 위 사이트에 접속되지만, 프로그램 방식의 HTTPS 도구는 연결이 거부됩니다.
 도구 계열에 따라 오류가 다릅니다:</p>
 <ul>
@@ -297,6 +339,8 @@
   <li><strong>사내 CA 키 강도 미달</strong> — 사내 CA를 수동으로 신뢰시켜도 최신 TLS 라이브러리가 <code>CA certificate key too weak</code>로 거부 — 현행 보안 기준(RSA 2048bit·SHA-256 이상) 미달 (2026-08-10)</li>
 </ol>
 <p class="note">※ 2·3번은 예외 처리 대신 우회하려면 각 도구의 보안 기준을 인위적으로 낮춰야 하므로(보안상 부적절), 아래 1번 <strong>예외 목록 방식</strong>이 유일하게 안전한 해결책입니다.</p>
+</div>
+</details>
 
 <div class="req-box">
   <strong>📌 요청 (택 1)</strong>
