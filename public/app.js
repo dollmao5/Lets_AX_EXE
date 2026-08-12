@@ -5175,14 +5175,37 @@ function bindEvents() {
       // [Wrapup 외부접속] 강사 모드 → Wrap-up 보드. [원격 관리자] 관리자 모드 → 코드 인증 후
       // 본문 편집(저장 시 자동 커밋·배포)과 보드 관리까지 사용 가능
       if (prefillId === "instructor") {
-        // [강사 모드 게이트] 교육생이 눌러도 바로 열리지 않게 간단 비밀번호 확인 후 Wrap-up 보드로
+        // [강사 모드 게이트] 비밀번호를 Worker 강사 코드로 검증하고, 통과하면 보드가 읽는 저장 키에
+        // 코드를 넣어 Wrap-up 보드에 자동 로그인된 상태로 연다 — 이중 로그인 방지
         const pw = window.prompt("강사 모드 비밀번호를 입력하세요");
-        if (pw === null) return;
-        if (pw.trim().toLowerCase() !== "ai") {
-          alert("비밀번호가 올바르지 않습니다.");
-          return;
-        }
-        window.open("wrapup.html", "_blank", "noopener");
+        if (pw === null || !pw.trim()) return;
+        (async () => {
+          const verifyCode = async (candidate) => {
+            const r = await fetch(`${WRAPUP_REMOTE_API_BASE}/api/wrapup/instructor-verify`, {
+              method: "POST",
+              headers: { "x-wrapup-instructor": candidate }
+            });
+            const v = await r.json();
+            return v?.ok ? candidate : null;
+          };
+          try {
+            // 입력 그대로 → 실패 시 소문자 재시도 (당일 급하게 대문자로 입력해도 통과)
+            let code = await verifyCode(pw.trim());
+            if (!code && pw.trim() !== pw.trim().toLowerCase()) {
+              code = await verifyCode(pw.trim().toLowerCase());
+            }
+            if (!code) {
+              alert("비밀번호가 올바르지 않습니다.");
+              return;
+            }
+            try {
+              localStorage.setItem("ax_wrapup_instructor_code", code);
+            } catch {}
+            window.open("wrapup.html", "_blank", "noopener");
+          } catch {
+            alert("인증 서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.");
+          }
+        })();
         return;
       }
       const saved = staticAdminCode();
