@@ -2,6 +2,8 @@ const STORAGE_SESSION_KEY = "ax_literacy_session_token";
 const STORAGE_LAST_ID_KEY = "ax_literacy_last_lets_id";
 const STORAGE_COURSE_CODE_KEY = "ax_literacy_course_code";
 const STORAGE_SIDEBAR_COLLAPSED_KEY = "ax_literacy_sidebar_collapsed";
+const STORAGE_FONT_SCALE_KEY = "ax_literacy_font_scale";
+const FONT_SCALE_MAX_STEP = 3; // 0=기본 → 1(110%) → 2(120%) → 3(130%), styles.css html[data-font-scale]와 짝
 const AX_TASK_BOARD_URL =
   "https://share-board-sidk.onrender.com/";
 const STATIC_CONFIG = window.__AX_STATIC_CONFIG__ || null;
@@ -243,6 +245,9 @@ const el = {
   instructorDocsBtn: document.getElementById("instructorDocsBtn"),
   continueGuestBtn: document.getElementById("continueGuestBtn"),
   sidebarToggleBtn: document.getElementById("sidebarToggleBtn"),
+  fontSizeDownBtn: document.getElementById("fontSizeDownBtn"),
+  fontSizeUpBtn: document.getElementById("fontSizeUpBtn"),
+  fontSizeLabel: document.getElementById("fontSizeLabel"),
   chapterList: document.getElementById("chapterList"),
   clipTitle: document.getElementById("clipTitle"),
   clipOverview: document.getElementById("clipOverview"),
@@ -393,6 +398,37 @@ function writeSidebarCollapsedPreference(value) {
     localStorage.setItem(STORAGE_SIDEBAR_COLLAPSED_KEY, value ? "1" : "0");
   } catch {
     // ignore
+  }
+}
+
+/* 글자 크기 단계 조절 — 상단바 [가−/가＋] 버튼. 단계는 계정과 무관하게 브라우저별로 기억된다. */
+function readFontScalePreference() {
+  try {
+    const step = parseInt(localStorage.getItem(STORAGE_FONT_SCALE_KEY) || "0", 10);
+    if (!Number.isFinite(step)) return 0;
+    return Math.min(Math.max(step, 0), FONT_SCALE_MAX_STEP);
+  } catch {
+    return 0;
+  }
+}
+
+function applyFontScaleStep(step) {
+  const clamped = Math.min(Math.max(Number(step) || 0, 0), FONT_SCALE_MAX_STEP);
+  const rootEl = document.documentElement;
+  if (clamped > 0) rootEl.setAttribute("data-font-scale", String(clamped));
+  else rootEl.removeAttribute("data-font-scale");
+  if (el.fontSizeLabel) el.fontSizeLabel.textContent = clamped === 0 ? "기본" : `+${clamped}`;
+  if (el.fontSizeDownBtn) el.fontSizeDownBtn.disabled = clamped === 0;
+  if (el.fontSizeUpBtn) el.fontSizeUpBtn.disabled = clamped >= FONT_SCALE_MAX_STEP;
+  return clamped;
+}
+
+function changeFontScaleStep(delta) {
+  const next = applyFontScaleStep(readFontScalePreference() + delta);
+  try {
+    localStorage.setItem(STORAGE_FONT_SCALE_KEY, String(next));
+  } catch {
+    // 저장에 실패해도 이번 화면 적용은 유지
   }
 }
 
@@ -5012,6 +5048,8 @@ function bindEvents() {
   el.toggleTaskBtn.addEventListener("click", onToggleTaskPanel);
   el.toggleNoteBtn.addEventListener("click", onToggleNotePanel);
   el.sidebarToggleBtn?.addEventListener("click", onToggleSidebar);
+  el.fontSizeDownBtn?.addEventListener("click", () => changeFontScaleStep(-1));
+  el.fontSizeUpBtn?.addEventListener("click", () => changeFontScaleStep(1));
   el.saveNoteBtn.addEventListener("click", () => {
     saveCurrentClipNote().catch((error) => setNoteStatus(error.message, true));
   });
@@ -5137,6 +5175,13 @@ function bindEvents() {
       // [Wrapup 외부접속] 강사 모드 → Wrap-up 보드. [원격 관리자] 관리자 모드 → 코드 인증 후
       // 본문 편집(저장 시 자동 커밋·배포)과 보드 관리까지 사용 가능
       if (prefillId === "instructor") {
+        // [강사 모드 게이트] 교육생이 눌러도 바로 열리지 않게 간단 비밀번호 확인 후 Wrap-up 보드로
+        const pw = window.prompt("강사 모드 비밀번호를 입력하세요");
+        if (pw === null) return;
+        if (pw.trim().toLowerCase() !== "ai") {
+          alert("비밀번호가 올바르지 않습니다.");
+          return;
+        }
         window.open("wrapup.html", "_blank", "noopener");
         return;
       }
@@ -5428,6 +5473,7 @@ window.publishRootChanges = function publishRootChanges() {
 };
 
 bindEvents();
+applyFontScaleStep(readFontScalePreference()); // 저장된 글자 크기 단계 복원
 loadCourseDirectory()
   .catch(() => { })
   .finally(() => {

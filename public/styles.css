@@ -1055,6 +1055,58 @@ button.ghost {
   line-height: 1.2;
 }
 
+/* 글자 크기 단계 — 기본(100%)에서 3단계까지 확대. 화면 폰트가 rem 기반이라 루트만 키우면 전체가 비례 확대됨 */
+html[data-font-scale="1"] {
+  font-size: 110%;
+}
+
+html[data-font-scale="2"] {
+  font-size: 120%;
+}
+
+html[data-font-scale="3"] {
+  font-size: 130%;
+}
+
+.font-size-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px 5px;
+  border: 1px solid #d9dee4;
+  border-radius: 11px;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f5f7 100%);
+}
+
+.topbar-actions .font-size-control button {
+  min-height: 30px;
+  padding: 0.2rem 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  font-weight: 800;
+  color: #4e5560;
+}
+
+.topbar-actions .font-size-control button:hover:not(:disabled) {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(45, 49, 54, 0.08);
+}
+
+.topbar-actions .font-size-control button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.font-size-label {
+  min-width: 2.4em;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
 .clip-body {
   margin-top: 0;
   background: transparent;
