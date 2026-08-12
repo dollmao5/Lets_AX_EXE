@@ -41,13 +41,13 @@ Notion 공식 MCP — 워크스페이스 문서 검색·생성·편집
 
 [GitHub →](https://github.com/makenotion/notion-mcp-server)
 
-Slack MCP Server
+MCP 공식 서버 목록
 
-Slack 공식 MCP 플러그인 — 채널 관리·메시징을 AI가 수행
+Model Context Protocol 공식 서버 모음 — Slack 등 서비스별 서버를 찾아 연결
 
 팀 커뮤니케이션 자동화대화 요약
 
-[GitHub →](https://github.com/slackapi/slack-mcp-plugin)
+[GitHub →](https://github.com/modelcontextprotocol/servers)
 
 Filesystem MCP
 
@@ -71,7 +71,7 @@ Zapier MCP
 
 크로스 플랫폼 업무 자동화반복 작업 제거
 
-[GitHub →](https://github.com/zapier/zapier-mcp)
+[Link →](https://zapier.com/mcp)
 
 Firecrawl MCP
 
@@ -87,7 +87,7 @@ Model Context Protocol 공식 스펙 — AI 도구 연결의 표준
 
 MCP 서버 개발커스텀 도구 구축
 
-[GitHub →](https://github.com/modelcontextprotocol/specification)
+[GitHub →](https://github.com/modelcontextprotocol/modelcontextprotocol)
 
 ## CLI & AI Tools
 
@@ -99,7 +99,7 @@ Anthropic의 터미널 AI 코딩 에이전트 — 전체 코드베이스 자율 
 
 대규모 코드 리팩토링멀티파일 구현
 
-[Link →](https://docs.anthropic.com/en/docs/claude-code)
+[Link →](https://code.claude.com/docs)
 
 Gemini CLI
 
@@ -163,7 +163,7 @@ OpenCode
 
 벤더 종속 없는 유연한 AI 코딩 환경
 
-[Link →](https://github.com/opencode-ai/opencode)
+[Link →](https://github.com/sst/opencode)
 
 ChatGPT
 

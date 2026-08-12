@@ -44,7 +44,7 @@
     },
     "ch01-clip04": {
       "title": "AI-Friendly 리더십 & AI 리터러시",
-      "type": "실습"
+      "type": "진단"
     },
     "ch02-clip01": {
       "title": "ChatGPT Overview",
@@ -96,7 +96,7 @@
     },
     "ch05-clip01": {
       "title": "정리정돈: 배움에서 현업 자산으로",
-      "type": "실천·성찰"
+      "type": "정리"
     },
     "ch05-clip02": {
       "title": "마무리: Start · Stop · Continue",
@@ -104,7 +104,7 @@
     },
     "ch06-clip09": {
       "title": "Tool Pantry (MCP & CLI)",
-      "type": "개념"
+      "type": "참고"
     }
   }
 }

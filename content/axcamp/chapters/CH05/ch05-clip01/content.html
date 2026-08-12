@@ -904,7 +904,7 @@
 <article class="artifact-card">
 <div class="artifact-card-head">
 <div class="artifact-card-title">CH03. 조직(팀) 역량 점검</div>
-<div class="artifact-card-purpose">팀 진단 2종 + 권장 통합본 회수</div>
+<div class="artifact-card-purpose">팀 진단 2종 + 선택 통합본 회수</div>
 </div>
 <ul class="artifact-check-list">
 <li>
@@ -1291,6 +1291,8 @@
       lines.push('- CH02: '+(getFieldValue('locationCh02')||'미입력'));
       lines.push('- CH03: '+(getFieldValue('locationCh03')||'미입력'));
       lines.push('- CH04: '+(getFieldValue('locationCh04')||'미입력'));
+      lines.push('- CH02 Round 1·2와 통합 저장 Gate: '+(getFieldValue('locationCh02Revision')||'미입력'));
+      lines.push('- CH03 팀 성장역량과 AI 협업: '+(getFieldValue('locationCh03Revision')||'미입력'));
       lines.push('');
       lines.push('&gt; 핵심 질문: 무엇을 배웠는가가 아니라, 현업에 무엇을 가져갈 것인가?');
       return lines.join('\n');

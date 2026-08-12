@@ -88,7 +88,7 @@ Microsoft12분바이브코딩
 
 The New Stack15분바이브코딩
 
-- [Claude Code 공식 문서](https://docs.anthropic.com/en/docs/claude-code/overview)터미널 AI 코딩 에이전트의 공식 가이드. 코드베이스 이해, 멀티파일 편집, GitHub 자동화, MCP 연동.
+- [Claude Code 공식 문서](https://code.claude.com/docs/en/overview)터미널 AI 코딩 에이전트의 공식 가이드. 코드베이스 이해, 멀티파일 편집, GitHub 자동화, MCP 연동.
 
 Anthropic20분도구
 
@@ -112,7 +112,7 @@ OpenAI10분도구
 
 MCP (Linux Foundation)30분도구
 
-- [Prompt Engineering Overview](https://docs.anthropic.com/en/docs/prompt-engineering)좋은 프롬프트의 기본 원칙과 예시 패턴을 정리한 Anthropic 공식 문서. 프롬프트 4원칙 설명과 직접 연결된다.
+- [Prompt Engineering Overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)좋은 프롬프트의 기본 원칙과 예시 패턴을 정리한 Anthropic 공식 문서. 프롬프트 4원칙 설명과 직접 연결된다.
 
 Anthropic15분도구
 

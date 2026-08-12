@@ -15,25 +15,25 @@ CH 06
 Antigravity
 Google
 Agent-First IDE, 3-Surface(Editor+Terminal+Browser), Manager View로 멀티에이전트 오케스트레이션
-Gemini 3.1 Pro
+Gemini 3 Pro 계열
 프론트엔드/풀스택 개발, 에이전트 워크플로우
 
 Claude Code
 Anthropic
 CLI 기반, 코드베이스 전체 컨텍스트, MCP 통합, 프로젝트 단위 자율 작업
-Claude Opus 4
+Claude Opus 4.5·Claude 5 계열
 대규모 코드 리팩토링, 복잡한 코드 분석
 
 Codex
 OpenAI
 클라우드 샌드박스, 비동기 병렬 작업, GitHub 통합
-GPT-4.1 / o3
+GPT-5 Codex 계열
 CI/CD 연동, 이슈 기반 자동화
 
 Gemini CLI
 Google
 터미널 네이티브, 100만 토큰 컨텍스트, MCP 지원, Google 생태계 연동
-Gemini 3.1 Pro
+Gemini 3 Pro 계열
 터미널 중심 작업, Google Cloud 연동
 
 MCP (Model Context Protocol)
@@ -84,4 +84,4 @@ USB 포트가 어떤 기기든 연결할 수 있듯, MCP는 어떤 AI 도구든 
 
 "도구가 달라도 원리는 같습니다."
 
-Antigravity, Claude Code, Codex, Cline — 도구의 인터페이스는 다르지만, 에이전틱 AI의 핵심 원리는 동일합니다: 목표 설정, 컨텍스트 제공, 결과 검증. 오늘 이 원리를 체험하면, 어떤 도구를 사용하든 적용할 수 있습니다.
+Antigravity, Claude Code, Codex, Gemini CLI — 도구의 인터페이스는 다르지만, 에이전틱 AI의 핵심 원리는 동일합니다: 목표 설정, 컨텍스트 제공, 결과 검증. 오늘 이 원리를 체험하면, 어떤 도구를 사용하든 적용할 수 있습니다.

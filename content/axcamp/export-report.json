@@ -64,7 +64,7 @@
         {
           "route": "#ch01-clip04",
           "title": "AI-Friendly 리더십 & AI 리터러시 진단",
-          "type": "실습",
+          "type": "진단",
           "folder": "chapters/CH01/ch01-clip04",
           "linkCount": 0,
           "imageCount": 0,
@@ -92,7 +92,7 @@
         {
           "route": "#ch02-clip02",
           "title": "Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민",
-          "type": "개념",
+          "type": "팀 토론",
           "folder": "chapters/CH02/ch02-clip02",
           "linkCount": 0,
           "imageCount": 0,
@@ -226,7 +226,7 @@
         {
           "route": "#ch05-clip01",
           "title": "정리정돈: 배움에서 현업 자산으로",
-          "type": "개요",
+          "type": "정리",
           "folder": "chapters/CH05/ch05-clip01",
           "linkCount": 0,
           "imageCount": 0,
@@ -284,7 +284,7 @@
         {
           "route": "#ch06-clip04",
           "title": "듀얼 출력의 원리",
-          "type": "개념",
+          "type": "참고",
           "folder": "chapters/CH06/ch06-clip04",
           "linkCount": 0,
           "imageCount": 0,
@@ -294,7 +294,7 @@
         {
           "route": "#ch06-clip05",
           "title": "HTML + PPT 동시 출력",
-          "type": "개념",
+          "type": "참고",
           "folder": "chapters/CH06/ch06-clip05",
           "linkCount": 0,
           "imageCount": 0,
@@ -304,7 +304,7 @@
         {
           "route": "#ch06-clip06",
           "title": "스킬(Skill)이란",
-          "type": "개념",
+          "type": "참고",
           "folder": "chapters/CH06/ch06-clip06",
           "linkCount": 0,
           "imageCount": 0,
@@ -314,7 +314,7 @@
         {
           "route": "#ch06-clip07",
           "title": "스킬 저장 & 재사용",
-          "type": "개념",
+          "type": "참고",
           "folder": "chapters/CH06/ch06-clip07",
           "linkCount": 0,
           "imageCount": 0,
@@ -324,7 +324,7 @@
         {
           "route": "#ch06-clip08",
           "title": "정리 & 핵심 인사이트",
-          "type": "개념",
+          "type": "개요",
           "folder": "chapters/CH06/ch06-clip08",
           "linkCount": 0,
           "imageCount": 0,
@@ -334,7 +334,7 @@
         {
           "route": "#ch06-clip09",
           "title": "Tool Pantry (MCP & CLI)",
-          "type": "개념",
+          "type": "참고",
           "folder": "chapters/CH06/ch06-clip09",
           "linkCount": 0,
           "imageCount": 0,
@@ -344,7 +344,7 @@
         {
           "route": "#ch06-clip10",
           "title": "추가 읽을거리",
-          "type": "개념",
+          "type": "참고",
           "folder": "chapters/CH06/ch06-clip10",
           "linkCount": 0,
           "imageCount": 0,
@@ -354,7 +354,7 @@
         {
           "route": "#ch06-clip11",
           "title": "웹 스타일 프롬프트 가이드",
-          "type": "개념",
+          "type": "참고",
           "folder": "chapters/CH06/ch06-clip11",
           "linkCount": 0,
           "imageCount": 0,
@@ -428,7 +428,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "실습"
+      "type": "진단"
     },
     {
       "chapterId": "ch02",
@@ -454,7 +454,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "팀 토론"
     },
     {
       "chapterId": "ch02",
@@ -597,7 +597,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개요"
+      "type": "정리"
     },
     {
       "chapterId": "ch05",
@@ -662,7 +662,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "참고"
     },
     {
       "chapterId": "ch06",
@@ -675,7 +675,7 @@
       "promptCount": 1,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "참고"
     },
     {
       "chapterId": "ch06",
@@ -688,7 +688,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "참고"
     },
     {
       "chapterId": "ch06",
@@ -701,7 +701,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "참고"
     },
     {
       "chapterId": "ch06",
@@ -714,7 +714,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "개요"
     },
     {
       "chapterId": "ch06",
@@ -727,7 +727,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "참고"
     },
     {
       "chapterId": "ch06",
@@ -740,7 +740,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "참고"
     },
     {
       "chapterId": "ch06",
@@ -753,7 +753,7 @@
       "promptCount": 0,
       "linkCount": 0,
       "imageCount": 0,
-      "type": "개념"
+      "type": "참고"
     }
   ],
   "links": {

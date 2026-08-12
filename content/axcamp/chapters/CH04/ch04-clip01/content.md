@@ -14,7 +14,7 @@ CH 04
 
 NotebookLM은 사용자가 넣은 자료를 중심으로 답변하고 소스 기반 답변에 출처를 제공하는 **Grounded Research 도구**입니다.
 
-이 클립에서는 새 노트북 생성, 소스 패널·채팅 패널·Studio 패널, 고정 사용한도, 화면 설명, 소스 추가·선택·인라인 출처 확인을 충분히 살펴봅니다.
+이 클립에서는 새 노트북 생성, 소스 패널·채팅 패널·Studio 패널, 플랜별 사용한도, 화면 설명, 소스 추가·선택·인라인 출처 확인을 충분히 살펴봅니다.
 
 다음 클립에서는 **CH02 리더 역할·책임·역량 통합본, CH03 성장역량·AI 협업 통합본, Round 1~3 토론 정리본 통합본**을 하나의 노트북에 넣어 Source Map → TOP 3 → 30일 실행계획으로 연결합니다.
 
@@ -22,8 +22,8 @@ NotebookLM은 사용자가 넣은 자료를 중심으로 답변하고 소스 기
 
 **ℹ️ 명칭 안내:** NotebookLM의 공식 명칭이 **“Gemini Notebook”**으로 변경되고 있습니다. 실습 화면의 로고·명칭이 교재와 다를 수 있으나 같은 도구입니다.
 
-- **공식 도움말 — Gemini Notebook 알아보기 (한국어)** — 사용한도 기준표의 “수업 직전 재확인”은 이 문서 기준
-[https://support.google.com/gemininotebook/answer/16164461?hl=ko](https://support.google.com/gemininotebook/answer/16164461?hl=ko)
+- **공식 도움말 — Gemini Notebook 업그레이드하기 (한국어)** — 플랜별 사용한도·기능 표가 있는 문서로, 사용한도 기준표의 “수업 직전 재확인”은 이 문서 기준
+[https://support.google.com/gemininotebook/answer/16213268?hl=ko](https://support.google.com/gemininotebook/answer/16213268?hl=ko)
 
 - **공식 도움말 — 채팅과 인라인 인용 (한국어)** — 인라인 출처 확인 실습의 공식 근거 · 복습용
 [https://support.google.com/notebooklm/answer/16179559?hl=ko](https://support.google.com/notebooklm/answer/16179559?hl=ko)
@@ -263,11 +263,11 @@ Studio는 **“정리된 결과물을 만드는 곳”**, 채팅은
 
 다음 실습에서 사용할 것
 
-- CH02-3 리더 역할 프로필 Markdown
+- 필수 1 · CH02 리더 역할·책임·역량 통합본 (리더 역할 프로필·「나의 핵심역량과 스킬」 개별 파일로 대체 가능)
 
-- CH02-4 「나의 핵심역량과 스킬」 Markdown
+- 필수 2 · CH03 성장역량·AI 협업 통합본 (성장역량 점검지표·필요행동역량 개별 파일로 대체 가능)
 
-- CH03 통합 Markdown 또는 개별 산출물
+- 필수 3 · Round 1~3 팀 토론 정리본 통합본 (CH04_R1-3_팀토론정리본_성명.md)
 
 - 선택: 사내 성과관리·팀장 기대행동 자료
 

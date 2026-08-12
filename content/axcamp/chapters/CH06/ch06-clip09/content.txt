@@ -27,8 +27,8 @@ Notion 공식 MCP — 워크스페이스 문서 검색·생성·편집
 
 GitHub →
 
-Slack MCP Server
-Slack 공식 MCP 플러그인 — 채널 관리·메시징을 AI가 수행
+MCP 공식 서버 목록
+Model Context Protocol 공식 서버 모음 — Slack 등 서비스별 서버를 찾아 연결
 팀 커뮤니케이션 자동화대화 요약
 
 GitHub →
@@ -49,7 +49,7 @@ Zapier MCP
 6,000+ 앱과 연동되는 워크플로우 자동화
 크로스 플랫폼 업무 자동화반복 작업 제거
 
-GitHub →
+Link →
 
 Firecrawl MCP
 웹페이지를 AI가 읽을 수 있는 마크다운으로 변환

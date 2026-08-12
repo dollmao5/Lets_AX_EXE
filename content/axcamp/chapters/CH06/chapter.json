@@ -25,49 +25,49 @@
     {
       "route": "#ch06-clip04",
       "title": "듀얼 출력의 원리",
-      "type": "개념",
+      "type": "참고",
       "folder": "chapters/CH06/ch06-clip04"
     },
     {
       "route": "#ch06-clip05",
       "title": "HTML + PPT 동시 출력",
-      "type": "개념",
+      "type": "참고",
       "folder": "chapters/CH06/ch06-clip05"
     },
     {
       "route": "#ch06-clip06",
       "title": "스킬(Skill)이란",
-      "type": "개념",
+      "type": "참고",
       "folder": "chapters/CH06/ch06-clip06"
     },
     {
       "route": "#ch06-clip07",
       "title": "스킬 저장 & 재사용",
-      "type": "개념",
+      "type": "참고",
       "folder": "chapters/CH06/ch06-clip07"
     },
     {
       "route": "#ch06-clip08",
       "title": "정리 & 핵심 인사이트",
-      "type": "개념",
+      "type": "개요",
       "folder": "chapters/CH06/ch06-clip08"
     },
     {
       "route": "#ch06-clip09",
       "title": "Tool Pantry (MCP & CLI)",
-      "type": "개념",
+      "type": "참고",
       "folder": "chapters/CH06/ch06-clip09"
     },
     {
       "route": "#ch06-clip10",
       "title": "추가 읽을거리",
-      "type": "개념",
+      "type": "참고",
       "folder": "chapters/CH06/ch06-clip10"
     },
     {
       "route": "#ch06-clip11",
       "title": "웹 스타일 프롬프트 가이드",
-      "type": "개념",
+      "type": "참고",
       "folder": "chapters/CH06/ch06-clip11"
     }
   ]
