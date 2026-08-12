@@ -202,8 +202,8 @@
       <li data-help-mode="remote"><span class="when">교육 시작 전 · 선택</span><span class="btn-name">차수 코드</span> — 공개 사이트라 아무나 제출할 수 있으므로, 제출용 코드를 정해 칠판·화면에 공지합니다. 외부인 제출을 막는 자물쇠입니다. 빈 값으로 저장하면 코드 없이 제출 가능.</li>
       <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1팀 4명 · 2팀 3명 … (총 N명)"</strong>이 올라갑니다. 제출 현황은 30초마다 자동 갱신됩니다(즉시 확인은 <span class="btn-name">새로고침</span>). 늦는 팀만 독려하세요.</li>
       <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 30초~수분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
-      <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동 · 종료는 ESC 또는 우상단 [↩️ 보드로 돌아가기]). 마지막 교차 분석 슬라이드로 강사 Wrap-up.</li>
-      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1·2 내 토론 정리본 불러오기" 패널에서 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동 · 종료는 ESC 또는 우상단 [↩️ 보드로 돌아가기]). 교차 분석 슬라이드로 강사 Wrap-up.</li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1/2 내 토론 정리본 불러오기" 류 패널에서 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
       <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
     </ol>
 
@@ -230,7 +230,7 @@
       <tr><td>발표 모드 ▶</td><td>요약을 슬라이드로 크게 표시 (팀 카드 → 교차 분석 → 차수 비교 순).</td></tr>
       <tr><td>도입·마무리 🎬</td><td>Round 1~3 팀 토론 도입·마무리 멘트 + 그 외 클립 학습 Flow·필수 산출물 가이드 + D-1 체크리스트 (강사 전용).</td></tr>
       <tr><td>새로고침</td><td>제출 현황·요약 표시를 즉시 갱신합니다 (30초마다 자동 갱신되므로 급할 때만).</td></tr>
-      <tr data-help-mode="remote"><td>차수 코드</td><td>교육생 제출 보호 코드를 설정/해제합니다 — 빈 값으로 저장하면 코드 없이 제출 가능 (위 하루 흐름 ① 참고).</td></tr>
+      <tr data-help-mode="remote"><td>차수 코드</td><td>교육생 제출 보호 코드를 설정/해제합니다 — 빈 값으로 저장하면 코드 없이 제출 가능 (위 하루 흐름 ② 참고).</td></tr>
       <tr><td>강사 자료실 📚</td><td>강사 사전 가이드·사내망 해제 요청 목록·안내문 문서를 새 탭에서 열람합니다 (강사·관리자 인증 시 표시).</td></tr>
       </tbody>
     </table>
@@ -397,7 +397,7 @@
 
     <details><summary>CH04~CH05 (15:30~17:30) — NotebookLM 실습 · 정리</summary><div class="hook-body">
       <div style="margin:8px 0;"><strong>4-1 NotebookLM Overview (20분)</strong> — 사용한도 기준표 · 소스 기반 답변·인라인 출처 · Studio 기능 Tour. <em>산출물 없음.</em> 화면 명칭이 <strong>Gemini Notebook</strong>으로 보일 수 있음(같은 도구) — 교육생 질문 대비.</div>
-      <div style="margin:8px 0;"><strong>4-2 30일 실행계획 (60분)</strong> — Step 1 Source Map(15분) → Step 2 TOP 3(18분) → Step 3 30일 실행계획(27분). 필수 1종(통합): <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_우리팀_성장역량향상_30일실행계획_성명.md</mark> — 1부 근거 정리표 · 2부 TOP 3 포함. (입력 소스에 토론 정리본 통합본 포함)</div>
+      <div style="margin:8px 0;"><strong>4-2 30일 실행계획 (60분)</strong> — Step 1 Source Map(15분) → Step 2 TOP 3(18분) → Step 3 30일 실행계획(27분) (+선택 Step 4·5: 주간 점검 AI 비서). 필수 1종(통합): <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_우리팀_성장역량향상_30일실행계획_성명.md</mark> — 1부 근거 정리표 · 2부 TOP 3 포함. (입력 소스에 토론 정리본 통합본 포함)</div>
       <div style="margin:8px 0;"><strong>5-1 정리정돈 (20분)</strong> — 필수 산출물 11개 회수표 작성 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_현업적용_산출물회수표_성명.md</mark> — 특히 CH04 30일 실행계획 저장 위치 확인.</div>
       <div style="margin:8px 0;"><strong>5-2 Start·Stop·Continue (20분)</strong> — SSC 행동계약 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_나의_30일리더실천계획_성명.md</mark> · 72시간 팀 대화 · 30일 점검일 확정으로 과정 마무리.</div>
     </div></details>
