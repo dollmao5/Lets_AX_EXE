@@ -11,6 +11,7 @@
  *  6. chapter.json 유령 클립 — 선언된 folder가 실제로 존재하는지 (260810 감사 재발 방지)
  *  7. visible-catalog-overrides.json stale 키 — 존재하지 않는 클립/챕터 오버라이드
  *  8. PRACTICE_FILE_MAP 실존 — server.js 실습파일 매핑이 디스크와 일치하는지
+ *  9. 표시 텍스트 금칙어 확장 — deck-data.json·wrapup.html·강사 자료실 (260818 사각지대 해소)
  *
  * 종료 코드: 오류 발견 시 1, 아니면 0 (신선도는 경고로만 출력)
  * 사용법: npm run lint:content
@@ -207,6 +208,45 @@ try {
   }
 } catch (e) {
   warnings.push(`[실습파일] 검사 실패(무시됨): ${e.message}`);
+}
+
+/* 9. 표시 텍스트 금칙어 확장 — 260818: content.html만 검사하던 사각지대(deck-data.json 슬라이드 캡션,
+   Wrap-up 보드, 강사 자료실)에서 '수업' 등 잔존이 발견된 재발 방지. 주석(HTML·JS)은 검사 제외. */
+try {
+  const stripAllComments = (s) =>
+    s
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/(^|[^:])\/\/[^\n]*/g, "$1"); // URL의 "://"는 보존
+  const extraTargets = [
+    path.join(PUBLIC_DIR, "deck-data.json"),
+    path.join(PUBLIC_DIR, "wrapup.html"),
+    path.join(PUBLIC_DIR, "instructor-docs.html")
+  ];
+  const docsDir = path.join(PUBLIC_DIR, "instructor-docs-files");
+  if (fs.existsSync(docsDir)) {
+    for (const f of fs.readdirSync(docsDir)) {
+      if (f.endsWith(".html")) extraTargets.push(path.join(docsDir, f));
+    }
+  }
+  // 신입 강사용 용어 대조 표기(의도적 구용어 병기)는 검사 제외
+  const DISPLAY_ALLOWED = ["(구 2차 캔버스)"];
+  const bannedDisplay = [
+    [/수업/, "수업 (정본 용어: 교육)"],
+    [/학교/, "학교 (팀장 대상 교육 — 부적합 용어)"],
+    [/2차 캔버스/, "2차 캔버스 (정본 용어: 토론 정리본)"]
+  ];
+  for (const file of extraTargets) {
+    if (!fs.existsSync(file)) continue;
+    let text = stripAllComments(fs.readFileSync(file, "utf8"));
+    for (const phrase of DISPLAY_ALLOWED) text = text.split(phrase).join("");
+    const rel = path.relative(ROOT, file).replace(/\\/g, "/");
+    for (const [re, label] of bannedDisplay) {
+      if (re.test(text)) errors.push(`[금칙어+] ${rel}: ${label}`);
+    }
+  }
+} catch (e) {
+  warnings.push(`[금칙어+] 검사 실패(무시됨): ${e.message}`);
 }
 
 /* ---------- 결과 ---------- */

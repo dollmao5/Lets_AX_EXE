@@ -821,7 +821,7 @@
     "downloadLabel": "다운로드",
     "slides": [
       {
-        "eyebrow": "01 Gemini/ChatGPT (챗봇)",
+        "eyebrow": "01 ChatGPT (챗봇)",
         "title": "질문-리서치-초안-수정의 협업 루프",
         "imageSrc": "__BASE__/assets/notebooklm/tech-roadmap/slide-1.png",
         "imageAlt": "Enterprise AI Roadmap 슬라이드 1장. Chat UI 단계에서 질문, 리서치, 초안 작성, 수정 요청을 반복하는 흐름을 설명합니다."
@@ -853,7 +853,7 @@
     "slides": [
       {
         "eyebrow": "01 / Infographic",
-        "title": "오늘 수업을 관통하는 AI 핵심 용어 지도",
+        "title": "오늘 교육을 관통하는 AI 핵심 용어 지도",
         "imageSrc": "__BASE__/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg",
         "imageAlt": "전문가용 AI 핵심 개념 가이드 세로 인포그래픽. 멀티모달, 컨텍스트 엔지니어링, RAG, MCP, Agentic AI 등 핵심 개념을 한 장으로 정리합니다."
       }

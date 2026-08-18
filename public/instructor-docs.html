@@ -76,13 +76,13 @@
       <button data-doc="network-allowlist">자료 2 · [IT 제출용] 사내망 해제 요청서</button>
       <button data-doc="apply-guide">자료 3 · 과정 신청 안내문</button>
       <button data-doc="exec-appeal">자료 4 · 임원/담당 사전 안내문</button>
-      <button data-doc="participant-guide">자료 5 · 1차수 과정참가 안내문</button>
-      <button data-doc="participant-guide-2">자료 6 · 2차수 과정참가 안내문</button>
-      <button data-doc="participant-guide-3">자료 7 · 3차수 과정참가 안내문</button>
+      <button data-doc="participant-guide">자료 5 · 1차수(8/21 금) 참가 안내문</button>
+      <button data-doc="participant-guide-2">자료 6 · 2차수(9/3 목) 참가 안내문</button>
+      <button data-doc="participant-guide-3">자료 7 · 3차수(9/10 목) 참가 안내문</button>
     </div>
     <div class="viewer">
       <div class="viewer-bar">
-        <span id="docDesc">교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지</span>
+        <span id="docDesc">교육 전날 준비 → 당일 아침 차수 설정 → 교육 운영 → 종료 후까지</span>
         <a id="openNewBtn" href="instructor-docs-files/cohort-guide.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
       </div>
       <iframe id="docFrame" src="instructor-docs-files/cohort-guide.html" title="문서 보기"></iframe>
@@ -98,7 +98,7 @@
   var REMOTE_BASE = "https://axcamp-wrapup.dollmao5.workers.dev";
   var CODE_KEY = "ax_wrapup_instructor_code"; /* Wrap-up 보드와 공유 — 보드 로그인 시 자동 인증 */
   var DESC = {
-    "cohort-guide": "교육 전날 준비 → 당일 아침 차수 설정 → 수업 운영 → 종료 후까지",
+    "cohort-guide": "교육 전날 준비 → 당일 아침 차수 설정 → 교육 운영 → 종료 후까지",
     "network-allowlist": "IT/보안 부서 제출용 — 강사 조치 불필요 (문서 상단 '읽는 법'과 [강사용 3분 사전 점검]만 참고)",
     "apply-guide": "과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림 파악용",
     "exec-appeal": "임원/담당 대상 — 산하 팀장 참여 독려 요청과 과정 개요 요약 (8/5 신청 안내문 발송 안내 포함)",
@@ -124,7 +124,7 @@
     var bases = IS_PAGES ? [REMOTE_BASE] : ["", REMOTE_BASE];
     (function tryNext(i, lastErr) {
       if (i >= bases.length) {
-        if (!silent) showErr(lastErr || "인증 서버에 연결할 수 없습니다. Wrap-up 보드에서 [강사 로그인] 후 다시 열거나, 로컬 모드에서는 관리자 로그인 후 이용해 주세요.");
+        if (!silent) showErr(lastErr || "사내망에서 axcamp-wrapup.dollmao5.workers.dev 가 차단된 경우일 수 있습니다 — 개인 네트워크(휴대폰 테더링)로 재시도하거나 리더십개발팀 담당자에게 연락해 주세요. (교육 진행 자체는 보드 없이도 팀별 구두 발표로 가능합니다)");
         return;
       }
       verifyAt(bases[i], code).then(function (v) {

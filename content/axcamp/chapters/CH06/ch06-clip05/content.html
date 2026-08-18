@@ -1,7 +1,7 @@
 
     <div class="clip-header">
       <div class="clip-badges">
-        
+        <span class="clip-badge time">~10분</span>
         <span class="clip-badge chapter">CH 06</span>
         <span class="clip-badge type-reference">참고</span>
       </div>
@@ -9,24 +9,24 @@
     </div>
     
     <div class="info-block" style="margin-bottom:20px;background:var(--bg-offwhite);border-left:3px solid var(--text-muted)">
-  <div style="font-size:0.85rem;color:var(--text-muted)">이 섹션은 <strong>심화/선택</strong> 자료입니다. 시간 여유가 있을 때 참고하세요.</div>
+  <div style="font-size:0.85rem;color:var(--text-secondary)">이 섹션은 <strong>심화/선택</strong> 자료입니다. 시간 여유가 있을 때 참고하세요.</div>
 </div>
 
-<div class="clip-overview">앞서 학습한 듀얼 포맷 개념을 바탕으로, 분석 결과를 <strong>인터랙티브 HTML 대시보드 + 이사회 보고용 PPT</strong>로 직접 실습합니다.</div>
+<div class="clip-overview">앞서 학습한 듀얼 포맷 개념을 바탕으로, 분석 결과를 <strong>인터랙티브 HTML 대시보드 + 이사회 보고용 PPT</strong>로 전환하는 과정을 시연 프롬프트로 살펴봅니다.</div>
+<p style="font-size:0.82rem;color:var(--text-secondary);margin:0 0 16px">아래 프롬프트는 강사 시연 대화(3종 보고서 생성)에 이어서 실행하는 예시입니다 — 자신의 분석 대화가 있다면 그 대화에서 그대로 사용할 수 있습니다.</p>
 <div style="background:var(--brand-light);border-left:3px solid var(--brand);border-radius:12px;padding:20px 24px;margin-bottom:24px">
- <div style="font-weight:700;font-size:1rem;margin-bottom:12px">이 실습에서는</div>
- <div style="font-size:0.85rem;line-height:1.8;color:var(--text)">
- • 같은 분석 결과를 HTML 대시보드 + PPT 두 가지 포맷으로 동시에 출력합니다<br>
- • 실무 공유용(HTML)과 이사회 보고용(PPT)의 용도 차이를 체험합니다<br>
- • LG 브랜드 컬러가 적용된 실전 수준의 산출물을 만듭니다
- </div>
+ <div style="font-weight:700;font-size:1rem;margin-bottom:12px">이 자료에서는</div>
+ <ul style="font-size:0.85rem;line-height:1.8;color:var(--text);margin:0;padding-left:18px">
+ <li>같은 분석 결과를 HTML 대시보드 + PPT 두 가지 포맷으로 동시에 출력합니다</li>
+ <li>실무 공유용(HTML)과 이사회 보고용(PPT)의 용도 차이를 체험합니다</li>
+ <li>LG 브랜드 컬러가 적용된 실전 수준의 산출물 예시를 확인합니다</li>
+ </ul>
 </div>
 
 <div class="clip-section">
  <div class="clip-section-title">실습: HTML + PPT 동시 출력 프롬프트</div>
  <div class="clip-section-content">
  <p style="margin-bottom:12px">분석 결과가 이미 있는 <strong>같은 대화</strong>에 이어서 입력합니다 (새 대화를 열지 마세요):</p>
- <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:12px">이 프롬프트는 강사 시연 대화(3종 보고서 생성)에 이어서 실행하는 예시입니다 — 자신의 분석 대화가 있다면 그 대화에서 그대로 사용할 수 있습니다.</p>
  </div>
  <div class="prompt-block">
  <div class="prompt-header"><span class="prompt-label">HTML + PPT 동시 생성</span><button class="copy-btn" onclick="copyPrompt(this,'agent-html-ppt')">복사</button></div>
@@ -51,7 +51,7 @@
 <div class="clip-section">
  <div class="clip-section-title">산출물 확인 포인트</div>
  <div class="clip-section-content">
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0">
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:12px 0">
  <div style="background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius);padding:16px">
  <div style="font-weight:600;margin-bottom:8px">HTML 대시보드 체크</div>
  <ul style="font-size:0.8rem;margin:0;padding-left:16px">

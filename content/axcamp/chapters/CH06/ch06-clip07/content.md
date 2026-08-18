@@ -6,6 +6,7 @@ source_url: "https://lg.cmdspace.work/axcamp#ch06-clip07"
 exported_at: "2026-02-28T01:54:21.618Z"
 ---
 
+~3분
 CH 06
 참고
 

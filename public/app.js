@@ -5177,7 +5177,7 @@ function bindEvents() {
       if (prefillId === "instructor") {
         // [강사 모드 게이트] 비밀번호를 Worker 강사 코드로 검증하고, 통과하면 보드가 읽는 저장 키에
         // 코드를 넣어 Wrap-up 보드에 자동 로그인된 상태로 연다 — 이중 로그인 방지
-        const pw = window.prompt("강사 모드 비밀번호를 입력하세요");
+        const pw = window.prompt("강사 비밀코드를 입력하세요");
         if (pw === null || !pw.trim()) return;
         (async () => {
           const verifyCode = async (candidate) => {
@@ -5195,7 +5195,7 @@ function bindEvents() {
               code = await verifyCode(pw.trim().toLowerCase());
             }
             if (!code) {
-              alert("비밀번호가 올바르지 않습니다.");
+              alert("강사 비밀코드가 올바르지 않습니다.");
               return;
             }
             try {
@@ -5457,6 +5457,43 @@ window.filterNews = function filterNews(category, button) {
   if (button) {
     button.classList.add("active");
   }
+};
+
+window.filterTools = function filterTools(query) {
+  const q = normalizeWs(query || "").toLowerCase();
+  const items = el.clipBody?.querySelectorAll(".tool-item") || [];
+  items.forEach((item) => {
+    const visible = !q || item.textContent.toLowerCase().includes(q);
+    item.classList.toggle("hidden-by-filter", !visible);
+  });
+};
+
+function applyRefFilters() {
+  const list = el.clipBody?.querySelector("#refList");
+  if (!list) return;
+  const cat = normalizeWs(list.dataset.activeCat || "all");
+  const search = el.clipBody?.querySelector("#refSearch");
+  const q = normalizeWs(search?.value || "").toLowerCase();
+  list.querySelectorAll(".ref-link-item").forEach((item) => {
+    const catOk = cat === "all" || normalizeWs(item.dataset.cat || "") === cat;
+    const textOk = !q || item.textContent.toLowerCase().includes(q);
+    item.classList.toggle("hidden-by-filter", !(catOk && textOk));
+  });
+}
+
+window.filterRefs = function filterRefs() {
+  applyRefFilters();
+};
+
+window.filterRefCat = function filterRefCat(category, button) {
+  const list = el.clipBody?.querySelector("#refList");
+  if (list) {
+    list.dataset.activeCat = normalizeWs(category || "all");
+  }
+  const filterButtons = el.clipBody?.querySelectorAll(".news-filter-btn") || [];
+  filterButtons.forEach((btn) => btn.classList.remove("active"));
+  button?.classList.add("active");
+  applyRefFilters();
 };
 
 window.toggleContentEditMode = function toggleContentEditMode() {

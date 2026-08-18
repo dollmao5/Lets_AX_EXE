@@ -147,12 +147,14 @@
     <span class="spacer" style="flex:1"></span>
     <span id="summaryMeta" class="muted"></span>
     <span class="admin-box" id="adminBox">
-      <button id="helpBtn" title="보드 사용법 안내">사용법 ❓</button>
-      <!-- [ENRICHMENT 2026-07-25] 도입 훅 버튼. 복구: 이 줄 삭제 --><button id="hookBtn" title="클립별 도입·마무리 시나리오 (강사용)">도입·마무리 🎬</button><!-- [ENRICHMENT END] -->
-      <button id="genBtn" class="primary">요약 생성</button>
-      <button id="canvas2Btn">토론 정리본 생성</button>
+      <!-- [260818] 진행 순서 스트립(차수 설정 → 요약 생성 → 토론 정리본)과 일치하도록 버튼 순서 재배치 — id·핸들러 불변 -->
       <button id="cohortBtn">차수 설정</button>
       <button id="codeBtn" style="display:none">차수 코드</button>
+      <span aria-hidden="true" style="display:inline-block;width:1px;height:18px;background:#cbd5e1;vertical-align:middle;margin:0 4px;"></span>
+      <button id="genBtn" class="primary">요약 생성</button>
+      <button id="canvas2Btn">토론 정리본 생성</button>
+      <button id="helpBtn" title="보드 사용법 안내">사용법 ❓</button>
+      <!-- [ENRICHMENT 2026-07-25] 도입 훅 버튼. 복구: 이 줄 삭제 --><button id="hookBtn" title="클립별 도입·마무리 시나리오 (강사용)">도입·마무리 🎬</button><!-- [ENRICHMENT END] -->
       <button id="pullBtn">불러오기(pull)</button>
       <button id="pushBtn">저장·백업(push)</button>
       <button id="zipBtn">zip 내보내기</button>
@@ -201,9 +203,9 @@
       <li><span class="when">교육 시작 전</span><span class="btn-name">차수 설정</span> — 오늘 차수 이름을 등록합니다 (예: 2026-09-03차수). 오늘의 모든 제출·요약이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
       <li data-help-mode="remote"><span class="when">교육 시작 전 · 선택</span><span class="btn-name">차수 코드</span> — 공개 사이트라 아무나 제출할 수 있으므로, 제출용 코드를 정해 칠판·화면에 공지합니다. 외부인 제출을 막는 자물쇠입니다. 빈 값으로 저장하면 코드 없이 제출 가능.</li>
       <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1팀 4명 · 2팀 3명 … (총 N명)"</strong>이 올라갑니다. 제출 현황은 30초마다 자동 갱신됩니다(즉시 확인은 <span class="btn-name">새로고침</span>). 늦는 팀만 독려하세요.</li>
-      <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 30초~수분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
+      <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 공개 사이트 1~3분 / 강사 PC 30초~1분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
       <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동 · 종료는 ESC 또는 우상단 [↩️ 보드로 돌아가기]). 교차 분석 슬라이드로 강사 Wrap-up.</li>
-      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1/2 내 토론 정리본 불러오기" 류 패널에서 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. AI 호출 없이 즉시 처리되며 몇 번 눌러도 안전합니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 요약 생성 후 클릭 · AI 호출 없이 즉시 처리 · 재실행 안전.<details style="margin-top:4px;"><summary style="cursor:pointer;font-weight:800;">토론 정리본이 어디에 쓰이나요</summary><div style="margin-top:4px;">제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1/2 내 토론 정리본 불러오기" 류 패널에서 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</div></details></li>
       <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
     </ol>
 
@@ -238,7 +240,7 @@
     <details style="border:1px solid #fca5a5;border-radius:12px;margin:12px 0 8px;background:#fff7f7;"><summary style="cursor:pointer;padding:10px 14px;font-weight:800;color:#b42318;">⚠ 문제 발생 시 (비상 대응 모음)</summary><div style="padding:0 16px 12px;">
 <ul style="margin:8px 0;padding-left:18px;line-height:1.7;">
 <li><strong>제출 숫자가 안 올라감</strong> — [새로고침] 클릭 → 차수 이름·차수 코드가 교육생 화면 안내와 일치하는지 확인합니다.</li>
-<li><strong>요약 생성 실패·지연</strong> — 한 번 더 실행합니다(재실행 안전). AI 호출이 막히면 자동으로 간이(lite) 요약으로 대체됩니다.</li>
+<li><strong>요약 생성 실패·지연</strong> — 기본 모델 2회 재시도 후 간이(lite) 모델로 자동 대체됩니다. 그래도 실패하면 1~2분 뒤 [요약 생성] 재실행 → 계속 실패 시 해당 팀은 구두 발표로 전환하고 교육을 이어가세요.</li>
 <li><strong>보드·서버 전체 장애</strong> — 교육생에게 각자 캔버스의 [Markdown 다운로드] 백업 저장을 안내하고, 팀별 구두 발표로 전환해 교육을 계속 진행합니다.</li>
 <li><strong>토론 정리본에 팀 합의가 비어 있는 경우</strong> — 해당 라운드에서 <strong>[요약 생성]</strong>을 실행하면 팀 요약이 개인별 토론 정리본에 반영됩니다.</li>
 <li><strong>시간 부족</strong> — 생략 순서: 2-4 선택 활동(Deep Research·비서) → 4-2 Step 4·5. 필수 산출물은 줄이지 않습니다.</li>
@@ -280,7 +282,7 @@
 <div style="margin:8px 0 14px;padding:10px 14px;border:1px solid #f59e0b;border-radius:10px;background:#fffbeb;">⏱ <strong>시간 부족 시 생략 순서:</strong> 2-4 선택 활동(Deep Research·비서) → 4-2 Step 4·5 — 필수 산출물은 그대로 유지합니다.</div>
 <h3>D-1 체크리스트 (교육 전날)</h3>
     <ul class="hook-check">
-      <li><strong>[1순위] 교육장 네트워크 테스트</strong> — 강의장 PC에서 ①유튜브(KBS 영상) ②뉴스 사이트(서울경제·디지털투데이) ③quizn.show 가 열리는지 확인.</li>
+      <li><strong>[1순위] 교육장 네트워크 테스트</strong> — 점검 대상 6개는 강사 자료실 「사내망 해제 요청 사이트 목록」의 <strong>[강사용 3분 사전 점검]</strong>을 그대로 따르고, 생각 열기용 ①유튜브(KBS 영상) ②뉴스 사이트(서울경제·디지털투데이)도 함께 확인.</li>
       <li><strong>QuizN 보드 초기화</strong> — PIN 1071341 보드의 이전 차수 게시글·참여 기록을 운영자 계정에서 삭제.</li>
       <li><strong>생각 열기 링크 전체 클릭 확인</strong> — 각 클립의 🎬 블록을 펼쳐 링크가 모두 열리는지 확인.</li>
       <li><strong>NotebookLM 확인</strong> — 공식 도움말에서 사용한도 변경 여부 + 교육 계정 화면 명칭(NotebookLM/Gemini Notebook) 확인.</li>
@@ -302,7 +304,7 @@
           <li><strong>~16분 (①~③ 팀 자체)</strong>: 개입 없이 순회 — 잠정 결론 칸에 <strong>1순위 이슈 네 문장</strong>이 기록되는지만 확인합니다.</li>
           <li><strong>16분 (④ AI Challenge 시작)</strong>: "이제 전원, Canvas의 <strong>[📋 Canvas 복사]</strong> 버튼 → AI Challenge 프롬프트(펼쳐 보기)에 붙여넣고 각자 실행하세요 — 4분입니다."</li>
           <li><strong>20분 (⑤ 반론 공유)</strong>: "가장 뼈아픈 반론 <strong>1개씩만</strong> 공유하고, 수용(결론에 반영)·기각(이유 기록)을 팀이 정하세요 — 6분."</li>
-          <li><strong>26분 (⑥ 제출 마감)</strong>: "'AI Challenge 반영' 칸 기록 후 <strong>전원 [내 논의 내용 제출]</strong> — 2분 내 마감합니다."</li>
+          <li><strong>26분 (⑥ 제출 마감)</strong>: "'AI Challenge 반영' 칸 기록 후 <strong>전원 [내 논의 내용 제출]</strong> — 4분 내 마감합니다."</li>
           <li><strong>마감 직후</strong>: 제출 현황 확인 → <strong>[요약 생성] 실행</strong> → 발표 모드로 팀 요약을 띄우고 발표를 진행합니다.</li>
         </ol>
       </div>
@@ -558,7 +560,7 @@
         card.innerHTML = "<h2>" + i + "팀</h2><div class=\"empty\">제출 없음</div>";
       } else if (t.error) {
         card.innerHTML = "<h2>" + i + "팀</h2><div class=\"names\">" + esc(t.names.join(", ")) + " (" + t.memberCount + "명)</div>" +
-          "<div class=\"empty\" style=\"color:var(--danger)\">요약 실패: " + esc(t.error) + "</div>";
+          "<div class=\"empty\" style=\"color:var(--danger)\">요약 실패 — [요약 생성]을 한 번 더 실행해 주세요(재실행 안전). 계속 실패하면 이 팀은 구두 발표로 진행하세요. (사유: " + esc(t.error) + ")</div>";
       } else {
         card.innerHTML = "<h2>" + i + "팀 <span class=\"pill\" style=\"font-size:.78rem\">" + t.memberCount + "명 제출</span></h2>" +
           "<div class=\"names\">" + esc(t.names.join(", ")) + "</div>" +
@@ -1003,7 +1005,7 @@
     window.open("instructor-docs.html", "_blank", "noopener");
   });
   $("codeBtn").addEventListener("click", async function () {
-    var code = prompt("교육생 제출용 차수 코드를 설정하세요.\n(교육 당일 칠판·화면에 공지 — 빈 값으로 확인하면 코드 없이 제출 허용)", "");
+    var code = prompt("(현재 설정된 코드는 보안상 표시되지 않습니다. 빈 값으로 확인하면 코드가 해제됩니다)\n교육생 제출용 차수 코드를 설정하세요.\n(교육 당일 칠판·화면에 공지 — 빈 값으로 확인하면 코드 없이 제출 허용)", "");
     if (code === null) return;
     var d = await api("/api/admin/wrapup/config", { method: "POST", body: { sessionCode: code.trim() } });
     if (d.ok) toast(d.codeRequired ? "차수 코드 설정 완료 — 교육생에게 코드를 공지하세요" : "차수 코드 해제 — 코드 없이 제출 가능");

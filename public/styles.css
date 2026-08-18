@@ -7034,3 +7034,61 @@ table.round-schedule { width: 100%; }
   font-size: 0.9rem;
   padding: 0.5rem 0.9rem;
 }
+
+/* ── 260818 종합 점검: CH06 도구·자료 필터 표시 상태 (filterTools/filterRefs/filterRefCat) ── */
+.tool-item.hidden-by-filter,
+.ref-link-item.hidden-by-filter {
+  display: none;
+}
+
+/* ── 260818 종합 점검: flow-time-badge 전역 승격 — 클립 스코프 정의가 없는 클립(ch03-clip01 등)에서도 알약 배지로 렌더 ── */
+#clipBody .flow-time-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 1px solid color-mix(in srgb, var(--brand) 22%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 7%, #fff);
+  color: var(--brand);
+  font-size: 0.92rem !important;
+  font-weight: 900;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+}
+
+/* ── 260818 종합 점검: 접이식 2계열 색 구분 복원 — intro-collapse(남색·도입 자료) / optional-collapse(황색·선택 심화).
+   전역 #clipBody details 규칙(보라 통일)이 인라인 색을 덮으므로, 클래스로 좌측 보더·배경·글자색만 되살린다 ── */
+#clipBody details.intro-collapse {
+  border: 2px solid #4f46e5 !important;
+  border-left-width: 8px !important;
+  background: #eef2ff !important;
+}
+#clipBody details.intro-collapse > summary {
+  background: #eef2ff !important;
+  border-color: #a5b4fc !important;
+  color: #312e81 !important;
+}
+#clipBody details.intro-collapse[open] > summary {
+  background: #e0e7ff !important;
+}
+#clipBody details.intro-collapse > summary::after {
+  color: #4f46e5;
+}
+#clipBody details.optional-collapse {
+  border: 2px solid #d97706 !important;
+  border-left-width: 8px !important;
+  background: #fffbeb !important;
+}
+#clipBody details.optional-collapse > summary {
+  background: #fffbeb !important;
+  border-color: #fcd34d !important;
+  color: #92400e !important;
+}
+#clipBody details.optional-collapse[open] > summary {
+  background: #fef3c7 !important;
+}
+#clipBody details.optional-collapse > summary::after {
+  color: #b45309;
+}

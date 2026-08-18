@@ -6,10 +6,13 @@ source_url: "https://lg.cmdspace.work/axcamp#ch06-clip09"
 exported_at: "2026-02-28T01:54:23.887Z"
 ---
 
+~5분
 CH 06
 참고
 
 # Tool Pantry (MCP & CLI)
+
+이 섹션은 **심화/선택** 자료입니다. 시간 여유가 있을 때 참고하세요.
 
 AI 업무에 유용한 MCP 서버와 CLI 도구를 정리했습니다. 나중에 필요할 때 참고하세요.
 
