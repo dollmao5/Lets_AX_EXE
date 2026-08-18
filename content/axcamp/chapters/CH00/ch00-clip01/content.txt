@@ -59,7 +59,7 @@ CH01이해·진단
 
 AI 핵심 개념과 출발점
 
-Assistant–Agent–Agentic AI의 차이를 이해하고 AI 리터러시와 리더십 스타일을 진단합니다.
+Assistant–Agent–Agentic AI의 차이를 이해하고 AI 리터러시 활용 수준을 진단합니다.
 
 Output
 개인 학습 초점과 리더십 출발점
