@@ -369,14 +369,16 @@ Team Canvas는 토론의 발언 전체가 아니라 <strong>내 논의 내용과
 ③ 제출 내용은 <strong>나의 토론 정리본으로 통합되어 다음 클립 AI 실습의 입력자료</strong>가 됩니다 — Canvas가 부실하면 이후 AI 분석의 품질도 그대로 낮아집니다. 토론이 '말하고 끝나는 활동'이 아니라 <strong>'실습 재료를 만드는 활동'</strong>이 되는 이유입니다.
 </div>
 </div>
-<div class="rev-form"><div class="rev-form-grid">
+<div class="rev-form">
+<div class="rev-note" style="margin-bottom:12px;"><strong>작성 원칙</strong> — ①~⑥ 전 칸 필수가 아닙니다. 위 보조질문에서 고른 <strong>2~3개에 해당하는 칸만 깊게</strong> 적으세요. 잠정 결론은 팀 합의(TOP 2 확정) 후 기록합니다.</div>
+<div class="rev-form-grid">
 <div class="rev-field"><label for="r1-fld-teamName">팀명</label><select data-md-label="팀명" data-md-section="기본 정보" data-rev-field="teamName" id="r1-fld-teamName"><option value="">팀 선택</option><option value="1팀">1팀</option><option value="2팀">2팀</option><option value="3팀">3팀</option><option value="4팀">4팀</option><option value="5팀">5팀</option><option value="6팀">6팀</option></select></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-scene">① AI로 달라진 실제 업무 장면</label><textarea data-md-label="AI로 달라진 실제 업무 장면" data-md-section="1. 실제 장면" data-rev-field="scene" id="r1-fld-scene" placeholder="최근 3개월 안의 장면을 구체적으로 — 어떤 업무에서, 속도·품질·역할이 어떻게 달라졌는지" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-extraWork">② AI가 오히려 일을 늘린 장면</label><textarea data-md-label="AI가 오히려 일을 늘린 장면" data-md-section="1. 실제 장면" data-rev-field="extraWork" id="r1-fld-extraWork" placeholder="검토·재작업·형식 맞추기 등 AI 때문에 늘어난 일과 그 이유" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-trustContext">③ AI 결과를 신뢰하기 어려운 현장 맥락</label><textarea data-md-label="AI 결과를 신뢰하기 어려운 현장 맥락" data-md-section="2. 신뢰와 판단" data-rev-field="trustContext" id="r1-fld-trustContext" placeholder="어떤 업무·상황에서 AI 결과를 그대로 쓰기 어려운지, 판단이 어려운 이유" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-leaderPressure">④ AI로 속도·기대치가 높아져 성과 압박이 커질 때, 리더인 나의 말·행동</label><textarea data-md-label="AI 성과 압박 속 리더의 말·행동" data-md-section="3. 리더와 팀원" data-rev-field="leaderPressure" id="r1-fld-leaderPressure" placeholder="AI로 속도·기대치가 높아져 성과 압박이 커질 때, 리더인 내가 반복하는 말과 행동" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-leaderImpact">⑤ 그 말·행동이 팀원에게 주는 영향</label><textarea data-md-label="팀원에게 주는 영향(Speak-up·조기 공유·오류 제기)" data-md-section="3. 리더와 팀원" data-rev-field="leaderImpact" id="r1-fld-leaderImpact" placeholder="그 말·행동이 팀원의 Speak-up, 문제 조기 공유, AI 오류·한계 제기에 주는 영향" style="min-height:120px"></textarea></div>
-<div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-memberReaction">⑥ 구성원의 주요 반응 (기대·불안·회피·비공개 사용)</label><textarea data-md-label="구성원의 주요 반응" data-md-section="3. 리더와 팀원" data-rev-field="memberReaction" id="r1-fld-memberReaction" placeholder="누가·어떤 방식으로 AI를 받아들이고 있는지, 팀 안의 온도 차" style="min-height:120px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-memberReaction">⑥ AI 자체에 대한 구성원의 주요 반응 (기대·불안·회피·비공개 사용)</label><textarea data-md-label="구성원의 주요 반응" data-md-section="3. 리더와 팀원" data-rev-field="memberReaction" id="r1-fld-memberReaction" placeholder="누가·어떤 방식으로 AI를 받아들이고 있는지, 팀 안의 온도 차" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r1-fld-topIssues">잠정 결론: 가장 먼저 다룰 이슈 TOP 2</label><textarea data-md-label="가장 먼저 다룰 이슈 TOP 2와 근거" data-md-section="4. 잠정 결론" data-rev-field="topIssues" id="r1-fld-topIssues" placeholder="예) 1순위 — 보고서를 AI로 쓰기 시작한 뒤 검토 시간이 늘었다. 팀원 6명 중 4명이 같은 경험. 가장 먼저 다룰 문제는 AI 산출물 품질 기준 부재이며, 기준을 누가 정할지는 아직 확인하지 못했다 / 2순위 — 팀원 간 AI 활용 수준 격차" style="min-height:100px"></textarea></div>
 </div>
 <div class="rev-status">입력 내용은 현재 브라우저에 자동 저장됩니다 · 복사·저장·다운로드 버튼은 아래 AI Challenge 섹션에 있습니다.</div>
@@ -416,7 +418,7 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
 <!-- [MOVED 2026-08-19] 'AI Challenge 반영' 칸과 복사·저장·다운로드 버튼 줄·파일명 확인·상태줄을 Team Canvas에서 AI Challenge 섹션으로 이동(강사 피드백: 강사 가이드 전 선작성 방지). 복구: 아래 rev-form 블록 내용을 Canvas의 잠정 결론 칸 아래로 되돌리기 -->
 <div class="rev-form" style="margin-top:12px;">
 <div class="rev-actions"><button class="rev-btn primary" data-rev-action="copy-conclusion" type="button">📋 나의 Canvas+AI Challenge 프롬프트 한 번에 복사</button><button class="rev-btn" data-rev-action="reset" type="button">초기화</button><button class="rev-btn" data-rev-action="save" type="button">브라우저 저장</button><button class="rev-btn" data-rev-action="download" type="button">Markdown 다운로드(백업)</button></div>
-<div style="margin-top:6px;font-size:.92rem;color:var(--text-secondary,#667085);">[📋 나의 Canvas+AI Challenge 프롬프트 한 번에 복사]를 누르면 위 프롬프트와 내 Canvas 전체가 함께 복사됩니다 — ChatGPT 새 대화에 붙여넣고 전송만 하세요. 프롬프트 블록의 [프롬프트만 복사]는 지시문만 필요할 때 쓰는 보조 버튼입니다.</div>
+<div style="margin-top:6px;font-size:.92rem;color:var(--text-secondary,#667085);">[📋 나의 Canvas+AI Challenge 프롬프트 한 번에 복사]를 누르면 위 프롬프트와 내 Canvas 전체가 함께 복사됩니다(작성하지 않은 칸은 제외) — ChatGPT 새 대화에 붙여넣고 전송만 하세요. 프롬프트 블록의 [프롬프트만 복사]는 지시문만 필요할 때 쓰는 보조 버튼입니다.</div>
 <div style="margin-top:10px;font-weight:800;">💾 백업 다운로드 파일명 확인: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH02_R1_AI시대_우리팀현실진단_팀번호.md</mark></div>
 <div class="rev-status" data-rev-status="">입력 내용은 현재 브라우저에 자동 저장됩니다.</div>
 <div class="rev-form-grid" style="margin-top:12px;">
@@ -477,13 +479,14 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
     }
   }
   function fileSafe(v){return safe(v||&#x27;작성자&#x27;).replace(/[^0-9A-Za-z가-힣._-]+/g,&#x27;_&#x27;)||&#x27;작성자&#x27;;}
-  function buildMarkdown(skip){
+  function buildMarkdown(skip,omitEmpty){
     var titleEl=root.querySelector(&#x27;.clip-title&#x27;);
     var title=root.getAttribute(&#x27;data-md-title&#x27;)||(titleEl?titleEl.textContent:root.id);
     var lines=[&#x27;# &#x27;+safe(title),&#x27;&#x27;,&#x27;- 저장 시각: &#x27;+new Date().toLocaleString(&#x27;ko-KR&#x27;),&#x27;&#x27;];
     var last=&#x27;&#x27;;
     fields.forEach(function(f){
       if(skip&amp;&amp;skip.indexOf(f.getAttribute(&#x27;data-rev-field&#x27;))&gt;-1){return;}
+      if(omitEmpty&amp;&amp;!safe(f.value)){return;}
       var section=f.getAttribute(&#x27;data-md-section&#x27;)||&#x27;작성 내용&#x27;;
       var label=f.getAttribute(&#x27;data-md-label&#x27;)||f.getAttribute(&#x27;data-rev-field&#x27;);
       if(section!==last){lines.push(&#x27;## &#x27;+section);last=section;}
@@ -529,7 +532,7 @@ AI Challenge는 <strong>팀이 먼저 내린 결론을 AI에게 일부러 반박
     if(act===&#x27;copy-conclusion&#x27;){
       var promptEl=document.getElementById(&#x27;ch02-r1-ai-challenge&#x27;);
       var promptTxt=promptEl?(promptEl.innerText||promptEl.textContent||&#x27;&#x27;):&#x27;&#x27;;
-      var txt=(promptTxt?promptTxt+&#x27;\n\n---\n\n&#x27;:&#x27;&#x27;)+buildMarkdown([&#x27;factsToCheck&#x27;]);
+      var txt=(promptTxt?promptTxt+&#x27;\n\n---\n\n&#x27;:&#x27;&#x27;)+buildMarkdown([&#x27;factsToCheck&#x27;],true);
       if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){if(status){status.textContent=&#x27;나의 Canvas+AI Challenge 프롬프트를 함께 복사했습니다 — ChatGPT 새 대화에 붙여넣고 전송하세요.&#x27;;}},function(){if(status){status.textContent=&#x27;복사에 실패했습니다 — 내용을 드래그해 복사해 주세요.&#x27;;}});}
       else{if(status){status.textContent=&#x27;이 브라우저는 복사를 지원하지 않습니다 — 내용을 드래그해 복사해 주세요.&#x27;;}}
     }

@@ -442,8 +442,8 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 <div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-leaderResponsibility">② 리더가 최종 책임질 일</label><textarea data-md-label="리더가 최종 책임질 일" data-md-section="3. 책임경계" data-rev-field="leaderResponsibility" id="r2-fld-leaderResponsibility" placeholder="평가·민감 판단·고객/유관부서 약속 등 리더가 직접 지는 책임" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-controlDesign">③ 승인·중단 설계 (승인 없이 진행 범위 / 승인 지점 / 중단·Escalation / Fallback ― 문제 시 되돌릴 안전 경로)</label><textarea data-md-label="승인·중단 설계" data-md-section="4. 통제 장치" data-rev-field="controlDesign" id="r2-fld-controlDesign" placeholder="예: 어떤 결과는 승인 없이 진행, 어떤 지점에서 사람 승인, 어떤 상황이면 중단하고 어디로 되돌리는지" style="min-height:120px"></textarea></div>
 <div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-leaderCheck">④ 리더가 직접 확인할 기준 (품질·보안·공정성·고객 신뢰)</label><textarea data-md-label="리더가 직접 확인할 기준" data-md-section="4. 통제 장치" data-rev-field="leaderCheck" id="r2-fld-leaderCheck" placeholder="AI·팀원에게 맡겨도 리더가 반드시 눈으로 확인할 기준" style="min-height:120px"></textarea></div>
-<div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-agreement">⑤ 합의: 역할 전환에 따라 리더가 바꿀 행동 2가지</label><textarea data-md-label="리더가 바꿀 행동 2가지(역할 전환)" data-md-section="5. 합의" data-rev-field="agreement" id="r2-fld-agreement" placeholder="AI에게 맡기는 일이 늘어날 때, 정보 전달자에서 전환되는 팀장의 역할에 따라 리더가 바꿀 행동 2가지" style="min-height:120px"></textarea></div>
-<div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-principles">⑥ 합의: 다시 검토한 가정 · 팀 AI 협업 원칙 3가지</label><textarea data-md-label="재검토한 가정·팀 AI 협업 원칙 3가지" data-md-section="5. 합의" data-rev-field="principles" id="r2-fld-principles" placeholder="AI 위임·책임 배분에 대해 당연하게 믿었지만 다시 검토한 가정 / 팀이 합의한 AI 협업 원칙 3가지" style="min-height:120px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-agreement">⑤ 합의: 역할 전환에 따라 리더가 바꿀 행동 2가지</label><textarea data-md-label="리더가 바꿀 행동 2가지(역할 전환)" data-md-section="5. 합의" data-rev-field="agreement" id="r2-fld-agreement" placeholder="R1 ④에 적은 나의 말·행동을 돌아보고, 정보 전달자에서 전환되는 팀장의 역할에 따라 리더가 바꿀 행동 2가지" style="min-height:120px"></textarea></div>
+<div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-principles">⑥ 합의: 다시 검토한 가정 · 팀 AI 협업 원칙 3가지</label><textarea data-md-label="재검토한 가정·팀 AI 협업 원칙 3가지" data-md-section="5. 합의" data-rev-field="principles" id="r2-fld-principles" placeholder="토론 중 우리가 직접 발견한 '다시 검토할 가정'(AI 반론의 수용·기각은 AI Challenge 반영 칸에) / 팀이 합의한 AI 협업 원칙 3가지" style="min-height:120px"></textarea></div>
 </div>
 <div class="rev-status">입력 내용은 현재 브라우저에 자동 저장됩니다 · 복사·저장·다운로드 버튼은 아래 AI Challenge 섹션에 있습니다.</div>
 </div></div></div><div class="clip-section ai-challenge" id="r2AreaAiChallenge"><div class="clip-section-title">AI Challenge · 책임 공백 점검 (AI 반론 점검)</div><div class="clip-section-content">
@@ -479,7 +479,7 @@ AI Challenge는 <strong>팀이 그은 책임경계(잠정 결론)를 AI에게 �
 <!-- [MOVED 2026-08-19] 'AI Challenge 반영' 칸과 복사·저장·다운로드 버튼 줄·파일명 확인·상태줄을 Team Canvas에서 AI Challenge 섹션으로 이동(강사 피드백: 강사 가이드 전 선작성 방지). 복구: 아래 rev-form 블록 내용을 Canvas의 합의 칸 아래로 되돌리기 -->
 <div class="rev-form" style="margin-top:12px;">
 <div class="rev-actions"><button class="rev-btn primary" data-rev-action="copy-conclusion" type="button">📋 나의 Canvas+AI Challenge 프롬프트 한 번에 복사</button><button class="rev-btn" data-rev-action="reset" type="button">초기화</button><button class="rev-btn" data-rev-action="save" type="button">브라우저 저장</button><button class="rev-btn" data-rev-action="download" type="button">Markdown 다운로드(백업)</button></div>
-<div style="margin-top:6px;font-size:.92rem;color:var(--text-secondary,#667085);">[📋 나의 Canvas+AI Challenge 프롬프트 한 번에 복사]를 누르면 위 프롬프트와 내 Canvas 전체가 함께 복사됩니다 — ChatGPT 새 대화에 붙여넣고 전송만 하세요. 프롬프트 블록의 [프롬프트만 복사]는 지시문만 필요할 때 쓰는 보조 버튼입니다.</div>
+<div style="margin-top:6px;font-size:.92rem;color:var(--text-secondary,#667085);">[📋 나의 Canvas+AI Challenge 프롬프트 한 번에 복사]를 누르면 위 프롬프트와 내 Canvas 전체가 함께 복사됩니다(작성하지 않은 칸은 제외) — ChatGPT 새 대화에 붙여넣고 전송만 하세요. 프롬프트 블록의 [프롬프트만 복사]는 지시문만 필요할 때 쓰는 보조 버튼입니다.</div>
 <div style="margin-top:10px;font-weight:800;">💾 백업 다운로드 파일명 확인: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:1px 8px;border-radius:6px;white-space:nowrap;">CH02_R2_AI팀원리더_책임경계_팀번호.md</mark></div>
 <div class="rev-status" data-rev-status="">입력 내용은 현재 브라우저에 자동 저장됩니다.</div>
 <div class="rev-form-grid" style="margin-top:12px;">
@@ -538,13 +538,14 @@ AI Challenge는 <strong>팀이 그은 책임경계(잠정 결론)를 AI에게 �
     }
   }
   function fileSafe(v){return safe(v||&#x27;작성자&#x27;).replace(/[^0-9A-Za-z가-힣._-]+/g,&#x27;_&#x27;)||&#x27;작성자&#x27;;}
-  function buildMarkdown(skip){
+  function buildMarkdown(skip,omitEmpty){
     var titleEl=root.querySelector(&#x27;.clip-title&#x27;);
     var title=root.getAttribute(&#x27;data-md-title&#x27;)||(titleEl?titleEl.textContent:root.id);
     var lines=[&#x27;# &#x27;+safe(title),&#x27;&#x27;,&#x27;- 저장 시각: &#x27;+new Date().toLocaleString(&#x27;ko-KR&#x27;),&#x27;&#x27;];
     var last=&#x27;&#x27;;
     fields.forEach(function(f){
       if(skip&amp;&amp;skip.indexOf(f.getAttribute(&#x27;data-rev-field&#x27;))&gt;-1){return;}
+      if(omitEmpty&amp;&amp;!safe(f.value)){return;}
       var section=f.getAttribute(&#x27;data-md-section&#x27;)||&#x27;작성 내용&#x27;;
       var label=f.getAttribute(&#x27;data-md-label&#x27;)||f.getAttribute(&#x27;data-rev-field&#x27;);
       if(section!==last){lines.push(&#x27;## &#x27;+section);last=section;}
@@ -590,7 +591,7 @@ AI Challenge는 <strong>팀이 그은 책임경계(잠정 결론)를 AI에게 �
     if(act===&#x27;copy-conclusion&#x27;){
       var promptEl=document.getElementById(&#x27;ch02-r2-challenge&#x27;);
       var promptTxt=promptEl?(promptEl.innerText||promptEl.textContent||&#x27;&#x27;):&#x27;&#x27;;
-      var txt=(promptTxt?promptTxt+&#x27;\n\n---\n\n&#x27;:&#x27;&#x27;)+buildMarkdown([&#x27;aiReview&#x27;]);
+      var txt=(promptTxt?promptTxt+&#x27;\n\n---\n\n&#x27;:&#x27;&#x27;)+buildMarkdown([&#x27;aiReview&#x27;],true);
       if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){if(status){status.textContent=&#x27;나의 Canvas+AI Challenge 프롬프트를 함께 복사했습니다 — ChatGPT 새 대화에 붙여넣고 전송하세요.&#x27;;}},function(){if(status){status.textContent=&#x27;복사에 실패했습니다 — 내용을 드래그해 복사해 주세요.&#x27;;}});}
       else{if(status){status.textContent=&#x27;이 브라우저는 복사를 지원하지 않습니다 — 내용을 드래그해 복사해 주세요.&#x27;;}}
     }
