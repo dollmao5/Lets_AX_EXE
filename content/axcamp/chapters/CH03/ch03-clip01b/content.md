@@ -189,17 +189,6 @@ Round 2에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개
 
 입력 내용은 현재 브라우저에 자동 저장됩니다 · 복사·저장·다운로드 버튼은 아래 AI Challenge 섹션에 있습니다.
 
-**📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 NotebookLM '필수 3' 소스 ⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기**
-Round 3까지 끝났다면, 다음 CH04 NotebookLM 실습에서 사용할 개인화 통합본을 미리 받아 두세요. 강사님의 요약 생성 이후에 받으면 팀 합의까지 포함됩니다.
-
-팀
-이름
-통합본 다운로드
-
-파일명: CH04_R1-3_팀토론정리본_성명.md — 개인 작성(우선) + 팀 합의가 합쳐진 개인화 파일입니다.
-
-![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
-
 ## AI Challenge · 시범 운영안 점검
 
 ### 왜 AI Challenge(AI 반론 점검)를 하나요?
@@ -264,6 +253,17 @@ Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
 ❸ 제출·마무리 — 전원 제출과 다음 단계
+
+**📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 NotebookLM '필수 3' 소스 ⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기**
+위 [내 논의 내용 제출]을 전원 마치고 강사님이 [요약 생성]을 실행한 뒤에 받아 주세요 — 그래야 팀 합의까지 포함된 완전한 통합본이 됩니다. 다음 CH04 NotebookLM 실습에서 '필수 3' 소스로 사용합니다.
+
+팀
+이름
+통합본 다운로드
+
+파일명: CH04_R1-3_팀토론정리본_성명.md — 개인 작성(우선) + 팀 합의가 합쳐진 개인화 파일입니다.
+
+![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
 ## 이번 클립의 완료 기준
 

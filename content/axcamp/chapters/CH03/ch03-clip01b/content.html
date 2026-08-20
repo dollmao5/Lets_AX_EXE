@@ -453,53 +453,7 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 -->
 </div>
 <div class="rev-status">입력 내용은 현재 브라우저에 자동 저장됩니다 · 복사·저장·다운로드 버튼은 아래 AI Challenge 섹션에 있습니다.</div>
-</div><div class="canvas2-bundle-box" data-canvas2-bundle="1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #7b3ff0;border-radius:16px;background:#f8f5ff;">
-<strong style="display:block;margin-bottom:6px;">📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 NotebookLM '필수 3' 소스 <span style="display:inline-block;margin-left:6px;padding:2px 10px;border-radius:999px;background:#fef3c7;color:#92400e;font-size:.85rem;font-weight:800;white-space:nowrap;">⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기</span></strong>
-<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">Round 3까지 끝났다면, 다음 CH04 NotebookLM 실습에서 사용할 개인화 통합본을 미리 받아 두세요. 강사님의 요약 생성 이후에 받으면 팀 합의까지 포함됩니다.</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
-<label style="font-weight:700;">팀</label><select data-c2b-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
-<label style="font-weight:700;">이름</label><input data-c2b-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
-<button type="button" data-c2b-download style="min-height:40px;padding:8px 18px;border:1px solid #7b3ff0;border-radius:999px;background:#7b3ff0;color:#fff;font:inherit;font-weight:800;cursor:pointer;">통합본 다운로드</button>
-</div>
-<p data-c2b-status style="margin:0;font-size:.92rem;color:var(--text-secondary,#667085);">파일명: CH04_R1-3_팀토론정리본_성명.md — 개인 작성(우선) + 팀 합의가 합쳐진 개인화 파일입니다.</p>
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
-var box=px.closest('[data-canvas2-bundle]');
-if(!box||box.dataset.c2bReady==='1')return;
-box.dataset.c2bReady='1';
-var sel=box.querySelector('[data-c2b-team]');
-var nameEl=box.querySelector('[data-c2b-name]');
-var btn=box.querySelector('[data-c2b-download]');
-var statusEl=box.querySelector('[data-c2b-status]');
-function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
-function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=h;}
-fillTeams(6);
-try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
-fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
-btn.addEventListener('click',function(){
-var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
-if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
-btn.disabled=true;setStatus('Round 1~3 통합본을 만드는 중...',false);
-fetch('/api/wrapup/canvas2-bundle?team='+team+'&amp;name='+encodeURIComponent(name))
-.then(function(r){return r.json();})
-.then(function(d){
-btn.disabled=false;
-if(!d.ok){setStatus(d.error||'통합본을 만들지 못했습니다.',true);return;}
-var missingPre=['round1','round2','round3'].filter(function(r){return !d.included[r];});
-if(missingPre.length&amp;&amp;!window.confirm('아직 제출/요약 전인 라운드가 있습니다 ('+missingPre.map(function(r){return r.replace('round','Round ');}).join(', ')+').\n지금 받으면 팀 합의가 빠진 통합본이 됩니다. 계속할까요?')){setStatus('다운로드를 취소했습니다. [내 논의 내용 제출]과 강사님 [요약 생성] 확인 후 다시 받아 주세요.',true);return;}
-var blob=new Blob([d.markdown],{type:'text/markdown;charset=utf-8'});
-var a=document.createElement('a');
-a.href=URL.createObjectURL(blob);
-a.download=d.filename;
-document.body.appendChild(a);a.click();a.remove();
-setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
-var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
-var note=missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'';
-try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 업로드하세요.',false);
-})
-.catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 각 Round에서 받아 둔 토론 정리본 .md 파일을 직접 업로드해 주세요.',true);});
-});
-})(this);"></div>
+</div><!-- [MOVED 2026-08-20] 「Round 1~3 팀 토론 정리본 통합본 다운로드」 박스를 Team Canvas 하단에서 [내 논의 내용 제출] 박스 뒤로 이동 — 통합본은 전원 제출+강사 요약 생성 후에야 완성되는 CH04 준비물인데 AI Challenge 앞에 있어 토론이 끝난 것으로 오해된다는 교육생 피드백 반영. 복구: 아래 done-criteria 섹션 앞의 canvas2-bundle-box 블록을 이 자리로 되돌리면 됨 -->
 </div></div><div class="clip-section ai-challenge" id="r3AreaAiChallenge"><div class="clip-section-title">AI Challenge · 시범 운영안 점검</div><div class="clip-section-content">
 <div class="info-block" style="margin-bottom:14px;">
 <div class="info-block-title">왜 AI Challenge(AI 반론 점검)를 하나요?</div>
@@ -641,6 +595,53 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
 });
 })(this);">
 <div class="phase-banner">❸ 제출·마무리 <span class="phase-sub">— 전원 제출과 다음 단계</span></div>
+<div class="canvas2-bundle-box" data-canvas2-bundle="1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #7b3ff0;border-radius:16px;background:#f8f5ff;">
+<strong style="display:block;margin-bottom:6px;">📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 NotebookLM '필수 3' 소스 <span style="display:inline-block;margin-left:6px;padding:2px 10px;border-radius:999px;background:#fef3c7;color:#92400e;font-size:.85rem;font-weight:800;white-space:nowrap;">⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기</span></strong>
+<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">위 [내 논의 내용 제출]을 전원 마치고 강사님이 [요약 생성]을 실행한 뒤에 받아 주세요 — 그래야 팀 합의까지 포함된 완전한 통합본이 됩니다. 다음 CH04 NotebookLM 실습에서 '필수 3' 소스로 사용합니다.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
+<label style="font-weight:700;">팀</label><select data-c2b-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
+<label style="font-weight:700;">이름</label><input data-c2b-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
+<button type="button" data-c2b-download style="min-height:40px;padding:8px 18px;border:1px solid #7b3ff0;border-radius:999px;background:#7b3ff0;color:#fff;font:inherit;font-weight:800;cursor:pointer;">통합본 다운로드</button>
+</div>
+<p data-c2b-status style="margin:0;font-size:.92rem;color:var(--text-secondary,#667085);">파일명: CH04_R1-3_팀토론정리본_성명.md — 개인 작성(우선) + 팀 합의가 합쳐진 개인화 파일입니다.</p>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
+var box=px.closest('[data-canvas2-bundle]');
+if(!box||box.dataset.c2bReady==='1')return;
+box.dataset.c2bReady='1';
+var sel=box.querySelector('[data-c2b-team]');
+var nameEl=box.querySelector('[data-c2b-name]');
+var btn=box.querySelector('[data-c2b-download]');
+var statusEl=box.querySelector('[data-c2b-status]');
+function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
+function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&quot;'+t+'&quot;&gt;'+t+'팀&lt;/option&gt;';}sel.innerHTML=h;}
+fillTeams(6);
+try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
+fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
+btn.addEventListener('click',function(){
+var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
+if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
+btn.disabled=true;setStatus('Round 1~3 통합본을 만드는 중...',false);
+fetch('/api/wrapup/canvas2-bundle?team='+team+'&amp;name='+encodeURIComponent(name))
+.then(function(r){return r.json();})
+.then(function(d){
+btn.disabled=false;
+if(!d.ok){setStatus(d.error||'통합본을 만들지 못했습니다.',true);return;}
+var missingPre=['round1','round2','round3'].filter(function(r){return !d.included[r];});
+if(missingPre.length&amp;&amp;!window.confirm('아직 제출/요약 전인 라운드가 있습니다 ('+missingPre.map(function(r){return r.replace('round','Round ');}).join(', ')+').\n지금 받으면 팀 합의가 빠진 통합본이 됩니다. 계속할까요?')){setStatus('다운로드를 취소했습니다. [내 논의 내용 제출]과 강사님 [요약 생성] 확인 후 다시 받아 주세요.',true);return;}
+var blob=new Blob([d.markdown],{type:'text/markdown;charset=utf-8'});
+var a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download=d.filename;
+document.body.appendChild(a);a.click();a.remove();
+setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
+var note=missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'';
+try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
+setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 업로드하세요.',false);
+})
+.catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 각 Round에서 받아 둔 토론 정리본 .md 파일을 직접 업로드해 주세요.',true);});
+});
+})(this);"></div>
 <div class="clip-section done-criteria" id="ch03Clip01bCompletionSection"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
 <div class="table-wrap">
 <table class="comparison-table completion-table">
