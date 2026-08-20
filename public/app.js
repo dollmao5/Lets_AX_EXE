@@ -5357,6 +5357,19 @@ window.copyResourceLink = async function copyResourceLink(button, url) {
   await copyTextWithUiFeedback(button, url || "");
 };
 
+window.copyResourceText = async function copyResourceText(button, url) {
+  try {
+    const response = await fetch(resolveRuntimeUrl(url));
+    if (!response.ok) {
+      throw new Error(`fetch failed (${response.status})`);
+    }
+    await copyTextWithUiFeedback(button, await response.text());
+  } catch {
+    showCopyButtonState(button, false, "복사 실패");
+    showCopyToast("본문을 불러오지 못했습니다", true);
+  }
+};
+
 window.copyInlinePrompt = async function copyInlinePrompt(button) {
   const block = button?.closest(".prompt-inline-block, .prompt-block");
   if (!block) return;
