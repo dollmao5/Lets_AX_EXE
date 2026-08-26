@@ -374,12 +374,13 @@
 
     <h3>그 외 클립 — 학습 Flow · 필수 산출물 가이드</h3>
 
-    <details><summary>CH00~CH01 (08:30~09:30) — 과정 안내·AI 핵심 강의·진단</summary><div class="hook-body">
+    <details><summary>CH00~CH01 (08:30~09:30) — 과정 안내·사전 진단·AI 핵심 강의</summary><div class="hook-body">
       <div style="margin:8px 0;"><strong>CH00 오늘의 여정 (15분)</strong> — 과정 목표 · 3Round 토론 Track · 팀 역할 · 산출물 저장 규칙 안내. <em>산출물 없음.</em></div>
-      <div style="margin:8px 0;"><strong>1-1 AI 트렌드 (12분)</strong> — AI 진화 4단계 → 리더 시사점 5가지. 🎬 생각 열기(LG 엑사원·Stanford)로 환기 가능. <em>산출물 없음.</em></div>
-      <div style="margin:8px 0;"><strong>1-2 Agentic AI (12분)</strong> — Assistant→Agentic 로드맵 3단계. 🎬 생각 열기의 <strong>KBS 구간 ①(약 3분) 시청 권장</strong>, 구간 ②는 시간 여유 시. <em>산출물 없음.</em></div>
-      <div style="margin:8px 0;"><strong>1-3 개념 다지기 (5분)</strong> — 핵심 용어를 팀 비유·인포그래픽으로 정리. 시간 여유 시 📚 선택 심화 영상(8분) 존재만 안내. <em>산출물 없음.</em></div>
-      <div style="margin:8px 0;"><strong>1-4 리더십·리터러시 진단 (15분)</strong> — 변화 체감 → 오해·진실 퀴즈(QuizN · 정답 공개 코드 <strong>ai</strong>) → 리터러시 10문항 자가진단 → <strong>개인 학습 초점 메모 = CH02-3 첫 입력</strong>. <em>파일 산출물 없음(웹 진단).</em></div>
+      <!-- [260826] CH01 순서 변경: 진단(구 1-4)이 첫 세션(1-1)으로 이동 — 사전 진단 취지. 이하 강의 클립은 한 번호씩 밀림 -->
+      <div style="margin:8px 0;"><strong>1-1 리더십·리터러시 진단 (15분)</strong> — 변화 체감 → 오해·진실 퀴즈(QuizN · 정답 공개 코드 <strong>ai</strong>) → 리터러시 10문항 자가진단 → <strong>개인 학습 초점 메모 = CH02-3 첫 입력 · Shock 메모 = Round 1 첫 발언 소재</strong>. <em>파일 산출물 없음(웹 진단).</em></div>
+      <div style="margin:8px 0;"><strong>1-2 AI 트렌드 (12분)</strong> — AI 진화 4단계 → 리더 시사점 5가지. 🎬 생각 열기(LG 엑사원·Stanford)로 환기 가능. <em>산출물 없음.</em></div>
+      <div style="margin:8px 0;"><strong>1-3 Agentic AI (12분)</strong> — Assistant→Agentic 로드맵 3단계. 🎬 생각 열기의 <strong>KBS 구간 ①(약 3분) 시청 권장</strong>, 구간 ②는 시간 여유 시. <em>산출물 없음.</em></div>
+      <div style="margin:8px 0;"><strong>1-4 개념 다지기 (5분)</strong> — 핵심 용어를 팀 비유·인포그래픽으로 정리. 시간 여유 시 📚 선택 심화 영상(8분) 존재만 안내. <em>산출물 없음.</em></div>
     </div></details>
 
     <details><summary>CH02 (09:40~12:30) — ChatGPT 실습 · 리더 역할·역량</summary><div class="hook-body">
@@ -490,17 +491,29 @@
       "<span class=\"rg-item\"><span class=\"rg-label\">➡️ 다음</span>" + esc(g.next) + "</span>";
   }
 
+  /* "2026-08-21차수" → "1차수 (2026-08-21)" — 순번은 날짜형 차수만 정렬 순서로 매김.
+     날짜형이 아닌 차수명(예: 테스트차수)은 원문 그대로 표시한다. */
+  function cohortLabel(c, all) {
+    var m = /^(\d{4}-\d{2}-\d{2})차수$/.exec(c);
+    if (!m) return c;
+    var dated = all.filter(function (x) { return /^\d{4}-\d{2}-\d{2}차수$/.test(x); });
+    return (dated.indexOf(c) + 1) + "차수 (" + m[1] + ")";
+  }
+
   async function loadCohorts() {
     var d = await api("/api/wrapup/cohorts");
     if (!d.ok) return;
     state.current = d.current; state.cohorts = d.cohorts.length ? d.cohorts : [d.current];
     if (!state.cohort) state.cohort = d.current;
+    // 현재 차수는 제출 폴더가 아직 없어도 항상 목록에 남겨야 한다 — 지난 차수 열람 후 현재 차수로 복귀 불가 방지
+    if (state.cohorts.indexOf(d.current) === -1) state.cohorts.push(d.current);
     if (state.cohorts.indexOf(state.cohort) === -1) state.cohorts.push(state.cohort);
+    state.cohorts.sort();
     $("cohortSelect").innerHTML = state.cohorts.map(function (c) {
-      var label = c === d.current ? c + " (현재)" : c;
+      var label = cohortLabel(c, state.cohorts) + (c === d.current ? " · 현재" : "");
       return "<option value=\"" + esc(c) + "\"" + (c === state.cohort ? " selected" : "") + ">" + esc(label) + "</option>";
     }).join("");
-    $("cohortPill").textContent = "현재 차수: " + d.current;
+    $("cohortPill").textContent = "현재 차수: " + cohortLabel(d.current, state.cohorts);
   }
 
   async function loadStatus() {

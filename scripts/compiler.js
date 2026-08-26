@@ -179,7 +179,11 @@ async function buildCatalog(sourceRoot) {
       title: "리더를 위한 AI 핵심",
       time: "08:45",
       sourceChapterIds: ["ch01"],
-      clipKeys: ["ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip04"]
+      // [260826] 진단(폴더 ch01-clip04)을 CH01 맨 앞으로 이동 — 사전 진단 취지에 맞춘 피드백 반영.
+      // visible 번호는 이 순서대로 자동 재부여된다: 진단=#ch01-clip01 · AI 트렌드=#ch01-clip02
+      // · Assistant=#ch01-clip03 · 개념 다지기=#ch01-clip04 (폴더/canonical 키는 그대로).
+      // 복구: 배열을 ["ch01-clip01", "ch01-clip02", "ch01-clip03", "ch01-clip04"]로 되돌린다.
+      clipKeys: ["ch01-clip04", "ch01-clip01", "ch01-clip02", "ch01-clip03"]
     },
     {
       visibleChapterId: "ch02",

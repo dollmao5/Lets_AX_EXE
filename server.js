@@ -1002,9 +1002,10 @@ function clipSuffixFromKey(clipKey) {
 function toVisibleClipKey(catalog, clipKey) {
   const normalized = normalizeWs(clipKey).toLowerCase();
   if (!normalized) return "";
-  if (catalog?.visibleClipsByKey?.has(normalized)) {
-    return normalized;
-  }
+  // [260826] canonical→visible 매핑을 "이미 visible 키로 존재" 검사보다 우선한다.
+  // 챕터 내 순서 회전(CH01 진단 선행 배치)처럼 canonical·visible 키공간이 겹치면,
+  // 기존 우선순위는 파일(canonical 기준) 참조의 회전 매핑을 무시해 잘못된 클립으로 연결됐다.
+  // 회전이 없는 클립은 매핑이 항등이라 동작이 그대로다. (역방향은 resolveCatalogClip이 visible 우선)
   return catalog?.visibleClipKeyByCanonicalKey?.get(normalized) || normalized;
 }
 
@@ -1350,6 +1351,14 @@ function rewriteVisibleReferences(input, catalog, currentClip = null) {
     return mapped ? `#${mapped}` : `#${rawKey}`;
   });
 
+  // [260826] 본문 자산 URL(/course-files/<course>/<clipKey>/…)의 클립 키도 해시 링크와 동일하게
+  // canonical→visible로 재작성한다. 챕터 내 순서 회전(CH01)으로 키공간이 겹치면, canonical 그대로의
+  // URL이 visible 우선 해석(handleCourseFile)에서 다른 클립 폴더로 연결돼 404가 나기 때문.
+  output = output.replace(/(\/course-files\/[^/"'\s]+\/)(ch\d{2}-clip\d{2}[a-z]*)(\/)/gi, (_match, prefix, rawKey, slash) => {
+    const mapped = toVisibleClipKey(catalog, rawKey);
+    return `${prefix}${mapped || rawKey}${slash}`;
+  });
+
   if (currentClip && currentClip.canonicalChapterId && currentClip.chapterId) {
     const canonicalId = normalizeWs(currentClip.canonicalChapterId).toLowerCase();
     const visibleId = normalizeWs(currentClip.chapterId).toLowerCase();
@@ -1407,6 +1416,13 @@ function rewriteCanonicalReferences(input, catalog, currentClip = null) {
   output = output.replace(/#(ch\d{2}-clip\d{2}[a-z]*)/gi, (_match, rawKey) => {
     const mapped = toCanonicalClipKey(catalog, rawKey);
     return mapped ? `#${mapped}` : `#${rawKey}`;
+  });
+
+  // [260826] 자산 URL의 클립 키도 visible→canonical 역변환 (rewriteVisibleReferences의 역방향 —
+  // 편집기 저장 시 화면 기준 URL을 파일 저장용 canonical 기준으로 되돌린다)
+  output = output.replace(/(\/course-files\/[^/"'\s]+\/)(ch\d{2}-clip\d{2}[a-z]*)(\/)/gi, (_match, prefix, rawKey, slash) => {
+    const mapped = toCanonicalClipKey(catalog, rawKey);
+    return `${prefix}${mapped || rawKey}${slash}`;
   });
 
   const chapterMappings = Array.from(catalog.canonicalChapterIdByVisibleId || [])
@@ -3125,7 +3141,8 @@ function wrapupSummaryFile(cohort, round) {
 async function listWrapupCohorts() {
   if (!(await pathExists(WRAPUP_DIR))) return [];
   const entries = await fs.readdir(WRAPUP_DIR, { withFileTypes: true });
-  return entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+  // .git 등 숨김 폴더는 차수가 아니다 (원격 동기화 후 .git이 차수 목록에 노출되는 것 방지)
+  return entries.filter((e) => e.isDirectory() && !e.name.startsWith(".")).map((e) => e.name).sort();
 }
 
 async function handleWrapupSummarize(req, res, urlObj) {

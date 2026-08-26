@@ -35,7 +35,7 @@ AI 변화 이해와 출발점 진단
 
 나는 어디에서 출발하고 있는가?
 
-AI 트렌드·Agentic AI·핵심 개념을 이해하고 AI-Friendly 리더십·AI 리터러시 수준을 진단했습니다.
+AI-Friendly 리더십·AI 리터러시 수준을 먼저 진단하고 AI 트렌드·Agentic AI·핵심 개념을 이해했습니다.
 
 CH02 · Define & Reframe
 리더 역할·책임·역량과 업무경계
