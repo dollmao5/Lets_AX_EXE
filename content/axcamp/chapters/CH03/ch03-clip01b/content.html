@@ -617,15 +617,49 @@ function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&qu
 fillTeams(6);
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
 fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
+/* [260826] 1차수 다운로드 실패 재발 방지 — ① 5xx·네트워크 오류 자동 재시도(2회, 2초 간격) ② 통합 API가 끝내 실패하면 라운드별 API로 받아 클라이언트에서 병합(보조 경로) ③ 원인(HTTP 코드/네트워크)이 보이는 오류 메시지 */
+var RB_LABELS={round1:'Round 1 · AI 시대, 우리 팀의 현실과 리더의 고민 (As-Is 진단)',round2:'Round 2 · AI에게 어디까지 맡기고 리더는 어디서 책임질 것인가 (책임경계 재설계)',round3:'Round 3 · AI로 팀의 성과와 성장을 어떻게 함께 높일 것인가 (30일 시범 운영 설계)'};
+function reqJson(url,tries){
+return fetch(url).then(function(r){return r.json().then(function(d){return {ok:r.ok,status:r.status,data:d};},function(){return {ok:false,status:r.status,data:null};});},function(){return {ok:false,status:0,data:null};})
+.then(function(res){
+if(!res.ok&amp;&amp;(res.status===0||res.status&gt;=500||!res.data)&amp;&amp;tries&gt;0){return new Promise(function(rs){setTimeout(rs,2000);}).then(function(){return reqJson(url,tries-1);});}
+return res;});}
+function bundleFallback(team,name){
+var rounds=['round1','round2','round3'];
+return Promise.all(rounds.map(function(r){return reqJson('/api/wrapup/canvas2?round='+r+'&amp;team='+team+'&amp;name='+encodeURIComponent(name),1);})).then(function(rs){
+var included={},parts=[],hint='';
+for(var i=0;i&lt;rounds.length;i++){var d=rs[i].data;var good=rs[i].ok&amp;&amp;d&amp;&amp;d.ok&amp;&amp;d.canvas2&amp;&amp;d.canvas2.markdown;included[rounds[i]]=!!good;if(good){parts.push(d.canvas2.markdown.trim());}else if(d&amp;&amp;d.error&amp;&amp;!hint){hint=d.error;}}
+if(!parts.length)return {hint:hint};
+var toc=rounds.map(function(r){return included[r]?'- '+RB_LABELS[r]:'- '+RB_LABELS[r]+' — (미제출)';}).join('\n');
+var markdown='# Round 1~3 팀 토론 정리본 통합본 — '+name+' ('+team+'팀)\n\n&gt; CH04 NotebookLM 실습의 \'필수 3. Round 1~3 팀 토론 정리본 통합본\' 소스로 업로드하는 개인화 파일입니다.\n&gt; 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.\n\n## 목차\n\n'+toc+'\n\n---\n\n'+parts.join('\n\n---\n\n')+'\n';
+return {ok:true,included:included,filename:'CH04_R1-3_팀토론정리본_'+name.replace(/[^\w가-힣.-]+/g,'_')+'.md',markdown:markdown,fallback:true};
+});}
+function loadBundle(team,name){
+return reqJson('/api/wrapup/canvas2-bundle?team='+team+'&amp;name='+encodeURIComponent(name),2).then(function(res){
+if(res.data&amp;&amp;res.data.ok)return res.data;
+if(res.data&amp;&amp;res.data.error&amp;&amp;res.status&lt;500){
+var e1=new Error('req');e1.friendly=res.data.error;
+/* [260826-2] 1차수 실데이터 점검 반영: 별칭·오타로 팀·이름이 제출 기록과 다르면 "미제출"로 오해됨 — 404면 해당 팀 제출자 명단을 함께 보여 스스로 교정하게 한다 */
+if(res.status===404){
+return reqJson('/api/wrapup/status?round=round1',0).then(function(st){
+var t=((st.data&amp;&amp;st.data.ok&amp;&amp;st.data.teams)||[]).filter(function(x){return x.team===team;})[0];
+if(t){e1.friendly=res.data.error+(t.names&amp;&amp;t.names.length?' · 참고: '+team+'팀 제출자 명단 — '+t.names.join(', ')+' (제출 때 선택한 팀·이름과 똑같이 입력해야 합니다)':' · 참고: '+team+'팀은 아직 제출자가 없습니다 — 팀 번호를 확인해 주세요.');}
+throw e1;});
+}
+throw e1;}
+var why=res.status?('서버 응답 오류 HTTP '+res.status):'네트워크 연결 실패';
+setStatus('통합 다운로드 실패('+why+') — 라운드별 보조 경로로 재시도 중...',false);
+return bundleFallback(team,name).then(function(fb){
+if(fb&amp;&amp;fb.ok)return fb;
+var e2=new Error('conn');e2.friendly=(fb&amp;&amp;fb.hint)?fb.hint:('서버에 연결할 수 없습니다 ('+why+'). 잠시 후 [통합본 다운로드]를 다시 눌러 주세요. 계속 실패하면 각 Round에서 받아 둔 토론 정리본 .md 파일을 직접 업로드해 주세요.');throw e2;});
+});}
 btn.addEventListener('click',function(){
 var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
 if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
 btn.disabled=true;setStatus('Round 1~3 통합본을 만드는 중...',false);
-fetch('/api/wrapup/canvas2-bundle?team='+team+'&amp;name='+encodeURIComponent(name))
-.then(function(r){return r.json();})
+loadBundle(team,name)
 .then(function(d){
 btn.disabled=false;
-if(!d.ok){setStatus(d.error||'통합본을 만들지 못했습니다.',true);return;}
 var missingPre=['round1','round2','round3'].filter(function(r){return !d.included[r];});
 if(missingPre.length&amp;&amp;!window.confirm('아직 제출/요약 전인 라운드가 있습니다 ('+missingPre.map(function(r){return r.replace('round','Round ');}).join(', ')+').\n지금 받으면 팀 합의가 빠진 통합본이 됩니다. 계속할까요?')){setStatus('다운로드를 취소했습니다. [내 논의 내용 제출]과 강사님 [요약 생성] 확인 후 다시 받아 주세요.',true);return;}
 var blob=new Blob([d.markdown],{type:'text/markdown;charset=utf-8'});
@@ -635,11 +669,11 @@ a.download=d.filename;
 document.body.appendChild(a);a.click();a.remove();
 setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
-var note=missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'';
+var note=(missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(d.fallback?' · 보조 경로로 생성됨':'');
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
 setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 업로드하세요.',false);
 })
-.catch(function(){btn.disabled=false;setStatus('서버에 연결할 수 없습니다. 각 Round에서 받아 둔 토론 정리본 .md 파일을 직접 업로드해 주세요.',true);});
+.catch(function(e){btn.disabled=false;setStatus((e&amp;&amp;e.friendly)||'서버에 연결할 수 없습니다. 각 Round에서 받아 둔 토론 정리본 .md 파일을 직접 업로드해 주세요.',true);});
 });
 })(this);"></div>
 <div class="clip-section done-criteria" id="ch03Clip01bCompletionSection"><div class="clip-section-title">이번 클립의 완료 기준</div><div class="clip-section-content">
