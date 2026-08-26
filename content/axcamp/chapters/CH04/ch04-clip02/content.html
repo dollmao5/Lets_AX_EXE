@@ -837,7 +837,7 @@ return reqJson('/api/wrapup/canvas2-bundle?team='+team+'&amp;name='+encodeURICom
 if(res.data&amp;&amp;res.data.ok)return res.data;
 if(res.data&amp;&amp;res.data.error&amp;&amp;res.status&lt;500){
 var e1=new Error('req');e1.friendly=res.data.error;
-/* [260826-2] 1차수 실데이터 점검 반영: 별칭·오타로 팀·이름이 제출 기록과 다르면 "미제출"로 오해됨 — 404면 해당 팀 제출자 명단을 함께 보여 스스로 교정하게 한다 */
+/* [260826-2] 1차수 실데이터 점검 반영: 별칭·오타로 팀·이름이 제출 기록과 다르면 미제출로 오해됨 — 404면 해당 팀 제출자 명단을 함께 보여 스스로 교정하게 한다. 주의: onload 속성 안이라 원시 큰따옴표 금지 */
 if(res.status===404){
 return reqJson('/api/wrapup/status?round=round1',0).then(function(st){
 var t=((st.data&amp;&amp;st.data.ok&amp;&amp;st.data.teams)||[]).filter(function(x){return x.team===team;})[0];
