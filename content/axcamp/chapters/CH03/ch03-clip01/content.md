@@ -361,7 +361,7 @@ Step 1에서 도출한 구조적 병목 가설을 GRPI와 Project Aristotle 관�
 (Project Aristotle 5요인 중 실습은 핵심 3요인 — Psychological Safety·Dependability·Structure & Clarity — 을 사용합니다)
 
 대화형 같은 ChatGPT 대화 실습 2-1. 지표 설계 인터뷰 요청
-복사
+프롬프트 18줄복사
 
 방금 Step 1에서 작성한 구조적 병목 가설 진단 리포트를 바탕으로, 우리 팀의 리더십 향상 여부를 확인할 수 있는 팀 성장역량 지표를 설계하려고 합니다.
 
@@ -681,7 +681,7 @@ CH04 NotebookLM 선택 입력 소스 |
 
 선택 활동 펼치기: 현재 진단의 반대 가설과 추가 지표 점검선택 · 15분필수 산출물을 저장한 뒤, 시간이 남거나 진단의 확증편향이 우려될 때만 수행합니다.
 
-이어서형 같은 ChatGPT 대화 반대 가설·누락 지표 Challenge복사
+이어서형 같은 ChatGPT 대화 반대 가설·누락 지표 Challenge프롬프트 9줄복사
 
 현재 대화의 CH03 진단 결과를 최종안으로 확정하지 말고, Devil’s Advocate 관점에서 점검해 주세요.
 
