@@ -208,7 +208,7 @@
       <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1팀 4명 · 2팀 3명 … (총 N명)"</strong>이 올라갑니다. 제출 현황은 30초마다 자동 갱신됩니다(즉시 확인은 <span class="btn-name">새로고침</span>). 늦는 팀만 독려하세요.</li>
       <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 공개 사이트 1~3분 / 강사 PC 30초~1분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
       <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동 · 종료는 ESC 또는 우상단 [↩️ 보드로 돌아가기]). 교차 분석 슬라이드로 강사 Wrap-up.</li>
-      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 요약 생성 후 클릭 · AI 호출 없이 즉시 처리 · 재실행 안전.<details style="margin-top:4px;"><summary style="cursor:pointer;font-weight:800;">토론 정리본이 어디에 쓰이나요</summary><div style="margin-top:4px;">제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1/2 내 토론 정리본 불러오기" 류 패널에서 참고하고, CH04에서 통합본(.md)을 받아 NotebookLM 소스로 씁니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</div></details></li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 요약 생성 후 클릭 · AI 호출 없이 즉시 처리 · 재실행 안전.<details style="margin-top:4px;"><summary style="cursor:pointer;font-weight:800;">토론 정리본이 어디에 쓰이나요</summary><div style="margin-top:4px;">제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1/2 내 토론 정리본 불러오기" 류 패널에서 참고하고, CH04에서 통합본(.md)을 받아 Gemini Notebook 소스로 씁니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</div></details></li>
       <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
     </ol>
 
@@ -218,7 +218,7 @@
       <tr><td>CH01</td><td>AI 핵심 개념 (강의·퀴즈) — 산출물 없음</td></tr>
       <tr><td>CH02</td><td>ChatGPT 실습: <strong>Round 1</strong>(이 보드) → 리더 역할 프로필 → <strong>Round 2</strong>(이 보드) → 역량 브리프 → 통합 Gate</td></tr>
       <tr><td>CH03</td><td>ChatGPT 실습: 팀 진단 2종 → <strong>Round 3</strong>(이 보드) → 통합 Gate</td></tr>
-      <tr><td>CH04</td><td>NotebookLM 실습: CH02·CH03 Gate 통합본 + <strong>R1~3 토론 정리본 통합본</strong>(이 보드에서 생성)을 소스로 30일 실행계획 작성</td></tr>
+      <tr><td>CH04</td><td>Gemini Notebook 실습: CH02·CH03 Gate 통합본 + <strong>R1~3 토론 정리본 통합본</strong>(이 보드에서 생성)을 소스로 30일 실행계획 작성</td></tr>
       <tr><td>CH05</td><td>산출물 회수 + Start·Stop·Continue Wrap-up</td></tr>
       </tbody>
     </table>
@@ -251,7 +251,7 @@
 <details style="border:1px solid #e2e8f0;border-radius:12px;margin:8px 0 12px;background:#fafaff;"><summary style="cursor:pointer;padding:10px 14px;font-weight:800;">📚 과정 용어 미니 사전 (신입 강사용)</summary><div style="padding:0 16px 12px;">
 <table style="width:100%;border-collapse:collapse;font-size:.92rem;"><tbody>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">Team Canvas</td><td style="padding:6px 8px;">Round 토론 중 교육생이 클립 화면에서 작성·제출하는 팀 기록표.</td></tr>
-<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">토론 정리본 (구 2차 캔버스)</td><td style="padding:6px 8px;">제출본(개인 원문 우선)과 팀 합의 요약을 합쳐 이 보드가 만들어 주는 개인별 문서 — CH04 NotebookLM 소스로 사용.</td></tr>
+<tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">토론 정리본 (구 2차 캔버스)</td><td style="padding:6px 8px;">제출본(개인 원문 우선)과 팀 합의 요약을 합쳐 이 보드가 만들어 주는 개인별 문서 — CH04 Gemini Notebook 소스로 사용.</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">통합 저장 Gate</td><td style="padding:6px 8px;">2-5·3-1c — 실습 결과를 파일 1개로 통합 저장하는 클립. 여기서 만든 통합본 2개가 CH04 필수 소스.</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">통합본 vs 중간통합본</td><td style="padding:6px 8px;">통합본=Gate 필수 산출물(CH02·CH03 각 1개). 중간통합본=3-1의 선택 저장본으로 회수 필수 아님.</td></tr>
 <tr><td style="padding:6px 8px;white-space:nowrap;font-weight:800;vertical-align:top;">팀 대표 파일 (구 방식)</td><td style="padding:6px 8px;">이전 방식의 팀 합의본 공유 기능 — 현재는 전원 제출 + [요약 생성] → 개인별 토론 정리본으로 대체되었습니다.</td></tr>
@@ -288,7 +288,7 @@
       <li><strong>[1순위] 교육장 네트워크 테스트</strong> — 점검 대상 6개는 강사 자료실 「사내망 해제 요청 사이트 목록」의 <strong>[강사용 3분 사전 점검]</strong>을 그대로 따르고, 생각 열기용 ①유튜브(KBS 영상) ②뉴스 사이트(서울경제·디지털투데이)도 함께 확인.</li>
       <li><strong>QuizN 보드 초기화</strong> — PIN 1071341 보드의 이전 차수 게시글·참여 기록을 운영자 계정에서 삭제.</li>
       <li><strong>생각 열기 링크 전체 클릭 확인</strong> — 각 클립의 🎬 블록을 펼쳐 링크가 모두 열리는지 확인.</li>
-      <li><strong>NotebookLM 확인</strong> — 공식 도움말에서 사용한도 변경 여부 + 교육 계정 화면 명칭(NotebookLM/Gemini Notebook) 확인.</li>
+      <li><strong>Gemini Notebook 확인</strong> — 공식 도움말에서 사용한도 변경 여부 + 교육 계정 화면 명칭(구 NotebookLM 표기 잔존 여부) 확인.</li>
       <li><strong>Wrap-up 보드 차수 설정</strong> — 새 차수 생성·차수 코드 공지 준비.</li>
     </ul>
     <div class="hook-warn"><strong>유튜브 차단 시 폴백 (1-2 생각 열기 영상):</strong> 영상 대신 구두로 — "KBS 제작진이 상용 AI로 여행 에이전트를 만들었습니다. 일정·경비·목적만 정해주니 에이전트가 스스로 호텔 사이트를 검색하고 예약까지 실행했습니다. 사람이 한 일은 목표 한 줄이 전부였습니다."</div>
@@ -370,7 +370,7 @@
         <ol style="margin:6px 0 0;padding-left:20px;">
           <li><em>(발표 후)</em> "모든 팀이 지표와 <strong>중단 기준(Quality Gate)</strong>을 정했습니다 — 오늘 본 Klarna에게 없던 게 바로 그것입니다."</li>
           <li>"전면 도입이 아니라 실험입니다. 30일 뒤에는 <strong>느낌이 아니라 증거로</strong> 판단합니다."</li>
-          <li>"이 시범 운영안은 다음 Gate에서 통합돼 오후 NotebookLM의 핵심 소스가 됩니다 — 남은 오후는 이 실험을 '실행 가능한 30일 계획'으로 완성하는 시간입니다."</li>
+          <li>"이 시범 운영안은 다음 Gate에서 통합돼 오후 Gemini Notebook의 핵심 소스가 됩니다 — 남은 오후는 이 실험을 '실행 가능한 30일 계획'으로 완성하는 시간입니다."</li>
         </ol>
       </div>
     </div></details>
@@ -398,11 +398,11 @@
     <details><summary>CH03 (13:30~15:20) — 팀 성장역량 진단 · 30일 시범 운영</summary><div class="hook-body">
       <div style="margin:8px 0;"><strong>3-1 팀 진단 (필수 50분 + 버퍼 10분)</strong> — 6개 진단 렌즈·근거 수준 4단계, Step 1~3 (권장 15+12+13+검증 10분 · <strong>각 인터뷰 최대 2라운드</strong>, 1차수 질문 과다 피드백 반영). 필수 2종: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량_점검지표_성명.md</mark> · <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_필요행동역량_성명.md</mark></div>
       <div style="margin:8px 0;"><strong>3-1b Round 3 (35분)</strong> — 위 <strong>Round 3 도입·마무리</strong> 참조. 산출물: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">나의 토론 정리본</mark> — <strong>전원 각자 제출(팀 대표 체크 없음·AI Challenge 전원 실행)</strong> · 제출 마감 후 <strong>[요약 생성] 실행 필수</strong> — 팀 요약 반영 후 CH04 통합본 소스가 됩니다. (서버 장애 백업: CH03_R3_30일_AI협업_시범운영안_팀번호.md)</div>
-      <div style="margin:8px 0;"><strong>3-1c 통합 저장 Gate (15분)</strong> — 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량과_AI협업_통합본_성명.md</mark> = <strong>CH04 필수 2 소스</strong>. 휴식 중 NotebookLM 업로드 파일 3종(CH02 통합본·CH03 통합본·토론 정리본) 최종 확인.</div>
+      <div style="margin:8px 0;"><strong>3-1c 통합 저장 Gate (15분)</strong> — 필수: <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH03_우리팀_성장역량과_AI협업_통합본_성명.md</mark> = <strong>CH04 필수 2 소스</strong>. 휴식 중 Gemini Notebook 업로드 파일 3종(CH02 통합본·CH03 통합본·토론 정리본) 최종 확인.</div>
     </div></details>
 
-    <details><summary>CH04~CH05 (15:30~17:30) — NotebookLM 실습 · 정리</summary><div class="hook-body">
-      <div style="margin:8px 0;"><strong>4-1 NotebookLM Overview (20분)</strong> — 사용한도 기준표 · 소스 기반 답변·인라인 출처 · Studio 기능 Tour. <em>산출물 없음.</em> 화면 명칭이 <strong>Gemini Notebook</strong>으로 보일 수 있음(같은 도구) — 교육생 질문 대비.</div>
+    <details><summary>CH04~CH05 (15:30~17:30) — Gemini Notebook 실습 · 정리</summary><div class="hook-body">
+      <div style="margin:8px 0;"><strong>4-1 Gemini Notebook Overview (20분)</strong> — 사용한도 기준표 · 소스 기반 답변·인라인 출처 · Studio 기능 Tour. <em>산출물 없음.</em> 화면 명칭이 <strong>Gemini Notebook</strong>으로 보일 수 있음(같은 도구) — 교육생 질문 대비.</div>
       <div style="margin:8px 0;"><strong>4-2 30일 실행계획 (60분)</strong> — Step 1 Source Map(15분) → Step 2 TOP 3(18분) → Step 3 30일 실행계획(27분) (+선택 Step 4·5: 주간 점검 AI 비서). 필수 1종(통합): <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH04_우리팀_성장역량향상_30일실행계획_성명.md</mark> — 1부 근거 정리표 · 2부 TOP 3 포함. (입력 소스에 토론 정리본 통합본 포함)</div>
       <div style="margin:8px 0;"><strong>5-1 정리정돈 (20분)</strong> — 필수 산출물 11개 회수표 작성 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_현업적용_산출물회수표_성명.md</mark> — 특히 CH04 30일 실행계획 저장 위치 확인.</div>
       <div style="margin:8px 0;"><strong>5-2 Start·Stop·Continue (20분)</strong> — SSC 행동계약 → <mark style="background:#bbf7d0;color:#14532d;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap;">CH05_나의_30일리더실천계획_성명.md</mark> · 한 문장 리더 실천 약속으로 과정 마무리.</div>
@@ -484,7 +484,7 @@
     round2: { where: "CH02-3b 클립 (책임경계 재설계)", file: "CH02_R2_AI팀원리더_책임경계_팀번호.md",
       next: "요약 생성 → 발표 → 토론 정리본 생성 → 다음 단계는 CH02-4 핵심 역량 브리프(ChatGPT)" },
     round3: { where: "CH03-1b 클립 (30일 시범 운영 설계)", file: "CH03_R3_30일_AI협업_시범운영안_팀번호.md",
-      next: "요약 생성 → 발표 → 토론 정리본 생성 → CH03 통합 Gate → CH04 NotebookLM 실습" }
+      next: "요약 생성 → 발표 → 토론 정리본 생성 → CH03 통합 Gate → CH04 Gemini Notebook 실습" }
   };
   function renderRoundGuide() {
     var g = ROUND_GUIDE[state.round]; if (!g) return;

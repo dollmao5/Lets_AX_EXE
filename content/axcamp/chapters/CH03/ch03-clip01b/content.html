@@ -351,7 +351,7 @@ if(!document.__roundImgEscWired){document.__roundImgEscWired=true;document.addEv
 【준비 · 1분】 <strong>진행자 1명</strong>(시간·단계 진행, 보조 질문 중 우리 팀 2~3개 선택)을 정합니다. 전원 자기 화면의 Team Canvas를 엽니다.<br>
 【토론 · 35분】 핵심 질문을 중심으로 <strong>아래 도식과 표의 단계</strong>를 따릅니다.<br>
 【마무리 · 1분】 <strong>전원 [내 논의 내용 제출]</strong> 버튼을 누릅니다 (진행 ⑤ 단계에 포함 — 토론 35분 안에서 마칩니다). [Markdown 다운로드]는 서버 장애 시 백업용입니다.<br>
-【팀 발표 · 제출 후】 전원 제출 후 강사님이 Wrap-up 보드에서 팀 요약을 생성하면 <strong>나의 토론 정리본(내 작성 + 팀 합의 요약)</strong>이 완성됩니다. 팀 발표(실행 다짐 공유)는 <strong>📣 강사 가이드에 따라</strong> 화면의 팀 요약을 바탕으로 진행합니다. R1~3의 나의 토론 정리본은 <strong>CH04에서 통합본 다운로드 한 번</strong>으로 NotebookLM 소스로 사용합니다.
+【팀 발표 · 제출 후】 전원 제출 후 강사님이 Wrap-up 보드에서 팀 요약을 생성하면 <strong>나의 토론 정리본(내 작성 + 팀 합의 요약)</strong>이 완성됩니다. 팀 발표(실행 다짐 공유)는 <strong>📣 강사 가이드에 따라</strong> 화면의 팀 요약을 바탕으로 진행합니다. R1~3의 나의 토론 정리본은 <strong>CH04에서 통합본 다운로드 한 번</strong>으로 Gemini Notebook 소스로 사용합니다.
 </div>
 </div>
 <div class="round-flow" aria-label="Round 3 진행 순서 도식">
@@ -599,13 +599,13 @@ fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/j
 })(this);">
 <div class="phase-banner">❸ 제출·마무리 <span class="phase-sub">— 전원 제출과 다음 단계</span></div>
 <div class="canvas2-bundle-box" data-canvas2-bundle="1" style="margin:14px 0;padding:16px 18px;border:1px solid var(--border,#e4e7ec);border-left:6px solid #7b3ff0;border-radius:16px;background:#f8f5ff;">
-<strong style="display:block;margin-bottom:6px;">📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 NotebookLM '필수 3' 소스 <span style="display:inline-block;margin-left:6px;padding:2px 10px;border-radius:999px;background:#fef3c7;color:#92400e;font-size:.85rem;font-weight:800;white-space:nowrap;">⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기</span></strong>
-<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">위 [내 논의 내용 제출]을 전원 마치고 강사님이 [요약 생성]을 실행한 뒤에 받아 주세요 — 그래야 팀 합의까지 포함된 완전한 통합본이 됩니다. 다음 CH04 NotebookLM 실습에서 '필수 3' 소스로 사용합니다.</p>
+<strong style="display:block;margin-bottom:6px;">📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 Gemini Notebook '필수 3' 소스 <span style="display:inline-block;margin-left:6px;padding:2px 10px;border-radius:999px;background:#fef3c7;color:#92400e;font-size:.85rem;font-weight:800;white-space:nowrap;">⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기</span></strong>
+<p style="margin:0 0 10px;font-size:.92rem;color:var(--text-secondary,#667085);">위 [내 논의 내용 제출]을 전원 마치고 강사님이 [요약 생성]을 실행한 뒤에 받아 주세요 — 그래야 팀 합의까지 포함된 완전한 통합본이 됩니다. 다음 CH04 Gemini Notebook 실습에서 '필수 3' 소스로 사용합니다.</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
 <label style="font-weight:700;">팀</label><select data-c2b-team style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;"></select>
 <label style="font-weight:700;">이름</label><input data-c2b-name type="text" placeholder="제출할 때 쓴 이름" maxlength="20" style="min-height:40px;padding:6px 10px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font:inherit;max-width:170px;">
 <button type="button" data-c2b-download style="min-height:40px;padding:8px 18px;border:1px solid #7b3ff0;border-radius:999px;background:#7b3ff0;color:#fff;font:inherit;font-weight:800;cursor:pointer;">통합본 다운로드</button>
-<button type="button" data-c2b-copy style="min-height:40px;padding:8px 16px;border:2px solid #7b3ff0;border-radius:999px;background:#fff;color:#7b3ff0;font:inherit;font-weight:800;cursor:pointer;" title="파일 첨부가 안 되면 복사해서 NotebookLM [소스 추가 &gt; 복사된 텍스트]에 붙여넣으세요.">📋 복사</button>
+<button type="button" data-c2b-copy style="min-height:40px;padding:8px 16px;border:2px solid #7b3ff0;border-radius:999px;background:#fff;color:#7b3ff0;font:inherit;font-weight:800;cursor:pointer;" title="파일 첨부가 안 되면 복사해서 Gemini Notebook [소스 추가 &gt; 복사된 텍스트]에 붙여넣으세요.">📋 복사</button>
 </div>
 <p data-c2b-status style="margin:0;font-size:.92rem;color:var(--text-secondary,#667085);">파일명: CH04_R1-3_팀토론정리본_성명.md — 개인 작성(우선) + 팀 합의가 합쳐진 개인화 파일입니다.</p>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
@@ -635,7 +635,7 @@ var included={},parts=[],hint='';
 for(var i=0;i&lt;rounds.length;i++){var d=rs[i].data;var good=rs[i].ok&amp;&amp;d&amp;&amp;d.ok&amp;&amp;d.canvas2&amp;&amp;d.canvas2.markdown;included[rounds[i]]=!!good;if(good){parts.push(d.canvas2.markdown.trim());}else if(d&amp;&amp;d.error&amp;&amp;!hint){hint=d.error;}}
 if(!parts.length)return {hint:hint};
 var toc=rounds.map(function(r){return included[r]?'- '+RB_LABELS[r]:'- '+RB_LABELS[r]+' — (미제출)';}).join('\n');
-var markdown='# Round 1~3 팀 토론 정리본 통합본 — '+name+' ('+team+'팀)\n\n&gt; CH04 NotebookLM 실습의 \'필수 3. Round 1~3 팀 토론 정리본 통합본\' 소스로 업로드하는 개인화 파일입니다.\n&gt; 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.\n\n## 목차\n\n'+toc+'\n\n---\n\n'+parts.join('\n\n---\n\n')+'\n';
+var markdown='# Round 1~3 팀 토론 정리본 통합본 — '+name+' ('+team+'팀)\n\n&gt; CH04 Gemini Notebook 실습의 \'필수 3. Round 1~3 팀 토론 정리본 통합본\' 소스로 업로드하는 개인화 파일입니다.\n&gt; 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.\n\n## 목차\n\n'+toc+'\n\n---\n\n'+parts.join('\n\n---\n\n')+'\n';
 return {ok:true,included:included,filename:'CH04_R1-3_팀토론정리본_'+name.replace(/[^\w가-힣.-]+/g,'_')+'.md',markdown:markdown,fallback:true};
 });}
 function loadBundle(team,name){
@@ -675,11 +675,11 @@ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
 var note=(missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(d.fallback?' · 보조 경로로 생성됨':'');
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus('다운로드 완료: '+d.filename+note+' — NotebookLM에 소스로 업로드하세요.',false);
+setStatus('다운로드 완료: '+d.filename+note+' — Gemini Notebook에 소스로 업로드하세요.',false);
 })
 .catch(function(e){btn.disabled=false;setStatus((e&amp;&amp;e.friendly)||'서버에 연결할 수 없습니다. 각 Round에서 받아 둔 토론 정리본 .md 파일을 직접 업로드해 주세요.',true);});
 });
-/* [260831] 복사 버튼 — 사내망 등에서 파일 첨부가 막힐 때 NotebookLM [소스 추가 > 복사된 텍스트] 폴백을 원클릭으로 */
+/* [260831] 복사 버튼 — 사내망 등에서 파일 첨부가 막힐 때 Gemini Notebook [소스 추가 > 복사된 텍스트] 폴백을 원클릭으로 */
 var copyBtn=box.querySelector('[data-c2b-copy]');
 if(copyBtn)copyBtn.addEventListener('click',function(){
 var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
@@ -691,7 +691,7 @@ copyBtn.disabled=false;
 var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
 var note=(missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(d.fallback?' · 보조 경로로 생성됨':'');
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-function done(ok){setStatus(ok?('통합본 복사 완료'+note+' — 파일 첨부가 안 되면 NotebookLM [소스 추가 &gt; 복사된 텍스트]에 붙여넣으세요.'):'복사 실패 — [통합본 다운로드]로 파일을 받아 주세요.',!ok);}
+function done(ok){setStatus(ok?('통합본 복사 완료'+note+' — 파일 첨부가 안 되면 Gemini Notebook [소스 추가 &gt; 복사된 텍스트]에 붙여넣으세요.'):'복사 실패 — [통합본 다운로드]로 파일을 받아 주세요.',!ok);}
 if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(d.markdown).then(function(){done(true);},function(){done(false);});}else{done(false);}
 })
 .catch(function(e){copyBtn.disabled=false;setStatus((e&amp;&amp;e.friendly)||'서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.',true);});

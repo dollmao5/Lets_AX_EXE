@@ -1,7 +1,7 @@
 {
   "agentic-physical-ecosystem": {
     "id": "agentic-physical-ecosystem",
-    "kicker": "NotebookLM Source-Grounded Deck",
+    "kicker": "Gemini Notebook Source-Grounded Deck",
     "title": "AI로 진화하는 산업 생태계",
     "subtitle": "Agentic에서 Physical까지, 2026년 초 산업 변화를 리더 관점으로 읽는 22장 브리핑",
     "downloadUrl": "__BASE__/assets/notebooklm/ch00-ai-ecosystem/agentic-to-physical-ai.pdf",
@@ -24,7 +24,7 @@
         "eyebrow": "01 / Cover",
         "title": "AI로 진화하는 산업 생태계",
         "imageSrc": "__BASE__/assets/notebooklm/ch00-ai-ecosystem/slide-01.jpg",
-        "imageAlt": "NotebookLM에서 내려받은 AI로 진화하는 산업 생태계 표지 슬라이드"
+        "imageAlt": "Gemini Notebook에서 내려받은 AI로 진화하는 산업 생태계 표지 슬라이드"
       },
       {
         "eyebrow": "02 / Why Now",
@@ -718,9 +718,9 @@
   },
   "industry-landscape": {
     "id": "industry-landscape",
-    "kicker": "NotebookLM PDF",
+    "kicker": "Gemini Notebook PDF",
     "title": "2026 LG AX Strategic Briefing",
-    "subtitle": "NotebookLM에서 생성한 슬라이드 PDF 다운로드본",
+    "subtitle": "Gemini Notebook에서 생성한 슬라이드 PDF 다운로드본",
     "downloadUrl": "__BASE__/assets/notebooklm/2026-lg-ax-strategic-briefing.pdf",
     "downloadFilename": "2026-lg-ax-strategic-briefing.pdf",
     "downloadLabel": "다운로드",
@@ -729,7 +729,7 @@
         "eyebrow": "00 / Cover",
         "title": "2026 엔터프라이즈 AI 산업동향 및 LG AX 전략 브리핑",
         "imageSrc": "__BASE__/assets/notebooklm/industry-briefing/slide-1.jpg",
-        "imageAlt": "NotebookLM 슬라이드 표지"
+        "imageAlt": "Gemini Notebook 슬라이드 표지"
       },
       {
         "eyebrow": "01 / Executive Thesis",
@@ -778,7 +778,7 @@
   "assistant-agentic-spectrum": {
     "id": "assistant-agentic-spectrum",
     "previewStyle": "immersive",
-    "kicker": "NotebookLM Infographic",
+    "kicker": "Gemini Notebook Infographic",
     "title": "AI 활용의 진화 로드맵",
     "subtitle": "현재 페이지와 공식 자료 8건을 바탕으로 만든 1장 concept map",
     "downloadUrl": "__BASE__/assets/notebooklm/assistant-agentic/ai-utilization-evolution-roadmap.png",
@@ -796,7 +796,7 @@
   "prompt-context-workflow": {
     "id": "prompt-context-workflow",
     "previewStyle": "immersive",
-    "kicker": "NotebookLM Infographic",
+    "kicker": "Gemini Notebook Infographic",
     "title": "프롬프트 엔지니어링에서 컨텍스트 엔지니어링으로",
     "subtitle": "현재 페이지와 공식 자료 6건을 바탕으로 만든 1장 concept map",
     "downloadUrl": "__BASE__/assets/notebooklm/prompt-context/prompt-context-workflow-strategy.png",
@@ -813,9 +813,9 @@
   },
   "tech-utilization-roadmap": {
     "id": "tech-utilization-roadmap",
-    "kicker": "NotebookLM Slide Deck",
+    "kicker": "Gemini Notebook Slide Deck",
     "title": "Enterprise AI Roadmap",
-    "subtitle": "NotebookLM Studio에서 내려받은 실제 3장 슬라이드",
+    "subtitle": "Gemini Notebook Studio에서 내려받은 실제 3장 슬라이드",
     "downloadUrl": "__BASE__/assets/notebooklm/tech-roadmap/enterprise-ai-roadmap-2.pdf",
     "downloadFilename": "enterprise-ai-roadmap-2.pdf",
     "downloadLabel": "다운로드",
@@ -844,9 +844,9 @@
     "id": "concept-foundation-guide",
     "previewStyle": "immersive",
     "sheetClass": "deck-concept-foundation-guide",
-    "kicker": "NotebookLM Infographic",
+    "kicker": "Gemini Notebook Infographic",
     "title": "전문가용 AI 핵심 개념 가이드",
-    "subtitle": "NotebookLM에서 내려받은 세로형 개념 인포그래픽",
+    "subtitle": "Gemini Notebook에서 내려받은 세로형 개념 인포그래픽",
     "downloadUrl": "__BASE__/assets/notebooklm/concept-foundation/expert-ai-core-concepts-guide2.jpg",
     "downloadFilename": "expert-ai-core-concepts-guide2.jpg",
     "downloadLabel": "다운로드",
@@ -861,7 +861,7 @@
   },
   "gemini-access-roadshow": {
     "id": "gemini-access-roadshow",
-    "kicker": "NotebookLM Slide Deck",
+    "kicker": "Gemini Notebook Slide Deck",
     "title": "Gemini Business Engine",
     "subtitle": "Gemini를 단순 채팅이 아니라 멀티모달 비즈니스 엔진으로 쓰는 흐름",
     "downloadUrl": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/Gemini-Business-Engine.pdf",
@@ -995,7 +995,7 @@
   },
   "gemini-gems-roadshow": {
     "id": "gemini-gems-roadshow",
-    "kicker": "NotebookLM Slide Deck",
+    "kicker": "Gemini Notebook Slide Deck",
     "title": "Gemini 확장 기능: Deep Research와 Gems",
     "subtitle": "멀티턴 분석에서 맞춤형 AI 비서 만들기로 넘어가는 후반부 슬라이드",
     "downloadUrl": "__BASE__/assets/notebooklm/ch02-structured-prompting/gemini-business-engine/Gemini-Business-Engine.pdf",
@@ -1051,7 +1051,7 @@
   },
   "ciqo-executive-briefing": {
     "id": "ciqo-executive-briefing",
-    "kicker": "NotebookLM Slide Deck",
+    "kicker": "Gemini Notebook Slide Deck",
     "title": "Global Talent and Luxury Strategy",
     "subtitle": "CIQO 기반 교차 분석을 LG 스타일로 재구성한 7장 브리핑",
     "downloadUrl": "__BASE__/assets/notebooklm/ch03-notebooklm/ciqo-lg-executive-briefing.pdf",
@@ -1105,9 +1105,9 @@
   "enterprise-research-workflow": {
     "id": "enterprise-research-workflow",
     "previewStyle": "immersive",
-    "kicker": "NotebookLM Infographic",
+    "kicker": "Gemini Notebook Infographic",
     "title": "AI 기반 기업 분석 워크플로",
-    "subtitle": "Gems에서 NotebookLM과 슬라이드 산출물까지 잇는 실습 흐름도",
+    "subtitle": "Gems에서 Gemini Notebook과 슬라이드 산출물까지 잇는 실습 흐름도",
     "downloadUrl": "__BASE__/assets/notebooklm/ch03-notebooklm/enterprise-research-workflow.png",
     "downloadFilename": "enterprise-research-workflow.png",
     "downloadLabel": "다운로드",
@@ -1116,13 +1116,13 @@
         "eyebrow": "01 / Workflow",
         "title": "기업 분석 코스를 한 장에 정리한 인포그래픽",
         "imageSrc": "__BASE__/assets/notebooklm/ch03-notebooklm/enterprise-research-workflow.png",
-        "imageAlt": "Gems로 자료 수집 기준을 만들고 NotebookLM으로 다중 소스를 분석한 뒤 슬라이드와 인포그래픽을 만드는 기업 분석 실습 워크플로 인포그래픽"
+        "imageAlt": "Gems로 자료 수집 기준을 만들고 Gemini Notebook으로 다중 소스를 분석한 뒤 슬라이드와 인포그래픽을 만드는 기업 분석 실습 워크플로 인포그래픽"
       }
     ]
   },
   "ai-studio-api-principles": {
     "id": "ai-studio-api-principles",
-    "kicker": "NotebookLM Slide Deck",
+    "kicker": "Gemini Notebook Slide Deck",
     "title": "AI API Essentials",
     "subtitle": "AI Studio Build 앱, API key, quota, billing 원리를 설명하는 6장 브리핑",
     "downloadUrl": "__BASE__/assets/notebooklm/ch04-ai-studio-api-essentials/ai-api-essentials.pdf",
@@ -1170,7 +1170,7 @@
   "vibe-coding-shift": {
     "id": "vibe-coding-shift",
     "previewStyle": "immersive",
-    "kicker": "NotebookLM Infographic",
+    "kicker": "Gemini Notebook Infographic",
     "title": "바이브 코딩과 개발 패러다임 전환",
     "subtitle": "리더가 목표를 정의하고 AI가 초안을 만들며 대화로 완성도를 끌어올리는 흐름을 설명하는 인포그래픽",
     "downloadUrl": "__BASE__/assets/notebooklm/ch05-vibe-coding/vibe-coding-shift-infographic.png",
@@ -1181,13 +1181,13 @@
         "eyebrow": "01 / Infographic",
         "title": "아이디어에서 앱까지, 대화형 개발 루프",
         "imageSrc": "__BASE__/assets/notebooklm/ch05-vibe-coding/vibe-coding-shift-infographic.png",
-        "imageAlt": "바이브 코딩이 기존 개발과 어떻게 다른지, 사람과 AI의 역할 분담, 반복 피드백 루프를 설명하는 NotebookLM 인포그래픽"
+        "imageAlt": "바이브 코딩이 기존 개발과 어떻게 다른지, 사람과 AI의 역할 분담, 반복 피드백 루프를 설명하는 Gemini Notebook 인포그래픽"
       }
     ]
   },
   "executive-app-build-sprint": {
     "id": "executive-app-build-sprint",
-    "kicker": "NotebookLM Slide Deck",
+    "kicker": "Gemini Notebook Slide Deck",
     "title": "임원용 경쟁사 리서치 대시보드 구축 실습",
     "subtitle": "Gems로 초안 프롬프트를 만들고 AI Studio Build에서 경쟁사 리서치 대시보드를 생성·고도화·브랜딩·확장하는 흐름을 정리한 7장 deck",
     "downloadUrl": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/executive-ai-dashboard-sprint.pdf",
@@ -1237,13 +1237,13 @@
         "eyebrow": "00 / Workshop",
         "title": "임원용 경쟁사 리서치 대시보드 구축 실습",
         "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-1.jpg",
-        "imageAlt": "임원용 경쟁사 리서치 대시보드 구축 실습의 주제를 소개하는 NotebookLM 표지 슬라이드"
+        "imageAlt": "임원용 경쟁사 리서치 대시보드 구축 실습의 주제를 소개하는 Gemini Notebook 표지 슬라이드"
       },
       {
         "eyebrow": "01 / Gems",
         "title": "Gems로 Build용 초안 프롬프트 만들기",
         "imageSrc": "__BASE__/assets/notebooklm/ch05-executive-app-build-sprint/slide-2.jpg",
-        "imageAlt": "Gems를 활용해 실습용 Build 초안 프롬프트를 만드는 흐름을 설명하는 NotebookLM 슬라이드"
+        "imageAlt": "Gems를 활용해 실습용 Build 초안 프롬프트를 만드는 흐름을 설명하는 Gemini Notebook 슬라이드"
       },
       {
         "eyebrow": "02 / Build",

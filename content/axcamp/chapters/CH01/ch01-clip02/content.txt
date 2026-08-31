@@ -41,11 +41,11 @@ AI가 질문에 반응하는 수준에서, 목표를 받아 계획·도구 사�
 대화형 사용 → AI 앱·자동화 → Agentic Workflow
 사람과 AI의 대화에서 시작해 반복 가능한 작은 도구와 앱을 만들고, 여러 단계·시스템·승인 지점을 연결하는 방식으로 확장합니다.
 
-NotebookLM Slide Deck
+Gemini Notebook Slide Deck
 
 묻고 다듬기에서 작은 도구 만들기, 여러 단계 맡기기로 확장되는 활용 로드맵
 
-NotebookLM Studio의 Enterprise AI Roadmap 슬라이드 3장을 활용합니다.
+Gemini Notebook Studio의 Enterprise AI Roadmap 슬라이드 3장을 활용합니다.
 단계별 인터페이스와 대표 도구를 확인하되, 제품명보다 계획 범위·실행 권한·도구 연결·사람의 승인 지점에 주목합니다.
 
 다운로드
@@ -65,7 +65,7 @@ Level 1 · 입문AI Assistant : 묻고, 확인하고, 함께 다듬기
 - 사람의 지시와 검토가 자주 필요한 업무에 적합
 
 ChatGPT
-NotebookLM
+Gemini Notebook
 
 팀장이 확인할 것: 충분한 맥락을 주었는가? 사실·누락·품질을 직접 검토했는가?
 
@@ -86,8 +86,7 @@ Level 2 · 확장AI 앱·자동화 / 범위형 Agent : 작은 도구를 만들�
 - 권한·데이터·완료 기준·승인 지점을 명시
 
 ChatGPT Deep Research
-GPTs
-GPT Builder
+GPTs(기존 GPT 활용)
 OpenAI API
 
 팀장이 확인할 것: 목표와 완료 기준은 무엇인가? 권한과 데이터 범위는 어디까지이며 언제 사람이 승인하는가?

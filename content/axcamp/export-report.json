@@ -197,7 +197,7 @@
       "clips": [
         {
           "route": "#ch04-clip01",
-          "title": "NotebookLM 소개 및 접속 방법",
+          "title": "Gemini Notebook 소개 및 접속 방법",
           "type": "플랫폼",
           "folder": "chapters/CH04/ch04-clip01",
           "linkCount": 0,
@@ -207,7 +207,7 @@
         },
         {
           "route": "#ch04-clip02",
-          "title": "NotebookLM & AI 비서 활용: 팀 성장역량 향상 및 피드백 실천",
+          "title": "Gemini Notebook & AI 비서 활용: 팀 성장역량 향상 및 피드백 실천",
           "type": "실습",
           "folder": "chapters/CH04/ch04-clip02",
           "linkCount": 0,
@@ -563,7 +563,7 @@
     {
       "chapterId": "ch04",
       "route": "#ch04-clip01",
-      "title": "NotebookLM 소개 및 접속 방법",
+      "title": "Gemini Notebook 소개 및 접속 방법",
       "folder": "chapters/CH04/ch04-clip01",
       "textLength": 4419,
       "htmlLength": 24042,
@@ -576,7 +576,7 @@
     {
       "chapterId": "ch04",
       "route": "#ch04-clip02",
-      "title": "NotebookLM & AI 비서 활용: 팀 성장역량 향상 및 피드백 실천",
+      "title": "Gemini Notebook & AI 비서 활용: 팀 성장역량 향상 및 피드백 실천",
       "folder": "chapters/CH04/ch04-clip02",
       "textLength": 9704,
       "htmlLength": 44110,

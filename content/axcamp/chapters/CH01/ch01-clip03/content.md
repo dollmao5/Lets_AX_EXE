@@ -11,7 +11,7 @@ CH 01
 
 # 개념 다지기
 
-오늘 반복해서 만나게 될 AI 핵심 용어를 NotebookLM 인포그래픽 한 장으로 빠르게 정리합니다. 필요할 때 크게 확대해 교육 중간중간 다시 참조합니다.
+오늘 반복해서 만나게 될 AI 핵심 용어를 Gemini Notebook 인포그래픽 한 장으로 빠르게 정리합니다. 필요할 때 크게 확대해 교육 중간중간 다시 참조합니다.
 
 ## 이번 클립에서 함께 배우는 것
 
@@ -19,7 +19,7 @@ CH 01
 
 멀티모달은 여러 형식의 입력, 컨텍스트 엔지니어링은 필요한 맥락 설계, RAG는 지정한 근거 기반 답변, MCP는 도구·데이터 연결, Agentic AI는 계획·실행·검증 흐름을 뜻합니다.
 
-NotebookLM Infographic
+Gemini Notebook Infographic
 
 ## 전문가용 AI 핵심 개념 가이드
 
@@ -77,7 +77,7 @@ NotebookLM Infographic
 
 - **에이전틱 AI (Agentic AI)**👥 TF팀 운영 — 기획·조사·문서 담당 AI가 한 팀처럼 협업합니다. 팀장은 목표와 기준만 제시합니다
 
-- **검색 증강 생성 (RAG, Retrieval-Augmented Generation)**👥 "근거 자료 첨부해서 보고해" 지시 — 감이 아니라 지정한 문서에서 근거를 찾아 출처를 달게 합니다 (오후 NotebookLM이 이 방식)
+- **검색 증강 생성 (RAG, Retrieval-Augmented Generation)**👥 "근거 자료 첨부해서 보고해" 지시 — 감이 아니라 지정한 문서에서 근거를 찾아 출처를 달게 합니다 (오후 Gemini Notebook이 이 방식)
 
 - **시스템 프롬프트 (System Prompt)**👥 팀 그라운드 룰 — 어떤 업무를 하든 벗어나면 안 되는 기본 원칙을 일 시작 전에 정해두는 것입니다
 

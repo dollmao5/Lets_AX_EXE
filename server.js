@@ -3360,7 +3360,7 @@ async function handleWrapupCanvas2Get(req, res, urlObj) {
   return sendJson(res, 200, { ok: true, stored: result.stored, canvas2: result.record });
 }
 
-// R1~3 토론 정리본을 한 사람 기준으로 통합 — CH04 NotebookLM 업로드용 (자동 목차 포함)
+// R1~3 토론 정리본을 한 사람 기준으로 통합 — CH04 Gemini Notebook 업로드용 (자동 목차 포함)
 async function handleWrapupCanvas2Bundle(req, res, urlObj) {
   const config = await readWrapupConfig();
   const cohort = wrapupSafeSegment(urlObj.searchParams.get("cohort")) || config.currentCohort;
@@ -3386,7 +3386,7 @@ async function handleWrapupCanvas2Bundle(req, res, urlObj) {
   const markdown = [
     `# Round 1~3 팀 토론 정리본 통합본 — ${name} (${team}팀)`,
     "",
-    "> CH04 NotebookLM 실습의 '필수 3. Round 1~3 팀 토론 정리본 통합본' 소스로 업로드하는 개인화 파일입니다.",
+    "> CH04 Gemini Notebook 실습의 '필수 3. Round 1~3 팀 토론 정리본 통합본' 소스로 업로드하는 개인화 파일입니다.",
     "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
     "",
     "## 목차",

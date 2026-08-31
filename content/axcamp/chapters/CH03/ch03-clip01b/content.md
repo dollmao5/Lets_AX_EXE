@@ -96,7 +96,7 @@ CEO는 이렇게 인정했습니다 — **“AI 활용이 ‘비용 절감’에
 
 【마무리 · 1분】 **전원 [내 논의 내용 제출]** 버튼을 누릅니다 (진행 ⑤ 단계에 포함 — 토론 35분 안에서 마칩니다). [Markdown 다운로드]는 서버 장애 시 백업용입니다.
 
-【팀 발표 · 제출 후】 전원 제출 후 강사님이 Wrap-up 보드에서 팀 요약을 생성하면 **나의 토론 정리본(내 작성 + 팀 합의 요약)**이 완성됩니다. 팀 발표(실행 다짐 공유)는 **📣 강사 가이드에 따라** 화면의 팀 요약을 바탕으로 진행합니다. R1~3의 나의 토론 정리본은 **CH04에서 통합본 다운로드 한 번**으로 NotebookLM 소스로 사용합니다.
+【팀 발표 · 제출 후】 전원 제출 후 강사님이 Wrap-up 보드에서 팀 요약을 생성하면 **나의 토론 정리본(내 작성 + 팀 합의 요약)**이 완성됩니다. 팀 발표(실행 다짐 공유)는 **📣 강사 가이드에 따라** 화면의 팀 요약을 바탕으로 진행합니다. R1~3의 나의 토론 정리본은 **CH04에서 통합본 다운로드 한 번**으로 Gemini Notebook 소스로 사용합니다.
 
 ①30일 시범 운영 기준 설명3분
 
@@ -255,8 +255,8 @@ Canvas를 작성한 뒤, 처음 한 번만 팀·이름을 고르고 제출하세
 
 ❸ 제출·마무리 — 전원 제출과 다음 단계
 
-**📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 NotebookLM '필수 3' 소스 ⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기**
-위 [내 논의 내용 제출]을 전원 마치고 강사님이 [요약 생성]을 실행한 뒤에 받아 주세요 — 그래야 팀 합의까지 포함된 완전한 통합본이 됩니다. 다음 CH04 NotebookLM 실습에서 '필수 3' 소스로 사용합니다.
+**📦 Round 1~3 팀 토론 정리본 통합본 다운로드 — CH04 Gemini Notebook '필수 3' 소스 ⚠ [내 논의 내용 제출] → 강사님 [요약 생성] 확인 후 내려받기**
+위 [내 논의 내용 제출]을 전원 마치고 강사님이 [요약 생성]을 실행한 뒤에 받아 주세요 — 그래야 팀 합의까지 포함된 완전한 통합본이 됩니다. 다음 CH04 Gemini Notebook 실습에서 '필수 3' 소스로 사용합니다.
 
 팀
 이름
@@ -279,7 +279,7 @@ copyBtn.disabled=false;
 var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
 var note=(missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(d.fallback?' · 보조 경로로 생성됨':'');
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-function done(ok){setStatus(ok?('통합본 복사 완료'+note+' — 파일 첨부가 안 되면 NotebookLM [소스 추가 > 복사된 텍스트]에 붙여넣으세요.'):'복사 실패 — [통합본 다운로드]로 파일을 받아 주세요.',!ok);}
+function done(ok){setStatus(ok?('통합본 복사 완료'+note+' — 파일 첨부가 안 되면 Gemini Notebook [소스 추가 > 복사된 텍스트]에 붙여넣으세요.'):'복사 실패 — [통합본 다운로드]로 파일을 받아 주세요.',!ok);}
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.markdown).then(function(){done(true);},function(){done(false);});}else{done(false);}
 })
 .catch(function(e){copyBtn.disabled=false;setStatus((e&&e.friendly)||'서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.',true);});
