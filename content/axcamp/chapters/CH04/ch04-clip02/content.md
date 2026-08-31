@@ -185,10 +185,30 @@ CH02는 CH02-3 리더 역할 프로필과 CH02-4 「나의 핵심역량과 스�
 팀
 이름
 통합본 다운로드
+📋 복사
 
 파일명: CH04_R1-3_팀토론정리본_성명.md — 개인 작성(우선) + 팀 합의가 합쳐진 개인화 파일입니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
+
+복사된 텍스트] 폴백을 원클릭으로 */
+var copyBtn=box.querySelector('[data-c2b-copy]');
+if(copyBtn)copyBtn.addEventListener('click',function(){
+var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
+if(!name||name.length<2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
+copyBtn.disabled=true;setStatus('Round 1~3 통합본을 만드는 중...',false);
+loadBundle(team,name)
+.then(function(d){
+copyBtn.disabled=false;
+var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
+var note=(missing.length?' · 미제출: '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(d.fallback?' · 보조 경로로 생성됨':'');
+try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
+function done(ok){setStatus(ok?('통합본 복사 완료'+note+' — 파일 첨부가 안 되면 NotebookLM [소스 추가 > 복사된 텍스트]에 붙여넣으세요.'):'복사 실패 — [통합본 다운로드]로 파일을 받아 주세요.',!ok);}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.markdown).then(function(){done(true);},function(){done(false);});}else{done(false);}
+})
+.catch(function(e){copyBtn.disabled=false;setStatus((e&&e.friendly)||'서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요.',true);});
+});
+})(this);">
 
 ### 파일 업로드가 안 될 때 (사내망 등)
 
