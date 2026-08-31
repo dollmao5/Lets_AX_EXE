@@ -447,7 +447,12 @@ async function handleAdminDelete(request, env) {
   if (!deleted) {
     return json(request, 404, { ok: false, error: "해당 제출물을 찾을 수 없습니다." });
   }
-  return json(request, 200, { ok: true, deleted: id });
+  // [260831] 이미 생성된 이 사람의 토론 정리본(canvas2)도 함께 제거 — 잘못 입력된 이름이 정리본·통합본에 남지 않도록 (없으면 무시)
+  let canvas2Deleted = false;
+  try {
+    canvas2Deleted = await ghDeleteFile(env, `${cohort}/${round}/canvas2/${id}.json`, `wrapup delete canvas2 ${id} (${round})`);
+  } catch (e) { /* 정리본 삭제 실패는 치명적이지 않음 — 제출물 삭제 자체는 성공 */ }
+  return json(request, 200, { ok: true, deleted: id, canvas2Deleted });
 }
 
 // 강사 인증된 브라우저에 Gemini 키·모델을 전달한다 (요약 호출은 브라우저가 수행).

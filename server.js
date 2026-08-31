@@ -2960,7 +2960,16 @@ async function handleWrapupAdminDelete(req, res, urlObj) {
     return sendJson(res, 404, { ok: false, error: "해당 제출물을 찾을 수 없습니다." });
   }
   await fs.unlink(filePath);
-  return sendJson(res, 200, { ok: true, deleted: id });
+  // [260831] 이미 생성된 이 사람의 토론 정리본(canvas2)도 함께 제거 — 잘못 입력된 이름이 정리본·통합본에 남지 않도록 (없으면 무시)
+  let canvas2Deleted = false;
+  try {
+    const canvas2Path = path.join(wrapupCanvas2Dir(cohort, round), `${id}.json`);
+    if (await pathExists(canvas2Path)) {
+      await fs.unlink(canvas2Path);
+      canvas2Deleted = true;
+    }
+  } catch (e) { /* 정리본 삭제 실패는 치명적이지 않음 — 제출물 삭제 자체는 성공 */ }
+  return sendJson(res, 200, { ok: true, deleted: id, canvas2Deleted });
 }
 /* ---- [Wrapup 2단계] Gemini Round별 요약 ---- */
 const GEMINI_MODEL = normalizeWs(process.env.GEMINI_MODEL) || "gemini-3.5-flash";

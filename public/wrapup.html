@@ -162,6 +162,9 @@
     </span>
   </div>
 
+  <!-- [260831] 강사 전용 제출 명단·삭제 — 이름을 잘못 입력한 제출물을 ✕로 즉시 정리(토론 정리본 동반 삭제). 복구(제거): 이 div와 renderSubmitNames 스크립트 블록 삭제 -->
+  <div id="submitNames" style="display:none;margin:-6px 0 14px;padding:10px 14px;border:1px dashed var(--border);border-radius:12px;font-size:.88rem;color:var(--muted);line-height:2;"></div>
+
   <div class="grid" id="teamGrid"></div>
   <div class="section-card" id="crossCard" style="display:none">
     <h2>교차 분석 — 전체 팀</h2>
@@ -517,17 +520,54 @@
   }
 
   async function loadStatus() {
-    if (state.cohort !== state.current) { $("submitStatus").textContent = "지난 차수 열람 중 (제출 현황은 현재 차수만 표시)"; return; }
+    if (state.cohort !== state.current) { $("submitStatus").textContent = "지난 차수 열람 중 (제출 현황은 현재 차수만 표시)"; state.statusTeams = null; renderSubmitNames(); return; }
     try {
       var d = await api("/api/wrapup/status?round=" + state.round);
       if (!d.ok) throw 0;
+      state.statusTeams = d.teams || [];
       var parts = d.teams.map(function (t) { return t.team + "팀 " + t.count + "명"; });
       $("submitStatus").textContent = "제출 현황: " + parts.join(" · ") + " (총 " + d.total + "명)"
         ;
       /* [HIDDEN 260731] 신방식: R1·R2·R3 모두 팀 대표 체크 없이 전원 제출 — 팀 대표 카운트 표기 제거.
          복구: 위 문자열 연결 끝에 + (Array.isArray(d.teamReps) ? " · 팀 대표 " + d.teamReps.length + "/" + d.teamCount + "팀" : "") 복원 */
-    } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; }
+    } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; state.statusTeams = null; }
+    renderSubmitNames();
   }
+
+  /* [260831] 강사 전용 제출 명단·삭제 — 잘못 입력된 이름의 제출물을 ✕로 정리 (Worker/서버가 토론 정리본도 동반 삭제).
+     제출 파일명 규칙(팀조_안전문자이름)과 동일하게 id를 재구성한다. 복구(제거): 이 블록과 #submitNames div 삭제 */
+  function wrapupNameSegment(s) {
+    return String(s || "").replace(/\s+/g, " ").trim().replace(/[^0-9A-Za-z가-힣\-_]/g, "_").slice(0, 40);
+  }
+  function renderSubmitNames() {
+    var box = $("submitNames");
+    if (!box) return;
+    var teams = state.statusTeams;
+    var show = state.isAdmin && state.cohort === state.current && Array.isArray(teams) && teams.some(function (t) { return t.count > 0; });
+    if (!show) { box.style.display = "none"; box.innerHTML = ""; return; }
+    var html = "🗑️ <strong>제출 명단·삭제</strong> <span style=\"font-size:.82rem\">(이름을 잘못 입력한 제출물은 ✕로 정리 — 본인이 같은 이름으로 다시 내면 자동 덮어쓰기라 삭제 불필요)</span><br>";
+    html += teams.filter(function (t) { return t.count > 0; }).map(function (t) {
+      return "<strong>" + t.team + "팀</strong> " + t.names.map(function (n) {
+        return "<span style=\"display:inline-flex;align-items:center;gap:4px;margin:1px 3px;padding:1px 8px;border:1px solid var(--border);border-radius:999px;background:var(--card);\">" + esc(n) +
+          "<button type=\"button\" data-del-team=\"" + t.team + "\" data-del-name=\"" + esc(n) + "\" title=\"이 제출물 삭제 (토론 정리본 포함)\" style=\"border:none;background:none;color:var(--danger);cursor:pointer;font-weight:900;padding:0 2px;font-size:.95em;\">✕</button></span>";
+      }).join("");
+    }).join(" &nbsp;·&nbsp; ");
+    box.innerHTML = html;
+    box.style.display = "";
+  }
+  $("submitNames").addEventListener("click", async function (ev) {
+    var btn = ev.target && ev.target.closest ? ev.target.closest("button[data-del-name]") : null;
+    if (!btn || !state.isAdmin) return;
+    var team = parseInt(btn.getAttribute("data-del-team"), 10);
+    var name = btn.getAttribute("data-del-name");
+    if (!window.confirm("'" + name + "' (" + team + "팀) 제출물을 삭제할까요?\n\n· 이미 생성된 이 사람의 토론 정리본도 함께 삭제됩니다.\n· 요약을 이미 생성했다면 삭제 후 [요약 생성]을 다시 실행해 주세요.")) return;
+    btn.disabled = true;
+    try {
+      var d = await api("/api/admin/wrapup/delete", { method: "POST", body: { round: state.round, id: team + "조_" + wrapupNameSegment(name) } });
+      if (d.ok) { toast("삭제 완료: " + name + " (" + team + "팀)"); await loadStatus(); }
+      else { toast(d.error || "삭제에 실패했습니다."); btn.disabled = false; }
+    } catch (e) { toast("서버 오류로 삭제에 실패했습니다."); btn.disabled = false; }
+  });
 
   /* [260803] 요약·토론 정리본 버튼 상태 표시 — 이미 생성됐음을 라벨로 알려 중복 실행 혼동 방지
      (재실행은 갱신 처리라 안전하지만, 완료 여부가 버튼에 남아야 불필요한 반복 클릭이 줄어든다) */
@@ -601,6 +641,7 @@
     if (btn) btn.textContent = on ? "강사 로그아웃" : "강사 로그인";
     var db = $("docsBtn");
     if (db) db.style.display = on ? "" : "none";
+    renderSubmitNames(); // [260831] 인증 상태 변화 시 제출 명단·삭제 표시 갱신
   }
 
   async function detectAdmin() {
@@ -621,7 +662,7 @@
     if (!sessionToken()) return;
     try {
       var d = await api("/api/me");
-      if (d && d.user && d.user.isAdmin) { state.isAdmin = true; $("adminBox").classList.add("on"); var db = $("docsBtn"); if (db) db.style.display = ""; }
+      if (d && d.user && d.user.isAdmin) { state.isAdmin = true; $("adminBox").classList.add("on"); var db = $("docsBtn"); if (db) db.style.display = ""; renderSubmitNames(); }
     } catch (e) { /* 게스트 */ }
   }
 
