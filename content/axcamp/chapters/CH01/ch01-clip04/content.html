@@ -468,8 +468,8 @@
 </div>
 <div class="memo-box">
 <strong>✍ 한 줄 메모</strong> — 가장 크게 와닿는 카드 번호 1개와, 그렇게 느낀 우리 팀의 장면을 한 줄로 적어 보세요.<br/>
-<textarea placeholder="예) 카드 2 — 지난주 보고서 초안을 AI로 만들었는데 검증 기준이 없어 그대로 올라갈 뻔했다" rows="2" style="width:100%;margin-top:8px;padding:10px 12px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font-size:1rem;line-height:1.6;resize:vertical;box-sizing:border-box;"></textarea>
-<div style="margin-top:6px;font-size:.9rem;color:var(--text-secondary,#667085);">이 메모는 CH02 팀 토론 Round 1의 첫 발언 소재로 사용합니다.</div>
+<textarea data-shock-memo="" placeholder="예) 카드 2 — 지난주 보고서 초안을 AI로 만들었는데 검증 기준이 없어 그대로 올라갈 뻔했다" rows="2" style="width:100%;margin-top:8px;padding:10px 12px;border:1px solid var(--border,#e4e7ec);border-radius:10px;font-size:1rem;line-height:1.6;resize:vertical;box-sizing:border-box;"></textarea>
+<div style="margin-top:6px;font-size:.9rem;color:var(--text-secondary,#667085);">이 메모는 CH02 팀 토론 Round 1의 첫 발언 소재로 사용합니다. 입력 내용은 이 브라우저에 자동 저장되어 다시 접속해도 유지됩니다.</div>
 </div>
 </div>
 </div>
@@ -635,6 +635,7 @@
             </button>
 </div>
 </div>
+<div style="margin-top:8px;font-size:.88rem;color:var(--text-secondary,#667085);">입력한 점수는 이 브라우저에 자동 저장됩니다 — CH05 회수표에서 오늘 결과를 다시 확인할 때 이 화면으로 돌아오면 됩니다.</div>
 </div>
 <div class="table-wrap">
 <table class="comparison-table">
@@ -950,6 +951,78 @@
       }
 
       restoreSavedStatuses();
+    }());
+  </script>
+<!-- [260831] 진단 입력 자동 저장(Shock Card 메모 + 리터러시 점수) — 브라우저 localStorage, 계정 키 방식은 위 체크리스트 스크립트와 동일. 복구(제거): 이 주석부터 아래 </script>까지와 memo-box textarea의 data-shock-memo 속성, 자동 저장 안내 문구 2곳 삭제 -->
+<script>
+    (function () {
+      var section = document.getElementById('ai-literacy-check');
+      var memo = document.querySelector('[data-shock-memo]');
+      if (!section && !memo) {
+        return;
+      }
+
+      var storageKey = 'ax_ch01_diag_inputs:' + encodeURIComponent((function(){try{return localStorage.getItem('ax_literacy_course_code')||'AXCAMP'}catch(e){return 'AXCAMP'}})()) + ':ch01-clip04:' + encodeURIComponent((function(){try{return localStorage.getItem('ax_literacy_account_id')||localStorage.getItem('ax_literacy_last_lets_id')||'guest'}catch(e){return 'guest'}})());
+      var selects = section ? section.querySelectorAll('[data-literacy-score]') : [];
+
+      function collect() {
+        var data = { memo: memo ? memo.value : '', scores: [] };
+        for (var i = 0; i < selects.length; i += 1) {
+          data.scores.push(selects[i].value);
+        }
+        return data;
+      }
+
+      function save() {
+        try {
+          window.localStorage.setItem(storageKey, JSON.stringify(collect()));
+        } catch (error) {}
+      }
+
+      function restore() {
+        var raw = null;
+        try {
+          raw = window.localStorage.getItem(storageKey);
+        } catch (error) {}
+        if (!raw) {
+          return;
+        }
+        try {
+          var data = JSON.parse(raw);
+          if (memo && typeof data.memo === 'string' && data.memo !== '') {
+            memo.value = data.memo;
+          }
+          var restored = false;
+          if (data.scores && data.scores.length) {
+            for (var i = 0; i < selects.length && i < data.scores.length; i += 1) {
+              if (data.scores[i] !== '' && data.scores[i] != null) {
+                selects[i].value = data.scores[i];
+                restored = true;
+              }
+            }
+          }
+          if (restored && section) {
+            var calcButton = section.querySelector('[data-literacy-calc]');
+            if (calcButton) {
+              calcButton.click();
+            }
+          }
+        } catch (error) {}
+      }
+
+      if (memo) {
+        memo.addEventListener('input', save);
+      }
+      for (var i = 0; i < selects.length; i += 1) {
+        selects[i].addEventListener('change', save);
+      }
+      var resetButton = section ? section.querySelector('[data-literacy-reset]') : null;
+      if (resetButton) {
+        resetButton.addEventListener('click', function () {
+          window.setTimeout(save, 0);
+        });
+      }
+      restore();
     }());
   </script>
 <div class="clip-nav-footer"><a class="clip-nav-btn" href="#ch00-clip01">← 리더십 향상 with AI: 오늘의 여정과 학습 준비</a><a class="clip-nav-btn" href="#ch01-clip01">AI 트렌드 →</a></div></section>

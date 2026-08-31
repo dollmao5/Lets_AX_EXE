@@ -173,7 +173,7 @@ AI Challenge는 팀의 30일 AI 협업 시범 운영안을 AI에게 일부러 �
 
 AI Challenge 프롬프트필수 · 펼쳐 보기
 
-복붙형ChatGPT 새 대화30일 시범 운영의 Go·Modify·Hold 점검프롬프트만 복사
+복붙형ChatGPT 새 대화30일 시범 운영의 Go·Modify·Hold 점검프롬프트 12줄프롬프트만 복사
 
 📎 입력 필수 · 30일 AI 협업 시범 운영안 초안 붙여넣기 — 아래 [📋 나의 Canvas+AI Challenge 프롬프트 한 번에 복사] 버튼으로 프롬프트와 함께 복사
 
