@@ -120,12 +120,13 @@ Round 1에서 내가 제출한 내용(우선)과 팀 공통 합의를 합친 개
 팀
 이름
 불러오기
-복사
+📋 복사
 .md 다운로드
 
 팀·이름 입력 후 불러오기를 누르세요. (Round 1 제출자만 조회됩니다)
 
 📄 미리보기
+📋 전체 복사아래 내용 전체가 복사됩니다 — 드래그로 선택할 필요 없습니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 

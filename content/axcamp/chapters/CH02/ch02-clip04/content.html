@@ -907,11 +907,12 @@
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
 <strong style="min-width:76px;">Round 1</strong>
 <span data-c2m-status style="font-size:.92rem;color:var(--text-secondary,#667085);">아직 불러오지 않았습니다.</span>
-<button type="button" data-c2m-copy style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
+<button type="button" data-c2m-copy style="min-height:36px;padding:6px 16px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;display:none;">📋 복사</button>
 <button type="button" data-c2m-download style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
 </div>
 <details data-c2m-view style="display:none;margin:8px 0 0;">
 <summary style="cursor:pointer;font-size:.92rem;font-weight:800;color:#0f7b6c;">📄 미리보기</summary>
+<div style="margin:8px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px;"><button type="button" data-c2m-copy2 style="min-height:36px;padding:6px 16px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;">📋 전체 복사</button><span style="font-size:.85rem;color:var(--text-secondary,#667085);">아래 내용 전체가 복사됩니다 — 드래그로 선택할 필요 없습니다.</span></div>
 <div data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></div>
 </details>
 </div>
@@ -919,11 +920,12 @@
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
 <strong style="min-width:76px;">Round 2</strong>
 <span data-c2m-status style="font-size:.92rem;color:var(--text-secondary,#667085);">아직 불러오지 않았습니다.</span>
-<button type="button" data-c2m-copy style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">복사</button>
+<button type="button" data-c2m-copy style="min-height:36px;padding:6px 16px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;display:none;">📋 복사</button>
 <button type="button" data-c2m-download style="min-height:36px;padding:6px 14px;border:1px solid var(--border,#e4e7ec);border-radius:999px;background:#fff;font:inherit;font-weight:700;cursor:pointer;display:none;">.md 다운로드</button>
 </div>
 <details data-c2m-view style="display:none;margin:8px 0 0;">
 <summary style="cursor:pointer;font-size:.92rem;font-weight:800;color:#0f7b6c;">📄 미리보기</summary>
+<div style="margin:8px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px;"><button type="button" data-c2m-copy2 style="min-height:36px;padding:6px 16px;border:1px solid #0f7b6c;border-radius:999px;background:#0f7b6c;color:#fff;font:inherit;font-weight:800;cursor:pointer;">📋 전체 복사</button><span style="font-size:.85rem;color:var(--text-secondary,#667085);">아래 내용 전체가 복사됩니다 — 드래그로 선택할 필요 없습니다.</span></div>
 <div data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></div>
 </details>
 </div>
@@ -947,6 +949,7 @@ var dlBtn=row.querySelector('[data-c2m-download]');
 var statusEl=row.querySelector('[data-c2m-status]');
 var bodyEl=row.querySelector('[data-c2m-body]');
 var viewEl=row.querySelector('[data-c2m-view]');
+var copyBtn2=row.querySelector('[data-c2m-copy2]');if(copyBtn2)copyBtn2.addEventListener('click',function(){copyBtn.click();});
 function setStatus(m,err){statusEl.textContent=m;statusEl.style.color=err?'#c00000':'var(--text-secondary,#667085)';}
 loadBtn.addEventListener('click',function(){
 var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
@@ -960,7 +963,7 @@ if(!d.ok){viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.d
 rawMd=d.canvas2.markdown;if(window.axMdPreview){bodyEl.innerHTML=window.axMdPreview(rawMd);}else{bodyEl.textContent=rawMd;}viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus('불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
+setStatus('불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [📋 복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다.',true);});
 });

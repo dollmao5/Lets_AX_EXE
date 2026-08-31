@@ -184,17 +184,19 @@ Round 2 불러오기
 
 **Round 1**
 아직 불러오지 않았습니다.
-복사
+📋 복사
 .md 다운로드
 
 📄 미리보기
+📋 전체 복사아래 내용 전체가 복사됩니다 — 드래그로 선택할 필요 없습니다.
 
 **Round 2**
 아직 불러오지 않았습니다.
-복사
+📋 복사
 .md 다운로드
 
 📄 미리보기
+📋 전체 복사아래 내용 전체가 복사됩니다 — 드래그로 선택할 필요 없습니다.
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
