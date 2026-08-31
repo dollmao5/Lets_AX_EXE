@@ -912,7 +912,7 @@
 </div>
 <details data-c2m-view style="display:none;margin:8px 0 0;">
 <summary style="cursor:pointer;font-size:.92rem;font-weight:800;color:#0f7b6c;">📄 미리보기</summary>
-<pre data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+<div data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></div>
 </details>
 </div>
 <div data-c2m-round="round2" style="margin-top:10px;padding-top:10px;border-top:1px dashed #a7d3c9;">
@@ -924,7 +924,7 @@
 </div>
 <details data-c2m-view style="display:none;margin:8px 0 0;">
 <summary style="cursor:pointer;font-size:.92rem;font-weight:800;color:#0f7b6c;">📄 미리보기</summary>
-<pre data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></pre>
+<div data-c2m-body style="margin:8px 0 0;padding:14px;border:1px solid var(--border,#e4e7ec);border-radius:12px;background:#fff;white-space:pre-wrap;max-height:300px;overflow:auto;font-size:.95rem;line-height:1.5;"></div>
 </details>
 </div>
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" style="display:none" onload="(function(px){
@@ -940,6 +940,7 @@ fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d)
 box.querySelectorAll('[data-c2m-load]').forEach(function(loadBtn){
 var ROUND=loadBtn.getAttribute('data-c2m-load');
 var LABEL=ROUND==='round1'?'Round 1':'Round 2';
+var rawMd='';
 var row=box.querySelector('[data-c2m-round=&quot;'+ROUND+'&quot;]');
 var copyBtn=row.querySelector('[data-c2m-copy]');
 var dlBtn=row.querySelector('[data-c2m-download]');
@@ -956,7 +957,7 @@ fetch('/api/wrapup/canvas2?round='+ROUND+'&amp;team='+team+'&amp;name='+encodeUR
 .then(function(d){
 loadBtn.disabled=false;
 if(!d.ok){viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
-bodyEl.textContent=d.canvas2.markdown;viewEl.style.display='block';viewEl.open=false;
+rawMd=d.canvas2.markdown;if(window.axMdPreview){bodyEl.innerHTML=window.axMdPreview(rawMd);}else{bodyEl.textContent=rawMd;}viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
 setStatus('불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
@@ -964,13 +965,13 @@ setStatus('불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' 
 .catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다.',true);});
 });
 copyBtn.addEventListener('click',function(){
-var text=bodyEl.textContent||'';
+var text=rawMd||bodyEl.textContent||'';
 function done(ok){setStatus(ok?LABEL+' 내용 복사 완료 — ChatGPT에 붙여넣으세요.':'복사 실패 — 내용을 드래그해 복사해 주세요.',!ok);}
 if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true);},function(){done(false);});}else{done(false);}
 });
 dlBtn.addEventListener('click',function(){
 var name=(nameEl.value||'').trim()||'이름';
-var blob=new Blob([bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
+var blob=new Blob([rawMd||bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
 var a=document.createElement('a');a.href=URL.createObjectURL(blob);
 a.download=LABEL.replace(' ','')+'_토론정리본_'+name+'.md';
 document.body.appendChild(a);a.click();a.remove();

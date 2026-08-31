@@ -73,6 +73,28 @@ if (STATIC_MODE && typeof window !== "undefined" && typeof window.fetch === "fun
     return nativeFetch(remoteUrl, init);
   };
 }
+
+/* [260831] 토론 정리본 '미리보기'용 초경량 마크다운 표시기 — 1차수 피드백 반영.
+   불러오기 위젯(2-3·2-3b·2-4·3-1b)의 미리보기에 마크다운 원문 기호(##·**·-)가 그대로 노출되어
+   "깨져 보인다"는 피드백 → 화면 표시만 서식으로 변환한다. [복사]/[.md 다운로드]는 계속 원문 사용.
+   위젯은 window.axMdPreview가 없으면 textContent(원문)로 폴백한다. 복구(제거): 이 함수 삭제. */
+window.axMdPreview = function (md) {
+  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const inline = (s) => esc(s).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  return String(md || "").split(/\r?\n/).map((line) => {
+    const t = line.trim();
+    if (t === "") return '<div style="height:8px"></div>';
+    if (/^-{3,}$/.test(t)) return '<hr style="border:none;border-top:1px dashed #cbd5e1;margin:10px 0">';
+    if (t.startsWith("### ")) return '<div style="font-weight:800;margin:10px 0 2px">' + inline(t.slice(4)) + "</div>";
+    if (t.startsWith("## ")) return '<div style="font-weight:800;font-size:1.04em;margin:12px 0 3px;padding-bottom:2px;border-bottom:1px solid #e4e7ec">' + inline(t.slice(3)) + "</div>";
+    if (t.startsWith("# ")) return '<div style="font-weight:900;font-size:1.08em;margin:2px 0 6px">' + inline(t.slice(2)) + "</div>";
+    if (t.startsWith("> ")) return '<div style="color:#667085;padding-left:10px;border-left:3px solid #e4e7ec;margin:2px 0">' + inline(t.slice(2)) + "</div>";
+    if (/^[-*] /.test(t)) return '<div style="padding-left:16px;text-indent:-12px;margin:2px 0">• ' + inline(t.slice(2)) + "</div>";
+    if (/^\d+\. /.test(t)) return '<div style="padding-left:16px;margin:2px 0">' + inline(t) + "</div>";
+    return "<div>" + inline(line) + "</div>";
+  }).join("");
+};
+
 const QUICK_EDITABLE_TAGS = new Set([
   "div",
   "h1",
