@@ -1472,10 +1472,10 @@ if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(
 <details style="margin:12px 0 4px;border:1px solid #f59e0b;border-radius:12px;background:#fff7ed;">
 <summary style="cursor:pointer;padding:10px 16px;font-weight:800;color:#92400e;">🧪 선택 실습 — 나만의 프롬프트 자동생성기 만들기 <span style="font-weight:600;font-size:.88rem;">(선택 · 약 10분 · 무료 계정 가능)</span></summary>
 <div style="padding:0 16px 12px;">
-<p style="margin:8px 0 6px;font-size:.95rem;">확장 프로그램을 설치하지 않아도 됩니다. 오늘 배운 <strong>설정형 첫 메시지 한 번</strong>이면 ChatGPT 자체가 프롬프트 생성기가 됩니다 — 목적과 아이디어만 주면 구조화된 프롬프트를 만들어 주는 방식입니다.</p>
+<p style="margin:8px 0 6px;font-size:.95rem;">확장 프로그램을 설치하지 않아도 됩니다. 오늘 배운 <strong>설정형 첫 메시지 한 번</strong>이면 ChatGPT 자체가 프롬프트 생성기가 됩니다 — 목적과 아이디어만 주면 구조화된 프롬프트를 만들어 주는 방식입니다. 이렇게 프롬프트를 만들어 주는 프롬프트를 <strong>메타 프롬프트(Meta-Prompt)</strong>라고 부릅니다.</p>
 <div style="margin:10px 0 4px;font-weight:800;color:#92400e;">① 생성기 만들기 — 아래 지침을 ChatGPT 새 대화의 첫 메시지로 붙여넣기</div>
 <div class="prompt-block">
-<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> <span class="tool-badge" title="ChatGPT에서 새 대화를 열고 시작합니다.">ChatGPT 새 대화</span> 프롬프트 자동생성기 역할 지침</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 19줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 19줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-promptgen-instruction')">복사</button></span></div>
+<div class="prompt-header"><span class="prompt-label"><span class="prompt-mode-badge" title="새 채팅의 첫 메시지(역할 지침)로 붙여넣습니다.">설정형</span> <span class="tool-badge" title="ChatGPT에서 새 대화를 열고 시작합니다.">ChatGPT 새 대화</span> 프롬프트 자동생성기 역할 지침</span><span style="display:inline-flex;align-items:center;gap:8px;"><span class="prompt-lines-chip" title="[복사]를 누르면 이 프롬프트 20줄 전체가 복사됩니다 — 내용을 읽지 않아도 됩니다" style="font-size:.85rem;font-weight:800;color:var(--text-secondary,#667085);white-space:nowrap;">프롬프트 20줄</span><button class="copy-btn" onclick="copyPrompt(this,'ch02-4-promptgen-instruction')">복사</button></span></div>
 <!-- [HIDDEN 260831] 프롬프트 '내용 보기' 접이식 제외 — 본문은 숨김 보존([복사] 전체 복사 동작 유지). 복구: 이 div를 details/summary(내용 보기)로 원복 --><div class="prompt-collapse" style="display:none" aria-hidden="true"><div class="prompt-content" id="ch02-4-promptgen-instruction">당신은 프롬프트 엔지니어입니다. 제가 간단한 요청을 주면, ChatGPT에 바로 쓸 수 있는 구조화된 프롬프트로 확장해 주세요.
 
 ## 제가 드릴 입력 3가지
@@ -1486,6 +1486,7 @@ if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(
 ## 프롬프트 작성 규칙
 - 아래 6가지를 갖춘 프롬프트 1개를 작성합니다.
   ① 역할(Persona) ② 맥락(Context) ③ 과업(Task) ④ 산출물 형식(Format) ⑤ 평가 기준(3개 이내) ⑥ 주의사항
+- 사용자가 채워야 할 부분이 남으면 [주제], [대상]처럼 대괄호 변수로 표시해 주세요.
 - 완성된 프롬프트는 바로 복사할 수 있게 마크다운 코드블록 하나에 담아 주세요.
 - 짧은 요청으로 충분한 일을 길게 늘리지 마세요 — 과업에 필요한 만큼만 씁니다.
 - 제 입력에 회사 기밀·실명·개인정보가 있으면 일반 표현으로 바꿔 주세요.
@@ -1496,6 +1497,17 @@ if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(
 
 준비되었으면 "준비 완료 — 목적 / 아이디어 / 대상·상황을 알려주세요."라고만 답해 주세요.</div></div>
 </div>
+<div style="margin:10px 0 4px;font-weight:800;color:#92400e;">💡 외우기 쉽게: CRAFT 프레임워크</div>
+<p style="margin:4px 0 6px;font-size:.92rem;">생성기가 만들어 주는 구조는 실무에서 <strong>CRAFT</strong>라는 이름으로 널리 쓰입니다 — 오늘 배운 원칙(Persona·Context·Format)을 외우기 쉽게 묶은 것입니다. 생성기 없이 직접 프롬프트를 쓸 때 체크리스트로 활용하세요.</p>
+<div class="table-wrap"><table class="comparison-table" style="font-size:.92rem;">
+<thead><tr><th>CRAFT</th><th>뜻</th><th>생성기 출력의 해당 항목</th><th>예시</th></tr></thead>
+<tbody>
+<tr><td><strong>C</strong>ontext</td><td>맥락</td><td>② 맥락</td><td>"주간회의가 길고 공유 위주라 결정이 잘 안 남는 상황"</td></tr>
+<tr><td><strong>R</strong>ole</td><td>역할</td><td>① 역할</td><td>"당신은 10년 차 회의 퍼실리테이터입니다"</td></tr>
+<tr><td><strong>A</strong>ction</td><td>작업</td><td>③ 과업</td><td>"30분 안에 끝나는 회의 운영안을 단계별로 설계하세요"</td></tr>
+<tr><td><strong>F</strong>ormat</td><td>형식</td><td>④ 산출물 형식</td><td>"안건·시간·결정 방식 3열 표로 작성"</td></tr>
+<tr><td><strong>T</strong>arget·제약</td><td>대상·제약</td><td>⑤ 평가 기준 · ⑥ 주의사항</td><td>"팀원 8명 대상 · 새 도구 도입 제안은 제외"</td></tr>
+</tbody></table></div>
 <div style="margin:10px 0 4px;font-weight:800;color:#92400e;">② 내 업무 입력하기 — 목적·아이디어·대상 세 줄</div>
 <p style="margin:6px 0;font-size:.95rem;">내 팀에서 <strong>반복되는 실제 업무 하나</strong>를 골라 목적 / 아이디어·초안 / 대상·상황 세 줄로 입력하세요. 확인 질문이 오면 최대 2개까지만 답하면 됩니다. 마땅한 소재가 떠오르지 않으면 아래 예시를 그대로 붙여넣어 보세요.</p>
 <div class="prompt-block">
@@ -1505,7 +1517,8 @@ if(collapseBtn){collapseBtn.addEventListener('click',function(){details.forEach(
 대상·상황: 팀원 8명, 매주 월요일 오전 주간회의에 적용</div></div>
 </div>
 <div style="margin:10px 0 4px;font-weight:800;color:#92400e;">③ 실행하고 비교하기</div>
-<ul style="margin:4px 0 8px;padding-left:20px;font-size:.95rem;"><li style="margin:4px 0;">생성기가 만들어 준 구조화 프롬프트를 복사해 <strong>또 다른 새 대화</strong>에 붙여넣고 실행해 보세요.</li><li style="margin:4px 0;">같은 요청을 <strong>"주간회의 개선안 만들어줘"</strong>처럼 한 줄로만 물었을 때의 결과와 비교해 보세요 — 역할·대상·산출물 형식·평가 기준이 결과 품질을 어떻게 바꾸는지 체감하는 것이 이 실습의 목표입니다.</li><li style="margin:4px 0;">두 결과의 차이 중 가장 크게 느낀 것 1가지를 한 줄로 메모해 두세요 — 현업에서 생성기를 쓸지 판단하는 나만의 근거가 됩니다.</li></ul>
+<ul style="margin:4px 0 8px;padding-left:20px;font-size:.95rem;"><li style="margin:4px 0;">생성기가 만들어 준 구조화 프롬프트를 복사해 <strong>또 다른 새 대화</strong>에 붙여넣고 실행해 보세요 — 생성 대화의 맥락이 실제 답변에 섞이지 않게 하기 위해서입니다. [대괄호] 부분이 있으면 내 상황에 맞게 채워 넣습니다.</li><li style="margin:4px 0;">같은 요청을 <strong>"주간회의 개선안 만들어줘"</strong>처럼 한 줄로만 물었을 때의 결과와 비교해 보세요 — 역할·대상·산출물 형식·평가 기준이 결과 품질을 어떻게 바꾸는지 체감하는 것이 이 실습의 목표입니다.</li><li style="margin:4px 0;">두 결과의 차이 중 가장 크게 느낀 것 1가지를 한 줄로 메모해 두세요 — 현업에서 생성기를 쓸지 판단하는 나만의 근거가 됩니다.</li><li style="margin:4px 0;">결과가 아쉬우면 생성기 대화로 돌아가 “제약 조건에 ○○을 추가해줘”처럼 요청해 프롬프트를 다듬은 뒤 다시 실행해 보세요(튜닝).</li></ul>
+<div style="margin:6px 0 4px;font-size:.93rem;">💾 <strong>자산화:</strong> 완성된 프롬프트는 메모장이나 개인 프롬프트 보관함에 저장해 두세요 — 같은 반복 업무마다 다시 쓰는 나만의 자산이 됩니다.</div>
 <div style="margin:8px 0 4px;padding:10px 14px;border:1px solid #f59e0b;border-radius:10px;background:#fef3c7;font-size:.93rem;">🛍️ <strong>직접 만들기 번거롭다면:</strong> 위 사용 경로 ②의 <strong>GPT 스토어</strong> 프롬프트 도우미 GPT도 같은 원리입니다. 무료 계정으로도 쓸 수 있지만(사용량 제한 있음) GPT마다 품질 편차가 있으니, 결과는 오늘 배운 원칙으로 점검하세요.</div>
 </div>
 </details>
