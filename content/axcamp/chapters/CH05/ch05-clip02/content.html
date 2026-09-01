@@ -715,7 +715,7 @@
 <div class="clip-badges">
 <span class="clip-badge time">~20분</span>
 <span class="clip-badge chapter">CH 05</span>
-<span class="clip-badge type-overview">실천·성찰</span>
+<span class="clip-badge type-action">실천·성찰</span><!-- [260901] 스타일 블록에 정의된 type-action 배지 적용(구 type-overview는 미적용 상태였음) -->
 </div>
 <h1 class="clip-title" data-keep-title="">마무리: Start · Stop · Continue</h1>
 </div>
@@ -723,7 +723,7 @@
     CH04의 30일 실행계획을 바탕으로 Start·Stop·Continue를 한 가지씩 정하고, 복귀 후 팀원에게 ‘확정안’이 아니라 검증할 가설로 설명하고 함께 조정합니다.<br/><br/>
     작성한 계획은 브라우저에 자동 저장되며, 완성 후 Markdown 파일로 반드시 내려받아 보관합니다(필수 산출물).</div>
 <!-- 260622 learning focus: performance + AI -->
-<div class="phase-banner">❶ 개요 <span class="phase-sub">— Start·Stop·Continue의 의미</span></div>
+<div class="phase-banner">❶ 개요 <span class="phase-sub">— CH04 실행계획에서 가져오기</span></div><!-- [260901] phase-sub 라벨 정정: 'SSC의 의미' 섹션은 ❷에 위치 -->
 <div class="clip-section">
 <div class="clip-section-title">이번 클립에서 함께 배우는 두 가지</div>
 <div class="clip-section-content">
@@ -746,11 +746,11 @@
 </div>
 <div class="info-block">
 <div class="info-block-title">파일이 보이지 않는 경우</div>
-<div>파일이 없어도 아래 실천계획은 작성할 수 있지만, <a href="#ch05-clip01">정리정돈: 배움에서 현업 자산으로</a>의 산출물 회수표에서 CH04 30일 실행계획의 파일명·저장 위치를 먼저 회수하는 것을 권장합니다.</div>
+<div>파일이 없어도 아래 실천계획은 작성할 수 있지만, <a href="#ch05-clip01">정리정돈: 배움에서 현업 자산으로</a>의 산출물 회수표에서 CH04 30일 실행계획의 파일명·저장 위치를 먼저 회수하는 것을 권장합니다.<div data-c502-ch04-location="" style="display:none;margin-top:6px;font-weight:700;color:#0f7b6c;"></div></div>
 </div>
 </div>
 </div>
-<div class="phase-banner">❷ 작성 <span class="phase-sub">— 실천계획·실천 약속</span></div>
+<div class="phase-banner">❷ 작성 <span class="phase-sub">— SSC의 의미와 실천계획·실천 약속</span></div>
 <div class="clip-section">
 <div class="clip-section-title">Start / Stop / Continue의 의미</div>
 <div class="clip-section-content">
@@ -909,6 +909,7 @@
 </div>
 <button class="action-btn" data-c502-build-commitment="" type="button">SSC로 초안 만들기</button>
 </div>
+<div style="margin-top:6px;font-size:.9rem;color:var(--text-secondary,#667085);">초안은 시작점입니다 — <strong>팀원 앞에서 말할 수 있는 길이로 직접 다듬으세요.</strong></div>
 </div>
 </div>
 <div aria-live="polite" class="save-panel">
@@ -917,10 +918,10 @@
 <div class="save-message">다른 기기에서도 사용하려면 Markdown 파일을 반드시 내려받아 보관합니다.</div>
 </div>
 <div class="action-row">
-<button class="action-btn" data-c502-save="" type="button">지금 저장</button>
+<span class="output-file-badge" style="padding:4px 10px;border-radius:999px;">저장 파일(필수·개인 보관용, 별도 제출 불필요) · CH05_나의_30일리더실천계획_성명.md</span><!-- [260901] 배지를 버튼 앞으로 이동 — [입력 초기화] 옆에서 버튼으로 오인되던 배치 교정(5-1과 순서 통일) --><button class="action-btn" data-c502-save="" type="button">지금 저장</button>
 <button class="action-btn" data-c502-copy="" type="button">계획 복사</button>
 <button class="action-btn primary" data-c502-download="" type="button">실천계획 다운로드</button>
-<button class="action-btn" data-c502-reset="" type="button">입력 초기화</button><span class="output-file-badge" style="padding:4px 10px;border-radius:999px;">저장 파일(필수·개인 보관용, 별도 제출 불필요) · CH05_나의_30일리더실천계획_성명.md</span>
+<button class="action-btn" data-c502-reset="" type="button">입력 초기화</button>
 </div>
 </div>
 <div class="phase-banner">❸ 마무리 <span class="phase-sub">— 과정 종료 전 최종 확인</span></div>
@@ -1224,6 +1225,9 @@
       var sourceFields=clip01&amp;&amp;clip01.fields?clip01.fields:{};
       var nameField=getField('participantName');
       if(nameField&amp;&amp;!nameField.value&amp;&amp;sourceFields.participantName){nameField.value=sourceFields.participantName;}
+      /* [260901] 5-1 회수표에 적은 CH04 실행계획 위치를 이어받아 표시 — 재입력 없이 파일을 찾게 함 */
+      var locEl=document.querySelector('[data-c502-ch04-location]');
+      if(locEl&amp;&amp;sourceFields.locationCh04){locEl.style.display='block';locEl.textContent='📁 5-1 회수표에 입력한 위치: '+sourceFields.locationCh04;}
     }
 
     function restore(){
@@ -1245,8 +1249,8 @@
       var start=getValue('startAction')||'새로운 리더 행동을 시작합니다';
       var stop=getValue('stopAction')||'성과를 방해하는 습관을 멈춥니다';
       var keep=getValue('continueAction')||'효과적인 리더 행동을 계속합니다';
-      var evidence=getValue('startEvidence')||getValue('continueEvidence')||'30일 후 변화를 증거로 확인합니다';
-      return '나는 다음 30일 동안 START: '+start+' / STOP: '+stop+' / CONTINUE: '+keep+'를 실천하고, '+evidence+'라는 증거로 변화를 확인하겠습니다.';
+      /* [260901] 초안 문장 단순화 — 구 형식(START:/STOP:/CONTINUE:+증거 나열)은 200자 넘는 기계적 문장이 되어 '공유할 수 있는 한 문장' 레이블과 어긋남. 증거는 SSC 각 항목에 이미 기록됨 */
+      return '나는 다음 30일 동안 '+start+'을(를) 시작하고, '+stop+'을(를) 멈추며, '+keep+'을(를) 계속하겠습니다.';
     }
 
     function buildMarkdown(){
@@ -1256,6 +1260,7 @@
       lines.push('');
       lines.push('- 성명: '+name);
       lines.push('- 저장 시각: '+new Date().toLocaleString('ko-KR'));
+      lines.push('- 30일 점검 예정일(자동 계산): '+new Date(Date.now()+30*864e5).toLocaleDateString('ko-KR'));
       lines.push('');
       lines.push('## 1. 현업 적용 초점 출처');
       lines.push('- CH04 「CH04_우리팀_성장역량향상_30일실행계획_성명.md」(1부 근거 정리표 · 2부 핵심 실행과제 TOP 3 · 3부 주차별 계획)를 참조해 아래 Start·Stop·Continue를 작성했습니다.');

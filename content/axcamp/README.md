@@ -21,6 +21,7 @@
 
 - 사이드바 표시 제목은 `visible-catalog-overrides.json`의 짧은 제목, 본문 헤더는 원본 긴 제목을 유지한다 (KEEP-ORIGINAL-TITLE 원칙).
 - 클립 폴더 id와 화면 route id는 다를 수 있으며(canonical/visible 매핑) 이는 의도된 설계다.
+- **CH01 표시 순서 주의**: 진단 클립(폴더상 ch01-clip04)이 화면에서는 CH01 첫 클립으로 나온다 — 표시 순서는 `scripts/compiler.js`의 블루프린트 회전이 결정하며, `chapter.json`·`export-report.json`의 배열 순서(진단이 마지막)는 폴더 목록일 뿐이다. "가이드가 틀렸다"고 오판해 되돌리지 말 것 (2026-08-26 결정).
 
 ## Structure
 

@@ -407,7 +407,7 @@
 <div style="margin:10px 0 0;font-size:.95rem;color:var(--text-secondary,#667085);">⏱ 진행 배분 — Shock Card 3분 · QuizN 퀴즈 9분 · 자가진단 6분 (전환 여유 2분)</div>
 <!-- [ENRICHMENT 2026-07-25] 강사 도입 자료 블록(핵심 요약 포함). 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 (scripts/remove-enrichment.mjs 사용 가능) -->
 <details class="intro-collapse" style="margin:14px 0 18px;border:2px solid #4f46e5;border-left-width:8px;border-radius:16px;background:#eef2ff;">
-<summary style="cursor:pointer;padding:13px 20px;font-weight:800;font-size:1rem;color:#312e81;">🎬 생각 열기 — 실제 사례와 데이터</summary>
+<summary style="cursor:pointer;padding:13px 20px;font-weight:800;font-size:1rem;color:#312e81;">🎬 생각 열기 — 실제 사례와 데이터 <span style="float:right;font-size:.85rem;font-weight:800;color:#4338ca;">강사님 진행 · Shock Card 3분에 포함</span></summary>
 <div style="padding:0 20px 14px;">
 <div style="margin:10px 0 4px;font-weight:800;color:#312e81;">📊 Microsoft Work Trend Index 2025 — “The Year the Frontier Firm Is Born” (31개국 직장인 31,000명 조사)</div>
 <ul style="margin:4px 0 6px;padding-left:20px;"><li style="margin:5px 0;">리더 <strong>82%</strong> — “올해가 전략·운영을 재검토할 결정적 시점”</li><li style="margin:5px 0;">사람+AI 하이브리드 조직(Frontier Firm)의 리더 <strong>71%</strong>가 “회사가 번영 중” — 전체 평균 <strong>39%</strong>의 약 2배</li><li style="margin:5px 0;">AI 에이전트에 “매우 익숙”: 리더 <strong>67%</strong> vs 직원 <strong>40%</strong> — 팀 리터러시의 병목이자 지렛대는 리더</li></ul>
@@ -482,7 +482,8 @@
 <div>
           아래 퀴즈는 QuizN에서 별도로 진행합니다. 아래 URL을 클릭하여 응답해 주세요.<br/>
 <strong><a href="https://quizn.show/pbd/info/board/1071341" rel="noopener noreferrer" target="_blank">https://quizn.show/pbd/info/board/1071341</a></strong><br/>
-          팀장들이 QuizN에서 응답하고 결과를 공유한 뒤, 강사님의 가이드에 따라 <strong>정답보기</strong> 버튼 클릭 후 패스워드를 입력하면 정답과 해설을 확인할 수 있습니다.
+          팀장들이 QuizN에서 응답하고 결과를 공유한 뒤, 강사님의 가이드에 따라 <strong>정답보기</strong> 버튼 클릭 후 패스워드를 입력하면 정답과 해설을 확인할 수 있습니다.<br/>
+          문항은 아래 표에서 함께 읽되, <strong>응답은 QuizN에서</strong> 합니다(전체 응답 분포를 함께 보기 위함). QuizN 접속이 어려우면 손들기로 O/X 응답 후 [정답보기]로 진행합니다.
         </div>
 </div>
 <div class="table-wrap">
@@ -598,7 +599,7 @@
 </tr>
 <tr>
 <td>9</td>
-<td>GPTs 또는 맞춤형 AI 비서를 만들어본 적이 있다.</td>
+<td>GPT 스토어의 GPT를 골라 써 보거나, 역할 지침(시스템 프롬프트)을 저장해 나만의 AI 비서를 구성해본 적이 있다.</td><!-- [260901] 구 문항 'GPTs를 만들어본 적' — 개인 계정 신규 생성 불가 정책과 오늘 실습 행동(역할 지침 저장·GPT 스토어 활용)에 맞게 재기술 -->
 <td><select aria-label="9번 문항 점수" data-literacy-score="" onchange="this.closest('#ai-literacy-check').querySelector('[data-literacy-calc]').click();" oninput="this.closest('#ai-literacy-check').querySelector('[data-literacy-calc]').click();"><option value="">선택</option><option value="0">0점 · 거의 해본 적 없음</option><option value="1">1점 · 몇 번 해봄</option><option value="2">2점 · 반복 활용 중</option></select></td>
 </tr>
 <tr>
@@ -676,6 +677,8 @@
 <div class="clip-section-title">최종 확인 및 상태 저장</div>
 <div class="clip-section-content">
 <p class="final-check-intro">
+        ※ 위의 <strong>한 줄 메모와 진단 점수는 자동 저장</strong>됩니다 — 아래 완료 상태만 <strong>[상태 저장]</strong> 버튼이 필요합니다.
+        진단 결과 화면은 같은 브라우저에서 이 클립을 다시 열면 자동 복원되며, CH05 회수표에서 다시 확인합니다.<br/>
         클립에서 확인해야 할 핵심 산출물, 확인 기준, 개인 적용 포인트를 한 번에 점검합니다.
         각 항목별로 <strong>완료</strong> 또는 <strong>보완 필요</strong> 상태를 선택한 뒤 <strong>상태 저장</strong> 버튼을 클릭합니다.
         저장한 내용은 동일한 브라우저에서 다시 접속할 때 자동으로 불러옵니다.
@@ -777,6 +780,7 @@
     </div>
 </div>
 <script>
+    /* [260901] 이 클립의 저장 스크립트 2개는 일반 script 태그 실행에 의존함 — 렌더러가 innerHTML 주입 방식으로 바뀌면 CH00 방식(img onload 우회)으로 이관 필요 */
     (function () {
       var checklist = document.getElementById('final-checklist');
       if (!checklist) {

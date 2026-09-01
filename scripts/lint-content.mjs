@@ -59,8 +59,8 @@ for (const [clipKey, clipDir] of clipDirs) {
   const rawHtml = fs.readFileSync(path.join(clipDir, "content.html"), "utf8");
   const html = stripComments(rawHtml); // [HIDDEN] 주석 블록은 검사 제외
 
-  /* 1. 산출물 파일명 ↔ 원장 (260810: 하이픈 포함 — CH04_R1-3_… 검사 사각지대 해소) */
-  const mentions = html.match(/(CH[0-9]{2}_[A-Za-z가-힣0-9_\-]+\.(?:md|txt)|[0-9]+조_[A-Za-z가-힣0-9_\-]+\.(?:m4a|txt|mp3|wav))/g) || [];
+  /* 1. 산출물 파일명 ↔ 원장 (260810: 하이픈 포함 — CH04_R1-3_… 검사 사각지대 해소 / 260901: RoundN_ 접두 추가 — 라운드별 개인 정리본 검사) */
+  const mentions = html.match(/(CH[0-9]{2}_[A-Za-z가-힣0-9_\-]+\.(?:md|txt)|Round[0-9]_[A-Za-z가-힣0-9_\-]+\.md|[0-9]+조_[A-Za-z가-힣0-9_\-]+\.(?:m4a|txt|mp3|wav))/g) || [];
   for (const m of new Set(mentions)) {
     // 팀 파일은 조 번호를 1조 기준으로 정규화해 대조
     const normalized = m.replace(/^[0-9]+조_/, "1조_");
