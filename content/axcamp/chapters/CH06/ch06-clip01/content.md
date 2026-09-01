@@ -59,7 +59,7 @@ Agent
 
 AI 활용의 세 가지 모드(Chat → Build → Agent)를 이해하는 개념 틀입니다. 세 번째 **Agent** 모드가 현재 AI 기술의 **최전선**입니다.
 
-본과정 [1-2 「Assistant에서 Agentic AI로」](#ch01-clip02)의 로드맵과 연결하면 Chat≈Level 1(Assistant), Build≈Level 2(앱·자동화), Agent≈Level 3(Agentic Workflow)입니다.
+본과정 [1-3 「Assistant에서 Agentic AI로」](#ch01-clip02)의 로드맵과 연결하면 Chat≈Level 1(Assistant), Build≈Level 2(앱·자동화), Agent≈Level 3(Agentic Workflow)입니다.
 
 ## 핵심 개념 1 — 에이전트 루프 (Agent Loop)
 
