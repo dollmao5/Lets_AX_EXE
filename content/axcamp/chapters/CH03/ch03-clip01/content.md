@@ -25,7 +25,7 @@ CH 03
 
 - 시사점: AI 효과가 가장 커지는 곳은 개인의 손이 아니라 **팀의 일하는 방식 안**
 
-[공동 저자 Ethan Mollick의 해설 보기 (영어) →](https://www.oneusefulthing.org/p/the-cybernetic-teammate) · [[한글 번역 보기]](https://www-oneusefulthing-org.translate.goog/p/the-cybernetic-teammate?_x_tr_sl=en&_x_tr_tl=ko&_x_tr_hl=ko)
+[공동 저자 Ethan Mollick의 해설 보기 (영어) →](https://www.oneusefulthing.org/p/the-cybernetic-teammate)
 
 🧭 사례 2 — Google re:Work: Project Aristotle (180개 팀 연구)
 
@@ -33,7 +33,7 @@ CH 03
 
 - Step 2에서 사용하는 **팀 효과성 3요인**(심리적 안전감·상호 신뢰·구조와 명확성)의 원전 — 원 연구는 5요인
 
-[가이드 원문 보기 (영어) →](https://rework.withgoogle.com/intl/en/guides/understand-team-effectiveness) · [[한글 번역 보기]](https://rework-withgoogle-com.translate.goog/intl/en/guides/understand-team-effectiveness?_x_tr_sl=en&_x_tr_tl=ko&_x_tr_hl=ko)
+[가이드 원문 보기 (영어) →](https://rework.withgoogle.com/intl/en/guides/understand-team-effectiveness)
 
 🌐 영어 페이지는 크롬·엣지에서 **우클릭 → "한국어(으)로 번역"**을 누르면 한글로 볼 수 있습니다.
 

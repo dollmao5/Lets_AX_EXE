@@ -32,9 +32,9 @@ CH 02
 
 - 잘 쓰는 두 패턴: **켄타우로스**(일을 나눠 위임) vs **사이보그**(업무 흐름에 통합)
 
-[연구 요약 보기 (영어) →](https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/) · [[한글 번역 보기]](https://aiinstitute-hbs-edu.translate.goog/navigating-the-jagged-technological-frontier/?_x_tr_sl=en&_x_tr_tl=ko&_x_tr_hl=ko)
+[연구 요약 보기 (영어) →](https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/)
 
-[원 논문 — Dell'Acqua 외, HBS Working Paper 24-013 (2023) →](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700) · [[한글 번역 보기]](https://www-hbs-edu.translate.goog/faculty/Pages/item.aspx?num=64700&_x_tr_sl=en&_x_tr_tl=ko&_x_tr_hl=ko)
+[원 논문 — Dell'Acqua 외, HBS Working Paper 24-013 (2023) →](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)
 
 🌐 영어 페이지는 크롬·엣지에서 **우클릭 → "한국어(으)로 번역"**을 누르면 한글로 볼 수 있습니다.
 
