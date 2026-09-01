@@ -34,9 +34,7 @@ CH 01
 
 - AI 에이전트에 “매우 익숙”: 리더 **67%** vs 직원 **40%** — 팀 리터러시의 병목이자 지렛대는 리더
 
-[리포트 원문 보기 (영어) →](https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born)
-
-🌐 영어 페이지는 크롬·엣지에서 **우클릭 → "한국어(으)로 번역"**을 누르면 한글로 볼 수 있습니다.
+[리포트 원문 보기 (영어) →](https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born) · 🌐 영어 페이지는 크롬·엣지에서 **우클릭 → "한국어(으)로 번역"**을 누르면 한글로 볼 수 있습니다.
 
 🎯 **왜 이 자료인가:** 준비된 리더와 조직의 격차가 이미 수치로 나타나고 있습니다 — 이 클립에서 먼저 내 수준을 진단합니다.
 
