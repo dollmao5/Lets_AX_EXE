@@ -3932,6 +3932,10 @@ async function openClip(clipKey, updateHash = false) {
 
   renderClipHeader(clip);
   renderClipBodyContent(visibleContentHtml);
+  /* [260901] 클립 전환 시 본문을 최상단부터 표시 — 이전 클립의 스크롤 위치가 남는 문제 해소(사용자 요청).
+     스크롤 컨테이너는 .content-area(독서 진행바·스크롤스파이와 동일 기준), 창 스크롤 레이아웃 대비 window도 함께 리셋 */
+  document.querySelector(".content-area")?.scrollTo({ top: 0 });
+  window.scrollTo({ top: 0 });
   flashClipArrival();
   setupChecklistCounters();
   setupReadingAids();
