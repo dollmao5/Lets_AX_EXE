@@ -281,6 +281,12 @@
       background: var(--bg-offwhite) !important;
     }
 
+    /* [260901] '오늘 확인할 주요 기능' 표: 기능 열이 좁아 'Deep Research'가 두 줄로 갈라짐 — 첫 열 줄바꿈 금지(사용자 요청) */
+    .ch02-clip01-revised .feature-table th:first-child,
+    .ch02-clip01-revised .feature-table td:first-child {
+      white-space: nowrap;
+    }
+
     .ch02-clip01-revised .compact-list {
       margin: 0;
       padding-left: 24px;
@@ -493,7 +499,7 @@
 <div class="clip-section-title">오늘 확인할 주요 기능</div>
 <div class="clip-section-content">
 <div class="table-wrap">
-<table class="comparison-table">
+<table class="comparison-table feature-table">
 <thead>
 <tr>
 <th>기능</th>
@@ -529,7 +535,7 @@
 </tr>
 <tr>
 <td><strong>GPTs</strong></td>
-<td>목적에 맞게 준비된 맞춤형 AI 비서를 GPT 스토어에서 찾아 사용합니다. 2026년 8월 현재 개인 계정(무료·유료 모두)에서는 신규 생성이 불가하며(관리형 워크스페이스 전용), 오늘 실습은 역할 지침을 새 채팅 첫 메시지로 붙여넣는 방식으로 진행합니다. 이번 클립에서는 메뉴 위치와 개념만 확인합니다.</td>
+<td>목적에 맞게 준비된 맞춤형 AI 비서를 GPT 스토어에서 찾아 사용합니다.<br/>2026년 8월 현재 개인 계정(무료·유료 모두)에서는 신규 생성이 불가하며(관리형 워크스페이스 전용), 오늘 실습은 역할 지침을 새 채팅 첫 메시지로 붙여넣는 방식으로 진행합니다. 이번 클립에서는 메뉴 위치와 개념만 확인합니다.</td>
 <td>CH02-4의 프롬프트 템플릿 저장, CH04 선택 활동의 성과관리 AI 비서 활용</td>
 </tr>
 </tbody>
