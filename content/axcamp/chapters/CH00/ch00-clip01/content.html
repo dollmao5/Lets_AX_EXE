@@ -114,16 +114,16 @@
     }
 
     /* 과정 기본 정보 */
-    /* [260901] 4열 유지 + 열 폭 비대칭: 운영 일정(2번째)만 넓혀 차수 문장(…2차_9/3(목) — 이번 차수…)을 한 줄로, 학습 대상·주요 AI 활용도구·최종 도착점은 축소(사용자 요청). 복구: repeat(4, minmax(0, 1fr)) */
+    /* [260901] 4열 유지 + 완만한 비대칭: 운영 일정(2번째)만 약간 넓혀 차수 목록 줄을 한 줄로, 나머지 3개는 소폭 축소(사용자 요청·피드백 반영). 복구: repeat(4, minmax(0, 1fr)) */
     .CH00-clip01-revised .course-meta-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(520px, 2.9fr) minmax(0, 1fr) minmax(0, 1.3fr);
+      grid-template-columns: minmax(0, 1fr) minmax(392px, 1.6fr) minmax(0, 1fr) minmax(0, 1.15fr);
       gap: var(--c00-gap);
       margin: 14px 0 8px;
     }
 
-    /* [260901] 4열 비대칭은 넓은 화면 전용 — 1360px 이하에서는 나머지 카드가 뭉개져 2×2로 전환(차수 토큰은 nowrap이라 쉼표 단위로만 줄바꿈) */
-    @media (max-width: 1360px) {
+    /* [260901] 비대칭 4열은 넓은 화면 전용 — 1280px 이하에서는 나머지 카드가 좁아져 2×2로 전환(차수 토큰은 nowrap이라 쉼표 단위로만 줄바꿈) */
+    @media (max-width: 1280px) {
       .CH00-clip01-revised .course-meta-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -965,8 +965,9 @@
 <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
 </span>
 <strong>운영 일정</strong>
-<span><b style="font-weight:400;font-size:.93rem;">파주, 총 3차수: <b style="font-weight:400;white-space:nowrap;">1차_8/21(금)</b>, <b style="color:var(--text-heading);white-space:nowrap;">2차_9/3(목) — 이번 차수</b>, <b style="font-weight:400;white-space:nowrap;">3차_9/10(목)</b></b><br/><!-- [260901] 차수별 배포 시 '이번 차수' 표기만 이동 · strong/span 대신 b 사용(카드 CSS가 strong·span을 display:block 처리) · 토큰별 nowrap+.93rem으로 2열 카드에서 한 줄 유지 -->
-                1일 8hr · 08:30~17:30, *추후 확대 운영 검토<br/></span>
+<span>파주 · 1일 8hr(08:30~17:30) · 총 3차수<br/><!-- [260901] 차수별 배포 시 '이번 차수' 표기만 이동 · strong/span 대신 b 사용(카드 CSS가 strong·span을 display:block 처리) · '파주, 총 3차수:' 접두를 윗줄로 올려 차수 목록만 한 줄(폭 464→약 340px)로 축소 — 열 폭 균형(사용자 피드백) -->
+<b style="font-weight:400;font-size:.93rem;"><b style="font-weight:400;white-space:nowrap;">1차_8/21(금)</b>, <b style="color:var(--text-heading);white-space:nowrap;">2차_9/3(목)—이번 차수</b>, <b style="font-weight:400;white-space:nowrap;">3차_9/10(목)</b></b><br/>
+                *추후 확대 운영 검토<br/></span>
 </div>
 <div class="course-meta-card">
 <span aria-hidden="true" class="icon-shell">
