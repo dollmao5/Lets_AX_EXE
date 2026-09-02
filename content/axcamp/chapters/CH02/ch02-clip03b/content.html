@@ -404,21 +404,37 @@ function fillTeams(c){var h='';for(var t=1;t&lt;=c;t++){h+='&lt;option value=&qu
 fillTeams(6);
 try{var saved=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(saved){if(saved.team)sel.value=String(saved.team);if(saved.name)nameEl.value=saved.name;}}catch(e){}
 fetch('/api/wrapup/config').then(function(r){return r.json();}).then(function(d){if(d.ok&amp;&amp;d.teamCount){var cur=sel.value;fillTeams(d.teamCount);if(cur)sel.value=cur;}}).catch(function(){});
+/* [260902] 통합본 위젯([260826] 검증분)과 동일한 견고화 이식 — ① 5xx·네트워크 자동 재시도(2회, 2초 간격) ② 실패 원인(HTTP 코드/네트워크) 표시 ③ 404면 해당 팀 제출자 명단 힌트(별칭·오타 자가 교정). 주의: onload 속성 안이라 원시 큰따옴표 금지 */
+function reqJson(url,tries){
+return fetch(url).then(function(r){return r.json().then(function(d){return {ok:r.ok,status:r.status,data:d};},function(){return {ok:false,status:r.status,data:null};});},function(){return {ok:false,status:0,data:null};})
+.then(function(res){
+if(!res.ok&amp;&amp;(res.status===0||res.status&gt;=500||!res.data)&amp;&amp;tries&gt;0){return new Promise(function(rs){setTimeout(rs,2000);}).then(function(){return reqJson(url,tries-1);});}
+return res;});}
 loadBtn.addEventListener('click',function(){
 var team=parseInt(sel.value,10);var name=(nameEl.value||'').trim();
 if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
 loadBtn.disabled=true;setStatus(LABEL+' 토론 정리본을 불러오는 중...',false);
-fetch('/api/wrapup/canvas2?round='+PREV+'&amp;team='+team+'&amp;name='+encodeURIComponent(name))
-.then(function(r){return r.json();})
-.then(function(d){
+reqJson('/api/wrapup/canvas2?round='+PREV+'&amp;team='+team+'&amp;name='+encodeURIComponent(name),2)
+.then(function(res){
 loadBtn.disabled=false;
-if(!d.ok){viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';setStatus(d.error||'불러오지 못했습니다.',true);return;}
+var d=res.data;
+if(!res.ok||!d||!d.ok){
+viewEl.style.display='none';copyBtn.style.display='none';dlBtn.style.display='none';
+if(res.status===404&amp;&amp;d&amp;&amp;d.error){
+return reqJson('/api/wrapup/status?round='+PREV,0).then(function(st){
+var t=((st.data&amp;&amp;st.data.ok&amp;&amp;st.data.teams)||[]).filter(function(x){return x.team===team;})[0];
+var hint=t?(t.names&amp;&amp;t.names.length?' · 참고: '+team+'팀 '+LABEL+' 제출자 명단 — '+t.names.join(', ')+' (제출 때 선택한 팀·이름과 똑같이 입력해야 합니다)':' · 참고: '+team+'팀은 아직 '+LABEL+' 제출자가 없습니다 — 팀 번호를 확인해 주세요.'):'';
+setStatus(d.error+hint,true);});
+}
+var why=res.status?('서버 응답 오류 HTTP '+res.status):'네트워크 연결 실패';
+setStatus((d&amp;&amp;d.error)?d.error:('불러오기 실패('+why+') — 잠시 후 [불러오기]를 다시 눌러 주세요.'),true);
+return;}
 rawMd=d.canvas2.markdown;if(window.axMdPreview){bodyEl.innerHTML=window.axMdPreview(rawMd);}else{bodyEl.textContent=rawMd;}viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
 setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [📋 복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
 })
-.catch(function(){loadBtn.disabled=false;setStatus('서버에 연결할 수 없습니다. 이전에 다운로드한 .md 파일을 직접 참고해 주세요.',true);});
+.catch(function(){loadBtn.disabled=false;setStatus('불러오기 실패(네트워크) — 잠시 후 [불러오기]를 다시 눌러 주세요.',true);});
 });
 copyBtn.addEventListener('click',function(){
 var text=rawMd||bodyEl.textContent||'';
