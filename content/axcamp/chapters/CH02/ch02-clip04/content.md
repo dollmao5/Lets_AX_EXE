@@ -32,9 +32,7 @@ CH 02
 
 - 잘 쓰는 두 패턴: **켄타우로스**(일을 나눠 위임) vs **사이보그**(업무 흐름에 통합)
 
-[연구 요약 보기 (영어) →](https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/)
-
-[원 논문 — Dell'Acqua 외, HBS Working Paper 24-013 (2023) →](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700) · 🌐 영어 페이지는 크롬·엣지에서 **우클릭 → "한국어(으)로 번역"**을 누르면 한글로 볼 수 있습니다.
+[연구 요약 보기 (영어) →](https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/) · 🌐 영어 페이지는 크롬·엣지에서 **우클릭 → "한국어(으)로 번역"**을 누르면 한글로 볼 수 있습니다.
 
 🎯 **왜 이 자료인가:** AI 능력의 경계는 겉보기로 알 수 없습니다 — 그래서 프롬프트를 '업무 위임 구조'로 설계하는 것이 이 클립의 실습입니다.
 
