@@ -201,7 +201,8 @@
       background: #fff;
     }
 
-    .ch04-clip02-revised .tool-lock strong {
+    /* [260902] 제목 strong만 블록 처리(> 직계 한정) — 목록 li 안의 인라인 강조까지 줄바꿈되던 문제 수정(사용자 지시) */
+    .ch04-clip02-revised .tool-lock > strong {
       display: block;
       margin-bottom: 8px;
       color: var(--text-heading);
