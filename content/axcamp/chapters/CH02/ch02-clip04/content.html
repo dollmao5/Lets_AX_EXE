@@ -582,6 +582,9 @@
   font-weight: 900;
 }
 .ch02-clip04-revised .optional-subdetails[open] > summary::after { content: '−'; }
+/* [260902] 배지('선택 · 8분' 등)를 '펼치기' 바로 왼쪽에 배치(사용자 지시) — 제목 | 여백 | 배지·펼치기. 전역 #clipBody summary::after("▾ 펼치기")가 마지막 flex 항목이므로 배지에 auto 마진만 주면 됨 */
+.ch02-clip04-revised .optional-subdetails > summary .test-badge,
+.ch02-clip04-revised .optional-details > summary .flow-time-badge { margin-left: auto; }
 .ch02-clip04-revised .optional-subdetails-body { padding: 18px; }
 .ch02-clip04-revised .optional-subdetails .table-wrap table { min-width: 760px; }
 .ch02-clip04-revised .lab-minimum-box {
