@@ -672,7 +672,7 @@ return;}
 rawMd=d.canvas2.markdown;if(window.axMdPreview){bodyEl.innerHTML=window.axMdPreview(rawMd);}else{bodyEl.textContent=rawMd;}viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ 다음 단계: [📋 복사]해서 ChatGPT에 붙여넣거나 [.md 다운로드] 후 첨부하세요 (자동 전송되지 않습니다).',false);
+setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ [📋 복사] 또는 [.md 다운로드] 후 첨부 (자동 전송 안 됨).',false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('불러오기 실패(네트워크) — 잠시 후 [불러오기]를 다시 눌러 주세요.',true);});
 });
@@ -957,6 +957,7 @@ ChatGPT의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있�
 </div>
 </div>
 <div class="phase-banner">❹ 마무리 <span class="phase-sub">— 점검·저장·다음 단계</span></div>
+<details class="ref-collapse"><summary>최종 산출물 확인 체크리스트<span class="ref-hint">참고 · 펼쳐 보기</span></summary><!-- [260902] 접이식 전환(내용 무삭제) — 장황도 점검, 사용자 결정 -->
 <div class="clip-section">
 <div class="clip-section-title">최종 산출물 확인 체크리스트</div>
 <div class="clip-section-content">
@@ -994,6 +995,7 @@ ChatGPT의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있�
 </div>
 </div>
 </div>
+</details>
 <div class="clip-section done-criteria" id="ch02Clip03CompletionSection">
 <div class="clip-section-title">이번 클립의 완료 기준</div>
 <div class="clip-section-content">
@@ -1100,7 +1102,7 @@ ChatGPT의 Canvas를 사용해 동료 리더나 팀원에게 공유할 수 있�
 <div class="completion-save-panel">
 <div class="completion-save-copy">
 <strong>선택 즉시 자동 저장됩니다.</strong>
-<span>현재 브라우저의 로그인 계정을 기준으로 저장되며, 다시 접속하면 선택 상태를 불러옵니다. 선택 활동은 완료 기준에 포함하지 않습니다.</span>
+<span>선택 활동은 완료 기준에 포함하지 않습니다.</span>
 </div>
 <div class="completion-save-actions">
 <span class="completion-summary" data-completion-summary="">완료 0 / 4 · 보완 필요 0 / 4</span>
