@@ -687,7 +687,7 @@ var name=(nameEl.value||'').trim()||'이름';
 var blob=new Blob([rawMd||bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
 var a=document.createElement('a');
 a.href=URL.createObjectURL(blob);
-a.download=LABEL.replace(' ','')+'_토론정리본_'+name+'.md';
+a.download=LABEL.replace(' ','')+'_토론정리본_'+name.replace(/[^\w가-힣.-]+/g,'_')+'.md';
 document.body.appendChild(a);a.click();a.remove();
 setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 });

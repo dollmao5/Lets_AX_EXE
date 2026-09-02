@@ -26,7 +26,7 @@ AI 활용 아이디어를 일반론으로 나열하는 시간이 아닙니다. *
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
-🎬 생각 열기 — 실제 사례와 데이터
+🎬 생각 열기 — 실제 사례와 데이터 강사님 진행 · 약 2~3분
 
 📰 사례 1 — 워크슬롭(Workslop): “AI로 아낀 시간, 어디로 갔을까?” (디지털투데이 2026.1.19 · 워크데이 3,200명 조사, HBR 조사 인용 보도)
 

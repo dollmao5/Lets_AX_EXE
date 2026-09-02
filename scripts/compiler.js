@@ -188,7 +188,7 @@ async function buildCatalog(sourceRoot) {
     {
       visibleChapterId: "ch02",
       title: "리더 역할 및 역량 점검",
-      time: "09:40",
+      time: "09:45", // [260902] 공식 시간표(09:45)와 동기화 — overrides가 항상 덮어쓰지만 낡은 기본값 정리
       sourceChapterIds: ["ch02"],
       // [Revision v2] Round 2(ch02-clip03b)·Output Gate(ch02-clip05)는
       // 명시적 visibleClipKey로 suffix route를 보존한다 (순번 자동 부여 비적용).
@@ -231,7 +231,7 @@ async function buildCatalog(sourceRoot) {
     {
       visibleChapterId: "ch06",
       title: "참고자료 라이브러리",
-      time: "17:20",
+      time: "", // [260902] 참고자료는 시간 미표기 — overrides의 빈 값이 ||체인에서 무시돼 17:20이 노출되던 문제 해소(CH00 시간표는 17:10~17:30을 CH05-2에 배정)
       sourceChapterIds: ["ch06"],
       clipKeys: [
         "ch06-clip01",

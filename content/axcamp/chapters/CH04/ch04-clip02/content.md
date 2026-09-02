@@ -205,7 +205,7 @@ loadBundle(team,name)
 copyBtn.disabled=false;
 var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
 var pendingSum=!!(d.markdown&&d.markdown.indexOf('팀 합의 요약이 아직 생성되지 않았습니다')!==-1);
-var note=(missing.length?' · 미포함(제출·강사 [요약 생성] 확인 필요): '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(pendingSum?' · ⚠ 팀 합의 요약 미생성 라운드 포함 — 강사님 [요약 생성] 후 다시 받으면 완성본이 됩니다':'')+(d.fallback?' · 보조 경로로 생성됨':'');
+var note=(missing.length?' · 미포함(제출·강사님 [요약 생성] 확인 필요): '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(pendingSum?' · ⚠ 팀 합의 요약 미생성 라운드 포함 — 강사님 [요약 생성] 후 다시 받으면 완성본이 됩니다':'')+(d.fallback?' · 보조 경로로 생성됨':'');
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
 function done(ok){setStatus(ok?('통합본 복사 완료'+note+' — 파일 첨부가 안 되면 Gemini Notebook [소스 추가 > 복사된 텍스트]에 붙여넣으세요.'):'복사 실패 — [통합본 다운로드]로 파일을 받아 주세요.',!ok);}
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.markdown).then(function(){done(true);},function(){done(false);});}else{done(false);}

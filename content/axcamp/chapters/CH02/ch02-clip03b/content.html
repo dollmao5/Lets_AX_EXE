@@ -302,7 +302,7 @@ if(!document.__roundImgEscWired){document.__roundImgEscWired=true;document.addEv
 })(this);"></div></div>
 <!-- [ENRICHMENT 2026-07-25] 생각 열기 블록(이야기체 사례). 복구: 이 주석부터 [ENRICHMENT END]까지 삭제 (scripts/remove-enrichment.mjs 사용 가능) -->
 <details class="intro-collapse" style="margin:14px 0 18px;border:2px solid #4f46e5;border-left-width:8px;border-radius:16px;background:#eef2ff;">
-<summary style="cursor:pointer;padding:13px 20px;font-weight:800;font-size:1rem;color:#312e81;">🎬 생각 열기 — 실제 사례와 데이터</summary>
+<summary style="cursor:pointer;padding:13px 20px;font-weight:800;font-size:1rem;color:#312e81;">🎬 생각 열기 — 실제 사례와 데이터 <span style="float:right;font-size:.85rem;font-weight:800;color:#4338ca;">강사님 진행 · 약 2~3분</span></summary>
 <div style="padding:0 20px 14px;">
 
 <div style="margin:10px 0 6px;font-weight:800;color:#312e81;">⚖️ 사례 1 — AI 챗봇이 한 말, 결국 회사가 책임졌습니다 (에어캐나다 · 캐나다 BC 민사분쟁재판소, 2024)</div>
@@ -447,7 +447,7 @@ var name=(nameEl.value||'').trim()||'이름';
 var blob=new Blob([rawMd||bodyEl.textContent||''],{type:'text/markdown;charset=utf-8'});
 var a=document.createElement('a');
 a.href=URL.createObjectURL(blob);
-a.download=LABEL.replace(' ','')+'_토론정리본_'+name+'.md';
+a.download=LABEL.replace(' ','')+'_토론정리본_'+name.replace(/[^\w가-힣.-]+/g,'_')+'.md';
 document.body.appendChild(a);a.click();a.remove();
 setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
 });
@@ -505,7 +505,7 @@ AI Challenge는 <strong>팀이 그은 책임경계(잠정 결론)를 AI에게 �
 <div class="rev-field" style="grid-column:1/-1"><label for="r2-fld-aiReview">AI Challenge 반영: 수용·기각 결정과 이유 <span style="color:#1e3a8a;font-weight:800;">📣 강사님 진행에 따라 작성</span></label><textarea data-md-label="AI Challenge 반영(수용·기각과 이유)" data-md-section="5. 합의" data-rev-field="aiReview" id="r2-fld-aiReview" placeholder="예) 수용 — ‘승인 기준 모호’ 반론 인정 → 책임경계표에 승인 조건 추가 / 기각 — 해당 리스크는 우리 팀 업무에 없음(이유)" style="min-height:100px"></textarea></div>
 </div>
 </div>
-</div></div></div>
+</div></div><!-- [260902] 잉여 </div> 1개 제거 — 30개 클립 태그 균형 검사에서 유일한 불일치(렌더 무영향, 구조 위생) -->
 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" aria-hidden="true" style="display:none" onload="(function(root){
   if(!root||root.dataset.revBound===&#x27;1&#x27;){return;}
   root.dataset.revBound=&#x27;1&#x27;;

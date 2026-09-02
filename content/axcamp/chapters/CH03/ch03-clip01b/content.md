@@ -26,7 +26,7 @@ source_url: "https://lg.cmdspace.work/axcamp#ch03-clip01b"
 
 ![image](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==)
 
-🎬 생각 열기 — 실제 사례와 데이터
+🎬 생각 열기 — 실제 사례와 데이터 강사님 진행 · 약 2분
 
 📰 Klarna — “AI가 상담사 700명분의 일을 대신합니다” (디지털투데이 2025.5)
 
@@ -61,6 +61,8 @@ CEO는 이렇게 인정했습니다 — **“AI 활용이 ‘비용 절감’에
 **✅ 이 클립의 필수 산출물 — 놓치면 다음 실습이 막힙니다**
 
 - 🙋 **전원 각자** 화면 아래 **[내 논의 내용 제출]** 버튼 클릭 (파일 아님, 버튼 1번) — 강사님이 [요약 생성]하면 **나의 토론 정리본(내 작성 + 팀 합의 요약)**이 완성되어 → **다음 클립 CH03 통합 저장 Gate의 입력 → CH04**
+
+- CH04_R1-3_팀토론정리본_성명.md — 강사님 [요약 생성] 후 아래 「📦 통합본 다운로드」 상자에서 받아 **CH04 Gemini Notebook '필수 3' 소스**로 사용
 
 - CH03_R3_30일_AI협업_시범운영안_팀번호.md — 서버 장애 시 백업 다운로드 파일명
 
@@ -278,7 +280,7 @@ loadBundle(team,name)
 copyBtn.disabled=false;
 var missing=['round1','round2','round3'].filter(function(r){return !d.included[r];});
 var pendingSum=!!(d.markdown&&d.markdown.indexOf('팀 합의 요약이 아직 생성되지 않았습니다')!==-1);
-var note=(missing.length?' · 미포함(제출·강사 [요약 생성] 확인 필요): '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(pendingSum?' · ⚠ 팀 합의 요약 미생성 라운드 포함 — 강사님 [요약 생성] 후 다시 받으면 완성본이 됩니다':'')+(d.fallback?' · 보조 경로로 생성됨':'');
+var note=(missing.length?' · 미포함(제출·강사님 [요약 생성] 확인 필요): '+missing.map(function(r){return r.replace('round','Round ');}).join(', '):'')+(pendingSum?' · ⚠ 팀 합의 요약 미생성 라운드 포함 — 강사님 [요약 생성] 후 다시 받으면 완성본이 됩니다':'')+(d.fallback?' · 보조 경로로 생성됨':'');
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
 function done(ok){setStatus(ok?('통합본 복사 완료'+note+' — 파일 첨부가 안 되면 Gemini Notebook [소스 추가 > 복사된 텍스트]에 붙여넣으세요.'):'복사 실패 — [통합본 다운로드]로 파일을 받아 주세요.',!ok);}
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.markdown).then(function(){done(true);},function(){done(false);});}else{done(false);}

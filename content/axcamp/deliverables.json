@@ -1,6 +1,6 @@
 {
   "version": "2026-07-23-revision-v2",
-  "note": "Revision v2 확정 원장 (2026-07-23). 음성·전사 산출물은 제거되었고 Round 1~3·CH02/CH03 Gate 산출물이 추가되었습니다. 본문 파일명은 이 원장과 글자 단위로 일치해야 하며 lint:content가 검사합니다. 2026-07-28: 파일명 4종 개정(스킬/일하는방식/시범운영안/성과성장향상), CH04 산출물 통합(근거정리표·TOP3를 30일실행계획 1파일에 포함, 3→1). 2026-07-30: 용어 정합 개정 — 일하는방식_점검지표→성장역량_점검지표, 성과구조와_행동역량_종합본→성장역량_중간종합본(선택 유지); CH02 파일 4종의 consumers에서 미사용 ch03-clip01 제거. 같은 날: CH03 종합본→통합본 용어 통일(AI협업_통합본·중간통합본, 중간종합본도 중간통합본으로 개정). 2026-08-06: 용어 정합 — 성과성장향상→성장역량향상(파일명), CH04 산출물 명칭 '성장역량 향상 30일 실행계획'. 2026-08-10: 개인별 토론 정리본 통합 다운로드(CH04_R1-3_팀토론정리본_성명.md) 원장 등록 — lint 파일명 정규식에 하이픈 추가로 검사 사각지대 해소. 2026-08-31: 선택 산출물 CH04_주간점검비서_지침_성명.md 등록(4-2 선택 Step 4 파일명 예시 신설). 2026-09-01: 라운드별 개인 토론 정리본 다운로드 파일 2종(Round1_/Round2_토론정리본_성명.md) 등록(required:false — 회수는 통합본 CH04_R1-3으로 대체) + lint 정규식에 RoundN_ 접두 추가로 검사 사각지대 해소; ch04-weekly-gem consumers에 ch05-clip01(선택 회수 체크) 추가 — 원장 18종.",
+  "note": "Revision v2 확정 원장 (2026-07-23). 음성·전사 산출물은 제거되었고 Round 1~3·CH02/CH03 Gate 산출물이 추가되었습니다. 본문 파일명은 이 원장과 글자 단위로 일치해야 하며 lint:content가 검사합니다. 2026-07-28: 파일명 4종 개정(스킬/일하는방식/시범운영안/성과성장향상), CH04 산출물 통합(근거정리표·TOP3를 30일실행계획 1파일에 포함, 3→1). 2026-07-30: 용어 정합 개정 — 일하는방식_점검지표→성장역량_점검지표, 성과구조와_행동역량_종합본→성장역량_중간종합본(선택 유지); CH02 파일 4종의 consumers에서 미사용 ch03-clip01 제거. 같은 날: CH03 종합본→통합본 용어 통일(AI협업_통합본·중간통합본, 중간종합본도 중간통합본으로 개정). 2026-08-06: 용어 정합 — 성과성장향상→성장역량향상(파일명), CH04 산출물 명칭 '성장역량 향상 30일 실행계획'. 2026-08-10: 개인별 토론 정리본 통합 다운로드(CH04_R1-3_팀토론정리본_성명.md) 원장 등록 — lint 파일명 정규식에 하이픈 추가로 검사 사각지대 해소. 2026-08-31: 선택 산출물 CH04_주간점검비서_지침_성명.md 등록(4-2 선택 Step 4 파일명 예시 신설). 2026-09-01: 라운드별 개인 토론 정리본 다운로드 파일 2종(Round1_/Round2_토론정리본_성명.md) 등록(required:false — 회수는 통합본 CH04_R1-3으로 대체) + lint 정규식에 RoundN_ 접두 추가로 검사 사각지대 해소; ch04-weekly-gem consumers에 ch05-clip01(선택 회수 체크) 추가 — 원장 18종. 2026-09-02: producer/consumer 실태 정정 — canvas2-personal producer는 통합본 다운로드 상자가 있는 ch03-clip01b(보조 생성 지점 ch04-clip02), canvas2-personal-r2 producer는 [Round 2 불러오기]가 있는 ch02-clip04(보조 생성 지점 ch03-clip01b); ch03-legacy-integrated consumers는 3-1c 미등장·5-1 회수 체크만이라 ch05-clip01로 정정; ch02-integrated·ch02-brief는 3-1 권장/대체 입력으로 재사용 중이라 consumers에 ch03-clip01 복원(2026-07-30 제거를 되돌림).",
   "deliverables": [
     {
       "id": "ch01-diagnosis",
@@ -67,6 +67,7 @@
       "producer": "ch02-clip04",
       "consumers": [
         "ch02-clip05",
+        "ch03-clip01",
         "ch04-clip02",
         "ch05-clip01"
       ]
@@ -79,6 +80,7 @@
       "required": true,
       "producer": "ch02-clip05",
       "consumers": [
+        "ch03-clip01",
         "ch04-clip01",
         "ch04-clip02",
         "ch05-clip01"
@@ -120,7 +122,7 @@
       "required": false,
       "producer": "ch03-clip01",
       "consumers": [
-        "ch03-clip01c"
+        "ch05-clip01"
       ]
     },
     {
@@ -142,8 +144,9 @@
       "filename": "CH04_R1-3_팀토론정리본_성명.md",
       "type": "file",
       "required": true,
-      "producer": "ch03-clip01c",
+      "producer": "ch03-clip01b",
       "consumers": [
+        "ch03-clip01c",
         "ch04-clip02",
         "ch05-clip01"
       ]
@@ -210,6 +213,7 @@
       "required": false,
       "producer": "ch02-clip03",
       "consumers": [
+        "ch02-clip03b",
         "ch02-clip04",
         "ch02-clip05",
         "ch05-clip01"
@@ -221,10 +225,10 @@
       "filename": "Round2_토론정리본_성명.md",
       "type": "file",
       "required": false,
-      "producer": "ch02-clip03b",
+      "producer": "ch02-clip04",
       "consumers": [
-        "ch02-clip04",
         "ch02-clip05",
+        "ch03-clip01b",
         "ch05-clip01"
       ]
     }

@@ -664,69 +664,9 @@ function rewriteClientClipHtml(clipKey, contentHtml) {
 
   rewriteClipNavFooter(doc, normalized);
 
-  if (needsTimetableFix) {
-    // [HIDDEN] 자사 생성형 AI 서비스 현황(ch00-clip02) 행을 시간표에서 숨깁니다.
-    // 복구 시 아래 3줄을 제거하세요.
-    const timetableRows = Array.from(doc.querySelectorAll(".comparison-table tbody tr"));
-    timetableRows.forEach((row) => {
-      const cellText = row.textContent.replace(/\s+/g, " ").trim();
-      if (cellText.includes("자사 생성형 AI 서비스 현황") || cellText.includes("CH00: 자사 생성형 AI")) {
-        row.remove();
-        return;
-      }
-      // [HIDDEN] CH04 Google AI Studio 및 CH05 Hi-D Code 관련 행들도 시간표에서 숨깁니다.
-      if (
-        cellText.includes("Google AI Studio") ||
-        cellText.includes("Vibe Coding") ||
-        cellText.includes("Hi-D Code") ||
-        cellText.includes("CH04:") ||
-        cellText.includes("CH05:")
-      ) {
-        if (!cellText.includes("Key Takeaways") && !cellText.includes("Q/A")) {
-          row.remove();
-          return;
-        }
-      }
-      // [HIDDEN] NotebookLM 3번째 세션(기업 분석 코스) 행도 시간표에서 숨깁니다.
-      // 복구 시: 아래 if 블록을 제거하세요.
-      if (
-        cellText.includes("기업 분석 코스") ||
-        cellText.includes("열린 주제로 해보는 NotebookLM")
-      ) {
-        row.remove();
-        return;
-      }
-    });
-
-    const timetableAnchors = Array.from(doc.querySelectorAll(".comparison-table tbody a"));
-    timetableAnchors.forEach((anchor) => {
-      const text = String(anchor.textContent || "").replace(/\s+/g, " ").trim();
-      if (text === "CH02: NotebookLM" || text === "CH03: NotebookLM") {
-        anchor.setAttribute("href", "#ch03-clip01");
-        anchor.textContent = "CH03: NotebookLM";
-        return;
-      }
-      if (text.includes("Google AI Studio") || text.includes("Hi-D Code") || text.includes("CH04: ") || text.includes("CH05: ")) {
-        if (!text.includes("Key Takeaways") && !text.includes("Q/A")) {
-          anchor.closest("tr")?.remove();
-          return;
-        }
-      }
-      // [HIDDEN] 기업 분석 코스 앱커도 시간표에서 제거합니다.
-      if (
-        text.includes("기업 분석 코스") ||
-        text.includes("열린 주제로 해보는 NotebookLM")
-      ) {
-        anchor.closest("tr")?.remove();
-        return;
-      }
-      if (text === "CH04: Key Takeaways & Q/A" || text === "CH06: Key Takeaways & Q/A") {
-        anchor.setAttribute("href", "#ch06-clip01");
-        anchor.textContent = "CH04: Key Takeaways & Q/A";
-        return;
-      }
-    });
-  }
+  // [REMOVED 260902] needsTimetableFix 시간표 행 숨김 블록 물리 제거 — CH00 본문에 트리거 문구(자사 생성형 AI/Google AI Studio/기업 분석 코스/CH04:/CH05: 등)가 더 이상 없어 완전 사문화됐고,
+  // 범용 셀렉터(.comparison-table tbody tr)가 CH00의 다른 표(학습 Flow 표 등)까지 스캔해 향후 'CH04:'류 표기를 쓰는 행을 조용히 지울 위험만 남아 제거함.
+  // 복구: git 이력(이 커밋 직전)에서 if (needsTimetableFix) { ... } 블록 전체를 이 자리에 되살리면 됨. needsTimetableFix 상수(위쪽)는 복구 편의를 위해 유지.
 
   return doc.body.innerHTML;
 }
@@ -3980,7 +3920,7 @@ async function loadChaptersAndDefaultClip() {
   const firstClip = state.chapters[0]?.clips[0]?.clipKey || "";
   const hashClip = normalizeClipKey(window.location.hash.replace(/^#/, ""));
 
-  // [HIDDEN] 숨겨진 클립 해시로 직접 접근 시 '오늘의 핵심 정리' 챕터 첫 클립으로 리다이렉트합니다.
+  // [HIDDEN] 숨겨진 클립 해시로 직접 접근 시 '오늘의 핵심 요약' 챕터 첫 클립으로 리다이렉트합니다.
   // 복구 시 이 블록을 제거하세요.
   const isHiddenHashAccess = hashClip && HIDDEN_CLIP_KEYS_REDIRECT_SET.has(hashClip);
   const hiddenRedirectTargetClip = (() => {
