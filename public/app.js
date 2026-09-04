@@ -4797,7 +4797,15 @@ async function onToggleComplete() {
 function onToggleTaskPanel() {
   state.taskPanelOpen = false;
   updateSidePanelUI();
-  window.open(AX_TASK_BOARD_URL, "_blank", "noopener,noreferrer");
+  /* [260904] 팀 토론에서 저장된 팀·이름(ax_wrapup_identity)을 공유 보드에 ?name=으로 전달 — 보드 앱이 이름 입력창에 미리 채움(보드 미지원 버전은 무시하므로 무해). 사용자 결정 */
+  let boardUrl = AX_TASK_BOARD_URL;
+  try {
+    const idn = JSON.parse(localStorage.getItem("ax_wrapup_identity") || "null");
+    if (idn?.team && idn?.name) {
+      boardUrl += (boardUrl.includes("?") ? "&" : "?") + "name=" + encodeURIComponent(idn.team + "팀 " + idn.name);
+    }
+  } catch (e) {}
+  window.open(boardUrl, "_blank", "noopener,noreferrer");
 }
 
 function onToggleNotePanel() {
