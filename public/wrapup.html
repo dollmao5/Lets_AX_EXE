@@ -203,12 +203,12 @@
 
     <h3>오늘 하루 흐름 (이 순서대로만 누르면 됩니다)</h3>
     <ol class="help-flow">
-      <li><span class="when">교육 시작 전</span><span class="btn-name">차수 설정</span> — 오늘 차수 이름을 등록합니다 (예: 2026-09-03차수). 오늘의 모든 제출·요약이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
+      <li><span class="when">교육 시작 전</span><span class="btn-name">차수 설정</span> — 오늘 차수 이름을 등록합니다 (예: 2026-09-10차수). 오늘의 모든 제출·요약이 이 이름 아래에 저장됩니다. <strong>하루 1회, 가장 먼저.</strong></li>
       <li data-help-mode="remote"><span class="when">교육 시작 전 · 선택</span><span class="btn-name">차수 코드</span> — 공개 사이트라 아무나 제출할 수 있으므로, 제출용 코드를 정해 칠판·화면에 공지합니다. 외부인 제출을 막는 자물쇠입니다. 빈 값으로 저장하면 코드 없이 제출 가능.</li>
       <li><span class="when">Round 토론 중</span> 버튼 조작 없음 — 교육생이 각자 클립 화면에서 제출하면 상단 <strong>"제출 현황: 1팀 4명 · 2팀 3명 … (총 N명)"</strong>이 올라갑니다. 제출 현황은 30초마다 자동 갱신됩니다(즉시 확인은 <span class="btn-name">새로고침</span>). 늦는 팀만 독려하세요.</li>
       <li><span class="when">제출 마감 직후</span><span class="btn-name">요약 생성</span> — <strong>[R1·R2·R3 각 라운드마다 필수]</strong> AI가 팀별 요약(핵심 논점·발표 포인트·관점 차이)과 전체 교차 분석을 만듭니다. 공개 사이트 1~3분 / 강사 PC 30초~1분 소요. 재실행하면 새로 생성되므로 늦은 제출자가 있으면 다시 눌러도 됩니다.</li>
       <li><span class="when">요약 생성 후</span><span class="btn-name">발표 모드 ▶</span> — 빔프로젝터 전체화면으로 전환해 팀별 발표를 진행합니다 (←/→ 이동 · 종료는 ESC 또는 우상단 [↩️ 보드로 돌아가기]). 교차 분석 슬라이드로 강사 Wrap-up.</li>
-      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 요약 생성 후 클릭 · AI 호출 없이 즉시 처리 · 재실행 안전.<details style="margin-top:4px;"><summary style="cursor:pointer;font-weight:800;">토론 정리본이 어디에 쓰이나요</summary><div style="margin-top:4px;">제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1/2 내 토론 정리본 불러오기" 류 패널에서 참고하고, CH04에서 통합본(.md)을 받아 Gemini Notebook 소스로 씁니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</div></details></li>
+      <li><span class="when">요약 생성 후</span><span class="btn-name">토론 정리본 생성</span> — 요약 생성 후 클릭 · AI 호출 없이 즉시 처리 · 재실행 안전 · 완료되면 버튼이 <strong>「완료 ✓ N명」</strong>으로 바뀝니다(새로고침해도 유지).<details style="margin-top:4px;"><summary style="cursor:pointer;font-weight:800;">토론 정리본이 어디에 쓰이나요</summary><div style="margin-top:4px;">제출자 전원에게 <strong>개인별 토론 정리본</strong>(① 내 결론 우선 ② 팀 공통 합의 ③ 관점 차이)를 만들어 줍니다. 교육생은 다음 Round 화면의 "📌 Round 1/2 내 토론 정리본 불러오기" 류 패널에서 참고하고, CH04에서 통합본(.md)을 받아 Gemini Notebook 소스로 씁니다. <strong>깜빡해도 괜찮습니다</strong> — 교육생이 조회하면 자동으로 즉석 생성됩니다 (단, 요약 생성 전에는 '팀 합의' 부분이 비어 있음).</div></details></li>
       <li data-help-mode="local"><span class="when">교육 종료</span><span class="btn-name">저장·백업(push)</span> — 오늘 차수 데이터를 원격 저장소에 백업합니다. 하루 1회, 마지막에.</li>
     </ol>
 
@@ -381,7 +381,7 @@
 
     <details><summary>CH00~CH01 (08:30~09:35) — 과정 안내·사전 진단·AI 핵심 강의</summary><div class="hook-body">
       <div style="margin:8px 0;"><strong>CH00 오늘의 여정 (15분)</strong> — 과정 목표 · 3Round 토론 Track · 팀 역할 · 산출물 저장 규칙 안내. <em>산출물 없음.</em></div>
-      <!-- [260826] CH01 순서 변경: 진단(구 1-4)이 첫 세션(1-1)으로 이동 — 사전 진단 취지. 이하 강의 클립은 한 번호씩 밀림. 진단 시간은 클립 본문 배분(3+9+6+여유2=20분)과 통일 -->
+      <!-- [260826] CH01 순서 변경: 진단(구 1-4)이 첫 세션(1-1)으로 이동 — 사전 진단 취지. 이하 강의 클립은 한 번호씩 밀림. 진단 시간은 클립 본문 배분(6+9+3+여유2=20분)과 통일 · [260904] ❶리터러시 진단→❷퀴즈→❸변화 체감으로 순서 교체 반영 -->
       <div style="margin:8px 0;"><strong>1-1 리더십·리터러시 진단 (20분)</strong> — 리터러시 10문항 자가진단 → 오해·진실 퀴즈(QuizN · 정답 공개 코드 <strong>ai</strong>) → 변화 체감 → <strong>개인 학습 초점 메모 = CH02-3 첫 입력 · Shock 메모 = Round 1 첫 발언 소재</strong>. <em>파일 산출물 없음(웹 진단).</em></div>
       <div style="margin:8px 0;"><strong>1-2 AI 트렌드 (12분)</strong> — AI 진화 4단계 → 리더 시사점 5가지. 🎬 생각 열기(LG 엑사원·Stanford)로 환기 가능. <em>산출물 없음.</em></div>
       <div style="margin:8px 0;"><strong>1-3 Agentic AI (12분)</strong> — Assistant→Agentic 로드맵 3단계. 🎬 생각 열기의 <strong>KBS 구간 ①(약 3분) 시청 권장</strong>, 구간 ②는 시간 여유 시. <em>산출물 없음.</em></div>
@@ -523,6 +523,7 @@
 
   async function loadStatus() {
     if (state.cohort !== state.current) { $("submitStatus").textContent = "지난 차수 열람 중 (제출 현황은 현재 차수만 표시)"; state.statusTeams = null; state.canvas2Count = null; renderSubmitNames(); return; }
+    state.canvas2Count = null; /* [260904 후속] 라운드 전환·조회 실패 시 직전 라운드 값이 라벨에 남지 않도록 초기화 */
     try {
       var d = await api("/api/wrapup/status?round=" + state.round);
       if (!d.ok) throw 0;
@@ -590,7 +591,7 @@
     if (c && !c.disabled) {
       /* [260904] 완료 판정을 서버 저장분(canvas2Count) 기준으로 — 새로고침·재접속·생성 중 오류 후에도 표시 유지. 메모리 플래그(canvas2Done)는 생성 직후 즉시 반영용으로 보조 */
       var c2n = (state.cohort === state.current && typeof state.canvas2Count === "number") ? state.canvas2Count : 0;
-      if (c2n > 0 || state.canvas2Done[state.round]) {
+      if (state.cohort === state.current && (c2n > 0 || state.canvas2Done[state.round])) { /* [260904 후속] 지난 차수 열람 중에는 완료 라벨 표시 안 함 */
         c.textContent = "토론 정리본 생성 완료 ✓" + (c2n > 0 ? " " + c2n + "명" : "") + " (재실행 시 갱신)";
       } else {
         c.textContent = "토론 정리본 생성";
@@ -1078,7 +1079,7 @@
     else toast(d.error || "차수 코드 설정 실패");
   });
   $("cohortBtn").addEventListener("click", async function () {
-    var name = prompt("현재 차수 이름을 입력하세요 (예: 2026-09-03차수)", state.current);
+    var name = prompt("현재 차수 이름을 입력하세요 (예: 2026-09-10차수)", state.current);
     if (!name) return;
     var d = await api("/api/admin/wrapup/config", { method: "POST", body: { cohort: name } });
     if (d.ok) { toast("차수 변경: " + d.cohort); state.cohort = d.cohort; await refresh(); }
