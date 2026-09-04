@@ -333,6 +333,12 @@ async function handleStatus(request, env, url) {
       .filter((n) => n >= 1)
       .sort((a, b) => a - b);
   } catch (e) { teamReps = []; }
+  /* [260904] 토론 정리본 생성 여부를 서버 기준으로 제공 — 보드 버튼 완료 표시가 새로고침 후에도 유지되도록 (요약 생성과 대칭, server.js와 동일 필드) */
+  let canvas2Count = 0;
+  try {
+    const c2Entries = await ghListDir(env, `${config.currentCohort}/${round}/canvas2`);
+    canvas2Count = c2Entries.filter((e) => e.type === "file" && e.name.endsWith(".json")).length;
+  } catch (e) { canvas2Count = 0; }
   return json(request, 200, {
     ok: true,
     cohort: config.currentCohort,
@@ -340,7 +346,8 @@ async function handleStatus(request, env, url) {
     teamCount: config.teamCount,
     total: items.length,
     teams,
-    teamReps
+    teamReps,
+    canvas2Count
   });
 }
 

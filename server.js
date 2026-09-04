@@ -2860,6 +2860,12 @@ async function handleWrapupStatus(req, res, urlObj) {
       .filter((n) => n >= 1)
       .sort((a, b) => a - b);
   }
+  /* [260904] 토론 정리본 생성 여부를 서버 기준으로 제공 — 보드 버튼 완료 표시가 새로고침 후에도 유지되도록 (요약 생성과 대칭) */
+  let canvas2Count = 0;
+  const canvas2Dir = path.join(wrapupRoundDir(config.currentCohort, round), "canvas2");
+  if (await pathExists(canvas2Dir)) {
+    canvas2Count = (await fs.readdir(canvas2Dir)).filter((f) => f.endsWith(".json")).length;
+  }
   return sendJson(res, 200, {
     ok: true,
     cohort: config.currentCohort,
@@ -2867,7 +2873,8 @@ async function handleWrapupStatus(req, res, urlObj) {
     teamCount: config.teamCount,
     total: items.length,
     teams,
-    teamReps
+    teamReps,
+    canvas2Count
   });
 }
 
