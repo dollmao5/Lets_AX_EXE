@@ -4801,8 +4801,8 @@ function onToggleTaskPanel() {
   let boardUrl = AX_TASK_BOARD_URL;
   try {
     const idn = JSON.parse(localStorage.getItem("ax_wrapup_identity") || "null");
-    if (idn?.team && idn?.name) {
-      boardUrl += (boardUrl.includes("?") ? "&" : "?") + "name=" + encodeURIComponent(idn.team + "팀 " + idn.name);
+    if (idn?.name) { /* [260904-2] 팀 없이 이름만 저장된 경우(예: 회수표 이름칸)도 이름만 전달(B4) */
+      boardUrl += (boardUrl.includes("?") ? "&" : "?") + "name=" + encodeURIComponent(idn.team ? idn.team + "팀 " + idn.name : idn.name);
     }
   } catch (e) {}
   window.open(boardUrl, "_blank", "noopener,noreferrer");

@@ -4,9 +4,9 @@ CH 06
 
 Tool Pantry (MCP & CLI)
 
-이 자료는 과정 종료 후 참고용입니다.
-
 AI 업무에 유용한 MCP 서버와 CLI 도구를 정리했습니다. 나중에 필요할 때 참고하세요.
+
+이 자료는 과정 종료 후 참고용입니다.
 
 MCP Servers (Model Context Protocol)
 

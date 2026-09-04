@@ -522,8 +522,8 @@
   }
 
   async function loadStatus() {
-    if (state.cohort !== state.current) { $("submitStatus").textContent = "지난 차수 열람 중 (제출 현황은 현재 차수만 표시)"; state.statusTeams = null; state.canvas2Count = null; renderSubmitNames(); return; }
-    state.canvas2Count = null; /* [260904 후속] 라운드 전환·조회 실패 시 직전 라운드 값이 라벨에 남지 않도록 초기화 */
+    if (state.cohort !== state.current) { $("submitStatus").textContent = "지난 차수 열람 중 (제출 현황은 현재 차수만 표시)"; state.statusTeams = null; state.canvas2Count = null; renderSubmitNames(); updateGenButtons(); return; } /* [260904-2] 지난 차수 열람 시 완료 라벨 제거를 자체 보장(B1) */
+    /* [260904-2] 초기화를 라운드 탭 전환·조회 실패 시점으로 이동 — 조회 시작마다 null로 두면 병렬 loadSummary의 라벨 갱신과 경합해 "완료 ✓ N명"이 순간 사라짐(회귀 점검 A3, 사용자 결정) */
     try {
       var d = await api("/api/wrapup/status?round=" + state.round);
       if (!d.ok) throw 0;
@@ -535,7 +535,7 @@
         ;
       /* [HIDDEN 260731] 신방식: R1·R2·R3 모두 팀 대표 체크 없이 전원 제출 — 팀 대표 카운트 표기 제거.
          복구: 위 문자열 연결 끝에 + (Array.isArray(d.teamReps) ? " · 팀 대표 " + d.teamReps.length + "/" + d.teamCount + "팀" : "") 복원 */
-    } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; state.statusTeams = null; }
+    } catch (e) { $("submitStatus").textContent = "제출 현황을 불러오지 못했습니다."; state.statusTeams = null; state.canvas2Count = null; }
     renderSubmitNames();
     updateGenButtons();
   }
@@ -951,6 +951,7 @@
   $("roundTabs").addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-round]"); if (!btn) return;
     state.round = btn.dataset.round;
+    state.canvas2Count = null; /* [260904-2] 라운드 전환 시 직전 라운드 정리본 수가 라벨에 남지 않도록 */
     document.querySelectorAll("#roundTabs button").forEach(function (b) { b.classList.toggle("active", b === btn); });
     renderRoundGuide();
     refresh();

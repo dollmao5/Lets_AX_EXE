@@ -623,10 +623,10 @@ btn.addEventListener('click',function(){
   var team=parseInt(sel.value,10);
   var name=(nameEl.value||'').trim();
   if(!name||name.length&lt;2){setStatus('이름을 2자 이상 입력해 주세요.',true);nameEl.focus();return;}
-  /* [260904] 이전 제출 기록과 팀·이름이 다르면 확인창 — 별개 제출물로 등록되는 휴먼에러 방지(사용자 결정). 주의: onload 속성 안이라 원시 큰따옴표 금지 */
-  try{var prevIdn=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(prevIdn&amp;&amp;prevIdn.team&amp;&amp;prevIdn.name&amp;&amp;(String(prevIdn.team)!==String(team)||prevIdn.name!==name)){if(!window.confirm('이전 제출 기록은 「'+prevIdn.team+'팀 '+prevIdn.name+'」입니다.\n지금은 「'+team+'팀 '+name+'」(으)로 제출합니다.\n\n팀·이름이 다르면 별개의 제출물로 등록되어 이전 기록과 연결되지 않습니다.\n(단순 오타라면 [취소] 후 이전과 똑같이 맞춰 주세요)\n\n이대로 제출할까요?')){setStatus('제출을 취소했습니다 — 팀·이름을 확인해 주세요.',true);return;}}}catch(e){}
   var md=buildMarkdown();
   if(md.indexOf('(미작성)')&gt;-1&amp;&amp;md.split('(미작성)').length-1&gt;=root.querySelectorAll('[data-rev-field]').length){setStatus('Canvas가 비어 있습니다. 작성 후 제출해 주세요.',true);return;}
+  /* [260904] 이전 제출 기록과 팀·이름이 다르면 확인창 — 별개 제출물로 등록되는 휴먼에러 방지(사용자 결정). 주의: onload 속성 안이라 원시 큰따옴표 금지 · [260904-2] 문구를 '직전에 사용한 팀·이름'으로 교정(불러오기로도 갱신되는 값)·Canvas 빈칸 검사 뒤로 이동(회귀 점검 A1·A2, 사용자 결정) */
+  try{var prevIdn=JSON.parse(localStorage.getItem('ax_wrapup_identity')||'null');if(prevIdn&amp;&amp;prevIdn.team&amp;&amp;prevIdn.name&amp;&amp;(String(prevIdn.team)!==String(team)||prevIdn.name!==name)){if(!window.confirm('직전에 사용한 팀·이름은 「'+prevIdn.team+'팀 '+prevIdn.name+'」입니다.\n지금은 「'+team+'팀 '+name+'」(으)로 제출합니다.\n\n팀·이름이 다르면 별개의 제출물로 등록되어 이전 기록과 연결되지 않습니다.\n(단순 오타라면 [취소] 후 이전과 똑같이 맞춰 주세요)\n\n이대로 제출할까요?')){setStatus('제출을 취소했습니다 — 팀·이름을 확인해 주세요.',true);return;}}}catch(e){}
   btn.disabled=true;setStatus('제출 중...',false);
   if(isRep()){if(!window.confirm('팀 대표(합의본)로도 저장을 체크했습니다.\n이미 저장된 팀 합의본이 있으면 이 제출로 덮어써집니다.\n현재는 전원이 각자 제출하는 방식입니다 — 계속할까요?'))return;}
 fetch('/api/wrapup/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({round:ROUND,team:team,name:name,markdown:md,teamRep:isRep()})})
