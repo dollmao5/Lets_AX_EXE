@@ -581,7 +581,7 @@
   function updateGenButtons() {
     var g = $("genBtn"), c = $("canvas2Btn");
     if (g && !g.disabled) {
-      if (state.summary && state.summary.generatedAt) {
+      if (state.cohort === state.current && state.summary && state.summary.generatedAt) { /* [260907] 지난 차수 열람 중에는 완료 라벨 표시 안 함 — canvas2Btn(아래)과 동일 규칙, 실행 자체도 현재 차수에서만 가능 */
         var w = new Date(state.summary.generatedAt).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
         g.textContent = "요약 생성 완료 ✓ " + w + " (재실행 시 갱신)";
       } else {
