@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>'26-4차 「리더십 향상 with AI」 과정참가 안내</title>
+<title>'26년 실/팀장 대상 「리더십 향상 with AI」 과정 추가 신청 안내</title>
 <style>
   :root {
     --brand: #0284c7;      /* AX 시안 블루 */
@@ -35,7 +35,7 @@
       radial-gradient(circle at 6% 90%, rgba(22, 163, 74, .05), transparent 32%),
       #fff;
   }
-  /* 헤더 배너 — AI 네트워크·성장 곡선 모티프 (과정신청 안내문과 동일) */
+  /* 헤더 배너 — AI 네트워크·성장 곡선 모티프 */
   .hero {
     position: relative; overflow: hidden;
     margin: 0 0 26px; padding: 30px 32px 26px;
@@ -64,14 +64,17 @@
   .hl-yellow { background: var(--yellow-hl); color: var(--heading); font-weight: 800; }
   .hl-green { background: var(--green-hl); color: var(--green-text); font-weight: 800; }
 
-  /* 환영 인사 — 과정 목표 박스(파랑)와 구분되는 따뜻한 톤 */
-  .welcome {
-    margin: 0 0 8px; padding: 18px 24px;
-    border: 1px solid #fed7aa; border-radius: 14px;
-    background: linear-gradient(120deg, #fff7ed, #fefce8);
-    color: var(--body); font-size: 1.03rem; line-height: 1.8; text-align: center;
+  /* 도입부 카드 */
+  .intro {
+    margin: 0 0 8px; padding: 22px 26px;
+    border: 1px solid var(--border); border-radius: 14px; background: var(--offwhite);
   }
-  .welcome strong { color: var(--sun-deep); }
+  .intro-lead { margin: 0 0 10px; font-size: 1.05rem; font-weight: 800; color: var(--heading); }
+  .intro ul { margin: 0 0 16px; padding-left: 20px; }
+  .intro li { margin: 5px 0; }
+  .intro li::marker { color: var(--brand); }
+  .intro p { margin: 0 0 14px; }
+  .intro p:last-child { margin-bottom: 0; }
 
   /* 과정 목표 박스 */
   .goal-box {
@@ -82,11 +85,34 @@
   }
   .goal-box strong { color: var(--blue-text); }
 
+  /* 세부 학습목표 접이식 */
+  details {
+    margin: 10px 0 4px; padding: 10px 18px;
+    border: 1px solid var(--border); border-radius: 12px; background: #fff;
+  }
+  summary { cursor: pointer; font-weight: 800; color: var(--muted); font-size: .97rem; }
+  summary:hover { color: var(--heading); }
+  details[open] summary { color: var(--heading); margin-bottom: 4px; }
+  details ol { margin: 8px 0 6px; padding-left: 22px; }
+  details li { margin: 6px 0; }
+
   /* 실시 개요 */
   .overview { margin: 8px 0 4px; padding-left: 4px; list-style: none; }
   .overview li { margin: 8px 0; }
   .overview .label { display: inline-block; min-width: 62px; font-weight: 800; color: var(--heading); }
   .overview .hl-green { padding: 3px 10px; margin-left: -10px; }
+
+  /* 수강 신청 헤더 + 버튼 */
+  .apply-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .apply-btn {
+    display: inline-block; padding: 8px 20px;
+    border: none; border-radius: 999px;
+    background: linear-gradient(120deg, var(--sun), var(--sun-deep));
+    color: #fff !important; box-shadow: 0 2px 8px rgba(234, 88, 12, .3);
+    font-size: .95rem; font-weight: 800; text-decoration: none; white-space: nowrap;
+    transition: filter .15s ease;
+  }
+  .apply-btn:hover, .apply-btn:focus-visible { filter: brightness(1.08); }
 
   /* 교육내용 표 */
   table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: .95rem; }
@@ -96,19 +122,6 @@
   tbody tr:hover { background: var(--blue-bg); }
   td.module { white-space: nowrap; font-weight: 800; color: var(--heading); }
   td .practice { color: var(--blue-accent); font-weight: 700; }
-
-  /* 참가 안내 카드 */
-  .notice-card {
-    margin: 14px 0; padding: 18px 22px;
-    border: 1px solid var(--border); border-radius: 14px; background: #fff;
-  }
-  .notice-card .notice-title {
-    margin: 0 0 10px; font-size: 1.02rem; font-weight: 800; color: var(--heading);
-  }
-  .notice-card ul { margin: 0; padding-left: 22px; }
-  .notice-card li { margin: 6px 0; }
-  .notice-card li::marker { color: var(--brand); }
-  .notice-sub { color: var(--muted); font-size: .93rem; }
 
   /* 하단 서명 */
   .footer-box {
@@ -121,7 +134,8 @@
   @media print {
     body { padding: 0; background: #fff; }
     h2 { break-after: avoid; }
-    tr, .goal-box, .notice-card { break-inside: avoid; }
+    tr, .intro, .goal-box { break-inside: avoid; }
+    .apply-btn { color: var(--brand) !important; background: #fff; }
     .hero { background: #fff; border: 2px solid var(--brand); color: var(--heading); }
     .hero h1 { color: var(--heading); }
     .hero-tags span { border-color: var(--border); color: var(--heading); }
@@ -134,6 +148,7 @@
 </style>
 </head>
 <body>
+<!-- [260907] 4·5·6차 과정 추가 신청 안내문 — apply-guide.html(1~3차수분·발송 스냅샷)을 정본으로 생성. 델타: 제목·일정·신청 마감(~10/23 금)·도입부 추가 개설 1줄(사용자 결정) -->
 <div class="hero">
 <svg viewBox="0 0 320 180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <circle cx="262" cy="44" r="22" fill="#fde047" opacity=".9"/>
@@ -152,58 +167,52 @@
 <svg class="wave" viewBox="0 0 960 30" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <path d="M0,18 C80,4 160,30 240,18 C320,6 400,30 480,18 C560,6 640,30 720,18 C800,6 880,28 960,16 L960,30 L0,30 Z" fill="#e0f2fe"/>
 </svg>
-<h1>'26-4차 「리더십 향상 with AI」 과정참가 안내</h1>
+<h1>'26년 실/팀장 대상<br>「리더십 향상 with AI」 과정 추가 신청 안내</h1>
 <div class="hero-tags"><span>🤖 AI</span><span>🧭 리더십</span><span>📈 성과</span><span>🌱 성장</span><span>☀️ ChatGPT, Gemini Notebook</span></div>
 </div>
 
-<p class="welcome">🌞 리더 여러분 안녕하세요, <strong>「리더십 향상 with AI」 과정 참가를 환영합니다!</strong> 🙌<br>
-당일 원활한 교육·실습 참여를 위해 아래 <strong>일정·장소와 참가 안내</strong>를 미리 확인해 주시기 바랍니다.</p>
+<div class="intro">
+<p class="intro-lead">🤔 혹시… 이런 순간 여러분께도 있었나요?</p>
+<ul>
+<li>"AI 활용해서 성과 내보라"는 말에 어디서부터 시작할지 막막했던 순간</li>
+<li>팀원이 AI로 뚝딱 만들어 온 보고서, 검토할수록 오히려 미덥지 않았던 순간</li>
+<li>AI에게 맡겨도 되는 일과 리더인 내가 책임져야 할 일이 헷갈렸던 순간</li>
+<li>옆 팀은 AI로 앞서가는 것 같은데, 우리 팀은 제자리인 것 같아 조급해진 순간</li>
+</ul>
+<p><mark class="hl-yellow">"AI, 잘 써야 한다는 건 알겠는데… 그래서 뭘, 어떻게?"라는 생각이 먼저 드는 순간들…</mark></p>
+<p>리더도 사람이라, 새로운 도구 앞에서는 막막함이 먼저 찾아오기 마련입니다.<br>하지만 이제, 막연한 시도 대신 <strong>전략적인 AI 리더십</strong>이 필요합니다.<br>그 출발점은 <mark class="hl-yellow">'AI 시대에 요구되는 리더 역할·책임의 변화를 이해'</mark>하는 것입니다.</p>
+<p>리더에게 중요한 것은 AI를 한번 다뤄보는 데서 그치지 않고, AI에게 맡길 일과 리더가 책임질 일의 경계를 세우고<br><mark class="hl-yellow">'나와 우리 팀의 성장을 위한 리더십 실행계획을 설계하고 실행'</mark>하는 것입니다.</p>
+<p>본 과정은 ChatGPT·Gemini Notebook을 하루 종일 직접 다루고, 같은 고민을 가진 리더들과 팀 토론으로 해법을 찾아가는<br><mark class="hl-yellow">'실습 중심 워크샵 형태로 진행'</mark>합니다.<br><strong>많은 관심과 성원에 힘입어 1~3차수 운영에 이어 <mark class="hl-yellow">4·5·6차수를 추가 개설</mark>하오니</strong>, 리더 여러분들의 많은 관심과 신청 바랍니다.</p>
+</div>
 
 <h2>🎯 1. 과정명: 「리더십 향상 with AI」과정 (1일 8시간)</h2>
 <p class="goal-box">AI 시대, 리더의 역할과 책임의 변화를 이해하고, AI(ChatGPT, Gemini Notebook)를 활용해 리더의 핵심역량 및 팀의 성장역량·<br>AI 협업 방식을 재점검하며, 우리 팀의 성장역량 향상을 위한 <strong>30일 실행계획</strong>을 현업에 적용할 수 있다.</p>
-
 <h2>🗓️ 2. 과정 실시 개요</h2>
 <ul class="overview">
 <li><span class="label">1) 대상</span>: 실/팀장 중 희망자 (Task Leader 포함)</li>
-<li><mark class="hl-green">2) 일정 : 4차수_10월 29일(목) 08:30 ~ 17:30</mark></li>
+<li><mark class="hl-green">2) 일정 : 추가 3차수 [ 4차_10/29(목), 5차_11/11(수), 6차_11/13(금) ]</mark></li>
 <li><span class="label">3) 장소</span>: 파주 러닝센터 경영관 201호</li>
 </ul>
 
-<!-- 공통 블록: 과정 목표·교육내용 표(참가 안내문은 참가 안내 포함)는 apply-guide.html/-2 + participant-guide.html/-2/-3/-4/-5/-6 8개 파일에 동일 복제되어 있습니다. 커리큘럼 문구 수정 시 미발송분 안내문 + apply-guide를 동시에 반영하세요(발송 완료 차수분은 스냅샷 — 원문 유지). -->
-<h2>📚 3. 주요 교육내용</h2>
+<h2 class="apply-head"><span>📝 <mark class="hl-green">3. 수강 신청 안내: ~10월 23일(금)까지</mark></span></h2>
+
+
+<!-- 공통 블록: 과정 목표·교육내용 표는 apply-guide.html/-2 + participant-guide.html/-2/-3/-4/-5/-6 8개 파일에 동일 복제되어 있습니다. 커리큘럼 문구 수정 시 미발송분 안내문 + apply-guide를 동시에 반영하세요(발송 완료 차수분은 스냅샷 — 원문 유지). -->
+<h2>📚 4. 주요 교육내용</h2>
 <table>
 <thead><tr><th style="width:19%">Module</th><th style="width:26%">학습 목표</th><th>주요 내용</th></tr></thead>
 <tbody>
 <tr><td class="module">🤖 CH01. 리더를 위한 AI 핵심</td><td>AI 발전 흐름과 리더에게 요구되는 변화 이해</td><td>AI-Friendly 리더십·AI 리터러시 <span class="practice">(실습)</span>,<br>AI 트렌드와 Agentic AI 개념</td></tr>
 <tr><td class="module">🧭 CH02. 리더 역할 및 역량 점검</td><td>나의 리더 역할·책임·핵심역량을<br>AI 관점에서 재정의</td><td>ChatGPT 프롬프팅으로<br>나의 리더 역할·핵심역량 도출 <span class="practice">(실습)</span><br>팀토론 ① AI시대 팀 현실·리더 고민, ② AI와 리더의 책임경계</td></tr>
-<tr><td class="module">📈 CH03. 조직(팀) 성장역량 점검</td><td>팀 성장역량 지표·행동역량 설계 및 AI 협업 실험 정의</td><td>팀 성장역량 지표·행동역량 설계 <span class="practice">(실습)</span><br>팀토론 ③ 팀 성과와 성장 with AI</td></tr><!-- [260901] R3 실제 주제에 맞춰 개칭 — 미발송 3차수분만 적용(발송된 1·2차수 안내문은 원문 유지) -->
+<tr><td class="module">📈 CH03. 조직(팀) 성장역량 점검</td><td>팀 성장역량 지표·행동역량 설계 및 AI 협업 실험 정의</td><td>팀 성장역량 지표·행동역량 설계 <span class="practice">(실습)</span><br>팀토론 ③ 팀 성과와 성장 with AI</td></tr><!-- [260901] R3 실제 주제(성과·성장 시범 운영)에 맞춰 개칭 — 이미 발송된 1·2차수 안내문(participant-guide.html·-2)은 원문 유지, 3차수분부터 적용 -->
 <tr><td class="module">🚀 CH04. 우리 팀의 성장역량 향상</td><td style="white-space:nowrap;">근거 기반 30일 실행계획 완성</td><td>Gemini Notebook으로 점검자료 통합<br>→ 우리 팀 30일 성장역량 향상계획 도출 <span class="practice">(실습)</span></td></tr>
 <tr><td class="module">✅ CH05. 오늘의 핵심 요약</td><td>산출물 회수와 현업 적용 다짐</td><td>산출물 정리·회수, Start·Stop·Continue 실천 다짐</td></tr>
 </tbody>
 </table>
 
-<h2>✅ 4. 참가 안내</h2>
-
-<div class="notice-card">
-<p class="notice-title">1) 당일 교육/실습을 위해 <mark class="hl-yellow">'개인별 NBPC(노트북 PC)' 지참</mark> 바랍니다.</p>
-<ul>
-<li>생성형 AI 사이트 <mark class="hl-yellow">사전 회원 가입 및 로그인 확인 (ChatGPT, Gemini, Gemini Notebook(구 NotebookLM))</mark><br><span class="notice-sub">(당일 실습은 무료 계정으로 진행 가능합니다)</span><br><span class="notice-sub">· 준비할 계정은 2개면 충분합니다 — <strong>ChatGPT 계정 1개</strong> + <strong>Google 계정 1개</strong>(Gemini·Gemini Notebook 공용, 회사 Workspace 계정보다 <strong>개인 Google 계정</strong> 권장)</span><br><span class="notice-sub">· 로그인 확인은 <strong>사내망이 아닌 개인 네트워크</strong>(자택 인터넷·휴대폰 테더링)에서 해 주세요 — 사내망에서는 접속이 차단되어 실패할 수 있습니다</span></li>
-<li>생성형 AI 활용에 따른 <strong>보안서약서</strong>는 교육 당일 일괄 작성 안내드리겠습니다.</li>
-</ul>
+<p style="margin:30px 0 -22px;text-align:left;font-size:1.18rem;font-weight:700;color:var(--heading);">📞 궁금하신 사항은 리더십개발팀 담당자에게 연락주세요</p>
+<div class="footer-box">
+<p>HRD담당 / 리더십개발팀</p>
 </div>
-
-<div class="notice-card">
-<p class="notice-title">2) 출석 확인 (QR)을 위해 <mark class="hl-yellow">고용노동부 모바일 (App) 설치</mark> (회원 가입/실명 인증) 바랍니다.</p>
-<ul>
-<li>유첨. 교육 출결관리 방법 안내 (고용노동부 App)</li>
-<li><strong>수강 취소</strong> : <strong><mark class="hl-green">10/26(월)까지는 HRD.com에서 직접 취소 가능</mark>, 10/27(화)부터는 담당자에게 메일 송부</strong></li>
-</ul>
-</div>
-
-<div class="notice-card">
-<p class="notice-title">3) 파주 러닝센터는 <strong>부제없이 차량 출입(주차) 가능</strong>하며, 조식은 미운영 합니다.</p>
-</div>
-
-<p style="margin:30px 0 0;text-align:left;font-size:1.18rem;font-weight:700;color:var(--heading);">📞 5. 궁금하신 사항은 담당자에게 연락주세요 <span style="font-size:.95rem;font-weight:600;color:var(--body);">(Global 인재개발팀 · 리더십개발팀 담당자)</span></p>
 </body>
 </html>

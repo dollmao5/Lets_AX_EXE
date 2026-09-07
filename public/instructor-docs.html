@@ -75,13 +75,14 @@
       <button data-doc="cohort-guide" class="active">자료 1 · 강사 사전 가이드</button>
       <button data-doc="network-allowlist">자료 2 · [IT 제출용] 사내망 해제 요청서</button>
       <button data-doc="apply-guide">자료 3 · 과정 신청 안내문</button>
-      <button data-doc="exec-appeal">자료 4 · 임원/담당 사전 안내문</button>
-      <button data-doc="participant-guide">자료 5 · 1차수(8/21 금) 참가 안내문</button>
-      <button data-doc="participant-guide-2">자료 6 · 2차수(9/3 목) 참가 안내문</button>
-      <button data-doc="participant-guide-3">자료 7 · 3차수(9/10 목) 참가 안내문</button>
-      <button data-doc="participant-guide-4">자료 8 · 4차수(10/29 목) 참가 안내문</button>
-      <button data-doc="participant-guide-5">자료 9 · 5차수(11/11 수) 참가 안내문</button>
-      <button data-doc="participant-guide-6">자료 10 · 6차수(11/13 금) 참가 안내문</button>
+      <button data-doc="apply-guide-2">자료 4 · 과정 추가 신청 안내문</button><!-- [260907] 4·5·6차 추가 신청 안내문 삽입 — 이하 탭 넘버링 +1(사용자 결정) -->
+      <button data-doc="exec-appeal">자료 5 · 임원/담당 사전 안내문</button>
+      <button data-doc="participant-guide">자료 6 · 1차수(8/21 금) 참가 안내문</button>
+      <button data-doc="participant-guide-2">자료 7 · 2차수(9/3 목) 참가 안내문</button>
+      <button data-doc="participant-guide-3">자료 8 · 3차수(9/10 목) 참가 안내문</button>
+      <button data-doc="participant-guide-4">자료 9 · 4차수(10/29 목) 참가 안내문</button>
+      <button data-doc="participant-guide-5">자료 10 · 5차수(11/11 수) 참가 안내문</button>
+      <button data-doc="participant-guide-6">자료 11 · 6차수(11/13 금) 참가 안내문</button>
     </div>
     <div class="viewer">
       <div class="viewer-bar">
@@ -104,6 +105,7 @@
     "cohort-guide": "교육 전날 준비 → 당일 아침 차수 설정 → 교육 운영 → 종료 후까지",
     "network-allowlist": "IT/보안 부서 제출용 — 강사 조치 불필요 (문서 상단 '읽는 법'과 [강사용 3분 사전 점검]만 참고)",
     "apply-guide": "과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림 파악용",
+    "apply-guide-2": "4·5·6차수(10/29 목·11/11 수·11/13 금) 추가 개설 신청 안내 — 신청 마감 10/23(금), 과정 소개·일정·주요 교육내용",
     "exec-appeal": "임원/담당 대상 — 산하 팀장 참여 독려 요청과 과정 개요 요약 (8/5 신청 안내문 발송 안내 포함)",
     "participant-guide": "1차수(8/21 금) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
     "participant-guide-2": "2차수(9/3 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
@@ -157,7 +159,7 @@
       if (b) { b.style.maxWidth = "1080px"; b.style.wordBreak = "keep-all"; b.style.overflowWrap = "break-word"; }
     } catch (e) { /* 표시 보정 실패해도 열람에는 지장 없음 */ }
   });
-  /* 탭 전환 — 문서 10종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
+  /* 탭 전환 — 문서 11종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
   document.getElementById("tabBar").addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-doc]");
     if (!btn) return;
