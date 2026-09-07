@@ -79,6 +79,9 @@
       <button data-doc="participant-guide">자료 5 · 1차수(8/21 금) 참가 안내문</button>
       <button data-doc="participant-guide-2">자료 6 · 2차수(9/3 목) 참가 안내문</button>
       <button data-doc="participant-guide-3">자료 7 · 3차수(9/10 목) 참가 안내문</button>
+      <button data-doc="participant-guide-4">자료 8 · 4차수(10/29 목) 참가 안내문</button>
+      <button data-doc="participant-guide-5">자료 9 · 5차수(11/11 수) 참가 안내문</button>
+      <button data-doc="participant-guide-6">자료 10 · 6차수(11/13 금) 참가 안내문</button>
     </div>
     <div class="viewer">
       <div class="viewer-bar">
@@ -104,7 +107,10 @@
     "exec-appeal": "임원/담당 대상 — 산하 팀장 참여 독려 요청과 과정 개요 요약 (8/5 신청 안내문 발송 안내 포함)",
     "participant-guide": "1차수(8/21 금) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
     "participant-guide-2": "2차수(9/3 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
-    "participant-guide-3": "3차수(9/10 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내"
+    "participant-guide-3": "3차수(9/10 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
+    "participant-guide-4": "4차수(10/29 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
+    "participant-guide-5": "5차수(11/11 수) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
+    "participant-guide-6": "6차수(11/13 금) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내"
   };
   function savedCode() { try { return localStorage.getItem(CODE_KEY) || ""; } catch (e) { return ""; } }
   function open(ok) {
@@ -151,7 +157,7 @@
       if (b) { b.style.maxWidth = "1080px"; b.style.wordBreak = "keep-all"; b.style.overflowWrap = "break-word"; }
     } catch (e) { /* 표시 보정 실패해도 열람에는 지장 없음 */ }
   });
-  /* 탭 전환 — 문서 7종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
+  /* 탭 전환 — 문서 10종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
   document.getElementById("tabBar").addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-doc]");
     if (!btn) return;
