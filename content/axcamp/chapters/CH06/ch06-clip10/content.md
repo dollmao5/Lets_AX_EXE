@@ -139,7 +139,7 @@ Google Developers Blog10분도구
 
 Google AI for Developers8분도구
 
-- [Cline (GitHub)](https://github.com/cline/cline)IDE 안에서 파일 편집, 명령 실행, 브라우저 작업을 단계적으로 위임하는 오픈소스 agentic coding 도구. 오늘 시연 도구와 직접 연결된다.
+- [Cline (GitHub)](https://github.com/cline/cline)IDE 안에서 파일 편집, 명령 실행, 브라우저 작업을 단계적으로 위임하는 오픈소스 agentic coding 도구. 6-3 시연 사례의 도구와 직접 연결된다.
 
 Cline10분도구
 
