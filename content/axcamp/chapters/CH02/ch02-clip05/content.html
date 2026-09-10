@@ -209,9 +209,9 @@
     var a=document.createElement(&#x27;a&#x27;);
     var objectUrl=&#x27;&#x27;;
     a.download=(prefix?nameRoot.replace(/_(팀번호|성명)$/,&#x27;&#x27;)+&#x27;_&#x27;+prefix.slice(0,-1):nameRoot)+&#x27;.md&#x27;;
-    if(window.URL&amp;&amp;typeof URL.createObjectURL===&#x27;function&#x27;){
+    if(window.URL&amp;&amp;typeof window.URL.createObjectURL===&#x27;function&#x27;){
       var blob=new Blob([buildMarkdown()],{type:&#x27;text/markdown;charset=utf-8&#x27;});
-      objectUrl=URL.createObjectURL(blob);
+      objectUrl=window.URL.createObjectURL(blob);
       a.href=objectUrl;
     }else{
       a.href=&#x27;data:text/markdown;charset=utf-8,&#x27;+encodeURIComponent(buildMarkdown());
@@ -219,8 +219,8 @@
     document.body.appendChild(a);
     a.click();
     a.remove();
-    if(objectUrl&amp;&amp;window.URL&amp;&amp;typeof URL.revokeObjectURL===&#x27;function&#x27;){
-      setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);
+    if(objectUrl&amp;&amp;window.URL&amp;&amp;typeof window.URL.revokeObjectURL===&#x27;function&#x27;){
+      setTimeout(function(){window.URL.revokeObjectURL(objectUrl);},500);
     }
     if(status){status.textContent=&#x27;Markdown 다운로드를 완료했습니다.&#x27;;}
   }

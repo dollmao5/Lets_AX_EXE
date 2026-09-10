@@ -1338,9 +1338,9 @@
       var link=document.createElement('a');
       var objectUrl='';
       link.download=fileName;
-      if(window.URL&amp;&amp;typeof URL.createObjectURL==='function'){
+      if(window.URL&amp;&amp;typeof window.URL.createObjectURL==='function'){
         var blob=new Blob([text],{type:mime});
-        objectUrl=URL.createObjectURL(blob);
+        objectUrl=window.URL.createObjectURL(blob);
         link.href=objectUrl;
       }else{
         link.href='data:'+mime+','+encodeURIComponent(text);
@@ -1348,7 +1348,7 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      if(objectUrl&amp;&amp;window.URL&amp;&amp;typeof URL.revokeObjectURL==='function'){window.setTimeout(function(){URL.revokeObjectURL(objectUrl);},500);}
+      if(objectUrl&amp;&amp;window.URL&amp;&amp;typeof window.URL.revokeObjectURL==='function'){window.setTimeout(function(){window.URL.revokeObjectURL(objectUrl);},500);}
     }
 
     root.addEventListener('input',function(event){if(event.target&amp;&amp;event.target.matches('[data-c501-field]')){save();}});
