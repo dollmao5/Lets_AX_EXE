@@ -12,6 +12,8 @@
  *  7. visible-catalog-overrides.json stale 키 — 존재하지 않는 클립/챕터 오버라이드
  *  8. PRACTICE_FILE_MAP 실존 — server.js 실습파일 매핑이 디스크와 일치하는지
  *  9. 표시 텍스트 금칙어 확장 — deck-data.json·wrapup.html·강사 자료실 (260818 사각지대 해소)
+ * 10. 인라인 이벤트 핸들러 — on... 속성 전수 문법 파싱 + with(document){with(el)} 섀도잉 위험 식별자
+ *     (URL 등)의 비한정 사용 금지 (260910 다운로드 전면 실패 재발 방지)
  *
  * 종료 코드: 오류 발견 시 1, 아니면 0 (신선도는 경고로만 출력)
  * 사용법: npm run lint:content
@@ -248,6 +250,95 @@ try {
   }
 } catch (e) {
   warnings.push(`[금칙어+] 검사 실패(무시됨): ${e.message}`);
+}
+
+/* 10. 인라인 이벤트 핸들러 스코프 섀도잉 — 260910 장애(3차수 당일 파일 다운로드 전면 실패) 재발 방지.
+   클립 본문은 innerHTML 로 주입되어 <script> 가 실행되지 않으므로 on... 속성 안에서 스크립트를 돌린다.
+   HTML 이벤트 핸들러 속성의 스코프 체인은 with(document){with(element){ ... }} 이라, 비한정으로 쓴
+   전역(예: URL)이 document/element 의 동명 속성(document.URL = 문자열)에 가려져 런타임 예외가 난다.
+   → 아래 이름들은 반드시 window./document./el. 로 한정해서 쓸 것. 동시에 핸들러 전수를 파싱해 문법 오류도 잡는다. */
+try {
+  const SHADOW_HAZARD = [
+    "URL", "location", "open", "close", "write", "writeln", "name", "title", "origin", "all",
+    "children", "hidden", "style", "id", "dir", "status", "cookie", "domain", "referrer",
+    "images", "forms", "links", "scripts", "embeds", "plugins", "head", "body",
+    "append", "prepend", "before", "after", "remove", "replaceWith", "matches", "closest",
+    "baseURI", "textContent", "innerText", "nodeName", "parentNode", "childNodes", "lang", "slot", "part", "role"
+  ];
+  const stripJsLiterals = (src) =>
+    src
+      .replace(/\/\*[\s\S]*?\*\//g, " ")
+      .replace(/(^|[^:])\/\/[^\n]*/g, "$1 ")
+      .replace(/'(?:\\.|[^'\\])*'/g, "''")
+      .replace(/"(?:\\.|[^"\\])*"/g, '""')
+      .replace(/`(?:\\.|[^`\\])*`/g, "``");
+  // 속성값은 HTML 엔티티로 인코딩돼 있다 — 숫자형(&#x27; 등)까지 풀어야 실제 실행 코드와 같아진다
+  const decodeAttr = (s) =>
+    s
+      .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+      .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+      .replace(/&quot;/g, '"')
+      .replace(/&apos;/g, "'")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&");
+
+  let handlerCount = 0;
+  for (const [clipKey, clipDir] of clipDirs) {
+    const rel = path.relative(ROOT, clipDir).replace(/\\/g, "/");
+    const rawHtml = fs.readFileSync(path.join(clipDir, "content.html"), "utf8");
+    const html = stripComments(rawHtml);
+    const attrRe = /\son([a-z]+)\s*=\s*"([\s\S]*?)"(?=[\s/>])/g;
+    let m;
+    while ((m = attrRe.exec(html))) {
+      handlerCount++;
+      const [, evt, rawBody] = m;
+      const body = decodeAttr(rawBody);
+      // 10-a. 문법 파싱 (핸들러 본문은 함수 본문과 같은 문맥)
+      try {
+        // eslint-disable-next-line no-new-func
+        new Function("event", body);
+      } catch (parseErr) {
+        errors.push(`[핸들러] ${rel}/content.html: on${evt} 문법 오류 — ${String(parseErr.message).slice(0, 90)}`);
+        continue;
+      }
+      // 10-b. 섀도잉 위험 식별자의 비한정 사용
+      const src = stripJsLiterals(body);
+      const declared = new Set();
+      for (const d of src.matchAll(/\b(?:var|let|const)\s+([A-Za-z_$][\w$]*)/g)) declared.add(d[1]);
+      for (const d of src.matchAll(/\bfunction\s+([A-Za-z_$][\w$]*)/g)) declared.add(d[1]);
+      for (const d of src.matchAll(/\bfunction\s*[A-Za-z_$\w]*\s*\(([^)]*)\)/g)) {
+        for (const raw of d[1].split(",")) {
+          const nm = raw.trim().replace(/[=\s].*$/, "");
+          if (nm) declared.add(nm);
+        }
+      }
+      for (const d of src.matchAll(/\(([^()]*)\)\s*=>/g)) {
+        for (const raw of d[1].split(",")) {
+          const nm = raw.trim().replace(/[=\s].*$/, "");
+          if (nm) declared.add(nm);
+        }
+      }
+      for (const d of src.matchAll(/\b([A-Za-z_$][\w$]*)\s*=>/g)) declared.add(d[1]);
+      for (const d of src.matchAll(/\bcatch\s*\(\s*([A-Za-z_$][\w$]*)/g)) declared.add(d[1]);
+      for (const hazard of SHADOW_HAZARD) {
+        if (declared.has(hazard)) continue;
+        const rx = new RegExp("(^|[^.\\w$])" + hazard + "\\s*(\\.|\\(|\\[|===|==|!=|=[^=])", "g");
+        const hit = rx.exec(src);
+        if (hit) {
+          const ctx = src.slice(Math.max(0, hit.index), hit.index + hazard.length + 24).replace(/\s+/g, " ").trim();
+          errors.push(
+            `[핸들러] ${rel}/content.html: on${evt} 안에서 '${hazard}' 를 한정 없이 사용 — with(document){with(el)} 스코프에 가려집니다. ` +
+            `window.${hazard} / document.${hazard} 처럼 한정하세요. (…${ctx}…)`
+          );
+        }
+      }
+    }
+  }
+  if (handlerCount === 0) warnings.push("[핸들러] 검사 대상 on... 속성이 0개 — 추출 정규식 점검 필요");
+} catch (e) {
+  warnings.push(`[핸들러] 검사 실패(무시됨): ${e.message}`);
 }
 
 /* ---------- 결과 ---------- */
