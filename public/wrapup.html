@@ -496,13 +496,27 @@
       "<span class=\"rg-item\"><span class=\"rg-label\">➡️ 다음</span>" + esc(g.next) + "</span>";
   }
 
-  /* "2026-08-21차수" → "1차수 (2026-08-21)" — 순번은 날짜형 차수만 정렬 순서로 매김.
+  /* [260915] 확정 차수 대장 — 차수 번호와 지역을 여기서만 관리한다(표시 전용).
+     저장 폴더명("2026-10-23차수")은 그대로 두고 화면 표기만 바꾸므로 지난 차수 데이터에 영향이 없다.
+     새 차수가 확정되면 이 표에 한 줄만 추가하면 된다 — 표에 없는 날짜형 차수는 정렬 순번으로 번호를 매기고 지역은 생략한다. */
+  var COHORT_META = {
+    "2026-08-21": { no: 1, region: "파주" },
+    "2026-09-03": { no: 2, region: "파주" },
+    "2026-09-10": { no: 3, region: "파주" },
+    "2026-10-23": { no: 4, region: "구미" },
+    "2026-10-29": { no: 5, region: "파주" },
+    "2026-11-11": { no: 6, region: "파주" }
+  };
+
+  /* "2026-10-23차수" → "4차수_2026-10-23_구미" (사용자 지정 표기).
      날짜형이 아닌 차수명(예: 테스트차수)은 원문 그대로 표시한다. */
   function cohortLabel(c, all) {
     var m = /^(\d{4}-\d{2}-\d{2})차수$/.exec(c);
     if (!m) return c;
+    var date = m[1], meta = COHORT_META[date];
+    if (meta) return meta.no + "차수_" + date + "_" + meta.region;
     var dated = all.filter(function (x) { return /^\d{4}-\d{2}-\d{2}차수$/.test(x); });
-    return (dated.indexOf(c) + 1) + "차수 (" + m[1] + ")";
+    return (dated.indexOf(c) + 1) + "차수_" + date;
   }
 
   async function loadCohorts() {
