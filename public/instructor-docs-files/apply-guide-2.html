@@ -25,7 +25,7 @@
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0 auto; max-width: 1080px; padding: 40px 28px 56px;
+    margin: 0 auto; max-width: 1280px; padding: 40px 28px 56px; /* [260916] 1080→1280px — 1343px 캡처 기준 좌우 여백이 너무 넓다는 지적으로 확장(사용자 지정) */
     font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
     color: var(--body); line-height: 1.65;
     background:
@@ -194,7 +194,8 @@
 <li><span class="label">3) 장소</span>: 구미 456단지 P45동 강의장D / 파주 러닝센터 경영관 201호</li><!-- [260915-2] 장소도 지역 기준 병기(사용자 지정 표기) — 구미 먼저, 파주 뒤 -->
 </ul>
 
-<h2 class="apply-head"><span>📝 <mark class="hl-green">3. 수강 신청 안내: ~10월 16일(금)까지</mark></span></h2><!-- [260915] 신청 마감 10/23→10/16(금) — 10/23이 구미 차수 교육일이 되어 조정(사용자 지정) -->
+<h2 class="apply-head"><span>📝 <mark class="hl-green">3. 수강 신청 안내: ~10월 16일(금)까지</mark></span><a class="apply-btn" href="https://smarthrd.lgdisplay.com/local/oklass_search/search_main.php?type=&amp;codevalue=&amp;search=%EB%A6%AC%EB%8D%94%EC%8B%AD+%ED%96%A5%EC%83%81&amp;x=0&amp;y=0" target="_blank" rel="noopener" title="SmartHRD '리더십 향상' 과정 검색 결과로 이동">수강신청 바로가기 →</a></h2>
+<p style="margin:2px 0 18px; font-size:.93rem; color:#475569;">※ Let's Mobile의 경우, HRD.com 접속 → '리더십 향상 with AI' 검색 → 희망 차수신청 가능합니다.</p><!-- [260916] 수강신청 바로가기 버튼 + Let's Mobile 안내 추가 — 260805 신청안내문(발송본) 마크업 이식(사용자 지정) --><!-- [260915] 신청 마감 10/23→10/16(금) — 10/23이 구미 차수 교육일이 되어 조정(사용자 지정) -->
 
 
 <!-- 공통 블록: 과정 목표·교육내용 표는 apply-guide.html/-2 + participant-guide.html/-2/-3/-4/-5/-6 8개 파일에 동일 복제되어 있습니다. 커리큘럼 문구 수정 시 미발송분 안내문 + apply-guide를 동시에 반영하세요(발송 완료 차수분은 스냅샷 — 원문 유지). -->
