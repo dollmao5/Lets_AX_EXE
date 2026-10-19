@@ -80,9 +80,8 @@
       <button data-doc="participant-guide">자료 6 · 1차수(8/21 금) 참가 안내문</button>
       <button data-doc="participant-guide-2">자료 7 · 2차수(9/3 목) 참가 안내문</button>
       <button data-doc="participant-guide-3">자료 8 · 3차수(9/10 목) 참가 안내문</button>
-      <button data-doc="participant-guide-4">자료 9 · 4차수(10/23 금, 구미) 참가 안내문</button>
-      <button data-doc="participant-guide-5">자료 10 · 5차수(10/29 목) 참가 안내문</button>
-      <button data-doc="participant-guide-6">자료 11 · 6차수(11/11 수) 참가 안내문</button><!-- [260915] 차수 재배정 — 자료 9~11을 4차 10/23(구미)·5차 10/29·6차 11/11로 갱신 --></button>
+      <button data-doc="participant-guide-4">자료 9 · 4차수(10/29 목) 참가 안내문</button>
+      <button data-doc="participant-guide-5">자료 10 · 5차수(11/11 수) 참가 안내문</button><!-- [260915] 차수 재배정 — 자료 9~11을 4차 10/23(구미)·5차 10/29·6차 11/11로 갱신 --><!-- [261019] 구미 4차(10/23 금) 신청 인원 미달로 폐강(사용자 결정) → 파주 10/29=4차·11/11=5차로 번호 재배정, 총 5차수. 구미 4차 안내문 탭(자료 9, participant-guide-4.html 구미판)은 삭제(사용자 결정) — 복구: git 이력(커밋 4285a0a 시점 파일). 파일명도 재배정: 구 participant-guide-5.html→-4, -6→-5. 문서 11종→10종 -->
     </div>
     <div class="viewer">
       <div class="viewer-bar">
@@ -105,14 +104,13 @@
     "cohort-guide": "교육 전날 준비 → 당일 아침 차수 설정 → 교육 운영 → 종료 후까지",
     "network-allowlist": "IT/보안 부서 제출용 — 강사 조치 불필요 (문서 상단 '읽는 법'과 [강사용 3분 사전 점검]만 참고)",
     "apply-guide": "과정 소개·목표·일정·주요 교육내용 — 과정의 전체 그림 파악용 (1~3차수분 발송본)",
-    "apply-guide-2": "추가 3차수(구미 10/23 금 · 파주 10/29 목·11/11 수) 개설 신청 안내 — 신청 마감 10/16(금), 과정 소개·일정·주요 교육내용",
+    "apply-guide-2": "추가 2차수(파주 10/29 목·11/11 수) 개설 신청 안내 — 신청 마감 10/16(금) 종료, 과정 소개·일정·주요 교육내용 ※ 구미 10/23 차수는 신청 인원 미달로 폐강(10/19)",
     "exec-appeal": "임원/담당 대상 — 산하 팀장 참여 독려 요청과 과정 개요 요약 (8/5 신청 안내문 발송 안내 포함)",
     "participant-guide": "1차수(8/21 금) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
     "participant-guide-2": "2차수(9/3 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
     "participant-guide-3": "3차수(9/10 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
-    "participant-guide-4": "4차수(10/23 금) 참가 확정자 대상 — 구미 456단지 P45동 강의장D · 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
-    "participant-guide-5": "5차수(10/29 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
-    "participant-guide-6": "6차수(11/11 수) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내"
+    "participant-guide-4": "4차수(10/29 목) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내",
+    "participant-guide-5": "5차수(11/11 수) 참가 확정자 대상 — 일정·장소, 주요 교육내용, NBPC 지참·출석(QR)·수강취소 등 참가 안내"
   };
   function savedCode() { try { return localStorage.getItem(CODE_KEY) || ""; } catch (e) { return ""; } }
   function open(ok) {
@@ -159,7 +157,7 @@
       if (b) { b.style.maxWidth = "1080px"; b.style.wordBreak = "keep-all"; b.style.overflowWrap = "break-word"; }
     } catch (e) { /* 표시 보정 실패해도 열람에는 지장 없음 */ }
   });
-  /* 탭 전환 — 문서 11종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
+  /* 탭 전환 — 문서 10종을 한 페이지 안에서 열람 (보드 탭과 동일한 조작감) */
   document.getElementById("tabBar").addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-doc]");
     if (!btn) return;
