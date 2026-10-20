@@ -2847,7 +2847,7 @@ async function handleWrapupStatus(req, res, urlObj) {
   const teams = [];
   for (let t = 1; t <= config.teamCount; t++) {
     const members = items.filter((s) => s.team === t);
-    teams.push({ team: t, count: members.length, names: members.map((s) => s.name) });
+    teams.push({ team: t, count: members.length, names: members.map((s) => s.name), ids: members.map((s) => s.id) }); /* [261020] ids: 보드 ✕삭제용 제출 id(파일명 스템) — Worker와 동일 필드 */
   }
   /* [팀 대표 파일] 제출 현황에 팀 대표(합의본) 제출 여부 포함 — 강사가 발표 전 6/6 확인용 */
   let teamReps = [];

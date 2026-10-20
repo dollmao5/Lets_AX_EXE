@@ -50,7 +50,7 @@ if (STATIC_MODE && typeof window !== "undefined" && typeof window.fetch === "fun
     if (response.status === 401) {
       const data = await response.clone().json().catch(() => null);
       if (data?.codeRequired) {
-        const entered = window.prompt("강사가 안내한 차수 코드를 입력해 주세요.", savedCode || "");
+        const entered = window.prompt("강사님이 안내한 차수 코드를 입력해 주세요.", savedCode || ""); /* [261020] 존칭 통일: '강사가' → '강사님이' */
         if (entered === null) return response;
         const code = entered.trim();
         try {

@@ -672,7 +672,7 @@ return;}
 rawMd=d.canvas2.markdown;if(window.axMdPreview){bodyEl.innerHTML=window.axMdPreview(rawMd);}else{bodyEl.textContent=rawMd;}viewEl.style.display='block';viewEl.open=false;
 copyBtn.style.display='';dlBtn.style.display='';
 try{localStorage.setItem('ax_wrapup_identity',JSON.stringify({team:team,name:name}));}catch(e){}
-setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+(d.canvas2.summaryGeneratedAt?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ [📋 복사] 또는 [.md 다운로드] 후 첨부 (자동 전송 안 됨).',false);
+setStatus(LABEL+' 토론 정리본 불러옴 · '+team+'팀 '+name+(d.stored?' (강사님 생성본)':' (즉석 병합)')+((d.canvas2.summaryGeneratedAt&amp;&amp;!(d.canvas2.markdown&amp;&amp;d.canvas2.markdown.indexOf('팀 합의 요약이 아직 생성되지 않았습니다')!==-1))?'':' — 팀 합의 요약은 아직 미반영')+' — ✅ [📋 복사] 또는 [.md 다운로드] 후 첨부 (자동 전송 안 됨).',false);
 })
 .catch(function(){loadBtn.disabled=false;setStatus('불러오기 실패(네트워크) — 잠시 후 [불러오기]를 다시 눌러 주세요.',true);});
 });

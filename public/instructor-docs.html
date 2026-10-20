@@ -121,7 +121,12 @@
   function verifyAt(base, code) {
     var opts = { method: "POST", headers: {} };
     if (code) opts.headers["x-wrapup-instructor"] = code;
-    if (!base) opts.credentials = "include"; /* 로컬 서버는 세션 쿠키(관리자 로그인)로도 통과 */
+    if (!base) {
+      /* [261020] 로컬 서버는 관리자 세션으로 통과 — 포털(app.js)이 세션을 쿠키가 아니라 localStorage 토큰 + x-session-token 헤더로 보내므로
+         같은 키(ax_literacy_session_token)를 읽어 헤더로 전달 (server.js resolveUserFromRequest는 헤더·쿼리의 토큰만 봄).
+         직전 코드(credentials:"include")는 쿠키 기반이라 자동 입장이 실제로는 동작하지 않았음 */
+      try { var tok = localStorage.getItem("ax_literacy_session_token"); if (tok) opts.headers["x-session-token"] = tok; } catch (e) {}
+    }
     return fetch(base + "/api/wrapup/instructor-verify", opts).then(function (r) { return r.json(); });
   }
   function verify(code, silent) {

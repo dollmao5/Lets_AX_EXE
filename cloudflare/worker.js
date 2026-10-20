@@ -193,7 +193,9 @@ async function readConfig(env) {
 function parseSubmissionFilename(name) {
   const m = /^(\d+)조_(.+)\.json$/.exec(name);
   if (!m) return null;
-  return { team: parseInt(m[1], 10), name: m[2].replace(/_/g, " ") };
+  /* [261020] id = 파일명 스템(예: 1조_홍길동_) 그대로 — 보드 ✕삭제가 표시용 name(_→공백 복원)을 재정규화하면
+     이름 끝 특수문자('홍길동.')·연속 특수문자('A..B')에서 원본 파일명과 어긋나 404가 나던 문제를 막는다 (server.js status의 ids와 대칭) */
+  return { team: parseInt(m[1], 10), name: m[2].replace(/_/g, " "), id: name.slice(0, -5) };
 }
 
 /* ---------- 강사·관리자 인증 (관리자 코드도 동일 권한으로 통과) ---------- */
@@ -321,7 +323,7 @@ async function handleStatus(request, env, url) {
   const teams = [];
   for (let t = 1; t <= config.teamCount; t++) {
     const members = items.filter((s) => s.team === t);
-    teams.push({ team: t, count: members.length, names: members.map((s) => s.name) });
+    teams.push({ team: t, count: members.length, names: members.map((s) => s.name), ids: members.map((s) => s.id) }); /* [261020] ids: 보드 ✕삭제용 파일명 스템 */
   }
   /* [팀 대표 파일] 팀 대표(합의본) 제출 여부 — 강사 확인용 */
   let teamReps = [];

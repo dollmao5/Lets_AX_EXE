@@ -292,6 +292,7 @@
       <li><strong>생각 열기 링크 전체 클릭 확인</strong> — 각 클립의 🎬 블록을 펼쳐 링크가 모두 열리는지 확인.</li>
       <li><strong>Gemini Notebook 확인</strong> — 공식 도움말에서 사용한도 변경 여부 + 교육 계정 화면 명칭(구 NotebookLM 표기 잔존 여부) 확인.</li>
       <li><strong>Wrap-up 보드 차수 설정</strong> — 새 차수 생성·차수 코드 공지 준비.</li>
+      <li><strong>공유 보드 예열</strong> — 당일 아침 시작 전 포털 헤더 [공유 보드 열기]를 한 번 눌러 둡니다 (무료 호스팅 콜드스타트로 첫 접속만 20초 이상 소요). <!-- [261020] 4차수 전일 점검에서 추가 --></li>
     </ul>
     <div class="hook-warn"><strong>유튜브 차단 시 폴백 (1-2 생각 열기 영상):</strong> 영상 대신 구두로 — "KBS 제작진이 상용 AI로 여행 에이전트를 만들었습니다. 일정·경비·목적만 정해주니 에이전트가 스스로 호텔 사이트를 검색하고 예약까지 실행했습니다. 사람이 한 일은 목표 한 줄이 전부였습니다."</div>
 
@@ -567,9 +568,11 @@
     if (!show) { box.style.display = "none"; box.innerHTML = ""; return; }
     var html = "🗑️ <strong>제출 명단·삭제</strong> <span style=\"font-size:.82rem\">(이름을 잘못 입력한 제출물은 ✕로 정리 — 본인이 같은 이름으로 다시 내면 자동 덮어쓰기라 삭제 불필요)</span><br>";
     html += teams.filter(function (t) { return t.count > 0; }).map(function (t) {
-      return "<strong>" + t.team + "팀</strong> " + t.names.map(function (n) {
+      return "<strong>" + t.team + "팀</strong> " + t.names.map(function (n, i) {
+        /* [261020] 서버·Worker status가 주는 ids(파일명 스템)를 우선 사용 — 이름 재정규화로 id가 어긋나던 특수문자 이름(끝 '.', 연속 특수문자)도 정확히 삭제. 구버전 응답(ids 없음)이면 기존 재구성 방식 */
+        var sid = (t.ids && t.ids[i]) ? t.ids[i] : "";
         return "<span style=\"display:inline-flex;align-items:center;gap:4px;margin:1px 3px;padding:1px 8px;border:1px solid var(--border);border-radius:999px;background:var(--card);\">" + esc(n) +
-          "<button type=\"button\" data-del-team=\"" + t.team + "\" data-del-name=\"" + esc(n) + "\" title=\"이 제출물 삭제 (토론 정리본 포함)\" style=\"border:none;background:none;color:var(--danger);cursor:pointer;font-weight:900;padding:0 2px;font-size:.95em;\">✕</button></span>";
+          "<button type=\"button\" data-del-team=\"" + t.team + "\" data-del-name=\"" + esc(n) + "\" data-del-id=\"" + esc(sid) + "\" title=\"이 제출물 삭제 (토론 정리본 포함)\" style=\"border:none;background:none;color:var(--danger);cursor:pointer;font-weight:900;padding:0 2px;font-size:.95em;\">✕</button></span>";
       }).join("");
     }).join(" &nbsp;·&nbsp; ");
     box.innerHTML = html;
@@ -583,7 +586,8 @@
     if (!window.confirm("'" + name + "' (" + team + "팀) 제출물을 삭제할까요?\n\n· 이미 생성된 이 사람의 토론 정리본도 함께 삭제됩니다.\n· 요약을 이미 생성했다면 삭제 후 [요약 생성]을 다시 실행해 주세요.")) return;
     btn.disabled = true;
     try {
-      var d = await api("/api/admin/wrapup/delete", { method: "POST", body: { round: state.round, id: team + "조_" + wrapupNameSegment(name) } });
+      var sid = btn.getAttribute("data-del-id") || (team + "조_" + wrapupNameSegment(name)); /* [261020] status의 id 우선, 없으면 재구성 */
+      var d = await api("/api/admin/wrapup/delete", { method: "POST", body: { round: state.round, id: sid } });
       if (d.ok) { toast("삭제 완료: " + name + " (" + team + "팀)"); await loadStatus(); }
       else { toast(d.error || "삭제에 실패했습니다."); btn.disabled = false; }
     } catch (e) { toast("서버 오류로 삭제에 실패했습니다."); btn.disabled = false; }
