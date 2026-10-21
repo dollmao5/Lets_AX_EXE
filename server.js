@@ -3294,7 +3294,7 @@ function splitWrapupTeamSummary(summaryMd) {
 function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
   const ctx = WRAPUP_ROUND_CONTEXT[round];
   const { consensus, diff } = splitWrapupTeamSummary(teamEntry?.summary);
-  const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사가 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
+  const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사님이 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
   return [
     `# ${ctx.label} · 토론 정리본 — ${submission.name} (${submission.team}팀)`,
     "",

@@ -2197,7 +2197,7 @@ html[data-font-scale="3"] {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  font-size: 0.78rem;
+  font-size: 0.82rem; /* [261021] 12.5px→13.1px */
   color: #607190;
 }
 
@@ -2209,8 +2209,8 @@ html[data-font-scale="3"] {
   border: 1px solid #cfe0fb;
   background: #ecf4ff;
   color: #1b4f9b;
-  font-size: 0.74rem;
-  font-weight: 800;
+  font-size: 0.82rem; /* [261021] 11.8px→13.1px */
+  font-weight: 500; /* [261021] 6-9 볼드 밀도 완화 */
   padding: 0.12rem 0.52rem;
 }
 
@@ -2666,7 +2666,7 @@ html[data-font-scale="3"] {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 0.8rem;
+  font-size: 0.82rem; /* [261021] 12.8px→13.1px */
   color: var(--text-body);
 }
 
@@ -2732,7 +2732,7 @@ html[data-font-scale="3"] {
 }
 
 .style-matrix-column-desc {
-  font-size: 0.76rem;
+  font-size: 0.82rem; /* [261021] 12.2px→13.1px */
   line-height: 1.65;
   color: #5c6f8c;
 }
@@ -3089,10 +3089,10 @@ html[data-font-scale="3"] {
 }
 
 .style-matrix-meta {
-  font-size: 0.72rem;
+  font-size: 0.82rem; /* [261021] 11.5px→13.1px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #738199;
+  color: #5f6f8a; /* [261021] 대비 3.9→5.0 */
 }
 
 .style-matrix-card[data-tone="poster"] .style-matrix-meta {
@@ -6010,7 +6010,7 @@ html[data-font-scale="3"] {
   padding: 9px 12px !important;
   vertical-align: middle !important;
   font-size: 1.02rem !important;
-  line-height: 1.48 !important;
+  line-height: 1.55 !important; /* [261021] 1.48→1.55 가독성 */
   word-break: keep-all;
 }
 
@@ -6770,6 +6770,7 @@ label:has(> input[data-r3check]:checked) {
   content: "▾ 펼치기";
   float: right;
   margin-left: 12px;
+  margin-right: 12px; /* [261021] 같은 쪽에 float되는 배지(강사님 진행 · 약 N분)와 붙어 보이던 문제 */
   font-size: 0.85em;
   font-weight: 800;
   color: #7c3aed;
@@ -6985,6 +6986,10 @@ table.round-schedule { width: 100%; }
 /* 헤더가 본문 셀보다 작던 위계 역전 해소 + 긴 표에서 헤더 고정 */
 .comparison-table {
   font-size: 1rem;
+}
+.comparison-table td,
+.comparison-table th {
+  line-height: 1.55; /* [261021] 셀 줄간격 1.36~1.42 → 1.55 (본문 1.7과의 격차 축소) */
 }
 .comparison-table thead th {
   font-size: 1rem;

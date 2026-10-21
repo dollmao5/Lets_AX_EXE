@@ -82,7 +82,7 @@ Firecrawl MCP
 
 웹 데이터 수집경쟁사 모니터링리서치
 
-[GitHub →](https://github.com/mendableai/firecrawl-mcp-server)
+[GitHub →](https://github.com/firecrawl/firecrawl-mcp-server)
 
 MCP Spec (공식)
 
@@ -166,7 +166,7 @@ OpenCode
 
 벤더 종속 없는 유연한 AI 코딩 환경
 
-[Link →](https://github.com/sst/opencode)
+[Link →](https://github.com/anomalyco/opencode)
 
 ChatGPT
 

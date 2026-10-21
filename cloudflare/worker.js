@@ -267,7 +267,7 @@ async function handleSubmit(request, env) {
       return json(request, 401, {
         ok: false,
         codeRequired: true,
-        error: "차수 코드가 필요합니다. 강사가 안내한 코드를 입력해 주세요."
+        error: "차수 코드가 필요합니다. 강사님이 안내한 코드를 입력해 주세요."
       });
     }
   }
@@ -530,7 +530,7 @@ function splitWrapupTeamSummary(summaryMd) {
 function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
   const label = WRAPUP_ROUND_LABELS[round];
   const { consensus, diff } = splitWrapupTeamSummary(teamEntry && teamEntry.summary);
-  const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사가 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
+  const pendingNote = "_(팀 합의 요약이 아직 생성되지 않았습니다 — 강사님이 Wrap-up 보드에서 '요약 생성'을 실행하면 반영됩니다.)_";
   return [
     `# ${label} · 토론 정리본 — ${submission.name} (${submission.team}팀)`,
     "",

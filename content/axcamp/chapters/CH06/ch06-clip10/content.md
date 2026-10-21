@@ -39,7 +39,7 @@ BCG15분전략
 
 BCG20분전략
 
-- [CEO's Guide to Maximizing Value from AI (PDF)](https://media-publications.bcg.com/BCG-Executive-Perspectives-CEOs-Guide-to-Maximizing-Value-from-AI-EP0-3July2024.pdf)1,000+ 프로젝트 경험을 압축한 CEO 전용 가이드. DEPLOY-RESHAPE-INVENT 3단계 + 10-20-70 법칙.
+- [CEO's Guide to Maximizing Value from AI (PDF)](https://www.bcg.com/assets/2024/executive-perspectives-ceos-guide-to-maximizing-value-from-ai-3july.pdf)1,000+ 프로젝트 경험을 압축한 CEO 전용 가이드. DEPLOY-RESHAPE-INVENT 3단계 + 10-20-70 법칙.
 
 BCG30분전략
 
@@ -71,7 +71,7 @@ BCG15분에이전트
 
 OpenAI15분에이전트
 
-- [Effective Context Engineering for AI Agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)좋은 에이전트 성능은 프롬프트 한 줄보다 컨텍스트 구성, 작업 상태, 도구 연결에 달려 있다는 점을 구체적으로 설명.
+- [Effective Context Engineering for AI Agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)좋은 에이전트 성능은 프롬프트 한 줄보다 컨텍스트 구성, 작업 상태, 도구 연결에 달려 있다는 점을 구체적으로 설명.
 
 Anthropic12분에이전트
 
