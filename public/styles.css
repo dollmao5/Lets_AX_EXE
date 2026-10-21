@@ -3147,7 +3147,7 @@ html[data-font-scale="3"] {
   border-radius: 999px;
   border: 1px solid rgba(148, 166, 196, 0.4);
   background: rgba(255, 255, 255, 0.9);
-  font-size: 0.74rem;
+  font-size: 0.82rem; /* [261021] 11.8px→13.1px */
   color: #36507d;
 }
 
@@ -3170,7 +3170,7 @@ html[data-font-scale="3"] {
 }
 
 .style-matrix-prompt {
-  font-size: 0.78rem;
+  font-size: 0.82rem; /* [261021] 12.5px→13.1px */
   line-height: 1.7;
   padding: 12px;
   border-radius: 14px;
