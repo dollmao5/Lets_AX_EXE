@@ -2958,7 +2958,7 @@ async function handleWrapupAdminDelete(req, res, urlObj) {
   const config = await readWrapupConfig();
   const cohort = wrapupSafeSegment(payload.cohort) || config.currentCohort;
   const round = normalizeWs(payload.round).toLowerCase();
-  const id = wrapupSafeSegment(payload.id ? String(payload.id).replace(/조_/, "조_") : "");
+  const id = wrapupSafeSegment(payload.id ? String(payload.id) : "");
   if (!WRAPUP_ROUNDS.has(round) || !id) {
     return sendJson(res, 400, { ok: false, error: "round와 id가 필요합니다." });
   }
@@ -3313,11 +3313,7 @@ function buildCanvas2Markdown(round, submission, teamEntry, summaryMeta) {
     "## ⚠️ 팀 내 관점 차이 (내 입장과 대비해 확인)",
     "",
     diff || (consensus ? "_(요약에서 뚜렷한 이견이 정리되지 않았습니다.)_" : pendingNote),
-    "",
-    "## ▶️ 다음 Round 준비 메모",
-    "",
-    "- (다음 실습에서 이어서 작성)",
-    ""
+    "" /* [261021] 빈 "다음 Round 준비 메모" 섹션 제거 — 어떤 클립도 채우지 않는 자리표시자였음(사용자 결정) */
   ].join("\n");
 }
 
@@ -3393,7 +3389,7 @@ async function handleWrapupCanvas2Bundle(req, res, urlObj) {
   const markdown = [
     `# Round 1~3 팀 토론 정리본 통합본 — ${name} (${team}팀)`,
     "",
-    "> CH04 Gemini Notebook 실습의 '필수 3. Round 1~3 팀 토론 정리본 통합본' 소스로 업로드하는 개인화 파일입니다.",
+    "> CH04 Gemini Notebook 실습의 '필수 3. Round 1~3 나의 토론 정리본 통합본(팀 합의 포함)' 소스로 업로드하는 개인화 파일입니다.",
     "> 각 라운드는 ① 나의 결론(우선) ② 팀 공통 합의(참고) ③ 팀 내 관점 차이로 구성됩니다.",
     "",
     "## 목차",

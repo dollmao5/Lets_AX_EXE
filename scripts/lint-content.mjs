@@ -108,7 +108,8 @@ for (const [clipKey, clipDir] of clipDirs) {
       "선택 참고: Gemini 및 Gems 소개",
       "참고_Gemini Overview (Gems 소개)",
       "참고_Gemini Overview",
-      "Gemini 접속 방법 및 Gems 소개"
+      "Gemini 접속 방법 및 Gems 소개",
+      "Gemini 접속 방법 및 Skills(구 Gems) 소개" // [261021] 3-2 제목 Skills 전환에 맞춘 시간표·푸터 라벨
     ];
     /* NotebookLM의 공식 리브랜딩 명칭 "Gemini Notebook"은 챗봇 Gemini와 무관한 별개 제품명 — 금칙어 예외
        (ch04-clip01 리브랜딩 각주·공식 도움말 링크 라벨에서 사용).
