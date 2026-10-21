@@ -88,7 +88,7 @@ Level 2 · 확장AI 앱·자동화 / 범위형 Agent : 작은 도구를 만들�
 - 권한·데이터·완료 기준·승인 지점을 명시
 
 ChatGPT Deep Research
-GPTs(기존 GPT 활용)
+GPTs → Plugins(맞춤 비서 · 2026-12 전환)
 OpenAI API
 
 팀장이 확인할 것: 권한·데이터 범위와 사람의 승인 지점을 정했는가?

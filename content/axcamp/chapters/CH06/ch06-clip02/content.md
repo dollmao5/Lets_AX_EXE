@@ -26,7 +26,7 @@ CH 06
 **Antigravity** |
 Google |
 Agent-First IDE, 3-Surface(Editor+Terminal+Browser), Manager View로 멀티에이전트 오케스트레이션 |
-Gemini 3 Pro 계열 |
+Gemini 3.x·4 Argon 계열 |
 프론트엔드/풀스택 개발, 에이전트 워크플로우 |
 
 |
@@ -40,14 +40,14 @@ Claude 5 계열(Opus 등 최신 모델) |
 **Codex** |
 OpenAI |
 클라우드 샌드박스, 비동기 병렬 작업, GitHub 통합 |
-GPT-5 Codex 계열 |
+GPT-6.x Sol 계열(Codex) |
 CI/CD 연동, 이슈 기반 자동화 |
 
 |
 **Gemini CLI** |
 Google |
 터미널 네이티브, 100만 토큰 컨텍스트, MCP 지원, Google 생태계 연동 |
-Gemini 3 Pro 계열 |
+Gemini 3.x·4 Argon 계열 |
 터미널 중심 작업, Google Cloud 연동 |
 
 ## MCP (Model Context Protocol)

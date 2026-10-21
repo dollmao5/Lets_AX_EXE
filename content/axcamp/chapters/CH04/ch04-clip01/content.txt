@@ -14,7 +14,7 @@ Gemini Notebook은 사용자가 넣은 자료를 중심으로 답변하고 소�
 
 🎬 생각 열기 — 실제 사례와 데이터 강사님 진행 · 약 2~3분
 
-ℹ️ 명칭 안내: 2026년 7월 17일, NotebookLM이 Gemini Notebook으로 이름이 바뀌었습니다 — 독립형 리서치 도구라는 제품 성격은 그대로 유지하면서 Gemini 앱·Google 검색 등 자사 생태계와의 연동을 확대하기 위한 개칭입니다. 접속 주소(notebooklm.google.com)는 그대로이며, 화면에 따라 아직 NotebookLM 로고·이름이 보일 수 있으나 같은 도구입니다.
+ℹ️ 명칭 안내: 2026년 7월 17일, NotebookLM이 Gemini Notebook으로 이름이 바뀌었습니다 — 독립형 리서치 도구라는 제품 성격은 그대로 유지하면서 Gemini 앱·Google 검색 등 자사 생태계와의 연동을 확대하기 위한 개칭입니다. 접속 주소는 notebook.google.com으로 바뀌었고(구 주소 notebooklm.google.com은 새 주소로 자동 전환), 화면에 따라 아직 NotebookLM 로고·이름이 보일 수 있으나 같은 도구입니다.
 
 - 공식 도움말 — Gemini Notebook 업그레이드하기 (한국어) — 플랜별 사용한도·기능 표가 있는 공식 문서 · 교육 직전 사용한도와 화면 표기를 재확인할 때 참고
 https://support.google.com/gemininotebook/answer/16213268?hl=ko
@@ -200,7 +200,7 @@ Studio는 “정리된 결과물을 만드는 곳”, 채팅은
 
 바로 시작하기
 
-- notebooklm.google.com에 접속해 새 노트북 생성 위치를 확인합니다.
+- notebook.google.com에 접속해 새 노트북 생성 위치를 확인합니다(구 주소 notebooklm.google.com도 자동 전환됩니다).
 
 - 소스 추가 버튼을 눌러 문서, 웹 URL, 복사한 텍스트, 이미지, 오디오, YouTube 등 계정에 표시되는 소스 유형을 확인합니다.
 

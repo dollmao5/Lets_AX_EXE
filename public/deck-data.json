@@ -912,7 +912,7 @@
         "title": "홈 화면",
         "imageSrc": "__BASE__/assets/gemini/ch02/gemini-home.png",
         "imageAlt": "Gemini 홈 화면",
-        "summary": "왼쪽에는 대화 이력과 Gems, 아래에는 입력창과 파일 첨부 버튼이 있습니다. 오늘 대부분의 실습은 이 화면에서 시작합니다."
+        "summary": "왼쪽에는 대화 이력과 Customize(Skills · 구 Gems), 아래에는 입력창과 파일 첨부 버튼이 있습니다. 오늘 대부분의 실습은 이 화면에서 시작합니다."
       },
       {
         "eyebrow": "02 / Mode",
@@ -949,7 +949,7 @@
         "title": "모델·추론 수준 메뉴",
         "imageSrc": "__BASE__/assets/chatgpt/ch02/chatgpt-model-menu.png",
         "imageAlt": "ChatGPT 모델·추론 수준 메뉴",
-        "summary": "입력창 오른쪽에서 추론 수준(즉시·중간·높음 등)을 고를 수 있습니다. 빠른 답이 필요한 작업과 깊은 추론이 필요한 작업을 구분하는 감각을 잡는 화면입니다."
+        "summary": "플랜에 따라 입력창 주변에 추론 수준 메뉴(유료) 또는 Think 버튼(무료)이 보입니다. 빠른 답이 필요한 작업과 깊은 추론이 필요한 작업을 구분하는 감각을 잡는 화면입니다."
       },
       {
         "eyebrow": "03 / Upload",

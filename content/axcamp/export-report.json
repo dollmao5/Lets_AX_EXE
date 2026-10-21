@@ -179,7 +179,7 @@
         },
         {
           "route": "#ch03-clip02",
-          "title": "참고: Gemini 접속 방법 및 Gems 소개",
+          "title": "참고: Gemini 접속 방법 및 Skills(구 Gems) 소개",
           "type": "참고",
           "folder": "chapters/CH03/ch03-clip02",
           "linkCount": 0,
@@ -550,7 +550,7 @@
     {
       "chapterId": "ch03",
       "route": "#ch03-clip02",
-      "title": "참고: Gemini 접속 방법 및 Gems 소개",
+      "title": "참고: Gemini 접속 방법 및 Skills(구 Gems) 소개",
       "folder": "chapters/CH03/ch03-clip02",
       "textLength": 3343,
       "htmlLength": 8772,

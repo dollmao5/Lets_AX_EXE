@@ -4,7 +4,7 @@
 
 > **세션**: CH04 Gemini Notebook (Fast Research + Note→Source 전환)
 > **소요 시간**: 약 20~25분
-> **도구**: Gemini Notebook (notebooklm.google.com)
+> **도구**: Gemini Notebook (notebook.google.com · 구 notebooklm.google.com은 자동 전환)
 > **흐름**: 소스 업로드 → 다중 소스 질의 → 패스트 리서치 → 노트→소스 전환 → 스튜디오 패널 활용
 > **사전 준비물**:
 > - WEF 미래 직업 보고서 2025 (PDF)
@@ -20,7 +20,7 @@
 
 ### 조작 순서
 
-1. Gemini Notebook (notebooklm.google.com) 접속
+1. Gemini Notebook (notebook.google.com · 구 notebooklm.google.com은 자동 전환) 접속
 2. **"새 노트북"** 클릭
 3. 노트북 이름 설정: `AX Camp 전략 리서치`
 4. **"소스 추가"** → 파일 업로드 선택
