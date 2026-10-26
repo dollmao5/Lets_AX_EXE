@@ -2862,11 +2862,11 @@ html[data-font-scale="3"] {
 }
 
 .style-codebook-table thead th {
-  font-size: 0.75rem;
+  font-size: 0.82rem; /* [261026] 12px→13.1px — 본문 글자 13px 이상 원칙(사용자 결정) */
 }
 
 .style-codebook-table td {
-  font-size: 0.78rem;
+  font-size: 0.82rem; /* [261026] 12.5px→13.1px(사용자 결정) */
   line-height: 1.62;
 }
 
@@ -3695,7 +3695,7 @@ html[data-font-scale="3"] {
 
 .slide-preview-eyebrow {
   padding: 0.16rem 0.62rem;
-  font-size: 0.72rem;
+  font-size: 0.8rem; /* [261026] 11.5px→12.8px — 미리보기 카드 번호 라벨 시인성(사용자 결정) */
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #305586;
