@@ -56,7 +56,7 @@ Gemini Notebook Slide Deck
 
 ## 묻고 다듬기에서 작은 도구 만들기, 여러 단계 맡기기로 확장되는 활용 로드맵
 
-Gemini Notebook Studio의 **Enterprise AI Roadmap** 슬라이드 3장을 활용합니다.
+Gemini Notebook Studio(스튜디오)의 **Enterprise AI Roadmap** 슬라이드 3장을 활용합니다.
 단계별 인터페이스와 대표 도구를 확인하되, 제품명보다 **계획 범위·실행 권한·도구 연결·사람의 승인 지점**에 주목합니다.
 
 다운로드
