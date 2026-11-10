@@ -60,3 +60,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        # [261110] Pages 배포 단계가 기본 10분 제한에서 4회 연속 시간 초과 → 대기 한도 30분으로 확대. 복구: 아래 with/timeout 두 줄 삭제
+        with:
+          timeout: 1800000
